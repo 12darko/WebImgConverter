@@ -232,8 +232,7 @@ function BanaConvertApp() {
     if (!item) return;
 
     if (!(await deductCredit(COST_PER_CONVERT))) {
-      if (ENABLE_PREMIUM_SYSTEM) setIsPremiumModalOpen(true);
-      else alert(t('drop_limit'));
+      setIsPremiumModalOpen(true);
       return;
     }
 
@@ -271,6 +270,13 @@ function BanaConvertApp() {
         // Apply Transforms
         ctx.translate(canvas.width / 2, canvas.height / 2);
         ctx.rotate((item.rotation * Math.PI) / 180);
+
+        // Pre-fill white background for JPEG/non-transparent formats to prevent black background
+        if (item.targetFormat === ConversionFormat.JPEG) {
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(-targetWidth / 2, -targetHeight / 2, targetWidth, targetHeight);
+        }
+
         ctx.drawImage(img, -targetWidth / 2, -targetHeight / 2, targetWidth, targetHeight);
 
         // PIXEL PROCESSING (Grayscale & BG Removal)
@@ -361,8 +367,7 @@ function BanaConvertApp() {
     if (!item) return;
 
     if (!(await deductCredit(COST_PER_AI_RENAME))) {
-      if (ENABLE_PREMIUM_SYSTEM) setIsPremiumModalOpen(true);
-      else alert(t('drop_limit'));
+      setIsPremiumModalOpen(true);
       return;
     }
 
