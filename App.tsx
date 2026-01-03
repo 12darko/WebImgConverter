@@ -63,7 +63,6 @@ function BanaConvertApp() {
       if (session) {
         loadUserProfile(session.user.id);
       } else {
-      } else {
         // Fallback to local storage for guests
         loadLocalStats();
         setIsInitialized(true);
@@ -79,6 +78,7 @@ function BanaConvertApp() {
         loadUserProfile(session.user.id);
       } else {
         loadLocalStats();
+        setIsInitialized(true);
       }
     });
 
