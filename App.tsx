@@ -121,9 +121,13 @@ function BanaConvertApp() {
     if (session && localStorage.getItem('pending_ref')) {
       const pendingRef = localStorage.getItem('pending_ref');
       if (pendingRef && pendingRef !== session.user.id) {
-        import('./services/supabase').then(({ rewardReferrer }) => {
-          rewardReferrer(pendingRef);
-          localStorage.removeItem('pending_ref');
+        import('./services/supabase').then(({ processReferral }) => {
+          processReferral(session.user.id, pendingRef).then((success) => {
+            if (success) {
+              console.log('Referral processed successfully');
+            }
+            localStorage.removeItem('pending_ref');
+          });
         });
       }
     }
