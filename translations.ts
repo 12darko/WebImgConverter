@@ -4,13 +4,13 @@ export const translations = {
     // Navbar
     daily_credits: "Günlük Haklar",
     premium_btn: "Premium'a Geç",
-    
+
     // Dropzone
     drop_title: "Resimleri Yükle",
     drop_desc: "HEIC (iPhone), JPG, PNG veya WEBP dosyalarını buraya sürükleyin.",
     drop_limit: "Günlük Limit Doldu",
     drop_limit_desc: "Hak kazanmak için sağdaki reklamı izleyin veya yarını bekleyin.",
-    
+
     // File Card
     queue: "İşlem Kuyruğu",
     clear_all: "Tümünü Temizle",
@@ -28,19 +28,19 @@ export const translations = {
     download_btn: "İndir",
     completed: "Tamamlandı!",
     error_generic: "Hata oluştu",
-    
+
     // Sidebar
     pro_tips_title: "Profesyonel İpuçları",
     tip_heic: "iPhone HEIC fotoğraflarını anında JPG'e çevirin.",
-    tip_seo: "AI isimlendirme ile Google'da üst sıralara çıkın.",
+    tip_seo: "Dosyalarınız %100 güvenli şekilde tarayıcınızda işlenir.",
     tip_size: "Dosya boyutunu kalite bozulmadan küçültün.",
-    
+
     // Referral
     ref_title: "Daha Fazla Hak Kazan",
     ref_desc: "VormPixyze'ı arkadaşlarınla paylaş, her tıklamada +3 Kredi kazan!",
     ref_btn: "Linki Kopyala & Paylaş",
     ref_success: "Link Kopyalandı! (+3 Hak Eklendi)",
-    
+
     // Premium Modal
     prem_title: "Premium'a Yükselt",
     prem_subtitle: "Profesyonel araçlara sınırsız erişim sağlayın.",
@@ -57,7 +57,7 @@ export const translations = {
     contact: "İletişim",
     footer_text: "Tüm Hakları Saklıdır.",
     close: "Kapat",
-    
+
     // Cookie Banner
     cookie_message: "Size daha iyi bir deneyim sunmak ve reklamları kişiselleştirmek için çerezleri (cookies) kullanıyoruz.",
     cookie_accept: "Kabul Et",
@@ -99,16 +99,13 @@ Hizmet "OLDUĞU GİBİ" (AS-IS) sunulmaktadır. VormPixyze, dönüştürme işle
 4. DEĞİŞİKLİKLER
 Yönetim, hizmet şartlarını, ücretlendirme politikalarını veya site özelliklerini önceden haber vermeksizin değiştirme hakkını saklı tutar.`,
 
-    contact_content: `Her türlü soru, öneri, hata bildirimi veya telif hakkı ihlali şikayeti için bizimle iletişime geçebilirsiniz.
+    contact_content: `Her türlü soru ve öneriniz için bize ulaşabilirsiniz.
 
 E-posta:
-legal@vormpixyze.com (Hukuki Konular)
-support@vormpixyze.com (Teknik Destek)
+support@vormpixyze.com
 
 Adres:
-VormPixyze Digital Solutions
-Teknopark İstanbul Kampüsü
-Pendik, İstanbul / TÜRKİYE
+İstanbul / TÜRKİYE
 
 Çalışma Saatleri:
 Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
@@ -117,13 +114,13 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
     // Navbar
     daily_credits: "Daily Credits",
     premium_btn: "Go Premium",
-    
+
     // Dropzone
     drop_title: "Upload Images",
     drop_desc: "Drag & drop HEIC (iPhone), JPG, PNG or WEBP files here.",
     drop_limit: "Daily Limit Reached",
     drop_limit_desc: "Watch the ad on the right to earn credits or wait until tomorrow.",
-    
+
     // File Card
     queue: "Process Queue",
     clear_all: "Clear All",
@@ -141,19 +138,19 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
     download_btn: "Download",
     completed: "Completed!",
     error_generic: "Error occurred",
-    
+
     // Sidebar
     pro_tips_title: "Pro Tips",
     tip_heic: "Instantly convert iPhone HEIC photos to JPG.",
-    tip_seo: "Boost SEO ranking with AI-generated filenames.",
+    tip_seo: "Files are processed 100% securely in your browser.",
     tip_size: "Reduce file size without losing quality.",
-    
+
     // Referral
     ref_title: "Earn More Credits",
     ref_desc: "Share VormPixyze with friends. Get +3 Credits for every share!",
     ref_btn: "Copy Link & Share",
     ref_success: "Link Copied! (+3 Credits Added)",
-    
+
     // Premium Modal
     prem_title: "Upgrade to Premium",
     prem_subtitle: "Get unlimited access to professional tools.",
@@ -170,7 +167,7 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
     contact: "Contact",
     footer_text: "All Rights Reserved.",
     close: "Close",
-    
+
     // Cookie Banner
     cookie_message: "We use cookies to improve your experience and deliver personalized ads.",
     cookie_accept: "Accept",
@@ -212,16 +209,13 @@ The service is provided "AS IS". VormPixyze does not guarantee that the conversi
 4. MODIFICATIONS
 We reserve the right to modify these terms, pricing policies, or site features at any time without prior notice.`,
 
-    contact_content: `For any questions, suggestions, bug reports, or copyright infringement claims, please contact us.
+    contact_content: `For any questions or suggestions, please contact us.
 
 Email:
-legal@vormpixyze.com (Legal Inquiries)
-support@vormpixyze.com (Technical Support)
+support@vormpixyze.com
 
 Address:
-VormPixyze Digital Solutions
-Technopark Istanbul Campus
-Pendik, Istanbul / TURKEY
+Istanbul / TURKEY
 
 Business Hours:
 Monday - Friday: 09:00 - 18:00 (GMT+3)`

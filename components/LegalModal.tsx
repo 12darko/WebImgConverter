@@ -83,5 +83,6 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, initial
           </div>
         </div>
       </div>
-      );
+    </div>
+  );
 };
