@@ -7,7 +7,7 @@ import { ReferralWidget } from './components/ReferralWidget';
 import { PaymentModal } from './components/PaymentModal';
 import { LegalModal } from './components/LegalModal';
 import { CookieBanner } from './components/CookieBanner';
-import { AdVerificationModal } from './components/AdVerificationModal';
+
 import { CompareSlider } from './components/CompareSlider';
 import { AuthModal } from './components/AuthModal'; // Auth import
 import { generateAiFilename } from './services/geminiService';
@@ -45,7 +45,7 @@ function BanaConvertApp() {
   // Modals
   const [isPremiumModalOpen, setIsPremiumModalOpen] = useState(false);
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
-  const [isAdModalOpen, setIsAdModalOpen] = useState(false);
+
   const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false); // Auth Modal
 
@@ -196,10 +196,7 @@ function BanaConvertApp() {
     }
   };
 
-  const handleWatchAdReward = () => {
-    handleReward(1);
-    setIsAdModalOpen(false);
-  };
+
 
   const openLegal = (tab: 'privacy' | 'terms' | 'contact') => {
     setLegalModalTab(tab);
@@ -393,7 +390,7 @@ function BanaConvertApp() {
         </>
       )}
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} onSuccess={() => { }} />
-      <AdVerificationModal isOpen={isAdModalOpen} onClose={() => setIsAdModalOpen(false)} onReward={handleWatchAdReward} />
+
       <LegalModal isOpen={isLegalModalOpen} onClose={() => setIsLegalModalOpen(false)} initialTab={legalModalTab} />
       <CookieBanner />
 
@@ -630,7 +627,7 @@ function BanaConvertApp() {
 
           <div className="sticky top-24 space-y-6">
             {!stats.isPremium && <ReferralWidget onReferralSuccess={() => handleReward(3)} />}
-            {!stats.isPremium && !ENABLE_PREMIUM_SYSTEM && <AdBanner onWatchAd={() => setIsAdModalOpen(true)} className="w-full" />}
+            {!stats.isPremium && !ENABLE_PREMIUM_SYSTEM && <AdBanner variant="box" className="w-full" />}
             <AdBanner variant="vertical" className="hidden lg:flex" />
           </div>
         </div>
@@ -656,7 +653,10 @@ function BanaConvertApp() {
             <button onClick={() => openLegal('terms')} className="hover:text-indigo-400">{t('terms')}</button>
             <button onClick={() => openLegal('contact')} className="hover:text-indigo-400">{t('contact')}</button>
           </div>
-          <div className="text-slate-600 text-xs font-mono">&copy; 2024 VormPixyze Inc.</div>
+          <div className="text-slate-600 text-xs font-mono flex flex-col items-end">
+            <span>&copy; 2024 VormPixyze Inc.</span>
+            <span className="text-[10px] opacity-70 mt-1">Powered by VibeOracle</span>
+          </div>
         </div>
       </footer>
     </div>
