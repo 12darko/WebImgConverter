@@ -102,7 +102,7 @@ export const AdBanner: React.FC<AdBannerProps> = ({
   // MODE 2: REAL GOOGLE ADSENSE (Display Ad)
   return (
     <div
-      className={`relative bg-slate-900/50 border border-slate-800 rounded-xl overflow-hidden flex items-center justify-center ${sizeClasses[variant]} ${className}`}
+      className={`relative bg-slate-900/50 border border-slate-800 rounded-xl overflow-hidden ${sizeClasses[variant]} ${className}`}
       style={{ minHeight: minHeightStyles[variant] }}
     >
 
@@ -118,9 +118,11 @@ export const AdBanner: React.FC<AdBannerProps> = ({
       ></ins>
 
       {/* Placeholder text for Development (Visible only if ad blocked or loading) */}
-      <span className="absolute text-[10px] text-slate-700 font-mono pointer-events-none z-[-1]">
-        GOOGLE ADS SPACE<br />({variant})
-      </span>
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[-1]">
+        <span className="text-[10px] text-slate-700 font-mono text-center">
+          GOOGLE ADS SPACE<br />({variant})
+        </span>
+      </div>
     </div>
   );
 };
