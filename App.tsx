@@ -39,8 +39,11 @@ function BanaConvertApp() {
   const [stats, setStats] = useState<UserStats>({
     credits: MAX_FREE_CREDITS,
     isPremium: false,
+    credits: MAX_FREE_CREDITS,
+    isPremium: false,
     lastResetDate: new Date().toISOString().split('T')[0]
   });
+  const [isInitialized, setIsInitialized] = useState(false);
 
   // Modals
   const [isPremiumModalOpen, setIsPremiumModalOpen] = useState(false);
@@ -60,8 +63,10 @@ function BanaConvertApp() {
       if (session) {
         loadUserProfile(session.user.id);
       } else {
+      } else {
         // Fallback to local storage for guests
         loadLocalStats();
+        setIsInitialized(true);
       }
     });
 
@@ -128,11 +133,11 @@ function BanaConvertApp() {
 
   // Sync Local changes to DB or Storage
   useEffect(() => {
-    if (!session) {
+    if (!session && isInitialized) {
       localStorage.setItem('vormPixyzeStats', JSON.stringify(stats));
     }
     // Note: DB updates happen explicitly via updateCredits calls, not useEffect sync to avoid loops
-  }, [stats, session]);
+  }, [stats, session, isInitialized]);
 
   const handleFilesAdded = useCallback(async (newFiles: File[]) => {
     const tempFiles: FileItem[] = newFiles.map(file => ({
@@ -666,7 +671,7 @@ function BanaConvertApp() {
 
 
 
-      <footer className="mt-20 border-t border-slate-800 bg-[#0B0F19] py-10">
+      <footer className="mt-auto border-t border-slate-800 bg-[#0B0F19] py-8">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
           <span className="font-bold text-lg text-white">VormPixyze</span>
           <div className="flex gap-6 text-sm text-slate-500">
