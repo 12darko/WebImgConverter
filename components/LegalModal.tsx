@@ -34,8 +34,8 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, initial
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`flex-1 sm:flex-none px-4 py-2 rounded-md text-xs sm:text-sm font-bold transition-all ${activeTab === tab
-                    ? 'bg-indigo-600 text-white shadow-md'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
+                  ? 'bg-indigo-600 text-white shadow-md'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
                   }`}
               >
                 {t(tab)}
@@ -69,10 +69,10 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, initial
                 <div className="h-8 bg-slate-800 rounded px-2 flex items-center text-xs font-bold">SSL SECURE</div>
                 <div className="h-8 bg-slate-800 rounded px-2 flex items-center text-xs font-bold">DMCA PROTECTED</div>
               </div>
-           )}
             </div>
+          )}
 
-        {/* Footer Actions */}
+          {/* Footer Actions */}
           <div className="p-4 border-t border-slate-700 bg-slate-900/50 rounded-b-2xl flex justify-end">
             <button
               onClick={onClose}
