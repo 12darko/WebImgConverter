@@ -26,6 +26,12 @@ export const AdBanner: React.FC<AdBannerProps> = ({
     box: 'w-full h-[250px]'
   };
 
+  const minHeightStyles = {
+    horizontal: '112px',
+    vertical: '600px',
+    box: '250px'
+  };
+
   useEffect(() => {
     // Sadece "Real Ad" modundaysak (yani onWatchAd yoksa) reklamı yükle
     if (!onWatchAd) {
@@ -95,7 +101,10 @@ export const AdBanner: React.FC<AdBannerProps> = ({
 
   // MODE 2: REAL GOOGLE ADSENSE (Display Ad)
   return (
-    <div className={`relative bg-slate-900/50 border border-slate-800 rounded-xl overflow-hidden flex items-center justify-center ${sizeClasses[variant]} ${className}`}>
+    <div
+      className={`relative bg-slate-900/50 border border-slate-800 rounded-xl overflow-hidden flex items-center justify-center ${sizeClasses[variant]} ${className}`}
+      style={{ minHeight: minHeightStyles[variant] }}
+    >
 
       {/* Google AdSense Container */}
       <ins
