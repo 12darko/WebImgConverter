@@ -107,6 +107,25 @@ function BanaConvertApp() {
     }
   };
 
+  // Referral Handling
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const refCode = params.get('ref');
+    if (refCode) {
+      localStorage.setItem('pending_ref', refCode);
+    }
+
+    if (session && localStorage.getItem('pending_ref')) {
+      const pendingRef = localStorage.getItem('pending_ref');
+      if (pendingRef && pendingRef !== session.user.id) {
+        import('./services/supabase').then(({ rewardReferrer }) => {
+          rewardReferrer(pendingRef);
+          localStorage.removeItem('pending_ref');
+        });
+      }
+    }
+  }, [session]);
+
   // Sync Local changes to DB or Storage
   useEffect(() => {
     if (!session) {
@@ -121,7 +140,7 @@ function BanaConvertApp() {
       file,
       previewUrl: '',
       targetFormat: ConversionFormat.JPEG,
-      quality: 0.9,
+      quality: 1.0,
       rotation: 0,
       resizeScale: 1,
       isGrayscale: false,
@@ -628,7 +647,7 @@ function BanaConvertApp() {
           </div>
 
           <div className="sticky top-24 space-y-6">
-            {!stats.isPremium && <ReferralWidget onReferralSuccess={() => handleReward(3)} />}
+            {!stats.isPremium && <ReferralWidget onReferralSuccess={() => handleReward(3)} userId={session?.user?.id} />}
             {!stats.isPremium && !ENABLE_PREMIUM_SYSTEM && <AdBanner variant="box" className="w-full" />}
             <AdBanner variant="vertical" className="hidden lg:flex" />
           </div>

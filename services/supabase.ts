@@ -53,6 +53,30 @@ export const updateUserCredits = async (userId: string, newAmount: number) => {
 };
 
 /**
+ * Referans olan kullanıcıya ödül verir (Backend-backed)
+ */
+export const rewardReferrer = async (referrerId: string) => {
+  // 1. Referans olan kişiyi bul
+  const { data: userData, error: fetchError } = await supabase
+    .from('profiles')
+    .select('credits')
+    .eq('id', referrerId)
+    .single();
+
+  if (fetchError || !userData) return;
+
+  // 2. Kredisini artır (+3)
+  const newCredits = (userData.credits || 0) + 3;
+
+  const { error: updateError } = await supabase
+    .from('profiles')
+    .update({ credits: newCredits })
+    .eq('id', referrerId);
+
+  if (updateError) console.error('Referral reward failed:', updateError);
+};
+
+/**
  * Günlük kredileri 3'e resetler ve tarihi günceller.
  */
 export const resetDailyCredits = async (userId: string) => {

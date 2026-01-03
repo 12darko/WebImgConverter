@@ -4,15 +4,17 @@ import { useLanguage } from '../LanguageContext';
 
 interface ReferralWidgetProps {
   onReferralSuccess: () => void;
+  userId?: string;
 }
 
-export const ReferralWidget: React.FC<ReferralWidgetProps> = ({ onReferralSuccess }) => {
+export const ReferralWidget: React.FC<ReferralWidgetProps> = ({ onReferralSuccess, userId }) => {
   const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
 
   const handleCopyLink = () => {
-    // Simüle edilmiş paylaşım linki
-    const referralLink = `https://vormpixyze.com/?ref=${Math.random().toString(36).substring(7)}`;
+    // Gerçek Kullanıcı ID'si ile link oluştur
+    const code = userId || 'guest';
+    const referralLink = `https://vormpixyze.com/?ref=${code}`;
     navigator.clipboard.writeText(referralLink);
 
     setCopied(true);
@@ -42,8 +44,8 @@ export const ReferralWidget: React.FC<ReferralWidgetProps> = ({ onReferralSucces
         <button
           onClick={handleCopyLink}
           className={`w-full py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 ${copied
-              ? 'bg-green-500 text-white shadow-green-500/20'
-              : 'bg-white text-indigo-900 hover:bg-slate-200 shadow-white/10'
+            ? 'bg-green-500 text-white shadow-green-500/20'
+            : 'bg-white text-indigo-900 hover:bg-slate-200 shadow-white/10'
             } shadow-lg`}
         >
           {copied ? (

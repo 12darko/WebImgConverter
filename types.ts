@@ -43,4 +43,4 @@ export const COST_PER_AI_RENAME = 1;
 // --- FEATURE FLAGS (SİSTEM KONTROLÜ) ---
 // Premium sistemi aktif edilecekse bunu TRUE yapın.
 // Şu an sadece reklam geliri istendiği için FALSE olarak ayarlandı.
-export const ENABLE_PREMIUM_SYSTEM = false;
+export const ENABLE_PREMIUM_SYSTEM = true;
