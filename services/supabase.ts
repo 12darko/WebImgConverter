@@ -56,24 +56,11 @@ export const updateUserCredits = async (userId: string, newAmount: number) => {
  * Referans olan kullanıcıya ödül verir (Backend-backed)
  */
 export const rewardReferrer = async (referrerId: string) => {
-  // 1. Referans olan kişiyi bul
-  const { data: userData, error: fetchError } = await supabase
-    .from('profiles')
-    .select('credits')
-    .eq('id', referrerId)
-    .single();
+  // Use Secure RPC call instead of direct update (bypasses RLS)
+  const { error } = await supabase
+    .rpc('increment_referral_credits', { target_id: referrerId });
 
-  if (fetchError || !userData) return;
-
-  // 2. Kredisini artır (+3)
-  const newCredits = (userData.credits || 0) + 3;
-
-  const { error: updateError } = await supabase
-    .from('profiles')
-    .update({ credits: newCredits })
-    .eq('id', referrerId);
-
-  if (updateError) console.error('Referral reward failed:', updateError);
+  if (error) console.error('Referral reward failed:', error);
 };
 
 /**

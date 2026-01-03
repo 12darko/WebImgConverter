@@ -408,7 +408,7 @@ function BanaConvertApp() {
   };
 
   return (
-    <div className="min-h-screen font-sans text-slate-200 flex flex-col">
+    <div className="min-h-screen font-sans text-slate-200 flex flex-col" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* Modals */}
       {ENABLE_PREMIUM_SYSTEM && (
         <>
@@ -478,7 +478,7 @@ function BanaConvertApp() {
       </nav>
 
       {/* Main Content Area */}
-      <main className="w-full max-w-7xl mx-auto p-4 md:p-8 flex flex-col lg:flex-row gap-8 mt-6 flex-1">
+      <main className="w-full max-w-7xl mx-auto p-4 md:p-8 flex flex-col lg:flex-row gap-8 mt-6 flex-1" style={{ flex: '1 0 auto' }}>
 
         {/* Left: Upload & Files */}
         <div className="flex-1 flex flex-col gap-8">
@@ -678,7 +678,7 @@ function BanaConvertApp() {
             <button onClick={() => openLegal('contact')} className="hover:text-indigo-400">{t('contact')}</button>
           </div>
           <div className="text-slate-600 text-xs font-mono flex flex-col items-end">
-            <span>&copy; 2024 VormPixyze Inc.</span>
+            <span>&copy; 2025 VormPixyze Inc.</span>
             <span className="text-[10px] opacity-70 mt-1">Powered by VibeOracle</span>
           </div>
         </div>
