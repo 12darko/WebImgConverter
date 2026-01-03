@@ -412,10 +412,7 @@ function BanaConvertApp() {
           </div>
 
           <div className="flex items-center gap-6">
-            <div className="flex bg-slate-800 rounded-lg p-1 border border-slate-700">
-              <button onClick={() => setLanguage('tr')} className={`px-2 py-1 text-xs font-bold rounded ${language === 'tr' ? 'bg-indigo-600 text-white' : 'text-slate-400'}`}>TR</button>
-              <button onClick={() => setLanguage('en')} className={`px-2 py-1 text-xs font-bold rounded ${language === 'en' ? 'bg-indigo-600 text-white' : 'text-slate-400'}`}>EN</button>
-            </div>
+
 
             {session ? (
               <div className="hidden md:flex flex-col items-end mr-4">
