@@ -669,7 +669,7 @@ function BanaConvertApp() {
 
 
 
-      <footer className="border-t border-slate-800 bg-[#0B0F19] py-8">
+      <footer className="mt-auto border-t border-slate-800 bg-[#0B0F19] py-8">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
           <span className="font-bold text-lg text-white">VormPixyze</span>
           <div className="flex gap-6 text-sm text-slate-500">
