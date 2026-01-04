@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { UserStats } from '../types';
+import { UserStats, MAX_FREE_CREDITS } from '../types';
 
 // ÖNEMLİ: Bu bilgileri Supabase Paneli -> Project Settings -> API kısmından alacaksınız.
 // Güvenlik için bunları .env dosyasına veya Vercel Environment Variables kısmına eklemelisiniz.
@@ -29,7 +29,7 @@ export const getUserProfile = async (userId: string): Promise<UserStats | null> 
       if (data.last_reset_date !== today && !data.is_premium) {
         // Yeni gün, kredileri sıfırla (Client tarafında beklemeden DB'de güncelle)
         await resetDailyCredits(userId);
-        return { ...data, credits: 3, last_reset_date: today };
+        return { ...data, credits: MAX_FREE_CREDITS, last_reset_date: today };
       }
       return data as UserStats;
     }
@@ -72,13 +72,13 @@ export const processReferral = async (newUserId: string, referrerId: string): Pr
 };
 
 /**
- * Günlük kredileri 3'e resetler ve tarihi günceller.
+ * Günlük kredileri MAX_FREE_CREDITS'e resetler ve tarihi günceller.
  */
 export const resetDailyCredits = async (userId: string) => {
   const today = new Date().toISOString().split('T')[0];
   await supabase
     .from('profiles')
-    .update({ credits: 3, last_reset_date: today })
+    .update({ credits: MAX_FREE_CREDITS, last_reset_date: today })
     .eq('id', userId);
 };
 

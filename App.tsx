@@ -673,17 +673,17 @@ function BanaConvertApp() {
 
 
 
-      <footer className="fixed bottom-0 left-0 right-0 z-30 border-t border-slate-800 bg-[#0B0F19] py-8">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-          <span className="font-bold text-lg text-white">VormPixyze</span>
-          <div className="flex gap-6 text-sm text-slate-500">
+      <footer className="fixed bottom-0 left-0 right-0 z-30 border-t border-slate-800 bg-[#0B0F19] py-3 md:py-6">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-6">
+          <span className="font-bold text-sm md:text-lg text-white">VormPixyze</span>
+          <div className="flex gap-3 md:gap-6 text-xs md:text-sm text-slate-500">
             <button onClick={() => openLegal('privacy')} className="hover:text-indigo-400">{t('privacy')}</button>
             <button onClick={() => openLegal('terms')} className="hover:text-indigo-400">{t('terms')}</button>
             <button onClick={() => openLegal('contact')} className="hover:text-indigo-400">{t('contact')}</button>
           </div>
-          <div className="text-slate-600 text-xs font-mono flex flex-col items-end">
+          <div className="text-slate-600 text-[10px] md:text-xs font-mono flex flex-col items-center md:items-end">
             <span>&copy; 2025 VormPixyze Inc.</span>
-            <span className="text-[10px] opacity-70 mt-1">Powered by VibeOracle</span>
+            <span className="hidden md:block text-[10px] opacity-70 mt-1">Powered by VibeOracle</span>
           </div>
         </div>
       </footer>
