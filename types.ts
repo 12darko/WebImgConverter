@@ -27,6 +27,7 @@ export interface FileItem {
   convertedUrl?: string;
   convertedSize?: number; // bytes
   aiName?: string;
+  aiUsedFallback?: boolean; // True if AI failed and fallback naming was used
   errorMsg?: string;
 }
 

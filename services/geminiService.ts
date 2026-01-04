@@ -54,13 +54,19 @@ const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const MAX_RETRIES = 3;
 const BASE_DELAY_MS = 1000; // 1 second
 
-export const generateAiFilename = async (file: File): Promise<string> => {
+// Result type for AI naming
+export interface AiFilenameResult {
+  filename: string;
+  usedFallback: boolean;
+}
+
+export const generateAiFilename = async (file: File): Promise<AiFilenameResult> => {
   const genAI = getAiClient();
 
   // If no API key, use fallback immediately
   if (!genAI) {
     console.log("No API key, using fallback naming system.");
-    return generateFallbackFilename(file);
+    return { filename: generateFallbackFilename(file), usedFallback: true };
   }
 
   const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
@@ -75,12 +81,12 @@ export const generateAiFilename = async (file: File): Promise<string> => {
       const text = response.text();
 
       if (text && text.trim()) {
-        return text.trim();
+        return { filename: text.trim(), usedFallback: false };
       }
 
       // If AI returns empty, use fallback
       console.log("AI returned empty, using fallback naming system.");
-      return generateFallbackFilename(file);
+      return { filename: generateFallbackFilename(file), usedFallback: true };
     } catch (error: any) {
       const isRateLimitError = error?.status === 429 || error?.message?.includes('429');
 
@@ -94,10 +100,10 @@ export const generateAiFilename = async (file: File): Promise<string> => {
 
       // Max retries reached or non-rate-limit error - use fallback
       console.warn(`Gemini API Error after ${attempt} attempt(s), using fallback:`, error?.message || error);
-      return generateFallbackFilename(file);
+      return { filename: generateFallbackFilename(file), usedFallback: true };
     }
   }
 
   // Should never reach here, but just in case
-  return generateFallbackFilename(file);
+  return { filename: generateFallbackFilename(file), usedFallback: true };
 };

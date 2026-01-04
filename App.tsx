@@ -400,12 +400,13 @@ function BanaConvertApp() {
     setFiles(prev => prev.map(f => f.id === id ? { ...f, status: 'analyzing' } : f));
 
     try {
-      const newName = await generateAiFilename(item.file);
-      if (newName) {
-        setFiles(prev => prev.map(f => f.id === id ? { ...f, status: 'idle', aiName: newName } : f));
-      } else {
-        throw new Error("AI failed");
-      }
+      const result = await generateAiFilename(item.file);
+      setFiles(prev => prev.map(f => f.id === id ? {
+        ...f,
+        status: 'idle',
+        aiName: result.filename,
+        aiUsedFallback: result.usedFallback
+      } : f));
     } catch (err) {
       setFiles(prev => prev.map(f => f.id === id ? { ...f, status: 'error', errorMsg: 'AI Busy' } : f));
     }
@@ -548,8 +549,18 @@ function BanaConvertApp() {
 
                       <div className="mb-4">
                         {file.aiName ? (
-                          <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-2 text-xs text-emerald-100 font-mono">
-                            AI: {file.aiName}
+                          <div className={`rounded-lg p-2 text-xs font-mono ${file.aiUsedFallback
+                              ? 'bg-amber-500/10 border border-amber-500/20 text-amber-100'
+                              : 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-100'
+                            }`}>
+                            <div className="flex items-center gap-2">
+                              <span>{file.aiUsedFallback ? '⚡' : '✨'} {file.aiName}</span>
+                            </div>
+                            {file.aiUsedFallback && (
+                              <div className="text-[10px] text-amber-400/70 mt-1">
+                                {t('ai_fallback_notice') || 'AI şu an kullanılamıyor, otomatik isim üretildi'}
+                              </div>
+                            )}
                           </div>
                         ) : (
                           <button onClick={() => handleAiRename(file.id)} disabled={file.status !== 'idle'} className="text-xs text-indigo-400 border border-indigo-500/20 px-3 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20">
