@@ -499,6 +499,23 @@ function BanaConvertApp() {
               <div className="flex items-center justify-between mb-2 px-2">
                 <h3 className="text-lg font-semibold text-white">{t('queue')} ({files.length})</h3>
                 <div className="flex items-center gap-3">
+                  {/* Batch Convert All - visible when there are idle files */}
+                  {files.some(f => f.status === 'idle') && (
+                    <button
+                      onClick={async () => {
+                        const idleFiles = files.filter(f => f.status === 'idle');
+                        for (const file of idleFiles) {
+                          await convertImage(file.id);
+                        }
+                      }}
+                      className="flex items-center gap-1.5 text-xs bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-3 py-1.5 rounded-lg font-medium hover:from-indigo-400 hover:to-purple-400 transition-all"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                      </svg>
+                      {t('convert_all_btn') || 'Tümünü Dönüştür'}
+                    </button>
+                  )}
                   {/* ZIP Download for Premium */}
                   {stats.isPremium && files.some(f => f.status === 'done') && (
                     <button
@@ -522,6 +539,23 @@ function BanaConvertApp() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                       </svg>
                       ZIP İndir
+                    </button>
+                  )}
+                  {/* Batch AI Rename - Premium Only */}
+                  {stats.isPremium && files.some(f => f.status === 'idle' && !f.aiName) && (
+                    <button
+                      onClick={async () => {
+                        const filesToRename = files.filter(f => f.status === 'idle' && !f.aiName);
+                        for (const file of filesToRename) {
+                          await handleAiRename(file.id);
+                        }
+                      }}
+                      className="flex items-center gap-1.5 text-xs bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white px-3 py-1.5 rounded-lg font-medium hover:from-violet-400 hover:to-fuchsia-400 transition-all"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                      </svg>
+                      {t('batch_ai_rename') || 'Tümünü AI ile İsimlendir'}
                     </button>
                   )}
                   <button onClick={() => setFiles([])} className="text-xs text-red-400 hover:text-red-300">{t('clear_all')}</button>
@@ -550,8 +584,8 @@ function BanaConvertApp() {
                       <div className="mb-4">
                         {file.aiName ? (
                           <div className={`rounded-lg p-2 text-xs font-mono ${file.aiUsedFallback
-                              ? 'bg-amber-500/10 border border-amber-500/20 text-amber-100'
-                              : 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-100'
+                            ? 'bg-amber-500/10 border border-amber-500/20 text-amber-100'
+                            : 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-100'
                             }`}>
                             <div className="flex items-center gap-2">
                               <span>{file.aiUsedFallback ? '⚡' : '✨'} {file.aiName}</span>
@@ -572,6 +606,40 @@ function BanaConvertApp() {
 
                     {file.status !== 'done' && (
                       <div className="bg-slate-900/60 p-4 rounded-lg space-y-4">
+                        {/* Preset Profiles */}
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-xs text-slate-500">{t('preset_label') || 'Hazır Ayar:'}</span>
+                          <button
+                            onClick={() => {
+                              updateFileConfig(file.id, 'targetFormat', ConversionFormat.WEBP);
+                              updateFileConfig(file.id, 'quality', 0.8);
+                              updateFileConfig(file.id, 'resizeScale', 1);
+                            }}
+                            className="text-[10px] px-2 py-1 rounded bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/30"
+                          >
+                            🌐 {t('preset_web') || 'Web'}
+                          </button>
+                          <button
+                            onClick={() => {
+                              updateFileConfig(file.id, 'targetFormat', ConversionFormat.JPEG);
+                              updateFileConfig(file.id, 'quality', 0.85);
+                              updateFileConfig(file.id, 'resizeScale', 0.75);
+                            }}
+                            className="text-[10px] px-2 py-1 rounded bg-blue-500/20 border border-blue-500/30 text-blue-300 hover:bg-blue-500/30"
+                          >
+                            📱 {t('preset_social') || 'Sosyal Medya'}
+                          </button>
+                          <button
+                            onClick={() => {
+                              updateFileConfig(file.id, 'targetFormat', ConversionFormat.PNG);
+                              updateFileConfig(file.id, 'quality', 1.0);
+                              updateFileConfig(file.id, 'resizeScale', 1);
+                            }}
+                            className="text-[10px] px-2 py-1 rounded bg-purple-500/20 border border-purple-500/30 text-purple-300 hover:bg-purple-500/30"
+                          >
+                            📦 {t('preset_archive') || 'Arşiv'}
+                          </button>
+                        </div>
                         <div className="flex flex-wrap gap-2">
                           {[ConversionFormat.JPEG, ConversionFormat.PNG, ConversionFormat.WEBP].map(fmt => (
                             <button key={fmt} onClick={() => updateFileConfig(file.id, 'targetFormat', fmt)} className={`text-xs px-3 py-1.5 rounded border ${file.targetFormat === fmt ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-600'}`}>
