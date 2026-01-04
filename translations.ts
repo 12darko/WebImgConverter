@@ -37,7 +37,7 @@ export const translations = {
 
     // Referral
     ref_title: "Daha Fazla Hak Kazan",
-    ref_desc: "VormPixyze'ı arkadaşlarınla paylaş, her tıklamada +3 Kredi kazan!",
+    ref_desc: "VormPixyze'ı arkadaşlarınla paylaş, her kayıtta +5 Kredi kazan!",
     ref_btn: "Linki Kopyala & Paylaş",
     ref_success: "Link Kopyalandı! (+3 Hak Eklendi)",
 
@@ -47,7 +47,7 @@ export const translations = {
     prem_feature_1: "Limitsiz günlük dosya dönüştürme",
     prem_feature_2: "Tamamen reklamsız deneyim",
     prem_feature_3: "Sınırsız AI Dosya İsimlendirme",
-    prem_feature_4: "Öncelikli hızlı işleme sunucuları",
+    prem_feature_4: "Toplu ZIP indirme özelliği",
     prem_price_btn: "Premium'a Geç (₺29.99/Ay)",
     prem_no_thanks: "Hayır, teşekkürler",
 
@@ -147,7 +147,7 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
 
     // Referral
     ref_title: "Earn More Credits",
-    ref_desc: "Share VormPixyze with friends. Get +3 Credits for every share!",
+    ref_desc: "Share VormPixyze with friends. Get +5 Credits for every signup!",
     ref_btn: "Copy Link & Share",
     ref_success: "Link Copied! (+3 Credits Added)",
 
@@ -157,7 +157,7 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
     prem_feature_1: "Unlimited daily file conversions",
     prem_feature_2: "Completely ad-free experience",
     prem_feature_3: "Unlimited AI File Renaming",
-    prem_feature_4: "Priority fast processing servers",
+    prem_feature_4: "Bulk ZIP download feature",
     prem_price_btn: "Go Premium ($4.99/Mo)",
     prem_no_thanks: "No, thanks",
 
