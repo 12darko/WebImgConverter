@@ -497,7 +497,34 @@ function BanaConvertApp() {
             {files.length > 0 && (
               <div className="flex items-center justify-between mb-2 px-2">
                 <h3 className="text-lg font-semibold text-white">{t('queue')} ({files.length})</h3>
-                <button onClick={() => setFiles([])} className="text-xs text-red-400 hover:text-red-300">{t('clear_all')}</button>
+                <div className="flex items-center gap-3">
+                  {/* ZIP Download for Premium */}
+                  {stats.isPremium && files.some(f => f.status === 'done') && (
+                    <button
+                      onClick={async () => {
+                        const JSZip = (await import('jszip')).default;
+                        const { saveAs } = await import('file-saver');
+                        const zip = new JSZip();
+
+                        files.filter(f => f.status === 'done' && f.convertedBlob).forEach((file, idx) => {
+                          const ext = file.targetFormat.split('/')[1];
+                          const name = file.aiName || file.file.name.replace(/\.[^/.]+$/, '');
+                          zip.file(`${name}_${idx + 1}.${ext}`, file.convertedBlob!);
+                        });
+
+                        const blob = await zip.generateAsync({ type: 'blob' });
+                        saveAs(blob, 'VormPixyze_Images.zip');
+                      }}
+                      className="flex items-center gap-1.5 text-xs bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1.5 rounded-lg font-medium hover:from-amber-400 hover:to-orange-400 transition-all"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                      ZIP İndir
+                    </button>
+                  )}
+                  <button onClick={() => setFiles([])} className="text-xs text-red-400 hover:text-red-300">{t('clear_all')}</button>
+                </div>
               </div>
             )}
 
