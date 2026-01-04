@@ -385,16 +385,32 @@ function BanaConvertApp() {
         updateProgress(70); // Effects applied
 
         // --- WATERMARK (Premium) ---
-        if (item.watermarkText && stats.isPremium) {
-          ctx.save();
-          ctx.font = `bold ${Math.floor(canvas.width * 0.05)}px sans-serif`;
-          ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          ctx.translate(canvas.width / 2, canvas.height / 2);
-          ctx.rotate(-45 * Math.PI / 180);
-          ctx.fillText(item.watermarkText, 0, 0);
-          ctx.restore();
+        if (stats.isPremium) {
+          if (item.watermarkLogo) {
+            const logoImg = new Image();
+            logoImg.src = item.watermarkLogo;
+            await new Promise((resolve) => { logoImg.onload = resolve; logoImg.onerror = resolve; }); // Ignore error
+
+            // Calculate logo size (e.g., 15% of canvas width)
+            const logoWidth = canvas.width * 0.15;
+            const logoHeight = logoWidth * (logoImg.height / logoImg.width);
+
+            // Draw logo at bottom right with some padding
+            const padding = canvas.width * 0.05;
+            ctx.globalAlpha = 0.5; // Semi-transparent
+            ctx.drawImage(logoImg, canvas.width - logoWidth - padding, canvas.height - logoHeight - padding, logoWidth, logoHeight);
+            ctx.globalAlpha = 1.0;
+          } else if (item.watermarkText) {
+            ctx.save();
+            ctx.font = `bold ${Math.floor(canvas.width * 0.05)}px sans-serif`;
+            ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            ctx.rotate(-45 * Math.PI / 180);
+            ctx.fillText(item.watermarkText, 0, 0);
+            ctx.restore();
+          }
         }
 
         updateProgress(85); // Creating blob
@@ -717,12 +733,55 @@ function BanaConvertApp() {
                         <div className="flex items-center gap-2">
                           <input
                             type="text"
-                            placeholder={stats.isPremium ? "Watermark Text" : "Watermark (Premium Only)"}
-                            disabled={!stats.isPremium}
+                            placeholder={stats.isPremium ? (file.watermarkLogo ? t('logo_uploaded') : "Watermark Text") : "Watermark (Premium Only)"}
+                            disabled={!stats.isPremium || !!file.watermarkLogo} // Disable text if logo is uploaded
                             value={file.watermarkText || ''}
                             onChange={(e) => updateFileConfig(file.id, 'watermarkText', e.target.value)}
                             className={`bg-slate-800 text-xs border border-slate-700 rounded p-2 flex-grow ${!stats.isPremium ? 'opacity-50 cursor-not-allowed' : ''}`}
                           />
+
+                          {/* Logo Upload Button */}
+                          <div className="relative">
+                            <input
+                              type="file"
+                              id={`logo-upload-${file.id}`}
+                              className="hidden"
+                              accept="image/png, image/jpeg"
+                              disabled={!stats.isPremium}
+                              onChange={(e) => {
+                                const logoFile = e.target.files?.[0];
+                                if (logoFile) {
+                                  const reader = new FileReader();
+                                  reader.onload = (ev) => {
+                                    updateFileConfig(file.id, 'watermarkLogo', ev.target?.result as string);
+                                    updateFileConfig(file.id, 'watermarkText', undefined); // Clear text if logo used
+                                  };
+                                  reader.readAsDataURL(logoFile);
+                                }
+                              }}
+                            />
+                            {file.watermarkLogo ? (
+                              <button
+                                onClick={() => updateFileConfig(file.id, 'watermarkLogo', undefined)}
+                                className="bg-red-500/10 hover:bg-red-500/20 text-red-400 p-2 rounded border border-red-500/20 transition-colors"
+                                title="Remove Logo"
+                              >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              </button>
+                            ) : (
+                              <label
+                                htmlFor={`logo-upload-${file.id}`}
+                                className={`flex items-center justify-center p-2 rounded bg-slate-800 border border-slate-700 cursor-pointer hover:bg-slate-700 transition-colors ${!stats.isPremium ? 'opacity-50 pointer-events-none' : ''}`}
+                                title="Upload Logo Watermark"
+                              >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                              </label>
+                            )}
+                          </div>
                         </div>
 
                         {file.targetFormat !== ConversionFormat.JPEG && (

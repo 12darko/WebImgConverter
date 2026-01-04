@@ -21,6 +21,7 @@ export interface FileItem {
   // New Advanced Features
   targetSizeBytes?: number; // Desired max size in bytes
   watermarkText?: string;
+  watermarkLogo?: string; // base64 string for logo image
 
   status: 'idle' | 'converting' | 'analyzing' | 'done' | 'error';
   convertedBlob?: Blob;
