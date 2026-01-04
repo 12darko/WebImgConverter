@@ -239,6 +239,30 @@ function BanaConvertApp() {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   };
 
+  // Estimate output file size based on format, quality, and scale
+  const estimateFileSize = (file: FileItem): string => {
+    if (!file.file) return '~';
+    const originalSize = file.file.size;
+    const scaleSquared = file.resizeScale * file.resizeScale; // Area scales quadratically
+
+    // Format compression ratios (approximate)
+    let formatRatio = 1;
+    switch (file.targetFormat) {
+      case ConversionFormat.JPEG:
+        formatRatio = 0.15 * file.quality; // JPEG highly compresses
+        break;
+      case ConversionFormat.PNG:
+        formatRatio = 0.7; // PNG lossless, usually larger
+        break;
+      case ConversionFormat.WEBP:
+        formatRatio = 0.1 * file.quality; // WEBP very efficient
+        break;
+    }
+
+    const estimatedBytes = Math.max(originalSize * scaleSquared * formatRatio, 10000); // Min 10KB
+    return '~' + formatFileSize(estimatedBytes);
+  };
+
   const deductCredit = async (cost: number) => {
     if (stats.isPremium) return true;
     if (stats.credits < cost) return false;
@@ -262,15 +286,24 @@ function BanaConvertApp() {
       return;
     }
 
-    setFiles(prev => prev.map(f => f.id === id ? { ...f, status: 'converting' } : f));
+    // Helper to update progress
+    const updateProgress = (progress: number) => {
+      setFiles(prev => prev.map(f => f.id === id ? { ...f, conversionProgress: progress } : f));
+    };
+
+    setFiles(prev => prev.map(f => f.id === id ? { ...f, status: 'converting', conversionProgress: 0 } : f));
 
     // Allow UI to update before heavy processing
     setTimeout(async () => {
       try {
+        updateProgress(10); // Loading image
+
         const img = new Image();
         img.crossOrigin = "anonymous";
         img.src = item.previewUrl;
         await new Promise((resolve, reject) => { img.onload = resolve; img.onerror = reject; });
+
+        updateProgress(25); // Image loaded, creating canvas
 
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
@@ -304,6 +337,8 @@ function BanaConvertApp() {
         }
 
         ctx.drawImage(img, -targetWidth / 2, -targetHeight / 2, targetWidth, targetHeight);
+
+        updateProgress(50); // Canvas drawn, applying effects
 
         // PIXEL PROCESSING (Grayscale & BG Removal)
         if (item.isGrayscale || (item.removeBackground && item.targetFormat !== ConversionFormat.JPEG)) {
@@ -347,6 +382,8 @@ function BanaConvertApp() {
           ctx.putImageData(imageData, 0, 0);
         }
 
+        updateProgress(70); // Effects applied
+
         // --- WATERMARK (Premium) ---
         if (item.watermarkText && stats.isPremium) {
           ctx.save();
@@ -359,6 +396,8 @@ function BanaConvertApp() {
           ctx.fillText(item.watermarkText, 0, 0);
           ctx.restore();
         }
+
+        updateProgress(85); // Creating blob
 
         let dataUrl = canvas.toDataURL(item.targetFormat, item.quality);
         let blob = await (await fetch(dataUrl)).blob();
@@ -377,13 +416,15 @@ function BanaConvertApp() {
           }
         }
 
+        updateProgress(100); // Complete
+
         setFiles(prev => prev.map(f => f.id === id ? {
-          ...f, status: 'done', convertedUrl: dataUrl, convertedBlob: blob, convertedSize: blob.size
+          ...f, status: 'done', convertedUrl: dataUrl, convertedBlob: blob, convertedSize: blob.size, conversionProgress: 100
         } : f));
 
       } catch (err) {
         console.error("Conversion Error:", err);
-        setFiles(prev => prev.map(f => f.id === id ? { ...f, status: 'error', errorMsg: t('error_generic') } : f));
+        setFiles(prev => prev.map(f => f.id === id ? { ...f, status: 'error', errorMsg: t('error_generic'), conversionProgress: 0 } : f));
       }
     }, 100);
   };
@@ -665,6 +706,13 @@ function BanaConvertApp() {
                           )}
                         </div>
 
+                        {/* Estimated Size Display */}
+                        <div className="flex justify-end mt-2">
+                          <span className="text-[10px] text-slate-500 font-mono bg-slate-800/50 px-2 py-1 rounded border border-slate-700/50">
+                            {t('estimated_size')}: <span className="text-emerald-400">{estimateFileSize(file)}</span>
+                          </span>
+                        </div>
+
                         {/* NEW: Watermark (Premium) */}
                         <div className="flex items-center gap-2">
                           <input
@@ -708,10 +756,25 @@ function BanaConvertApp() {
                     </div>
                   </div>
                 </div>
-                {file.status === 'converting' && <div className="absolute inset-0 bg-slate-900/80 rounded-xl flex items-center justify-center z-20 text-indigo-300 text-xs flex-col gap-2">
-                  <div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-                  {t('processing')}
-                </div>}
+                {file.status === 'converting' && (
+                  <div className="absolute inset-0 bg-slate-900/90 rounded-xl flex items-center justify-center z-20 flex-col gap-4 p-6">
+                    <div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                    <span className="text-indigo-300 text-sm font-medium">{t('processing')}</span>
+                    {/* Progress Bar */}
+                    <div className="w-full max-w-xs">
+                      <div className="flex justify-between text-xs text-slate-400 mb-1">
+                        <span>{t('progress') || 'İlerleme'}</span>
+                        <span className="font-mono text-indigo-400">{file.conversionProgress || 0}%</span>
+                      </div>
+                      <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 ease-out"
+                          style={{ width: `${file.conversionProgress || 0}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
 

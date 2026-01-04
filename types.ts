@@ -28,6 +28,7 @@ export interface FileItem {
   convertedSize?: number; // bytes
   aiName?: string;
   aiUsedFallback?: boolean; // True if AI failed and fallback naming was used
+  conversionProgress?: number; // 0-100 progress percentage
   errorMsg?: string;
 }
 
