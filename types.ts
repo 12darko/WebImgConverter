@@ -2,6 +2,9 @@ export enum ConversionFormat {
   JPEG = 'image/jpeg',
   PNG = 'image/png',
   WEBP = 'image/webp',
+  TIFF = 'image/tiff',     // Premium
+  BMP = 'image/bmp',       // Premium
+  ICO = 'image/x-icon',    // Premium
 }
 
 export interface FileItem {
@@ -21,7 +24,9 @@ export interface FileItem {
   // New Advanced Features
   targetSizeBytes?: number; // Desired max size in bytes
   watermarkText?: string;
-  watermarkLogo?: string; // base64 string for logo image
+  watermarkLogo?: string; // base64
+  isFlippedHorizontal?: boolean;
+  isFlippedVertical?: boolean;
 
   status: 'idle' | 'converting' | 'analyzing' | 'done' | 'error';
   convertedBlob?: Blob;

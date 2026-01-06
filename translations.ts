@@ -3,6 +3,7 @@ export const translations = {
   tr: {
     // Navbar
     daily_credits: "Günlük Haklar",
+    credits_label: "Kalan Kredi",
     premium_btn: "Premium'a Geç",
 
     // Dropzone
@@ -144,6 +145,7 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
   en: {
     // Navbar
     daily_credits: "Daily Credits",
+    credits_label: "Credits Left",
     premium_btn: "Go Premium",
 
     // Dropzone
@@ -284,8 +286,9 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
   },
   de: {
     // Navbar
-    daily_credits: "Tägliche Credits",
-    premium_btn: "Premium holen",
+    daily_credits: "Günlük Haklar",
+    credits_label: "Kalan Kredi",
+    premium_btn: "Premium'a Geç",
 
     // Dropzone
     drop_title: "Bilder hochladen",
@@ -387,6 +390,7 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
   fr: {
     // Navbar
     daily_credits: "Crédits du jour",
+    credits_label: "Crédits restants",
     premium_btn: "Passer Premium",
 
     // Dropzone

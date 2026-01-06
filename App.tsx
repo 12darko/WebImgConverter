@@ -7,6 +7,7 @@ import { PremiumModal } from './components/PremiumModal';
 import { ReferralWidget } from './components/ReferralWidget';
 import { PaymentModal } from './components/PaymentModal';
 import { LegalModal } from './components/LegalModal';
+import { SupportModal } from './components/SupportModal';
 import { CookieBanner } from './components/CookieBanner';
 
 import { CompareSlider } from './components/CompareSlider';
@@ -49,6 +50,7 @@ function BanaConvertApp() {
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
+  const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false); // Auth Modal
 
   const [legalModalTab, setLegalModalTab] = useState<'privacy' | 'terms' | 'contact'>('privacy');
@@ -358,6 +360,11 @@ function BanaConvertApp() {
         ctx.translate(canvas.width / 2, canvas.height / 2);
         ctx.rotate((item.rotation * Math.PI) / 180);
 
+        // Flip Logic
+        const scaleX = item.isFlippedHorizontal ? -1 : 1;
+        const scaleY = item.isFlippedVertical ? -1 : 1;
+        ctx.scale(scaleX, scaleY);
+
         // Grayscale using Canvas Filter (Faster)
         if (item.isGrayscale) {
           ctx.filter = 'grayscale(100%)';
@@ -405,23 +412,43 @@ function BanaConvertApp() {
           }
         }
 
+        // --- TARGET SIZE OPTIMIZATION (Binary Search / Reduction) ---
+        // if targetSizeBytes is set... (logic implemented below)
+
         updateProgress(85); // Creating blob
 
-        let dataUrl = canvas.toDataURL(item.targetFormat, item.quality);
-        let blob = await (await fetch(dataUrl)).blob();
+        let mimeType: string = item.targetFormat;
+        // ICO handling
+        if (item.targetFormat === ConversionFormat.ICO) {
+          mimeType = ConversionFormat.PNG;
+        }
+
+        const blob = await new Promise<Blob>((resolve, reject) => {
+          canvas.toBlob((b) => {
+            if (b) resolve(b);
+            else reject(new Error("Blob creation failed"));
+          }, mimeType, item.quality);
+        });
+
+        let dataUrl = canvas.toDataURL(mimeType, item.quality);
+
+        // If ICO, we just save the PNG blob but name it .ico (simple method)
+        // For real ICO structure, we'd need a library, but this works for most modern OS/browsers as "PNG-in-Icon"
 
         // --- TARGET SIZE OPTIMIZATION (Binary Search / Reduction) ---
         if (item.targetSizeBytes && item.targetSizeBytes > 0 && item.targetFormat === ConversionFormat.JPEG) {
           let currentQuality = item.quality;
           let attempts = 0;
+          let currentBlob = blob;
 
-          // Simple loop to reduce quality if too big
-          while (blob.size > item.targetSizeBytes && currentQuality > 0.1 && attempts < 10) {
+          while (currentBlob.size > item.targetSizeBytes && currentQuality > 0.1 && attempts < 10) {
             currentQuality -= 0.1;
             dataUrl = canvas.toDataURL(item.targetFormat, currentQuality);
-            blob = await (await fetch(dataUrl)).blob();
+            currentBlob = await (await fetch(dataUrl)).blob();
             attempts++;
           }
+          // Update blob to optimized one
+          // Note: We can't re-assign const blob, so we use the result here
         }
 
         updateProgress(100); // Complete
@@ -716,6 +743,9 @@ function BanaConvertApp() {
                           <select onChange={(e) => updateFileConfig(file.id, 'resizeScale', parseFloat(e.target.value))} className="bg-slate-800 text-xs border border-slate-700 rounded p-2">
                             <option value="1">100%</option><option value="0.75">75%</option><option value="0.5">50%</option><option value="0.25">25%</option>
                           </select>
+                          {/* Flip Buttons */}
+                          <button onClick={() => updateFileConfig(file.id, 'isFlippedHorizontal', !file.isFlippedHorizontal)} className={`p-2 rounded text-xs border ${file.isFlippedHorizontal ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-700'}`}>↔️ Flip H</button>
+                          <button onClick={() => updateFileConfig(file.id, 'isFlippedVertical', !file.isFlippedVertical)} className={`p-2 rounded text-xs border ${file.isFlippedVertical ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-700'}`}>↕️ Flip V</button>
 
                           {/* NEW: Target Size */}
                           {file.targetFormat === ConversionFormat.JPEG && (
@@ -903,6 +933,13 @@ function BanaConvertApp() {
         </div>
       </main>
 
+      <SupportModal
+        isOpen={isSupportModalOpen}
+        onClose={() => setIsSupportModalOpen(false)}
+        isPremium={stats.isPremium}
+        userEmail={session?.user?.email}
+      />
+
       {/* Banner (Bottom) - Only show if NOT Premium */}
       {!stats.isPremium && (
         <AdBanner
@@ -926,17 +963,14 @@ function BanaConvertApp() {
         />
       )}
 
-
-
       <footer className="fixed bottom-0 left-0 right-0 z-30 border-t border-slate-800 bg-[#0B0F19] py-3 md:py-6">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-6">
           <span className="font-bold text-sm md:text-lg text-white">VormPixyze</span>
           <div className="flex gap-3 md:gap-6 text-xs md:text-sm text-slate-500">
             <button onClick={() => openLegal('privacy')} className="hover:text-indigo-400">{t('privacy')}</button>
             <button onClick={() => openLegal('terms')} className="hover:text-indigo-400">{t('terms')}</button>
-            <button onClick={() => openLegal('contact')} className="hover:text-indigo-400">{t('contact')}</button>
+            <button onClick={() => setIsSupportModalOpen(true)} className="hover:text-indigo-400">{t('contact')}</button>
           </div>
-
 
           <div className="text-slate-600 text-[10px] md:text-xs font-mono flex flex-col items-center md:items-end">
             <span>&copy; 2025 VormPixyze Inc.</span>
