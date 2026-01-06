@@ -45,6 +45,12 @@ export const AdBanner: React.FC<AdBannerProps> = ({
               return;
             }
 
+            // DEV MODE: Skip loading ads on localhost to prevent console errors
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+              console.warn("Google AdSense is disabled on localhost to prevent 400 errors.");
+              return;
+            }
+
             const adsbygoogle = (window as any).adsbygoogle || [];
 
             // Reklamın daha önce yüklenip yüklenmediğini kontrol et
