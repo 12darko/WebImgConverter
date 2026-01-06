@@ -11,77 +11,93 @@ interface PremiumModalProps {
 export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, userId }) => {
   const { t } = useLanguage();
 
-  const handleUpgrade = () => {
-    const checkoutUrl = import.meta.env.VITE_LEMON_CHECKOUT_URL;
+  // Checkout handler
+  const handleUpgrade = (plan: 'starter' | 'pro' | 'business') => {
+    let checkoutUrl = '';
+
+    // Plan-specific URLs (User needs to set these in .env)
+    switch (plan) {
+      case 'starter':
+        checkoutUrl = import.meta.env.VITE_LEMON_CHECKOUT_STARTER || import.meta.env.VITE_LEMON_CHECKOUT_URL;
+        break;
+      case 'pro':
+        checkoutUrl = import.meta.env.VITE_LEMON_CHECKOUT_PRO || import.meta.env.VITE_LEMON_CHECKOUT_URL;
+        break;
+      case 'business':
+        checkoutUrl = import.meta.env.VITE_LEMON_CHECKOUT_BUSINESS || import.meta.env.VITE_LEMON_CHECKOUT_URL;
+        break;
+    }
+
     if (checkoutUrl) {
-      // Append user_id to checkout URL for webhook tracking
-      // Lemon Squeezy format: ?checkout[custom][user_id]=USER_123
       const separator = checkoutUrl.includes('?') ? '&' : '?';
       const finalUrl = userId ? `${checkoutUrl}${separator}checkout[custom][user_id]=${userId}` : checkoutUrl;
       window.open(finalUrl, '_blank');
     } else {
-      console.warn("Lemon Squeezy Checkout URL not set (VITE_LEMON_CHECKOUT_URL)");
-      alert("Checkout system is being configured. Please try again later.");
+      alert("Checkout configuration missing. Please check .env settings.");
     }
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-md transition-opacity" onClick={onClose} />
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+      <div className="absolute inset-0 bg-slate-900/95 backdrop-blur-md transition-opacity" onClick={onClose} />
 
-      {/* Modal Content */}
-      <div className="relative bg-[#0f172a] border border-amber-500/30 rounded-2xl max-w-lg w-full p-8 shadow-2xl overflow-hidden animate-[fadeIn_0.3s_ease-out]">
+      <div className="relative z-10 w-full max-w-5xl mx-auto animate-[fadeIn_0.3s_ease-out]">
+        <div className="text-center mb-10">
+          <h2 className="text-4xl font-bold text-white mb-2 tracking-tight">Premium Plans</h2>
+          <p className="text-slate-400">Choose the perfect plan for your needs</p>
+        </div>
 
-        {/* Decorative ambient lights */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-[80px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-500/10 rounded-full blur-[60px] pointer-events-none" />
-
-        <div className="relative z-10 text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-b from-amber-500/20 to-transparent border border-amber-500/20 mb-6 shadow-[0_0_30px_rgba(245,158,11,0.2)]">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-amber-500" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 7.75a1 1 0 01.554 1.705l-2.427 2.365.573 3.343a1 1 0 01-1.451 1.054L11 14.25l-2.997 1.576a1 1 0 01-1.451-1.054l.573-3.343-2.427-2.365a1 1 0 01.554-1.705l3.354-.55L11.034 2.744A1 1 0 0112 2z" clipRule="evenodd" />
-            </svg>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* STARTER PLAN */}
+          <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:border-indigo-500/50 transition-all group">
+            <h3 className="text-xl font-bold text-indigo-400 mb-2">Starter</h3>
+            <div className="text-3xl font-bold text-white mb-4">$4.99<span className="text-sm font-normal text-slate-500">/mo</span></div>
+            <ul className="space-y-3 mb-8 text-sm text-slate-300">
+              <li className="flex items-center gap-2"><span className="text-indigo-500">✓</span> 30 Credits Daily</li>
+              <li className="flex items-center gap-2"><span className="text-indigo-500">✓</span> Remove Background</li>
+              <li className="flex items-center gap-2"><span className="text-indigo-500">✓</span> No Ads</li>
+            </ul>
+            <button onClick={() => handleUpgrade('starter')} className="w-full py-3 rounded-lg bg-indigo-600/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-600 hover:text-white transition-all font-bold">
+              Select Starter
+            </button>
           </div>
 
-          <h2 className="text-3xl font-bold text-white mb-2 tracking-tight">{t('prem_title')}</h2>
-          <p className="text-slate-400 text-sm mb-8">{t('prem_subtitle')}</p>
+          {/* PRO PLAN (Featured) */}
+          <div className="bg-slate-800/80 border border-amber-500/50 rounded-2xl p-8 transform md:-translate-y-4 shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 bg-amber-500 text-xs font-bold text-slate-900 px-3 py-1 rounded-bl-lg">POPULAR</div>
+            <h3 className="text-2xl font-bold text-amber-400 mb-2">Pro</h3>
+            <div className="text-4xl font-bold text-white mb-4">$9.99<span className="text-sm font-normal text-slate-500">/mo</span></div>
+            <ul className="space-y-3 mb-8 text-base text-slate-200">
+              <li className="flex items-center gap-2"><span className="text-amber-500">✓</span> <strong>100 Credits Daily</strong></li>
+              <li className="flex items-center gap-2"><span className="text-amber-500">✓</span> Priority AI Processing</li>
+              <li className="flex items-center gap-2"><span className="text-amber-500">✓</span> All Premium Features</li>
+              <li className="flex items-center gap-2"><span className="text-amber-500">✓</span> 24/7 Support</li>
+            </ul>
+            <button onClick={() => handleUpgrade('pro')} className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold shadow-lg shadow-amber-500/25 hover:from-amber-400 hover:to-orange-500 transform transition-all active:scale-95">
+              Select Pro
+            </button>
+          </div>
+
+          {/* BUSINESS PLAN */}
+          <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all group">
+            <h3 className="text-xl font-bold text-blue-400 mb-2">Business</h3>
+            <div className="text-3xl font-bold text-white mb-4">$19.99<span className="text-sm font-normal text-slate-500">/mo</span></div>
+            <ul className="space-y-3 mb-8 text-sm text-slate-300">
+              <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> <strong>Unlimited Credits</strong></li>
+              <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> Batch Processing (50+)</li>
+              <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> API Access</li>
+            </ul>
+            <button onClick={() => handleUpgrade('business')} className="w-full py-3 rounded-lg bg-blue-600/20 text-blue-300 border border-blue-500/30 hover:bg-blue-600 hover:text-white transition-all font-bold">
+              Select Business
+            </button>
+          </div>
         </div>
 
-        <div className="space-y-4 mb-8">
-          {[
-            t('prem_feature_1'),
-            t('prem_feature_2'),
-            t('prem_feature_3'),
-            t('prem_feature_4'),
-          ].map((item, idx) => (
-            <div key={idx} className="flex items-center p-3 rounded-lg bg-slate-800/50 border border-slate-700/50">
-              <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mr-3">
-                <svg className="h-4 w-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <span className="text-slate-300 text-sm font-medium">{item}</span>
-            </div>
-          ))}
+        <div className="text-center mt-8">
+          <button onClick={onClose} className="text-slate-500 hover:text-slate-400 text-sm">No thanks, maybe later</button>
         </div>
-
-        <button
-          onClick={handleUpgrade}
-          className="w-full relative overflow-hidden group bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-amber-500/25 active:scale-[0.98]"
-        >
-          <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full skew-x-12 group-hover:animate-[shimmer_1s_infinite]"></div>
-          <span className="relative z-10">{t('prem_price_btn')}</span>
-        </button>
-
-        <button
-          onClick={onClose}
-          className="w-full mt-4 text-slate-500 hover:text-white py-2 text-sm transition-colors font-medium"
-        >
-          {t('prem_no_thanks')}
-        </button>
       </div>
     </div>
   );

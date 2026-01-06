@@ -37,6 +37,8 @@ export interface UserStats {
   credits: number;
   isPremium: boolean;
   lastResetDate: string; // YYYY-MM-DD
+  premiumExpiryDate?: string; // YYYY-MM-DD (Premium bitiş trihi)
+  dailyLimit?: number; // Günlük yenilenme limiti (Free için 7, Premium için 30/100/vs)
 }
 
 export const MAX_FREE_CREDITS = 7;      // Günlük ücretsiz hak

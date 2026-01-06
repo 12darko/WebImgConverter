@@ -24,12 +24,21 @@ export const getUserProfile = async (userId: string): Promise<UserStats | null> 
     if (error) throw error;
 
     if (data) {
-      // Günlük kredi kontrolü
+      // Premium Süre Kontrolü
       const today = new Date().toISOString().split('T')[0];
-      if (data.last_reset_date !== today && !data.is_premium) {
-        // Yeni gün, kredileri sıfırla (Client tarafında beklemeden DB'de güncelle)
-        await resetDailyCredits(userId);
-        return { ...data, credits: MAX_FREE_CREDITS, last_reset_date: today };
+
+      if (data.is_premium && data.premium_expiry_date && data.premium_expiry_date < today) {
+        // Süresi dolmuş, Premium'u iptal et
+        await supabase.from('profiles').update({ is_premium: false, daily_limit: 7 }).eq('id', userId);
+        data.is_premium = false;
+        data.daily_limit = 7;
+      }
+
+      // Günlük kredi kontrolü
+      if (data.last_reset_date !== today) {
+        const limit = data.daily_limit || MAX_FREE_CREDITS;
+        await resetDailyCredits(userId, limit);
+        return { ...data, credits: limit, last_reset_date: today };
       }
       return data as UserStats;
     }
@@ -74,11 +83,11 @@ export const processReferral = async (newUserId: string, referrerId: string): Pr
 /**
  * Günlük kredileri MAX_FREE_CREDITS'e resetler ve tarihi günceller.
  */
-export const resetDailyCredits = async (userId: string) => {
+export const resetDailyCredits = async (userId: string, limit: number = MAX_FREE_CREDITS) => {
   const today = new Date().toISOString().split('T')[0];
   await supabase
     .from('profiles')
-    .update({ credits: MAX_FREE_CREDITS, last_reset_date: today })
+    .update({ credits: limit, last_reset_date: today })
     .eq('id', userId);
 };
 

@@ -505,9 +505,19 @@ function BanaConvertApp() {
                   {stats.isPremium ? 'Premium' : session.user.email?.split('@')[0]}
                 </span>
                 <div className="flex items-center gap-2">
-                  <div className={`h-2 w-2 rounded-full ${stats.credits > 0 ? 'bg-emerald-500' : 'bg-red-500'}`}></div>
-                  <span className="font-mono text-white font-bold text-lg">{stats.isPremium ? '∞' : stats.credits}</span>
+                  <span className="text-xl font-bold text-white tracking-tight">{stats.credits}</span>
+                  <span className="text-[10px] text-slate-400 uppercase tracking-wider font-bold">{t('credits_label')}</span>
                 </div>
+                {stats.isPremium && stats.premiumExpiryDate && (
+                  <div className="border-t border-slate-700/50 mt-1 pt-1">
+                    <span className="text-[10px] text-amber-400 font-mono">
+                      {(() => {
+                        const daysLeft = Math.ceil((new Date(stats.premiumExpiryDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
+                        return daysLeft > 0 ? `${daysLeft} Days Left` : 'Expiring';
+                      })()}
+                    </span>
+                  </div>
+                )}
               </div>
             ) : (
               <div className="flex flex-col items-end mr-2">
