@@ -927,7 +927,7 @@ function BanaConvertApp() {
 
           <div className="sticky top-24 space-y-6">
             {!stats.isPremium && <ReferralWidget onReferralSuccess={() => handleReward(3)} userId={session?.user?.id} />}
-            {/* {!stats.isPremium && !ENABLE_PREMIUM_SYSTEM && <AdBanner variant="box" className="w-full" />} */}
+            {!stats.isPremium && <AdBanner variant="box" className="w-full" />}
             <AdBanner variant="vertical" className="hidden lg:flex" />
           </div>
         </div>
@@ -940,15 +940,7 @@ function BanaConvertApp() {
         userEmail={session?.user?.email}
       />
 
-      {/* Banner (Bottom) - Only show if NOT Premium */}
-      {!stats.isPremium && (
-        <AdBanner
-          className="mt-6 shadow-xl shadow-black/40"
-          variant="horizontal"
-          adClient="ca-pub-3889797797438326"
-          adSlot="9506043591"
-        />
-      )}
+
 
       {/* Spacer for fixed footer */}
       <div className="h-20 md:h-24"></div>

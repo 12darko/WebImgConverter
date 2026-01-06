@@ -45,7 +45,7 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
 
       <div className="relative z-10 w-full max-w-5xl mx-auto animate-[fadeIn_0.3s_ease-out] my-8 md:my-0">
         <div className="text-center mb-10">
-          <h2 className="text-4xl font-bold text-white mb-2 tracking-tight">Premium Plans</h2>
+
           <h2 className="text-4xl font-bold text-white mb-2 tracking-tight">{t('premium_plans_title')}</h2>
           <p className="text-slate-400">{t('premium_plans_subtitle')}</p>
         </div>
