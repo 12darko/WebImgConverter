@@ -45,11 +45,8 @@ export const AdBanner: React.FC<AdBannerProps> = ({
               return;
             }
 
-            // DEV MODE: Skip loading ads on localhost to prevent console errors
-            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-              console.warn("Google AdSense is disabled on localhost to prevent 400 errors.");
-              return;
-            }
+            // If you are seeing 400 errors, your adClient or adSlot is invalid.
+            // Please update them in the component props or below default values.
 
             const adsbygoogle = (window as any).adsbygoogle || [];
 

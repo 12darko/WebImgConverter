@@ -109,3 +109,11 @@ export const signInWithGoogle = async () => {
   if (error) throw error;
   return data;
 };
+
+/**
+ * Global Günlük Dönüştürme Sayacını Artırır (RPC)
+ */
+export const incrementDailyStats = async () => {
+  const { error } = await supabase.rpc('increment_daily_stats');
+  if (error) console.error("Stats increment error:", error);
+};

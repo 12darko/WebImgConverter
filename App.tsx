@@ -12,7 +12,7 @@ import { CookieBanner } from './components/CookieBanner';
 import { CompareSlider } from './components/CompareSlider';
 import { AuthModal } from './components/AuthModal'; // Auth import
 import { generateAiFilename } from './services/geminiService';
-import { supabase, getUserProfile, updateUserCredits, upgradeToPremium } from './services/supabase'; // DB Services
+import { supabase, getUserProfile, updateUserCredits, upgradeToPremium, incrementDailyStats } from './services/supabase'; // DB Services
 import { LanguageProvider, useLanguage } from './LanguageContext';
 import {
   FileItem,
@@ -430,6 +430,11 @@ function BanaConvertApp() {
           ...f, status: 'done', convertedUrl: dataUrl, convertedBlob: blob, convertedSize: blob.size, conversionProgress: 100
         } : f));
 
+        if (stats.isPremium || await deductCredit(COST_PER_CONVERT)) {
+          // Track global stats (fire and forget)
+          incrementDailyStats();
+        }
+
       } catch (err) {
         console.error("Conversion Error:", err);
         setFiles(prev => prev.map(f => f.id === id ? { ...f, status: 'error', errorMsg: t('error_generic'), conversionProgress: 0 } : f));
@@ -780,8 +785,8 @@ function BanaConvertApp() {
                             <button
                               onClick={() => updateFileConfig(file.id, 'removeBackground', !file.removeBackground)}
                               className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-2 transition-all duration-300 font-medium ${file.removeBackground
-                                  ? 'bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/50 text-pink-300 shadow-sm shadow-pink-500/20'
-                                  : 'bg-slate-800 border-slate-700 text-slate-500 hover:text-slate-400 hover:bg-slate-750'
+                                ? 'bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/50 text-pink-300 shadow-sm shadow-pink-500/20'
+                                : 'bg-slate-800 border-slate-700 text-slate-500 hover:text-slate-400 hover:bg-slate-750'
                                 }`}
                             >
                               <span className={file.removeBackground ? "animate-pulse" : "grayscale opacity-50"}>✨</span>
