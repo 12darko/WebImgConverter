@@ -14,8 +14,8 @@ export const AdBanner: React.FC<AdBannerProps> = ({
   className = '',
   variant = 'horizontal',
   onWatchAd,
-  adClient = 'ca-pub-3889797797438326', // Updated with user ID
-  adSlot = '1234567890', // Default placeholder
+  adClient = 'ca-pub-3889797797438326', // User verified
+  adSlot = '9506043591', // User provided "Banner" slot
   adFormat = 'auto'
 }) => {
   const adRef = useRef<HTMLModElement>(null);
