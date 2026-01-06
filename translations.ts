@@ -49,7 +49,7 @@ export const translations = {
     ref_title: "Daha Fazla Hak Kazan",
     ref_desc: "VormPixyze'ı arkadaşlarınla paylaş, her kayıtta +5 Kredi kazan!",
     ref_btn: "Linki Kopyala & Paylaş",
-    ref_success: "Link Kopyalandı! (+3 Hak Eklendi)",
+    ref_success: "Link Kopyalandı! (Kayıt olunca kazanacaksın)",
 
     // Premium Modal
     prem_title: "Premium'a Yükselt",
@@ -169,7 +169,7 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
     ref_title: "Earn More Credits",
     ref_desc: "Share VormPixyze with friends. Get +5 Credits for every signup!",
     ref_btn: "Copy Link & Share",
-    ref_success: "Link Copied! (+3 Credits Added)",
+    ref_success: "Link Copied! (Credits awarded on signup)",
 
     // Premium Modal
     prem_title: "Upgrade to Premium",
@@ -289,7 +289,7 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
     ref_title: "Mehr Credits verdienen",
     ref_desc: "Teile VormPixyze mit Freunden. +5 Credits pro Anmeldung!",
     ref_btn: "Link kopieren & teilen",
-    ref_success: "Link kopiert! (+3 Credits)",
+    ref_success: "Link kopiert! (Credits bei Anmeldung)",
 
     // Premium Modal
     prem_title: "Upgrade auf Premium",
@@ -370,7 +370,7 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
     ref_title: "Gagnez plus de crédits",
     ref_desc: "Partagez VormPixyze. +5 Crédits par inscription !",
     ref_btn: "Copier le lien",
-    ref_success: "Lien copié ! (+3 Crédits)",
+    ref_success: "Lien copié ! (Crédits à l'inscription)",
 
     // Premium Modal
     prem_title: "Passer à Premium",
