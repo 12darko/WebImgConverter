@@ -928,7 +928,7 @@ function BanaConvertApp() {
           <div className="sticky top-24 space-y-6">
             {!stats.isPremium && <ReferralWidget onReferralSuccess={() => handleReward(3)} userId={session?.user?.id} />}
             {!stats.isPremium && <AdBanner variant="box" className="w-full" />}
-            <AdBanner variant="vertical" className="hidden lg:flex" />
+            {/* <AdBanner variant="vertical" className="hidden lg:flex" /> */}
           </div>
         </div>
       </main>
