@@ -69,7 +69,7 @@ export const generateAiFilename = async (file: File): Promise<AiFilenameResult> 
     return { filename: generateFallbackFilename(file), usedFallback: true };
   }
 
-  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
   const imagePart = await fileToGenerativePart(file);
   const prompt = "Analyze this image and generate a short, highly descriptive, SEO-friendly filename (in English, snake_case, max 5 words). Output ONLY the filename, do not include the extension.";
 

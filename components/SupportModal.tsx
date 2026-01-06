@@ -15,14 +15,23 @@ export function SupportModal({ isOpen, onClose, isPremium, userEmail }: SupportM
 
     if (!isOpen) return null;
 
+    const [copied, setCopied] = useState(false);
+    const supportEmail = "support@vormpixyze.com";
+
     const handleSend = () => {
-        const mailtoLink = `mailto:support@vormpixyze.com?subject=${encodeURIComponent(
+        const mailtoLink = `mailto:${supportEmail}?subject=${encodeURIComponent(
             isPremium ? `[PREMIUM PRIORITY] ${subject}` : subject
         )}&body=${encodeURIComponent(
             `User ID: ${userEmail || 'Guest'}\n\nMessage:\n${message}`
         )}`;
-        window.location.href = mailtoLink;
+        window.open(mailtoLink, '_blank');
         onClose();
+    };
+
+    const handleCopyEmail = () => {
+        navigator.clipboard.writeText(supportEmail);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
     };
 
     return (
@@ -66,20 +75,31 @@ export function SupportModal({ isOpen, onClose, isPremium, userEmail }: SupportM
                         </div>
                     )}
 
-                    <div className="pt-2 flex gap-3">
-                        <button
-                            onClick={onClose}
-                            className="flex-1 py-2.5 rounded-lg text-slate-300 font-medium hover:bg-white/5 transition-colors border border-transparent hover:border-white/10"
-                        >
-                            {t('cancel') || 'Cancel'}
-                        </button>
-                        <button
-                            onClick={handleSend}
-                            disabled={!subject || !message}
-                            className="flex-1 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed text-white py-2.5 rounded-lg font-bold shadow-lg shadow-indigo-500/20 transition-all"
-                        >
-                            {t('send_email') || 'Send Email'}
-                        </button>
+                    <div className="pt-2 flex flex-col gap-3">
+                        <div className="flex gap-3">
+                            <button
+                                onClick={onClose}
+                                className="flex-1 py-2.5 rounded-lg text-slate-300 font-medium hover:bg-white/5 transition-colors border border-transparent hover:border-white/10"
+                            >
+                                {t('cancel') || 'Cancel'}
+                            </button>
+                            <button
+                                onClick={handleSend}
+                                disabled={!subject || !message}
+                                className="flex-1 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed text-white py-2.5 rounded-lg font-bold shadow-lg shadow-indigo-500/20 transition-all"
+                            >
+                                {t('send_email') || 'Send Email'}
+                            </button>
+                        </div>
+
+                        <div className="text-center">
+                            <button
+                                onClick={handleCopyEmail}
+                                className="text-xs text-slate-500 hover:text-indigo-400 underline transition-colors"
+                            >
+                                {copied ? "✓ Copied!" : "or copy email address manually"}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
