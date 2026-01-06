@@ -474,8 +474,7 @@ function BanaConvertApp() {
       {/* Modals */}
       {ENABLE_PREMIUM_SYSTEM && (
         <>
-          <PremiumModal isOpen={isPremiumModalOpen} onClose={() => setIsPremiumModalOpen(false)} onUpgrade={handleUpgradeClick} />
-          <PaymentModal isOpen={isPaymentModalOpen} onClose={() => setIsPaymentModalOpen(false)} onSuccess={handlePaymentSuccess} />
+          <PremiumModal isOpen={isPremiumModalOpen} onClose={() => setIsPremiumModalOpen(false)} userId={session?.user?.id} />
         </>
       )}
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} onSuccess={() => { }} />
