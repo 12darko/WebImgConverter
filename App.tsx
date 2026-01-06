@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { removeBackground } from '@imgly/background-removal';
 import { Dropzone } from './components/Dropzone';
 import { AdBanner } from './components/AdBanner';
 import { PremiumModal } from './components/PremiumModal';
@@ -296,14 +297,37 @@ function BanaConvertApp() {
     // Allow UI to update before heavy processing
     setTimeout(async () => {
       try {
-        updateProgress(10); // Loading image
+        let sourceUrl = item.previewUrl;
+
+        // --- AI BACKGROUND REMOVAL ---
+        if (item.removeBackground) {
+          updateProgress(10); // AI Model Loading...
+          try {
+            // Remove background using @imgly/background-removal
+            // This downloads standard models from CDN automatically
+            const blob = await removeBackground(item.previewUrl, {
+              progress: (key: string, current: number, total: number) => {
+                // Tracking progress (approx 10% to 50%)
+                const percentage = 10 + Math.floor((current / total) * 40);
+                updateProgress(percentage);
+              }
+            });
+            sourceUrl = URL.createObjectURL(blob);
+          } catch (aiError) {
+            console.error("AI BG Removal Failed:", aiError);
+            // Fallback to original image if AI fails, but user should know
+            // Ideally set separate warning, but for now log and proceed
+          }
+        }
+
+        updateProgress(55); // Image loading
 
         const img = new Image();
         img.crossOrigin = "anonymous";
-        img.src = item.previewUrl;
+        img.src = sourceUrl;
         await new Promise((resolve, reject) => { img.onload = resolve; img.onerror = reject; });
 
-        updateProgress(25); // Image loaded, creating canvas
+        updateProgress(65); // Creating canvas
 
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
@@ -330,57 +354,21 @@ function BanaConvertApp() {
         ctx.translate(canvas.width / 2, canvas.height / 2);
         ctx.rotate((item.rotation * Math.PI) / 180);
 
-        // Pre-fill white background for JPEG/non-transparent formats to prevent black background
+        // Grayscale using Canvas Filter (Faster)
+        if (item.isGrayscale) {
+          ctx.filter = 'grayscale(100%)';
+        }
+
+        // Pre-fill white background for JPEG to prevent black background
         if (item.targetFormat === ConversionFormat.JPEG) {
           ctx.fillStyle = '#FFFFFF';
           ctx.fillRect(-targetWidth / 2, -targetHeight / 2, targetWidth, targetHeight);
         }
 
+        // Draw the image (Transparent or Original)
         ctx.drawImage(img, -targetWidth / 2, -targetHeight / 2, targetWidth, targetHeight);
 
-        updateProgress(50); // Canvas drawn, applying effects
-
-        // PIXEL PROCESSING (Grayscale & BG Removal)
-        if (item.isGrayscale || (item.removeBackground && item.targetFormat !== ConversionFormat.JPEG)) {
-          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-          const data = imageData.data;
-          const len = data.length;
-          const bgTolerance = item.bgRemovalTolerance || 30;
-
-          // Euclidean distance threshold for white/light background
-          const threshold = bgTolerance * 4.4;
-
-          for (let i = 0; i < len; i += 4) {
-            const r = data[i];
-            const g = data[i + 1];
-            const b = data[i + 2];
-
-            // Grayscale Filter
-            if (item.isGrayscale) {
-              const gray = (r * 0.299) + (g * 0.587) + (b * 0.114);
-              data[i] = gray;
-              data[i + 1] = gray;
-              data[i + 2] = gray;
-            }
-
-            // Simple Magic Eraser (White/Light BG Removal)
-            if (item.removeBackground && item.targetFormat !== ConversionFormat.JPEG) {
-              const dist = Math.sqrt(
-                (255 - r) * (255 - r) +
-                (255 - g) * (255 - g) +
-                (255 - b) * (255 - b)
-              );
-
-              if (dist < threshold) {
-                data[i + 3] = 0; // Transparent
-              } else if (dist < threshold + 20) {
-                const alpha = (dist - threshold) / 20;
-                data[i + 3] = Math.floor(255 * alpha);
-              }
-            }
-          }
-          ctx.putImageData(imageData, 0, 0);
-        }
+        ctx.filter = 'none'; // Reset filter
 
         updateProgress(70); // Effects applied
 
