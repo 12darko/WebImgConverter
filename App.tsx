@@ -903,6 +903,16 @@ function BanaConvertApp() {
         </div>
       </main>
 
+      {/* Banner (Bottom) - Only show if NOT Premium */}
+      {!stats.isPremium && (
+        <AdBanner
+          className="mt-6 shadow-xl shadow-black/40"
+          variant="horizontal"
+          adClient="ca-pub-3889797797438326"
+          adSlot="9506043591"
+        />
+      )}
+
       {/* Spacer for fixed footer */}
       <div className="h-20 md:h-24"></div>
 
