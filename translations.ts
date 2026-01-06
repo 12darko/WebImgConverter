@@ -239,5 +239,167 @@ Istanbul / TURKEY
 
 Business Hours:
 Monday - Friday: 09:00 - 18:00 (GMT+3)`
+  },
+  de: {
+    // Navbar
+    daily_credits: "Tägliche Credits",
+    premium_btn: "Premium holen",
+
+    // Dropzone
+    drop_title: "Bilder hochladen",
+    drop_desc: "HEIC, JPG, PNG oder WEBP Dateien hierher ziehen.",
+    drop_limit: "Tageslimit erreicht",
+    drop_limit_desc: "Schau dir die Werbung an oder warte bis morgen.",
+
+    // File Card
+    queue: "Warteschlange",
+    clear_all: "Alle löschen",
+    loading: "Laden...",
+    processing: "Verarbeiten...",
+    progress: "Fortschritt",
+    estimated_size: "Geschätzte Größe",
+    format: "Format:",
+    ai_rename_btn: "KI Umbenennen",
+    ai_rename_loading: "KI denkt...",
+    ai_fallback_notice: "KI nicht verfügbar, automatischer Name genutzt",
+    batch_ai_rename: "Alle umbenennen (KI)",
+    logo_uploaded: "Logo hochgeladen",
+    target_format: "ZIELFORMAT:",
+    rotate: "Drehen",
+    resize: "Größe",
+    grayscale: "Graustufen",
+    bg_remove: "Hintergrund entfernen",
+    convert_btn: "Konvertieren",
+    convert_all_btn: "Alle konvertieren",
+    download_btn: "Herunterladen",
+    completed: "Fertig!",
+    error_generic: "Fehler aufgetreten",
+    preset_label: "Profil:",
+    preset_web: "Web",
+    preset_social: "Social Media",
+    preset_archive: "Archiv",
+
+    // Sidebar
+    pro_tips_title: "Profi-Tipps",
+    tip_heic: "Konvertiere iPhone HEIC Fotos sofort in JPG.",
+    tip_seo: "Dateien werden sicher im Browser verarbeitet.",
+    tip_size: "Reduziere Dateigröße ohne Qualitätsverlust.",
+
+    // Referral
+    ref_title: "Mehr Credits verdienen",
+    ref_desc: "Teile VormPixyze mit Freunden. +5 Credits pro Anmeldung!",
+    ref_btn: "Link kopieren & teilen",
+    ref_success: "Link kopiert! (+3 Credits)",
+
+    // Premium Modal
+    prem_title: "Upgrade auf Premium",
+    prem_subtitle: "Unbegrenzter Zugang zu Profi-Tools.",
+    prem_feature_1: "Unbegrenzte Konvertierungen",
+    prem_feature_2: "Komplett werbefrei",
+    prem_feature_3: "Unbegrenzte KI-Umbenennung",
+    prem_feature_4: "Massen-ZIP-Download",
+    prem_price_btn: "Premium holen ($4.99/Monat)",
+    prem_no_thanks: "Nein, danke",
+
+    // Footer Links & Legal
+    privacy: "Datenschutz",
+    terms: "Nutzungsbedingungen",
+    contact: "Kontakt",
+    footer_text: "Alle Rechte vorbehalten.",
+    close: "Schließen",
+
+    // Cookie Banner
+    cookie_message: "Wir verwenden Cookies für ein besseres Erlebnis.",
+    cookie_accept: "Akzeptieren",
+    cookie_decline: "Ablehnen",
+
+    // Legal (Keep EN for now)
+    privacy_title: "Privacy Policy",
+    terms_title: "Terms of Service",
+    contact_title: "Contact & Support",
+    privacy_content: "See English version for detailed legal text.",
+    terms_content: "See English version for detailed legal text.",
+    contact_content: "Email: support@vormpixyze.com"
+  },
+  fr: {
+    // Navbar
+    daily_credits: "Crédits du jour",
+    premium_btn: "Passer Premium",
+
+    // Dropzone
+    drop_title: "Télécharger des images",
+    drop_desc: "Glissez vos fichiers HEIC, JPG, PNG ou WEBP ici.",
+    drop_limit: "Limite quotidienne atteinte",
+    drop_limit_desc: "Regardez la pub ou attendez demain.",
+
+    // File Card
+    queue: "File d'attente",
+    clear_all: "Tout effacer",
+    loading: "Chargement...",
+    processing: "Traitement...",
+    progress: "Progression",
+    estimated_size: "Taille estimée",
+    format: "Format :",
+    ai_rename_btn: "Renommer (IA)",
+    ai_rename_loading: "IA réfléchit...",
+    ai_fallback_notice: "IA indisponible, nom auto utilisé",
+    batch_ai_rename: "Tout renommer (IA)",
+    logo_uploaded: "Logo téléchargé",
+    target_format: "FORMAT CIBLE :",
+    rotate: "Pivoter",
+    resize: "Taille",
+    grayscale: "Noir & Blanc",
+    bg_remove: "Supprimer le fond",
+    convert_btn: "Convertir",
+    convert_all_btn: "Tout convertir",
+    download_btn: "Télécharger",
+    completed: "Terminé !",
+    error_generic: "Erreur survenue",
+    preset_label: "Profil :",
+    preset_web: "Web",
+    preset_social: "Réseaux sociaux",
+    preset_archive: "Archive",
+
+    // Sidebar
+    pro_tips_title: "Conseils Pro",
+    tip_heic: "Convertissez instantanément les photos HEIC iPhone en JPG.",
+    tip_seo: "Les fichiers sont traités en toute sécurité dans votre navigateur.",
+    tip_size: "Réduisez la taille du fichier sans perte de qualité.",
+
+    // Referral
+    ref_title: "Gagnez plus de crédits",
+    ref_desc: "Partagez VormPixyze. +5 Crédits par inscription !",
+    ref_btn: "Copier le lien",
+    ref_success: "Lien copié ! (+3 Crédits)",
+
+    // Premium Modal
+    prem_title: "Passer à Premium",
+    prem_subtitle: "Accès illimité aux outils professionnels.",
+    prem_feature_1: "Conversions illimitées",
+    prem_feature_2: "Expérience sans publicité",
+    prem_feature_3: "Renommage IA illimité",
+    prem_feature_4: "Téléchargement ZIP en masse",
+    prem_price_btn: "Passer Premium ($4.99/Mois)",
+    prem_no_thanks: "Non merci",
+
+    // Footer Links & Legal
+    privacy: "Confidentialité",
+    terms: "Conditions",
+    contact: "Contact",
+    footer_text: "Tous droits réservés.",
+    close: "Fermer",
+
+    // Cookie Banner
+    cookie_message: "Nous utilisons des cookies pour une meilleure expérience.",
+    cookie_accept: "Accepter",
+    cookie_decline: "Refuser",
+
+    // Legal (Keep EN for now)
+    privacy_title: "Privacy Policy",
+    terms_title: "Terms of Service",
+    contact_title: "Contact & Support",
+    privacy_content: "See English version for detailed legal text.",
+    terms_content: "See English version for detailed legal text.",
+    contact_content: "Email: support@vormpixyze.com"
   }
 };

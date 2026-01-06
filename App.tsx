@@ -912,6 +912,19 @@ function BanaConvertApp() {
             <button onClick={() => openLegal('terms')} className="hover:text-indigo-400">{t('terms')}</button>
             <button onClick={() => openLegal('contact')} className="hover:text-indigo-400">{t('contact')}</button>
           </div>
+
+          {/* Language Selector */}
+          <div className="flex gap-3 text-xs font-mono border-l border-slate-800 pl-4 ml-2">
+            {['tr', 'en', 'de', 'fr'].map(l => (
+              <button
+                key={l}
+                onClick={() => setLanguage(l as any)}
+                className={`${language === l ? 'text-indigo-400 font-bold' : 'text-slate-600 hover:text-slate-400 transition-colors'}`}
+              >
+                {l.toUpperCase()}
+              </button>
+            ))}
+          </div>
           <div className="text-slate-600 text-[10px] md:text-xs font-mono flex flex-col items-center md:items-end">
             <span>&copy; 2025 VormPixyze Inc.</span>
             <span className="hidden md:block text-[10px] opacity-70 mt-1">Powered by VibeOracle</span>

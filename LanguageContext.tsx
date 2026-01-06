@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { translations } from './translations';
 
-type Language = 'tr' | 'en';
+type Language = 'tr' | 'en' | 'de' | 'fr';
 
 interface LanguageContextType {
   language: Language;
@@ -19,8 +19,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   useEffect(() => {
     // Tarayıcı dilini algıla
     const browserLang = navigator.language.split('-')[0];
-    if (browserLang === 'en') {
-      setLanguage('en');
+    if (['en', 'de', 'fr'].includes(browserLang)) {
+      setLanguage(browserLang as Language);
     }
   }, []);
 
