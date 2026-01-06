@@ -927,8 +927,8 @@ function BanaConvertApp() {
 
           <div className="sticky top-24 space-y-6">
             {!stats.isPremium && <ReferralWidget onReferralSuccess={() => handleReward(3)} userId={session?.user?.id} />}
-            {!stats.isPremium && !ENABLE_PREMIUM_SYSTEM && <AdBanner variant="box" className="w-full" />}
-            <AdBanner variant="vertical" className="hidden lg:flex" />
+            {/* {!stats.isPremium && !ENABLE_PREMIUM_SYSTEM && <AdBanner variant="box" className="w-full" />} */}
+            {/* <AdBanner variant="vertical" className="hidden lg:flex" /> */}
           </div>
         </div>
       </main>
@@ -941,19 +941,32 @@ function BanaConvertApp() {
       />
 
       {/* Banner (Bottom) - Only show if NOT Premium */}
-      {!stats.isPremium && (
+      {/* {!stats.isPremium && (
         <AdBanner
           className="mt-6 shadow-xl shadow-black/40"
           variant="horizontal"
           adClient="ca-pub-3889797797438326"
           adSlot="9506043591"
         />
-      )}
+      )} */}
 
       {/* Spacer for fixed footer */}
       <div className="h-20 md:h-24"></div>
 
       {showScrollTop && <button onClick={scrollToTop} className="fixed bottom-24 right-6 z-40 p-3 rounded-full bg-indigo-600/80 text-white shadow-lg">↑</button>}
+
+      {/* Sticky Support Button */}
+      <button
+        onClick={() => setIsSupportModalOpen(true)}
+        className="fixed bottom-6 left-6 z-50 p-4 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center group"
+      >
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap group-hover:ml-2 text-sm font-bold">
+          {t('support_title') || 'Support'}
+        </span>
+      </button>
 
       {compareItem && compareItem.convertedUrl && (
         <CompareSlider

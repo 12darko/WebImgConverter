@@ -98,6 +98,16 @@ export const translations = {
     // Legal Content Titles
     privacy_title: "VormPixyze Gizlilik Politikası",
     terms_title: "Kullanım Koşulları ve Yasal Uyarı",
+    // Support Modal
+    support_title: "Destek",
+    support_subject: "KONU",
+    support_subject_placeholder: "Sorunu kısaca anlatın...",
+    support_message: "MESAJ",
+    support_message_placeholder: "Size nasıl yardımcı olabiliriz?",
+    support_premium_msg: "Premium üye olarak öncelikli destek alıyorsunuz!",
+    cancel: "İptal",
+    send_email: "E-posta Gönder",
+
     contact_title: "İletişim ve Destek",
 
     // Legal Content Bodies (Detailed)
@@ -240,6 +250,16 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
     // Legal Content Titles
     privacy_title: "VormPixyze Privacy Policy",
     terms_title: "Terms of Service & Disclaimer",
+    // Support Modal
+    support_title: "Support",
+    support_subject: "SUBJECT",
+    support_subject_placeholder: "Briefly describe the issue...",
+    support_message: "MESSAGE",
+    support_message_placeholder: "How can we help you?",
+    support_premium_msg: "As a Premium member, your ticket gets Priority Support!",
+    cancel: "Cancel",
+    send_email: "Send Email",
+
     contact_title: "Contact & Support",
 
     // Legal Content Bodies (Detailed)
@@ -385,7 +405,17 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
     contact_title: "Contact & Support",
     privacy_content: "See English version for detailed legal text.",
     terms_content: "See English version for detailed legal text.",
-    contact_content: "Email: support@vormpixyze.com"
+    contact_content: "Email: support@vormpixyze.com",
+
+    // Support Modal
+    support_title: "Support",
+    support_subject: "BETREFF",
+    support_subject_placeholder: "Beschreiben Sie das Problem kurz...",
+    support_message: "NACHRICHT",
+    support_message_placeholder: "Wie können wir helfen?",
+    support_premium_msg: "Als Premium-Mitglied erhalten Sie priorisierten Support!",
+    cancel: "Abbrechen",
+    send_email: "E-Mail senden",
   },
   fr: {
     // Navbar
@@ -488,6 +518,16 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
     contact_title: "Contact & Support",
     privacy_content: "See English version for detailed legal text.",
     terms_content: "See English version for detailed legal text.",
-    contact_content: "Email: support@vormpixyze.com"
+    contact_content: "Email: support@vormpixyze.com",
+
+    // Support Modal
+    support_title: "Support",
+    support_subject: "SUJET",
+    support_subject_placeholder: "Décrivez brièvement le problème...",
+    support_message: "MESSAGE",
+    support_message_placeholder: "Comment pouvons-nous vous aider ?",
+    support_premium_msg: "En tant que membre Premium, vous bénéficiez d'un support prioritaire !",
+    cancel: "Annuler",
+    send_email: "Envoyer l'email",
   }
 };

@@ -40,17 +40,17 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto overflow-x-hidden">
       <div className="absolute inset-0 bg-slate-900/95 backdrop-blur-md transition-opacity" onClick={onClose} />
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto animate-[fadeIn_0.3s_ease-out]">
+      <div className="relative z-10 w-full max-w-5xl mx-auto animate-[fadeIn_0.3s_ease-out] my-8 md:my-0">
         <div className="text-center mb-10">
           <h2 className="text-4xl font-bold text-white mb-2 tracking-tight">Premium Plans</h2>
           <h2 className="text-4xl font-bold text-white mb-2 tracking-tight">{t('premium_plans_title')}</h2>
           <p className="text-slate-400">{t('premium_plans_subtitle')}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-20 md:pb-0">
           {/* STARTER PLAN */}
           <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:border-indigo-500/50 transition-all group">
             <h3 className="text-xl font-bold text-indigo-400 mb-2">{t('plan_starter')}</h3>
@@ -82,7 +82,7 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
           </div>
 
           {/* BUSINESS PLAN */}
-          <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all group">
+          <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all group mb-8 md:mb-0">
             <h3 className="text-xl font-bold text-blue-400 mb-2">{t('plan_business')}</h3>
             <div className="text-3xl font-bold text-white mb-4">$19.99<span className="text-sm font-normal text-slate-500">{t('price_mo')}</span></div>
             <ul className="space-y-3 mb-8 text-sm text-slate-300">
@@ -96,7 +96,11 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
           </div>
         </div>
 
-        <div className="text-center mt-8">
+        <div className="absolute top-4 right-4 md:hidden">
+          <button onClick={onClose} className="bg-slate-800 text-white p-2 rounded-full shadow-lg">✕</button>
+        </div>
+
+        <div className="text-center mt-4 md:mt-8 pb-8">
           <button onClick={onClose} className="text-slate-500 hover:text-slate-400 text-sm">{t('maybe_later')}</button>
         </div>
       </div>
