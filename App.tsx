@@ -299,25 +299,29 @@ function BanaConvertApp() {
       try {
         let sourceUrl = item.previewUrl;
 
-        // --- AI BACKGROUND REMOVAL ---
         if (item.removeBackground) {
-          updateProgress(10); // AI Model Loading...
+          updateProgress(10); // AI Loading
           try {
-            // Remove background using @imgly/background-removal
-            // This downloads standard models from CDN automatically
             const blob = await removeBackground(item.previewUrl, {
               progress: (key: string, current: number, total: number) => {
-                // Tracking progress (approx 10% to 50%)
                 const percentage = 10 + Math.floor((current / total) * 40);
-                updateProgress(percentage);
+                // Ensure progress only increases
+                setFiles(prev => {
+                  const f = prev.find(x => x.id === id);
+                  if (f && (f.conversionProgress || 0) < percentage) {
+                    return prev.map(x => x.id === id ? { ...x, conversionProgress: percentage } : x);
+                  }
+                  return prev;
+                });
               }
             });
             sourceUrl = URL.createObjectURL(blob);
           } catch (aiError) {
             console.error("AI BG Removal Failed:", aiError);
-            // Fallback to original image if AI fails, but user should know
-            // Ideally set separate warning, but for now log and proceed
           }
+        } else {
+          // Check if we skipped AI, just update slightly
+          updateProgress(10);
         }
 
         updateProgress(55); // Image loading
@@ -773,8 +777,16 @@ function BanaConvertApp() {
 
                         {file.targetFormat !== ConversionFormat.JPEG && (
                           <div className="flex items-center gap-2">
-                            <button onClick={() => updateFileConfig(file.id, 'removeBackground', !file.removeBackground)} className={`text-xs p-1 rounded ${file.removeBackground ? 'text-pink-400' : 'text-slate-500'}`}>Remove BG</button>
-                            {file.removeBackground && <input type="range" min="0" max="80" value={file.bgRemovalTolerance} onChange={(e) => updateFileConfig(file.id, 'bgRemovalTolerance', parseInt(e.target.value))} className="w-24 h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-pink-500" />}
+                            <button
+                              onClick={() => updateFileConfig(file.id, 'removeBackground', !file.removeBackground)}
+                              className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-2 transition-all duration-300 font-medium ${file.removeBackground
+                                  ? 'bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/50 text-pink-300 shadow-sm shadow-pink-500/20'
+                                  : 'bg-slate-800 border-slate-700 text-slate-500 hover:text-slate-400 hover:bg-slate-750'
+                                }`}
+                            >
+                              <span className={file.removeBackground ? "animate-pulse" : "grayscale opacity-50"}>✨</span>
+                              {file.removeBackground ? 'AI BG Removed' : 'Remove BG'}
+                            </button>
                           </div>
                         )}
                       </div>
@@ -900,18 +912,7 @@ function BanaConvertApp() {
             <button onClick={() => openLegal('contact')} className="hover:text-indigo-400">{t('contact')}</button>
           </div>
 
-          {/* Language Selector */}
-          <div className="flex gap-3 text-xs font-mono border-l border-slate-800 pl-4 ml-2">
-            {['tr', 'en', 'de', 'fr'].map(l => (
-              <button
-                key={l}
-                onClick={() => setLanguage(l as any)}
-                className={`${language === l ? 'text-indigo-400 font-bold' : 'text-slate-600 hover:text-slate-400 transition-colors'}`}
-              >
-                {l.toUpperCase()}
-              </button>
-            ))}
-          </div>
+
           <div className="text-slate-600 text-[10px] md:text-xs font-mono flex flex-col items-center md:items-end">
             <span>&copy; 2025 VormPixyze Inc.</span>
             <span className="hidden md:block text-[10px] opacity-70 mt-1">Powered by VibeOracle</span>
