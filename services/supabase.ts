@@ -126,3 +126,28 @@ export const incrementDailyStats = async () => {
   const { error } = await supabase.rpc('increment_daily_stats');
   if (error) console.error("Stats increment error:", error);
 };
+
+/**
+ * Destek talebi oluşturur (support_tickets tablosuna kayıt atar)
+ */
+export const createSupportTicket = async (email: string, subject: string, message: string, isPremium: boolean): Promise<{ success: boolean; error?: any }> => {
+  try {
+    const { error } = await supabase
+      .from('support_tickets')
+      .insert([
+        {
+          email: email || 'anonymous',
+          subject: subject,
+          message: message,
+          is_premium: isPremium,
+          user_id: (await supabase.auth.getUser()).data.user?.id || null
+        }
+      ]);
+
+    if (error) throw error;
+    return { success: true };
+  } catch (error) {
+    console.error('Support ticket error:', error);
+    return { success: false, error };
+  }
+};

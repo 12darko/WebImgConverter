@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../LanguageContext';
+import { createSupportTicket } from '../services/supabase';
 
 interface SupportModalProps {
     isOpen: boolean;
@@ -12,26 +13,36 @@ export function SupportModal({ isOpen, onClose, isPremium, userEmail }: SupportM
     const { t } = useLanguage();
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
     if (!isOpen) return null;
 
-    const [copied, setCopied] = useState(false);
-    const supportEmail = "support@vormpixyze.com";
+    const handleSend = async () => {
+        if (!subject || !message) return;
 
-    const handleSend = () => {
-        const mailtoLink = `mailto:${supportEmail}?subject=${encodeURIComponent(
-            isPremium ? `[PREMIUM PRIORITY] ${subject}` : subject
-        )}&body=${encodeURIComponent(
-            `User ID: ${userEmail || 'Guest'}\n\nMessage:\n${message}`
-        )}`;
-        window.open(mailtoLink, '_blank');
-        onClose();
-    };
+        setIsSubmitting(true);
+        setSubmitStatus('idle');
 
-    const handleCopyEmail = () => {
-        navigator.clipboard.writeText(supportEmail);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        // Use the authenticated email if available, otherwise 'Guest' or input
+        // Since we don't have an email input for guests in this modal design (yet), we'll assume auth user or anon
+        const emailToSubmit = userEmail || 'guest@vormpixyze.com';
+
+        const result = await createSupportTicket(emailToSubmit, subject, message, isPremium);
+
+        setIsSubmitting(false);
+
+        if (result.success) {
+            setSubmitStatus('success');
+            setTimeout(() => {
+                onClose();
+                setSubmitStatus('idle');
+                setSubject('');
+                setMessage('');
+            }, 2000);
+        } else {
+            setSubmitStatus('error');
+        }
     };
 
     return (
@@ -79,25 +90,24 @@ export function SupportModal({ isOpen, onClose, isPremium, userEmail }: SupportM
                         <div className="flex gap-3">
                             <button
                                 onClick={onClose}
+                                disabled={isSubmitting}
                                 className="flex-1 py-2.5 rounded-lg text-slate-300 font-medium hover:bg-white/5 transition-colors border border-transparent hover:border-white/10"
                             >
                                 {t('cancel') || 'Cancel'}
                             </button>
                             <button
                                 onClick={handleSend}
-                                disabled={!subject || !message}
-                                className="flex-1 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed text-white py-2.5 rounded-lg font-bold shadow-lg shadow-indigo-500/20 transition-all"
+                                disabled={!subject || !message || isSubmitting}
+                                className={`flex-1 py-2.5 rounded-lg font-bold shadow-lg transition-all text-white
+                                    ${submitStatus === 'success' ? 'bg-green-500 hover:bg-green-600' :
+                                        submitStatus === 'error' ? 'bg-red-500 hover:bg-red-600' :
+                                            'bg-indigo-600 hover:bg-indigo-500'} 
+                                    disabled:opacity-50 disabled:cursor-not-allowed`}
                             >
-                                {t('send_email') || 'Send Email'}
-                            </button>
-                        </div>
-
-                        <div className="text-center">
-                            <button
-                                onClick={handleCopyEmail}
-                                className="text-xs text-slate-500 hover:text-indigo-400 underline transition-colors"
-                            >
-                                {copied ? "✓ Copied!" : "or copy email address manually"}
+                                {isSubmitting ? 'Sending...' :
+                                    submitStatus === 'success' ? 'Sent! ✓' :
+                                        submitStatus === 'error' ? 'Failed ✕' :
+                                            (t('send_email')?.replace('Email', 'Message') || 'Send Message')}
                             </button>
                         </div>
                     </div>
