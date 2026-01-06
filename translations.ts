@@ -61,6 +61,8 @@ export const translations = {
     prem_feature_4: "Toplu ZIP indirme özelliği",
     prem_price_btn: "Premium'a Geç (₺29.99/Ay)",
     prem_no_thanks: "Hayır, teşekkürler",
+    premium_plans_title: "Premium Planlar",
+    premium_plans_subtitle: "İhtiyacınıza uygun planı seçin",
 
     // Premium Plans
     plan_starter: "Starter",
@@ -213,6 +215,8 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
     prem_feature_4: "Bulk ZIP download feature",
     prem_price_btn: "Go Premium ($4.99/Mo)",
     prem_no_thanks: "No, thanks",
+    premium_plans_title: "Premium Plans",
+    premium_plans_subtitle: "Choose the plan that suits you best",
 
     // Premium Plans
     plan_starter: "Starter",
@@ -365,6 +369,8 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
     prem_feature_4: "Massen-ZIP-Download",
     prem_price_btn: "Premium holen ($4.99/Monat)",
     prem_no_thanks: "Nein, danke",
+    premium_plans_title: "Premium Pläne",
+    premium_plans_subtitle: "Wählen Sie den Plan, der zu Ihnen passt",
 
     // Premium Plans
     plan_starter: "Starter",
@@ -478,6 +484,8 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
     prem_feature_4: "Téléchargement ZIP en masse",
     prem_price_btn: "Passer Premium ($4.99/Mois)",
     prem_no_thanks: "Non merci",
+    premium_plans_title: "Plans Premium",
+    premium_plans_subtitle: "Choisissez le plan qui vous convient le mieux",
 
     // Premium Plans
     plan_starter: "Starter",

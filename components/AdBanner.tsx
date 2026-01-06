@@ -122,9 +122,9 @@ export const AdBanner: React.FC<AdBannerProps> = ({
 
       {/* Placeholder text for Development (Visible only if ad blocked or loading) */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[-1]">
-        <span className="text-[10px] text-slate-700 font-mono text-center">
+        {/* <span className="text-[10px] text-slate-700 font-mono text-center">
           GOOGLE ADS SPACE<br />({variant})
-        </span>
+        </span> */}
       </div>
     </div>
   );

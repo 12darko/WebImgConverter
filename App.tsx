@@ -982,7 +982,7 @@ function BanaConvertApp() {
           <div className="flex gap-3 md:gap-6 text-xs md:text-sm text-slate-500">
             <button onClick={() => openLegal('privacy')} className="hover:text-indigo-400">{t('privacy')}</button>
             <button onClick={() => openLegal('terms')} className="hover:text-indigo-400">{t('terms')}</button>
-            <button onClick={() => setIsSupportModalOpen(true)} className="hover:text-indigo-400">{t('contact')}</button>
+            <button onClick={() => openLegal('contact')} className="hover:text-indigo-400">{t('contact')}</button>
           </div>
 
           <div className="text-slate-600 text-[10px] md:text-xs font-mono flex flex-col items-center md:items-end">
