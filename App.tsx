@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { removeBackground } from '@imgly/background-removal';
+// @imgly/background-removal is dynamically imported when needed (lazy loading)
 import { Dropzone } from './components/Dropzone';
 import { AdBanner } from './components/AdBanner';
 import { PremiumModal } from './components/PremiumModal';
@@ -304,8 +304,11 @@ function BanaConvertApp() {
         let sourceUrl = item.previewUrl;
 
         if (item.removeBackground) {
-          updateProgress(10); // AI Loading
+          updateProgress(5); // Starting AI module load
           try {
+            // Dynamic import - only loads the 24MB library when needed
+            const { removeBackground } = await import('@imgly/background-removal');
+            updateProgress(10); // AI module loaded, starting processing
             const blob = await removeBackground(item.previewUrl, {
               progress: (key: string, current: number, total: number) => {
                 const percentage = 10 + Math.floor((current / total) * 40);
