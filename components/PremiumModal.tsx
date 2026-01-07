@@ -11,6 +11,19 @@ interface PremiumModalProps {
 export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, userId }) => {
   const { t } = useLanguage();
 
+  // Scroll Lock Effect
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
+
   // Checkout handler
   const handleUpgrade = (plan: 'starter' | 'pro' | 'business') => {
     let checkoutUrl = '';
@@ -40,7 +53,7 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto overflow-x-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto overflow-x-hidden touch-none">
       <div className="absolute inset-0 bg-slate-900/95 backdrop-blur-md transition-opacity" onClick={onClose} />
 
       <div className="relative z-10 w-full max-w-5xl mx-auto animate-[fadeIn_0.3s_ease-out] my-8 md:my-0">

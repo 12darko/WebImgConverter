@@ -667,31 +667,38 @@ function BanaConvertApp() {
                   <div className="flex-1 flex flex-col justify-between py-1">
                     <div>
                       <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-medium text-slate-200 truncate max-w-xs">{file.file.name}</h4>
-                        <button onClick={() => removeFile(file.id)} className="text-slate-600 hover:text-red-400">✕</button>
+                        <div className="flex items-center gap-2 max-w-[85%]">
+                          <h4 className="font-medium text-slate-200 truncate" title={file.file.name}>
+                            {file.file.name}
+                          </h4>
+                          <span className="text-[10px] uppercase font-bold text-slate-500 px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 shrink-0">
+                            {file.file.name.split('.').pop()}
+                          </span>
+                        </div>
+                        <button onClick={() => removeFile(file.id)} className="text-slate-600 hover:text-red-400 ml-2">✕</button>
                       </div>
+                    </div>
 
-                      <div className="mb-4">
-                        {file.aiName ? (
-                          <div className={`rounded-lg p-2 text-xs font-mono ${file.aiUsedFallback
-                            ? 'bg-amber-500/10 border border-amber-500/20 text-amber-100'
-                            : 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-100'
-                            }`}>
-                            <div className="flex items-center gap-2">
-                              <span>{file.aiUsedFallback ? '⚡' : '✨'} {file.aiName}</span>
-                            </div>
-                            {file.aiUsedFallback && (
-                              <div className="text-[10px] text-amber-400/70 mt-1">
-                                {t('ai_fallback_notice') || 'AI şu an kullanılamıyor, otomatik isim üretildi'}
-                              </div>
-                            )}
+                    <div className="mb-4">
+                      {file.aiName ? (
+                        <div className={`rounded-lg p-2 text-xs font-mono ${file.aiUsedFallback
+                          ? 'bg-amber-500/10 border border-amber-500/20 text-amber-100'
+                          : 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-100'
+                          }`}>
+                          <div className="flex items-center gap-2">
+                            <span>{file.aiUsedFallback ? '⚡' : '✨'} {file.aiName}</span>
                           </div>
-                        ) : (
-                          <button onClick={() => handleAiRename(file.id)} disabled={file.status !== 'idle'} className="text-xs text-indigo-400 border border-indigo-500/20 px-3 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20">
-                            {file.status === 'analyzing' ? t('ai_rename_loading') : t('ai_rename_btn')}
-                          </button>
-                        )}
-                      </div>
+                          {file.aiUsedFallback && (
+                            <div className="text-[10px] text-amber-400/70 mt-1">
+                              {t('ai_fallback_notice') || 'AI şu an kullanılamıyor, otomatik isim üretildi'}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <button onClick={() => handleAiRename(file.id)} disabled={file.status !== 'idle'} className="text-xs text-indigo-400 border border-indigo-500/20 px-3 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20">
+                          {file.status === 'analyzing' ? t('ai_rename_loading') : t('ai_rename_btn')}
+                        </button>
+                      )}
                     </div>
 
                     {file.status !== 'done' && (
@@ -740,9 +747,17 @@ function BanaConvertApp() {
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                           <button onClick={() => updateFileConfig(file.id, 'rotation', (file.rotation + 90) % 360)} className="bg-slate-800 p-2 rounded text-xs border border-slate-700">{t('rotate')}: {file.rotation}°</button>
                           <button onClick={() => updateFileConfig(file.id, 'isGrayscale', !file.isGrayscale)} className={`p-2 rounded text-xs border ${file.isGrayscale ? 'bg-slate-600' : 'bg-slate-800'}`}>{t('grayscale')}</button>
-                          <select onChange={(e) => updateFileConfig(file.id, 'resizeScale', parseFloat(e.target.value))} className="bg-slate-800 text-xs border border-slate-700 rounded p-2">
-                            <option value="1">100%</option><option value="0.75">75%</option><option value="0.5">50%</option><option value="0.25">25%</option>
-                          </select>
+
+                          {/* Quality Slider for JPEG/WEBP */}
+                          {(file.targetFormat === ConversionFormat.JPEG || file.targetFormat === ConversionFormat.WEBP) && (
+                            <select
+                              value={file.quality}
+                              onChange={(e) => updateFileConfig(file.id, 'quality', parseFloat(e.target.value))}
+                              className="bg-slate-800 text-xs border border-slate-700 rounded p-2 text-white"
+                            >
+                              <option value="1">100%</option><option value="0.75">75%</option><option value="0.5">50%</option><option value="0.25">25%</option>
+                            </select>
+                          )}
                           {/* Flip Buttons */}
                           <button onClick={() => updateFileConfig(file.id, 'isFlippedHorizontal', !file.isFlippedHorizontal)} className={`p-2 rounded text-xs border ${file.isFlippedHorizontal ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-700'}`}>↔️ Flip H</button>
                           <button onClick={() => updateFileConfig(file.id, 'isFlippedVertical', !file.isFlippedVertical)} className={`p-2 rounded text-xs border ${file.isFlippedVertical ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-700'}`}>↕️ Flip V</button>
@@ -858,64 +873,68 @@ function BanaConvertApp() {
                       )}
                     </div>
                   </div>
+                  {
+                    file.status === 'converting' && (
+                      <div className="absolute inset-0 bg-slate-900/90 rounded-xl flex items-center justify-center z-20 flex-col gap-4 p-6">
+                        <div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                        <span className="text-indigo-300 text-sm font-medium">{t('processing')}</span>
+                        {/* Progress Bar */}
+                        <div className="w-full max-w-xs">
+                          <div className="flex justify-between text-xs text-slate-400 mb-1">
+                            <span>{t('progress') || 'İlerleme'}</span>
+                            <span className="font-mono text-indigo-400">{file.conversionProgress || 0}%</span>
+                          </div>
+                          <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 ease-out"
+                              style={{ width: `${file.conversionProgress || 0}%` }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  }
                 </div>
-                {file.status === 'converting' && (
-                  <div className="absolute inset-0 bg-slate-900/90 rounded-xl flex items-center justify-center z-20 flex-col gap-4 p-6">
-                    <div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-                    <span className="text-indigo-300 text-sm font-medium">{t('processing')}</span>
-                    {/* Progress Bar */}
-                    <div className="w-full max-w-xs">
-                      <div className="flex justify-between text-xs text-slate-400 mb-1">
-                        <span>{t('progress') || 'İlerleme'}</span>
-                        <span className="font-mono text-indigo-400">{file.conversionProgress || 0}%</span>
-                      </div>
-                      <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 ease-out"
-                          style={{ width: `${file.conversionProgress || 0}%` }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                )}
               </div>
             ))}
 
             {files.length > 0 && <div className="mt-8"><AdBanner variant="horizontal" /></div>}
 
-            {files.some(f => f.status === 'done') && (
-              <div className="mt-4 flex justify-center">
-                <button
-                  onClick={async () => {
-                    const JSZip = (await import('jszip')).default;
-                    const { saveAs } = (await import('file-saver'));
-                    const zip = new JSZip();
+            {
+              files.some(f => f.status === 'done') && (
+                <div className="mt-4 flex justify-center">
+                  <button
+                    onClick={async () => {
+                      const JSZip = (await import('jszip')).default;
+                      const { saveAs } = (await import('file-saver'));
+                      const zip = new JSZip();
 
-                    let count = 0;
-                    for (const file of files) {
-                      if (file.status === 'done' && file.convertedBlob) {
-                        const fileName = `${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`;
-                        zip.file(fileName, file.convertedBlob);
-                        count++;
+                      let count = 0;
+                      for (const file of files) {
+                        if (file.status === 'done' && file.convertedBlob) {
+                          const fileName = `${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`;
+                          zip.file(fileName, file.convertedBlob);
+                          count++;
+                        }
                       }
-                    }
 
-                    if (count > 0) {
-                      const content = await zip.generateAsync({ type: "blob" });
-                      saveAs(content, "vormpixyze_images.zip");
-                    }
-                  }}
-                  className="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-indigo-500/30 flex items-center gap-2 transition-transform hover:scale-105"
-                >
-                  📦 {t('download_all_zip') || 'Download All (ZIP)'}
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
+                      if (count > 0) {
+                        const content = await zip.generateAsync({ type: "blob" });
+                        saveAs(content, "vormpixyze_images.zip");
+                      }
+                    }}
+                    className="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-indigo-500/30 flex items-center gap-2 transition-transform hover:scale-105"
+                  >
+                    📦 {t('download_all_zip') || 'Download All (ZIP)'}
+                  </button>
+                </div>
+              )
+            }
+          </div >
+        </div >
 
         {/* Right Sidebar */}
-        <div className="w-full lg:w-80 flex flex-col gap-6">
+        < div className="w-full lg:w-80 flex flex-col gap-6" >
           <div className="glass-panel p-6 rounded-xl border border-white/5">
             <h4 className="text-indigo-400 font-bold mb-4">{t('pro_tips_title')}</h4>
             <ul className="text-sm text-slate-400 space-y-3">
@@ -930,8 +949,8 @@ function BanaConvertApp() {
             {!stats.isPremium && <AdBanner variant="box" className="w-full" />}
             {/* <AdBanner variant="vertical" className="hidden lg:flex" /> */}
           </div>
-        </div>
-      </main>
+        </div >
+      </main >
 
       <SupportModal
         isOpen={isSupportModalOpen}
@@ -960,13 +979,15 @@ function BanaConvertApp() {
         </span>
       </button>
 
-      {compareItem && compareItem.convertedUrl && (
-        <CompareSlider
-          originalUrl={compareItem.previewUrl}
-          convertedUrl={compareItem.convertedUrl}
-          onClose={() => setCompareItem(null)}
-        />
-      )}
+      {
+        compareItem && compareItem.convertedUrl && (
+          <CompareSlider
+            originalUrl={compareItem.previewUrl}
+            convertedUrl={compareItem.convertedUrl}
+            onClose={() => setCompareItem(null)}
+          />
+        )
+      }
 
       <footer className="fixed bottom-0 left-0 right-0 z-30 border-t border-slate-800 bg-[#0B0F19] py-3 md:py-6">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-6">
@@ -983,7 +1004,7 @@ function BanaConvertApp() {
           </div>
         </div>
       </footer>
-    </div>
+    </div >
   );
 }
 
