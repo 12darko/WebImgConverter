@@ -327,18 +327,20 @@ function BanaConvertApp() {
             console.error("AI BG Removal Failed:", aiError);
           }
         } else {
-          // Check if we skipped AI, just update slightly
-          updateProgress(10);
+          // No AI - simulate gradual progress for UX
+          updateProgress(15);
+          await new Promise(r => setTimeout(r, 100)); // Small delay for visual feedback
+          updateProgress(25);
         }
 
-        updateProgress(55); // Image loading
+        updateProgress(35); // Loading image
 
         const img = new Image();
         img.crossOrigin = "anonymous";
         img.src = sourceUrl;
         await new Promise((resolve, reject) => { img.onload = resolve; img.onerror = reject; });
 
-        updateProgress(65); // Creating canvas
+        updateProgress(45); // Image loaded, creating canvas
 
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
@@ -381,12 +383,14 @@ function BanaConvertApp() {
           ctx.fillRect(-targetWidth / 2, -targetHeight / 2, targetWidth, targetHeight);
         }
 
+        updateProgress(55); // Canvas ready
+
         // Draw the image (Transparent or Original)
         ctx.drawImage(img, -targetWidth / 2, -targetHeight / 2, targetWidth, targetHeight);
 
         ctx.filter = 'none'; // Reset filter
 
-        updateProgress(70); // Effects applied
+        updateProgress(65); // Effects applied
 
         // --- WATERMARK (Premium) ---
         if (stats.isPremium) {
@@ -420,7 +424,7 @@ function BanaConvertApp() {
         // --- TARGET SIZE OPTIMIZATION (Binary Search / Reduction) ---
         // if targetSizeBytes is set... (logic implemented below)
 
-        updateProgress(85); // Creating blob
+        updateProgress(75); // Watermark done, creating blob
 
         let blob: Blob;
         let dataUrl: string;
@@ -473,6 +477,8 @@ function BanaConvertApp() {
           // Note: We can't re-assign const blob, so we use the result here
         }
 
+        updateProgress(90); // Blob created
+        await new Promise(r => setTimeout(r, 50)); // Small delay for visual feedback
         updateProgress(100); // Complete
 
         setFiles(prev => prev.map(f => f.id === id ? {
@@ -611,6 +617,23 @@ function BanaConvertApp() {
               <div className="flex items-center justify-between mb-2 px-2">
                 <h3 className="text-lg font-semibold text-white">{t('queue')} ({files.length})</h3>
                 <div className="flex items-center gap-3">
+                  {/* Batch Progress Bar - visible when converting multiple files */}
+                  {files.length > 1 && files.some(f => f.status === 'converting') && (
+                    <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700/50">
+                      <div className="flex justify-between items-center text-xs text-slate-400 mb-2">
+                        <span>📦 {t('batch_progress') || 'Toplu Dönüşüm'}</span>
+                        <span className="font-mono text-indigo-400">
+                          {files.filter(f => f.status === 'done').length}/{files.length}
+                        </span>
+                      </div>
+                      <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-500"
+                          style={{ width: `${(files.filter(f => f.status === 'done').length / files.length) * 100}%` }}
+                        />
+                      </div>
+                    </div>
+                  )}
                   {/* Batch Convert All - visible when there are idle files */}
                   {files.some(f => f.status === 'idle') && (
                     <button
