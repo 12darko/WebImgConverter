@@ -25,6 +25,8 @@ import {
   ENABLE_PREMIUM_SYSTEM
 } from './types';
 
+import { encodeToBMP, encodeToTIFF } from './utils/imageEncoders';
+
 declare global {
   interface Window {
     heic2any: (options: { blob: Blob; toType: string; quality?: number }) => Promise<Blob | Blob[]>;
@@ -417,20 +419,37 @@ function BanaConvertApp() {
 
         updateProgress(85); // Creating blob
 
-        let mimeType: string = item.targetFormat;
-        // ICO handling
-        if (item.targetFormat === ConversionFormat.ICO) {
-          mimeType = ConversionFormat.PNG;
+        let blob: Blob;
+        let dataUrl: string;
+
+        // Handle different output formats
+        if (item.targetFormat === ConversionFormat.TIFF) {
+          // Use custom TIFF encoder
+          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          blob = encodeToTIFF(imageData);
+          dataUrl = URL.createObjectURL(blob);
+        } else if (item.targetFormat === ConversionFormat.BMP) {
+          // Use custom BMP encoder
+          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          blob = encodeToBMP(imageData);
+          dataUrl = URL.createObjectURL(blob);
+        } else {
+          // Standard formats (JPEG, PNG, WEBP, ICO)
+          let mimeType: string = item.targetFormat;
+          // ICO handling - save as PNG internally
+          if (item.targetFormat === ConversionFormat.ICO) {
+            mimeType = ConversionFormat.PNG;
+          }
+
+          blob = await new Promise<Blob>((resolve, reject) => {
+            canvas.toBlob((b) => {
+              if (b) resolve(b);
+              else reject(new Error("Blob creation failed"));
+            }, mimeType, item.quality);
+          });
+
+          dataUrl = canvas.toDataURL(mimeType, item.quality);
         }
-
-        const blob = await new Promise<Blob>((resolve, reject) => {
-          canvas.toBlob((b) => {
-            if (b) resolve(b);
-            else reject(new Error("Blob creation failed"));
-          }, mimeType, item.quality);
-        });
-
-        let dataUrl = canvas.toDataURL(mimeType, item.quality);
 
         // If ICO, we just save the PNG blob but name it .ico (simple method)
         // For real ICO structure, we'd need a library, but this works for most modern OS/browsers as "PNG-in-Icon"
@@ -738,9 +757,28 @@ function BanaConvertApp() {
                           </button>
                         </div>
                         <div className="flex flex-wrap gap-2">
+                          {/* Free Formats */}
                           {[ConversionFormat.JPEG, ConversionFormat.PNG, ConversionFormat.WEBP].map(fmt => (
                             <button key={fmt} onClick={() => updateFileConfig(file.id, 'targetFormat', fmt)} className={`text-xs px-3 py-1.5 rounded border ${file.targetFormat === fmt ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-600'}`}>
                               {fmt.split('/')[1].toUpperCase()}
+                            </button>
+                          ))}
+                          {/* Premium Formats */}
+                          {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO].map(fmt => (
+                            <button
+                              key={fmt}
+                              onClick={() => stats.isPremium && updateFileConfig(file.id, 'targetFormat', fmt)}
+                              disabled={!stats.isPremium}
+                              title={stats.isPremium ? fmt.split('/')[1].toUpperCase() : 'Premium özelliği'}
+                              className={`text-xs px-3 py-1.5 rounded border flex items-center gap-1 ${stats.isPremium
+                                ? file.targetFormat === fmt
+                                  ? 'bg-indigo-600 border-indigo-500'
+                                  : 'bg-slate-800 border-slate-600'
+                                : 'bg-slate-900/50 border-slate-700/50 text-slate-500 cursor-not-allowed opacity-60'
+                                }`}
+                            >
+                              {fmt.split('/')[1].toUpperCase()}
+                              {!stats.isPremium && <span className="text-amber-400">🔒</span>}
                             </button>
                           ))}
                         </div>
