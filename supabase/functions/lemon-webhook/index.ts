@@ -48,11 +48,32 @@ serve(async (req) => {
         console.log(`Received event: ${eventName}`);
 
         if (eventName === 'order_created' || eventName === 'subscription_created') {
-            const userId = customData?.user_id; // Check checkout link config!
-            // Alternatively, check body.data.attributes.user_email and match by email
+            const userId = customData?.user_id;
+            const productName = body.data.attributes.first_order_item?.product_name || '';
+            const variantName = body.data.attributes.first_order_item?.variant_name || '';
+
+            // Determine tier and daily limit based on product/variant name
+            let premiumTier: 'starter' | 'pro' | 'business' = 'starter';
+            let dailyLimit = 30; // Default: Starter
+
+            const productInfo = (productName + ' ' + variantName).toLowerCase();
+            if (productInfo.includes('business') || productInfo.includes('300')) {
+                premiumTier = 'business';
+                dailyLimit = 300;
+            } else if (productInfo.includes('pro') || productInfo.includes('100')) {
+                premiumTier = 'pro';
+                dailyLimit = 100;
+            }
+            // else: default starter with 30 credits
+
+            // Calculate expiry date (1 month from now)
+            const expiryDate = new Date();
+            expiryDate.setMonth(expiryDate.getMonth() + 1);
+            const expiryDateStr = expiryDate.toISOString().split('T')[0];
+
+            console.log(`Detected tier: ${premiumTier}, daily_limit: ${dailyLimit}`);
 
             if (userId) {
-                // 2. Update Supabase
                 const supabaseClient = createClient(
                     Deno.env.get('SUPABASE_URL') ?? '',
                     Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
@@ -62,12 +83,15 @@ serve(async (req) => {
                     .from('profiles')
                     .update({
                         is_premium: true,
+                        premium_tier: premiumTier,
+                        daily_limit: dailyLimit,
+                        premium_expiry_date: expiryDateStr,
                         updated_at: new Date().toISOString()
                     })
                     .eq('id', userId);
 
                 if (error) throw error;
-                console.log(`User ${userId} upgraded to Premium`);
+                console.log(`User ${userId} upgraded to ${premiumTier} (${dailyLimit} credits/day) until ${expiryDateStr}`);
             } else {
                 console.log("No user_id found in custom_data. Attempting email match...");
                 const email = body.data.attributes.user_email;
@@ -76,8 +100,31 @@ serve(async (req) => {
                         Deno.env.get('SUPABASE_URL') ?? '',
                         Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
                     );
-                    // Find user by email (requires query)
-                    // This is risky if email doesn't match auth email, but acceptable fallback
+
+                    // Find user by email and update
+                    const { data: users, error: findError } = await supabaseClient
+                        .from('profiles')
+                        .select('id')
+                        .eq('email', email)
+                        .limit(1);
+
+                    if (!findError && users && users.length > 0) {
+                        const { error: updateError } = await supabaseClient
+                            .from('profiles')
+                            .update({
+                                is_premium: true,
+                                premium_tier: premiumTier,
+                                daily_limit: dailyLimit,
+                                premium_expiry_date: expiryDateStr,
+                                updated_at: new Date().toISOString()
+                            })
+                            .eq('id', users[0].id);
+
+                        if (updateError) throw updateError;
+                        console.log(`User ${users[0].id} (${email}) upgraded via email match`);
+                    } else {
+                        console.log(`No user found with email: ${email}`);
+                    }
                 }
             }
         }
