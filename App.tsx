@@ -12,7 +12,10 @@ import { CookieBanner } from './components/CookieBanner';
 
 import { CompareSlider } from './components/CompareSlider';
 import { AuthModal } from './components/AuthModal'; // Auth import
-import { generateAiFilename } from './services/geminiService';
+import { generateSmartFilename } from './services/aiNamingService';
+import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
+
+
 import { supabase, getUserProfile, updateUserCredits, upgradeToPremium, incrementDailyStats } from './services/supabase'; // DB Services
 import { LanguageProvider, useLanguage } from './LanguageContext';
 import {
@@ -57,6 +60,34 @@ function BanaConvertApp() {
 
   const [legalModalTab, setLegalModalTab] = useState<'privacy' | 'terms' | 'contact'>('privacy');
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // PWA Install Prompt State
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: any) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`User response to the install prompt: ${outcome}`);
+    setDeferredPrompt(null);
+  };
+
+  const handleDragEnd = (result: DropResult) => {
+    if (!result.destination) return;
+    const items = Array.from(files);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+    setFiles(items);
+  };
 
   // 1. Initialize Session & Stats
   useEffect(() => {
@@ -509,7 +540,7 @@ function BanaConvertApp() {
     setFiles(prev => prev.map(f => f.id === id ? { ...f, status: 'analyzing' } : f));
 
     try {
-      const result = await generateAiFilename(item.file);
+      const result = await generateSmartFilename(item.file);
       setFiles(prev => prev.map(f => f.id === id ? {
         ...f,
         status: 'idle',
@@ -551,8 +582,9 @@ function BanaConvertApp() {
             </h1>
           </div>
 
-          <div className="flex items-center gap-6">
 
+
+          <div className="flex items-center gap-6">
 
             {session ? (
               <div className="hidden md:flex flex-col items-end mr-4">
@@ -698,269 +730,289 @@ function BanaConvertApp() {
               </div>
             )}
 
-            {files.map(file => (
-              <div key={file.id} className="bg-[#151f32] border border-slate-700/50 rounded-xl p-5 relative">
-                <div className="flex flex-col lg:flex-row gap-6">
-                  <div className="relative w-full lg:w-48 h-48 bg-[#0B0F19] rounded-lg border border-slate-700/50 flex items-center justify-center">
-                    {file.status === 'analyzing' && !file.previewUrl ? (
-                      <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-                    ) : (
-                      <img src={file.status === 'done' ? file.convertedUrl : file.previewUrl} className={`max-w-full max-h-full object-contain ${file.isGrayscale ? 'grayscale' : ''}`} style={{ transform: `rotate(${file.rotation}deg)` }} />
-                    )}
-                  </div>
+            <DragDropContext onDragEnd={handleDragEnd}>
+              <Droppable droppableId="files">
+                {(provided) => (
+                  <div {...provided.droppableProps} ref={provided.innerRef} className="space-y-4">
+                    {files.map((file, index) => (
+                      <Draggable key={file.id} draggableId={file.id} index={index}>
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            className="bg-[#151f32] border border-slate-700/50 rounded-xl p-5 relative"
+                            style={provided.draggableProps.style}
+                          >
+                            <div className="flex flex-col lg:flex-row gap-6">
+                              <div className="relative w-full lg:w-48 h-48 bg-[#0B0F19] rounded-lg border border-slate-700/50 flex items-center justify-center">
+                                {file.status === 'analyzing' && !file.previewUrl ? (
+                                  <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                                ) : (
+                                  <img src={file.status === 'done' ? file.convertedUrl : file.previewUrl} className={`max-w-full max-h-full object-contain ${file.isGrayscale ? 'grayscale' : ''}`} style={{ transform: `rotate(${file.rotation}deg)` }} />
+                                )}
+                              </div>
 
-                  <div className="flex-1 flex flex-col justify-between py-1">
-                    <div>
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="flex items-center gap-2 max-w-[85%]">
-                          <h4 className="font-medium text-slate-200 truncate" title={file.file.name}>
-                            {file.file.name}
-                          </h4>
-                          <span className="text-[10px] uppercase font-bold text-slate-500 px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 shrink-0">
-                            {file.file.name.split('.').pop()}
-                          </span>
-                        </div>
-                        <button onClick={() => removeFile(file.id)} className="text-slate-600 hover:text-red-400 ml-2">✕</button>
-                      </div>
-                    </div>
+                              <div className="flex-1 flex flex-col justify-between py-1">
+                                <div>
+                                  <div className="flex justify-between items-start mb-2">
+                                    <div className="flex items-center gap-2 max-w-[85%]">
+                                      <h4 className="font-medium text-slate-200 truncate" title={file.file.name}>
+                                        {file.file.name}
+                                      </h4>
+                                      <span className="text-[10px] uppercase font-bold text-slate-500 px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 shrink-0">
+                                        {file.file.name.split('.').pop()}
+                                      </span>
+                                    </div>
+                                    <button onClick={() => removeFile(file.id)} className="text-slate-600 hover:text-red-400 ml-2">✕</button>
+                                  </div>
+                                </div>
 
-                    <div className="mb-4">
-                      {file.aiName ? (
-                        <div className={`rounded-lg p-2 text-xs font-mono ${file.aiUsedFallback
-                          ? 'bg-amber-500/10 border border-amber-500/20 text-amber-100'
-                          : 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-100'
-                          }`}>
-                          <div className="flex items-center gap-2">
-                            <span>{file.aiUsedFallback ? '⚡' : '✨'} {file.aiName}</span>
-                          </div>
-                          {file.aiUsedFallback && (
-                            <div className="text-[10px] text-amber-400/70 mt-1">
-                              {t('ai_fallback_notice') || 'AI şu an kullanılamıyor, otomatik isim üretildi'}
+                                <div className="mb-4">
+                                  {file.aiName ? (
+                                    <div className={`rounded-lg p-2 text-xs font-mono ${file.aiUsedFallback
+                                      ? 'bg-amber-500/10 border border-amber-500/20 text-amber-100'
+                                      : 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-100'
+                                      }`}>
+                                      <div className="flex items-center gap-2">
+                                        <span>{file.aiUsedFallback ? '⚡' : '✨'} {file.aiName}</span>
+                                      </div>
+                                      {file.aiUsedFallback && (
+                                        <div className="text-[10px] text-amber-400/70 mt-1">
+                                          {t('ai_fallback_notice') || 'AI şu an kullanılamıyor, otomatik isim üretildi'}
+                                        </div>
+                                      )}
+                                    </div>
+                                  ) : (
+                                    <button onClick={() => handleAiRename(file.id)} disabled={file.status !== 'idle'} className="text-xs text-indigo-400 border border-indigo-500/20 px-3 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20">
+                                      {file.status === 'analyzing' ? t('ai_rename_loading') : t('ai_rename_btn')}
+                                    </button>
+                                  )}
+                                </div>
+
+                                {file.status !== 'done' && (
+                                  <div className="bg-slate-900/60 p-4 rounded-lg space-y-4">
+                                    {/* Preset Profiles */}
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                      <span className="text-xs text-slate-500">{t('preset_label') || 'Hazır Ayar:'}</span>
+                                      <button
+                                        onClick={() => {
+                                          updateFileConfig(file.id, 'targetFormat', ConversionFormat.WEBP);
+                                          updateFileConfig(file.id, 'quality', 0.8);
+                                          updateFileConfig(file.id, 'resizeScale', 1);
+                                        }}
+                                        className="text-[10px] px-2 py-1 rounded bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/30"
+                                      >
+                                        🌐 {t('preset_web') || 'Web'}
+                                      </button>
+                                      <button
+                                        onClick={() => {
+                                          updateFileConfig(file.id, 'targetFormat', ConversionFormat.JPEG);
+                                          updateFileConfig(file.id, 'quality', 0.85);
+                                          updateFileConfig(file.id, 'resizeScale', 0.75);
+                                        }}
+                                        className="text-[10px] px-2 py-1 rounded bg-blue-500/20 border border-blue-500/30 text-blue-300 hover:bg-blue-500/30"
+                                      >
+                                        📱 {t('preset_social') || 'Sosyal Medya'}
+                                      </button>
+                                      <button
+                                        onClick={() => {
+                                          updateFileConfig(file.id, 'targetFormat', ConversionFormat.PNG);
+                                          updateFileConfig(file.id, 'quality', 1.0);
+                                          updateFileConfig(file.id, 'resizeScale', 1);
+                                        }}
+                                        className="text-[10px] px-2 py-1 rounded bg-purple-500/20 border border-purple-500/30 text-purple-300 hover:bg-purple-500/30"
+                                      >
+                                        📦 {t('preset_archive') || 'Arşiv'}
+                                      </button>
+                                    </div>
+                                    <div className="flex flex-wrap gap-2">
+                                      {/* Free Formats */}
+                                      {[ConversionFormat.JPEG, ConversionFormat.PNG, ConversionFormat.WEBP].map(fmt => (
+                                        <button key={fmt} onClick={() => updateFileConfig(file.id, 'targetFormat', fmt)} className={`text-xs px-3 py-1.5 rounded border ${file.targetFormat === fmt ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-600'}`}>
+                                          {fmt.split('/')[1].toUpperCase()}
+                                        </button>
+                                      ))}
+                                      {/* Premium Formats */}
+                                      {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO].map(fmt => (
+                                        <button
+                                          key={fmt}
+                                          onClick={() => stats.isPremium && updateFileConfig(file.id, 'targetFormat', fmt)}
+                                          disabled={!stats.isPremium}
+                                          title={stats.isPremium ? fmt.split('/')[1].toUpperCase() : 'Premium özelliği'}
+                                          className={`text-xs px-3 py-1.5 rounded border flex items-center gap-1 ${stats.isPremium
+                                            ? file.targetFormat === fmt
+                                              ? 'bg-indigo-600 border-indigo-500'
+                                              : 'bg-slate-800 border-slate-600'
+                                            : 'bg-slate-900/50 border-slate-700/50 text-slate-500 cursor-not-allowed opacity-60'
+                                            }`}
+                                        >
+                                          {fmt.split('/')[1].toUpperCase()}
+                                          {!stats.isPremium && <span className="text-amber-400">🔒</span>}
+                                        </button>
+                                      ))}
+                                    </div>
+                                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                                      <button onClick={() => updateFileConfig(file.id, 'rotation', (file.rotation + 90) % 360)} className="bg-slate-800 p-2 rounded text-xs border border-slate-700">{t('rotate')}: {file.rotation}°</button>
+                                      <button onClick={() => updateFileConfig(file.id, 'isGrayscale', !file.isGrayscale)} className={`p-2 rounded text-xs border ${file.isGrayscale ? 'bg-slate-600' : 'bg-slate-800'}`}>{t('grayscale')}</button>
+
+                                      {/* Quality Slider for JPEG/WEBP */}
+                                      {(file.targetFormat === ConversionFormat.JPEG || file.targetFormat === ConversionFormat.WEBP) && (
+                                        <select
+                                          value={file.quality}
+                                          onChange={(e) => updateFileConfig(file.id, 'quality', parseFloat(e.target.value))}
+                                          className="bg-slate-800 text-xs border border-slate-700 rounded p-2 text-white"
+                                        >
+                                          <option value="1">100%</option><option value="0.75">75%</option><option value="0.5">50%</option><option value="0.25">25%</option>
+                                        </select>
+                                      )}
+                                      {/* Flip Buttons */}
+                                      <button onClick={() => updateFileConfig(file.id, 'isFlippedHorizontal', !file.isFlippedHorizontal)} className={`p-2 rounded text-xs border ${file.isFlippedHorizontal ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-700'}`}>↔️ Flip H</button>
+                                      <button onClick={() => updateFileConfig(file.id, 'isFlippedVertical', !file.isFlippedVertical)} className={`p-2 rounded text-xs border ${file.isFlippedVertical ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-700'}`}>↕️ Flip V</button>
+
+                                      {/* NEW: Target Size */}
+                                      {file.targetFormat === ConversionFormat.JPEG && (
+                                        <input
+                                          type="number"
+                                          placeholder="Max KB (Optional)"
+                                          className="bg-slate-800 text-xs border border-slate-700 rounded p-2 w-full text-white placeholder-slate-500"
+                                          onChange={(e) => updateFileConfig(file.id, 'targetSizeBytes', e.target.value ? parseInt(e.target.value) * 1024 : undefined)}
+                                        />
+                                      )}
+                                    </div>
+
+                                    {/* Estimated Size Display */}
+                                    <div className="flex justify-end mt-2">
+                                      <span className="text-[10px] text-slate-500 font-mono bg-slate-800/50 px-2 py-1 rounded border border-slate-700/50">
+                                        {t('estimated_size')}: <span className="text-emerald-400">{estimateFileSize(file)}</span>
+                                      </span>
+                                    </div>
+
+                                    {/* NEW: Watermark (Premium) */}
+                                    <div className="flex items-center gap-2">
+                                      <input
+                                        type="text"
+                                        placeholder={stats.isPremium ? (file.watermarkLogo ? t('logo_uploaded') : "Watermark Text") : "Watermark (Premium Only)"}
+                                        disabled={!stats.isPremium || !!file.watermarkLogo} // Disable text if logo is uploaded
+                                        value={file.watermarkText || ''}
+                                        onChange={(e) => updateFileConfig(file.id, 'watermarkText', e.target.value)}
+                                        className={`bg-slate-800 text-xs border border-slate-700 rounded p-2 flex-grow ${!stats.isPremium ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                      />
+
+                                      {/* Logo Upload Button */}
+                                      <div className="relative">
+                                        <input
+                                          type="file"
+                                          id={`logo-upload-${file.id}`}
+                                          className="hidden"
+                                          accept="image/png, image/jpeg"
+                                          disabled={!stats.isPremium}
+                                          onChange={(e) => {
+                                            const logoFile = e.target.files?.[0];
+                                            if (logoFile) {
+                                              const reader = new FileReader();
+                                              reader.onload = (ev) => {
+                                                updateFileConfig(file.id, 'watermarkLogo', ev.target?.result as string);
+                                                updateFileConfig(file.id, 'watermarkText', undefined); // Clear text if logo used
+                                              };
+                                              reader.readAsDataURL(logoFile);
+                                            }
+                                          }}
+                                        />
+                                        {file.watermarkLogo ? (
+                                          <button
+                                            onClick={() => updateFileConfig(file.id, 'watermarkLogo', undefined)}
+                                            className="bg-red-500/10 hover:bg-red-500/20 text-red-400 p-2 rounded border border-red-500/20 transition-colors"
+                                            title="Remove Logo"
+                                          >
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                          </button>
+                                        ) : (
+                                          <label
+                                            htmlFor={`logo-upload-${file.id}`}
+                                            className={`flex items-center justify-center p-2 rounded bg-slate-800 border border-slate-700 cursor-pointer hover:bg-slate-700 transition-colors ${!stats.isPremium ? 'opacity-50 pointer-events-none' : ''}`}
+                                            title="Upload Logo Watermark"
+                                          >
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                            </svg>
+                                          </label>
+                                        )}
+                                      </div>
+                                    </div>
+
+                                    {file.targetFormat !== ConversionFormat.JPEG && (
+                                      <div className="flex items-center gap-2">
+                                        <button
+                                          onClick={() => updateFileConfig(file.id, 'removeBackground', !file.removeBackground)}
+                                          className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-2 transition-all duration-300 font-medium ${file.removeBackground
+                                            ? 'bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/50 text-pink-300 shadow-sm shadow-pink-500/20'
+                                            : 'bg-slate-800 border-slate-700 text-slate-500 hover:text-slate-400 hover:bg-slate-750'
+                                            }`}
+                                        >
+                                          <span className={file.removeBackground ? "animate-pulse" : "grayscale opacity-50"}>✨</span>
+                                          {file.removeBackground ? 'AI BG Removed' : 'Remove BG'}
+                                        </button>
+                                      </div>
+                                    )}
+                                  </div>
+                                )}
+
+                                <div className="mt-2 flex justify-end gap-3">
+                                  {file.status === 'idle' && (
+                                    <button onClick={() => convertImage(file.id)} className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2 rounded-lg text-sm font-bold shadow-lg shadow-indigo-500/30">
+                                      {t('convert_btn')}
+                                    </button>
+                                  )}
+                                  {file.status === 'done' && (
+                                    <div className="flex gap-2">
+                                      <button
+                                        onClick={() => setCompareItem(file)}
+                                        className="bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded-lg text-xs"
+                                      >
+                                        👁️ Compare
+                                      </button>
+                                      <a href={file.convertedUrl} download={`${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`} className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2">
+                                        {t('download_btn')} ({formatFileSize(file.convertedSize || 0)})
+                                      </a>
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                              {
+                                file.status === 'converting' && (
+                                  <div className="absolute inset-0 bg-slate-900/90 rounded-xl flex items-center justify-center z-20 flex-col gap-4 p-6">
+                                    <div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                                    <span className="text-indigo-300 text-sm font-medium">{t('processing')}</span>
+                                    {/* Progress Bar */}
+                                    <div className="w-full max-w-xs">
+                                      <div className="flex justify-between text-xs text-slate-400 mb-1">
+                                        <span>{t('progress') || 'İlerleme'}</span>
+                                        <span className="font-mono text-indigo-400">{file.conversionProgress || 0}%</span>
+                                      </div>
+                                      <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+                                        <div
+                                          className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 ease-out"
+                                          style={{ width: `${file.conversionProgress || 0}%` }}
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                )
+                              }
                             </div>
-                          )}
-                        </div>
-                      ) : (
-                        <button onClick={() => handleAiRename(file.id)} disabled={file.status !== 'idle'} className="text-xs text-indigo-400 border border-indigo-500/20 px-3 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20">
-                          {file.status === 'analyzing' ? t('ai_rename_loading') : t('ai_rename_btn')}
-                        </button>
-                      )}
-                    </div>
-
-                    {file.status !== 'done' && (
-                      <div className="bg-slate-900/60 p-4 rounded-lg space-y-4">
-                        {/* Preset Profiles */}
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-xs text-slate-500">{t('preset_label') || 'Hazır Ayar:'}</span>
-                          <button
-                            onClick={() => {
-                              updateFileConfig(file.id, 'targetFormat', ConversionFormat.WEBP);
-                              updateFileConfig(file.id, 'quality', 0.8);
-                              updateFileConfig(file.id, 'resizeScale', 1);
-                            }}
-                            className="text-[10px] px-2 py-1 rounded bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/30"
-                          >
-                            🌐 {t('preset_web') || 'Web'}
-                          </button>
-                          <button
-                            onClick={() => {
-                              updateFileConfig(file.id, 'targetFormat', ConversionFormat.JPEG);
-                              updateFileConfig(file.id, 'quality', 0.85);
-                              updateFileConfig(file.id, 'resizeScale', 0.75);
-                            }}
-                            className="text-[10px] px-2 py-1 rounded bg-blue-500/20 border border-blue-500/30 text-blue-300 hover:bg-blue-500/30"
-                          >
-                            📱 {t('preset_social') || 'Sosyal Medya'}
-                          </button>
-                          <button
-                            onClick={() => {
-                              updateFileConfig(file.id, 'targetFormat', ConversionFormat.PNG);
-                              updateFileConfig(file.id, 'quality', 1.0);
-                              updateFileConfig(file.id, 'resizeScale', 1);
-                            }}
-                            className="text-[10px] px-2 py-1 rounded bg-purple-500/20 border border-purple-500/30 text-purple-300 hover:bg-purple-500/30"
-                          >
-                            📦 {t('preset_archive') || 'Arşiv'}
-                          </button>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                          {/* Free Formats */}
-                          {[ConversionFormat.JPEG, ConversionFormat.PNG, ConversionFormat.WEBP].map(fmt => (
-                            <button key={fmt} onClick={() => updateFileConfig(file.id, 'targetFormat', fmt)} className={`text-xs px-3 py-1.5 rounded border ${file.targetFormat === fmt ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-600'}`}>
-                              {fmt.split('/')[1].toUpperCase()}
-                            </button>
-                          ))}
-                          {/* Premium Formats */}
-                          {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO].map(fmt => (
-                            <button
-                              key={fmt}
-                              onClick={() => stats.isPremium && updateFileConfig(file.id, 'targetFormat', fmt)}
-                              disabled={!stats.isPremium}
-                              title={stats.isPremium ? fmt.split('/')[1].toUpperCase() : 'Premium özelliği'}
-                              className={`text-xs px-3 py-1.5 rounded border flex items-center gap-1 ${stats.isPremium
-                                ? file.targetFormat === fmt
-                                  ? 'bg-indigo-600 border-indigo-500'
-                                  : 'bg-slate-800 border-slate-600'
-                                : 'bg-slate-900/50 border-slate-700/50 text-slate-500 cursor-not-allowed opacity-60'
-                                }`}
-                            >
-                              {fmt.split('/')[1].toUpperCase()}
-                              {!stats.isPremium && <span className="text-amber-400">🔒</span>}
-                            </button>
-                          ))}
-                        </div>
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                          <button onClick={() => updateFileConfig(file.id, 'rotation', (file.rotation + 90) % 360)} className="bg-slate-800 p-2 rounded text-xs border border-slate-700">{t('rotate')}: {file.rotation}°</button>
-                          <button onClick={() => updateFileConfig(file.id, 'isGrayscale', !file.isGrayscale)} className={`p-2 rounded text-xs border ${file.isGrayscale ? 'bg-slate-600' : 'bg-slate-800'}`}>{t('grayscale')}</button>
-
-                          {/* Quality Slider for JPEG/WEBP */}
-                          {(file.targetFormat === ConversionFormat.JPEG || file.targetFormat === ConversionFormat.WEBP) && (
-                            <select
-                              value={file.quality}
-                              onChange={(e) => updateFileConfig(file.id, 'quality', parseFloat(e.target.value))}
-                              className="bg-slate-800 text-xs border border-slate-700 rounded p-2 text-white"
-                            >
-                              <option value="1">100%</option><option value="0.75">75%</option><option value="0.5">50%</option><option value="0.25">25%</option>
-                            </select>
-                          )}
-                          {/* Flip Buttons */}
-                          <button onClick={() => updateFileConfig(file.id, 'isFlippedHorizontal', !file.isFlippedHorizontal)} className={`p-2 rounded text-xs border ${file.isFlippedHorizontal ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-700'}`}>↔️ Flip H</button>
-                          <button onClick={() => updateFileConfig(file.id, 'isFlippedVertical', !file.isFlippedVertical)} className={`p-2 rounded text-xs border ${file.isFlippedVertical ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-700'}`}>↕️ Flip V</button>
-
-                          {/* NEW: Target Size */}
-                          {file.targetFormat === ConversionFormat.JPEG && (
-                            <input
-                              type="number"
-                              placeholder="Max KB (Optional)"
-                              className="bg-slate-800 text-xs border border-slate-700 rounded p-2 w-full text-white placeholder-slate-500"
-                              onChange={(e) => updateFileConfig(file.id, 'targetSizeBytes', e.target.value ? parseInt(e.target.value) * 1024 : undefined)}
-                            />
-                          )}
-                        </div>
-
-                        {/* Estimated Size Display */}
-                        <div className="flex justify-end mt-2">
-                          <span className="text-[10px] text-slate-500 font-mono bg-slate-800/50 px-2 py-1 rounded border border-slate-700/50">
-                            {t('estimated_size')}: <span className="text-emerald-400">{estimateFileSize(file)}</span>
-                          </span>
-                        </div>
-
-                        {/* NEW: Watermark (Premium) */}
-                        <div className="flex items-center gap-2">
-                          <input
-                            type="text"
-                            placeholder={stats.isPremium ? (file.watermarkLogo ? t('logo_uploaded') : "Watermark Text") : "Watermark (Premium Only)"}
-                            disabled={!stats.isPremium || !!file.watermarkLogo} // Disable text if logo is uploaded
-                            value={file.watermarkText || ''}
-                            onChange={(e) => updateFileConfig(file.id, 'watermarkText', e.target.value)}
-                            className={`bg-slate-800 text-xs border border-slate-700 rounded p-2 flex-grow ${!stats.isPremium ? 'opacity-50 cursor-not-allowed' : ''}`}
-                          />
-
-                          {/* Logo Upload Button */}
-                          <div className="relative">
-                            <input
-                              type="file"
-                              id={`logo-upload-${file.id}`}
-                              className="hidden"
-                              accept="image/png, image/jpeg"
-                              disabled={!stats.isPremium}
-                              onChange={(e) => {
-                                const logoFile = e.target.files?.[0];
-                                if (logoFile) {
-                                  const reader = new FileReader();
-                                  reader.onload = (ev) => {
-                                    updateFileConfig(file.id, 'watermarkLogo', ev.target?.result as string);
-                                    updateFileConfig(file.id, 'watermarkText', undefined); // Clear text if logo used
-                                  };
-                                  reader.readAsDataURL(logoFile);
-                                }
-                              }}
-                            />
-                            {file.watermarkLogo ? (
-                              <button
-                                onClick={() => updateFileConfig(file.id, 'watermarkLogo', undefined)}
-                                className="bg-red-500/10 hover:bg-red-500/20 text-red-400 p-2 rounded border border-red-500/20 transition-colors"
-                                title="Remove Logo"
-                              >
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                              </button>
-                            ) : (
-                              <label
-                                htmlFor={`logo-upload-${file.id}`}
-                                className={`flex items-center justify-center p-2 rounded bg-slate-800 border border-slate-700 cursor-pointer hover:bg-slate-700 transition-colors ${!stats.isPremium ? 'opacity-50 pointer-events-none' : ''}`}
-                                title="Upload Logo Watermark"
-                              >
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
-                              </label>
-                            )}
                           </div>
-                        </div>
 
-                        {file.targetFormat !== ConversionFormat.JPEG && (
-                          <div className="flex items-center gap-2">
-                            <button
-                              onClick={() => updateFileConfig(file.id, 'removeBackground', !file.removeBackground)}
-                              className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-2 transition-all duration-300 font-medium ${file.removeBackground
-                                ? 'bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/50 text-pink-300 shadow-sm shadow-pink-500/20'
-                                : 'bg-slate-800 border-slate-700 text-slate-500 hover:text-slate-400 hover:bg-slate-750'
-                                }`}
-                            >
-                              <span className={file.removeBackground ? "animate-pulse" : "grayscale opacity-50"}>✨</span>
-                              {file.removeBackground ? 'AI BG Removed' : 'Remove BG'}
-                            </button>
-                          </div>
                         )}
-                      </div>
-                    )}
-
-                    <div className="mt-2 flex justify-end gap-3">
-                      {file.status === 'idle' && (
-                        <button onClick={() => convertImage(file.id)} className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2 rounded-lg text-sm font-bold shadow-lg shadow-indigo-500/30">
-                          {t('convert_btn')}
-                        </button>
-                      )}
-                      {file.status === 'done' && (
-                        <div className="flex gap-2">
-                          <button
-                            onClick={() => setCompareItem(file)}
-                            className="bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded-lg text-xs"
-                          >
-                            👁️ Compare
-                          </button>
-                          <a href={file.convertedUrl} download={`${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`} className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2">
-                            {t('download_btn')} ({formatFileSize(file.convertedSize || 0)})
-                          </a>
-                        </div>
-                      )}
-                    </div>
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
                   </div>
-                  {
-                    file.status === 'converting' && (
-                      <div className="absolute inset-0 bg-slate-900/90 rounded-xl flex items-center justify-center z-20 flex-col gap-4 p-6">
-                        <div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-                        <span className="text-indigo-300 text-sm font-medium">{t('processing')}</span>
-                        {/* Progress Bar */}
-                        <div className="w-full max-w-xs">
-                          <div className="flex justify-between text-xs text-slate-400 mb-1">
-                            <span>{t('progress') || 'İlerleme'}</span>
-                            <span className="font-mono text-indigo-400">{file.conversionProgress || 0}%</span>
-                          </div>
-                          <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
-                            <div
-                              className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 ease-out"
-                              style={{ width: `${file.conversionProgress || 0}%` }}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  }
-                </div>
-              </div>
-            ))}
+                )}
+              </Droppable>
+            </DragDropContext>
 
             {files.length > 0 && <div className="mt-8"><AdBanner variant="horizontal" /></div>}
 
@@ -994,8 +1046,8 @@ function BanaConvertApp() {
                 </div>
               )
             }
-          </div >
-        </div >
+          </div>
+        </div>
 
         {/* Right Sidebar */}
         < div className="w-full lg:w-80 flex flex-col gap-6" >
@@ -1013,7 +1065,7 @@ function BanaConvertApp() {
             {!stats.isPremium && <AdBanner variant="box" className="w-full" />}
             {/* <AdBanner variant="vertical" className="hidden lg:flex" /> */}
           </div>
-        </div >
+        </div>
       </main >
 
       <SupportModal
@@ -1068,7 +1120,7 @@ function BanaConvertApp() {
           </div>
         </div>
       </footer>
-    </div >
+    </div>
   );
 }
 
