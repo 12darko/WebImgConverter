@@ -300,7 +300,7 @@ function BanaConvertApp() {
   };
 
   const deductCredit = async (cost: number) => {
-    if (stats.isPremium) return true;
+    // Premium users also have credits deducted (no unlimited)
     if (stats.credits < cost) return false;
 
     const newCredits = stats.credits - cost;
