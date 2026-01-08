@@ -837,8 +837,8 @@ function BanaConvertApp() {
                       {t('convert_all_btn') || 'Tümünü Dönüştür'}
                     </button>
                   )}
-                  {/* ZIP Download for Premium */}
-                  {stats.isPremium && files.some(f => f.status === 'done') && (
+                  {/* ZIP Download for Premium (Pro+) */}
+                  {hasFeatureAccess(stats.premiumTier, 'ZIP_DOWNLOAD') && files.some(f => f.status === 'done') && (
                     <button
                       onClick={async () => {
                         const JSZip = (await import('jszip')).default;
@@ -862,8 +862,8 @@ function BanaConvertApp() {
                       ZIP İndir
                     </button>
                   )}
-                  {/* Batch AI Rename - Premium Only */}
-                  {stats.isPremium && files.some(f => f.status === 'idle' && !f.aiName) && (
+                  {/* Batch AI Rename - Premium Only (Pro+) */}
+                  {hasFeatureAccess(stats.premiumTier, 'BATCH_AI') && files.some(f => f.status === 'idle' && !f.aiName) && (
                     <button
                       onClick={async () => {
                         const filesToRename = files.filter(f => f.status === 'idle' && !f.aiName);
@@ -1174,16 +1174,31 @@ function BanaConvertApp() {
                                     {
                                       file.targetFormat !== ConversionFormat.JPEG && (
                                         <div className="flex items-center gap-2">
-                                          <button
-                                            onClick={() => updateFileConfig(file.id, 'removeBackground', !file.removeBackground)}
-                                            className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-2 transition-all duration-300 font-medium ${file.removeBackground
-                                              ? 'bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/50 text-pink-300 shadow-sm shadow-pink-500/20'
-                                              : 'bg-slate-800 border-slate-700 text-slate-500 hover:text-slate-400 hover:bg-slate-750'
-                                              }`}
-                                          >
-                                            <span className={file.removeBackground ? "animate-pulse" : "grayscale opacity-50"}>✨</span>
-                                            {file.removeBackground ? 'AI BG Removed' : 'Remove BG'}
-                                          </button>
+                                          {(() => {
+                                            const canUseRemoveBg = hasFeatureAccess(stats.premiumTier, 'REMOVE_BG');
+                                            return (
+                                              <button
+                                                onClick={() => {
+                                                  if (canUseRemoveBg) {
+                                                    updateFileConfig(file.id, 'removeBackground', !file.removeBackground);
+                                                  } else {
+                                                    setIsPremiumModalOpen(true);
+                                                  }
+                                                }}
+
+                                                className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-2 transition-all duration-300 font-medium ${file.removeBackground
+                                                  ? 'bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/50 text-pink-300 shadow-sm shadow-pink-500/20'
+                                                  : canUseRemoveBg
+                                                    ? 'bg-slate-800 border-slate-700 text-slate-500 hover:text-slate-400 hover:bg-slate-750'
+                                                    : 'bg-slate-900/50 border-slate-700/50 text-slate-500 opacity-60'
+                                                  }`}
+                                              >
+                                                <span className={file.removeBackground ? "animate-pulse" : "grayscale opacity-50"}>✨</span>
+                                                {file.removeBackground ? 'AI BG Removed' : 'Remove BG'}
+                                                {!canUseRemoveBg && <span className="text-amber-400 ml-1">🔒</span>}
+                                              </button>
+                                            );
+                                          })()}
                                         </div>
                                       )
                                     }

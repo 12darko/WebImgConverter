@@ -81,6 +81,7 @@ export const getTierLevel = (tier?: string): number => {
 // Feature requirements (minimum tier level needed)
 export const FEATURE_REQUIREMENTS = {
   NO_ADS: 1,           // Starter+
+  REMOVE_BG: 1,        // Starter+ (Free cannot use)
   WATERMARK: 2,        // Pro+
   AI_RENAME: 2,        // Pro+
   ZIP_DOWNLOAD: 2,     // Pro+
