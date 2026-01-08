@@ -61,3 +61,36 @@ export const COST_PER_AI_RENAME = 1;
 // Premium sistemi aktif edilecekse bunu TRUE yapın.
 // Şu an sadece reklam geliri istendiği için FALSE olarak ayarlandı.
 export const ENABLE_PREMIUM_SYSTEM = true;
+
+// --- TIER LEVEL SYSTEM ---
+// Each tier unlocks progressively more features
+// 0 = Free, 1 = Starter, 2 = Pro, 3 = Business
+export const TIER_LEVELS: Record<string, number> = {
+  'free': 0,
+  'starter': 1,
+  'pro': 2,
+  'business': 3
+};
+
+// Get numeric tier level from tier name
+export const getTierLevel = (tier?: string): number => {
+  if (!tier) return 0;
+  return TIER_LEVELS[tier.toLowerCase()] || 0;
+};
+
+// Feature requirements (minimum tier level needed)
+export const FEATURE_REQUIREMENTS = {
+  NO_ADS: 1,           // Starter+
+  WATERMARK: 2,        // Pro+
+  AI_RENAME: 2,        // Pro+
+  ZIP_DOWNLOAD: 2,     // Pro+
+  BATCH_AI: 2,         // Pro+
+  SPECIAL_FORMATS: 3,  // Business (BMP, ICO, TIFF)
+  HISTORY: 3,          // Business
+};
+
+// Check if user has access to a feature
+export const hasFeatureAccess = (userTier: string | undefined, feature: keyof typeof FEATURE_REQUIREMENTS): boolean => {
+  const userLevel = getTierLevel(userTier);
+  return userLevel >= FEATURE_REQUIREMENTS[feature];
+};

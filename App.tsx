@@ -25,7 +25,8 @@ import {
   MAX_FREE_CREDITS,
   COST_PER_CONVERT,
   COST_PER_AI_RENAME,
-  ENABLE_PREMIUM_SYSTEM
+  ENABLE_PREMIUM_SYSTEM,
+  hasFeatureAccess
 } from './types';
 
 import { encodeToBMP, encodeToTIFF, encodeToICO } from './utils/imageEncoders';
@@ -304,8 +305,8 @@ function BanaConvertApp() {
 
   const removeFile = (id: string) => setFiles(prev => prev.filter(f => f.id !== id));
   const updateFileConfig = (id: string, key: keyof FileItem, value: any) => {
-    // Premium check for Watermark
-    if (key === 'watermarkText' && !stats.isPremium && value) {
+    // Tier check for Watermark (Pro+)
+    if (key === 'watermarkText' && !hasFeatureAccess(stats.premiumTier, 'WATERMARK') && value) {
       setIsPremiumModalOpen(true);
       return;
     }
@@ -986,24 +987,27 @@ function BanaConvertApp() {
                                           {fmt.split('/')[1].toUpperCase()}
                                         </button>
                                       ))}
-                                      {/* Premium Formats */}
-                                      {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO].map(fmt => (
-                                        <button
-                                          key={fmt}
-                                          onClick={() => stats.isPremium && updateFileConfig(file.id, 'targetFormat', fmt)}
-                                          disabled={!stats.isPremium}
-                                          title={stats.isPremium ? fmt.split('/')[1].toUpperCase() : 'Premium özelliği'}
-                                          className={`text-xs px-3 py-1.5 rounded border flex items-center gap-1 ${stats.isPremium
-                                            ? file.targetFormat === fmt
-                                              ? 'bg-indigo-600 border-indigo-500'
-                                              : 'bg-slate-800 border-slate-600'
-                                            : 'bg-slate-900/50 border-slate-700/50 text-slate-500 cursor-not-allowed opacity-60'
-                                            }`}
-                                        >
-                                          {fmt.split('/')[1].toUpperCase()}
-                                          {!stats.isPremium && <span className="text-amber-400">🔒</span>}
-                                        </button>
-                                      ))}
+                                      {/* Premium Formats (Business tier) */}
+                                      {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO].map(fmt => {
+                                        const canUse = hasFeatureAccess(stats.premiumTier, 'SPECIAL_FORMATS');
+                                        return (
+                                          <button
+                                            key={fmt}
+                                            onClick={() => canUse && updateFileConfig(file.id, 'targetFormat', fmt)}
+                                            disabled={!canUse}
+                                            title={canUse ? fmt.split('/')[1].toUpperCase() : 'Business özelliği'}
+                                            className={`text-xs px-3 py-1.5 rounded border flex items-center gap-1 ${canUse
+                                              ? file.targetFormat === fmt
+                                                ? 'bg-indigo-600 border-indigo-500'
+                                                : 'bg-slate-800 border-slate-600'
+                                              : 'bg-slate-900/50 border-slate-700/50 text-slate-500 cursor-not-allowed opacity-60'
+                                              }`}
+                                          >
+                                            {fmt.split('/')[1].toUpperCase()}
+                                            {!canUse && <span className="text-amber-400">🔒</span>}
+                                          </button>
+                                        );
+                                      })}
                                     </div>
                                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                                       <button onClick={() => updateFileConfig(file.id, 'rotation', (file.rotation + 90) % 360)} className="bg-slate-800 p-2 rounded text-xs border border-slate-700">{t('rotate')}: {file.rotation}°</button>
