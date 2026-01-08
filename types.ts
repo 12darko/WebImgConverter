@@ -25,6 +25,8 @@ export interface FileItem {
   targetSizeBytes?: number; // Desired max size in bytes
   watermarkText?: string;
   watermarkLogo?: string; // base64
+  watermarkPosition?: 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+  watermarkColor?: string; // hex color
   isFlippedHorizontal?: boolean;
   isFlippedVertical?: boolean;
 

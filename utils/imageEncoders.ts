@@ -127,3 +127,89 @@ export function encodeToTIFF(imageData: ImageData): Blob {
 
     return new Blob([buffer], { type: 'image/tiff' });
 }
+
+/**
+ * Encodes canvas ImageData to ICO format (32x32 favicon)
+ * @param imageData - Canvas ImageData object
+ * @returns Blob of ICO file
+ */
+export function encodeToICO(imageData: ImageData): Blob {
+    // ICO files typically use 32x32 or 16x16 images
+    // We'll create a 32x32 version
+    const targetSize = 32;
+
+    // Create a temporary canvas to resize
+    const tempCanvas = document.createElement('canvas');
+    tempCanvas.width = imageData.width;
+    tempCanvas.height = imageData.height;
+    const tempCtx = tempCanvas.getContext('2d')!;
+    tempCtx.putImageData(imageData, 0, 0);
+
+    // Create scaled canvas
+    const icoCanvas = document.createElement('canvas');
+    icoCanvas.width = targetSize;
+    icoCanvas.height = targetSize;
+    const icoCtx = icoCanvas.getContext('2d')!;
+    icoCtx.drawImage(tempCanvas, 0, 0, targetSize, targetSize);
+
+    const scaledData = icoCtx.getImageData(0, 0, targetSize, targetSize);
+    const data = scaledData.data;
+
+    // ICO structure: Header (6 bytes) + Directory Entry (16 bytes) + BMP Data
+    const bmpDataSize = 40 + (targetSize * targetSize * 4) + (targetSize * targetSize / 8);
+    const headerSize = 6;
+    const dirEntrySize = 16;
+    const fileSize = headerSize + dirEntrySize + Math.ceil(bmpDataSize);
+
+    const buffer = new ArrayBuffer(fileSize);
+    const view = new DataView(buffer);
+    const uint8 = new Uint8Array(buffer);
+
+    // ICO Header (6 bytes)
+    view.setUint16(0, 0, true);      // Reserved
+    view.setUint16(2, 1, true);      // Type: 1 = ICO
+    view.setUint16(4, 1, true);      // Number of images
+
+    // Directory Entry (16 bytes)
+    view.setUint8(6, targetSize);     // Width (0 = 256)
+    view.setUint8(7, targetSize);     // Height
+    view.setUint8(8, 0);              // Color palette
+    view.setUint8(9, 0);              // Reserved
+    view.setUint16(10, 1, true);      // Color planes
+    view.setUint16(12, 32, true);     // Bits per pixel
+    view.setUint32(14, bmpDataSize, true); // Size of BMP data
+    view.setUint32(18, 22, true);     // Offset to BMP data
+
+    // BMP Info Header (40 bytes) - starts at offset 22
+    let offset = 22;
+    view.setUint32(offset, 40, true); offset += 4;     // Header size
+    view.setInt32(offset, targetSize, true); offset += 4;  // Width
+    view.setInt32(offset, targetSize * 2, true); offset += 4; // Height (doubled for ICO)
+    view.setUint16(offset, 1, true); offset += 2;      // Planes
+    view.setUint16(offset, 32, true); offset += 2;     // Bits per pixel
+    view.setUint32(offset, 0, true); offset += 4;      // Compression
+    view.setUint32(offset, 0, true); offset += 4;      // Image size
+    view.setUint32(offset, 0, true); offset += 4;      // X pixels per meter
+    view.setUint32(offset, 0, true); offset += 4;      // Y pixels per meter
+    view.setUint32(offset, 0, true); offset += 4;      // Colors used
+    view.setUint32(offset, 0, true); offset += 4;      // Important colors
+
+    // Pixel data (BGRA, bottom-up)
+    for (let y = targetSize - 1; y >= 0; y--) {
+        for (let x = 0; x < targetSize; x++) {
+            const i = (y * targetSize + x) * 4;
+            uint8[offset++] = data[i + 2]; // Blue
+            uint8[offset++] = data[i + 1]; // Green
+            uint8[offset++] = data[i];     // Red
+            uint8[offset++] = data[i + 3]; // Alpha
+        }
+    }
+
+    // AND mask (transparency mask - all 0s for fully visible)
+    const andMaskSize = Math.ceil(targetSize / 8) * targetSize;
+    for (let i = 0; i < andMaskSize; i++) {
+        uint8[offset++] = 0;
+    }
+
+    return new Blob([buffer], { type: 'image/x-icon' });
+}

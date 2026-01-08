@@ -28,7 +28,7 @@ import {
   ENABLE_PREMIUM_SYSTEM
 } from './types';
 
-import { encodeToBMP, encodeToTIFF } from './utils/imageEncoders';
+import { encodeToBMP, encodeToTIFF, encodeToICO } from './utils/imageEncoders';
 
 declare global {
   interface Window {
@@ -424,31 +424,79 @@ function BanaConvertApp() {
         updateProgress(65); // Effects applied
 
         // --- WATERMARK (Premium) ---
-        if (stats.isPremium) {
+        if (stats.isPremium && (item.watermarkText || item.watermarkLogo)) {
+          // Reset transforms for watermark positioning
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+          const position = item.watermarkPosition || 'center';
+          const padding = Math.min(canvas.width, canvas.height) * 0.03;
+
+          // Calculate position coordinates
+          let x = canvas.width / 2;
+          let y = canvas.height / 2;
+
+          switch (position) {
+            case 'top-left':
+              x = padding;
+              y = padding;
+              ctx.textAlign = 'left';
+              ctx.textBaseline = 'top';
+              break;
+            case 'top-right':
+              x = canvas.width - padding;
+              y = padding;
+              ctx.textAlign = 'right';
+              ctx.textBaseline = 'top';
+              break;
+            case 'bottom-left':
+              x = padding;
+              y = canvas.height - padding;
+              ctx.textAlign = 'left';
+              ctx.textBaseline = 'bottom';
+              break;
+            case 'bottom-right':
+              x = canvas.width - padding;
+              y = canvas.height - padding;
+              ctx.textAlign = 'right';
+              ctx.textBaseline = 'bottom';
+              break;
+            default: // center
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+          }
+
           if (item.watermarkLogo) {
             const logoImg = new Image();
             logoImg.src = item.watermarkLogo;
-            await new Promise((resolve) => { logoImg.onload = resolve; logoImg.onerror = resolve; }); // Ignore error
+            await new Promise((resolve) => { logoImg.onload = resolve; logoImg.onerror = resolve; });
 
-            // Calculate logo size (e.g., 15% of canvas width)
             const logoWidth = canvas.width * 0.15;
             const logoHeight = logoWidth * (logoImg.height / logoImg.width);
 
-            // Draw logo at bottom right with some padding
-            const padding = canvas.width * 0.05;
-            ctx.globalAlpha = 0.5; // Semi-transparent
-            ctx.drawImage(logoImg, canvas.width - logoWidth - padding, canvas.height - logoHeight - padding, logoWidth, logoHeight);
+            // Adjust logo position based on selected position
+            let logoX = x - logoWidth / 2;
+            let logoY = y - logoHeight / 2;
+            if (position === 'top-left') { logoX = padding; logoY = padding; }
+            else if (position === 'top-right') { logoX = canvas.width - logoWidth - padding; logoY = padding; }
+            else if (position === 'bottom-left') { logoX = padding; logoY = canvas.height - logoHeight - padding; }
+            else if (position === 'bottom-right') { logoX = canvas.width - logoWidth - padding; logoY = canvas.height - logoHeight - padding; }
+
+            ctx.globalAlpha = 0.6;
+            ctx.drawImage(logoImg, logoX, logoY, logoWidth, logoHeight);
             ctx.globalAlpha = 1.0;
           } else if (item.watermarkText) {
-            ctx.save();
-            ctx.font = `bold ${Math.floor(canvas.width * 0.05)}px sans-serif`;
-            ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.translate(canvas.width / 2, canvas.height / 2);
-            ctx.rotate(-45 * Math.PI / 180);
-            ctx.fillText(item.watermarkText, 0, 0);
-            ctx.restore();
+            const fontSize = Math.floor(canvas.width * 0.04);
+            ctx.font = `bold ${fontSize}px Arial, sans-serif`;
+
+            // Use custom color or default white
+            const color = item.watermarkColor || '#ffffff';
+            ctx.fillStyle = color + '99'; // Add 60% opacity
+            ctx.strokeStyle = 'rgba(0,0,0,0.5)';
+            ctx.lineWidth = 2;
+
+            // Draw text with stroke for visibility
+            ctx.strokeText(item.watermarkText, x, y);
+            ctx.fillText(item.watermarkText, x, y);
           }
         }
 
@@ -471,13 +519,14 @@ function BanaConvertApp() {
           const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
           blob = encodeToBMP(imageData);
           dataUrl = URL.createObjectURL(blob);
+        } else if (item.targetFormat === ConversionFormat.ICO) {
+          // Use custom ICO encoder for favicon
+          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          blob = encodeToICO(imageData);
+          dataUrl = URL.createObjectURL(blob);
         } else {
-          // Standard formats (JPEG, PNG, WEBP, ICO)
-          let mimeType: string = item.targetFormat;
-          // ICO handling - save as PNG internally
-          if (item.targetFormat === ConversionFormat.ICO) {
-            mimeType = ConversionFormat.PNG;
-          }
+          // Standard formats (JPEG, PNG, WEBP)
+          const mimeType = item.targetFormat;
 
           blob = await new Promise<Blob>((resolve, reject) => {
             canvas.toBlob((b) => {
@@ -587,24 +636,28 @@ function BanaConvertApp() {
           <div className="flex items-center gap-6">
 
             {session ? (
-              <div className="hidden md:flex flex-col items-end mr-4">
-                <span className="text-[10px] text-slate-400 uppercase font-semibold tracking-wider">
-                  {stats.isPremium ? 'Premium' : session.user.email?.split('@')[0]}
-                </span>
-                <div className="flex items-center gap-2">
-                  <span className="text-xl font-bold text-white tracking-tight">{stats.credits}</span>
-                  <span className="text-[10px] text-slate-400 uppercase tracking-wider font-bold">{t('credits_label')}</span>
-                </div>
-                {stats.isPremium && stats.premiumExpiryDate && (
-                  <div className="border-t border-slate-700/50 mt-1 pt-1">
-                    <span className="text-[10px] text-amber-400 font-mono">
-                      {(() => {
-                        const daysLeft = Math.ceil((new Date(stats.premiumExpiryDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
-                        return daysLeft > 0 ? `${daysLeft} Days Left` : 'Expiring';
-                      })()}
-                    </span>
+              <div className="hidden md:flex items-center gap-4 mr-4">
+                {/* Premium Badge with Tier */}
+                {stats.isPremium && (
+                  <div className="flex items-center gap-2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 px-3 py-1.5 rounded-lg border border-amber-500/30">
+                    <span className="text-amber-400 text-xs font-bold uppercase">{stats.premiumTier || 'Premium'}</span>
+                    {stats.premiumExpiryDate && (
+                      <span className="text-amber-300/70 text-[10px] font-mono">
+                        {Math.ceil((new Date(stats.premiumExpiryDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))} gün
+                      </span>
+                    )}
                   </div>
                 )}
+                {/* Credits Display */}
+                <div className="flex flex-col items-end">
+                  <span className="text-[10px] text-slate-500 uppercase font-semibold">
+                    {stats.isPremium ? '' : session.user.email?.split('@')[0]}
+                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-xl font-bold text-white">{stats.credits}</span>
+                    <span className="text-[10px] text-slate-400 uppercase font-bold">{t('credits_label')}</span>
+                  </div>
+                </div>
               </div>
             ) : (
               <div className="flex flex-col items-end mr-2">
@@ -889,58 +942,91 @@ function BanaConvertApp() {
                                     </div>
 
                                     {/* NEW: Watermark (Premium) */}
-                                    <div className="flex items-center gap-2">
-                                      <input
-                                        type="text"
-                                        placeholder={stats.isPremium ? (file.watermarkLogo ? t('logo_uploaded') : "Watermark Text") : "Watermark (Premium Only)"}
-                                        disabled={!stats.isPremium || !!file.watermarkLogo} // Disable text if logo is uploaded
-                                        value={file.watermarkText || ''}
-                                        onChange={(e) => updateFileConfig(file.id, 'watermarkText', e.target.value)}
-                                        className={`bg-slate-800 text-xs border border-slate-700 rounded p-2 flex-grow ${!stats.isPremium ? 'opacity-50 cursor-not-allowed' : ''}`}
-                                      />
-
-                                      {/* Logo Upload Button */}
-                                      <div className="relative">
-                                        <input
-                                          type="file"
-                                          id={`logo-upload-${file.id}`}
-                                          className="hidden"
-                                          accept="image/png, image/jpeg"
-                                          disabled={!stats.isPremium}
-                                          onChange={(e) => {
-                                            const logoFile = e.target.files?.[0];
-                                            if (logoFile) {
-                                              const reader = new FileReader();
-                                              reader.onload = (ev) => {
-                                                updateFileConfig(file.id, 'watermarkLogo', ev.target?.result as string);
-                                                updateFileConfig(file.id, 'watermarkText', undefined); // Clear text if logo used
-                                              };
-                                              reader.readAsDataURL(logoFile);
-                                            }
-                                          }}
-                                        />
-                                        {file.watermarkLogo ? (
-                                          <button
-                                            onClick={() => updateFileConfig(file.id, 'watermarkLogo', undefined)}
-                                            className="bg-red-500/10 hover:bg-red-500/20 text-red-400 p-2 rounded border border-red-500/20 transition-colors"
-                                            title="Remove Logo"
-                                          >
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                          </button>
-                                        ) : (
-                                          <label
-                                            htmlFor={`logo-upload-${file.id}`}
-                                            className={`flex items-center justify-center p-2 rounded bg-slate-800 border border-slate-700 cursor-pointer hover:bg-slate-700 transition-colors ${!stats.isPremium ? 'opacity-50 pointer-events-none' : ''}`}
-                                            title="Upload Logo Watermark"
-                                          >
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                            </svg>
-                                          </label>
-                                        )}
+                                    <div className={`space-y-2 p-3 rounded-lg ${stats.isPremium ? 'bg-slate-800/50 border border-slate-700/50' : 'bg-slate-900/30 border border-slate-800/50'}`}>
+                                      <div className="flex items-center gap-2 text-[10px] text-slate-400 uppercase font-bold">
+                                        <span>Watermark</span>
+                                        {!stats.isPremium && <span className="text-amber-400">🔒 Premium</span>}
                                       </div>
+
+                                      {/* Text + Logo Row */}
+                                      <div className="flex items-center gap-2">
+                                        <input
+                                          type="text"
+                                          placeholder={file.watermarkLogo ? "Logo seçildi" : "Watermark metni..."}
+                                          disabled={!stats.isPremium || !!file.watermarkLogo}
+                                          value={file.watermarkText || ''}
+                                          onChange={(e) => updateFileConfig(file.id, 'watermarkText', e.target.value)}
+                                          className={`bg-slate-900 text-xs border border-slate-700 rounded p-2 flex-grow ${!stats.isPremium ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                        />
+
+                                        {/* Color Picker */}
+                                        <input
+                                          type="color"
+                                          value={file.watermarkColor || '#ffffff'}
+                                          onChange={(e) => updateFileConfig(file.id, 'watermarkColor', e.target.value)}
+                                          disabled={!stats.isPremium}
+                                          className={`w-8 h-8 rounded border border-slate-700 cursor-pointer ${!stats.isPremium ? 'opacity-50 pointer-events-none' : ''}`}
+                                          title="Watermark Rengi"
+                                        />
+
+                                        {/* Logo Upload */}
+                                        <div className="relative">
+                                          <input
+                                            type="file"
+                                            id={`logo-upload-${file.id}`}
+                                            className="hidden"
+                                            accept="image/png, image/jpeg"
+                                            disabled={!stats.isPremium}
+                                            onChange={(e) => {
+                                              const logoFile = e.target.files?.[0];
+                                              if (logoFile) {
+                                                const reader = new FileReader();
+                                                reader.onload = (ev) => {
+                                                  updateFileConfig(file.id, 'watermarkLogo', ev.target?.result as string);
+                                                  updateFileConfig(file.id, 'watermarkText', undefined);
+                                                };
+                                                reader.readAsDataURL(logoFile);
+                                              }
+                                            }}
+                                          />
+                                          {file.watermarkLogo ? (
+                                            <button
+                                              onClick={() => updateFileConfig(file.id, 'watermarkLogo', undefined)}
+                                              className="bg-red-500/10 hover:bg-red-500/20 text-red-400 p-2 rounded border border-red-500/20"
+                                              title="Logo Kaldır"
+                                            >✕</button>
+                                          ) : (
+                                            <label
+                                              htmlFor={`logo-upload-${file.id}`}
+                                              className={`flex items-center p-2 rounded bg-slate-900 border border-slate-700 cursor-pointer hover:bg-slate-700 ${!stats.isPremium ? 'opacity-50 pointer-events-none' : ''}`}
+                                              title="Logo Yükle"
+                                            >📷</label>
+                                          )}
+                                        </div>
+                                      </div>
+
+                                      {/* Position Selector */}
+                                      {stats.isPremium && (file.watermarkText || file.watermarkLogo) && (
+                                        <div className="flex items-center gap-1 flex-wrap">
+                                          <span className="text-[10px] text-slate-500 mr-1">Pozisyon:</span>
+                                          {(['top-left', 'top-right', 'center', 'bottom-left', 'bottom-right'] as const).map(pos => (
+                                            <button
+                                              key={pos}
+                                              onClick={() => updateFileConfig(file.id, 'watermarkPosition', pos)}
+                                              className={`text-[10px] px-2 py-1 rounded ${file.watermarkPosition === pos || (!file.watermarkPosition && pos === 'center')
+                                                ? 'bg-indigo-600 text-white'
+                                                : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                                }`}
+                                            >
+                                              {pos === 'top-left' && '↖'}
+                                              {pos === 'top-right' && '↗'}
+                                              {pos === 'center' && '⊙'}
+                                              {pos === 'bottom-left' && '↙'}
+                                              {pos === 'bottom-right' && '↘'}
+                                            </button>
+                                          ))}
+                                        </div>
+                                      )}
                                     </div>
 
                                     {file.targetFormat !== ConversionFormat.JPEG && (
