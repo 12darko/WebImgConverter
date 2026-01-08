@@ -59,20 +59,27 @@ export const getUserProfile = async (userId: string): Promise<UserStats | null> 
     }
 
     if (data) {
-      // ... existing logic ...
-      // Premium Süre Kontrolü
-      const today = new Date().toISOString().split('T')[0];
+      console.log('[Profile] Raw data from DB:', JSON.stringify(data));
 
-      if (data.is_premium && data.premium_expiry_date && data.premium_expiry_date < today) {
-        // Süresi dolmuş, Premium'u iptal et
+      // Normalize date formats (handle both DATE and TIMESTAMP from PostgreSQL)
+      const today = new Date().toISOString().split('T')[0];
+      const dbLastResetDate = (data.last_reset_date || '').toString().split('T')[0];
+      const dbExpiryDate = data.premium_expiry_date ? data.premium_expiry_date.toString().split('T')[0] : null;
+
+      // Premium Süre Kontrolü
+      if (data.is_premium && dbExpiryDate && dbExpiryDate < today) {
+        console.log('[Profile] Premium expired:', dbExpiryDate, '< today:', today);
         await supabase.from('profiles').update({ is_premium: false, daily_limit: 7 }).eq('id', userId);
         data.is_premium = false;
         data.daily_limit = 7;
       }
 
-      // Günlük kredi kontrolü
-      if (data.last_reset_date !== today) {
+      // Günlük kredi kontrolü - only reset if date is DIFFERENT
+      console.log('[Profile] Date check - DB:', dbLastResetDate, 'Today:', today, 'Match:', dbLastResetDate === today);
+
+      if (dbLastResetDate !== today) {
         const limit = data.daily_limit || MAX_FREE_CREDITS;
+        console.log('[Profile] Daily reset triggered. New credits:', limit);
         await resetDailyCredits(userId, limit);
         return {
           credits: limit,
@@ -83,7 +90,9 @@ export const getUserProfile = async (userId: string): Promise<UserStats | null> 
           premiumTier: data.premium_tier
         };
       }
-      // Map snake_case to camelCase
+
+      // No reset needed, return current values
+      console.log('[Profile] Returning existing data. Credits:', data.credits, 'IsPremium:', data.is_premium);
       return {
         credits: data.credits,
         isPremium: data.is_premium,

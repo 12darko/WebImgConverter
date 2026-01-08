@@ -91,18 +91,10 @@ function BanaConvertApp() {
 
   // 1. Initialize Session & Stats
   useEffect(() => {
-    // Check active session
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
+    // Check active session - onAuthStateChange will handle profile loading
+    supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
-      if (session) {
-        const profile = await getUserProfile(session.user.id);
-        if (profile) setStats(profile);
-        setIsInitialized(true);
-      } else {
-        // Fallback to local storage for guests
-        loadLocalStats();
-        setIsInitialized(true);
-      }
+      // Profile loading is handled by onAuthStateChange below
     });
 
     // Listen for auth changes
