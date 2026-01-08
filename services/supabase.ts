@@ -38,9 +38,24 @@ export const getUserProfile = async (userId: string): Promise<UserStats | null> 
       if (data.last_reset_date !== today) {
         const limit = data.daily_limit || MAX_FREE_CREDITS;
         await resetDailyCredits(userId, limit);
-        return { ...data, credits: limit, last_reset_date: today };
+        return {
+          credits: limit,
+          isPremium: data.is_premium,
+          lastResetDate: today,
+          premiumExpiryDate: data.premium_expiry_date,
+          dailyLimit: data.daily_limit,
+          premiumTier: data.premium_tier
+        };
       }
-      return data as UserStats;
+      // Map snake_case to camelCase
+      return {
+        credits: data.credits,
+        isPremium: data.is_premium,
+        lastResetDate: data.last_reset_date,
+        premiumExpiryDate: data.premium_expiry_date,
+        dailyLimit: data.daily_limit,
+        premiumTier: data.premium_tier
+      };
     }
     return null;
   } catch (err) {

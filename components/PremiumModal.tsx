@@ -6,9 +6,11 @@ interface PremiumModalProps {
   isOpen: boolean;
   onClose: () => void;
   userId?: string; // Add userId to pass to checkout
+  currentTier?: 'starter' | 'pro' | 'business'; // User's current premium tier
+  isPremium?: boolean; // Whether user is currently premium
 }
 
-export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, userId }) => {
+export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, userId, currentTier, isPremium }) => {
   const { t } = useLanguage();
 
   // Scroll Lock Effect
@@ -65,7 +67,13 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-20 md:pb-0">
           {/* STARTER PLAN */}
-          <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:border-indigo-500/50 transition-all group">
+          <div className={`rounded-2xl p-6 transition-all group relative ${isPremium && currentTier === 'starter'
+              ? 'bg-indigo-900/30 border-2 border-indigo-500 ring-2 ring-indigo-500/20'
+              : 'bg-slate-800/50 border border-slate-700/50 hover:border-indigo-500/50'
+            }`}>
+            {isPremium && currentTier === 'starter' && (
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-500 text-xs font-bold text-white px-3 py-1 rounded-full">✓ Mevcut Plan</div>
+            )}
             <h3 className="text-xl font-bold text-indigo-400 mb-2">{t('plan_starter')}</h3>
             <div className="text-3xl font-bold text-white mb-4">$4.99<span className="text-sm font-normal text-slate-500">{t('price_mo')}</span></div>
             <ul className="space-y-3 mb-8 text-sm text-slate-300">
@@ -73,14 +81,25 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
               <li className="flex items-center gap-2"><span className="text-indigo-500">✓</span> {t('feat_remove_bg')}</li>
               <li className="flex items-center gap-2"><span className="text-indigo-500">✓</span> {t('feat_no_ads')}</li>
             </ul>
-            <button onClick={() => handleUpgrade('starter')} className="w-full py-3 rounded-lg bg-indigo-600/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-600 hover:text-white transition-all font-bold">
-              {t('btn_select_starter')}
-            </button>
+            {isPremium && currentTier === 'starter' ? (
+              <div className="w-full py-3 rounded-lg bg-indigo-500/20 text-indigo-300 text-center font-bold">✓ Aktif</div>
+            ) : (
+              <button onClick={() => handleUpgrade('starter')} className="w-full py-3 rounded-lg bg-indigo-600/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-600 hover:text-white transition-all font-bold">
+                {t('btn_select_starter')}
+              </button>
+            )}
           </div>
 
           {/* PRO PLAN (Featured) */}
-          <div className="bg-slate-800/80 border border-amber-500/50 rounded-2xl p-8 transform md:-translate-y-4 shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 bg-amber-500 text-xs font-bold text-slate-900 px-3 py-1 rounded-bl-lg">{t('popular_badge')}</div>
+          <div className={`rounded-2xl p-8 transform md:-translate-y-4 shadow-2xl relative overflow-hidden group ${isPremium && currentTier === 'pro'
+              ? 'bg-amber-900/30 border-2 border-amber-500 ring-2 ring-amber-500/20'
+              : 'bg-slate-800/80 border border-amber-500/50'
+            }`}>
+            {isPremium && currentTier === 'pro' ? (
+              <div className="absolute top-0 right-0 bg-emerald-500 text-xs font-bold text-white px-3 py-1 rounded-bl-lg">✓ Mevcut Plan</div>
+            ) : (
+              <div className="absolute top-0 right-0 bg-amber-500 text-xs font-bold text-slate-900 px-3 py-1 rounded-bl-lg">{t('popular_badge')}</div>
+            )}
             <h3 className="text-2xl font-bold text-amber-400 mb-2">{t('plan_pro')}</h3>
             <div className="text-4xl font-bold text-white mb-4">$9.99<span className="text-sm font-normal text-slate-500">{t('price_mo')}</span></div>
             <ul className="space-y-3 mb-8 text-base text-slate-200">
@@ -89,23 +108,37 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
               <li className="flex items-center gap-2"><span className="text-amber-500">✓</span> {t('feat_all_prem')}</li>
               <li className="flex items-center gap-2"><span className="text-amber-500">✓</span> {t('feat_support_247')}</li>
             </ul>
-            <button onClick={() => handleUpgrade('pro')} className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold shadow-lg shadow-amber-500/25 hover:from-amber-400 hover:to-orange-500 transform transition-all active:scale-95">
-              {t('btn_select_pro')}
-            </button>
+            {isPremium && currentTier === 'pro' ? (
+              <div className="w-full py-4 rounded-xl bg-emerald-500/20 text-emerald-300 text-center font-bold">✓ Aktif</div>
+            ) : (
+              <button onClick={() => handleUpgrade('pro')} className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold shadow-lg shadow-amber-500/25 hover:from-amber-400 hover:to-orange-500 transform transition-all active:scale-95">
+                {t('btn_select_pro')}
+              </button>
+            )}
           </div>
 
           {/* BUSINESS PLAN */}
-          <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all group mb-8 md:mb-0">
+          <div className={`rounded-2xl p-6 transition-all group mb-8 md:mb-0 relative ${isPremium && currentTier === 'business'
+              ? 'bg-blue-900/30 border-2 border-blue-500 ring-2 ring-blue-500/20'
+              : 'bg-slate-800/50 border border-slate-700/50 hover:border-blue-500/50'
+            }`}>
+            {isPremium && currentTier === 'business' && (
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-500 text-xs font-bold text-white px-3 py-1 rounded-full">✓ Mevcut Plan</div>
+            )}
             <h3 className="text-xl font-bold text-blue-400 mb-2">{t('plan_business')}</h3>
             <div className="text-3xl font-bold text-white mb-4">$19.99<span className="text-sm font-normal text-slate-500">{t('price_mo')}</span></div>
             <ul className="space-y-3 mb-8 text-sm text-slate-300">
-              <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> <strong>{t('feat_credits_unlimited')}</strong></li>
+              <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> <strong>Günlük 300 Kredi</strong></li>
               <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> {t('feat_batch_50')}</li>
               <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> {t('feat_api_access')}</li>
             </ul>
-            <button onClick={() => handleUpgrade('business')} className="w-full py-3 rounded-lg bg-blue-600/20 text-blue-300 border border-blue-500/30 hover:bg-blue-600 hover:text-white transition-all font-bold">
-              {t('btn_select_business')}
-            </button>
+            {isPremium && currentTier === 'business' ? (
+              <div className="w-full py-3 rounded-lg bg-blue-500/20 text-blue-300 text-center font-bold">✓ Aktif</div>
+            ) : (
+              <button onClick={() => handleUpgrade('business')} className="w-full py-3 rounded-lg bg-blue-600/20 text-blue-300 border border-blue-500/30 hover:bg-blue-600 hover:text-white transition-all font-bold">
+                {t('btn_select_business')}
+              </button>
+            )}
           </div>
         </div>
 
