@@ -16,6 +16,10 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 export const getUserProfile = async (userId: string): Promise<UserStats | null> => {
   console.log('[getUserProfile] START, userId:', userId);
   try {
+    // Wait for auth token to propagate to Supabase client
+    // This fixes the race condition where SIGNED_IN fires before auth is ready
+    await new Promise(resolve => setTimeout(resolve, 200));
+
     console.log('[getUserProfile] Making DB query...');
 
     // Add timeout to catch hanging queries
