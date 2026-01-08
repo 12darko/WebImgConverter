@@ -91,17 +91,46 @@ function BanaConvertApp() {
 
   // 1. Initialize Session & Stats
   useEffect(() => {
-    // Check active session - onAuthStateChange will handle profile loading
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    // RELIABLE APPROACH: Use getSession for initial load
+    const initialize = async () => {
+      console.log('[Auth] Initializing...');
+      const { data: { session } } = await supabase.auth.getSession();
       setSession(session);
-      // Profile loading is handled by onAuthStateChange below
-    });
 
-    // Listen for auth changes
+      if (session) {
+        console.log('[Auth] Session found, loading profile...');
+        try {
+          const profile = await getUserProfile(session.user.id);
+          if (profile) {
+            setStats(profile);
+            console.log('[Auth] Profile loaded:', profile.credits, profile.isPremium);
+          } else {
+            console.error('[Auth] Profile returned null');
+          }
+        } catch (err) {
+          console.error('[Auth] Profile load error:', err);
+        }
+      } else {
+        console.log('[Auth] No session, loading local stats');
+        loadLocalStats();
+      }
+      setIsInitialized(true);
+    };
+
+    initialize();
+
+    // Listen for SUBSEQUENT auth changes only (not initial load)
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (event, session) => {
-      console.log('[Auth] Event:', event, 'Session:', session?.user?.email);
+      console.log('[Auth] Event:', event);
+
+      // Skip INITIAL_SESSION - we already handled it above
+      if (event === 'INITIAL_SESSION') {
+        console.log('[Auth] Skipping INITIAL_SESSION (already handled)');
+        return;
+      }
+
       setSession(session);
 
       if (event === 'SIGNED_OUT') {
@@ -115,27 +144,25 @@ function BanaConvertApp() {
           dailyLimit: MAX_FREE_CREDITS
         };
         setStats(freeStats);
-        setIsInitialized(true);
+        localStorage.clear();
         console.log('[Auth] Logged out - reset to free stats');
-      } else if (session) {
-        // Load profile and wait for it
-        console.log('[Auth] Loading profile for user:', session.user.id);
+      } else if (event === 'SIGNED_IN' && session) {
+        // Fresh login (OAuth callback) - load profile
+        console.log('[Auth] Fresh sign in, loading profile...');
         try {
           const profile = await getUserProfile(session.user.id);
           if (profile) {
             setStats(profile);
-            console.log('[Auth] Loaded profile:', profile.isPremium, profile.premiumTier, 'Credits:', profile.credits);
-          } else {
-            console.error('[Auth] Failed to load profile - returned null. Check DB/RLS.');
+            console.log('[Auth] Profile loaded after sign in:', profile.credits);
           }
         } catch (err) {
-          console.error('[Auth] getUserProfile threw an error:', err);
+          console.error('[Auth] Profile load error after sign in:', err);
         }
-        setIsInitialized(true);
-      } else if (!session) {
-        // Guest: Load local stats logic
-        loadLocalStats();
-        setIsInitialized(true);
+      } else if (event === 'TOKEN_REFRESHED' && session) {
+        // Token refreshed - reload profile to ensure fresh data
+        console.log('[Auth] Token refreshed, reloading profile...');
+        const profile = await getUserProfile(session.user.id);
+        if (profile) setStats(profile);
       }
     });
 
