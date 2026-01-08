@@ -91,6 +91,8 @@ function BanaConvertApp() {
 
   // 1. Initialize Session & Stats
   useEffect(() => {
+    let isInitializing = true; // Flag to skip SIGNED_IN during page load
+
     // RELIABLE APPROACH: Use getSession for initial load
     const initialize = async () => {
       console.log('[Auth] Initializing...');
@@ -115,6 +117,8 @@ function BanaConvertApp() {
         loadLocalStats();
       }
       setIsInitialized(true);
+      isInitializing = false; // Initialization complete
+      console.log('[Auth] Initialization complete');
     };
 
     initialize();
@@ -128,6 +132,12 @@ function BanaConvertApp() {
       // Skip INITIAL_SESSION - we already handled it above
       if (event === 'INITIAL_SESSION') {
         console.log('[Auth] Skipping INITIAL_SESSION (already handled)');
+        return;
+      }
+
+      // Skip SIGNED_IN during initialization - getSession handles initial load
+      if (event === 'SIGNED_IN' && isInitializing) {
+        console.log('[Auth] Skipping SIGNED_IN during init (getSession handles it)');
         return;
       }
 
@@ -147,8 +157,8 @@ function BanaConvertApp() {
         localStorage.clear();
         console.log('[Auth] Logged out - reset to free stats');
       } else if (event === 'SIGNED_IN' && session) {
-        // Fresh login (OAuth callback) - load profile
-        console.log('[Auth] Fresh sign in, loading profile...');
+        // Fresh login (OAuth callback AFTER init) - load profile
+        console.log('[Auth] Fresh sign in (post-init), loading profile...');
         try {
           const profile = await getUserProfile(session.user.id);
           if (profile) {
