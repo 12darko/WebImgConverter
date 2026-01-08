@@ -132,7 +132,10 @@ Ayrıca, Google AdSense aracılığıyla sunulan reklamlar, ilgi alanlarınıza 
 - Google Gemini AI: Eğer "AI İsimlendirme" özelliğini kullanırsanız, sadece o anki görselin verisi analiz için Google sunucularına geçici olarak gönderilir ve işlem bitince silinir.
 
 4. KVKK VE GDPR UYUMU
-Sitemiz herhangi bir kişisel kimlik bilgisi (Ad, Soyad, TC Kimlik No vb.) toplamaz ve saklamaz. Tamamen anonim olarak hizmet verir.`,
+Sitemiz herhangi bir kişisel kimlik bilgisi (Ad, Soyad, TC Kimlik No vb.) toplamaz ve saklamaz. Tamamen anonim olarak hizmet verir.
+
+5. DÖNÜŞÜM GEÇMİŞİ (BUSINESS TIER)
+Premium Business kullanıcıları için sunulan Dönüşüm Geçmişi özelliği, yalnızca dosya adı ve tarih gibi işlem metadatalarını (dosyanın kendisini değil) saklar. Bu veriler veritabanı verimliliği ve gizlilik ilkemiz gereği 7 gün saklandıktan sonra otomatik olarak ve kalıcı şekilde silinir.`,
 
     terms_content: `1. HİZMETİN KULLANIMI
 VormPixyze.com ("Site") adresini kullanarak aşağıdaki şartları kabul etmiş sayılırsınız. Bu site, resim dosyalarını dönüştürmek ve düzenlemek amacıyla sunulan bir araçtır.
@@ -291,7 +294,10 @@ Additionally, we use third-party services like Google AdSense, which may use coo
 - Google Gemini AI: If you use the "AI Rename" feature, only the specific image data is temporarily sent to Google servers for analysis and is not stored permanently.
 
 4. GDPR & CCPA COMPLIANCE
-Our site does not collect or store personally identifiable information (Name, Email, ID, etc.). We operate as a completely anonymous tool.`,
+Our site does not collect or store personally identifiable information (Name, Email, ID, etc.). We operate as a completely anonymous tool.
+
+5. CONVERSION HISTORY (BUSINESS TIER)
+The Conversion History feature provided for Premium Business users stores only processing metadata (filename, date, etc.), NOT the files themselves. In accordance with database efficiency and our privacy principles, this data is automatically and permanently deleted after 7 days.`,
 
     terms_content: `1. ACCEPTANCE OF TERMS
 By accessing and using VormPixyze.com ("Site"), you agree to comply with these Terms of Service. This site is a tool provided for image conversion and editing purposes.

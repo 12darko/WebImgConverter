@@ -9,6 +9,7 @@ import { PaymentModal } from './components/PaymentModal';
 import { LegalModal } from './components/LegalModal';
 import { SupportModal } from './components/SupportModal';
 import { CookieBanner } from './components/CookieBanner';
+import { HistoryModal } from './components/HistoryModal'; // History Import
 
 import { CompareSlider } from './components/CompareSlider';
 import { AuthModal } from './components/AuthModal'; // Auth import
@@ -17,6 +18,7 @@ import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea
 
 
 import { supabase, getUserProfile, updateUserCredits, upgradeToPremium, incrementDailyStats } from './services/supabase'; // DB Services
+import { logConversion } from './services/historyService'; // History Service
 import { LanguageProvider, useLanguage } from './LanguageContext';
 import {
   FileItem,
@@ -58,6 +60,7 @@ function BanaConvertApp() {
   const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false); // Auth Modal
+  const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false); // History Modal State
 
   const [legalModalTab, setLegalModalTab] = useState<'privacy' | 'terms' | 'contact'>('privacy');
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -649,6 +652,16 @@ function BanaConvertApp() {
           ...f, status: 'done', convertedUrl: dataUrl, convertedBlob: blob, convertedSize: blob.size, conversionProgress: 100
         } : f));
 
+        // LOG HISTORY (Business Tier Only)
+        if (stats.premiumTier === 'business') {
+          logConversion(stats.premiumTier, {
+            file_name: item.file.name,
+            file_size: item.file.size,
+            converted_size: blob.size,
+            format: item.targetFormat
+          });
+        }
+
         if (stats.isPremium || await deductCredit(COST_PER_CONVERT)) {
           // Track global stats (fire and forget)
           incrementDailyStats();
@@ -713,6 +726,7 @@ function BanaConvertApp() {
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} onSuccess={() => { }} />
 
       <LegalModal isOpen={isLegalModalOpen} onClose={() => setIsLegalModalOpen(false)} initialTab={legalModalTab} />
+      <HistoryModal isOpen={isHistoryModalOpen} onClose={() => setIsHistoryModalOpen(false)} />
       <CookieBanner />
 
       {/* Navbar */}
@@ -749,6 +763,18 @@ function BanaConvertApp() {
                     )}
                   </div>
                 )}
+
+                {/* History Button (Business Only) */}
+                {stats.premiumTier === 'business' && (
+                  <button
+                    onClick={() => setIsHistoryModalOpen(true)}
+                    className="flex items-center gap-2 bg-slate-800/50 hover:bg-slate-700/50 px-3 py-1.5 rounded-lg border border-slate-700/50 transition-colors"
+                  >
+                    <span className="text-lg">📜</span>
+                    <span className="text-xs text-slate-300 font-medium hidden lg:inline">{t('feat_history') || 'Geçmiş'}</span>
+                  </button>
+                )}
+
                 {/* Credits Display */}
                 <div className="flex flex-col items-end">
                   <span className="text-[10px] text-slate-500 uppercase font-semibold">
