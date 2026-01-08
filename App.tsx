@@ -193,7 +193,7 @@ function BanaConvertApp() {
       errorMsg: ''
     }));
 
-    setFiles(prev => [...prev, ...tempFiles]);
+    setFiles(prev => [...tempFiles, ...prev]); // New files at top
 
     // Process previews sequentially to avoid memory spikes with HEIC
     for (const item of tempFiles) {
@@ -485,18 +485,21 @@ function BanaConvertApp() {
             ctx.drawImage(logoImg, logoX, logoY, logoWidth, logoHeight);
             ctx.globalAlpha = 1.0;
           } else if (item.watermarkText) {
-            const fontSize = Math.floor(canvas.width * 0.04);
+            // Make watermark more visible - 8% of image width
+            const fontSize = Math.max(24, Math.floor(canvas.width * 0.06));
             ctx.font = `bold ${fontSize}px Arial, sans-serif`;
 
-            // Use custom color or default white
+            // Use custom color or default white with black stroke for visibility
             const color = item.watermarkColor || '#ffffff';
-            ctx.fillStyle = color + '99'; // Add 60% opacity
-            ctx.strokeStyle = 'rgba(0,0,0,0.5)';
-            ctx.lineWidth = 2;
+            ctx.fillStyle = color;
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = Math.max(2, fontSize / 12);
 
-            // Draw text with stroke for visibility
+            // Draw text with stroke first, then fill
             ctx.strokeText(item.watermarkText, x, y);
             ctx.fillText(item.watermarkText, x, y);
+
+            console.log(`[Watermark] Text: "${item.watermarkText}" at (${x}, ${y}), fontSize: ${fontSize}, canvas: ${canvas.width}x${canvas.height}`);
           }
         }
 
