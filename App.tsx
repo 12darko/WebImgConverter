@@ -1046,140 +1046,147 @@ function BanaConvertApp() {
                                     </div>
 
                                     {/* NEW: Watermark (Premium) */}
-                                    <div className={`space-y-2 p-3 rounded-lg ${stats.isPremium ? 'bg-slate-800/50 border border-slate-700/50' : 'bg-slate-900/30 border border-slate-800/50'}`}>
-                                      <div className="flex items-center gap-2 text-[10px] text-slate-400 uppercase font-bold">
-                                        <span>Watermark</span>
-                                        {!stats.isPremium && <span className="text-amber-400">🔒 Premium</span>}
-                                      </div>
-
-                                      {/* Text + Logo Row */}
-                                      <div className="flex items-center gap-2">
-                                        <input
-                                          type="text"
-                                          placeholder={file.watermarkLogo ? "Logo seçildi" : "Watermark metni..."}
-                                          disabled={!stats.isPremium || !!file.watermarkLogo}
-                                          value={file.watermarkText || ''}
-                                          onChange={(e) => updateFileConfig(file.id, 'watermarkText', e.target.value)}
-                                          className={`bg-slate-900 text-xs border border-slate-700 rounded p-2 flex-grow ${!stats.isPremium ? 'opacity-50 cursor-not-allowed' : ''}`}
-                                        />
-
-                                        {/* Color Picker */}
-                                        <input
-                                          type="color"
-                                          value={file.watermarkColor || '#ffffff'}
-                                          onChange={(e) => updateFileConfig(file.id, 'watermarkColor', e.target.value)}
-                                          disabled={!stats.isPremium}
-                                          className={`w-8 h-8 rounded border border-slate-700 cursor-pointer ${!stats.isPremium ? 'opacity-50 pointer-events-none' : ''}`}
-                                          title="Watermark Rengi"
-                                        />
-
-                                        {/* Logo Upload */}
-                                        <div className="relative">
-                                          <input
-                                            type="file"
-                                            id={`logo-upload-${file.id}`}
-                                            className="hidden"
-                                            accept="image/png, image/jpeg"
-                                            disabled={!stats.isPremium}
-                                            onChange={(e) => {
-                                              const logoFile = e.target.files?.[0];
-                                              if (logoFile) {
-                                                const reader = new FileReader();
-                                                reader.onload = (ev) => {
-                                                  updateFileConfig(file.id, 'watermarkLogo', ev.target?.result as string);
-                                                  updateFileConfig(file.id, 'watermarkText', undefined);
-                                                };
-                                                reader.readAsDataURL(logoFile);
-                                              }
-                                            }}
-                                          />
-                                          {file.watermarkLogo ? (
-                                            <button
-                                              onClick={() => updateFileConfig(file.id, 'watermarkLogo', undefined)}
-                                              className="bg-red-500/10 hover:bg-red-500/20 text-red-400 p-2 rounded border border-red-500/20"
-                                              title="Logo Kaldır"
-                                            >✕</button>
-                                          ) : (
-                                            <label
-                                              htmlFor={`logo-upload-${file.id}`}
-                                              className={`flex items-center p-2 rounded bg-slate-900 border border-slate-700 cursor-pointer hover:bg-slate-700 ${!stats.isPremium ? 'opacity-50 pointer-events-none' : ''}`}
-                                              title="Logo Yükle"
-                                            >📷</label>
-                                          )}
-                                        </div>
-                                      </div>
-
-                                      {/* Position Selector */}
-                                      {stats.isPremium && (file.watermarkText || file.watermarkLogo) && (
-                                        <div className="flex items-center gap-1 flex-wrap">
-                                          <span className="text-[10px] text-slate-500 mr-1">Pozisyon:</span>
-                                          {(['top-left', 'top-right', 'center', 'bottom-left', 'bottom-right'] as const).map(pos => (
-                                            <button
-                                              key={pos}
-                                              onClick={() => updateFileConfig(file.id, 'watermarkPosition', pos)}
-                                              className={`text-[10px] px-2 py-1 rounded ${file.watermarkPosition === pos || (!file.watermarkPosition && pos === 'center')
-                                                ? 'bg-indigo-600 text-white'
-                                                : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
-                                                }`}
-                                            >
-                                              {pos === 'top-left' && '↖'}
-                                              {pos === 'top-right' && '↗'}
-                                              {pos === 'center' && '⊙'}
-                                              {pos === 'bottom-left' && '↙'}
-                                              {pos === 'bottom-right' && '↘'}
-                                            </button>
-                                          ))}
-                                        </div>
-                                      )}
-
-                                      {/* Font Size & Font Family (only for text watermark) */}
-                                      {stats.isPremium && file.watermarkText && (
-                                        <div className="flex items-center gap-3 flex-wrap">
-                                          {/* Font Size */}
-                                          <div className="flex items-center gap-1">
-                                            <span className="text-[10px] text-slate-500">Boyut:</span>
-                                            {[1, 2, 3, 4, 5].map(size => (
-                                              <button
-                                                key={size}
-                                                onClick={() => updateFileConfig(file.id, 'watermarkFontSize', size)}
-                                                className={`text-[10px] w-6 h-6 rounded ${(file.watermarkFontSize || 2) === size
-                                                  ? 'bg-indigo-600 text-white'
-                                                  : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
-                                                  }`}
-                                              >{size}</button>
-                                            ))}
+                                    {(() => {
+                                      const canUseWatermark = hasFeatureAccess(stats.premiumTier, 'WATERMARK');
+                                      return (
+                                        <div className={`space-y-2 p-3 rounded-lg ${canUseWatermark ? 'bg-slate-800/50 border border-slate-700/50' : 'bg-slate-900/30 border border-slate-800/50'}`}>
+                                          <div className="flex items-center gap-2 text-[10px] text-slate-400 uppercase font-bold">
+                                            <span>Watermark</span>
+                                            {!canUseWatermark && <span className="text-amber-400">🔒 Pro+</span>}
                                           </div>
 
-                                          {/* Font Family */}
-                                          <select
-                                            value={file.watermarkFont || 'Arial'}
-                                            onChange={(e) => updateFileConfig(file.id, 'watermarkFont', e.target.value)}
-                                            className="text-[10px] bg-slate-800 border border-slate-700 rounded px-2 py-1 text-white"
-                                          >
-                                            <option value="Arial">Arial</option>
-                                            <option value="Georgia">Georgia</option>
-                                            <option value="Courier">Courier</option>
-                                            <option value="Impact">Impact</option>
-                                            <option value="Comic Sans MS">Comic Sans</option>
-                                          </select>
-                                        </div>
-                                      )}
-                                    </div>
+                                          {/* Text + Logo Row */}
+                                          <div className="flex items-center gap-2">
+                                            <input
+                                              type="text"
+                                              placeholder={file.watermarkLogo ? "Logo seçildi" : "Watermark metni..."}
+                                              disabled={!canUseWatermark || !!file.watermarkLogo}
+                                              value={file.watermarkText || ''}
+                                              onChange={(e) => updateFileConfig(file.id, 'watermarkText', e.target.value)}
+                                              className={`bg-slate-900 text-xs border border-slate-700 rounded p-2 flex-grow ${!canUseWatermark ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                            />
 
-                                    {file.targetFormat !== ConversionFormat.JPEG && (
-                                      <div className="flex items-center gap-2">
-                                        <button
-                                          onClick={() => updateFileConfig(file.id, 'removeBackground', !file.removeBackground)}
-                                          className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-2 transition-all duration-300 font-medium ${file.removeBackground
-                                            ? 'bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/50 text-pink-300 shadow-sm shadow-pink-500/20'
-                                            : 'bg-slate-800 border-slate-700 text-slate-500 hover:text-slate-400 hover:bg-slate-750'
-                                            }`}
-                                        >
-                                          <span className={file.removeBackground ? "animate-pulse" : "grayscale opacity-50"}>✨</span>
-                                          {file.removeBackground ? 'AI BG Removed' : 'Remove BG'}
-                                        </button>
-                                      </div>
-                                    )}
+                                            {/* Color Picker */}
+                                            <input
+                                              type="color"
+                                              value={file.watermarkColor || '#ffffff'}
+                                              onChange={(e) => updateFileConfig(file.id, 'watermarkColor', e.target.value)}
+                                              disabled={!canUseWatermark}
+                                              className={`w-8 h-8 rounded border border-slate-700 cursor-pointer ${!canUseWatermark ? 'opacity-50 pointer-events-none' : ''}`}
+                                              title="Watermark Rengi"
+                                            />
+
+                                            {/* Logo Upload */}
+                                            <div className="relative">
+                                              <input
+                                                type="file"
+                                                id={`logo-upload-${file.id}`}
+                                                className="hidden"
+                                                accept="image/png, image/jpeg"
+                                                disabled={!canUseWatermark}
+                                                onChange={(e) => {
+                                                  const logoFile = e.target.files?.[0];
+                                                  if (logoFile) {
+                                                    const reader = new FileReader();
+                                                    reader.onload = (ev) => {
+                                                      updateFileConfig(file.id, 'watermarkLogo', ev.target?.result as string);
+                                                      updateFileConfig(file.id, 'watermarkText', undefined);
+                                                    };
+                                                    reader.readAsDataURL(logoFile);
+                                                  }
+                                                }}
+                                              />
+                                              {file.watermarkLogo ? (
+                                                <button
+                                                  onClick={() => updateFileConfig(file.id, 'watermarkLogo', undefined)}
+                                                  className="bg-red-500/10 hover:bg-red-500/20 text-red-400 p-2 rounded border border-red-500/20"
+                                                  title="Logo Kaldır"
+                                                >✕</button>
+                                              ) : (
+                                                <label
+                                                  htmlFor={`logo-upload-${file.id}`}
+                                                  className={`flex items-center p-2 rounded bg-slate-900 border border-slate-700 cursor-pointer hover:bg-slate-700 ${!canUseWatermark ? 'opacity-50 pointer-events-none' : ''}`}
+                                                  title="Logo Yükle"
+                                                >📷</label>
+                                              )}
+                                            </div>
+                                          </div>
+
+                                          {/* Position Selector */}
+                                          {canUseWatermark && (file.watermarkText || file.watermarkLogo) && (
+                                            <div className="flex items-center gap-1 flex-wrap">
+                                              <span className="text-[10px] text-slate-500 mr-1">Pozisyon:</span>
+                                              {(['top-left', 'top-right', 'center', 'bottom-left', 'bottom-right'] as const).map(pos => (
+                                                <button
+                                                  key={pos}
+                                                  onClick={() => updateFileConfig(file.id, 'watermarkPosition', pos)}
+                                                  className={`text-[10px] px-2 py-1 rounded ${file.watermarkPosition === pos || (!file.watermarkPosition && pos === 'center')
+                                                    ? 'bg-indigo-600 text-white'
+                                                    : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                                    }`}
+                                                >
+                                                  {pos === 'top-left' && '↖'}
+                                                  {pos === 'top-right' && '↗'}
+                                                  {pos === 'center' && '⊙'}
+                                                  {pos === 'bottom-left' && '↙'}
+                                                  {pos === 'bottom-right' && '↘'}
+                                                </button>
+                                              ))}
+                                            </div>
+                                          )}
+
+                                          {/* Font Size & Font Family (only for text watermark) */}
+                                          {canUseWatermark && file.watermarkText && (
+                                            <div className="flex items-center gap-3 flex-wrap">
+                                              {/* Font Size */}
+                                              <div className="flex items-center gap-1">
+                                                <span className="text-[10px] text-slate-500">Boyut:</span>
+                                                {[1, 2, 3, 4, 5].map(size => (
+                                                  <button
+                                                    key={size}
+                                                    onClick={() => updateFileConfig(file.id, 'watermarkFontSize', size)}
+                                                    className={`text-[10px] w-6 h-6 rounded ${(file.watermarkFontSize || 2) === size
+                                                      ? 'bg-indigo-600 text-white'
+                                                      : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                                      }`}
+                                                  >{size}</button>
+                                                ))}
+                                              </div>
+
+                                              {/* Font Family */}
+                                              <select
+                                                value={file.watermarkFont || 'Arial'}
+                                                onChange={(e) => updateFileConfig(file.id, 'watermarkFont', e.target.value)}
+                                                className="text-[10px] bg-slate-800 border border-slate-700 rounded px-2 py-1 text-white"
+                                              >
+                                                <option value="Arial">Arial</option>
+                                                <option value="Georgia">Georgia</option>
+                                                <option value="Courier">Courier</option>
+                                                <option value="Impact">Impact</option>
+                                                <option value="Comic Sans MS">Comic Sans</option>
+                                              </select>
+                                            </div>
+                                          )}
+                                        </div>
+                                      );
+                                    })()}
+
+                                    {
+                                      file.targetFormat !== ConversionFormat.JPEG && (
+                                        <div className="flex items-center gap-2">
+                                          <button
+                                            onClick={() => updateFileConfig(file.id, 'removeBackground', !file.removeBackground)}
+                                            className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-2 transition-all duration-300 font-medium ${file.removeBackground
+                                              ? 'bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/50 text-pink-300 shadow-sm shadow-pink-500/20'
+                                              : 'bg-slate-800 border-slate-700 text-slate-500 hover:text-slate-400 hover:bg-slate-750'
+                                              }`}
+                                          >
+                                            <span className={file.removeBackground ? "animate-pulse" : "grayscale opacity-50"}>✨</span>
+                                            {file.removeBackground ? 'AI BG Removed' : 'Remove BG'}
+                                          </button>
+                                        </div>
+                                      )
+                                    }
                                   </div>
                                 )}
 
