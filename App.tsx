@@ -180,10 +180,13 @@ function BanaConvertApp() {
       premiumExpiryDate: undefined,
       dailyLimit: MAX_FREE_CREDITS
     });
-    localStorage.removeItem('vormPixyzeStats');
+
+    // 2. Clear all local data (Brute force logout)
+    localStorage.clear();
+    sessionStorage.clear();
     setIsInitialized(true);
 
-    // 2. Call API quietly
+    // 3. Call API quietly
     try {
       await supabase.auth.signOut();
     } catch (e) { console.error(e); }
