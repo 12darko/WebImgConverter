@@ -158,7 +158,9 @@ function BanaConvertApp() {
           dailyLimit: MAX_FREE_CREDITS
         };
         setStats(freeStats);
+        const consent = localStorage.getItem('cookieConsent');
         localStorage.clear();
+        if (consent) localStorage.setItem('cookieConsent', consent);
         console.log('[Auth] Logged out - reset to free stats');
       } else if (event === 'SIGNED_IN' && session) {
         // Fresh login (OAuth callback AFTER init) - load profile
@@ -220,7 +222,9 @@ function BanaConvertApp() {
     });
 
     // 2. Clear all local data (Brute force logout)
+    const consent = localStorage.getItem('cookieConsent');
     localStorage.clear();
+    if (consent) localStorage.setItem('cookieConsent', consent);
     sessionStorage.clear();
     setIsInitialized(true);
 

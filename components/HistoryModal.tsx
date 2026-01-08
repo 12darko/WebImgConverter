@@ -32,8 +32,12 @@ export const HistoryModal: React.FC<HistoryModalProps> = ({ isOpen, onClose }) =
 
     const handleClear = async () => {
         if (confirm("Geçmişi temizlemek istediğinize emin misiniz?")) {
-            await clearHistory();
-            setHistory([]);
+            setLoading(true);
+            const success = await clearHistory();
+            if (success) {
+                setHistory([]);
+            }
+            setLoading(false);
         }
     };
 
