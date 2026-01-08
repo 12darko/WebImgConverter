@@ -14,12 +14,24 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
  * Eğer günü geçmişse kredileri sıfırlar.
  */
 export const getUserProfile = async (userId: string): Promise<UserStats | null> => {
+  console.log('[getUserProfile] START, userId:', userId);
   try {
-    const { data, error } = await supabase
+    console.log('[getUserProfile] Making DB query...');
+
+    // Add timeout to catch hanging queries
+    const timeout = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error('Profile fetch timed out after 5 seconds')), 5000)
+    );
+
+    const fetchProfile = supabase
       .from('profiles')
       .select('*')
       .eq('id', userId)
       .single();
+
+    const { data, error } = await Promise.race([fetchProfile, timeout]) as { data: any; error: any };
+
+    console.log('[getUserProfile] DB query completed. Error:', error?.code, 'Data exists:', !!data);
 
     if (error) {
       // If profile not found (PGRST116), create a default one
