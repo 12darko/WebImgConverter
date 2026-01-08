@@ -787,7 +787,7 @@ function BanaConvertApp() {
                     {stats.isPremium ? '' : session.user.email?.split('@')[0]}
                   </span>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-xl font-bold text-white">{stats.credits}</span>
+                    <span className="text-xl font-bold text-white">{stats.premiumTier === 'business' ? '∞' : stats.credits}</span>
                     <span className="text-[10px] text-slate-400 uppercase font-bold">{t('credits_label')}</span>
                   </div>
                 </div>
