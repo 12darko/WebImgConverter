@@ -504,8 +504,8 @@ function BanaConvertApp() {
 
         updateProgress(65); // Effects applied
 
-        // --- WATERMARK (Premium) ---
-        if (stats.isPremium && (item.watermarkText || item.watermarkLogo)) {
+        // --- WATERMARK (Pro+) ---
+        if (hasFeatureAccess(stats.premiumTier, 'WATERMARK') && (item.watermarkText || item.watermarkLogo)) {
           // Reset transforms for watermark positioning
           ctx.setTransform(1, 0, 0, 1, 0, 0);
 
