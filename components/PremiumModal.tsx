@@ -104,8 +104,10 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
             <div className="text-4xl font-bold text-white mb-4">$9.99<span className="text-sm font-normal text-slate-500">{t('price_mo')}</span></div>
             <ul className="space-y-3 mb-8 text-base text-slate-200">
               <li className="flex items-center gap-2"><span className="text-amber-500">✓</span> <strong>{t('feat_credits_100')}</strong></li>
+              <li className="flex items-center gap-2"><span className="text-amber-500">✓</span> {t('feat_zip_download')}</li>
+              <li className="flex items-center gap-2"><span className="text-amber-500">✓</span> {t('feat_batch_ai')}</li>
+              <li className="flex items-center gap-2"><span className="text-amber-500">✓</span> {t('feat_watermark')}</li>
               <li className="flex items-center gap-2"><span className="text-amber-500">✓</span> {t('feat_priority_ai')}</li>
-              <li className="flex items-center gap-2"><span className="text-amber-500">✓</span> {t('feat_all_prem')}</li>
               <li className="flex items-center gap-2"><span className="text-amber-500">✓</span> {t('feat_support_247')}</li>
             </ul>
             {isPremium && currentTier === 'pro' ? (
@@ -128,9 +130,9 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
             <h3 className="text-xl font-bold text-blue-400 mb-2">{t('plan_business')}</h3>
             <div className="text-3xl font-bold text-white mb-4">$19.99<span className="text-sm font-normal text-slate-500">{t('price_mo')}</span></div>
             <ul className="space-y-3 mb-8 text-sm text-slate-300">
-              <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> <strong>Günlük 300 Kredi</strong></li>
+              <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> <strong>{t('feat_credits_unlimited')}</strong></li>
               <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> {t('feat_batch_50')}</li>
-              <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> {t('feat_watermark_custom')}</li>
+              <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> {t('feat_special_formats')}</li>
               <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> {t('feat_history')}</li>
             </ul>
             {isPremium && currentTier === 'business' ? (
