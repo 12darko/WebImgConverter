@@ -684,6 +684,23 @@ function BanaConvertApp() {
     }
   };
 
+  // Show loading screen while auth is initializing
+  if (!isInitialized) {
+    return (
+      <div className="min-h-screen font-sans flex items-center justify-center bg-slate-900">
+        <div className="flex flex-col items-center gap-4">
+          {/* Logo */}
+          <svg className="w-16 h-16 animate-pulse" viewBox="0 0 100 100" fill="none">
+            <defs><linearGradient id="logoGradLoad" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stopColor="#6366f1" /><stop offset="100%" stopColor="#a855f7" /></linearGradient></defs>
+            <path d="M20 15 L40 75 L50 90 L60 75 L80 15 L65 15 L50 60 L35 15 Z" fill="url(#logoGradLoad)" />
+          </svg>
+          {/* Loading spinner */}
+          <div className="w-8 h-8 border-4 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen font-sans text-slate-200 flex flex-col">
       {/* Modals */}

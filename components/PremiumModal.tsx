@@ -68,8 +68,8 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-20 md:pb-0">
           {/* STARTER PLAN */}
           <div className={`rounded-2xl p-6 transition-all group relative ${isPremium && currentTier === 'starter'
-              ? 'bg-indigo-900/30 border-2 border-indigo-500 ring-2 ring-indigo-500/20'
-              : 'bg-slate-800/50 border border-slate-700/50 hover:border-indigo-500/50'
+            ? 'bg-indigo-900/30 border-2 border-indigo-500 ring-2 ring-indigo-500/20'
+            : 'bg-slate-800/50 border border-slate-700/50 hover:border-indigo-500/50'
             }`}>
             {isPremium && currentTier === 'starter' && (
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-500 text-xs font-bold text-white px-3 py-1 rounded-full">✓ Mevcut Plan</div>
@@ -92,8 +92,8 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
 
           {/* PRO PLAN (Featured) */}
           <div className={`rounded-2xl p-8 transform md:-translate-y-4 shadow-2xl relative overflow-hidden group ${isPremium && currentTier === 'pro'
-              ? 'bg-amber-900/30 border-2 border-amber-500 ring-2 ring-amber-500/20'
-              : 'bg-slate-800/80 border border-amber-500/50'
+            ? 'bg-amber-900/30 border-2 border-amber-500 ring-2 ring-amber-500/20'
+            : 'bg-slate-800/80 border border-amber-500/50'
             }`}>
             {isPremium && currentTier === 'pro' ? (
               <div className="absolute top-0 right-0 bg-emerald-500 text-xs font-bold text-white px-3 py-1 rounded-bl-lg">✓ Mevcut Plan</div>
@@ -119,8 +119,8 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
 
           {/* BUSINESS PLAN */}
           <div className={`rounded-2xl p-6 transition-all group mb-8 md:mb-0 relative ${isPremium && currentTier === 'business'
-              ? 'bg-blue-900/30 border-2 border-blue-500 ring-2 ring-blue-500/20'
-              : 'bg-slate-800/50 border border-slate-700/50 hover:border-blue-500/50'
+            ? 'bg-blue-900/30 border-2 border-blue-500 ring-2 ring-blue-500/20'
+            : 'bg-slate-800/50 border border-slate-700/50 hover:border-blue-500/50'
             }`}>
             {isPremium && currentTier === 'business' && (
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-500 text-xs font-bold text-white px-3 py-1 rounded-full">✓ Mevcut Plan</div>
@@ -130,7 +130,8 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
             <ul className="space-y-3 mb-8 text-sm text-slate-300">
               <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> <strong>Günlük 300 Kredi</strong></li>
               <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> {t('feat_batch_50')}</li>
-              <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> {t('feat_api_access')}</li>
+              <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> {t('feat_watermark_custom')}</li>
+              <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> {t('feat_history')}</li>
             </ul>
             {isPremium && currentTier === 'business' ? (
               <div className="w-full py-3 rounded-lg bg-blue-500/20 text-blue-300 text-center font-bold">✓ Aktif</div>
