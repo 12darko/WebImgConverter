@@ -83,7 +83,7 @@ export const translations = {
     feat_support_247: "7/24 Destek",
     feat_batch_50: "Toplu İşleme (50+)",
     feat_watermark_custom: "Özel Filigran Düzenleme",
-    feat_history: "Dönüşüm Geçmişi",
+    feat_history: "İşlem Kayıtları",
     btn_select_starter: "Starter'ı Seç",
     btn_select_pro: "Pro'yu Seç",
     btn_select_business: "Business'ı Seç",
@@ -134,8 +134,8 @@ Ayrıca, Google AdSense aracılığıyla sunulan reklamlar, ilgi alanlarınıza 
 4. KVKK VE GDPR UYUMU
 Sitemiz herhangi bir kişisel kimlik bilgisi (Ad, Soyad, TC Kimlik No vb.) toplamaz ve saklamaz. Tamamen anonim olarak hizmet verir.
 
-5. DÖNÜŞÜM GEÇMİŞİ (BUSINESS TIER)
-Premium Business kullanıcıları için sunulan Dönüşüm Geçmişi özelliği, yalnızca dosya adı ve tarih gibi işlem metadatalarını (dosyanın kendisini değil) saklar. Bu veriler veritabanı verimliliği ve gizlilik ilkemiz gereği 7 gün saklandıktan sonra otomatik olarak ve kalıcı şekilde silinir.`,
+5. İŞLEM KAYITLARI (BUSINESS TIER)
+Premium Business kullanıcıları için sunulan İşlem Kayıtları özelliği, yalnızca dosya adı ve tarih gibi işlem metadatalarını (dosyanın kendisini değil) saklar. Bu veriler veritabanı verimliliği ve gizlilik ilkemiz gereği 7 gün saklandıktan sonra otomatik olarak ve kalıcı şekilde silinir.`,
 
     terms_content: `1. HİZMETİN KULLANIMI
 VormPixyze.com ("Site") adresini kullanarak aşağıdaki şartları kabul etmiş sayılırsınız. Bu site, resim dosyalarını dönüştürmek ve düzenlemek amacıyla sunulan bir araçtır.
@@ -245,7 +245,7 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
     feat_support_247: "24/7 Support",
     feat_batch_50: "Batch Processing (50+)",
     feat_watermark_custom: "Custom Watermark Editing",
-    feat_history: "Conversion History",
+    feat_history: "Activity Log",
     btn_select_starter: "Select Starter",
     btn_select_pro: "Select Pro",
     btn_select_business: "Select Business",
@@ -296,8 +296,8 @@ Additionally, we use third-party services like Google AdSense, which may use coo
 4. GDPR & CCPA COMPLIANCE
 Our site does not collect or store personally identifiable information (Name, Email, ID, etc.). We operate as a completely anonymous tool.
 
-5. CONVERSION HISTORY (BUSINESS TIER)
-The Conversion History feature provided for Premium Business users stores only processing metadata (filename, date, etc.), NOT the files themselves. In accordance with database efficiency and our privacy principles, this data is automatically and permanently deleted after 7 days.`,
+5. ACTIVITY LOG (BUSINESS TIER)
+The Activity Log feature provided for Premium Business users stores only processing metadata (filename, date, etc.), NOT the files themselves. In accordance with database efficiency and our privacy principles, this data is automatically and permanently deleted after 7 days.`,
 
     terms_content: `1. ACCEPTANCE OF TERMS
 By accessing and using VormPixyze.com ("Site"), you agree to comply with these Terms of Service. This site is a tool provided for image conversion and editing purposes.
@@ -407,7 +407,7 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
     feat_support_247: "24/7 Support",
     feat_batch_50: "Stapelverarbeitung (50+)",
     feat_watermark_custom: "Benutzerdefiniertes Wasserzeichen",
-    feat_history: "Konvertierungsverlauf",
+    feat_history: "Aktivitätsprotokoll",
     btn_select_starter: "Starter wählen",
     btn_select_pro: "Pro wählen",
     btn_select_business: "Business wählen",
@@ -527,7 +527,7 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
     feat_support_247: "Support 24/7",
     feat_batch_50: "Traitement par lot (50+)",
     feat_watermark_custom: "Filigrane Personnalisé",
-    feat_history: "Historique des Conversions",
+    feat_history: "Journal d'activité",
     btn_select_starter: "Choisir Starter",
     btn_select_pro: "Choisir Pro",
     btn_select_business: "Choisir Business",
