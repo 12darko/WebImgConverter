@@ -75,7 +75,7 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-500 text-xs font-bold text-white px-3 py-1 rounded-full">✓ Mevcut Plan</div>
             )}
             <h3 className="text-xl font-bold text-indigo-400 mb-2">{t('plan_starter')}</h3>
-            <div className="text-3xl font-bold text-white mb-4">$4.99<span className="text-sm font-normal text-slate-500">{t('price_mo')}</span></div>
+            <div className="text-3xl font-bold text-white mb-4">{t('prem_price_btn').match(/\((.*?)\)/)?.[1] || '$0.99/Mo'}</div>
             <ul className="space-y-3 mb-8 text-sm text-slate-300">
               <li className="flex items-center gap-2"><span className="text-indigo-500 font-bold">✓</span> {t('feat_credits_30')}</li>
               <li className="flex items-center gap-2"><span className="text-indigo-500 font-bold">✓</span> {t('feat_remove_bg')}</li>
@@ -107,7 +107,7 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
               <div className="absolute top-0 right-0 bg-amber-500 text-xs font-bold text-slate-900 px-3 py-1 rounded-bl-lg">{t('popular_badge')}</div>
             )}
             <h3 className="text-2xl font-bold text-amber-400 mb-2">{t('plan_pro')}</h3>
-            <div className="text-4xl font-bold text-white mb-4">$9.99<span className="text-sm font-normal text-slate-500">{t('price_mo')}</span></div>
+            <div className="text-4xl font-bold text-white mb-4">{t('price_mo') === '/ay' ? '₺149.99' : '$3.99'}<span className="text-sm font-normal text-slate-500">{t('price_mo')}</span></div>
             <ul className="space-y-3 mb-8 text-base text-slate-200">
               <li className="flex items-center gap-2"><span className="text-amber-500 font-bold">✓</span> <strong>{t('feat_credits_100')}</strong></li>
               <li className="flex items-center gap-2"><span className="text-amber-500 font-bold">✓</span> {t('feat_remove_bg')}</li>
@@ -137,7 +137,7 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-500 text-xs font-bold text-white px-3 py-1 rounded-full">✓ Mevcut Plan</div>
             )}
             <h3 className="text-xl font-bold text-blue-400 mb-2">{t('plan_business')}</h3>
-            <div className="text-3xl font-bold text-white mb-4">$19.99<span className="text-sm font-normal text-slate-500">{t('price_mo')}</span></div>
+            <div className="text-3xl font-bold text-white mb-4">{t('price_mo') === '/ay' ? '₺299.99' : '$9.99'}<span className="text-sm font-normal text-slate-500">{t('price_mo')}</span></div>
             <ul className="space-y-3 mb-8 text-sm text-slate-300">
               <li className="flex items-center gap-2"><span className="text-blue-500 font-bold">✓</span> <strong>{t('feat_credits_unlimited')}</strong></li>
               <li className="flex items-center gap-2"><span className="text-blue-500 font-bold">✓</span> {t('feat_remove_bg')}</li>
