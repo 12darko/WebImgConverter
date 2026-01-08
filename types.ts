@@ -27,6 +27,8 @@ export interface FileItem {
   watermarkLogo?: string; // base64
   watermarkPosition?: 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   watermarkColor?: string; // hex color
+  watermarkFontSize?: number; // 1-5 (small to large)
+  watermarkFont?: 'Arial' | 'Georgia' | 'Courier' | 'Impact' | 'Comic Sans MS';
   isFlippedHorizontal?: boolean;
   isFlippedVertical?: boolean;
 

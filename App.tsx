@@ -144,6 +144,21 @@ function BanaConvertApp() {
     if (profile) {
       setStats(profile);
     }
+    setIsInitialized(true);
+  };
+
+  // Handle sign out - reset to free user stats
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    setStats({
+      credits: MAX_FREE_CREDITS,
+      isPremium: false,
+      lastResetDate: new Date().toISOString().split('T')[0],
+      premiumTier: undefined,
+      premiumExpiryDate: undefined,
+      dailyLimit: MAX_FREE_CREDITS
+    });
+    loadLocalStats();
   };
 
   // Referral Handling
@@ -485,9 +500,11 @@ function BanaConvertApp() {
             ctx.drawImage(logoImg, logoX, logoY, logoWidth, logoHeight);
             ctx.globalAlpha = 1.0;
           } else if (item.watermarkText) {
-            // Make watermark more visible - 8% of image width
-            const fontSize = Math.max(24, Math.floor(canvas.width * 0.06));
-            ctx.font = `bold ${fontSize}px Arial, sans-serif`;
+            // Calculate font size based on user selection (1-5 scale)
+            const sizeMultiplier = [0.03, 0.05, 0.07, 0.09, 0.12][item.watermarkFontSize ? item.watermarkFontSize - 1 : 1];
+            const fontSize = Math.max(16, Math.floor(canvas.width * sizeMultiplier));
+            const fontFamily = item.watermarkFont || 'Arial';
+            ctx.font = `bold ${fontSize}px ${fontFamily}, sans-serif`;
 
             // Use custom color or default white with black stroke for visibility
             const color = item.watermarkColor || '#ffffff';
@@ -498,8 +515,6 @@ function BanaConvertApp() {
             // Draw text with stroke first, then fill
             ctx.strokeText(item.watermarkText, x, y);
             ctx.fillText(item.watermarkText, x, y);
-
-            console.log(`[Watermark] Text: "${item.watermarkText}" at (${x}, ${y}), fontSize: ${fontSize}, canvas: ${canvas.width}x${canvas.height}`);
           }
         }
 
@@ -672,7 +687,7 @@ function BanaConvertApp() {
 
             {/* Logout or Premium Button */}
             {session ? (
-              <button onClick={() => supabase.auth.signOut()} className="text-xs text-slate-500 hover:text-white">Çıkış</button>
+              <button onClick={handleSignOut} className="text-xs text-slate-500 hover:text-white">Çıkış</button>
             ) : null}
 
             {ENABLE_PREMIUM_SYSTEM && !stats.isPremium && (
@@ -1028,6 +1043,39 @@ function BanaConvertApp() {
                                               {pos === 'bottom-right' && '↘'}
                                             </button>
                                           ))}
+                                        </div>
+                                      )}
+
+                                      {/* Font Size & Font Family (only for text watermark) */}
+                                      {stats.isPremium && file.watermarkText && (
+                                        <div className="flex items-center gap-3 flex-wrap">
+                                          {/* Font Size */}
+                                          <div className="flex items-center gap-1">
+                                            <span className="text-[10px] text-slate-500">Boyut:</span>
+                                            {[1, 2, 3, 4, 5].map(size => (
+                                              <button
+                                                key={size}
+                                                onClick={() => updateFileConfig(file.id, 'watermarkFontSize', size)}
+                                                className={`text-[10px] w-6 h-6 rounded ${(file.watermarkFontSize || 2) === size
+                                                  ? 'bg-indigo-600 text-white'
+                                                  : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                                  }`}
+                                              >{size}</button>
+                                            ))}
+                                          </div>
+
+                                          {/* Font Family */}
+                                          <select
+                                            value={file.watermarkFont || 'Arial'}
+                                            onChange={(e) => updateFileConfig(file.id, 'watermarkFont', e.target.value)}
+                                            className="text-[10px] bg-slate-800 border border-slate-700 rounded px-2 py-1 text-white"
+                                          >
+                                            <option value="Arial">Arial</option>
+                                            <option value="Georgia">Georgia</option>
+                                            <option value="Courier">Courier</option>
+                                            <option value="Impact">Impact</option>
+                                            <option value="Comic Sans MS">Comic Sans</option>
+                                          </select>
                                         </div>
                                       )}
                                     </div>
