@@ -21,9 +21,45 @@ export const getUserProfile = async (userId: string): Promise<UserStats | null> 
       .eq('id', userId)
       .single();
 
-    if (error) throw error;
+    if (error) {
+      // If profile not found (PGRST116), create a default one
+      if (error.code === 'PGRST116') {
+        console.log('Profile not found, creating default...');
+        const today = new Date().toISOString().split('T')[0];
+
+        // Get user email safely
+        const { data: { user } } = await supabase.auth.getUser();
+
+        const newProfile = {
+          id: userId,
+          email: user?.email || '',
+          credits: MAX_FREE_CREDITS,
+          is_premium: false,
+          daily_limit: MAX_FREE_CREDITS,
+          last_reset_date: today
+        };
+
+        const { error: insertError } = await supabase.from('profiles').insert([newProfile]);
+
+        if (insertError) {
+          console.error('Failed to create default profile:', insertError);
+          return null;
+        }
+
+        return {
+          credits: MAX_FREE_CREDITS,
+          isPremium: false,
+          lastResetDate: today,
+          premiumExpiryDate: undefined,
+          dailyLimit: MAX_FREE_CREDITS,
+          premiumTier: undefined
+        };
+      }
+      throw error;
+    }
 
     if (data) {
+      // ... existing logic ...
       // Premium Süre Kontrolü
       const today = new Date().toISOString().split('T')[0];
 
