@@ -119,12 +119,17 @@ function BanaConvertApp() {
         console.log('[Auth] Logged out - reset to free stats');
       } else if (session) {
         // Load profile and wait for it
-        const profile = await getUserProfile(session.user.id);
-        if (profile) {
-          setStats(profile);
-          console.log('[Auth] Loaded profile:', profile.isPremium, profile.premiumTier);
-        } else {
-          console.error('[Auth] Failed to load profile. Check DB/RLS.');
+        console.log('[Auth] Loading profile for user:', session.user.id);
+        try {
+          const profile = await getUserProfile(session.user.id);
+          if (profile) {
+            setStats(profile);
+            console.log('[Auth] Loaded profile:', profile.isPremium, profile.premiumTier, 'Credits:', profile.credits);
+          } else {
+            console.error('[Auth] Failed to load profile - returned null. Check DB/RLS.');
+          }
+        } catch (err) {
+          console.error('[Auth] getUserProfile threw an error:', err);
         }
         setIsInitialized(true);
       } else if (!session) {
