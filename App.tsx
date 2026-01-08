@@ -92,10 +92,12 @@ function BanaConvertApp() {
   // 1. Initialize Session & Stats
   useEffect(() => {
     // Check active session
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       setSession(session);
       if (session) {
-        loadUserProfile(session.user.id);
+        const profile = await getUserProfile(session.user.id);
+        if (profile) setStats(profile);
+        setIsInitialized(true);
       } else {
         // Fallback to local storage for guests
         loadLocalStats();
@@ -129,7 +131,13 @@ function BanaConvertApp() {
         if (profile) {
           setStats(profile);
           console.log('[Auth] Loaded profile:', profile.isPremium, profile.premiumTier);
+        } else {
+          console.error('[Auth] Failed to load profile. Check DB/RLS.');
         }
+        setIsInitialized(true);
+      } else if (!session) {
+        // Guest: Load local stats logic
+        loadLocalStats();
         setIsInitialized(true);
       }
     });
@@ -157,17 +165,13 @@ function BanaConvertApp() {
     }
   };
 
-  const loadUserProfile = async (userId: string) => {
-    const profile = await getUserProfile(userId);
-    if (profile) {
-      setStats(profile);
-    }
-    setIsInitialized(true);
-  };
+
 
   // Handle sign out - reset to free user stats
+  // Handle sign out - Force Reset UI
   const handleSignOut = async () => {
-    await supabase.auth.signOut();
+    // 1. Force Reset UI immediately
+    setSession(null);
     setStats({
       credits: MAX_FREE_CREDITS,
       isPremium: false,
@@ -176,7 +180,13 @@ function BanaConvertApp() {
       premiumExpiryDate: undefined,
       dailyLimit: MAX_FREE_CREDITS
     });
-    loadLocalStats();
+    localStorage.removeItem('vormPixyzeStats');
+    setIsInitialized(true);
+
+    // 2. Call API quietly
+    try {
+      await supabase.auth.signOut();
+    } catch (e) { console.error(e); }
   };
 
   // Referral Handling
