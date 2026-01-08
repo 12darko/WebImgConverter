@@ -388,7 +388,9 @@ function BanaConvertApp() {
   };
 
   const deductCredit = async (cost: number) => {
-    // Premium users also have credits deducted (no unlimited)
+    // Business users have UNLIMITED credits
+    if (stats.premiumTier === 'business') return true;
+
     if (stats.credits < cost) return false;
 
     const newCredits = stats.credits - cost;
