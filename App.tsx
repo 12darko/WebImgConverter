@@ -106,12 +106,30 @@ function BanaConvertApp() {
     // Listen for auth changes
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log('[Auth] Event:', event, 'Session:', session?.user?.email);
       setSession(session);
-      if (session) {
-        loadUserProfile(session.user.id);
-      } else {
-        loadLocalStats();
+
+      if (event === 'SIGNED_OUT') {
+        // Reset to free user stats on logout
+        const freeStats: UserStats = {
+          credits: MAX_FREE_CREDITS,
+          isPremium: false,
+          lastResetDate: new Date().toISOString().split('T')[0],
+          premiumTier: undefined,
+          premiumExpiryDate: undefined,
+          dailyLimit: MAX_FREE_CREDITS
+        };
+        setStats(freeStats);
+        setIsInitialized(true);
+        console.log('[Auth] Logged out - reset to free stats');
+      } else if (session) {
+        // Load profile and wait for it
+        const profile = await getUserProfile(session.user.id);
+        if (profile) {
+          setStats(profile);
+          console.log('[Auth] Loaded profile:', profile.isPremium, profile.premiumTier);
+        }
         setIsInitialized(true);
       }
     });
