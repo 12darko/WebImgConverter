@@ -49,18 +49,23 @@ serve(async (req) => {
 
         if (eventName === 'order_created' || eventName === 'subscription_created') {
             const userId = customData?.user_id;
-            const productName = body.data.attributes.first_order_item?.product_name || '';
-            const variantName = body.data.attributes.first_order_item?.variant_name || '';
+            const attributes = body.data.attributes;
+            // Handle different payload structures (order_created vs subscription_created)
+            const productName = attributes.product_name || attributes.first_order_item?.product_name || '';
+            const variantName = attributes.variant_name || attributes.first_order_item?.variant_name || '';
+            const variantId = attributes.variant_id;
 
-            // Determine tier and daily limit based on product/variant name
+            // Determine tier and daily limit
             let premiumTier: 'starter' | 'pro' | 'business' = 'starter';
             let dailyLimit = 30; // Default: Starter
 
             const productInfo = (productName + ' ' + variantName).toLowerCase();
-            if (productInfo.includes('business') || productInfo.includes('300')) {
+
+            // Check by ID first (Business ID: 1196209), then Fallback to Name
+            if (variantId === 1196209 || productInfo.includes('business')) {
                 premiumTier = 'business';
-                dailyLimit = 300;
-            } else if (productInfo.includes('pro') || productInfo.includes('100')) {
+                dailyLimit = 999999; // Unlimited
+            } else if (productInfo.includes('pro')) {
                 premiumTier = 'pro';
                 dailyLimit = 100;
             }
@@ -85,8 +90,7 @@ serve(async (req) => {
                         is_premium: true,
                         premium_tier: premiumTier,
                         daily_limit: dailyLimit,
-                        premium_expiry_date: expiryDateStr,
-                        updated_at: new Date().toISOString()
+                        premium_expiry_date: expiryDateStr
                     })
                     .eq('id', userId);
 
@@ -115,8 +119,7 @@ serve(async (req) => {
                                 is_premium: true,
                                 premium_tier: premiumTier,
                                 daily_limit: dailyLimit,
-                                premium_expiry_date: expiryDateStr,
-                                updated_at: new Date().toISOString()
+                                premium_expiry_date: expiryDateStr
                             })
                             .eq('id', users[0].id);
 
