@@ -10,6 +10,7 @@ import { LegalModal } from './components/LegalModal';
 import { SupportModal } from './components/SupportModal';
 import { CookieBanner } from './components/CookieBanner';
 import { HistoryModal } from './components/HistoryModal'; // History Import
+import { CropModal } from './components/CropModal'; // Crop Import
 
 import { CompareSlider } from './components/CompareSlider';
 import { AuthModal } from './components/AuthModal'; // Auth import
@@ -61,6 +62,8 @@ function BanaConvertApp() {
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false); // Auth Modal
   const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false); // History Modal State
+  const [isCropModalOpen, setIsCropModalOpen] = useState(false); // Crop Modal State
+  const [currentCropFileId, setCurrentCropFileId] = useState<string | null>(null);
 
   const [legalModalTab, setLegalModalTab] = useState<'privacy' | 'terms' | 'contact'>('privacy');
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -743,6 +746,21 @@ function BanaConvertApp() {
 
       <LegalModal isOpen={isLegalModalOpen} onClose={() => setIsLegalModalOpen(false)} initialTab={legalModalTab} />
       <HistoryModal isOpen={isHistoryModalOpen} onClose={() => setIsHistoryModalOpen(false)} />
+
+      {/* Crop Modal with tier check */}
+      {isCropModalOpen && currentCropFileId && (
+        <CropModal
+          isOpen={isCropModalOpen}
+          onClose={() => { setIsCropModalOpen(false); setCurrentCropFileId(null); }}
+          imageUrl={files.find(f => f.id === currentCropFileId)?.previewUrl || ''}
+          onCropComplete={(cropData) => {
+            setFiles(prev => prev.map(f => f.id === currentCropFileId ? { ...f, cropData: { ...cropData, unit: 'px' } } : f));
+            setIsCropModalOpen(false);
+            setCurrentCropFileId(null);
+          }}
+        />
+      )}
+
       <CookieBanner />
 
       {/* Navbar */}
@@ -1050,6 +1068,31 @@ function BanaConvertApp() {
                                           </button>
                                         );
                                       })}
+                                      {/* Crop Button with Pro+ tier check */}
+                                      {(() => {
+                                        const canCrop = hasFeatureAccess(stats.premiumTier, 'CROP');
+                                        return (
+                                          <button
+                                            onClick={() => {
+                                              if (canCrop) {
+                                                setCurrentCropFileId(file.id);
+                                                setIsCropModalOpen(true);
+                                              } else {
+                                                setIsPremiumModalOpen(true);
+                                              }
+                                            }}
+                                            className={`text-xs px-3 py-1.5 rounded border flex items-center gap-1 ${canCrop
+                                              ? file.cropData
+                                                ? 'bg-indigo-900/50 border-indigo-500 text-indigo-200'
+                                                : 'bg-slate-800 border-slate-600'
+                                              : 'bg-slate-900/50 border-slate-700/50 text-slate-500 cursor-not-allowed opacity-60'
+                                              }`}
+                                          >
+                                            ✂️ {file.cropData ? 'Kırpıldı' : 'Kırp'}
+                                            {!canCrop && <span className="text-amber-400">🔒</span>}
+                                          </button>
+                                        );
+                                      })()}
                                     </div>
                                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                                       <button onClick={() => updateFileConfig(file.id, 'rotation', (file.rotation + 90) % 360)} className="bg-slate-800 p-2 rounded text-xs border border-slate-700">{t('rotate')}: {file.rotation}°</button>

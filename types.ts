@@ -29,6 +29,7 @@ export interface FileItem {
   watermarkColor?: string; // hex color
   watermarkFontSize?: number; // 1-5 (small to large)
   watermarkFont?: 'Arial' | 'Georgia' | 'Courier' | 'Impact' | 'Comic Sans MS';
+  cropData?: { x: number; y: number; width: number; height: number; unit: string };
   isFlippedHorizontal?: boolean;
   isFlippedVertical?: boolean;
 
