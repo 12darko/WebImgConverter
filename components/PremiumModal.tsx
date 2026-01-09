@@ -8,9 +8,10 @@ interface PremiumModalProps {
   userId?: string; // Add userId to pass to checkout
   currentTier?: 'starter' | 'pro' | 'business'; // User's current premium tier
   isPremium?: boolean; // Whether user is currently premium
+  onLoginRequired?: () => void; // Callback if user tries to buy without logging in
 }
 
-export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, userId, currentTier, isPremium }) => {
+export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, userId, currentTier, isPremium, onLoginRequired }) => {
   const { t } = useLanguage();
 
   // Scroll Lock Effect
@@ -28,6 +29,16 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
 
   // Checkout handler
   const handleUpgrade = (plan: 'starter' | 'pro' | 'business') => {
+    if (!userId) {
+      onClose();
+      if (onLoginRequired) {
+        onLoginRequired();
+      } else {
+        alert(t('login_required') || "Please login to upgrade.");
+      }
+      return;
+    }
+
     let checkoutUrl = '';
 
     // Plan-specific URLs (User needs to set these in .env)

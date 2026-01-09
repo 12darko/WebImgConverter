@@ -637,7 +637,13 @@ function BanaConvertApp() {
         let dataUrl: string;
 
         // Handle different output formats
-        if (item.targetFormat === ConversionFormat.TIFF) {
+        if (item.targetFormat === ConversionFormat.SVG) {
+          // Wrapped SVG output
+          const dataUrlPng = canvas.toDataURL('image/png');
+          const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="${targetWidth}" height="${targetHeight}"><image href="${dataUrlPng}" width="100%" height="100%" /></svg>`;
+          blob = new Blob([svgString], { type: 'image/svg+xml' });
+          dataUrl = URL.createObjectURL(blob);
+        } else if (item.targetFormat === ConversionFormat.TIFF) {
           // Use custom TIFF encoder
           const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
           blob = encodeToTIFF(imageData);
@@ -761,7 +767,16 @@ function BanaConvertApp() {
       {/* Modals */}
       {ENABLE_PREMIUM_SYSTEM && (
         <>
-          <PremiumModal isOpen={isPremiumModalOpen} onClose={() => setIsPremiumModalOpen(false)} userId={session?.user?.id} currentTier={stats.premiumTier} isPremium={stats.isPremium} />
+          <>
+            <PremiumModal
+              isOpen={isPremiumModalOpen}
+              onClose={() => setIsPremiumModalOpen(false)}
+              userId={session?.user?.id}
+              currentTier={stats.premiumTier}
+              isPremium={stats.isPremium}
+              onLoginRequired={() => setIsAuthModalOpen(true)}
+            />
+          </>
         </>
       )}
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} onSuccess={() => { }} />
@@ -1070,7 +1085,7 @@ function BanaConvertApp() {
                                         </button>
                                       ))}
                                       {/* Premium Formats (Business tier) */}
-                                      {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO, ConversionFormat.AVIF].map(fmt => {
+                                      {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO, ConversionFormat.AVIF, ConversionFormat.SVG].map(fmt => {
                                         const canUse = hasFeatureAccess(stats.premiumTier, 'SPECIAL_FORMATS');
                                         return (
                                           <button
@@ -1398,7 +1413,7 @@ function BanaConvertApp() {
               </Droppable>
             </DragDropContext>
 
-            {files.length > 0 && <div className="mt-8"><AdBanner variant="horizontal" /></div>}
+            {files.length > 0 && !hasFeatureAccess(stats.premiumTier, 'NO_ADS') && <div className="mt-8"><AdBanner variant="horizontal" /></div>}
 
             {
               files.some(f => f.status === 'done') && (
