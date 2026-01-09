@@ -141,7 +141,10 @@ Ayrıca, Google AdSense aracılığıyla sunulan reklamlar, ilgi alanlarınıza 
 Sitemiz herhangi bir kişisel kimlik bilgisi (Ad, Soyad, TC Kimlik No vb.) toplamaz ve saklamaz. Tamamen anonim olarak hizmet verir.
 
 5. İŞLEM KAYITLARI (BUSINESS TIER)
-Premium Business kullanıcıları için sunulan İşlem Kayıtları özelliği, yalnızca dosya adı ve tarih gibi işlem metadatalarını (dosyanın kendisini değil) saklar. Bu veriler veritabanı verimliliği ve gizlilik ilkemiz gereği 7 gün saklandıktan sonra otomatik olarak ve kalıcı şekilde silinir.`,
+Premium Business kullanıcıları için sunulan İşlem Kayıtları özelliği, yalnızca dosya adı ve tarih gibi işlem metadatalarını (dosyanın kendisini değil) saklar. Bu veriler veritabanı verimliliği ve gizlilik ilkemiz gereği 7 gün saklandıktan sonra otomatik olarak ve kalıcı şekilde silinir.
+145: 
+146: 6. GOOGLE DRIVE ENTEGRASYONU (Business Tier)
+147: Uygulamamız, dosyaları doğrudan Google Drive'ınıza kaydetmenizi sağlayan bir özellik sunar. Bu işlem için Google Drive API kullanılır ve yalnızca "drive.file" yetkisi (uygulamanın oluşturduğu veya açtığı dosyalar) talep edilir. VormPixyze, Drive'ınızdaki diğer kişisel dosyalarınıza veya klasörlerinize ASLA erişemez, bunları okuyamaz veya silemez.`,
 
     terms_content: `1. HİZMETİN KULLANIMI
 VormPixyze.com ("Site") adresini kullanarak aşağıdaki şartları kabul etmiş sayılırsınız. Bu site, resim dosyalarını dönüştürmek ve düzenlemek amacıyla sunulan bir araçtır.
@@ -309,7 +312,10 @@ Additionally, we use third-party services like Google AdSense, which may use coo
 Our site does not collect or store personally identifiable information (Name, Email, ID, etc.). We operate as a completely anonymous tool.
 
 5. ACTIVITY LOG (BUSINESS TIER)
-The Activity Log feature provided for Premium Business users stores only processing metadata (filename, date, etc.), NOT the files themselves. In accordance with database efficiency and our privacy principles, this data is automatically and permanently deleted after 7 days.`,
+The Activity Log feature provided for Premium Business users stores only processing metadata (filename, date, etc.), NOT the files themselves. In accordance with database efficiency and our privacy principles, this data is automatically and permanently deleted after 7 days.
+313: 
+314: 6. GOOGLE DRIVE INTEGRATION (Business Tier)
+315: Our application offers a feature to save files directly to your Google Drive. This process uses the Google Drive API and requests only the "drive.file" scope (files created or opened by the app). VormPixyze CANNOT access, read, or delete any other personal files or folders in your Drive.`,
 
     terms_content: `1. ACCEPTANCE OF TERMS
 By accessing and using VormPixyze.com ("Site"), you agree to comply with these Terms of Service. This site is a tool provided for image conversion and editing purposes.
