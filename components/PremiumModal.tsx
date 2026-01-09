@@ -84,7 +84,9 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
               <li className="flex items-center gap-2 text-slate-600"><span className="text-red-900/50 font-bold">✕</span> <span className="line-through decoration-slate-600">{t('feat_watermark')}</span></li>
               <li className="flex items-center gap-2 text-slate-600"><span className="text-red-900/50 font-bold">✕</span> <span className="line-through decoration-slate-600">{t('feat_batch_ai')}</span></li>
               <li className="flex items-center gap-2 text-slate-600"><span className="text-red-900/50 font-bold">✕</span> <span className="line-through decoration-slate-600">{t('feat_zip_download')}</span></li>
+              <li className="flex items-center gap-2 text-slate-600"><span className="text-red-900/50 font-bold">✕</span> <span className="line-through decoration-slate-600">{t('feat_crop')}</span></li>
               <li className="flex items-center gap-2 text-slate-600"><span className="text-red-900/50 font-bold">✕</span> <span className="line-through decoration-slate-600">{t('feat_special_formats')}</span></li>
+              <li className="flex items-center gap-2 text-slate-600"><span className="text-red-900/50 font-bold">✕</span> <span className="line-through decoration-slate-600">{t('feat_advanced_formats')}</span></li>
               <li className="flex items-center gap-2 text-slate-600"><span className="text-red-900/50 font-bold">✕</span> <span className="line-through decoration-slate-600">{t('feat_history')}</span></li>
             </ul>
             {isPremium && currentTier === 'starter' ? (
@@ -115,8 +117,10 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
               <li className="flex items-center gap-2"><span className="text-amber-500 font-bold">✓</span> {t('feat_watermark')}</li>
               <li className="flex items-center gap-2"><span className="text-amber-500 font-bold">✓</span> {t('feat_batch_ai')}</li>
               <li className="flex items-center gap-2"><span className="text-amber-500 font-bold">✓</span> {t('feat_zip_download')}</li>
+              <li className="flex items-center gap-2"><span className="text-amber-500 font-bold">✓</span> {t('feat_crop')}</li>
               {/* Missing Features */}
               <li className="flex items-center gap-2 text-slate-600"><span className="text-red-900/50 font-bold">✕</span> <span className="line-through decoration-slate-600">{t('feat_special_formats')}</span></li>
+              <li className="flex items-center gap-2 text-slate-600"><span className="text-red-900/50 font-bold">✕</span> <span className="line-through decoration-slate-600">{t('feat_advanced_formats')}</span></li>
               <li className="flex items-center gap-2 text-slate-600"><span className="text-red-900/50 font-bold">✕</span> <span className="line-through decoration-slate-600">{t('feat_history')}</span></li>
             </ul>
             {isPremium && currentTier === 'pro' ? (
@@ -145,7 +149,9 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
               <li className="flex items-center gap-2"><span className="text-blue-500 font-bold">✓</span> {t('feat_watermark')}</li>
               <li className="flex items-center gap-2"><span className="text-blue-500 font-bold">✓</span> {t('feat_batch_ai')}</li>
               <li className="flex items-center gap-2"><span className="text-blue-500 font-bold">✓</span> {t('feat_zip_download')}</li>
+              <li className="flex items-center gap-2"><span className="text-blue-500 font-bold">✓</span> {t('feat_crop')}</li>
               <li className="flex items-center gap-2"><span className="text-blue-500 font-bold">✓</span> {t('feat_special_formats')}</li>
+              <li className="flex items-center gap-2"><span className="text-blue-500 font-bold">✓</span> {t('feat_advanced_formats')}</li>
               <li className="flex items-center gap-2"><span className="text-blue-500 font-bold">✓</span> {t('feat_history')}</li>
             </ul>
             {isPremium && currentTier === 'business' ? (

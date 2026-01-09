@@ -86,7 +86,9 @@ export const FEATURE_REQUIREMENTS = {
   AI_RENAME: 2,        // Pro+
   ZIP_DOWNLOAD: 2,     // Pro+
   BATCH_AI: 2,         // Pro+
+  CROP: 2,             // Pro+
   SPECIAL_FORMATS: 3,  // Business (BMP, ICO, TIFF)
+  ADVANCED_INPUTS: 3,  // Business (AVIF, SVG)
   HISTORY: 3,          // Business
 };
 
