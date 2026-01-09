@@ -289,6 +289,16 @@ function BanaConvertApp() {
         let finalUrl = '';
         const lowerName = item.file.name.toLowerCase();
         const isHeic = lowerName.endsWith('.heic') || lowerName.endsWith('.heif');
+        const isAvif = lowerName.endsWith('.avif');
+        const isSvg = lowerName.endsWith('.svg');
+
+        // Business tier check for AVIF/SVG
+        if (isAvif || isSvg) {
+          if (!hasFeatureAccess(stats.premiumTier, 'ADVANCED_INPUTS')) {
+            setFiles(prev => prev.map(f => f.id === item.id ? { ...f, status: 'error', errorMsg: 'Business Plan Gerekli (AVIF/SVG)' } : f));
+            continue;
+          }
+        }
 
         if (isHeic) {
           if (window.heic2any) {
@@ -308,7 +318,7 @@ function BanaConvertApp() {
         setFiles(prev => prev.map(f => f.id === item.id ? { ...f, status: 'error', errorMsg: 'Format desteklenmiyor' } : f));
       }
     }
-  }, []);
+  }, [stats.premiumTier]);
 
   const removeFile = (id: string) => setFiles(prev => prev.filter(f => f.id !== id));
   const updateFileConfig = (id: string, key: keyof FileItem, value: any) => {
