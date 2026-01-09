@@ -1297,7 +1297,7 @@ function BanaConvertApp() {
                                     </button>
                                   )}
                                   {file.status === 'done' && (
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-2 flex-wrap">
                                       <button
                                         onClick={() => setCompareItem(file)}
                                         className="bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded-lg text-xs"
@@ -1307,6 +1307,38 @@ function BanaConvertApp() {
                                       <a href={file.convertedUrl} download={`${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`} className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2">
                                         {t('download_btn')} ({formatFileSize(file.convertedSize || 0)})
                                       </a>
+                                      {/* Save to Drive Button */}
+                                      {(() => {
+                                        const canSaveToDrive = hasFeatureAccess(stats.premiumTier, 'CLOUD_STORAGE');
+                                        return (
+                                          <button
+                                            onClick={async () => {
+                                              if (!canSaveToDrive) {
+                                                setIsPremiumModalOpen(true);
+                                                return;
+                                              }
+                                              if (file.convertedBlob) {
+                                                const { saveToGoogleDrive, loadGoogleDriveAPI } = await import('./services/googleDriveService');
+                                                await loadGoogleDriveAPI();
+                                                const filename = `${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`;
+                                                const result = await saveToGoogleDrive(file.convertedBlob, filename);
+                                                if (result.success) {
+                                                  alert('✅ Google Drive\'a kaydedildi!');
+                                                } else {
+                                                  alert('❌ Kaydetme başarısız: ' + result.error);
+                                                }
+                                              }
+                                            }}
+                                            className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-1 ${canSaveToDrive
+                                              ? 'bg-blue-600 hover:bg-blue-500 text-white'
+                                              : 'bg-slate-700/50 text-slate-400 cursor-not-allowed'
+                                              }`}
+                                          >
+                                            ☁️ {t('save_to_drive') || "Drive'a Kaydet"}
+                                            {!canSaveToDrive && <span className="text-amber-400">🔒</span>}
+                                          </button>
+                                        );
+                                      })()}
                                     </div>
                                   )}
                                 </div>

@@ -90,6 +90,7 @@ export const FEATURE_REQUIREMENTS = {
   CROP: 2,             // Pro+
   SPECIAL_FORMATS: 3,  // Business (BMP, ICO, TIFF)
   ADVANCED_INPUTS: 3,  // Business (AVIF, SVG)
+  CLOUD_STORAGE: 3,    // Business (Google Drive)
   HISTORY: 3,          // Business
 };
 

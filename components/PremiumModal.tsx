@@ -152,6 +152,7 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
               <li className="flex items-center gap-2"><span className="text-blue-500 font-bold">✓</span> {t('feat_crop')}</li>
               <li className="flex items-center gap-2"><span className="text-blue-500 font-bold">✓</span> {t('feat_special_formats')}</li>
               <li className="flex items-center gap-2"><span className="text-blue-500 font-bold">✓</span> {t('feat_advanced_formats')}</li>
+              <li className="flex items-center gap-2"><span className="text-blue-500 font-bold">✓</span> {t('feat_cloud_storage')}</li>
               <li className="flex items-center gap-2"><span className="text-blue-500 font-bold">✓</span> {t('feat_history')}</li>
             </ul>
             {isPremium && currentTier === 'business' ? (
