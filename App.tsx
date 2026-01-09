@@ -80,6 +80,19 @@ function BanaConvertApp() {
     return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
   }, []);
 
+  // Reset stats when user logs out to fix ui bug
+  useEffect(() => {
+    if (!session) {
+      setStats(prev => ({
+        ...prev,
+        isPremium: false,
+        premiumTier: undefined,
+        // Only reset credits if they look bogus (like the 99999 from premium test)
+        credits: prev.credits > 1000 ? MAX_FREE_CREDITS : prev.credits
+      }));
+    }
+  }, [session]);
+
   const handleInstallClick = async () => {
     if (!deferredPrompt) return;
     deferredPrompt.prompt();
@@ -485,8 +498,12 @@ function BanaConvertApp() {
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = 'high';
 
-        let targetWidth = Math.floor(img.width * item.resizeScale);
-        let targetHeight = Math.floor(img.height * item.resizeScale);
+        // Use cropped dimensions if available, otherwise full image
+        const sourceWidth = item.cropData ? item.cropData.width : img.width;
+        const sourceHeight = item.cropData ? item.cropData.height : img.height;
+
+        let targetWidth = Math.floor(sourceWidth * item.resizeScale);
+        let targetHeight = Math.floor(sourceHeight * item.resizeScale);
 
         // Handle Rotation Logic
         if (item.rotation === 90 || item.rotation === 270) {
@@ -520,7 +537,12 @@ function BanaConvertApp() {
         updateProgress(55); // Canvas ready
 
         // Draw the image (Transparent or Original)
-        ctx.drawImage(img, -targetWidth / 2, -targetHeight / 2, targetWidth, targetHeight);
+        // Draw the image (Transparent or Original) with Crop support
+        if (item.cropData) {
+          ctx.drawImage(img, item.cropData.x, item.cropData.y, item.cropData.width, item.cropData.height, -targetWidth / 2, -targetHeight / 2, targetWidth, targetHeight);
+        } else {
+          ctx.drawImage(img, -targetWidth / 2, -targetHeight / 2, targetWidth, targetHeight);
+        }
 
         ctx.filter = 'none'; // Reset filter
 
@@ -1048,7 +1070,7 @@ function BanaConvertApp() {
                                         </button>
                                       ))}
                                       {/* Premium Formats (Business tier) */}
-                                      {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO].map(fmt => {
+                                      {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO, ConversionFormat.AVIF].map(fmt => {
                                         const canUse = hasFeatureAccess(stats.premiumTier, 'SPECIAL_FORMATS');
                                         return (
                                           <button

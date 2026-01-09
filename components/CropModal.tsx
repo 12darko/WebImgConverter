@@ -56,6 +56,26 @@ export const CropModal: React.FC<CropModalProps> = ({ isOpen, onClose, imageUrl,
         return () => { document.body.style.overflow = 'unset'; };
     }, [isOpen]);
 
+    // Recalculate crop when aspect ratio changes
+    useEffect(() => {
+        if (imgRef.current && aspectRatio !== undefined) {
+            const { width, height } = imgRef.current;
+            const newCrop = centerCrop(
+                makeAspectCrop(
+                    { unit: '%', width: 80 },
+                    aspectRatio,
+                    width,
+                    height
+                ),
+                width,
+                height
+            );
+            setCrop(newCrop);
+        } else if (imgRef.current && aspectRatio === undefined) {
+            // Serbest mod - mevcut crop'u koru
+        }
+    }, [aspectRatio]);
+
     if (!isOpen) return null;
 
     return (

@@ -5,6 +5,7 @@ export enum ConversionFormat {
   TIFF = 'image/tiff',     // Premium
   BMP = 'image/bmp',       // Premium
   ICO = 'image/x-icon',    // Premium
+  AVIF = 'image/avif',     // Business
 }
 
 export interface FileItem {
