@@ -828,6 +828,19 @@ function BanaConvertApp() {
                   </div>
                 )}
 
+                {/* Manage Subscription (Premium Only) */}
+                {stats.isPremium && (
+                  <a
+                    href={import.meta.env.VITE_LEMON_CUSTOMER_PORTAL || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-indigo-500/10 hover:bg-indigo-500/20 px-3 py-1.5 rounded-lg border border-indigo-500/20 transition-colors text-xs text-indigo-300"
+                  >
+                    <span>⚙️</span>
+                    <span className="hidden lg:inline">{t('manage_subscription') || 'Aboneliği Yönet'}</span>
+                  </a>
+                )}
+
                 {/* History Button (Business Only) */}
                 {stats.premiumTier === 'business' && (
                   <button
