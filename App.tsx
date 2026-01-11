@@ -5,7 +5,7 @@ import { Dropzone } from './components/Dropzone';
 import { AdBanner } from './components/AdBanner';
 import { PremiumModal } from './components/PremiumModal';
 import { ReferralWidget } from './components/ReferralWidget';
-import { PaymentModal } from './components/PaymentModal';
+
 import { LegalModal } from './components/LegalModal';
 import { SupportModal } from './components/SupportModal';
 import { CookieBanner } from './components/CookieBanner';
@@ -56,7 +56,7 @@ function BanaConvertApp() {
 
   // Modals
   const [isPremiumModalOpen, setIsPremiumModalOpen] = useState(false);
-  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+
 
   const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
@@ -348,14 +348,7 @@ function BanaConvertApp() {
 
   // --- ACTIONS ---
 
-  const handleUpgradeClick = () => {
-    if (!session) {
-      setIsAuthModalOpen(true); // Require login for premium
-      return;
-    }
-    setIsPremiumModalOpen(false);
-    setIsPaymentModalOpen(true);
-  };
+
 
   const handlePaymentSuccess = async () => {
     setStats(prev => ({ ...prev, isPremium: true, credits: 99999 }));
