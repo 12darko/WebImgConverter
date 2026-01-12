@@ -204,6 +204,39 @@ export const incrementDailyStats = async () => {
 };
 
 /**
+ * Toplam dönüşüm istatistiklerini getirir
+ */
+export const getTotalStats = async (): Promise<{ totalConversions: number; totalUsers: number }> => {
+  try {
+    // daily_stats tablosundan toplam dönüşüm sayısını al
+    const { data: statsData, error: statsError } = await supabase
+      .from('daily_stats')
+      .select('total_conversions')
+      .order('date', { ascending: false })
+      .limit(1)
+      .single();
+
+    // profiles tablosundan toplam kullanıcı sayısını al
+    const { count: userCount, error: userError } = await supabase
+      .from('profiles')
+      .select('*', { count: 'exact', head: true });
+
+    if (statsError || userError) {
+      console.error('Stats fetch error:', statsError || userError);
+      return { totalConversions: 0, totalUsers: 0 };
+    }
+
+    return {
+      totalConversions: statsData?.total_conversions || 0,
+      totalUsers: userCount || 0
+    };
+  } catch (error) {
+    console.error('getTotalStats error:', error);
+    return { totalConversions: 0, totalUsers: 0 };
+  }
+};
+
+/**
  * Destek talebi oluşturur (support_tickets tablosuna kayıt atar)
  */
 export const createSupportTicket = async (email: string, subject: string, message: string, isPremium: boolean): Promise<{ success: boolean; error?: any }> => {

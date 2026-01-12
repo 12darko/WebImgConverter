@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 // @imgly/background-removal is dynamically imported when needed (lazy loading)
 import { Dropzone } from './components/Dropzone';
@@ -14,6 +15,7 @@ import { CropModal } from './components/CropModal'; // Crop Import
 
 import { CompareSlider } from './components/CompareSlider';
 import { AuthModal } from './components/AuthModal'; // Auth import
+import { SeoContent } from './components/SeoContent';
 import { generateSmartFilename } from './services/aiNamingService';
 import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
 
@@ -40,7 +42,16 @@ declare global {
   }
 }
 
-function BanaConvertApp() {
+interface AppProps {
+  defaultTool?: string;
+  pageH1?: string;
+  acceptTypes?: string;
+  formatBadges?: string[];
+  defaultOutputFormat?: string;
+  hideFormatSelector?: boolean;
+}
+
+function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaultOutputFormat, hideFormatSelector }: AppProps = {}) {
   const { t, language, setLanguage } = useLanguage();
   const [files, setFiles] = useState<FileItem[]>([]);
   const [compareItem, setCompareItem] = useState<FileItem | null>(null);
@@ -796,8 +807,8 @@ function BanaConvertApp() {
       {/* Navbar */}
       <nav className="glass-panel sticky top-0 z-40 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="relative group cursor-pointer" onClick={() => window.location.reload()}>
+          <Link to="/" className="flex items-center gap-3">
+            <div className="relative group cursor-pointer">
               <div className="absolute inset-0 bg-indigo-600 blur-lg opacity-30 group-hover:opacity-60 transition-opacity"></div>
               <svg className="relative w-10 h-10 drop-shadow-xl" viewBox="0 0 100 100" fill="none">
                 <defs><linearGradient id="logoGrad" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stopColor="#6366f1" /><stop offset="100%" stopColor="#a855f7" /></linearGradient></defs>
@@ -805,10 +816,13 @@ function BanaConvertApp() {
                 <rect x="45" y="5" width="10" height="10" fill="#facc15" className="animate-bounce" style={{ animationDuration: '2s' }} />
               </svg>
             </div>
-            <h1 className="text-2xl font-bold tracking-tight text-white hidden sm:block">
-              Vorm<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Pixyze</span>
-            </h1>
-          </div>
+            <div>
+              <h1 className="text-2xl font-bold tracking-tight text-white hidden sm:block">
+                Vorm<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Pixyze</span>
+              </h1>
+              <span className="hidden md:block text-[10px] text-slate-500 font-medium">Free HEIC to JPG Converter</span>
+            </div>
+          </Link>
 
 
 
@@ -890,588 +904,599 @@ function BanaConvertApp() {
       </nav>
 
       {/* Main Content Area */}
-      <main className="flex-1 w-full max-w-7xl mx-auto p-4 md:p-8 flex flex-col lg:flex-row gap-8 mt-6">
+      <main className="flex-1 w-full max-w-7xl mx-auto p-4 md:p-8 mt-6">
+        <div className="flex flex-col lg:flex-row gap-8">
 
-        {/* Left: Upload & Files */}
-        <div className="flex-1 flex flex-col gap-8">
-          <section className="glass-panel rounded-2xl p-1 shadow-2xl animate-[fadeIn_0.5s]">
-            <Dropzone
-              onFilesAdded={handleFilesAdded}
-              disabled={!stats.isPremium && stats.credits <= 0 && files.length === 0}
-            />
-          </section>
+          {/* Left: Upload & Files */}
+          <div className="flex-1 flex flex-col gap-8">
+            {/* Trust Badge */}
+            <div className="flex items-center justify-center gap-2 text-emerald-400 text-xs font-medium bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-2 mx-auto">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" /></svg>
+              <span>{language === 'tr' ? '🔒 %100 Tarayıcı Tabanlı • Dosyalar Sunucuya Yüklenmez' : '🔒 100% Browser-Based • Files Never Leave Your Device'}</span>
+            </div>
 
-          <div className="space-y-4">
-            {files.length > 0 && (
-              <div className="flex items-center justify-between mb-2 px-2">
-                <h3 className="text-lg font-semibold text-white">{t('queue')} ({files.length})</h3>
-                <div className="flex items-center gap-3">
-                  {/* Batch Progress Bar - visible when converting multiple files */}
-                  {files.length > 1 && files.some(f => f.status === 'converting') && (
-                    <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700/50">
-                      <div className="flex justify-between items-center text-xs text-slate-400 mb-2">
-                        <span>📦 {t('batch_progress') || 'Toplu Dönüşüm'}</span>
-                        <span className="font-mono text-indigo-400">
-                          {files.filter(f => f.status === 'done').length}/{files.length}
-                        </span>
-                      </div>
-                      <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-500"
-                          style={{ width: `${(files.filter(f => f.status === 'done').length / files.length) * 100}%` }}
-                        />
-                      </div>
-                    </div>
-                  )}
-                  {/* Batch Convert All - visible when there are idle files */}
-                  {files.some(f => f.status === 'idle') && (
-                    <button
-                      onClick={async () => {
-                        const idleFiles = files.filter(f => f.status === 'idle');
-                        for (const file of idleFiles) {
-                          await convertImage(file.id);
-                        }
-                      }}
-                      className="flex items-center gap-1.5 text-xs bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-3 py-1.5 rounded-lg font-medium hover:from-indigo-400 hover:to-purple-400 transition-all"
-                    >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                      </svg>
-                      {t('convert_all_btn') || 'Tümünü Dönüştür'}
-                    </button>
-                  )}
-                  {/* ZIP Download for Premium (Pro+) */}
-                  {hasFeatureAccess(stats.premiumTier, 'ZIP_DOWNLOAD') && files.some(f => f.status === 'done') && (
-                    <button
-                      onClick={async () => {
-                        const JSZip = (await import('jszip')).default;
-                        const { saveAs } = await import('file-saver');
-                        const zip = new JSZip();
+            <section className="glass-panel rounded-2xl p-1 shadow-2xl animate-[fadeIn_0.5s]">
+              <Dropzone
+                onFilesAdded={handleFilesAdded}
+                disabled={!stats.isPremium && stats.credits <= 0 && files.length === 0}
+                acceptTypes={acceptTypes}
+                formatBadges={formatBadges}
+              />
+            </section>
 
-                        files.filter(f => f.status === 'done' && f.convertedBlob).forEach((file, idx) => {
-                          const ext = file.targetFormat.split('/')[1];
-                          const name = file.aiName || file.file.name.replace(/\.[^/.]+$/, '');
-                          zip.file(`${name}_${idx + 1}.${ext}`, file.convertedBlob!);
-                        });
-
-                        const blob = await zip.generateAsync({ type: 'blob' });
-                        saveAs(blob, 'VormPixyze_Images.zip');
-                      }}
-                      className="flex items-center gap-1.5 text-xs bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1.5 rounded-lg font-medium hover:from-amber-400 hover:to-orange-400 transition-all"
-                    >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                      </svg>
-                      ZIP İndir
-                    </button>
-                  )}
-                  {/* Batch AI Rename - Premium Only (Pro+) */}
-                  {hasFeatureAccess(stats.premiumTier, 'BATCH_AI') && files.some(f => f.status === 'idle' && !f.aiName) && (
-                    <button
-                      onClick={async () => {
-                        const filesToRename = files.filter(f => f.status === 'idle' && !f.aiName);
-                        for (const file of filesToRename) {
-                          await handleAiRename(file.id);
-                        }
-                      }}
-                      className="flex items-center gap-1.5 text-xs bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white px-3 py-1.5 rounded-lg font-medium hover:from-violet-400 hover:to-fuchsia-400 transition-all"
-                    >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                      </svg>
-                      {t('batch_ai_rename') || 'Tümünü AI ile İsimlendir'}
-                    </button>
-                  )}
-                  <button onClick={() => setFiles([])} className="text-xs text-red-400 hover:text-red-300">{t('clear_all')}</button>
-                </div>
-              </div>
-            )}
-
-            <DragDropContext onDragEnd={handleDragEnd}>
-              <Droppable droppableId="files">
-                {(provided) => (
-                  <div {...provided.droppableProps} ref={provided.innerRef} className="space-y-4">
-                    {files.map((file, index) => (
-                      <Draggable key={file.id} draggableId={file.id} index={index}>
-                        {(provided) => (
+            <div className="space-y-4">
+              {files.length > 0 && (
+                <div className="flex items-center justify-between mb-2 px-2">
+                  <h3 className="text-lg font-semibold text-white">{t('queue')} ({files.length})</h3>
+                  <div className="flex items-center gap-3">
+                    {/* Batch Progress Bar - visible when converting multiple files */}
+                    {files.length > 1 && files.some(f => f.status === 'converting') && (
+                      <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700/50">
+                        <div className="flex justify-between items-center text-xs text-slate-400 mb-2">
+                          <span>📦 {t('batch_progress') || 'Toplu Dönüşüm'}</span>
+                          <span className="font-mono text-indigo-400">
+                            {files.filter(f => f.status === 'done').length}/{files.length}
+                          </span>
+                        </div>
+                        <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
                           <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            className="bg-[#151f32] border border-slate-700/50 rounded-xl p-5 relative"
-                            style={provided.draggableProps.style}
-                          >
-                            <div className="flex flex-col lg:flex-row gap-6">
-                              <div className="relative w-full lg:w-48 h-48 bg-[#0B0F19] rounded-lg border border-slate-700/50 flex items-center justify-center">
-                                {file.status === 'analyzing' && !file.previewUrl ? (
-                                  <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-                                ) : (
-                                  <img src={file.status === 'done' ? file.convertedUrl : file.previewUrl} className={`max-w-full max-h-full object-contain ${file.isGrayscale ? 'grayscale' : ''}`} style={{ transform: `rotate(${file.rotation}deg)` }} />
-                                )}
-                              </div>
+                            className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-500"
+                            style={{ width: `${(files.filter(f => f.status === 'done').length / files.length) * 100}%` }}
+                          />
+                        </div>
+                      </div>
+                    )}
+                    {/* Batch Convert All - visible when there are idle files */}
+                    {files.some(f => f.status === 'idle') && (
+                      <button
+                        onClick={async () => {
+                          const idleFiles = files.filter(f => f.status === 'idle');
+                          for (const file of idleFiles) {
+                            await convertImage(file.id);
+                          }
+                        }}
+                        className="flex items-center gap-1.5 text-xs bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-3 py-1.5 rounded-lg font-medium hover:from-indigo-400 hover:to-purple-400 transition-all"
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                        {t('convert_all_btn') || 'Tümünü Dönüştür'}
+                      </button>
+                    )}
+                    {/* ZIP Download for Premium (Pro+) */}
+                    {hasFeatureAccess(stats.premiumTier, 'ZIP_DOWNLOAD') && files.some(f => f.status === 'done') && (
+                      <button
+                        onClick={async () => {
+                          const JSZip = (await import('jszip')).default;
+                          const { saveAs } = await import('file-saver');
+                          const zip = new JSZip();
 
-                              <div className="flex-1 flex flex-col justify-between py-1">
-                                <div>
-                                  <div className="flex justify-between items-start mb-2">
-                                    <div className="flex items-center gap-2 max-w-[85%]">
-                                      <h4 className="font-medium text-slate-200 truncate" title={file.file.name}>
-                                        {file.file.name}
-                                      </h4>
-                                      <span className="text-[10px] uppercase font-bold text-slate-500 px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 shrink-0">
-                                        {file.file.name.split('.').pop()}
-                                      </span>
-                                    </div>
-                                    <button onClick={() => removeFile(file.id)} className="text-slate-600 hover:text-red-400 ml-2">✕</button>
-                                  </div>
-                                </div>
+                          files.filter(f => f.status === 'done' && f.convertedBlob).forEach((file, idx) => {
+                            const ext = file.targetFormat.split('/')[1];
+                            const name = file.aiName || file.file.name.replace(/\.[^/.]+$/, '');
+                            zip.file(`${name}_${idx + 1}.${ext}`, file.convertedBlob!);
+                          });
 
-                                <div className="mb-4">
-                                  {file.aiName ? (
-                                    <div className={`rounded-lg p-2 text-xs font-mono ${file.aiUsedFallback
-                                      ? 'bg-amber-500/10 border border-amber-500/20 text-amber-100'
-                                      : 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-100'
-                                      }`}>
-                                      <div className="flex items-center gap-2">
-                                        <span>{file.aiUsedFallback ? '⚡' : '✨'} {file.aiName}</span>
-                                      </div>
-                                      {file.aiUsedFallback && (
-                                        <div className="text-[10px] text-amber-400/70 mt-1">
-                                          {t('ai_fallback_notice') || 'AI şu an kullanılamıyor, otomatik isim üretildi'}
-                                        </div>
-                                      )}
-                                    </div>
+                          const blob = await zip.generateAsync({ type: 'blob' });
+                          saveAs(blob, 'VormPixyze_Images.zip');
+                        }}
+                        className="flex items-center gap-1.5 text-xs bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1.5 rounded-lg font-medium hover:from-amber-400 hover:to-orange-400 transition-all"
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        ZIP İndir
+                      </button>
+                    )}
+                    {/* Batch AI Rename - Premium Only (Pro+) */}
+                    {hasFeatureAccess(stats.premiumTier, 'BATCH_AI') && files.some(f => f.status === 'idle' && !f.aiName) && (
+                      <button
+                        onClick={async () => {
+                          const filesToRename = files.filter(f => f.status === 'idle' && !f.aiName);
+                          for (const file of filesToRename) {
+                            await handleAiRename(file.id);
+                          }
+                        }}
+                        className="flex items-center gap-1.5 text-xs bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white px-3 py-1.5 rounded-lg font-medium hover:from-violet-400 hover:to-fuchsia-400 transition-all"
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                        {t('batch_ai_rename') || 'Tümünü AI ile İsimlendir'}
+                      </button>
+                    )}
+                    <button onClick={() => setFiles([])} className="text-xs text-red-400 hover:text-red-300">{t('clear_all')}</button>
+                  </div>
+                </div>
+              )}
+
+              <DragDropContext onDragEnd={handleDragEnd}>
+                <Droppable droppableId="files">
+                  {(provided) => (
+                    <div {...provided.droppableProps} ref={provided.innerRef} className="space-y-4">
+                      {files.map((file, index) => (
+                        <Draggable key={file.id} draggableId={file.id} index={index}>
+                          {(provided) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              className="bg-[#151f32] border border-slate-700/50 rounded-xl p-5 relative"
+                              style={provided.draggableProps.style}
+                            >
+                              <div className="flex flex-col lg:flex-row gap-6">
+                                <div className="relative w-full lg:w-48 h-48 bg-[#0B0F19] rounded-lg border border-slate-700/50 flex items-center justify-center">
+                                  {file.status === 'analyzing' && !file.previewUrl ? (
+                                    <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
                                   ) : (
-                                    <button onClick={() => handleAiRename(file.id)} disabled={file.status !== 'idle'} className="text-xs text-indigo-400 border border-indigo-500/20 px-3 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20">
-                                      {file.status === 'analyzing' ? t('ai_rename_loading') : t('ai_rename_btn')}
-                                    </button>
+                                    <img src={file.status === 'done' ? file.convertedUrl : file.previewUrl} className={`max-w-full max-h-full object-contain ${file.isGrayscale ? 'grayscale' : ''}`} style={{ transform: `rotate(${file.rotation}deg)` }} />
                                   )}
                                 </div>
 
-                                {file.status !== 'done' && (
-                                  <div className="bg-slate-900/60 p-4 rounded-lg space-y-4">
-                                    {/* Preset Profiles */}
-                                    <div className="flex items-center gap-2 flex-wrap">
-                                      <span className="text-xs text-slate-500">{t('preset_label') || 'Hazır Ayar:'}</span>
-                                      <button
-                                        onClick={() => {
-                                          updateFileConfig(file.id, 'targetFormat', ConversionFormat.WEBP);
-                                          updateFileConfig(file.id, 'quality', 0.8);
-                                          updateFileConfig(file.id, 'resizeScale', 1);
-                                        }}
-                                        className="text-[10px] px-2 py-1 rounded bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/30"
-                                      >
-                                        🌐 {t('preset_web') || 'Web'}
-                                      </button>
-                                      <button
-                                        onClick={() => {
-                                          updateFileConfig(file.id, 'targetFormat', ConversionFormat.JPEG);
-                                          updateFileConfig(file.id, 'quality', 0.85);
-                                          updateFileConfig(file.id, 'resizeScale', 0.75);
-                                        }}
-                                        className="text-[10px] px-2 py-1 rounded bg-blue-500/20 border border-blue-500/30 text-blue-300 hover:bg-blue-500/30"
-                                      >
-                                        📱 {t('preset_social') || 'Sosyal Medya'}
-                                      </button>
-                                      <button
-                                        onClick={() => {
-                                          updateFileConfig(file.id, 'targetFormat', ConversionFormat.PNG);
-                                          updateFileConfig(file.id, 'quality', 1.0);
-                                          updateFileConfig(file.id, 'resizeScale', 1);
-                                        }}
-                                        className="text-[10px] px-2 py-1 rounded bg-purple-500/20 border border-purple-500/30 text-purple-300 hover:bg-purple-500/30"
-                                      >
-                                        📦 {t('preset_archive') || 'Arşiv'}
-                                      </button>
+                                <div className="flex-1 flex flex-col justify-between py-1">
+                                  <div>
+                                    <div className="flex justify-between items-start mb-2">
+                                      <div className="flex items-center gap-2 max-w-[85%]">
+                                        <h4 className="font-medium text-slate-200 truncate" title={file.file.name}>
+                                          {file.file.name}
+                                        </h4>
+                                        <span className="text-[10px] uppercase font-bold text-slate-500 px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 shrink-0">
+                                          {file.file.name.split('.').pop()}
+                                        </span>
+                                      </div>
+                                      <button onClick={() => removeFile(file.id)} className="text-slate-600 hover:text-red-400 ml-2">✕</button>
                                     </div>
-                                    <div className="flex flex-wrap gap-2">
-                                      {/* Free Formats */}
-                                      {[ConversionFormat.JPEG, ConversionFormat.PNG, ConversionFormat.WEBP].map(fmt => (
-                                        <button key={fmt} onClick={() => updateFileConfig(file.id, 'targetFormat', fmt)} className={`text-xs px-3 py-1.5 rounded border ${file.targetFormat === fmt ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-600'}`}>
-                                          {fmt.split('/')[1].toUpperCase()}
-                                        </button>
-                                      ))}
-                                      {/* Premium Formats (Business tier) */}
-                                      {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO, ConversionFormat.AVIF, ConversionFormat.SVG].map(fmt => {
-                                        const canUse = hasFeatureAccess(stats.premiumTier, 'SPECIAL_FORMATS');
-                                        return (
-                                          <button
-                                            key={fmt}
-                                            onClick={() => canUse && updateFileConfig(file.id, 'targetFormat', fmt)}
-                                            disabled={!canUse}
-                                            title={canUse ? fmt.split('/')[1].toUpperCase() : 'Business özelliği'}
-                                            className={`text-xs px-3 py-1.5 rounded border flex items-center gap-1 ${canUse
-                                              ? file.targetFormat === fmt
-                                                ? 'bg-indigo-600 border-indigo-500'
-                                                : 'bg-slate-800 border-slate-600'
-                                              : 'bg-slate-900/50 border-slate-700/50 text-slate-500 cursor-not-allowed opacity-60'
-                                              }`}
-                                          >
-                                            {fmt.split('/')[1].toUpperCase()}
-                                            {!canUse && <span className="text-amber-400">🔒</span>}
-                                          </button>
-                                        );
-                                      })}
-                                      {/* Crop Button with Pro+ tier check */}
-                                      {(() => {
-                                        const canCrop = hasFeatureAccess(stats.premiumTier, 'CROP');
-                                        return (
-                                          <button
-                                            onClick={() => {
-                                              if (canCrop) {
-                                                setCurrentCropFileId(file.id);
-                                                setIsCropModalOpen(true);
-                                              } else {
-                                                setIsPremiumModalOpen(true);
-                                              }
-                                            }}
-                                            className={`text-xs px-3 py-1.5 rounded border flex items-center gap-1 ${canCrop
-                                              ? file.cropData
-                                                ? 'bg-indigo-900/50 border-indigo-500 text-indigo-200'
-                                                : 'bg-slate-800 border-slate-600'
-                                              : 'bg-slate-900/50 border-slate-700/50 text-slate-500 cursor-not-allowed opacity-60'
-                                              }`}
-                                          >
-                                            ✂️ {file.cropData ? 'Kırpıldı' : 'Kırp'}
-                                            {!canCrop && <span className="text-amber-400">🔒</span>}
-                                          </button>
-                                        );
-                                      })()}
-                                    </div>
-                                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                                      <button onClick={() => updateFileConfig(file.id, 'rotation', (file.rotation + 90) % 360)} className="bg-slate-800 p-2 rounded text-xs border border-slate-700">{t('rotate')}: {file.rotation}°</button>
-                                      <button onClick={() => updateFileConfig(file.id, 'isGrayscale', !file.isGrayscale)} className={`p-2 rounded text-xs border ${file.isGrayscale ? 'bg-slate-600' : 'bg-slate-800'}`}>{t('grayscale')}</button>
+                                  </div>
 
-                                      {/* Quality Slider for JPEG/WEBP */}
-                                      {(file.targetFormat === ConversionFormat.JPEG || file.targetFormat === ConversionFormat.WEBP) && (
-                                        <select
-                                          value={file.quality}
-                                          onChange={(e) => updateFileConfig(file.id, 'quality', parseFloat(e.target.value))}
-                                          className="bg-slate-800 text-xs border border-slate-700 rounded p-2 text-white"
+                                  <div className="mb-4">
+                                    {file.aiName ? (
+                                      <div className={`rounded-lg p-2 text-xs font-mono ${file.aiUsedFallback
+                                        ? 'bg-amber-500/10 border border-amber-500/20 text-amber-100'
+                                        : 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-100'
+                                        }`}>
+                                        <div className="flex items-center gap-2">
+                                          <span>{file.aiUsedFallback ? '⚡' : '✨'} {file.aiName}</span>
+                                        </div>
+                                        {file.aiUsedFallback && (
+                                          <div className="text-[10px] text-amber-400/70 mt-1">
+                                            {t('ai_fallback_notice') || 'AI şu an kullanılamıyor, otomatik isim üretildi'}
+                                          </div>
+                                        )}
+                                      </div>
+                                    ) : (
+                                      <button onClick={() => handleAiRename(file.id)} disabled={file.status !== 'idle'} className="text-xs text-indigo-400 border border-indigo-500/20 px-3 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20">
+                                        {file.status === 'analyzing' ? t('ai_rename_loading') : t('ai_rename_btn')}
+                                      </button>
+                                    )}
+                                  </div>
+
+                                  {file.status !== 'done' && (
+                                    <div className="bg-slate-900/60 p-4 rounded-lg space-y-4">
+                                      {/* Preset Profiles */}
+                                      <div className="flex items-center gap-2 flex-wrap">
+                                        <span className="text-xs text-slate-500">{t('preset_label') || 'Hazır Ayar:'}</span>
+                                        <button
+                                          onClick={() => {
+                                            updateFileConfig(file.id, 'targetFormat', ConversionFormat.WEBP);
+                                            updateFileConfig(file.id, 'quality', 0.8);
+                                            updateFileConfig(file.id, 'resizeScale', 1);
+                                          }}
+                                          className="text-[10px] px-2 py-1 rounded bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/30"
                                         >
-                                          <option value="1">100%</option><option value="0.75">75%</option><option value="0.5">50%</option><option value="0.25">25%</option>
-                                        </select>
-                                      )}
-                                      {/* Flip Buttons */}
-                                      <button onClick={() => updateFileConfig(file.id, 'isFlippedHorizontal', !file.isFlippedHorizontal)} className={`p-2 rounded text-xs border ${file.isFlippedHorizontal ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-700'}`}>↔️ Flip H</button>
-                                      <button onClick={() => updateFileConfig(file.id, 'isFlippedVertical', !file.isFlippedVertical)} className={`p-2 rounded text-xs border ${file.isFlippedVertical ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-700'}`}>↕️ Flip V</button>
+                                          🌐 {t('preset_web') || 'Web'}
+                                        </button>
+                                        <button
+                                          onClick={() => {
+                                            updateFileConfig(file.id, 'targetFormat', ConversionFormat.JPEG);
+                                            updateFileConfig(file.id, 'quality', 0.85);
+                                            updateFileConfig(file.id, 'resizeScale', 0.75);
+                                          }}
+                                          className="text-[10px] px-2 py-1 rounded bg-blue-500/20 border border-blue-500/30 text-blue-300 hover:bg-blue-500/30"
+                                        >
+                                          📱 {t('preset_social') || 'Sosyal Medya'}
+                                        </button>
+                                        <button
+                                          onClick={() => {
+                                            updateFileConfig(file.id, 'targetFormat', ConversionFormat.PNG);
+                                            updateFileConfig(file.id, 'quality', 1.0);
+                                            updateFileConfig(file.id, 'resizeScale', 1);
+                                          }}
+                                          className="text-[10px] px-2 py-1 rounded bg-purple-500/20 border border-purple-500/30 text-purple-300 hover:bg-purple-500/30"
+                                        >
+                                          📦 {t('preset_archive') || 'Arşiv'}
+                                        </button>
+                                      </div>
+                                      <div className="flex flex-wrap gap-2">
+                                        {/* Free Formats */}
+                                        {[ConversionFormat.JPEG, ConversionFormat.PNG, ConversionFormat.WEBP].map(fmt => (
+                                          <button key={fmt} onClick={() => updateFileConfig(file.id, 'targetFormat', fmt)} className={`text-xs px-3 py-1.5 rounded border ${file.targetFormat === fmt ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-600'}`}>
+                                            {fmt.split('/')[1].toUpperCase()}
+                                          </button>
+                                        ))}
+                                        {/* Premium Formats (Business tier) */}
+                                        {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO, ConversionFormat.AVIF, ConversionFormat.SVG].map(fmt => {
+                                          const canUse = hasFeatureAccess(stats.premiumTier, 'SPECIAL_FORMATS');
+                                          return (
+                                            <button
+                                              key={fmt}
+                                              onClick={() => canUse && updateFileConfig(file.id, 'targetFormat', fmt)}
+                                              disabled={!canUse}
+                                              title={canUse ? fmt.split('/')[1].toUpperCase() : 'Business özelliği'}
+                                              className={`text-xs px-3 py-1.5 rounded border flex items-center gap-1 ${canUse
+                                                ? file.targetFormat === fmt
+                                                  ? 'bg-indigo-600 border-indigo-500'
+                                                  : 'bg-slate-800 border-slate-600'
+                                                : 'bg-slate-900/50 border-slate-700/50 text-slate-500 cursor-not-allowed opacity-60'
+                                                }`}
+                                            >
+                                              {fmt.split('/')[1].toUpperCase()}
+                                              {!canUse && <span className="text-amber-400">🔒</span>}
+                                            </button>
+                                          );
+                                        })}
+                                        {/* Crop Button with Pro+ tier check */}
+                                        {(() => {
+                                          const canCrop = hasFeatureAccess(stats.premiumTier, 'CROP');
+                                          return (
+                                            <button
+                                              onClick={() => {
+                                                if (canCrop) {
+                                                  setCurrentCropFileId(file.id);
+                                                  setIsCropModalOpen(true);
+                                                } else {
+                                                  setIsPremiumModalOpen(true);
+                                                }
+                                              }}
+                                              className={`text-xs px-3 py-1.5 rounded border flex items-center gap-1 ${canCrop
+                                                ? file.cropData
+                                                  ? 'bg-indigo-900/50 border-indigo-500 text-indigo-200'
+                                                  : 'bg-slate-800 border-slate-600'
+                                                : 'bg-slate-900/50 border-slate-700/50 text-slate-500 cursor-not-allowed opacity-60'
+                                                }`}
+                                            >
+                                              ✂️ {file.cropData ? 'Kırpıldı' : 'Kırp'}
+                                              {!canCrop && <span className="text-amber-400">🔒</span>}
+                                            </button>
+                                          );
+                                        })()}
+                                      </div>
+                                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                                        <button onClick={() => updateFileConfig(file.id, 'rotation', (file.rotation + 90) % 360)} className="bg-slate-800 p-2 rounded text-xs border border-slate-700">{t('rotate')}: {file.rotation}°</button>
+                                        <button onClick={() => updateFileConfig(file.id, 'isGrayscale', !file.isGrayscale)} className={`p-2 rounded text-xs border ${file.isGrayscale ? 'bg-slate-600' : 'bg-slate-800'}`}>{t('grayscale')}</button>
 
-                                      {/* NEW: Target Size */}
-                                      {file.targetFormat === ConversionFormat.JPEG && (
-                                        <input
-                                          type="number"
-                                          placeholder="Max KB (Optional)"
-                                          className="bg-slate-800 text-xs border border-slate-700 rounded p-2 w-full text-white placeholder-slate-500"
-                                          onChange={(e) => updateFileConfig(file.id, 'targetSizeBytes', e.target.value ? parseInt(e.target.value) * 1024 : undefined)}
-                                        />
-                                      )}
-                                    </div>
+                                        {/* Quality Slider for JPEG/WEBP */}
+                                        {(file.targetFormat === ConversionFormat.JPEG || file.targetFormat === ConversionFormat.WEBP) && (
+                                          <select
+                                            value={file.quality}
+                                            onChange={(e) => updateFileConfig(file.id, 'quality', parseFloat(e.target.value))}
+                                            className="bg-slate-800 text-xs border border-slate-700 rounded p-2 text-white"
+                                          >
+                                            <option value="1">100%</option><option value="0.75">75%</option><option value="0.5">50%</option><option value="0.25">25%</option>
+                                          </select>
+                                        )}
+                                        {/* Flip Buttons */}
+                                        <button onClick={() => updateFileConfig(file.id, 'isFlippedHorizontal', !file.isFlippedHorizontal)} className={`p-2 rounded text-xs border ${file.isFlippedHorizontal ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-700'}`}>↔️ Flip H</button>
+                                        <button onClick={() => updateFileConfig(file.id, 'isFlippedVertical', !file.isFlippedVertical)} className={`p-2 rounded text-xs border ${file.isFlippedVertical ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-700'}`}>↕️ Flip V</button>
 
-                                    {/* Estimated Size Display */}
-                                    <div className="flex justify-end mt-2">
-                                      <span className="text-[10px] text-slate-500 font-mono bg-slate-800/50 px-2 py-1 rounded border border-slate-700/50">
-                                        {t('estimated_size')}: <span className="text-emerald-400">{estimateFileSize(file)}</span>
-                                      </span>
-                                    </div>
+                                        {/* NEW: Target Size */}
+                                        {file.targetFormat === ConversionFormat.JPEG && (
+                                          <input
+                                            type="number"
+                                            placeholder="Max KB (Optional)"
+                                            className="bg-slate-800 text-xs border border-slate-700 rounded p-2 w-full text-white placeholder-slate-500"
+                                            onChange={(e) => updateFileConfig(file.id, 'targetSizeBytes', e.target.value ? parseInt(e.target.value) * 1024 : undefined)}
+                                          />
+                                        )}
+                                      </div>
 
-                                    {/* NEW: Watermark (Premium) */}
-                                    {(() => {
-                                      const canUseWatermark = hasFeatureAccess(stats.premiumTier, 'WATERMARK');
-                                      return (
-                                        <div className={`space-y-2 p-3 rounded-lg ${canUseWatermark ? 'bg-slate-800/50 border border-slate-700/50' : 'bg-slate-900/30 border border-slate-800/50'}`}>
-                                          <div className="flex items-center gap-2 text-[10px] text-slate-400 uppercase font-bold">
-                                            <span>Watermark</span>
-                                            {!canUseWatermark && <span className="text-amber-400">🔒 Pro+</span>}
-                                          </div>
+                                      {/* Estimated Size Display */}
+                                      <div className="flex justify-end mt-2">
+                                        <span className="text-[10px] text-slate-500 font-mono bg-slate-800/50 px-2 py-1 rounded border border-slate-700/50">
+                                          {t('estimated_size')}: <span className="text-emerald-400">{estimateFileSize(file)}</span>
+                                        </span>
+                                      </div>
 
-                                          {/* Text + Logo Row */}
-                                          <div className="flex items-center gap-2">
-                                            <input
-                                              type="text"
-                                              placeholder={file.watermarkLogo ? "Logo seçildi" : "Watermark metni..."}
-                                              disabled={!canUseWatermark || !!file.watermarkLogo}
-                                              value={file.watermarkText || ''}
-                                              onChange={(e) => updateFileConfig(file.id, 'watermarkText', e.target.value)}
-                                              className={`bg-slate-900 text-xs border border-slate-700 rounded p-2 flex-grow ${!canUseWatermark ? 'opacity-50 cursor-not-allowed' : ''}`}
-                                            />
+                                      {/* NEW: Watermark (Premium) */}
+                                      {(() => {
+                                        const canUseWatermark = hasFeatureAccess(stats.premiumTier, 'WATERMARK');
+                                        return (
+                                          <div className={`space-y-2 p-3 rounded-lg ${canUseWatermark ? 'bg-slate-800/50 border border-slate-700/50' : 'bg-slate-900/30 border border-slate-800/50'}`}>
+                                            <div className="flex items-center gap-2 text-[10px] text-slate-400 uppercase font-bold">
+                                              <span>Watermark</span>
+                                              {!canUseWatermark && <span className="text-amber-400">🔒 Pro+</span>}
+                                            </div>
 
-                                            {/* Color Picker */}
-                                            <input
-                                              type="color"
-                                              value={file.watermarkColor || '#ffffff'}
-                                              onChange={(e) => updateFileConfig(file.id, 'watermarkColor', e.target.value)}
-                                              disabled={!canUseWatermark}
-                                              className={`w-8 h-8 rounded border border-slate-700 cursor-pointer ${!canUseWatermark ? 'opacity-50 pointer-events-none' : ''}`}
-                                              title="Watermark Rengi"
-                                            />
-
-                                            {/* Logo Upload */}
-                                            <div className="relative">
+                                            {/* Text + Logo Row */}
+                                            <div className="flex items-center gap-2">
                                               <input
-                                                type="file"
-                                                id={`logo-upload-${file.id}`}
-                                                className="hidden"
-                                                accept="image/png, image/jpeg"
-                                                disabled={!canUseWatermark}
-                                                onChange={(e) => {
-                                                  const logoFile = e.target.files?.[0];
-                                                  if (logoFile) {
-                                                    const reader = new FileReader();
-                                                    reader.onload = (ev) => {
-                                                      updateFileConfig(file.id, 'watermarkLogo', ev.target?.result as string);
-                                                      updateFileConfig(file.id, 'watermarkText', undefined);
-                                                    };
-                                                    reader.readAsDataURL(logoFile);
-                                                  }
-                                                }}
+                                                type="text"
+                                                placeholder={file.watermarkLogo ? "Logo seçildi" : "Watermark metni..."}
+                                                disabled={!canUseWatermark || !!file.watermarkLogo}
+                                                value={file.watermarkText || ''}
+                                                onChange={(e) => updateFileConfig(file.id, 'watermarkText', e.target.value)}
+                                                className={`bg-slate-900 text-xs border border-slate-700 rounded p-2 flex-grow ${!canUseWatermark ? 'opacity-50 cursor-not-allowed' : ''}`}
                                               />
-                                              {file.watermarkLogo ? (
-                                                <button
-                                                  onClick={() => updateFileConfig(file.id, 'watermarkLogo', undefined)}
-                                                  className="bg-red-500/10 hover:bg-red-500/20 text-red-400 p-2 rounded border border-red-500/20"
-                                                  title="Logo Kaldır"
-                                                >✕</button>
-                                              ) : (
-                                                <label
-                                                  htmlFor={`logo-upload-${file.id}`}
-                                                  className={`flex items-center p-2 rounded bg-slate-900 border border-slate-700 cursor-pointer hover:bg-slate-700 ${!canUseWatermark ? 'opacity-50 pointer-events-none' : ''}`}
-                                                  title="Logo Yükle"
-                                                >📷</label>
-                                              )}
-                                            </div>
-                                          </div>
 
-                                          {/* Position Selector */}
-                                          {canUseWatermark && (file.watermarkText || file.watermarkLogo) && (
-                                            <div className="flex items-center gap-1 flex-wrap">
-                                              <span className="text-[10px] text-slate-500 mr-1">Pozisyon:</span>
-                                              {(['top-left', 'top-right', 'center', 'bottom-left', 'bottom-right'] as const).map(pos => (
-                                                <button
-                                                  key={pos}
-                                                  onClick={() => updateFileConfig(file.id, 'watermarkPosition', pos)}
-                                                  className={`text-[10px] px-2 py-1 rounded ${file.watermarkPosition === pos || (!file.watermarkPosition && pos === 'center')
-                                                    ? 'bg-indigo-600 text-white'
-                                                    : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
-                                                    }`}
-                                                >
-                                                  {pos === 'top-left' && '↖'}
-                                                  {pos === 'top-right' && '↗'}
-                                                  {pos === 'center' && '⊙'}
-                                                  {pos === 'bottom-left' && '↙'}
-                                                  {pos === 'bottom-right' && '↘'}
-                                                </button>
-                                              ))}
-                                            </div>
-                                          )}
+                                              {/* Color Picker */}
+                                              <input
+                                                type="color"
+                                                value={file.watermarkColor || '#ffffff'}
+                                                onChange={(e) => updateFileConfig(file.id, 'watermarkColor', e.target.value)}
+                                                disabled={!canUseWatermark}
+                                                className={`w-8 h-8 rounded border border-slate-700 cursor-pointer ${!canUseWatermark ? 'opacity-50 pointer-events-none' : ''}`}
+                                                title="Watermark Rengi"
+                                              />
 
-                                          {/* Font Size & Font Family (only for text watermark) */}
-                                          {canUseWatermark && file.watermarkText && (
-                                            <div className="flex items-center gap-3 flex-wrap">
-                                              {/* Font Size */}
-                                              <div className="flex items-center gap-1">
-                                                <span className="text-[10px] text-slate-500">Boyut:</span>
-                                                {[1, 2, 3, 4, 5].map(size => (
+                                              {/* Logo Upload */}
+                                              <div className="relative">
+                                                <input
+                                                  type="file"
+                                                  id={`logo-upload-${file.id}`}
+                                                  className="hidden"
+                                                  accept="image/png, image/jpeg"
+                                                  disabled={!canUseWatermark}
+                                                  onChange={(e) => {
+                                                    const logoFile = e.target.files?.[0];
+                                                    if (logoFile) {
+                                                      const reader = new FileReader();
+                                                      reader.onload = (ev) => {
+                                                        updateFileConfig(file.id, 'watermarkLogo', ev.target?.result as string);
+                                                        updateFileConfig(file.id, 'watermarkText', undefined);
+                                                      };
+                                                      reader.readAsDataURL(logoFile);
+                                                    }
+                                                  }}
+                                                />
+                                                {file.watermarkLogo ? (
                                                   <button
-                                                    key={size}
-                                                    onClick={() => updateFileConfig(file.id, 'watermarkFontSize', size)}
-                                                    className={`text-[10px] w-6 h-6 rounded ${(file.watermarkFontSize || 2) === size
+                                                    onClick={() => updateFileConfig(file.id, 'watermarkLogo', undefined)}
+                                                    className="bg-red-500/10 hover:bg-red-500/20 text-red-400 p-2 rounded border border-red-500/20"
+                                                    title="Logo Kaldır"
+                                                  >✕</button>
+                                                ) : (
+                                                  <label
+                                                    htmlFor={`logo-upload-${file.id}`}
+                                                    className={`flex items-center p-2 rounded bg-slate-900 border border-slate-700 cursor-pointer hover:bg-slate-700 ${!canUseWatermark ? 'opacity-50 pointer-events-none' : ''}`}
+                                                    title="Logo Yükle"
+                                                  >📷</label>
+                                                )}
+                                              </div>
+                                            </div>
+
+                                            {/* Position Selector */}
+                                            {canUseWatermark && (file.watermarkText || file.watermarkLogo) && (
+                                              <div className="flex items-center gap-1 flex-wrap">
+                                                <span className="text-[10px] text-slate-500 mr-1">Pozisyon:</span>
+                                                {(['top-left', 'top-right', 'center', 'bottom-left', 'bottom-right'] as const).map(pos => (
+                                                  <button
+                                                    key={pos}
+                                                    onClick={() => updateFileConfig(file.id, 'watermarkPosition', pos)}
+                                                    className={`text-[10px] px-2 py-1 rounded ${file.watermarkPosition === pos || (!file.watermarkPosition && pos === 'center')
                                                       ? 'bg-indigo-600 text-white'
                                                       : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
                                                       }`}
-                                                  >{size}</button>
+                                                  >
+                                                    {pos === 'top-left' && '↖'}
+                                                    {pos === 'top-right' && '↗'}
+                                                    {pos === 'center' && '⊙'}
+                                                    {pos === 'bottom-left' && '↙'}
+                                                    {pos === 'bottom-right' && '↘'}
+                                                  </button>
                                                 ))}
                                               </div>
+                                            )}
 
-                                              {/* Font Family */}
-                                              <select
-                                                value={file.watermarkFont || 'Arial'}
-                                                onChange={(e) => updateFileConfig(file.id, 'watermarkFont', e.target.value)}
-                                                className="text-[10px] bg-slate-800 border border-slate-700 rounded px-2 py-1 text-white"
-                                              >
-                                                <option value="Arial">Arial</option>
-                                                <option value="Georgia">Georgia</option>
-                                                <option value="Courier">Courier</option>
-                                                <option value="Impact">Impact</option>
-                                                <option value="Comic Sans MS">Comic Sans</option>
-                                              </select>
-                                            </div>
-                                          )}
-                                        </div>
-                                      );
-                                    })()}
+                                            {/* Font Size & Font Family (only for text watermark) */}
+                                            {canUseWatermark && file.watermarkText && (
+                                              <div className="flex items-center gap-3 flex-wrap">
+                                                {/* Font Size */}
+                                                <div className="flex items-center gap-1">
+                                                  <span className="text-[10px] text-slate-500">Boyut:</span>
+                                                  {[1, 2, 3, 4, 5].map(size => (
+                                                    <button
+                                                      key={size}
+                                                      onClick={() => updateFileConfig(file.id, 'watermarkFontSize', size)}
+                                                      className={`text-[10px] w-6 h-6 rounded ${(file.watermarkFontSize || 2) === size
+                                                        ? 'bg-indigo-600 text-white'
+                                                        : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                                        }`}
+                                                    >{size}</button>
+                                                  ))}
+                                                </div>
 
-                                    {
-                                      file.targetFormat !== ConversionFormat.JPEG && (
-                                        <div className="flex items-center gap-2">
-                                          {(() => {
-                                            const canUseRemoveBg = hasFeatureAccess(stats.premiumTier, 'REMOVE_BG');
-                                            return (
-                                              <button
-                                                onClick={() => {
-                                                  if (canUseRemoveBg) {
-                                                    updateFileConfig(file.id, 'removeBackground', !file.removeBackground);
-                                                  } else {
-                                                    setIsPremiumModalOpen(true);
-                                                  }
-                                                }}
-
-                                                className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-2 transition-all duration-300 font-medium ${file.removeBackground
-                                                  ? 'bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/50 text-pink-300 shadow-sm shadow-pink-500/20'
-                                                  : canUseRemoveBg
-                                                    ? 'bg-slate-800 border-slate-700 text-slate-500 hover:text-slate-400 hover:bg-slate-750'
-                                                    : 'bg-slate-900/50 border-slate-700/50 text-slate-500 opacity-60'
-                                                  }`}
-                                              >
-                                                <span className={file.removeBackground ? "animate-pulse" : "grayscale opacity-50"}>✨</span>
-                                                {file.removeBackground ? 'AI BG Removed' : 'Remove BG'}
-                                                {!canUseRemoveBg && <span className="text-amber-400 ml-1">🔒</span>}
-                                              </button>
-                                            );
-                                          })()}
-                                        </div>
-                                      )
-                                    }
-                                  </div>
-                                )}
-
-                                <div className="mt-2 flex justify-end gap-3">
-                                  {file.status === 'idle' && (
-                                    <button onClick={() => convertImage(file.id)} className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2 rounded-lg text-sm font-bold shadow-lg shadow-indigo-500/30">
-                                      {t('convert_btn')}
-                                    </button>
-                                  )}
-                                  {file.status === 'done' && (
-                                    <div className="flex gap-2 flex-wrap">
-                                      <button
-                                        onClick={() => setCompareItem(file)}
-                                        className="bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded-lg text-xs"
-                                      >
-                                        👁️ Compare
-                                      </button>
-                                      <a href={file.convertedUrl} download={`${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`} className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2">
-                                        {t('download_btn')} ({formatFileSize(file.convertedSize || 0)})
-                                      </a>
-                                      {/* Save to Drive Button */}
-                                      {(() => {
-                                        const canSaveToDrive = hasFeatureAccess(stats.premiumTier, 'CLOUD_STORAGE');
-                                        return (
-                                          <button
-                                            onClick={async () => {
-                                              if (!canSaveToDrive) {
-                                                setIsPremiumModalOpen(true);
-                                                return;
-                                              }
-                                              if (file.convertedBlob) {
-                                                const { saveToGoogleDrive, loadGoogleDriveAPI } = await import('./services/googleDriveService');
-                                                await loadGoogleDriveAPI();
-                                                const filename = `${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`;
-                                                const result = await saveToGoogleDrive(file.convertedBlob, filename);
-                                                if (result.success) {
-                                                  alert('✅ Google Drive\'a kaydedildi!');
-                                                } else {
-                                                  alert('❌ Kaydetme başarısız: ' + result.error);
-                                                }
-                                              }
-                                            }}
-                                            className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-1 ${canSaveToDrive
-                                              ? 'bg-blue-600 hover:bg-blue-500 text-white'
-                                              : 'bg-slate-700/50 text-slate-400 cursor-not-allowed'
-                                              }`}
-                                          >
-                                            ☁️ {t('save_to_drive') || "Drive'a Kaydet"}
-                                            {!canSaveToDrive && <span className="text-amber-400">🔒</span>}
-                                          </button>
+                                                {/* Font Family */}
+                                                <select
+                                                  value={file.watermarkFont || 'Arial'}
+                                                  onChange={(e) => updateFileConfig(file.id, 'watermarkFont', e.target.value)}
+                                                  className="text-[10px] bg-slate-800 border border-slate-700 rounded px-2 py-1 text-white"
+                                                >
+                                                  <option value="Arial">Arial</option>
+                                                  <option value="Georgia">Georgia</option>
+                                                  <option value="Courier">Courier</option>
+                                                  <option value="Impact">Impact</option>
+                                                  <option value="Comic Sans MS">Comic Sans</option>
+                                                </select>
+                                              </div>
+                                            )}
+                                          </div>
                                         );
                                       })()}
+
+                                      {
+                                        file.targetFormat !== ConversionFormat.JPEG && (
+                                          <div className="flex items-center gap-2">
+                                            {(() => {
+                                              const canUseRemoveBg = hasFeatureAccess(stats.premiumTier, 'REMOVE_BG');
+                                              return (
+                                                <button
+                                                  onClick={() => {
+                                                    if (canUseRemoveBg) {
+                                                      updateFileConfig(file.id, 'removeBackground', !file.removeBackground);
+                                                    } else {
+                                                      setIsPremiumModalOpen(true);
+                                                    }
+                                                  }}
+
+                                                  className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-2 transition-all duration-300 font-medium ${file.removeBackground
+                                                    ? 'bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/50 text-pink-300 shadow-sm shadow-pink-500/20'
+                                                    : canUseRemoveBg
+                                                      ? 'bg-slate-800 border-slate-700 text-slate-500 hover:text-slate-400 hover:bg-slate-750'
+                                                      : 'bg-slate-900/50 border-slate-700/50 text-slate-500 opacity-60'
+                                                    }`}
+                                                >
+                                                  <span className={file.removeBackground ? "animate-pulse" : "grayscale opacity-50"}>✨</span>
+                                                  {file.removeBackground ? 'AI BG Removed' : 'Remove BG'}
+                                                  {!canUseRemoveBg && <span className="text-amber-400 ml-1">🔒</span>}
+                                                </button>
+                                              );
+                                            })()}
+                                          </div>
+                                        )
+                                      }
                                     </div>
                                   )}
-                                </div>
-                              </div>
-                              {
-                                file.status === 'converting' && (
-                                  <div className="absolute inset-0 bg-slate-900/90 rounded-xl flex items-center justify-center z-20 flex-col gap-4 p-6">
-                                    <div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-                                    <span className="text-indigo-300 text-sm font-medium">{t('processing')}</span>
-                                    {/* Progress Bar */}
-                                    <div className="w-full max-w-xs">
-                                      <div className="flex justify-between text-xs text-slate-400 mb-1">
-                                        <span>{t('progress') || 'İlerleme'}</span>
-                                        <span className="font-mono text-indigo-400">{file.conversionProgress || 0}%</span>
+
+                                  <div className="mt-2 flex justify-end gap-3">
+                                    {file.status === 'idle' && (
+                                      <button onClick={() => convertImage(file.id)} className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2 rounded-lg text-sm font-bold shadow-lg shadow-indigo-500/30">
+                                        {t('convert_btn')}
+                                      </button>
+                                    )}
+                                    {file.status === 'done' && (
+                                      <div className="flex gap-2 flex-wrap">
+                                        <button
+                                          onClick={() => setCompareItem(file)}
+                                          className="bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded-lg text-xs"
+                                        >
+                                          👁️ Compare
+                                        </button>
+                                        <a href={file.convertedUrl} download={`${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`} className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2">
+                                          {t('download_btn')} ({formatFileSize(file.convertedSize || 0)})
+                                        </a>
+                                        {/* Save to Drive Button */}
+                                        {(() => {
+                                          const canSaveToDrive = hasFeatureAccess(stats.premiumTier, 'CLOUD_STORAGE');
+                                          return (
+                                            <button
+                                              onClick={async () => {
+                                                if (!canSaveToDrive) {
+                                                  setIsPremiumModalOpen(true);
+                                                  return;
+                                                }
+                                                if (file.convertedBlob) {
+                                                  const { saveToGoogleDrive, loadGoogleDriveAPI } = await import('./services/googleDriveService');
+                                                  await loadGoogleDriveAPI();
+                                                  const filename = `${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`;
+                                                  const result = await saveToGoogleDrive(file.convertedBlob, filename);
+                                                  if (result.success) {
+                                                    alert('✅ Google Drive\'a kaydedildi!');
+                                                  } else {
+                                                    alert('❌ Kaydetme başarısız: ' + result.error);
+                                                  }
+                                                }
+                                              }}
+                                              className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-1 ${canSaveToDrive
+                                                ? 'bg-blue-600 hover:bg-blue-500 text-white'
+                                                : 'bg-slate-700/50 text-slate-400 cursor-not-allowed'
+                                                }`}
+                                            >
+                                              ☁️ {t('save_to_drive') || "Drive'a Kaydet"}
+                                              {!canSaveToDrive && <span className="text-amber-400">🔒</span>}
+                                            </button>
+                                          );
+                                        })()}
                                       </div>
-                                      <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
-                                        <div
-                                          className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 ease-out"
-                                          style={{ width: `${file.conversionProgress || 0}%` }}
-                                        />
+                                    )}
+                                  </div>
+                                </div>
+                                {
+                                  file.status === 'converting' && (
+                                    <div className="absolute inset-0 bg-slate-900/90 rounded-xl flex items-center justify-center z-20 flex-col gap-4 p-6">
+                                      <div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                                      <span className="text-indigo-300 text-sm font-medium">{t('processing')}</span>
+                                      {/* Progress Bar */}
+                                      <div className="w-full max-w-xs">
+                                        <div className="flex justify-between text-xs text-slate-400 mb-1">
+                                          <span>{t('progress') || 'İlerleme'}</span>
+                                          <span className="font-mono text-indigo-400">{file.conversionProgress || 0}%</span>
+                                        </div>
+                                        <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+                                          <div
+                                            className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 ease-out"
+                                            style={{ width: `${file.conversionProgress || 0}%` }}
+                                          />
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                )
-                              }
+                                  )
+                                }
+                              </div>
                             </div>
-                          </div>
 
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </DragDropContext>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </DragDropContext>
 
-            {files.length > 0 && !hasFeatureAccess(stats.premiumTier, 'NO_ADS') && <div className="mt-8"><AdBanner variant="horizontal" /></div>}
+              {files.length > 0 && !hasFeatureAccess(stats.premiumTier, 'NO_ADS') && <div className="mt-8"><AdBanner variant="horizontal" /></div>}
 
-            {
-              files.some(f => f.status === 'done') && (
-                <div className="mt-4 flex justify-center">
-                  <button
-                    onClick={async () => {
-                      const JSZip = (await import('jszip')).default;
-                      const { saveAs } = (await import('file-saver'));
-                      const zip = new JSZip();
+              {
+                files.some(f => f.status === 'done') && (
+                  <div className="mt-4 flex justify-center">
+                    <button
+                      onClick={async () => {
+                        const JSZip = (await import('jszip')).default;
+                        const { saveAs } = (await import('file-saver'));
+                        const zip = new JSZip();
 
-                      let count = 0;
-                      for (const file of files) {
-                        if (file.status === 'done' && file.convertedBlob) {
-                          const fileName = `${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`;
-                          zip.file(fileName, file.convertedBlob);
-                          count++;
+                        let count = 0;
+                        for (const file of files) {
+                          if (file.status === 'done' && file.convertedBlob) {
+                            const fileName = `${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`;
+                            zip.file(fileName, file.convertedBlob);
+                            count++;
+                          }
                         }
-                      }
 
-                      if (count > 0) {
-                        const content = await zip.generateAsync({ type: "blob" });
-                        saveAs(content, "vormpixyze_images.zip");
-                      }
-                    }}
-                    className="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-indigo-500/30 flex items-center gap-2 transition-transform hover:scale-105"
-                  >
-                    📦 {t('download_all_zip') || 'Download All (ZIP)'}
-                  </button>
-                </div>
-              )
-            }
+                        if (count > 0) {
+                          const content = await zip.generateAsync({ type: "blob" });
+                          saveAs(content, "vormpixyze_images.zip");
+                        }
+                      }}
+                      className="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-indigo-500/30 flex items-center gap-2 transition-transform hover:scale-105"
+                    >
+                      📦 {t('download_all_zip') || 'Download All (ZIP)'}
+                    </button>
+                  </div>
+                )
+              }
+            </div>
+          </div>
+
+          {/* Right Sidebar */}
+          <div className="w-full lg:w-80 flex flex-col gap-6">
+            <div className="glass-panel p-6 rounded-xl border border-white/5">
+              <h4 className="text-indigo-400 font-bold mb-4">{t('pro_tips_title')}</h4>
+              <ul className="text-sm text-slate-400 space-y-3">
+                <li>• {t('tip_heic')}</li>
+                <li>• {t('tip_seo')}</li>
+                <li>• {t('tip_size')}</li>
+              </ul>
+            </div>
+
+            <div className="sticky top-24 space-y-6">
+              {!stats.isPremium && <ReferralWidget onReferralSuccess={() => handleReward(3)} userId={session?.user?.id} />}
+              {!stats.isPremium && <AdBanner variant="box" className="w-full" />}
+            </div>
           </div>
         </div>
 
-        {/* Right Sidebar */}
-        < div className="w-full lg:w-80 flex flex-col gap-6" >
-          <div className="glass-panel p-6 rounded-xl border border-white/5">
-            <h4 className="text-indigo-400 font-bold mb-4">{t('pro_tips_title')}</h4>
-            <ul className="text-sm text-slate-400 space-y-3">
-              <li>• {t('tip_heic')}</li>
-              <li>• {t('tip_seo')}</li>
-              <li>• {t('tip_size')}</li>
-            </ul>
-          </div>
-
-          <div className="sticky top-24 space-y-6">
-            {!stats.isPremium && <ReferralWidget onReferralSuccess={() => handleReward(3)} userId={session?.user?.id} />}
-            {!stats.isPremium && <AdBanner variant="box" className="w-full" />}
-            {/* <AdBanner variant="vertical" className="hidden lg:flex" /> */}
-          </div>
-        </div>
-      </main >
+        <SeoContent />
+      </main>
 
       <SupportModal
         isOpen={isSupportModalOpen}
@@ -1514,9 +1539,10 @@ function BanaConvertApp() {
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-6">
           <span className="font-bold text-sm md:text-lg text-white">VormPixyze</span>
           <div className="flex gap-3 md:gap-6 text-xs md:text-sm text-slate-500">
-            <button onClick={() => openLegal('privacy')} className="hover:text-indigo-400">{t('privacy')}</button>
-            <button onClick={() => openLegal('terms')} className="hover:text-indigo-400">{t('terms')}</button>
-            <button onClick={() => openLegal('contact')} className="hover:text-indigo-400">{t('contact')}</button>
+            <Link to="/about" className="hover:text-indigo-400">{language === 'tr' ? 'Hakkımızda' : language === 'de' ? 'Über uns' : language === 'fr' ? 'À propos' : 'About'}</Link>
+            <Link to="/privacy" className="hover:text-indigo-400">{language === 'tr' ? 'Gizlilik' : language === 'de' ? 'Datenschutz' : language === 'fr' ? 'Confidentialité' : 'Privacy'}</Link>
+            <Link to="/terms" className="hover:text-indigo-400">{language === 'tr' ? 'Şartlar' : language === 'de' ? 'AGB' : language === 'fr' ? 'Conditions' : 'Terms'}</Link>
+            <Link to="/contact" className="hover:text-indigo-400">{language === 'tr' ? 'İletişim' : language === 'de' ? 'Kontakt' : language === 'fr' ? 'Contact' : 'Contact'}</Link>
           </div>
 
           <div className="text-slate-600 text-[10px] md:text-xs font-mono flex flex-col items-center md:items-end">
@@ -1529,10 +1555,10 @@ function BanaConvertApp() {
   );
 }
 
-export default function App() {
+export default function App(props: AppProps = {}) {
   return (
     <LanguageProvider>
-      <BanaConvertApp />
+      <BanaConvertApp {...props} />
     </LanguageProvider>
   );
 }
