@@ -302,7 +302,7 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
       rotation: 0,
       resizeScale: 1,
       isGrayscale: false,
-      removeBackground: false,
+      removeBackground: defaultTool === 'remove-background',
       bgRemovalTolerance: 30,
       status: 'analyzing',
       errorMsg: ''
