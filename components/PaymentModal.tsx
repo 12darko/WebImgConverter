@@ -16,8 +16,8 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, onS
 
   // Regional pricing based on browser language
   const pricing = {
-    tr: { currency: '₺', amount: '29.99', label: 'TL/Ay' },
-    en: { currency: '$', amount: '4.99', label: '/Mo' }
+    tr: { currency: '₺', amount: '43', label: 'TL/Ay' },
+    en: { currency: '$', amount: '0.99', label: '/Mo' }
   };
   const price = pricing[lang] || pricing.en;
 

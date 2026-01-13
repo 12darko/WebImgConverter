@@ -60,7 +60,7 @@ export const translations = {
     prem_feature_2: "Tamamen reklamsız deneyim",
     prem_feature_3: "Sınırsız AI Dosya İsimlendirme",
     prem_feature_4: "Toplu ZIP indirme özelliği",
-    prem_price_btn: "Premium'a Geç (₺29.99/Ay)",
+    prem_price_btn: "Premium'a Geç (₺43/Ay)",
     prem_no_thanks: "Kısıtlı devam et",
     premium_plans_title: "Premium Planlar",
     premium_plans_subtitle: "İhtiyacınıza uygun planı seçin",
