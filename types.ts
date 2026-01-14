@@ -21,6 +21,7 @@ export interface FileItem {
   resizeScale: 1 | 0.75 | 0.5 | 0.25;
   isGrayscale: boolean;
   removeBackground: boolean; // Simple white-bg removal for PNG/WEBP
+  useHDModel: boolean; // Use RMBG-1.4 (High Quality, Slow)
   bgRemovalTolerance: number; // 0 to 100 threshold
 
   // New Advanced Features

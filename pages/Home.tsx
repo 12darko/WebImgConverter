@@ -12,117 +12,117 @@ const tools = [
 
 const content = {
     tr: {
-        title: 'VormPixyze - Ücretsiz Online Görsel Araçları',
-        description: 'HEIC\'i JPG\'ye çevirin, arka plan silin, görselleri sıkıştırın. %100 tarayıcı tabanlı.',
-        hero: 'Profesyonel Görsel Araçları',
-        heroSub: 'Ücretsiz, Hızlı ve Güvenli',
-        trustBadge: '🔒 %100 Tarayıcı Tabanlı • Dosyalar Sunucuya Yüklenmez',
+        title: 'HEIC to JPG Çevirici - Ücretsiz Online | VormPixyze',
+        description: 'iPhone HEIC fotoğraflarını saniyeler içinde JPG\'ye çevirin. %100 tarayıcı tabanlı, hızlı ve güvenli.',
+        hero: 'HEIC Dosyalarını JPG\'ye Çevir',
+        heroSub: 'iPhone fotoğraflarını saniyeler içinde anında dönüştürün. Yükleme yok, bekleme yok.',
+        trustBadge: '🔒 %100 Güvenli • Dosyalarınız Cihazınızdan Çıkmaz',
+        toolsTitle: 'Diğer Araçlar',
         tools: {
             'heic-to-jpg': { name: 'HEIC → JPG', desc: 'iPhone fotoğraflarını JPG\'ye çevirin' },
             'png-to-jpg': { name: 'PNG → JPG', desc: 'PNG\'leri küçük JPG\'lere dönüştürün' },
-            'remove-background': { name: 'AI Arka Plan Silme', desc: 'Yapay zeka ile arka plan silin' },
-            'compress-image': { name: 'Görsel Sıkıştırma', desc: 'Dosya boyutunu küçültün' },
+            'remove-background': { name: 'Arka Plan Sil', desc: 'Yapay zeka ile arka planı kaldırın' },
+            'compress-image': { name: 'Görsel Küçült', desc: 'Kalite bozmadan boyut küçültün' },
         },
-        startBtn: 'Başla →',
-        allTools: '🛠️ 4 Profesyonel Araç • Tek Platform',
+        cta: 'HEIC Çevirmeye Başla',
         features: {
-            privacy: { title: '%100 Gizlilik', desc: 'Dosyalarınız sunucuya yüklenmez' },
-            instant: { title: 'Anında Dönüşüm', desc: 'Saniyeler içinde dönüştürün' },
-            ai: { title: 'AI Destekli', desc: 'Akıllı arka plan silme' },
+            privacy: { title: '%100 Gizlilik', desc: 'Dosyalarınız asla sunucuya yüklenmez' },
+            instant: { title: 'Anında Sonuç', desc: 'WASM teknolojisi ile ışık hızında dönüşüm' },
+            ai: { title: 'Yüksek Kalite', desc: 'Görüntü kalitesini koruyarak dönüştürün' },
         },
         testimonials: {
-            title: 'Kullanıcılarımız Ne Diyor?',
+            title: 'Kullanıcı Yorumları',
             items: [
-                { name: 'Ayşe K.', role: 'Fotoğrafçı', text: 'iPhone fotoğraflarımı saniyeler içinde dönüştürüyorum. Harika!' },
-                { name: 'Mehmet T.', role: 'E-Ticaret', text: 'Ürün fotoğraflarından arka plan silmek çok kolay.' },
-                { name: 'Zeynep A.', role: 'Blogger', text: 'Görsel sıkıştırma özelliği blog sayfamı hızlandırdı.' }
+                { name: 'Ayşe K.', role: 'Fotoğrafçı', text: 'iPhone\'dan bilgisayara fotoğraf atarken yaşadığım HEIC sorununu saniyede çözdü.' },
+                { name: 'Mehmet T.', role: 'E-Ticaret', text: 'Toplu dönüştürme özelliği inanılmaz hızlı çalışıyor.' },
+                { name: 'Zeynep A.', role: 'Tasarımcı', text: 'Hem HEIC çevirip hem de arka plan silebilmesi harika.' }
             ]
         },
         footer: { about: 'Hakkımızda', privacy: 'Gizlilik', terms: 'Şartlar', contact: 'İletişim' }
     },
     en: {
-        title: 'VormPixyze - Free Online Image Tools',
-        description: 'Convert HEIC to JPG, remove backgrounds, compress images. 100% browser-based.',
-        hero: 'Professional Image Tools',
-        heroSub: 'Free, Fast & Secure',
-        trustBadge: '🔒 100% Browser-Based • Files Never Leave Your Device',
+        title: 'Free Online HEIC to JPG Converter | VormPixyze',
+        description: 'Convert iPhone HEIC photos to JPG instantly. 100% browser-based, secure, and free.',
+        hero: 'Convert HEIC to JPG Instantly',
+        heroSub: 'The fastest way to convert iPhone photos. No uploads, no waiting.',
+        trustBadge: '🔒 100% Secure • Files Never Leave Your Device',
+        toolsTitle: 'More Tools',
         tools: {
             'heic-to-jpg': { name: 'HEIC → JPG', desc: 'Convert iPhone photos to JPG' },
-            'png-to-jpg': { name: 'PNG → JPG', desc: 'Convert PNG to smaller JPGs' },
-            'remove-background': { name: 'AI Background Removal', desc: 'Remove backgrounds with AI' },
-            'compress-image': { name: 'Image Compression', desc: 'Reduce file size' },
+            'png-to-jpg': { name: 'PNG → JPG', desc: 'Convert PNG to optimized JPG' },
+            'remove-background': { name: 'Remove BG', desc: 'Remove image backgrounds instantly' },
+            'compress-image': { name: 'Compress', desc: 'Reduce file size without quality loss' },
         },
-        startBtn: 'Start →',
-        allTools: '🛠️ 4 Professional Tools • One Platform',
+        cta: 'Start Converting HEIC',
         features: {
-            privacy: { title: '100% Private', desc: 'Files never leave your device' },
-            instant: { title: 'Instant Conversion', desc: 'Convert in seconds' },
-            ai: { title: 'AI-Powered', desc: 'Smart background removal' },
+            privacy: { title: '100% Private', desc: 'Files are processed locally on your device' },
+            instant: { title: 'Lightning Fast', desc: 'Powered by WebAssembly technology' },
+            ai: { title: 'High Quality', desc: 'Maintain original image quality' },
         },
         testimonials: {
-            title: 'What Our Users Say',
+            title: 'User Reviews',
             items: [
-                { name: 'Sarah M.', role: 'Photographer', text: 'I convert my iPhone photos in seconds. Amazing!' },
-                { name: 'John D.', role: 'E-Commerce', text: 'Removing backgrounds from product photos is so easy.' },
-                { name: 'Emily R.', role: 'Blogger', text: 'Image compression sped up my blog pages.' }
+                { name: 'Sarah M.', role: 'Photographer', text: 'Fixed my iPhone HEIC compatibility issues instantly. great tool!' },
+                { name: 'John D.', role: 'Developer', text: 'Love that it works offline and doesn\'t upload my files.' },
+                { name: 'Emily R.', role: 'Content Creator', text: 'The batch conversion feature is a lifesaver.' }
             ]
         },
         footer: { about: 'About', privacy: 'Privacy', terms: 'Terms', contact: 'Contact' }
     },
     de: {
-        title: 'VormPixyze - Kostenlose Online Bildwerkzeuge',
-        description: 'HEIC in JPG konvertieren, Hintergründe entfernen, Bilder komprimieren. 100% browserbasiert.',
-        hero: 'Professionelle Bildwerkzeuge',
-        heroSub: 'Kostenlos, Schnell & Sicher',
-        trustBadge: '🔒 100% Browserbasiert • Dateien verlassen nie Ihr Gerät',
+        title: 'Kostenloser HEIC in JPG Konverter | VormPixyze',
+        description: 'Konvertieren Sie iPhone HEIC-Fotos sofort in JPG. 100% browserbasiert, sicher und kostenlos.',
+        hero: 'HEIC sofort in JPG umwandeln',
+        heroSub: 'Der schnellste Weg, iPhone-Fotos zu konvertieren. Kein Hochladen.',
+        trustBadge: '🔒 100% Sicher • Dateien verlassen nie Ihr Gerät',
+        toolsTitle: 'Mehr Werkzeuge',
         tools: {
             'heic-to-jpg': { name: 'HEIC → JPG', desc: 'iPhone Fotos in JPG umwandeln' },
-            'png-to-jpg': { name: 'PNG → JPG', desc: 'PNG in kleinere JPGs umwandeln' },
-            'remove-background': { name: 'KI Hintergrund entfernen', desc: 'Hintergründe mit KI entfernen' },
-            'compress-image': { name: 'Bildkomprimierung', desc: 'Dateigröße reduzieren' },
+            'png-to-jpg': { name: 'PNG → JPG', desc: 'PNG in optimiertes JPG umwandeln' },
+            'remove-background': { name: 'Hintergrund', desc: 'Hintergründe sofort entfernen' },
+            'compress-image': { name: 'Komprimieren', desc: 'Dateigröße ohne Qualitätsverlust' },
         },
-        startBtn: 'Start →',
-        allTools: '🛠️ 4 Profi-Werkzeuge • Eine Plattform',
+        cta: 'HEIC Konvertierung Starten',
         features: {
-            privacy: { title: '100% Privat', desc: 'Dateien bleiben auf Ihrem Gerät' },
-            instant: { title: 'Sofortige Umwandlung', desc: 'In Sekunden konvertieren' },
-            ai: { title: 'KI-gestützt', desc: 'Intelligente Hintergrundentfernung' },
+            privacy: { title: '100% Privat', desc: 'Dateien werden lokal verarbeitet' },
+            instant: { title: 'Blitzschnell', desc: 'Angetrieben durch WebAssembly' },
+            ai: { title: 'Hohe Qualität', desc: 'Originalqualität beibehalten' },
         },
         testimonials: {
-            title: 'Was unsere Nutzer sagen',
+            title: 'Nutzerbewertungen',
             items: [
-                { name: 'Anna K.', role: 'Fotografin', text: 'Ich konvertiere meine iPhone-Fotos in Sekunden. Großartig!' },
-                { name: 'Thomas M.', role: 'E-Commerce', text: 'Hintergründe von Produktfotos zu entfernen ist so einfach.' },
-                { name: 'Lisa B.', role: 'Bloggerin', text: 'Die Bildkomprimierung hat meine Blogseiten beschleunigt.' }
+                { name: 'Anna K.', role: 'Fotografin', text: 'Hat meine HEIC-Probleme sofort gelöst. Tolles Tool!' },
+                { name: 'Thomas M.', role: 'Entwickler', text: 'Super, dass es offline funktioniert und nichts hochlädt.' },
+                { name: 'Lisa B.', role: 'Designerin', text: 'Die Stapelverarbeitung spart mir so viel Zeit.' }
             ]
         },
         footer: { about: 'Über uns', privacy: 'Datenschutz', terms: 'AGB', contact: 'Kontakt' }
     },
     fr: {
-        title: 'VormPixyze - Outils d\'images en ligne gratuits',
-        description: 'Convertir HEIC en JPG, supprimer les arrière-plans, compresser les images. 100% basé sur le navigateur.',
-        hero: 'Outils d\'images professionnels',
-        heroSub: 'Gratuit, Rapide & Sécurisé',
-        trustBadge: '🔒 100% Basé sur navigateur • Les fichiers ne quittent jamais votre appareil',
+        title: 'Convertisseur HEIC en JPG Gratuit | VormPixyze',
+        description: 'Convertissez instantanément vos photos HEIC iPhone en JPG. 100% navigateur, sécurisé et gratuit.',
+        hero: 'Convertir HEIC en JPG Instantanément',
+        heroSub: 'Le moyen le plus rapide de convertir des photos iPhone. Pas de téléchargement.',
+        trustBadge: '🔒 100% Sécurisé • Les fichiers restent sur votre appareil',
+        toolsTitle: 'Plus d\'outils',
         tools: {
             'heic-to-jpg': { name: 'HEIC → JPG', desc: 'Convertir photos iPhone en JPG' },
-            'png-to-jpg': { name: 'PNG → JPG', desc: 'Convertir PNG en JPG plus petits' },
-            'remove-background': { name: 'Suppression d\'arrière-plan IA', desc: 'Supprimer les arrière-plans avec l\'IA' },
-            'compress-image': { name: 'Compression d\'image', desc: 'Réduire la taille du fichier' },
+            'png-to-jpg': { name: 'PNG → JPG', desc: 'Convertir PNG en JPG optimisé' },
+            'remove-background': { name: 'Détourer', desc: 'Supprimer l\'arrière-plan instantanément' },
+            'compress-image': { name: 'Compresser', desc: 'Réduire la taille sans perte' },
         },
-        startBtn: 'Commencer →',
-        allTools: '🛠️ 4 Outils professionnels • Une plateforme',
+        cta: 'Commencer la conversion',
         features: {
-            privacy: { title: '100% Privé', desc: 'Les fichiers ne quittent jamais votre appareil' },
-            instant: { title: 'Conversion instantanée', desc: 'Convertir en secondes' },
-            ai: { title: 'Alimenté par l\'IA', desc: 'Suppression intelligente d\'arrière-plan' },
+            privacy: { title: '100% Privé', desc: 'Les fichiers sont traités localement' },
+            instant: { title: 'Ultra Rapide', desc: 'Propulsé par la technologie WebAssembly' },
+            ai: { title: 'Haute Qualité', desc: 'Conservez la qualité originale' },
         },
         testimonials: {
-            title: 'Ce que disent nos utilisateurs',
+            title: 'Avis Utilisateurs',
             items: [
-                { name: 'Sophie L.', role: 'Photographe', text: 'Je convertis mes photos iPhone en quelques secondes. Incroyable!' },
-                { name: 'Pierre D.', role: 'E-Commerce', text: 'Supprimer les arrière-plans des photos produits est si facile.' },
-                { name: 'Marie R.', role: 'Blogueuse', text: 'La compression d\'images a accéléré mes pages de blog.' }
+                { name: 'Sophie L.', role: 'Photographe', text: 'A résolu mes problèmes de compatibilité HEIC instantanément.' },
+                { name: 'Pierre D.', role: 'Développeur', text: 'J\'adore que ça marche hors ligne sans upload.' },
+                { name: 'Marie R.', role: 'Créatrice', text: 'La conversion par lot est un vrai gain de temps.' }
             ]
         },
         footer: { about: 'À propos', privacy: 'Confidentialité', terms: 'Conditions', contact: 'Contact' }
@@ -173,50 +173,59 @@ export default function HomePage() {
 
                 {/* Hero */}
                 <main className="flex-1">
-                    <section className="max-w-7xl mx-auto px-4 md:px-8 py-12 text-center">
-                        <div className="inline-flex items-center gap-2 text-emerald-400 text-xs font-medium bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-2 mb-6">
+
+                    <section className="max-w-7xl mx-auto px-4 md:px-8 py-20 text-center relative overflow-hidden">
+
+                        {/* Background Glow */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-[100px] -z-10"></div>
+
+                        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+                            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                                {t.hero}
+                            </span>
+                        </h1>
+                        <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+                            {t.heroSub}
+                        </p>
+
+                        {/* Primary CTA */}
+                        <div className="flex justify-center mb-20">
+                            <Link
+                                to="/heic-to-jpg"
+                                className="group relative inline-flex items-center gap-4 bg-gradient-to-r from-indigo-600 to-purple-600 px-10 py-5 rounded-2xl hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-indigo-500/30"
+                            >
+                                <span className="text-2xl font-bold text-white tracking-wide">{t.cta}</span>
+                                <span className="bg-white/20 p-2 rounded-full group-hover:translate-x-1 transition-transform">
+                                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </span>
+                            </Link>
+                        </div>
+
+                        {/* Trust Badge (Simplified) */}
+                        <div className="flex justify-center items-center gap-2 text-slate-500 text-sm mb-24">
+                            <svg className="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
                             <span>{t.trustBadge}</span>
                         </div>
 
-                        <div className="inline-flex items-center gap-2 text-indigo-400 text-xs font-medium bg-indigo-500/10 border border-indigo-500/20 rounded-full px-4 py-2 mb-6">
-                            <span>{t.allTools}</span>
-                        </div>
-
-                        <h1 className="text-3xl md:text-5xl font-bold text-white mb-3">{t.hero}</h1>
-                        <p className="text-lg text-slate-400 mb-10">{t.heroSub}</p>
-
-                        {/* Tool Cards */}
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-                            {tools.map((tool) => (
-                                <Link
-                                    key={tool.id}
-                                    to={tool.path}
-                                    className="group bg-slate-900/50 border border-slate-800 rounded-xl p-4 hover:border-indigo-500/50 transition-all text-left"
-                                >
-                                    <div className="text-2xl mb-2">{tool.icon}</div>
-                                    <h3 className="text-sm font-bold text-white mb-1">{t.tools[tool.id].name}</h3>
-                                    <p className="text-xs text-slate-400 mb-2">{t.tools[tool.id].desc}</p>
-                                    <span className="text-indigo-400 text-xs font-medium">{t.startBtn}</span>
-                                </Link>
-                            ))}
-                        </div>
-
-                        {/* Features */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                            <div className="text-center p-6">
-                                <div className="text-3xl mb-3">🔒</div>
-                                <h3 className="font-bold text-white mb-1">{t.features.privacy.title}</h3>
-                                <p className="text-sm text-slate-400">{t.features.privacy.desc}</p>
-                            </div>
-                            <div className="text-center p-6">
-                                <div className="text-3xl mb-3">⚡</div>
-                                <h3 className="font-bold text-white mb-1">{t.features.instant.title}</h3>
-                                <p className="text-sm text-slate-400">{t.features.instant.desc}</p>
-                            </div>
-                            <div className="text-center p-6">
-                                <div className="text-3xl mb-3">🎨</div>
-                                <h3 className="font-bold text-white mb-1">{t.features.ai.title}</h3>
-                                <p className="text-sm text-slate-400">{t.features.ai.desc}</p>
+                        {/* More Tools Section */}
+                        <div className="mb-16">
+                            <h2 className="text-2xl font-bold text-white mb-8">{t.toolsTitle}</h2>
+                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+                                {tools.map((tool) => (
+                                    <Link
+                                        key={tool.id}
+                                        to={tool.path}
+                                        className="group bg-slate-900/50 border border-slate-800 rounded-xl p-5 hover:border-indigo-500/30 transition-all text-left hover:bg-slate-800/50"
+                                    >
+                                        <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">{tool.icon}</div>
+                                        <h3 className="text-sm font-bold text-white mb-1 group-hover:text-indigo-400 transition-colors">{t.tools[tool.id].name}</h3>
+                                        <p className="text-xs text-slate-400">{t.tools[tool.id].desc}</p>
+                                    </Link>
+                                ))}
                             </div>
                         </div>
 

@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-// @imgly/background-removal is dynamically imported when needed (lazy loading)
+// Web Worker for HD Background Removal
+// rembg-webgpu is dynamically imported when needed (WebGPU accelerated)
+// TODO: Future - Add server-side alternative (free API like Hugging Face Spaces) for higher quality
 import { Dropzone } from './components/Dropzone';
 import { AdBanner } from './components/AdBanner';
 import { PremiumModal } from './components/PremiumModal';
@@ -81,6 +83,8 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
 
   // PWA Install Prompt State
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+
+
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: any) => {
@@ -303,6 +307,7 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
       resizeScale: 1,
       isGrayscale: false,
       removeBackground: defaultTool === 'remove-background',
+      useHDModel: false, // Default to standard (fast) model
       bgRemovalTolerance: 30,
       status: 'analyzing',
       errorMsg: ''
@@ -442,9 +447,13 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
       return;
     }
 
-    // Helper to update progress
-    const updateProgress = (progress: number) => {
+    // Helper to yield to UI (allows React to batch and render updates)
+    const yieldToUI = () => new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+
+    // Helper to update progress and yield
+    const updateProgress = async (progress: number) => {
       setFiles(prev => prev.map(f => f.id === id ? { ...f, conversionProgress: progress } : f));
+      await yieldToUI();
     };
 
     setFiles(prev => prev.map(f => f.id === id ? { ...f, status: 'converting', conversionProgress: 0 } : f));
@@ -455,43 +464,47 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
         let sourceUrl = item.previewUrl;
 
         if (item.removeBackground) {
-          updateProgress(5); // Starting AI module load
+          await updateProgress(5); // Starting AI module load
+
+          // --- HYBRID BACKGROUND REMOVAL (Client-Side + Web Worker) ---
           try {
-            // Dynamic import - only loads the 24MB library when needed
-            const { removeBackground } = await import('@imgly/background-removal');
-            updateProgress(10); // AI module loaded, starting processing
-            const blob = await removeBackground(item.previewUrl, {
-              progress: (key: string, current: number, total: number) => {
-                const percentage = 10 + Math.floor((current / total) * 40);
-                // Ensure progress only increases
-                setFiles(prev => {
-                  const f = prev.find(x => x.id === id);
-                  if (f && (f.conversionProgress || 0) < percentage) {
-                    return prev.map(x => x.id === id ? { ...x, conversionProgress: percentage } : x);
-                  }
-                  return prev;
-                });
+            const { removeBackgroundHybrid } = await import('./services/backgroundRemovalService');
+
+            // Pass the progress callback to update the UI
+            const blob = await removeBackgroundHybrid(
+              item.previewUrl,
+              item.useHDModel ? 'auto' : 'auto',
+              (progress) => {
+                if (progress < 100) {
+                  const mappedProgress = 10 + Math.floor(progress * 0.4);
+                  updateProgress(mappedProgress);
+                }
               }
-            });
+            );
+
+            if (!blob) throw new Error("Background removal failed");
+
+            await updateProgress(50);
             sourceUrl = URL.createObjectURL(blob);
-          } catch (aiError) {
-            console.error("AI BG Removal Failed:", aiError);
+
+          } catch (bgError: any) {
+            console.error("Background Removal Failed:", bgError);
+            throw bgError;
           }
         } else {
-          // No AI - simulate gradual progress for UX
-          updateProgress(15);
-          await new Promise(r => setTimeout(r, 100)); // Small delay for visual feedback
-          updateProgress(25);
+          // No AI - yield to let UI update
+          await updateProgress(15);
+          await updateProgress(25);
         }
 
-        updateProgress(35); // Loading image
+        await updateProgress(55); // Loading image after BG removal
 
         const img = new Image();
         img.crossOrigin = "anonymous";
         img.src = sourceUrl;
         await new Promise((resolve, reject) => { img.onload = resolve; img.onerror = reject; });
 
-        updateProgress(45); // Image loaded, creating canvas
+        await updateProgress(65); // Image loaded, creating canvas
 
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
@@ -538,7 +551,7 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
           ctx.fillRect(-targetWidth / 2, -targetHeight / 2, targetWidth, targetHeight);
         }
 
-        updateProgress(55); // Canvas ready
+        await updateProgress(75); // Canvas ready, applying transforms
 
         // Draw the image (Transparent or Original)
         // Draw the image (Transparent or Original) with Crop support
@@ -550,7 +563,7 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
 
         ctx.filter = 'none'; // Reset filter
 
-        updateProgress(65); // Effects applied
+        await updateProgress(85); // Effects applied, encoding...
 
         // --- WATERMARK (Pro+) ---
         if (hasFeatureAccess(stats.premiumTier, 'WATERMARK') && (item.watermarkText || item.watermarkLogo)) {
@@ -695,9 +708,8 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
           // Note: We can't re-assign const blob, so we use the result here
         }
 
-        updateProgress(90); // Blob created
-        await new Promise(r => setTimeout(r, 50)); // Small delay for visual feedback
-        updateProgress(100); // Complete
+        await updateProgress(90); // Blob created
+        await updateProgress(100); // Complete
 
         setFiles(prev => prev.map(f => f.id === id ? {
           ...f, status: 'done', convertedUrl: dataUrl, convertedBlob: blob, convertedSize: blob.size, conversionProgress: 100
@@ -1332,6 +1344,8 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
                                                   onClick={() => {
                                                     if (canUseRemoveBg) {
                                                       updateFileConfig(file.id, 'removeBackground', !file.removeBackground);
+                                                      // Reset HD model if untoggling BG removal to save resources
+                                                      if (file.removeBackground) updateFileConfig(file.id, 'useHDModel', false);
                                                     } else {
                                                       setIsPremiumModalOpen(true);
                                                     }
@@ -1350,6 +1364,8 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
                                                 </button>
                                               );
                                             })()}
+
+                                            {/* HD Toggle removed - using stable @imgly/background-removal only */}
                                           </div>
                                         )
                                       }
@@ -1507,8 +1523,7 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
 
 
 
-      {/* Spacer for fixed footer */}
-      <div className="h-20 md:h-24"></div>
+
 
       {showScrollTop && <button onClick={scrollToTop} className="fixed bottom-24 right-6 z-40 p-3 rounded-full bg-indigo-600/80 text-white shadow-lg">↑</button>}
 
@@ -1535,7 +1550,7 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
         )
       }
 
-      <footer className="fixed bottom-0 left-0 right-0 z-30 border-t border-slate-800 bg-[#0B0F19] py-3 md:py-6">
+      <footer className="border-t border-slate-800 bg-[#0B0F19] py-3 md:py-6 mt-auto">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-6">
           <span className="font-bold text-sm md:text-lg text-white">VormPixyze</span>
           <div className="flex gap-3 md:gap-6 text-xs md:text-sm text-slate-500">

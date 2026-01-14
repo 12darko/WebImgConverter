@@ -33,14 +33,33 @@ export const CropModal: React.FC<CropModalProps> = ({ isOpen, onClose, imageUrl,
         if (!crop || !imgRef.current) return;
 
         const img = imgRef.current;
+
+        // If unit is '%', convert to display pixels first
+        let displayX: number, displayY: number, displayWidth: number, displayHeight: number;
+
+        if (crop.unit === '%') {
+            // Percentage values (0-100) -> display pixels
+            displayX = (crop.x / 100) * img.width;
+            displayY = (crop.y / 100) * img.height;
+            displayWidth = (crop.width / 100) * img.width;
+            displayHeight = (crop.height / 100) * img.height;
+        } else {
+            // Already in pixels
+            displayX = crop.x || 0;
+            displayY = crop.y || 0;
+            displayWidth = crop.width || 0;
+            displayHeight = crop.height || 0;
+        }
+
+        // Scale from display pixels to natural image pixels
         const scaleX = img.naturalWidth / img.width;
         const scaleY = img.naturalHeight / img.height;
 
         const pixelCrop = {
-            x: Math.round((crop.x || 0) * scaleX),
-            y: Math.round((crop.y || 0) * scaleY),
-            width: Math.round((crop.width || 0) * scaleX),
-            height: Math.round((crop.height || 0) * scaleY)
+            x: Math.round(displayX * scaleX),
+            y: Math.round(displayY * scaleY),
+            width: Math.round(displayWidth * scaleX),
+            height: Math.round(displayHeight * scaleY)
         };
 
         onCropComplete(pixelCrop);
