@@ -51,9 +51,11 @@ interface AppProps {
   formatBadges?: string[];
   defaultOutputFormat?: string;
   hideFormatSelector?: boolean;
+  dropzoneTitle?: string;
+  dropzoneDesc?: string;
 }
 
-function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaultOutputFormat, hideFormatSelector }: AppProps = {}) {
+function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaultOutputFormat, hideFormatSelector, dropzoneTitle, dropzoneDesc }: AppProps = {}) {
   const { t, language, setLanguage } = useLanguage();
   const [files, setFiles] = useState<FileItem[]>([]);
   const [compareItem, setCompareItem] = useState<FileItem | null>(null);
@@ -933,6 +935,8 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
                 disabled={!stats.isPremium && stats.credits <= 0 && files.length === 0}
                 acceptTypes={acceptTypes}
                 formatBadges={formatBadges}
+                title={dropzoneTitle}
+                description={dropzoneDesc}
               />
             </section>
 
@@ -1084,94 +1088,127 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
 
                                   {file.status !== 'done' && (
                                     <div className="bg-slate-900/60 p-4 rounded-lg space-y-4">
-                                      {/* Preset Profiles */}
-                                      <div className="flex items-center gap-2 flex-wrap">
-                                        <span className="text-xs text-slate-500">{t('preset_label') || 'Hazır Ayar:'}</span>
-                                        <button
-                                          onClick={() => {
-                                            updateFileConfig(file.id, 'targetFormat', ConversionFormat.WEBP);
-                                            updateFileConfig(file.id, 'quality', 0.8);
-                                            updateFileConfig(file.id, 'resizeScale', 1);
-                                          }}
-                                          className="text-[10px] px-2 py-1 rounded bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/30"
-                                        >
-                                          🌐 {t('preset_web') || 'Web'}
-                                        </button>
-                                        <button
-                                          onClick={() => {
-                                            updateFileConfig(file.id, 'targetFormat', ConversionFormat.JPEG);
-                                            updateFileConfig(file.id, 'quality', 0.85);
-                                            updateFileConfig(file.id, 'resizeScale', 0.75);
-                                          }}
-                                          className="text-[10px] px-2 py-1 rounded bg-blue-500/20 border border-blue-500/30 text-blue-300 hover:bg-blue-500/30"
-                                        >
-                                          📱 {t('preset_social') || 'Sosyal Medya'}
-                                        </button>
-                                        <button
-                                          onClick={() => {
-                                            updateFileConfig(file.id, 'targetFormat', ConversionFormat.PNG);
-                                            updateFileConfig(file.id, 'quality', 1.0);
-                                            updateFileConfig(file.id, 'resizeScale', 1);
-                                          }}
-                                          className="text-[10px] px-2 py-1 rounded bg-purple-500/20 border border-purple-500/30 text-purple-300 hover:bg-purple-500/30"
-                                        >
-                                          📦 {t('preset_archive') || 'Arşiv'}
-                                        </button>
-                                      </div>
-                                      <div className="flex flex-wrap gap-2">
-                                        {/* Free Formats */}
-                                        {[ConversionFormat.JPEG, ConversionFormat.PNG, ConversionFormat.WEBP].map(fmt => (
-                                          <button key={fmt} onClick={() => updateFileConfig(file.id, 'targetFormat', fmt)} className={`text-xs px-3 py-1.5 rounded border ${file.targetFormat === fmt ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-600'}`}>
-                                            {fmt.split('/')[1].toUpperCase()}
+                                      {/* Preset Profiles - Only show in Advanced/All mode */}
+                                      {!hideFormatSelector && (
+                                        <div className="flex items-center gap-2 flex-wrap">
+                                          <span className="text-xs text-slate-500">{t('preset_label') || 'Hazır Ayar:'}</span>
+                                          <button
+                                            onClick={() => {
+                                              updateFileConfig(file.id, 'targetFormat', ConversionFormat.WEBP);
+                                              updateFileConfig(file.id, 'quality', 0.8);
+                                              updateFileConfig(file.id, 'resizeScale', 1);
+                                            }}
+                                            className="text-[10px] px-2 py-1 rounded bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/30"
+                                          >
+                                            🌐 {t('preset_web') || 'Web'}
                                           </button>
-                                        ))}
-                                        {/* Premium Formats (Business tier) */}
-                                        {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO, ConversionFormat.AVIF, ConversionFormat.SVG].map(fmt => {
-                                          const canUse = hasFeatureAccess(stats.premiumTier, 'SPECIAL_FORMATS');
-                                          return (
-                                            <button
-                                              key={fmt}
-                                              onClick={() => canUse && updateFileConfig(file.id, 'targetFormat', fmt)}
-                                              disabled={!canUse}
-                                              title={canUse ? fmt.split('/')[1].toUpperCase() : 'Business özelliği'}
-                                              className={`text-xs px-3 py-1.5 rounded border flex items-center gap-1 ${canUse
-                                                ? file.targetFormat === fmt
-                                                  ? 'bg-indigo-600 border-indigo-500'
-                                                  : 'bg-slate-800 border-slate-600'
-                                                : 'bg-slate-900/50 border-slate-700/50 text-slate-500 cursor-not-allowed opacity-60'
-                                                }`}
-                                            >
+                                          <button
+                                            onClick={() => {
+                                              updateFileConfig(file.id, 'targetFormat', ConversionFormat.JPEG);
+                                              updateFileConfig(file.id, 'quality', 0.85);
+                                              updateFileConfig(file.id, 'resizeScale', 0.75);
+                                            }}
+                                            className="text-[10px] px-2 py-1 rounded bg-blue-500/20 border border-blue-500/30 text-blue-300 hover:bg-blue-500/30"
+                                          >
+                                            📱 {t('preset_social') || 'Sosyal Medya'}
+                                          </button>
+                                          <button
+                                            onClick={() => {
+                                              updateFileConfig(file.id, 'targetFormat', ConversionFormat.PNG);
+                                              updateFileConfig(file.id, 'quality', 1.0);
+                                              updateFileConfig(file.id, 'resizeScale', 1);
+                                            }}
+                                            className="text-[10px] px-2 py-1 rounded bg-purple-500/20 border border-purple-500/30 text-purple-300 hover:bg-purple-500/30"
+                                          >
+                                            📦 {t('preset_archive') || 'Arşiv'}
+                                          </button>
+                                        </div>
+                                      )}
+
+                                      {/* Format Selector - Only show full set in Advanced mode */}
+                                      {!hideFormatSelector ? (
+                                        <div className="flex flex-wrap gap-2">
+                                          {/* Free Formats */}
+                                          {[ConversionFormat.JPEG, ConversionFormat.PNG, ConversionFormat.WEBP].map(fmt => (
+                                            <button key={fmt} onClick={() => updateFileConfig(file.id, 'targetFormat', fmt)} className={`text-xs px-3 py-1.5 rounded border ${file.targetFormat === fmt ? 'bg-indigo-600 border-indigo-500' : 'bg-slate-800 border-slate-600'}`}>
                                               {fmt.split('/')[1].toUpperCase()}
-                                              {!canUse && <span className="text-amber-400">🔒</span>}
                                             </button>
-                                          );
-                                        })}
-                                        {/* Crop Button with Pro+ tier check */}
-                                        {(() => {
-                                          const canCrop = hasFeatureAccess(stats.premiumTier, 'CROP');
-                                          return (
+                                          ))}
+                                          {/* Premium Formats (Business tier) */}
+                                          {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO, ConversionFormat.AVIF, ConversionFormat.SVG].map(fmt => {
+                                            const canUse = hasFeatureAccess(stats.premiumTier, 'SPECIAL_FORMATS');
+                                            return (
+                                              <button
+                                                key={fmt}
+                                                onClick={() => canUse && updateFileConfig(file.id, 'targetFormat', fmt)}
+                                                disabled={!canUse}
+                                                title={canUse ? fmt.split('/')[1].toUpperCase() : 'Business özelliği'}
+                                                className={`text-xs px-3 py-1.5 rounded border flex items-center gap-1 ${canUse
+                                                  ? file.targetFormat === fmt
+                                                    ? 'bg-indigo-600 border-indigo-500'
+                                                    : 'bg-slate-800 border-slate-600'
+                                                  : 'bg-slate-900/50 border-slate-700/50 text-slate-500 cursor-not-allowed opacity-60'
+                                                  }`}
+                                              >
+                                                {fmt.split('/')[1].toUpperCase()}
+                                                {!canUse && <span className="text-amber-400">🔒</span>}
+                                              </button>
+                                            );
+                                          })}
+                                          {/* Crop Button with Pro+ tier check */}
+                                          {(() => {
+                                            const canCrop = hasFeatureAccess(stats.premiumTier, 'CROP');
+                                            return (
+                                              <button
+                                                onClick={() => {
+                                                  if (canCrop) {
+                                                    setCurrentCropFileId(file.id);
+                                                    setIsCropModalOpen(true);
+                                                  } else {
+                                                    setIsPremiumModalOpen(true);
+                                                  }
+                                                }}
+                                                className={`text-xs px-3 py-1.5 rounded border flex items-center gap-1 ${canCrop
+                                                  ? file.cropData
+                                                    ? 'bg-indigo-900/50 border-indigo-500 text-indigo-200'
+                                                    : 'bg-slate-800 border-slate-600'
+                                                  : 'bg-slate-900/50 border-slate-700/50 text-slate-500 cursor-not-allowed opacity-60'
+                                                  }`}
+                                              >
+                                                ✂️ {file.cropData ? 'Kırpıldı' : 'Kırp'}
+                                                {!canCrop && <span className="text-amber-400">🔒</span>}
+                                              </button>
+                                            );
+                                          })()}
+                                        </div>
+                                      ) : (
+                                        /* Focused Mode - Only show primary output format */
+                                        <div className="flex items-center gap-3">
+                                          <span className="text-xs text-slate-400">
+                                            {language === 'tr' ? 'Çıktı:' : 'Output:'}
+                                          </span>
+                                          <div className="flex gap-2">
                                             <button
-                                              onClick={() => {
-                                                if (canCrop) {
-                                                  setCurrentCropFileId(file.id);
-                                                  setIsCropModalOpen(true);
-                                                } else {
-                                                  setIsPremiumModalOpen(true);
-                                                }
-                                              }}
-                                              className={`text-xs px-3 py-1.5 rounded border flex items-center gap-1 ${canCrop
-                                                ? file.cropData
-                                                  ? 'bg-indigo-900/50 border-indigo-500 text-indigo-200'
-                                                  : 'bg-slate-800 border-slate-600'
-                                                : 'bg-slate-900/50 border-slate-700/50 text-slate-500 cursor-not-allowed opacity-60'
-                                                }`}
+                                              onClick={() => updateFileConfig(file.id, 'targetFormat', ConversionFormat.JPEG)}
+                                              className={`text-xs px-4 py-2 rounded-lg font-medium border transition-all ${file.targetFormat === ConversionFormat.JPEG ? 'bg-indigo-600 border-indigo-500 shadow-lg shadow-indigo-500/20' : 'bg-slate-800 border-slate-600 hover:border-slate-500'}`}
                                             >
-                                              ✂️ {file.cropData ? 'Kırpıldı' : 'Kırp'}
-                                              {!canCrop && <span className="text-amber-400">🔒</span>}
+                                              JPG
                                             </button>
-                                          );
-                                        })()}
-                                      </div>
+                                            <button
+                                              onClick={() => updateFileConfig(file.id, 'targetFormat', ConversionFormat.PNG)}
+                                              className={`text-xs px-4 py-2 rounded-lg font-medium border transition-all ${file.targetFormat === ConversionFormat.PNG ? 'bg-indigo-600 border-indigo-500 shadow-lg shadow-indigo-500/20' : 'bg-slate-800 border-slate-600 hover:border-slate-500'}`}
+                                            >
+                                              PNG
+                                            </button>
+                                          </div>
+                                          <Link
+                                            to="/app"
+                                            className="ml-auto text-[10px] px-2 py-1 rounded bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors"
+                                          >
+                                            ⚙️ {language === 'tr' ? 'Tüm Seçenekler' : 'All Options'}
+                                          </Link>
+                                        </div>
+                                      )}
                                       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                                         <button onClick={() => updateFileConfig(file.id, 'rotation', (file.rotation + 90) % 360)} className="bg-slate-800 p-2 rounded text-xs border border-slate-700">{t('rotate')}: {file.rotation}°</button>
                                         <button onClick={() => updateFileConfig(file.id, 'isGrayscale', !file.isGrayscale)} className={`p-2 rounded text-xs border ${file.isGrayscale ? 'bg-slate-600' : 'bg-slate-800'}`}>{t('grayscale')}</button>
@@ -1512,7 +1549,7 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
         </div>
 
         <SeoContent />
-      </main>
+      </main >
 
       <SupportModal
         isOpen={isSupportModalOpen}
@@ -1566,7 +1603,7 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
           </div>
         </div>
       </footer>
-    </div>
+    </div >
   );
 }
 

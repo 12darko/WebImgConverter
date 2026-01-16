@@ -7,9 +7,11 @@ interface DropzoneProps {
   disabled?: boolean;
   acceptTypes?: string; // e.g. "image/png, .heic" or undefined for all
   formatBadges?: string[]; // e.g. ["HEIC", "JPG"] for display
+  title?: string;
+  description?: string;
 }
 
-export const Dropzone: React.FC<DropzoneProps> = ({ onFilesAdded, disabled, acceptTypes, formatBadges }) => {
+export const Dropzone: React.FC<DropzoneProps> = ({ onFilesAdded, disabled, acceptTypes, formatBadges, title, description }) => {
   const { t } = useLanguage();
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -82,10 +84,10 @@ export const Dropzone: React.FC<DropzoneProps> = ({ onFilesAdded, disabled, acce
       </div>
 
       <h3 className="relative z-10 text-2xl font-bold text-white mb-2 tracking-tight">
-        {disabled ? t('drop_limit') : t('drop_title')}
+        {disabled ? t('drop_limit') : (title || t('drop_title'))}
       </h3>
       <p className="relative z-10 text-slate-400 text-sm max-w-sm mx-auto leading-relaxed">
-        {disabled ? t('drop_limit_desc') : t('drop_desc')}
+        {disabled ? t('drop_limit_desc') : (description || t('drop_desc'))}
       </p>
 
       {!disabled && (

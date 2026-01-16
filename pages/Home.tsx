@@ -3,8 +3,8 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 
+// Secondary tools (HEIC and WebP are now featured as hero cards)
 const tools = [
-    { id: 'heic-to-jpg', path: '/heic-to-jpg', icon: '📱', gradient: 'from-pink-500 to-rose-500' },
     { id: 'png-to-jpg', path: '/png-to-jpg', icon: '🖼️', gradient: 'from-blue-500 to-cyan-500' },
     { id: 'remove-background', path: '/remove-background', icon: '✨', gradient: 'from-purple-500 to-violet-500' },
     { id: 'compress-image', path: '/compress-image', icon: '📦', gradient: 'from-emerald-500 to-teal-500' },
@@ -12,15 +12,16 @@ const tools = [
 
 const content = {
     tr: {
-        title: 'HEIC to JPG Çevirici - Ücretsiz Online | VormPixyze',
-        description: 'iPhone HEIC fotoğraflarını saniyeler içinde JPG\'ye çevirin. %100 tarayıcı tabanlı, hızlı ve güvenli.',
-        hero: 'HEIC Dosyalarını JPG\'ye Çevir',
-        heroSub: 'iPhone fotoğraflarını saniyeler içinde anında dönüştürün. Yükleme yok, bekleme yok.',
+        title: 'HEIC & WebP Çevirici - Ücretsiz Online | VormPixyze',
+        description: 'HEIC ve WebP dosyalarını saniyeler içinde JPG/PNG\'ye çevirin. %100 tarayıcı tabanlı, hızlı ve güvenli.',
+        hero: 'Görsellerinizi Anında Dönüştürün',
+        heroSub: 'HEIC ve WebP dosyalarını saniyeler içinde JPG\'ye çevirin. Yükleme yok, bekleme yok.',
         trustBadge: '🔒 %100 Güvenli • Dosyalarınız Cihazınızdan Çıkmaz',
         toolsTitle: 'Diğer Araçlar',
         tools: {
             'heic-to-jpg': { name: 'HEIC → JPG', desc: 'iPhone fotoğraflarını JPG\'ye çevirin' },
             'png-to-jpg': { name: 'PNG → JPG', desc: 'PNG\'leri küçük JPG\'lere dönüştürün' },
+            'webp-to-jpg': { name: 'WebP → JPG', desc: 'WebP dosyalarını JPG/PNG\'ye çevirin' },
             'remove-background': { name: 'Arka Plan Sil', desc: 'Yapay zeka ile arka planı kaldırın' },
             'compress-image': { name: 'Görsel Küçült', desc: 'Kalite bozmadan boyut küçültün' },
         },
@@ -41,15 +42,16 @@ const content = {
         footer: { about: 'Hakkımızda', privacy: 'Gizlilik', terms: 'Şartlar', contact: 'İletişim' }
     },
     en: {
-        title: 'Free Online HEIC to JPG Converter | VormPixyze',
-        description: 'Convert iPhone HEIC photos to JPG instantly. 100% browser-based, secure, and free.',
-        hero: 'Convert HEIC to JPG Instantly',
-        heroSub: 'The fastest way to convert iPhone photos. No uploads, no waiting.',
+        title: 'Free HEIC & WebP to JPG Converter | VormPixyze',
+        description: 'Convert HEIC and WebP images to JPG instantly. 100% browser-based, secure, and free.',
+        hero: 'Convert Images Instantly',
+        heroSub: 'Transform HEIC and WebP files to JPG/PNG in seconds. No uploads, no waiting.',
         trustBadge: '🔒 100% Secure • Files Never Leave Your Device',
         toolsTitle: 'More Tools',
         tools: {
             'heic-to-jpg': { name: 'HEIC → JPG', desc: 'Convert iPhone photos to JPG' },
             'png-to-jpg': { name: 'PNG → JPG', desc: 'Convert PNG to optimized JPG' },
+            'webp-to-jpg': { name: 'WebP → JPG', desc: 'Convert WebP images to JPG/PNG' },
             'remove-background': { name: 'Remove BG', desc: 'Remove image backgrounds instantly' },
             'compress-image': { name: 'Compress', desc: 'Reduce file size without quality loss' },
         },
@@ -79,6 +81,7 @@ const content = {
         tools: {
             'heic-to-jpg': { name: 'HEIC → JPG', desc: 'iPhone Fotos in JPG umwandeln' },
             'png-to-jpg': { name: 'PNG → JPG', desc: 'PNG in optimiertes JPG umwandeln' },
+            'webp-to-jpg': { name: 'WebP → JPG', desc: 'WebP-Bilder in JPG/PNG umwandeln' },
             'remove-background': { name: 'Hintergrund', desc: 'Hintergründe sofort entfernen' },
             'compress-image': { name: 'Komprimieren', desc: 'Dateigröße ohne Qualitätsverlust' },
         },
@@ -108,6 +111,7 @@ const content = {
         tools: {
             'heic-to-jpg': { name: 'HEIC → JPG', desc: 'Convertir photos iPhone en JPG' },
             'png-to-jpg': { name: 'PNG → JPG', desc: 'Convertir PNG en JPG optimisé' },
+            'webp-to-jpg': { name: 'WebP → JPG', desc: 'Convertir images WebP en JPG/PNG' },
             'remove-background': { name: 'Détourer', desc: 'Supprimer l\'arrière-plan instantanément' },
             'compress-image': { name: 'Compresser', desc: 'Réduire la taille sans perte' },
         },
@@ -188,23 +192,53 @@ export default function HomePage() {
                             {t.heroSub}
                         </p>
 
-                        {/* Primary CTA */}
-                        <div className="flex justify-center mb-20">
+                        {/* ===== HERO CONVERTER CARDS ===== */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+                            {/* HEIC to JPG - Primary Card */}
                             <Link
                                 to="/heic-to-jpg"
-                                className="group relative inline-flex items-center gap-4 bg-gradient-to-r from-indigo-600 to-purple-600 px-10 py-5 rounded-2xl hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-indigo-500/30"
+                                className="group relative overflow-hidden bg-gradient-to-br from-pink-600/20 to-rose-600/20 border-2 border-pink-500/30 rounded-3xl p-8 hover:border-pink-400/60 transition-all duration-300 hover:scale-[1.02] shadow-2xl hover:shadow-pink-500/20"
                             >
-                                <span className="text-2xl font-bold text-white tracking-wide">{t.cta}</span>
-                                <span className="bg-white/20 p-2 rounded-full group-hover:translate-x-1 transition-transform">
-                                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                </span>
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-500 to-rose-500 opacity-20 blur-3xl rounded-full -mr-10 -mt-10"></div>
+                                <div className="relative z-10">
+                                    <div className="text-6xl mb-4">📱</div>
+                                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3 group-hover:text-pink-300 transition-colors">
+                                        HEIC → JPG
+                                    </h2>
+                                    <p className="text-lg text-slate-300 mb-4">{t.tools['heic-to-jpg'].desc}</p>
+                                    <div className="inline-flex items-center gap-2 text-pink-400 font-semibold group-hover:gap-3 transition-all">
+                                        <span>{language === 'tr' ? 'Hemen Başla' : 'Start Now'}</span>
+                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </Link>
+
+                            {/* WebP to JPG - Primary Card */}
+                            <Link
+                                to="/webp-to-jpg"
+                                className="group relative overflow-hidden bg-gradient-to-br from-emerald-600/20 to-green-600/20 border-2 border-emerald-500/30 rounded-3xl p-8 hover:border-emerald-400/60 transition-all duration-300 hover:scale-[1.02] shadow-2xl hover:shadow-emerald-500/20"
+                            >
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-500 to-green-500 opacity-20 blur-3xl rounded-full -mr-10 -mt-10"></div>
+                                <div className="relative z-10">
+                                    <div className="text-6xl mb-4">🌐</div>
+                                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3 group-hover:text-emerald-300 transition-colors">
+                                        WebP → JPG
+                                    </h2>
+                                    <p className="text-lg text-slate-300 mb-4">{t.tools['webp-to-jpg'].desc}</p>
+                                    <div className="inline-flex items-center gap-2 text-emerald-400 font-semibold group-hover:gap-3 transition-all">
+                                        <span>{language === 'tr' ? 'Hemen Başla' : 'Start Now'}</span>
+                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </div>
+                                </div>
                             </Link>
                         </div>
 
                         {/* Trust Badge (Simplified) */}
-                        <div className="flex justify-center items-center gap-2 text-slate-500 text-sm mb-24">
+                        <div className="flex justify-center items-center gap-2 text-slate-500 text-sm mb-16">
                             <svg className="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                             </svg>
@@ -226,6 +260,20 @@ export default function HomePage() {
                                         <p className="text-xs text-slate-400">{t.tools[tool.id].desc}</p>
                                     </Link>
                                 ))}
+
+                                {/* Advanced Mode - Special Card */}
+                                <Link
+                                    to="/app"
+                                    className="group bg-gradient-to-br from-amber-600/10 to-orange-600/10 border-2 border-amber-500/30 rounded-xl p-5 hover:border-amber-400/60 transition-all text-left hover:bg-amber-900/20 hover:shadow-lg hover:shadow-amber-500/10"
+                                >
+                                    <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">⚙️</div>
+                                    <h3 className="text-sm font-bold text-amber-400 mb-1 group-hover:text-amber-300 transition-colors">
+                                        {language === 'tr' ? 'Gelişmiş Mod' : language === 'de' ? 'Erweiterter Modus' : language === 'fr' ? 'Mode Avancé' : 'Advanced Mode'}
+                                    </h3>
+                                    <p className="text-xs text-slate-400">
+                                        {language === 'tr' ? 'Tüm formatlar ve özellikler' : language === 'de' ? 'Alle Formate & Funktionen' : language === 'fr' ? 'Tous les formats' : 'All formats & features'}
+                                    </p>
+                                </Link>
                             </div>
                         </div>
 
