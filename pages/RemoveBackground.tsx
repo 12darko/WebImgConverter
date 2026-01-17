@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import App from '../App';
+import { SeoContent } from '../components/SeoContent';
 
 const seoContent = {
     tr: {
@@ -32,6 +33,7 @@ export default function RemoveBackgroundPage() {
                 acceptTypes="image/png, image/jpeg, image/webp"
                 formatBadges={['JPG', 'PNG', 'WEBP']}
             />
+            <SeoContent pageType="remove-background" />
         </>
     );
 }

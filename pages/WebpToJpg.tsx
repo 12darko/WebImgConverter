@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import App from '../App';
+import { SeoContent } from '../components/SeoContent';
 
 const seoContent = {
     tr: {
@@ -52,6 +53,7 @@ export default function WebpToJpgPage() {
                 dropzoneTitle={language === 'tr' ? 'WebP Dosyalarını Buraya Sürükleyin' : 'Drag & Drop WebP Files Here'}
                 dropzoneDesc={language === 'tr' ? 'WebP görsellerinizi sürükleyin veya seçin' : 'Drag and drop your WebP images or browse to upload'}
             />
+            <SeoContent pageType="webp-to-jpg" />
         </>
     );
 }

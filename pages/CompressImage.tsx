@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import App from '../App';
+import { SeoContent } from '../components/SeoContent';
 
 const seoContent = {
     tr: {
@@ -33,6 +34,7 @@ export default function CompressImagePage() {
                 formatBadges={['JPG', 'PNG', 'WEBP']}
                 hideFormatSelector={true}
             />
+            <SeoContent pageType="compress-image" />
         </>
     );
 }

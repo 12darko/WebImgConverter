@@ -1,196 +1,220 @@
 import React from 'react';
 import { useLanguage } from '../LanguageContext';
 
-export const SeoContent = () => {
-    const { language } = useLanguage();
+export type SeoPageType = 'home' | 'heic-to-jpg' | 'png-to-jpg' | 'webp-to-jpg' | 'remove-background' | 'compress-image';
 
-    if (language === 'tr') {
-        return (
-            <section className="bg-slate-900 border-t border-slate-800 py-16 px-4 md:px-8 mt-20">
-                <div className="max-w-4xl mx-auto space-y-12 text-slate-300">
+interface SeoContentProps {
+    pageType?: SeoPageType;
+}
 
-                    <div className="space-y-4">
-                        <h2 className="text-3xl font-bold text-white">HEIC Dosyasını JPG'ye Çevirme ve AI Araçları</h2>
-                        <p className="leading-relaxed">
-                            VormPixyze, modern fotoğraf formatı olan HEIC (High Efficiency Image Coding) dosyalarını saniyeler içinde evrensel olarak kabul gören JPG, PNG veya WEBP formatlarına dönüştürmenizi sağlayan güçlü bir çevrimiçi araçtır. Apple cihazlarınızda (iPhone, iPad) çektiğiniz fotoğrafları Windows, Android veya web sitelerinde sorunsuzca kullanmak için format değişikliği yapmanız gerekebilir. VormPixyze bu süreci güvenli, hızlı ve ücretsiz hale getirir.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800">
-                            <h3 className="text-xl font-semibold text-white mb-3">Neden HEIC'i JPG'ye Çevirmeliyim?</h3>
-                            <p className="text-sm leading-relaxed text-slate-400">
-                                HEIC formatı yüksek kalitede sıkıştırma sunsa da, birçok eski yazılım, web sitesi ve işletim sistemi tarafından doğrudan desteklenmez. Fotoğraflarınızı paylaşmak, düzenlemek veya web'e yüklemek için JPG en güvenli ve en uyumlu formattır. VormPixyze ile kalite kaybı yaşamadan bu dönüşümü gerçekleştirebilirsiniz.
-                            </p>
-                        </div>
-
-                        <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800">
-                            <h3 className="text-xl font-semibold text-white mb-3">AI Destekli Arka Plan Silme</h3>
-                            <p className="text-sm leading-relaxed text-slate-400">
-                                Sadece format dönüştürme değil, VormPixyze aynı zamanda gelişmiş yapay zeka algoritmaları kullanarak fotoğraflarınızın arka planını tek tıkla silebilir. E-ticaret ürün fotoğrafları, profil resimleri veya grafik tasarım projeleriniz için mükemmel sonuçlar elde edersiniz.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="space-y-6">
-                        <h3 className="text-2xl font-bold text-white">Sıkça Sorulan Sorular (SSS)</h3>
-
-                        <div className="space-y-4">
-                            <div>
-                                <h4 className="font-semibold text-indigo-400">VormPixyze Kullanmak Ücretli mi?</h4>
-                                <p>Hayır, temel dönüştürme ve araç özellikleri tamamen ücretsizdir. Daha yüksek limitler ve gelişmiş özellikler (toplu işlem, filigran ekleme) için Premium planlarımızı inceleyebilirsiniz.</p>
-                            </div>
-
-                            <div>
-                                <h4 className="font-semibold text-indigo-400">Dosyalarım Güvende mi?</h4>
-                                <p>Kesinlikle. Tüm işlemler tarayıcınızda (Client-Side) ve güvenli sunucularımızda anlık olarak yapılır. Dosyalarınız asla kalıcı olarak depolanmaz ve işlem bittikten sonra sunucularımızdan otomatik olarak silinir. Gizliliğiniz bizim için önceliktir.</p>
-                            </div>
-
-                            <div>
-                                <h4 className="font-semibold text-indigo-400">Hangi Formatları Destekliyorsunuz?</h4>
-                                <p>Girdi olarak HEIC, PNG, JPG, WEBP, AVIF ve SVG formatlarını destekliyoruz. Çıktı olarak ise JPG, PNG, WEBP ve daha fazlasına dönüştürme yapabilirsiniz.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-        );
+const seoData = {
+    tr: {
+        'home': {
+            title: "Tüm Görsel Araçları Tek Yerde - VormPixyze",
+            intro: "VormPixyze, görsel dönüştürme ve düzenleme ihtiyaçlarınız için geliştirdiğimiz %100 tarayıcı tabanlı, güvenli ve ücretsiz bir araç setidir. HEIC'ten JPG'e, WebP dönüştürmeye, arka plan silmeden dosya küçültmeye kadar her şey burada.",
+            whyTitle: "Neden VormPixyze?",
+            features: [
+                { title: "🔒 İstemci Taraflı Gizlilik", desc: "Dosyalarınız asla sunucuya yüklenmez, her şey cihazınızda biter." },
+                { title: "⚡ Işık Hızında İşlem", desc: "WebAssembly teknolojisi ile saniyeler içinde binlerce görseli işleyin." },
+                { title: "📱 Tüm Cihazlar Uyumlu", desc: "Windows, Mac, iPhone veya Android fark etmez, her yerden erişin." },
+                { title: "🤖 Yapay Zeka Desteği", desc: "Arka plan silme ve akıllı isimlendirme için en yeni AI modelleri." }
+            ],
+            faq: [
+                { q: "VormPixyze ücretsiz mi?", a: "Evet, temel araçların tamamı ücretsizdir. Profesyonel özellikler için uygun fiyatlı planlarımız mevcuttur." },
+                { q: "Dosyalarım çalınır mı?", a: "Hayır, sunucularımıza dosya yüklemesi yapılmaz. Tüm işlem sizin bilgisayarınızda gerçekleşir." }
+            ]
+        },
+        'heic-to-jpg': {
+            title: "HEIC Dosyasını JPG'ye Çevirme ve AI Araçları",
+            intro: "VormPixyze, modern fotoğraf formatı olan HEIC dosyalrını saniyeler içinde JPG, PNG veya WEBP formatlarına dönüştürmenizi sağlar. Apple cihazlarınızda çektiğiniz fotoğrafları Windows ve Android'de sorunsuzca kullanın.",
+            whyTitle: "HEIC Dönüştürme Rehberi",
+            features: [
+                { title: "Neden HEIC'i JPG'ye Çevirmeliyim?", desc: "HEIC formatı yüksek sıkıştırma sunsa da uyumluluk sorunu yaşatır. JPG en evrensel formattır." },
+                { title: "Toplu Dönüştürme", desc: "Yüzlerce iPhone fotoğrafını tek seferde yükleyin ve dönüştürün." }
+            ],
+            faq: [
+                { q: "Windows'ta HEIC nasıl açılır?", a: "Windows için eklenti satın almanıza gerek yok, VormPixyze ile JPG'ye çevirip hemen açabilirsiniz." },
+                { q: "Kalite bozulur mu?", a: "Hayır, en iyi sıkıştırma algoritmaları ile görsel kalitesini koruyoruz." }
+            ]
+        },
+        'png-to-jpg': {
+            title: "PNG'den JPG'ye Dönüştürme - Şeffaflık ve Boyut",
+            intro: "Büyük boyutlu PNG dosyalarınızı web uyumlu, optimize edilmiş JPG formatına dönüştürün. Saydam arka planları otomatik olarak beyaz veya siyah yapabilirsiniz.",
+            whyTitle: "PNG mi JPG mi?",
+            features: [
+                { title: "Daha Küçük Dosya Boyutu", desc: "PNG dosyaları kayıpsız olduğu için çok yer kaplar. JPG ile %80'e varan sıkıştırma sağlayın." },
+                { title: "Web Uyumluluğu", desc: "Web siteniz için en hızlı yüklenen format JPG'dir." }
+            ],
+            faq: [
+                { q: "Saydamlık (Transparanlık) ne olur?", a: "JPG saydamlığı desteklemez. Çevirirken arka plan otomatik olarak beyaz yapılır." },
+                { q: "Hangi durumlarda PNG kullanmalıyım?", a: "Eğer logonuz veya grafiğinizde saydamlık varsa PNG kullanın, fotoğraf ise JPG'ye çevirin." }
+            ]
+        },
+        'webp-to-jpg': {
+            title: "WebP Dosyalarını JPG ve PNG Yapma",
+            intro: "Google'ın geliştirdiği WebP formatını, her yerde açılabilen JPG veya PNG formatına çevirin. Web'den indirdiğiniz görselleri Photoshop ve diğer araçlarda kullanın.",
+            whyTitle: "WebP Dönüştürme Hakkında",
+            features: [
+                { title: "Evrensel Uyumluluk", desc: "WebP her editörde açılmayabilir. JPG ve PNG her yerde çalışır." },
+                { title: "Tersine Dönüşüm", desc: "WebP'den eski formatlara dönüşüm yaparken kaliteyi maksimumda tutarız." }
+            ],
+            faq: [
+                { q: "WebP nedir?", a: "WebP, Google tarafından web sitelerini hızlandırmak için geliştirilen yeni nesil bir görsel formatıdır." },
+                { q: "Dönüştürme hızlı mı?", a: "Evet, tarayıcı teknolojimiz sayesinde saniyede onlarca dosyayı çevirebilirsiniz." }
+            ]
+        },
+        'remove-background': {
+            title: "Yapay Zeka ile Arka Plan Silme (Remove BG)",
+            intro: "Fotoğraflarınızın arka planını tek bir tıkla, saniyeler içinde silin. Ürün fotoğrafları, portreler ve logolar için mükemmel temizlik.",
+            whyTitle: "AI Arka Plan Temizleyici",
+            features: [
+                { title: "Otomatik Algılama", desc: "Hangi objenin önde olduğunu yapay zeka anlar ve saç teline kadar detaylı kesim yapar." },
+                { title: "Şeffaf PNG Çıktısı", desc: "Sonuçları saydam PNG olarak indirip tasarımlarınızda kullanın." }
+            ],
+            faq: [
+                { q: "Bu özellik ücretli mi?", a: "Temel kullanım ücretsizdir. Yüksek çözünürlüklü ve sınırsız işlem için Premium'a geçebilirsiniz." },
+                { q: "Hangi fotolarda iyi çalışır?", a: "Net bir özneye (insan, araba, ürün) sahip fotolarda en iyi sonucu verir." }
+            ]
+        },
+        'compress-image': {
+            title: "Görsel Sıkıştırma ve Boyut Küçültme",
+            intro: "JPG, PNG ve WebP dosyalarınızın boyutunu kalite kaybetmeden %90'a kadar küçültün. Web sitenizi hızlandırın, depolama alanından tasarruf edin.",
+            whyTitle: "Akıllı Sıkıştırma",
+            features: [
+                { title: "Kayıplı ve Kayıpsız Seçenekler", desc: "İster maksimum kaliteyi koruyun, ister maksimum sıkıştırma yapın." },
+                { title: "Toplu İşlem", desc: "Klasör dolusu fotoğrafı tek seferde sıkıştırın." }
+            ],
+            faq: [
+                { q: "Görüntü kalitesi bozulur mu?", a: "Gözle görülmeyecek seviyede optimizasyon yapıyoruz. Piksellenme olmaz." },
+                { q: "Hangi formatları küçültebilirim?", a: "JPG, PNG, WebP ve HEIC dosyalarını destekliyoruz." }
+            ]
+        }
+    },
+    en: {
+        'home': {
+            title: "All Image Tools in One Place - VormPixyze",
+            intro: "VormPixyze is a 100% browser-based, secure, and free toolkit for all your image conversion and editing needs. From HEIC to JPG, WebP conversion, background removal to compression, it's all here.",
+            whyTitle: "Why VormPixyze?",
+            features: [
+                { title: "🔒 Client-Side Privacy", desc: "Files effectively never leave your device." },
+                { title: "⚡ Lightning Fast", desc: "Process thousands of images in seconds with WebAssembly." },
+                { title: "📱 Cross-Platform", desc: "Works on Windows, Mac, iPhone, or Android seamlessly." },
+                { title: "🤖 AI Powered", desc: "Latest AI models for background removal and smart naming." }
+            ],
+            faq: [
+                { q: "Is VormPixyze free?", a: "Yes, all basic tools are free. Affordable plans are available for pro features." },
+                { q: "Are my files safe?", a: "Yes, files are not uploaded to our servers. Processing happens on your device." }
+            ]
+        },
+        'heic-to-jpg': {
+            title: "Convert HEIC files to JPG and AI Tools",
+            intro: "VormPixyze allows you to convert modern HEIC files to JPG, PNG, or WEBP formats in seconds. Use photos taken on Apple devices on Windows and Android without issues.",
+            whyTitle: "HEIC Conversion Guide",
+            features: [
+                { title: "Why Convert HEIC to JPG?", desc: "HEIC offers high compression but lacks compatibility. JPG is universal." },
+                { title: "Batch Conversion", desc: "Upload and convert hundreds of iPhone photos at once." }
+            ],
+            faq: [
+                { q: "How to open HEIC on Windows?", a: "No need to buy extensions, convert to JPG with VormPixyze and open instantly." },
+                { q: "Does quality suffer?", a: "No, we preserve visual quality with top compression algorithms." }
+            ]
+        },
+        'png-to-jpg': {
+            title: "Convert PNG to JPG - Transparency & Size",
+            intro: "Convert large PNG files to web-optimized JPG format. Automatically handles transparent backgrounds by turning them white or black.",
+            whyTitle: "PNG vs JPG?",
+            features: [
+                { title: "Smaller File Size", desc: "PNGs can be huge. JPG offers up to 80% better compression." },
+                { title: "Web Compatibility", desc: "JPG is the fastest loading format for photographs on websites." }
+            ],
+            faq: [
+                { q: "What happens to transparency?", a: "JPG does not support transparency. Backgrounds become white automatically." },
+                { q: "When to use PNG?", a: "Use PNG for logos with transparency, JPG for photographs." }
+            ]
+        },
+        'webp-to-jpg': {
+            title: "Convert WebP Files to JPG & PNG",
+            intro: "Convert Google's WebP format to universally compatible JPG or PNG. Use web-downloaded images in Photoshop and other tools.",
+            whyTitle: "About WebP Conversion",
+            features: [
+                { title: "Universal Compatibility", desc: "WebP doesn't open everywhere. JPG and PNG do." },
+                { title: "Reverse Conversion", desc: "We maintain max quality when converting back from WebP." }
+            ],
+            faq: [
+                { q: "What is WebP?", a: "WebP is a next-gen format by Google for faster websites." },
+                { q: "Is conversion fast?", a: "Yes, our browser technology converts dozens of files per second." }
+            ]
+        },
+        'remove-background': {
+            title: "AI Background Remover",
+            intro: "Remove image backgrounds with a single click in seconds. Perfect for products, portraits, and logos.",
+            whyTitle: "AI Background Cleaning",
+            features: [
+                { title: "Auto Detection", desc: "AI understands the subject and makes precise cuts." },
+                { title: "Transparent PNG", desc: "Download results as transparent PNGs for your designs." }
+            ],
+            faq: [
+                { q: "Is this free?", a: "Basic use is free. Upgrade for high-res and unlimited batching." },
+                { q: "What photos work best?", a: "Photos with clear subjects (people, cars, products) work best." }
+            ]
+        },
+        'compress-image': {
+            title: "Image Compressor & Resizer",
+            intro: "Reduce JPG, PNG, and WebP file sizes by up to 90% without quality loss. Speed up your website and save storage.",
+            whyTitle: "Smart Compression",
+            features: [
+                { title: "Lossy & Lossless", desc: "Choose between maximum quality or maximum compression." },
+                { title: "Batch Processing", desc: "Compress folder loads of images at once." }
+            ],
+            faq: [
+                { q: "Will quality drop?", a: "We optimize visibly lossless. No pixelation." },
+                { q: "Supported formats?", a: "JPG, PNG, WebP, and HEIC supported." }
+            ]
+        }
     }
+};
+
+export const SeoContent = ({ pageType = 'heic-to-jpg' }: SeoContentProps) => {
+    // Default to EN if lang not found, default to 'heic-to-jpg' if type not found
+    const { language } = useLanguage();
+    const activeLang = (typeof language === 'string' && language.startsWith('tr')) ? 'tr' : 'en';
+
+    const content = seoData[activeLang][pageType] || seoData['en'][pageType];
 
     return (
         <section className="bg-slate-900 border-t border-slate-800 py-16 px-4 md:px-8 mt-20">
-            <div className="max-w-4xl mx-auto space-y-16 text-slate-300">
+            <div className="max-w-4xl mx-auto space-y-12 text-slate-300">
 
-                {/* Intro */}
-                <article className="space-y-6">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Convert HEIC to JPG Online: The Ultimate Guide & Tool</h2>
-                    <p className="leading-relaxed text-lg text-slate-400">
-                        Welcome to <strong>VormPixyze</strong>, the most advanced, privacy-focused online content converter. In a world dominating by high-efficiency formats like HEIC and AVIF, compatibility remains a challenge. Our tool bridges the gap, allowing you to convert <strong>HEIC to JPG</strong>, remove backgrounds using AI, and optimize images for the web—all directly in your browser without uploading files to a server.
+                <div className="space-y-4">
+                    <h2 className="text-3xl font-bold text-white">{content.title}</h2>
+                    <p className="leading-relaxed text-lg">
+                        {content.intro}
                     </p>
-                </article>
-
-                {/* How to Use Section */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div className="bg-slate-950/50 p-8 rounded-2xl border border-slate-800 relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 p-4 opacity-10 font-bold text-6xl group-hover:scale-110 transition-transform">1</div>
-                        <h3 className="text-xl font-bold text-white mb-4 relative z-10">Upload Sources</h3>
-                        <p className="text-sm text-slate-400 relative z-10">Drag and drop your .HEIC, .PNG, or .WEBP files into the zone. We support batch processing for hundreds of files at once.</p>
-                    </div>
-                    <div className="bg-slate-950/50 p-8 rounded-2xl border border-slate-800 relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 p-4 opacity-10 font-bold text-6xl group-hover:scale-110 transition-transform">2</div>
-                        <h3 className="text-xl font-bold text-white mb-4 relative z-10">Customize & Edit</h3>
-                        <p className="text-sm text-slate-400 relative z-10">Choose your output format (JPG, PDF, PNG). Use our toggle to <strong>Remove Background</strong> with AI or crop images before converting.</p>
-                    </div>
-                    <div className="bg-slate-950/50 p-8 rounded-2xl border border-slate-800 relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 p-4 opacity-10 font-bold text-6xl group-hover:scale-110 transition-transform">3</div>
-                        <h3 className="text-xl font-bold text-white mb-4 relative z-10">Download Zip</h3>
-                        <p className="text-sm text-slate-400 relative z-10">Get your converted files instantly. Download them individually or grab everything as a single ZIP archive. Fast and efficient.</p>
-                    </div>
                 </div>
 
-                {/* Value Proposition - Unique Content */}
-                <article className="space-y-8">
-                    <h2 className="text-2xl font-bold text-white">Why VormPixyze is Different?</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {content.features.map((feature, idx) => (
+                        <div key={idx} className="bg-slate-950 p-6 rounded-2xl border border-slate-800">
+                            <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
+                            <p className="text-sm leading-relaxed text-slate-400">
+                                {feature.desc}
+                            </p>
+                        </div>
+                    ))}
+                </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-                            <h3 className="text-lg font-semibold text-indigo-400 mb-2">🔒 100% Client-Side Privacy</h3>
-                            <p className="text-sm leading-relaxed">Most online converters upload your personal photos to a cloud server to process them. This creates a privacy risk. <strong>VormPixyze runs entirely in your browser using WebAssembly technology.</strong> Your photos never leave your device.</p>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold text-indigo-400 mb-2">⚡ Lightning Fast AI</h3>
-                            <p className="text-sm leading-relaxed">By leveraging your device's GPU, we can perform complex tasks like <strong>AI Background Removal</strong> in milliseconds. No queuing, no waiting for server slots.</p>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold text-indigo-400 mb-2">💎 Quality Retention</h3>
-                            <p className="text-sm leading-relaxed">We use advanced compression algorithms (MozJPEG and OxiPNG) to ensure that while your file size drops, the visual quality remains indistinguishable from the original.</p>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold text-indigo-400 mb-2">📱 Cross-Platform</h3>
-                            <p className="text-sm leading-relaxed">Whether you are on an iPhone trying to open HEIC files on Windows, or a designer on a Mac needing WebP for a site, VormPixyze works seamlessly across all modern browsers.</p>
-                        </div>
-                    </div>
-                </article>
-
-                {/* Educational Content: HEIC vs JPG */}
-                <article className="bg-slate-800/30 p-8 rounded-3xl border border-slate-800">
-                    <h2 className="text-2xl font-bold text-white mb-6">HEIC vs JPG: Which should you use?</h2>
-                    <div className="overflow-x-auto">
-                        <table className="w-full text-left text-sm">
-                            <thead>
-                                <tr className="border-b border-slate-700">
-                                    <th className="py-4 font-semibold text-slate-300">Feature</th>
-                                    <th className="py-4 font-semibold text-indigo-400">HEIC (High Efficiency)</th>
-                                    <th className="py-4 font-semibold text-emerald-400">JPG (Joint Photographic)</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-slate-800">
-                                <tr>
-                                    <td className="py-4 text-slate-400">File Size</td>
-                                    <td className="py-4 text-slate-200">Very Small (~50% of JPG)</td>
-                                    <td className="py-4 text-slate-200">Larger</td>
-                                </tr>
-                                <tr>
-                                    <td className="py-4 text-slate-400">Compatibility</td>
-                                    <td className="py-4 text-slate-200">Limited (Apple ecosystem)</td>
-                                    <td className="py-4 text-slate-200">Universal (Every device)</td>
-                                </tr>
-                                <tr>
-                                    <td className="py-4 text-slate-400">Color Depth</td>
-                                    <td className="py-4 text-slate-200">16-bit (Deep Color)</td>
-                                    <td className="py-4 text-slate-200">8-bit</td>
-                                </tr>
-                                <tr>
-                                    <td className="py-4 text-slate-400">Transparency</td>
-                                    <td className="py-4 text-slate-200">Supported (HEIF)</td>
-                                    <td className="py-4 text-slate-200">Not Supported</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </article>
-
-                {/* FAQ Section */}
                 <div className="space-y-6">
-                    <h3 className="text-2xl font-bold text-white">Frequently Asked Questions</h3>
+                    <h3 className="text-2xl font-bold text-white">
+                        {activeLang === 'tr' ? 'Sıkça Sorulan Sorular (SSS)' : 'Frequently Asked Questions'}
+                    </h3>
 
                     <div className="space-y-4">
-                        <details className="group bg-slate-950 border border-slate-800 rounded-xl">
-                            <summary className="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-300 group-hover:text-indigo-400 transition-colors">
-                                <span>How do I open HEIC files on Windows?</span>
-                                <span className="transition group-open:rotate-180">
-                                    <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                                </span>
-                            </summary>
-                            <div className="text-slate-400 mt-0 px-4 pb-4 leading-relaxed">
-                                Windows 10 and 11 require a paid extension to open HEIC files essentially. The free and fastest way is to use <strong>VormPixyze</strong> to convert them to JPG. Just drag your files above, click download, and you can view them anywhere.
+                        {content.faq.map((item, idx) => (
+                            <div key={idx}>
+                                <h4 className="font-semibold text-indigo-400">{item.q}</h4>
+                                <p>{item.a}</p>
                             </div>
-                        </details>
-
-                        <details className="group bg-slate-950 border border-slate-800 rounded-xl">
-                            <summary className="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-300 group-hover:text-indigo-400 transition-colors">
-                                <span>Is there a limit to how many files I can convert?</span>
-                                <span className="transition group-open:rotate-180">
-                                    <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                                </span>
-                            </summary>
-                            <div className="text-slate-400 mt-0 px-4 pb-4 leading-relaxed">
-                                Our free tier allows for generous daily usage. For power users needing to convert thousands of images or requiring API access, we offer <span className="text-indigo-400">Premium Plans</span> that unlock unlimited batch processing and faster priority support.
-                            </div>
-                        </details>
-
-                        <details className="group bg-slate-950 border border-slate-800 rounded-xl">
-                            <summary className="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-300 group-hover:text-indigo-400 transition-colors">
-                                <span>Can I remove background from JPGs?</span>
-                                <span className="transition group-open:rotate-180">
-                                    <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                                </span>
-                            </summary>
-                            <div className="text-slate-400 mt-0 px-4 pb-4 leading-relaxed">
-                                Yes! When you upload a JPG, PNG, or HEIC file, toggle the <strong>"Remove Background"</strong> switch on the file card. Our AI will automatically detect the subject and create a transparent PNG for you.
-                            </div>
-                        </details>
+                        ))}
                     </div>
                 </div>
 

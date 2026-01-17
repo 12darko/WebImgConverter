@@ -2,6 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
+import { SeoContent } from '../components/SeoContent';
+
 
 // Secondary tools (HEIC and WebP are now featured as hero cards)
 const tools = [
@@ -351,6 +353,7 @@ export default function HomePage() {
                     </div>
                 </footer>
             </div>
+            <SeoContent pageType="home" />
         </>
     );
 }

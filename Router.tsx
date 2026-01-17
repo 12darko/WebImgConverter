@@ -14,11 +14,14 @@ import TermsPage from './pages/Terms';
 import AboutPage from './pages/About';
 import ContactPage from './pages/Contact';
 
+import { AnalyticsTracker } from './components/AnalyticsTracker';
+
 export default function Router() {
     return (
         <HelmetProvider>
             <LanguageProvider>
                 <BrowserRouter>
+                    <AnalyticsTracker />
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/heic-to-jpg" element={<HeicToJpgPage />} />

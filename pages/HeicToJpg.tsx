@@ -15,6 +15,8 @@ const seoContent = {
     },
 };
 
+import { SeoContent } from '../components/SeoContent';
+
 export default function HeicToJpgPage() {
     const language = navigator.language.startsWith('tr') ? 'tr' : 'en';
     const t = seoContent[language];
@@ -36,6 +38,7 @@ export default function HeicToJpgPage() {
                 dropzoneTitle={language === 'tr' ? 'HEIC Dosyalarını Buraya Sürükleyin' : 'Drag & Drop HEIC Files Here'}
                 dropzoneDesc={language === 'tr' ? 'iPhone fotoğraflarınızı (HEIC/HEIF) sürükleyin veya seçin' : 'Drag and drop your iPhone photos (HEIC/HEIF) or browse to upload'}
             />
+            <SeoContent pageType="heic-to-jpg" />
         </>
     );
 }
