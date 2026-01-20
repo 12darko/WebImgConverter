@@ -26,15 +26,14 @@ const seoContent = {
     },
 };
 
+import { useLanguage } from '../LanguageContext';
+
 type LangKey = keyof typeof seoContent;
 
 export default function WebpToJpgPage() {
-    const browserLang = navigator.language.toLowerCase();
-    const language: LangKey = browserLang.startsWith('tr') ? 'tr'
-        : browserLang.startsWith('de') ? 'de'
-            : browserLang.startsWith('fr') ? 'fr'
-                : 'en';
-    const t = seoContent[language];
+    const { language } = useLanguage();
+    const activeLang = (typeof language === 'string' && language.startsWith('tr')) ? 'tr' : 'en';
+    const t = seoContent[activeLang as LangKey] || seoContent['en'];
 
     return (
         <>
