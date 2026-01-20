@@ -16,9 +16,12 @@ const seoContent = {
     },
 };
 
+import { useLanguage } from '../LanguageContext';
+
 export default function PngToJpgPage() {
-    const language = navigator.language.startsWith('tr') ? 'tr' : 'en';
-    const t = seoContent[language];
+    const { language } = useLanguage();
+    const activeLang = (typeof language === 'string' && language.startsWith('tr')) ? 'tr' : 'en';
+    const t = seoContent[activeLang];
 
     return (
         <>

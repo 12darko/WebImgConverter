@@ -15,11 +15,13 @@ const seoContent = {
     },
 };
 
+import { useLanguage } from '../LanguageContext';
 import { SeoContent } from '../components/SeoContent';
 
 export default function HeicToJpgPage() {
-    const language = navigator.language.startsWith('tr') ? 'tr' : 'en';
-    const t = seoContent[language];
+    const { language } = useLanguage();
+    const activeLang = (language.startsWith('tr')) ? 'tr' : 'en';
+    const t = seoContent[activeLang];
 
     return (
         <>
