@@ -1,5 +1,5 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useSearchParams, useLocation, useNavigate } from 'react-router-dom';
 import { translations } from './translations';
 
 type Language = 'tr' | 'en' | 'de' | 'fr';
@@ -14,15 +14,40 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('tr');
+  const [language, setLanguageState] = useState<Language>('tr');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
 
+  // Initialize from URL or Browser
   useEffect(() => {
-    // Tarayıcı dilini algıla
-    const browserLang = navigator.language.split('-')[0];
-    if (['en', 'de', 'fr'].includes(browserLang)) {
-      setLanguage(browserLang as Language);
+    const urlLang = searchParams.get('lang');
+    if (urlLang && ['tr', 'en', 'de', 'fr'].includes(urlLang)) {
+      setLanguageState(urlLang as Language);
+    } else {
+      // Fallback to browser if no URL param
+      const browserLang = navigator.language.split('-')[0];
+      if (['en', 'de', 'fr'].includes(browserLang)) {
+        setLanguageState(browserLang as Language);
+      }
     }
-  }, []);
+  }, []); // Run once on mount
+
+  const setLanguage = (newLang: Language) => {
+    setLanguageState(newLang);
+
+    // Update URL to reflect language (critical for sharing/SEQ)
+    // Create new search params to avoid mutating directly
+    const newParams = new URLSearchParams(searchParams);
+
+    if (newLang === 'tr') {
+      newParams.delete('lang'); // Default language needs no param
+    } else {
+      newParams.set('lang', newLang);
+    }
+
+    setSearchParams(newParams);
+  };
 
   const t = (key: string): string => {
     // @ts-ignore

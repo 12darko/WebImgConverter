@@ -16,11 +16,14 @@ import ContactPage from './pages/Contact';
 
 import { AnalyticsTracker } from './components/AnalyticsTracker';
 
+import { GlobalSeo } from './components/GlobalSeo';
+
 export default function Router() {
     return (
         <HelmetProvider>
-            <LanguageProvider>
-                <BrowserRouter>
+            <BrowserRouter>
+                <LanguageProvider>
+                    <GlobalSeo />
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/heic-to-jpg" element={<HeicToJpgPage />} />
@@ -35,8 +38,8 @@ export default function Router() {
                         {/* Fallback to main app for legacy access */}
                         <Route path="/app" element={<App />} />
                     </Routes>
-                </BrowserRouter>
-            </LanguageProvider>
-        </HelmetProvider>
+                </LanguageProvider>
+            </BrowserRouter>
+        </HelmetProvider >
     );
 }
