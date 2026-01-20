@@ -1549,8 +1549,6 @@ function BanaConvertApp(props: AppProps = {}) {
             </div>
           </div>
         </div>
-
-        <SeoContent />
       </main >
 
       <SupportModal
