@@ -36,8 +36,9 @@ export default function PngToJpgPage() {
                 acceptTypes="image/png"
                 formatBadges={['PNG', '→', 'JPG']}
                 defaultOutputFormat="jpg"
-            />
-            <SeoContent pageType="png-to-jpg" />
+            >
+                <SeoContent pageType="png-to-jpg" />
+            </App>
         </>
     );
 }

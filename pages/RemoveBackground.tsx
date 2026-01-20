@@ -35,8 +35,9 @@ export default function RemoveBackgroundPage() {
                 pageH1={t.h1}
                 acceptTypes="image/png, image/jpeg, image/webp"
                 formatBadges={['JPG', 'PNG', 'WEBP']}
-            />
-            <SeoContent pageType="remove-background" />
+            >
+                <SeoContent pageType="remove-background" />
+            </App>
         </>
     );
 }

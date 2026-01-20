@@ -36,8 +36,9 @@ export default function CompressImagePage() {
                 acceptTypes="image/png, image/jpeg, image/webp"
                 formatBadges={['JPG', 'PNG', 'WEBP']}
                 hideFormatSelector={true}
-            />
-            <SeoContent pageType="compress-image" />
+            >
+                <SeoContent pageType="compress-image" />
+            </App>
         </>
     );
 }

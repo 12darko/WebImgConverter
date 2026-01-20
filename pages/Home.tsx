@@ -338,6 +338,8 @@ export default function HomePage() {
                     </section>
                 </main>
 
+                <SeoContent pageType="home" />
+
                 {/* Footer */}
                 <footer className="border-t border-slate-800 py-6 mt-auto">
                     <div className="max-w-7xl mx-auto px-4">
@@ -353,7 +355,6 @@ export default function HomePage() {
                     </div>
                 </footer>
             </div>
-            <SeoContent pageType="home" />
         </>
     );
 }

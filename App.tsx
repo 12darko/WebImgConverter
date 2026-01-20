@@ -53,9 +53,11 @@ interface AppProps {
   hideFormatSelector?: boolean;
   dropzoneTitle?: string;
   dropzoneDesc?: string;
+  children?: React.ReactNode;
 }
 
-function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaultOutputFormat, hideFormatSelector, dropzoneTitle, dropzoneDesc }: AppProps = {}) {
+function BanaConvertApp(props: AppProps = {}) {
+  const { defaultTool, pageH1, acceptTypes, formatBadges, defaultOutputFormat, hideFormatSelector, dropzoneTitle, dropzoneDesc, children } = props;
   const { t, language, setLanguage } = useLanguage();
   const [files, setFiles] = useState<FileItem[]>([]);
   const [compareItem, setCompareItem] = useState<FileItem | null>(null);
@@ -1587,6 +1589,11 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
         )
       }
 
+      {/* Injected Content (e.g. SEO Text) */}
+      <div className="max-w-7xl mx-auto px-4 w-full">
+        {props.children}
+      </div>
+
       <footer className="border-t border-slate-800 bg-[#0B0F19] py-3 md:py-6 mt-auto">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-6">
           <span className="font-bold text-sm md:text-lg text-white">VormPixyze</span>
@@ -1610,7 +1617,9 @@ function BanaConvertApp({ defaultTool, pageH1, acceptTypes, formatBadges, defaul
 export default function App(props: AppProps = {}) {
   return (
     <LanguageProvider>
-      <BanaConvertApp {...props} />
+      <BanaConvertApp {...props}>
+        {props.children}
+      </BanaConvertApp>
     </LanguageProvider>
   );
 }

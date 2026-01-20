@@ -51,8 +51,9 @@ export default function WebpToJpgPage() {
                 hideFormatSelector={true}
                 dropzoneTitle={language === 'tr' ? 'WebP Dosyalarını Buraya Sürükleyin' : 'Drag & Drop WebP Files Here'}
                 dropzoneDesc={language === 'tr' ? 'WebP görsellerinizi sürükleyin veya seçin' : 'Drag and drop your WebP images or browse to upload'}
-            />
-            <SeoContent pageType="webp-to-jpg" />
+            >
+                <SeoContent pageType="webp-to-jpg" />
+            </App>
         </>
     );
 }
