@@ -21,7 +21,6 @@ export default function Router() {
         <HelmetProvider>
             <LanguageProvider>
                 <BrowserRouter>
-                    <AnalyticsTracker />
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/heic-to-jpg" element={<HeicToJpgPage />} />
