@@ -76,7 +76,32 @@
 </head>
 
 <body class="bg-grid-pattern text-slate-200 antialiased min-h-screen">
-  <div id="root"></div>
+  <div id="root">
+    <!-- Static Content for SEO Bots (Visible when JS is disabled or before React loads) -->
+    <header style="visibility: hidden; height: 0; overflow: hidden;">
+      <h1>Free HEIC & WebP to JPG Converter Online | VormPixyze</h1>
+      <p>
+        Convert HEIC and WebP images to JPG, PNG instantly using VormPixyze.
+        Free online converter with AI smart renaming, background removal.
+        100% browser-based, fast, and secure. Your files never leave your device.
+      </p>
+      <nav>
+        <ul>
+          <li><a href="/heic-to-jpg">HEIC to JPG Converter</a></li>
+          <li><a href="/webp-to-jpg">WebP to JPG Converter</a></li>
+          <li><a href="/png-to-jpg">PNG to JPG Converter</a></li>
+          <li><a href="/remove-background">Remove Background AI</a></li>
+          <li><a href="/compress-image">Compress Image Size</a></li>
+        </ul>
+      </nav>
+      <h2>Why use VormPixyze?</h2>
+      <ul>
+        <li>100% Free and Unlimited</li>
+        <li>Privacy Focused - Local Processing</li>
+        <li>Supports HEIC, WebP, PNG, AVIF</li>
+      </ul>
+    </header>
+  </div>
   <script type="module" src="/index.tsx"></script>
 </body>
 
