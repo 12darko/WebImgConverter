@@ -12,6 +12,7 @@ import { ReferralWidget } from './components/ReferralWidget';
 import { LegalModal } from './components/LegalModal';
 import { SupportModal } from './components/SupportModal';
 import { CookieBanner } from './components/CookieBanner';
+import ScriptLoader from './components/ScriptLoader';
 import { HistoryModal } from './components/HistoryModal'; // History Import
 import { CropModal } from './components/CropModal'; // Crop Import
 
@@ -785,6 +786,7 @@ function BanaConvertApp(props: AppProps = {}) {
   return (
     <div className="min-h-screen font-sans text-slate-200 flex flex-col">
       {/* Modals */}
+      <ScriptLoader />
       {ENABLE_PREMIUM_SYSTEM && (
         <>
           <>
