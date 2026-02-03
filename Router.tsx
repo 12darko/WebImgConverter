@@ -13,6 +13,8 @@ import PrivacyPage from './pages/Privacy';
 import TermsPage from './pages/Terms';
 import AboutPage from './pages/About';
 import ContactPage from './pages/Contact';
+import BlogPage from './pages/Blog';
+import BlogArticlePage from './pages/BlogArticle';
 import NotFoundPage from './pages/NotFound';
 
 import { AnalyticsTracker } from './components/AnalyticsTracker';
@@ -36,6 +38,8 @@ export default function Router() {
                         <Route path="/terms" element={<TermsPage />} />
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/contact" element={<ContactPage />} />
+                        <Route path="/blog" element={<BlogPage />} />
+                        <Route path="/blog/:slug" element={<BlogArticlePage />} />
                         {/* Fallback to main app for legacy access */}
                         <Route path="/app" element={<App />} />
                         {/* 404 Catch-all */}

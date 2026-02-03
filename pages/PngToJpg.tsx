@@ -8,20 +8,60 @@ const seoContent = {
         title: 'PNG to JPG Dönüştürücü - Ücretsiz Online | VormPixyze',
         description: 'PNG dosyalarınızı küçük boyutlu JPG formatına dönüştürün. %100 tarayıcı tabanlı, hızlı ve güvenli.',
         h1: 'PNG to JPG Dönüştürücü',
+        feature1: 'Küçük Boyut', feature1Desc: 'JPG sıkıştırması ile dosya boyutunu %80\'e kadar azaltın.',
+        feature2: 'Akıllı Arka Plan', feature2Desc: 'Şeffaf alanlar otomatik olarak beyaza (veya seçilen renge) dönüşür.',
+        feature3: 'Site Hızı', feature3Desc: 'Web siteniz için en hızlı yüklenen format olan JPG\'ye geçin.',
+        howTo: 'PNG Nasıl JPG Yapılır?',
+        step1: 'PNG Yükle', step1Desc: 'Görselleri seçin.',
+        step2: 'Dönüştür', step2Desc: 'Tek tıkla JPG yapın.',
+        step3: 'Kaydet', step3Desc: 'Yeni dosyayı indirin.'
     },
     en: {
         title: 'Free PNG to JPG Converter Online | VormPixyze',
         description: 'Convert PNG files to smaller JPG format. 100% browser-based, fast and secure.',
         h1: 'PNG to JPG Converter',
+        feature1: 'Smaller Size', feature1Desc: 'Reduce file size up to 80% with efficient JPG compression.',
+        feature2: 'Smart BG', feature2Desc: 'Transparent areas automatically become white (or custom color).',
+        feature3: 'Web Speed', feature3Desc: 'Switch to JPG, the fastest loading format for photography.',
+        howTo: 'How to Convert PNG to JPG?',
+        step1: 'Upload PNG', step1Desc: 'Select images.',
+        step2: 'Convert', step2Desc: 'One click to JPG.',
+        step3: 'Save', step3Desc: 'Download new file.'
     },
+    de: {
+        title: 'Kostenloser PNG zu JPG Konverter Online | VormPixyze',
+        description: 'Konvertieren Sie PNG-Dateien in kleineres JPG-Format. 100% browserbasiert, schnell und sicher.',
+        h1: 'PNG zu JPG Konverter',
+        feature1: 'Kleinere Größe', feature1Desc: 'Reduzieren Sie die Dateigröße um bis zu 80% mit effizienter JPG-Komprimierung.',
+        feature2: 'Intelligenter Hintergrund', feature2Desc: 'Transparente Bereiche werden automatisch weiß.',
+        feature3: 'Web-Geschwindigkeit', feature3Desc: 'Wechseln Sie zu JPG, dem schnellsten Format.',
+        howTo: 'Wie konvertiert man PNG zu JPG?',
+        step1: 'PNG hochladen', step1Desc: 'Bilder auswählen.',
+        step2: 'Konvertieren', step2Desc: 'Ein Klick zu JPG.',
+        step3: 'Speichern', step3Desc: 'Neue Datei herunterladen.'
+    },
+    fr: {
+        title: 'Convertisseur PNG en JPG Gratuit en Ligne | VormPixyze',
+        description: 'Convertissez des fichiers PNG en format JPG plus petit. 100% en navigateur, rapide et sécurisé.',
+        h1: 'Convertisseur PNG en JPG',
+        feature1: 'Taille réduite', feature1Desc: 'Réduisez la taille du fichier jusqu\'à 80% avec une compression JPG efficace.',
+        feature2: 'Fond intelligent', feature2Desc: 'Les zones transparentes deviennent automatiquement blanches.',
+        feature3: 'Vitesse Web', feature3Desc: 'Passez au JPG, le format le plus rapide.',
+        howTo: 'Comment convertir PNG en JPG?',
+        step1: 'Télécharger PNG', step1Desc: 'Sélectionnez les images.',
+        step2: 'Convertir', step2Desc: 'Un clic vers JPG.',
+        step3: 'Enregistrer', step3Desc: 'Télécharger le nouveau fichier.'
+    }
 };
 
 import { useLanguage } from '../LanguageContext';
 
+type LangKey = keyof typeof seoContent;
+
 export default function PngToJpgPage() {
     const { language } = useLanguage();
-    const activeLang = (typeof language === 'string' && language.startsWith('tr')) ? 'tr' : 'en';
-    const t = seoContent[activeLang];
+    const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
+    const t = seoContent[activeLang] || seoContent.en;
 
     return (
         <>

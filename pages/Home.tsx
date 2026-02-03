@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 import { SeoContent } from '../components/SeoContent';
-
+import { HomePageSchema } from '../components/StructuredData';
 
 // Secondary tools (HEIC and WebP are now featured as hero cards)
 const tools = [
@@ -162,11 +162,12 @@ export default function HomePage() {
                 <meta name="description" content={t.description} />
                 <link rel="canonical" href="https://vormpixyze.com/" />
             </Helmet>
+            <HomePageSchema />
 
             <div className="min-h-screen bg-[#0B0F19] text-slate-200 font-sans flex flex-col">
                 {/* Header */}
                 <nav className="glass-panel sticky top-0 z-40 border-b border-white/5">
-                    <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center">
+                    <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
                         <div className="flex items-center gap-3">
                             <svg className="w-8 h-8" viewBox="0 0 100 100" fill="none">
                                 <defs><linearGradient id="logoGrad" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stopColor="#6366f1" /><stop offset="100%" stopColor="#a855f7" /></linearGradient></defs>
@@ -174,6 +175,9 @@ export default function HomePage() {
                             </svg>
                             <span className="text-xl font-bold text-white">Vorm<span className="text-indigo-400">Pixyze</span></span>
                         </div>
+                        <Link to="/blog" className="text-sm text-slate-400 hover:text-indigo-400 transition-colors">
+                            📝 Blog
+                        </Link>
                     </div>
                 </nav>
 
@@ -345,6 +349,7 @@ export default function HomePage() {
                     <div className="max-w-7xl mx-auto px-4">
                         <div className="flex flex-wrap justify-center gap-4 mb-4 text-sm">
                             <Link to="/about" className="text-slate-400 hover:text-white transition-colors">{t.footer.about}</Link>
+                            <Link to="/blog" className="text-slate-400 hover:text-white transition-colors">Blog</Link>
                             <Link to="/privacy" className="text-slate-400 hover:text-white transition-colors">{t.footer.privacy}</Link>
                             <Link to="/terms" className="text-slate-400 hover:text-white transition-colors">{t.footer.terms}</Link>
                             <Link to="/contact" className="text-slate-400 hover:text-white transition-colors">{t.footer.contact}</Link>

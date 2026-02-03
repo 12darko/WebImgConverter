@@ -36,12 +36,47 @@ const content = {
             { q: 'How do I cancel my premium membership?', a: 'You can cancel your premium membership through the Lemon Squeezy customer portal.' },
             { q: 'What formats do you support?', a: 'We support HEIC, PNG, JPG, WEBP, AVIF and more.' }
         ]
+    },
+    de: {
+        title: 'Kontakt | VormPixyze',
+        description: 'Kontaktieren Sie VormPixyze. Wenden Sie sich an uns für Support und Fragen.',
+        heading: 'Kontakt',
+        intro: 'Sie können uns für Ihre Fragen, Vorschläge oder Support-Anfragen kontaktieren.',
+        email: 'E-Mail',
+        emailDesc: 'Für allgemeine Fragen und Support:',
+        response: 'Antwortzeit',
+        responseDesc: 'Wir antworten normalerweise innerhalb von 24-48 Stunden auf E-Mails.',
+        faq: 'Häufig gestellte Fragen',
+        faqs: [
+            { q: 'Sind meine Dateien sicher?', a: 'Ja, Ihre Dateien werden nie auf Server hochgeladen. Alle Verarbeitung geschieht in Ihrem Browser.' },
+            { q: 'Wie kündige ich meine Premium-Mitgliedschaft?', a: 'Sie können Ihre Premium-Mitgliedschaft über das Lemon Squeezy Kundenportal kündigen.' },
+            { q: 'Welche Formate unterstützen Sie?', a: 'Wir unterstützen HEIC, PNG, JPG, WEBP, AVIF und mehr.' }
+        ]
+    },
+    fr: {
+        title: 'Contact | VormPixyze',
+        description: 'Contactez VormPixyze. Contactez-nous pour le support et les questions.',
+        heading: 'Contact',
+        intro: 'Vous pouvez nous contacter pour vos questions, suggestions ou demandes de support.',
+        email: 'E-mail',
+        emailDesc: 'Pour les questions générales et le support:',
+        response: 'Temps de réponse',
+        responseDesc: 'Nous répondons généralement aux e-mails dans les 24-48 heures.',
+        faq: 'Questions Fréquentes',
+        faqs: [
+            { q: 'Mes fichiers sont-ils en sécurité?', a: 'Oui, vos fichiers ne sont jamais téléchargés sur des serveurs. Tout le traitement se fait dans votre navigateur.' },
+            { q: 'Comment annuler mon abonnement premium?', a: 'Vous pouvez annuler votre abonnement premium via le portail client Lemon Squeezy.' },
+            { q: 'Quels formats supportez-vous?', a: 'Nous supportons HEIC, PNG, JPG, WEBP, AVIF et plus.' }
+        ]
     }
 };
 
+type LangKey = keyof typeof content;
+
 export default function ContactPage() {
     const { language } = useLanguage();
-    const t = content[language] || content.en;
+    const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
+    const t = content[activeLang] || content.en;
 
     return (
         <>

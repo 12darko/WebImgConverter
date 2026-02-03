@@ -8,20 +8,60 @@ const seoContent = {
         title: 'AI Arka Plan Silme - Ücretsiz Online | VormPixyze',
         description: 'Yapay zeka ile fotoğraflarınızın arka planını tek tıkla silin. E-ticaret, profil fotoğrafları için mükemmel.',
         h1: 'AI Arka Plan Silme',
+        feature1: 'Hassas Kesim', feature1Desc: 'Saç telleri ve kürk gibi zor detayları bile AI ile mükemmel ayırır.',
+        feature2: 'Tamamen Ücretsiz', feature2Desc: 'Kredi yok, abonelik yok. Sınırsız sayıda görselin arka planını silin.',
+        feature3: 'Gizli ve Güvenli', feature3Desc: 'Fotoğraflar sunucuya gitmez. Her şey tarayıcınızda işlenir.',
+        howTo: 'Nasıl Çalışır?',
+        step1: 'Görsel Yükle', step1Desc: 'JPG, PNG veya WebP sürükle bırak.',
+        step2: 'AI İşleme', step2Desc: 'Otomatik olarak süje algılanır ve kesilir.',
+        step3: 'İndir', step3Desc: 'Şeffaf PNG olarak kaydet.'
     },
     en: {
         title: 'Free AI Background Remover Online | VormPixyze',
         description: 'Remove photo backgrounds with AI in one click. Perfect for e-commerce, profile photos.',
         h1: 'AI Background Remover',
+        feature1: 'Precise Cutout', feature1Desc: 'AI handles hair, fur, and complex edges with pixel-perfect precision.',
+        feature2: '100% Free', feature2Desc: 'No credits, no subscriptions. Remove backgrounds from unlimited images.',
+        feature3: 'Private & Secure', feature3Desc: 'Photos never uploaded. Processing happens entirely in your browser.',
+        howTo: 'How to Remove Background?',
+        step1: 'Upload Image', step1Desc: 'Drag & drop any JPG, PNG or WebP.',
+        step2: 'AI Processing', step2Desc: 'Automatic subject detection and cutout.',
+        step3: 'Download', step3Desc: 'Save as transparent PNG.'
     },
+    de: {
+        title: 'Kostenloser AI Hintergrund-Entferner Online | VormPixyze',
+        description: 'Entfernen Sie Foto-Hintergründe mit KI in einem Klick. Perfekt für E-Commerce und Profilfotos.',
+        h1: 'AI Hintergrund-Entferner',
+        feature1: 'Präziser Schnitt', feature1Desc: 'KI handhabt Haare, Fell und komplexe Kanten mit Pixel-Perfektion.',
+        feature2: '100% Kostenlos', feature2Desc: 'Keine Credits, keine Abos. Unbegrenzte Bilder bearbeiten.',
+        feature3: 'Privat & Sicher', feature3Desc: 'Fotos werden nie hochgeladen. Verarbeitung im Browser.',
+        howTo: 'Wie funktioniert es?',
+        step1: 'Bild hochladen', step1Desc: 'JPG, PNG oder WebP ziehen.',
+        step2: 'KI-Verarbeitung', step2Desc: 'Automatische Motiverkennung.',
+        step3: 'Herunterladen', step3Desc: 'Als transparentes PNG speichern.'
+    },
+    fr: {
+        title: 'Suppression d\'arrière-plan AI Gratuit | VormPixyze',
+        description: 'Supprimez les arrière-plans de photos avec l\'IA en un clic. Parfait pour l\'e-commerce.',
+        h1: 'Suppression d\'arrière-plan AI',
+        feature1: 'Découpe précise', feature1Desc: 'L\'IA gère les cheveux et les bords complexes avec précision.',
+        feature2: '100% Gratuit', feature2Desc: 'Pas de crédits, pas d\'abonnements. Images illimitées.',
+        feature3: 'Privé & Sécurisé', feature3Desc: 'Les photos ne quittent jamais votre appareil.',
+        howTo: 'Comment ça marche?',
+        step1: 'Télécharger image', step1Desc: 'Glissez JPG, PNG ou WebP.',
+        step2: 'Traitement IA', step2Desc: 'Détection automatique du sujet.',
+        step3: 'Télécharger', step3Desc: 'Enregistrer en PNG transparent.'
+    }
 };
 
 import { useLanguage } from '../LanguageContext';
 
+type LangKey = keyof typeof seoContent;
+
 export default function RemoveBackgroundPage() {
     const { language } = useLanguage();
-    const activeLang = (typeof language === 'string' && language.startsWith('tr')) ? 'tr' : 'en';
-    const t = seoContent[activeLang];
+    const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
+    const t = seoContent[activeLang] || seoContent.en;
 
     return (
         <>
