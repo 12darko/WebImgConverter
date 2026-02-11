@@ -6,7 +6,7 @@ import { SeoContent } from '../components/SeoContent';
 const seoContent = {
     tr: {
         title: 'PNG to JPG Dönüştürücü - Ücretsiz Online | VormPixyze',
-        description: 'PNG dosyalarınızı küçük boyutlu JPG formatına dönüştürün. %100 tarayıcı tabanlı, hızlı ve güvenli.',
+        description: 'PNG dosyalarınızı küçük boyutlu JPG formatına dönüştürün. Sunucu tabanlı güvenli işlem, dosyalarınız saklanmaz.',
         h1: 'PNG to JPG Dönüştürücü',
         feature1: 'Küçük Boyut', feature1Desc: 'JPG sıkıştırması ile dosya boyutunu %80\'e kadar azaltın.',
         feature2: 'Akıllı Arka Plan', feature2Desc: 'Şeffaf alanlar otomatik olarak beyaza (veya seçilen renge) dönüşür.',
@@ -18,7 +18,7 @@ const seoContent = {
     },
     en: {
         title: 'Free PNG to JPG Converter Online | VormPixyze',
-        description: 'Convert PNG files to smaller JPG format. 100% browser-based, fast and secure.',
+        description: 'Convert PNG files to smaller JPG format. Secure server processing, files never stored.',
         h1: 'PNG to JPG Converter',
         feature1: 'Smaller Size', feature1Desc: 'Reduce file size up to 80% with efficient JPG compression.',
         feature2: 'Smart BG', feature2Desc: 'Transparent areas automatically become white (or custom color).',
@@ -30,7 +30,7 @@ const seoContent = {
     },
     de: {
         title: 'Kostenloser PNG zu JPG Konverter Online | VormPixyze',
-        description: 'Konvertieren Sie PNG-Dateien in kleineres JPG-Format. 100% browserbasiert, schnell und sicher.',
+        description: 'Konvertieren Sie PNG-Dateien in kleineres JPG-Format. Sichere Serververarbeitung, Dateien werden nicht gespeichert.',
         h1: 'PNG zu JPG Konverter',
         feature1: 'Kleinere Größe', feature1Desc: 'Reduzieren Sie die Dateigröße um bis zu 80% mit effizienter JPG-Komprimierung.',
         feature2: 'Intelligenter Hintergrund', feature2Desc: 'Transparente Bereiche werden automatisch weiß.',
@@ -42,7 +42,7 @@ const seoContent = {
     },
     fr: {
         title: 'Convertisseur PNG en JPG Gratuit en Ligne | VormPixyze',
-        description: 'Convertissez des fichiers PNG en format JPG plus petit. 100% en navigateur, rapide et sécurisé.',
+        description: 'Convertissez des fichiers PNG en format JPG plus petit. Traitement serveur sécurisé, fichiers jamais stockés.',
         h1: 'Convertisseur PNG en JPG',
         feature1: 'Taille réduite', feature1Desc: 'Réduisez la taille du fichier jusqu\'à 80% avec une compression JPG efficace.',
         feature2: 'Fond intelligent', feature2Desc: 'Les zones transparentes deviennent automatiquement blanches.',

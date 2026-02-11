@@ -156,7 +156,7 @@ Despite its benefits, HEIC has compatibility issues:
 
 ## Solution: Convert with VormPixyze
 
-Convert HEIC to JPG instantly and securely with VormPixyze. 100% browser-based, your files never leave your device.
+Convert HEIC to JPG instantly and securely with VormPixyze. Secure server processing, your files are deleted immediately.
             `
         },
         tr: {
@@ -382,7 +382,7 @@ With VormPixyze's image compression tool, you can do all these optimizations wit
             content: `
 ## AI Arka Plan Silme Nasıl Çalışır?
 
-Modern yapay zeka modelleri, görüntülerdeki objeleri **segmente** ederek ön planı arka plandan ayırır. VormPixyze, on-device AI modelleri kullanarak bu işlemi doğrudan tarayıcınızda gerçekleştirir.
+Modern yapay zeka modelleri, görüntülerdeki objeleri **segmente** ederek ön planı arka plandan ayırır. VormPixyze, en iyi sonuçları sunmak için güçlü güvenli sunucular kullanır. Görseliniz anlık olarak işlenir ve sunucudan kalıcı olarak silinir.
 
 ## En İyi Sonuçlar İçin İpuçları
 
@@ -430,7 +430,7 @@ AI arka plan silme artık herkes için erişilebilir. VormPixyze ile ücretsiz, 
             content: `
 ## How Does AI Background Removal Work?
 
-Modern AI models **segment** objects in images to separate the foreground from the background. VormPixyze uses on-device AI models to perform this directly in your browser.
+Modern AI models **segment** objects in images to separate the foreground from the background. VormPixyze uses powerful secure servers to achieve professional precision. Your image is processed instantly and deleted from the server immediately used.
 
 ## Tips for Best Results
 

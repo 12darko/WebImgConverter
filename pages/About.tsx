@@ -12,10 +12,10 @@ const content = {
         mission: 'Misyonumuz',
         missionText: 'VormPixyze, görsel dönüştürme işlemlerini herkes için erişilebilir, hızlı ve güvenli hale getirmek amacıyla kuruldu. Gizliliğinizi korurken en iyi kullanıcı deneyimini sunmayı hedefliyoruz.',
         philosophy: 'Gizlilik Felsefemiz',
-        philosophyText: 'Diğer online araçların aksine, VormPixyze dosyalarınızı sunucularına yüklemez. WebAssembly teknolojisi sayesinde tüm işlemler doğrudan tarayıcınızda gerçekleşir. Bu, fotoğraflarınızın kesinlikle sizde kalması anlamına gelir.',
+        philosophyText: 'VormPixyze, kullanıcı gizliliğini ön planda tutar. Geleneksel araçların aksine, görsellerinizi asla kalıcı olarak depolamayız. Çoğu işlem tarayıcınızda yapılırken, gelişmiş AI işlemleri geçici sunucularda anlık olarak tamamlanır ve silinir.',
         whyUs: 'Neden VormPixyze?',
         features: [
-            { icon: '🔒', title: '%100 Gizlilik', desc: 'Dosyalarınız sunucuya yüklenmez. Tüm işlemler tarayıcınızda gerçekleşir. Upload yok, tracking yok.' },
+            { icon: '🔒', title: '%100 Gizlilik', desc: 'Dosyalarınız asla depolanmaz. İşlemler ya cihazınızda ya da geçici güvenli sunucularda anlık yapılır.' },
             { icon: '⚡', title: 'Işık Hızında', desc: 'WebAssembly teknolojisi ile saniyeler içinde yüzlerce görseli işleyin. Bekleme yok.' },
             { icon: '🎨', title: 'AI Teknolojisi', desc: 'Yapay zeka destekli arka plan silme ve akıllı dosya isimlendirme özellikleri.' },
             { icon: '💎', title: 'Premium Kalite', desc: 'Profesyonel düzeyde dönüşüm kalitesi, kayıpsız veya optimize sıkıştırma seçenekleri.' },
@@ -27,7 +27,7 @@ const content = {
         techItems: [
             'WebAssembly (WASM) ile native hızında işlem',
             'React ve TypeScript ile modern arayüz',
-            'Heic2Any kütüphanesi ile HEIC desteği',
+            'Python Pillow-Heif ile gelişmiş HEIC desteği',
             'On-device AI modelleri ile arka plan silme',
             'Progressive Web App (PWA) desteği'
         ],
@@ -45,22 +45,22 @@ const content = {
         stats: 'Rakamlarla VormPixyze',
         statsItems: [
             { value: '10+', label: 'Format Desteği' },
-            { value: '0', label: 'Sunucu Yüklemesi' },
+            { value: '0', label: 'Veri Depolama' },
             { value: '100%', label: 'Gizlilik' },
             { value: '4', label: 'Dil Desteği' }
         ]
     },
     en: {
         title: 'About Us | VormPixyze',
-        description: 'Learn about VormPixyze. Our privacy-focused team developing browser-based image tools.',
+        description: 'Learn about VormPixyze. Our privacy-focused team developing secure server-based image tools.',
         heading: 'About Us',
         mission: 'Our Mission',
         missionText: 'VormPixyze was founded to make image conversion accessible, fast, and secure for everyone. We aim to provide the best user experience while protecting your privacy.',
         philosophy: 'Our Privacy Philosophy',
-        philosophyText: 'Unlike other online tools, VormPixyze never uploads your files to servers. Thanks to WebAssembly technology, all processing happens directly in your browser. This means your photos absolutely stay with you.',
+        philosophyText: 'VormPixyze prioritizes user privacy. Unlike traditional tools, we never permanently store your files. Most processing happens in your browser, while advanced AI tasks are completed instantly on ephemeral servers and deleted immediately.',
         whyUs: 'Why VormPixyze?',
         features: [
-            { icon: '🔒', title: '100% Privacy', desc: 'Your files are never uploaded to servers. All processing happens in your browser. No uploads, no tracking.' },
+            { icon: '🔒', title: '100% Privacy', desc: 'Your files are never stored. Operations happen either on your device or instantly on secure ephemeral servers.' },
             { icon: '⚡', title: 'Lightning Fast', desc: 'Process hundreds of images in seconds with WebAssembly technology. No waiting.' },
             { icon: '🎨', title: 'AI Technology', desc: 'AI-powered background removal and smart file naming features.' },
             { icon: '💎', title: 'Premium Quality', desc: 'Professional-grade conversion quality with lossless or optimized compression options.' },
@@ -72,7 +72,7 @@ const content = {
         techItems: [
             'WebAssembly (WASM) for native-speed processing',
             'React and TypeScript for modern interface',
-            'Heic2Any library for HEIC support',
+            'Advanced HEIC support with Python Pillow-Heif',
             'On-device AI models for background removal',
             'Progressive Web App (PWA) support'
         ],
@@ -90,7 +90,7 @@ const content = {
         stats: 'VormPixyze by Numbers',
         statsItems: [
             { value: '10+', label: 'Format Support' },
-            { value: '0', label: 'Server Uploads' },
+            { value: '0', label: 'Data Storage' },
             { value: '100%', label: 'Privacy' },
             { value: '4', label: 'Languages' }
         ]
@@ -102,10 +102,10 @@ const content = {
         mission: 'Unsere Mission',
         missionText: 'VormPixyze wurde gegründet, um Bildkonvertierung für alle zugänglich, schnell und sicher zu machen. Wir bieten die beste Benutzererfahrung und schützen dabei Ihre Privatsphäre.',
         philosophy: 'Unsere Datenschutz-Philosophie',
-        philosophyText: 'Im Gegensatz zu anderen Online-Tools lädt VormPixyze Ihre Dateien nie auf Server hoch. Dank WebAssembly-Technologie erfolgt die gesamte Verarbeitung direkt in Ihrem Browser.',
+        philosophyText: 'VormPixyze priorisiert die Privatsphäre der Benutzer. Im Gegensatz zu herkömmlichen Tools speichern wir Ihre Dateien niemals dauerhaft. Die meiste Verarbeitung erfolgt in Ihrem Browser, während fortgeschrittene KI-Aufgaben sofort auf temporären Servern erledigt und sofort gelöscht werden.',
         whyUs: 'Warum VormPixyze?',
         features: [
-            { icon: '🔒', title: '100% Privatsphäre', desc: 'Ihre Dateien werden nie auf Server hochgeladen. Alle Verarbeitung geschieht in Ihrem Browser.' },
+            { icon: '🔒', title: '100% Privatsphäre', desc: 'Ihre Dateien werden nie gespeichert. Die Verarbeitung erfolgt entweder auf Ihrem Gerät oder sofort auf sicheren temporären Servern.' },
             { icon: '⚡', title: 'Blitzschnell', desc: 'Verarbeiten Sie Hunderte von Bildern in Sekunden mit WebAssembly-Technologie.' },
             { icon: '🎨', title: 'KI-Technologie', desc: 'KI-gestützte Hintergrundentfernung und intelligente Dateibenennung.' },
             { icon: '💎', title: 'Premium-Qualität', desc: 'Konvertierungsqualität auf professionellem Niveau.' },
@@ -117,7 +117,7 @@ const content = {
         techItems: [
             'WebAssembly (WASM) für native Geschwindigkeit',
             'React und TypeScript für moderne Oberfläche',
-            'Heic2Any-Bibliothek für HEIC-Unterstützung',
+            'Erweiterte HEIC-Unterstützung mit Python Pillow-Heif',
             'On-Device-KI-Modelle für Hintergrundentfernung',
             'Progressive Web App (PWA) Unterstützung'
         ],
@@ -135,7 +135,7 @@ const content = {
         stats: 'VormPixyze in Zahlen',
         statsItems: [
             { value: '10+', label: 'Format-Unterstützung' },
-            { value: '0', label: 'Server-Uploads' },
+            { value: '0', label: 'Datenspeicherung' },
             { value: '100%', label: 'Privatsphäre' },
             { value: '4', label: 'Sprachen' }
         ]
@@ -147,10 +147,10 @@ const content = {
         mission: 'Notre Mission',
         missionText: 'VormPixyze a été fondé pour rendre la conversion d\'images accessible, rapide et sécurisée pour tous. Nous visons à fournir la meilleure expérience utilisateur tout en protégeant votre vie privée.',
         philosophy: 'Notre Philosophie de Confidentialité',
-        philosophyText: 'Contrairement aux autres outils en ligne, VormPixyze ne télécharge jamais vos fichiers sur des serveurs. Grâce à la technologie WebAssembly, tout le traitement se fait directement dans votre navigateur.',
+        philosophyText: 'VormPixyze priorise la confidentialité des utilisateurs. Contrairement aux outils traditionnels, nous ne stockons jamais vos fichiers de manière permanente. La plupart des traitements se font dans votre navigateur, tandis que les tâches IA avancées sont effectuées instantanément sur des serveurs éphémères et supprimées immédiatement.',
         whyUs: 'Pourquoi VormPixyze?',
         features: [
-            { icon: '🔒', title: '100% Confidentialité', desc: 'Vos fichiers ne sont jamais téléchargés sur des serveurs. Tout le traitement se fait dans votre navigateur.' },
+            { icon: '🔒', title: '100% Confidentialité', desc: 'Vos fichiers ne sont jamais stockés. Les opérations se font soit sur votre appareil, soit instantanément sur des serveurs éphémères sécurisés.' },
             { icon: '⚡', title: 'Ultra Rapide', desc: 'Traitez des centaines d\'images en quelques secondes avec la technologie WebAssembly.' },
             { icon: '🎨', title: 'Technologie IA', desc: 'Suppression d\'arrière-plan et nommage intelligent de fichiers propulsés par l\'IA.' },
             { icon: '💎', title: 'Qualité Premium', desc: 'Qualité de conversion de niveau professionnel.' },
@@ -162,7 +162,7 @@ const content = {
         techItems: [
             'WebAssembly (WASM) pour un traitement à vitesse native',
             'React et TypeScript pour une interface moderne',
-            'Bibliothèque Heic2Any pour le support HEIC',
+            'Support HEIC avancé avec Python Pillow-Heif',
             'Modèles IA on-device pour la suppression d\'arrière-plan',
             'Support Progressive Web App (PWA)'
         ],
@@ -180,7 +180,7 @@ const content = {
         stats: 'VormPixyze en Chiffres',
         statsItems: [
             { value: '10+', label: 'Support Formats' },
-            { value: '0', label: 'Uploads Serveur' },
+            { value: '0', label: 'Stockage de Données' },
             { value: '100%', label: 'Confidentialité' },
             { value: '4', label: 'Langues' }
         ]

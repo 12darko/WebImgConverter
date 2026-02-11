@@ -44,7 +44,11 @@ export const translations = {
     // Sidebar
     pro_tips_title: "Profesyonel İpuçları",
     tip_heic: "iPhone HEIC fotoğraflarını anında JPG'e çevirin.",
-    tip_seo: "Dosyalarınız %100 güvenli şekilde tarayıcınızda işlenir.",
+    tip_seo: "Dosyalarınız güvenli şekilde işlenir.",
+
+    // ...
+
+    privacy_policy_intro: "VormPixyze olarak gizliliğinize önem veriyoruz. Tüm görselleriniz (HEIC, PNG, JPG vb.) en yüksek kalite ve hız için güvenli, geçici sunucularımızda işlenir. Dosyalarınız şifreli olarak iletilir, işlenir ve işlem biter bitmez sunucularımızdan kalıcı olarak silinir. İçeriğinizi asla depolamayız.",
     tip_size: "Dosya boyutunu kalite bozulmadan küçültün.",
 
     // Referral
@@ -128,7 +132,7 @@ export const translations = {
     privacy_content: `Son Güncelleme: ${new Date().toLocaleDateString('tr-TR')}
 
 1. VERİ İŞLEME VE GÜVENLİK
-VormPixyze olarak gizliliğinize en üst düzeyde önem veriyoruz. Web sitemiz "Client-Side Processing" (İstemci Taraflı İşleme) teknolojisi kullanmaktadır. Bu, yüklediğiniz resimlerin sunucularımıza ASLA gönderilmediği ve kalıcı olarak depolanmadığı anlamına gelir. Tüm dönüştürme, yeniden boyutlandırma ve düzenleme işlemleri doğrudan sizin tarayıcınızda (bilgisayarınızda veya telefonunuzda) gerçekleşir.
+VormPixyze olarak gizliliğinize en üst düzeyde önem veriyoruz. Web sitemiz \"Secure Server Processing\" (Güvenli Sunucu İşleme) teknolojisi kullanmaktadır. Görselleriniz işlenmek üzere geçici ve güvenli sunucularımıza şifreli olarak (SSL/TLS) iletilir. İşlem tamamlandığında dosya sunucudan ANINDA ve KALICI olarak silinir. Dosyalarınız asla depolanmaz veya üçüncü şahıslarla paylaşılmaz.
 
 2. ÇEREZLER VE YEREL DEPOLAMA (LOCAL STORAGE)
 Size daha iyi bir deneyim sunmak için tarayıcınızın "LocalStorage" özelliğini kullanıyoruz. Bu, günlük kullanım haklarınızı, dil tercihlerinizi ve premium durumunuzu hatırlamamızı sağlar.
@@ -216,7 +220,11 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
     // Sidebar
     pro_tips_title: "Pro Tips",
     tip_heic: "Instantly convert iPhone HEIC photos to JPG.",
-    tip_seo: "Files are processed 100% securely in your browser.",
+    tip_seo: "Files are processed securely.",
+
+    // ... (other keys) ...
+
+    privacy_policy_intro: "At VormPixyze, we take your privacy seriously. All your images (HEIC, PNG, JPG, etc.) are processed on our secure, ephemeral servers for maximum quality and speed. Files are transmitted securely, processed, and immediately deleted permanently from our servers once finished. We never store your user content.",
     tip_size: "Reduce file size without losing quality.",
 
     // Referral
@@ -300,7 +308,7 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
     privacy_content: `Last Updated: ${new Date().toLocaleDateString('en-US')}
 
 1. DATA PROCESSING & SECURITY
-At VormPixyze, we take your privacy seriously. Our website utilizes "Client-Side Processing" technology. This means the images you upload are NEVER sent to our servers for storage. All conversion, resizing, and editing operations happen locally within your browser (on your computer or phone).
+At VormPixyze, we take your privacy seriously. Our website utilizes \"Secure Server Processing\" technology. Your images are transmitted to our secure, ephemeral servers via encrypted connection (SSL/TLS) for processing. Once the operation is complete, the file is IMMEDIATELY and PERMANENTLY deleted from the server. Your files are never stored or shared.",
 
 2. COOKIES & LOCAL STORAGE
 We use your browser's "LocalStorage" feature to enhance your experience by remembering your daily usage credits, language preferences, and premium status.
@@ -388,7 +396,7 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
     // Sidebar
     pro_tips_title: "Profi-Tipps",
     tip_heic: "Konvertiere iPhone HEIC Fotos sofort in JPG.",
-    tip_seo: "Dateien werden sicher im Browser verarbeitet.",
+    tip_seo: "Dateien werden sicher auf Servern verarbeitet.",
     tip_size: "Reduziere Dateigröße ohne Qualitätsverlust.",
 
     // Referral
@@ -510,7 +518,7 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
     // Sidebar
     pro_tips_title: "Conseils Pro",
     tip_heic: "Convertissez instantanément les photos HEIC iPhone en JPG.",
-    tip_seo: "Les fichiers sont traités en toute sécurité dans votre navigateur.",
+    tip_seo: "Les fichiers sont traités en toute sécurité sur nos serveurs.",
     tip_size: "Réduisez la taille du fichier sans perte de qualité.",
 
     // Referral

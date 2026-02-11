@@ -7,22 +7,22 @@ import { useLanguage } from '../LanguageContext';
 const seoContent = {
     tr: {
         title: 'Görsel Sıkıştırma - Ücretsiz Online | VormPixyze',
-        description: 'Görsellerinizi kalite kaybı olmadan %90\'a kadar sıkıştırın. JPG, PNG, WebP destekli. %100 tarayıcı tabanlı, güvenli.',
+        description: 'Görsellerinizi kalite kaybı olmadan %90\'a kadar sıkıştırın. JPG, PNG, WebP destekli. Güvenli sunucu işlemeli.',
         h1: 'Görsel Sıkıştırma',
     },
     en: {
         title: 'Free Image Compressor Online | VormPixyze',
-        description: 'Compress images up to 90% without losing quality. Supports JPG, PNG, WebP. 100% browser-based, secure.',
+        description: 'Compress images up to 90% without losing quality. Supports JPG, PNG, WebP. Secure server processing.',
         h1: 'Image Compressor',
     },
     de: {
         title: 'Kostenloser Bildkomprimierer Online | VormPixyze',
-        description: 'Komprimieren Sie Bilder bis zu 90% ohne Qualitätsverlust. Unterstützt JPG, PNG, WebP. 100% browserbasiert, sicher.',
+        description: 'Komprimieren Sie Bilder bis zu 90% ohne Qualitätsverlust. Unterstützt JPG, PNG, WebP. Sichere Serververarbeitung.',
         h1: 'Bildkomprimierer',
     },
     fr: {
         title: 'Compresseur d\'Images Gratuit en Ligne | VormPixyze',
-        description: 'Compressez vos images jusqu\'à 90% sans perte de qualité. Prend en charge JPG, PNG, WebP. 100% en navigateur, sécurisé.',
+        description: 'Compressez vos images jusqu\'à 90% sans perte de qualité. Prend en charge JPG, PNG, WebP. Traitement serveur sécurisé.',
         h1: 'Compresseur d\'Images',
     },
 };
@@ -32,7 +32,7 @@ const richContent = {
         features: [
             { icon: '📉', title: '%90 Küçültme', desc: 'Görsel kalitesini korurken dosya boyutunu %90\'a kadar azaltın. Web siteleriniz artık çok daha hızlı.' },
             { icon: '🎛️', title: 'Kalite Kontrolü', desc: 'Sıkıştırma oranını kendiniz ayarlayın. Dengeli, yüksek kalite veya maksimum sıkıştırma seçenekleri.' },
-            { icon: '🔒', title: 'Gizlilik Garantisi', desc: 'Görselleriniz kesinlikle sunucuya yüklenmez. Tüm işlem tarayıcınızda yapılır.' },
+            { icon: '🔒', title: 'Gizlilik Garantisi', desc: 'Görselleriniz anlık işlenir ve hemen silinir. Kalıcı depolama yapılmaz.' },
         ],
         howToTitle: 'Görsel Nasıl Sıkıştırılır?',
         steps: [
@@ -55,7 +55,7 @@ const richContent = {
         features: [
             { icon: '📉', title: '90% Reduction', desc: 'Reduce file size up to 90% while preserving visual quality. Your websites load much faster.' },
             { icon: '🎛️', title: 'Quality Control', desc: 'Adjust compression ratio yourself. Balanced, high quality, or maximum compression options.' },
-            { icon: '🔒', title: 'Privacy Guaranteed', desc: 'Your images are never uploaded to servers. All processing happens in your browser.' },
+            { icon: '🔒', title: 'Privacy Guaranteed', desc: 'Your images are processed instantly and deleted immediately. No permanent storage.' },
         ],
         howToTitle: 'How to Compress Images?',
         steps: [
@@ -78,7 +78,7 @@ const richContent = {
         features: [
             { icon: '📉', title: '90% Reduktion', desc: 'Reduzieren Sie die Dateigröße um bis zu 90% bei erhaltener visueller Qualität. Ihre Websites laden viel schneller.' },
             { icon: '🎛️', title: 'Qualitätskontrolle', desc: 'Passen Sie das Komprimierungsverhältnis selbst an. Ausgewogene, hohe Qualität oder maximale Komprimierung.' },
-            { icon: '🔒', title: 'Datenschutz Garantiert', desc: 'Ihre Bilder werden nie auf Server hochgeladen. Alle Verarbeitung geschieht in Ihrem Browser.' },
+            { icon: '🔒', title: 'Datenschutz Garantiert', desc: 'Ihre Bilder werden sofort verarbeitet und gelöscht. Keine dauerhafte Speicherung.' },
         ],
         howToTitle: 'Wie komprimiert man Bilder?',
         steps: [
@@ -101,7 +101,7 @@ const richContent = {
         features: [
             { icon: '📉', title: 'Réduction 90%', desc: 'Réduisez la taille des fichiers jusqu\'à 90% tout en préservant la qualité visuelle. Vos sites web se chargent beaucoup plus vite.' },
             { icon: '🎛️', title: 'Contrôle Qualité', desc: 'Ajustez vous-même le taux de compression. Options équilibrées, haute qualité ou compression maximale.' },
-            { icon: '🔒', title: 'Confidentialité Garantie', desc: 'Vos images ne sont jamais téléchargées sur des serveurs. Tout le traitement se fait dans votre navigateur.' },
+            { icon: '🔒', title: 'Confidentialité Garantie', desc: 'Vos images sont traitées instantanément et supprimées immédiatement. Pas de stockage permanent.' },
         ],
         howToTitle: 'Comment compresser des images?',
         steps: [

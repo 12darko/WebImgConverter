@@ -22,7 +22,7 @@ export const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) =>
                 "@type": "WebSite",
                 "name": "VormPixyze",
                 "url": "https://vormpixyze.com",
-                "description": "Free online image converter. Convert HEIC, WebP, PNG to JPG. AI background removal and image compression. 100% browser-based, secure.",
+                "description": "Free online image converter. Convert HEIC, WebP, PNG to JPG. AI background removal and image compression. Secure, fast, and privacy-focused.",
                 "potentialAction": {
                     "@type": "SearchAction",
                     "target": "https://vormpixyze.com/?q={search_term_string}",

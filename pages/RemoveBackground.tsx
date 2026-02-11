@@ -10,7 +10,7 @@ const seoContent = {
         h1: 'AI Arka Plan Silme',
         feature1: 'Hassas Kesim', feature1Desc: 'Saç telleri ve kürk gibi zor detayları bile AI ile mükemmel ayırır.',
         feature2: 'Tamamen Ücretsiz', feature2Desc: 'Kredi yok, abonelik yok. Sınırsız sayıda görselin arka planını silin.',
-        feature3: 'Gizli ve Güvenli', feature3Desc: 'Fotoğraflar sunucuya gitmez. Her şey tarayıcınızda işlenir.',
+        feature3: 'Yüksek Performans', feature3Desc: 'Güçlü sunucularımızda saniyeler içinde işlenir. Cihazınızı yormaz.',
         howTo: 'Nasıl Çalışır?',
         step1: 'Görsel Yükle', step1Desc: 'JPG, PNG veya WebP sürükle bırak.',
         step2: 'AI İşleme', step2Desc: 'Otomatik olarak süje algılanır ve kesilir.',
@@ -22,7 +22,7 @@ const seoContent = {
         h1: 'AI Background Remover',
         feature1: 'Precise Cutout', feature1Desc: 'AI handles hair, fur, and complex edges with pixel-perfect precision.',
         feature2: '100% Free', feature2Desc: 'No credits, no subscriptions. Remove backgrounds from unlimited images.',
-        feature3: 'Private & Secure', feature3Desc: 'Photos never uploaded. Processing happens entirely in your browser.',
+        feature3: 'High Performance', feature3Desc: 'Processed in seconds on our powerful servers. Saves your battery.',
         howTo: 'How to Remove Background?',
         step1: 'Upload Image', step1Desc: 'Drag & drop any JPG, PNG or WebP.',
         step2: 'AI Processing', step2Desc: 'Automatic subject detection and cutout.',
@@ -34,7 +34,7 @@ const seoContent = {
         h1: 'AI Hintergrund-Entferner',
         feature1: 'Präziser Schnitt', feature1Desc: 'KI handhabt Haare, Fell und komplexe Kanten mit Pixel-Perfektion.',
         feature2: '100% Kostenlos', feature2Desc: 'Keine Credits, keine Abos. Unbegrenzte Bilder bearbeiten.',
-        feature3: 'Privat & Sicher', feature3Desc: 'Fotos werden nie hochgeladen. Verarbeitung im Browser.',
+        feature3: 'Hohe Leistung', feature3Desc: 'Verarbeitung in Sekunden auf unseren Servern. Schont Ihren Akku.',
         howTo: 'Wie funktioniert es?',
         step1: 'Bild hochladen', step1Desc: 'JPG, PNG oder WebP ziehen.',
         step2: 'KI-Verarbeitung', step2Desc: 'Automatische Motiverkennung.',
@@ -46,7 +46,7 @@ const seoContent = {
         h1: 'Suppression d\'arrière-plan AI',
         feature1: 'Découpe précise', feature1Desc: 'L\'IA gère les cheveux et les bords complexes avec précision.',
         feature2: '100% Gratuit', feature2Desc: 'Pas de crédits, pas d\'abonnements. Images illimitées.',
-        feature3: 'Privé & Sécurisé', feature3Desc: 'Les photos ne quittent jamais votre appareil.',
+        feature3: 'Haute Performance', feature3Desc: 'Traité en quelques secondes sur nos serveurs puissants.',
         howTo: 'Comment ça marche?',
         step1: 'Télécharger image', step1Desc: 'Glissez JPG, PNG ou WebP.',
         step2: 'Traitement IA', step2Desc: 'Détection automatique du sujet.',
@@ -92,9 +92,9 @@ export default function RemoveBackgroundPage() {
                             <p className="text-slate-400 text-sm">{language === 'tr' ? 'Kredi yok, abonelik yok. Sınırsız sayıda görselin arka planını silin.' : 'No credits, no subscriptions. Remove backgrounds from unlimited images.'}</p>
                         </div>
                         <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-violet-500/30 transition-colors">
-                            <div className="text-4xl mb-4">🔒</div>
-                            <h3 className="text-xl font-bold text-white mb-2">{language === 'tr' ? 'Gizli ve Güvenli' : 'Private & Secure'}</h3>
-                            <p className="text-slate-400 text-sm">{language === 'tr' ? 'Fotoğraflar sunucuya gitmez. Her şey tarayıcınızda işlenir.' : 'Photos represent never uploaded. Processing happens entirely in your browser.'}</p>
+                            <div className="text-4xl mb-4">⚡</div>
+                            <h3 className="text-xl font-bold text-white mb-2">{t.feature3}</h3>
+                            <p className="text-slate-400 text-sm">{t.feature3Desc}</p>
                         </div>
                     </div>
 

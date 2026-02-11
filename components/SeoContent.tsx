@@ -11,17 +11,17 @@ const seoData = {
     tr: {
         'home': {
             title: "Tüm Görsel Araçları Tek Yerde - VormPixyze",
-            intro: "VormPixyze, görsel dönüştürme ve düzenleme ihtiyaçlarınız için geliştirdiğimiz %100 tarayıcı tabanlı, güvenli ve ücretsiz bir araç setidir. HEIC'ten JPG'e, WebP dönüştürmeye, arka plan silmeden dosya küçültmeye kadar her şey burada.",
+            intro: "VormPixyze, görsel dönüştürme ve düzenleme ihtiyaçlarınız için geliştirdiğimiz güvenli ve ücretsiz bir araç setidir. HEIC'ten JPG'e, WebP dönüştürmeye, arka plan silmeden dosya küçültmeye kadar her şey burada.",
             whyTitle: "Neden VormPixyze?",
             features: [
-                { title: "🔒 İstemci Taraflı Gizlilik", desc: "Dosyalarınız asla sunucuya yüklenmez, her şey cihazınızda biter." },
+                { title: "🔒 Gizlilik Öncelikli", desc: "Dosyalarınız güvende. İşlemler cihazınızda veya güvenli sunucularımızda anlık yapılır." },
                 { title: "⚡ Işık Hızında İşlem", desc: "WebAssembly teknolojisi ile saniyeler içinde binlerce görseli işleyin." },
                 { title: "📱 Tüm Cihazlar Uyumlu", desc: "Windows, Mac, iPhone veya Android fark etmez, her yerden erişin." },
                 { title: "🤖 Yapay Zeka Desteği", desc: "Arka plan silme ve akıllı isimlendirme için en yeni AI modelleri." }
             ],
             faq: [
                 { q: "VormPixyze ücretsiz mi?", a: "Evet, temel araçların tamamı ücretsizdir. Profesyonel özellikler için uygun fiyatlı planlarımız mevcuttur." },
-                { q: "Dosyalarım çalınır mı?", a: "Hayır, sunucularımıza dosya yüklemesi yapılmaz. Tüm işlem sizin bilgisayarınızda gerçekleşir." },
+                { q: "Dosyalarım çalınır mı?", a: "Hayır, gizliliğiniz önceliğimizdir. Dosyalarınız asla kalıcı olarak depolanmaz ve işlem sonrası silinir." },
                 { q: "Hangi formatları destekliyorsunuz?", a: "HEIC, HEIF, JPG, PNG, WebP, AVIF formatlarını destekliyoruz. İstediğiniz formata dönüştürebilirsiniz." },
                 { q: "Mobil cihazlarda çalışır mı?", a: "Evet, iPhone, Android ve tablet dahil tüm modern tarayıcılarda sorunsuz çalışır." },
                 { q: "Toplu dönüştürme yapabilir miyim?", a: "Evet, tek seferde 100+ dosya yükleyebilir ve hepsini aynı anda dönüştürebilirsiniz." }
@@ -121,17 +121,17 @@ const seoData = {
     en: {
         'home': {
             title: "All Image Tools in One Place - VormPixyze",
-            intro: "VormPixyze is a 100% browser-based, secure, and free toolkit for all your image conversion and editing needs. From HEIC to JPG, WebP conversion, background removal to compression, it's all here.",
+            intro: "VormPixyze is a secure and free toolkit for all your image conversion and editing needs. From HEIC to JPG, WebP conversion, background removal to compression, it's all here.",
             whyTitle: "Why VormPixyze?",
             features: [
-                { title: "🔒 Client-Side Privacy", desc: "Files effectively never leave your device." },
+                { title: "🔒 Privacy First", desc: "Your files are safe. Processing happens on your device or securely in the cloud." },
                 { title: "⚡ Lightning Fast", desc: "Process thousands of images in seconds with WebAssembly." },
                 { title: "📱 Cross-Platform", desc: "Works on Windows, Mac, iPhone, or Android seamlessly." },
                 { title: "🤖 AI Powered", desc: "Latest AI models for background removal and smart naming." }
             ],
             faq: [
                 { q: "Is VormPixyze free?", a: "Yes, all basic tools are free. Affordable plans are available for pro features." },
-                { q: "Are my files safe?", a: "Yes, files are not uploaded to our servers. Processing happens on your device." },
+                { q: "Are my files safe?", a: "Yes, privacy is our priority. Files are never permanently stored and are deleted immediately after processing." },
                 { q: "What formats do you support?", a: "We support HEIC, HEIF, JPG, PNG, WebP, AVIF formats. Convert to any format you need." },
                 { q: "Does it work on mobile?", a: "Yes, works flawlessly on all modern browsers including iPhone, Android, and tablets." },
                 { q: "Can I batch convert?", a: "Yes, upload 100+ files at once and convert them all simultaneously." }
@@ -231,17 +231,17 @@ const seoData = {
     de: {
         'home': {
             title: "Alle Bildwerkzeuge an einem Ort - VormPixyze",
-            intro: "VormPixyze ist ein 100% browserbasiertes, sicheres und kostenloses Toolkit für alle Ihre Bildkonvertierungs- und Bearbeitungsbedürfnisse.",
+            intro: "VormPixyze ist ein sicheres und kostenloses Toolkit für alle Ihre Bildkonvertierungs- und Bearbeitungsbedürfnisse.",
             whyTitle: "Warum VormPixyze?",
             features: [
-                { title: "🔒 Client-seitige Privatsphäre", desc: "Dateien verlassen nie Ihr Gerät." },
+                { title: "🔒 Privatsphäre zuerst", desc: "Ihre Dateien sind sicher. Die Verarbeitung erfolgt auf Ihrem Gerät oder sicher in der Cloud." },
                 { title: "⚡ Blitzschnell", desc: "Verarbeiten Sie Tausende von Bildern in Sekunden." },
                 { title: "📱 Plattformübergreifend", desc: "Funktioniert auf Windows, Mac, iPhone oder Android." },
                 { title: "🤖 KI-gestützt", desc: "Neueste KI-Modelle für Hintergrundentfernung." }
             ],
             faq: [
                 { q: "Ist VormPixyze kostenlos?", a: "Ja, alle grundlegenden Tools sind kostenlos." },
-                { q: "Sind meine Dateien sicher?", a: "Ja, Dateien werden nicht auf unsere Server hochgeladen." },
+                { q: "Sind meine Dateien sicher?", a: "Ja, Dateien werden niemals dauerhaft gespeichert und sofort gelöscht." },
                 { q: "Welche Formate werden unterstützt?", a: "HEIC, HEIF, JPG, PNG, WebP, AVIF Formate werden unterstützt." },
                 { q: "Funktioniert es auf Mobilgeräten?", a: "Ja, funktioniert einwandfrei auf allen modernen Browsern." },
                 { q: "Kann ich Stapelverarbeitung durchführen?", a: "Ja, laden Sie 100+ Dateien auf einmal hoch." }
@@ -333,17 +333,17 @@ const seoData = {
     fr: {
         'home': {
             title: "Tous les outils d'image en un seul endroit - VormPixyze",
-            intro: "VormPixyze est une boîte à outils 100% basée sur navigateur, sécurisée et gratuite pour tous vos besoins de conversion et d'édition d'images.",
+            intro: "VormPixyze est une boîte à outils sécurisée et gratuite pour tous vos besoins de conversion et d'édition d'images.",
             whyTitle: "Pourquoi VormPixyze?",
             features: [
-                { title: "🔒 Confidentialité côté client", desc: "Les fichiers ne quittent jamais votre appareil." },
+                { title: "🔒 Priorité Vie Privée", desc: "Vos fichiers sont en sécurité. Le traitement se fait sur votre appareil ou de manière sécurisée dans le cloud." },
                 { title: "⚡ Ultra rapide", desc: "Traitez des milliers d'images en quelques secondes." },
                 { title: "📱 Multi-plateforme", desc: "Fonctionne sur Windows, Mac, iPhone ou Android." },
                 { title: "🤖 Propulsé par l'IA", desc: "Derniers modèles IA pour la suppression d'arrière-plan." }
             ],
             faq: [
                 { q: "VormPixyze est-il gratuit?", a: "Oui, tous les outils de base sont gratuits." },
-                { q: "Mes fichiers sont-ils en sécurité?", a: "Oui, les fichiers ne sont pas téléchargés sur nos serveurs." },
+                { q: "Mes fichiers sont-ils en sécurité?", a: "Oui, les fichiers ne sont jamais stockés de manière permanente et sont supprimés immédiatement." },
                 { q: "Quels formats sont pris en charge?", a: "HEIC, HEIF, JPG, PNG, WebP, AVIF sont pris en charge." },
                 { q: "Fonctionne-t-il sur mobile?", a: "Oui, fonctionne parfaitement sur tous les navigateurs modernes." },
                 { q: "Puis-je convertir par lot?", a: "Oui, téléchargez plus de 100 fichiers à la fois." }

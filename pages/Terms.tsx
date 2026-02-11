@@ -13,7 +13,7 @@ const content = {
         sections: [
             {
                 title: 'Hizmet Tanımı',
-                content: 'VormPixyze, tarayıcı tabanlı bir görsel dönüştürme ve düzenleme aracıdır. Hizmetimiz HEIC, PNG, JPG, WEBP ve diğer formatlarda görsel dönüşümü, arka plan kaldırma ve görsel sıkıştırma özelliklerini içerir.'
+                content: 'VormPixyze, gelişmiş bir online görsel dönüştürme ve düzenleme aracıdır. Hizmetimiz HEIC, PNG, JPG, WEBP ve diğer formatlarda görsel dönüşümü, arka plan kaldırma ve görsel sıkıştırma özelliklerini içerir.'
             },
             {
                 title: 'Kabul Edilebilir Kullanım',
@@ -45,7 +45,7 @@ const content = {
         sections: [
             {
                 title: 'Service Description',
-                content: 'VormPixyze is a browser-based image conversion and editing tool. Our service includes image conversion for HEIC, PNG, JPG, WEBP and other formats, background removal, and image compression features.'
+                content: 'VormPixyze is an advanced online image conversion and editing tool. Our service includes image conversion for HEIC, PNG, JPG, WEBP and other formats, background removal, and image compression features.'
             },
             {
                 title: 'Acceptable Use',

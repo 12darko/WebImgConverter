@@ -7,22 +7,22 @@ import { useLanguage } from '../LanguageContext';
 const seoContent = {
     tr: {
         title: 'HEIC to JPG Dönüştürücü - Ücretsiz Online | VormPixyze',
-        description: 'iPhone HEIC fotoğraflarını saniyeler içinde JPG formatına dönüştürün. %100 tarayıcı tabanlı, dosyalarınız güvende. Toplu dönüştürme destekli.',
+        description: 'iPhone HEIC fotoğraflarını saniyeler içinde JPG formatına dönüştürün. Güvenli sunucularımızda anlık işlem, dosyalarınız asla saklanmaz. Toplu dönüştürme destekli.',
         h1: 'HEIC to JPG Dönüştürücü',
     },
     en: {
         title: 'Free HEIC to JPG Converter Online | VormPixyze',
-        description: 'Convert iPhone HEIC photos to JPG format in seconds. 100% browser-based, your files stay private. Batch conversion supported.',
+        description: 'Convert iPhone HEIC photos to JPG format in seconds. Secure server processing, your files are never stored. Batch conversion supported.',
         h1: 'HEIC to JPG Converter',
     },
     de: {
         title: 'Kostenloser HEIC zu JPG Konverter Online | VormPixyze',
-        description: 'Konvertieren Sie iPhone HEIC-Fotos in Sekunden in JPG. 100% browserbasiert, Ihre Dateien bleiben privat. Stapelverarbeitung unterstützt.',
+        description: 'Konvertieren Sie iPhone HEIC-Fotos in Sekunden in JPG. Sichere Serververarbeitung, Ihre Dateien werden nie gespeichert. Stapelverarbeitung unterstützt.',
         h1: 'HEIC zu JPG Konverter',
     },
     fr: {
         title: 'Convertisseur HEIC en JPG Gratuit en Ligne | VormPixyze',
-        description: 'Convertissez vos photos HEIC iPhone en JPG en quelques secondes. 100% en navigateur, vos fichiers restent privés. Conversion par lot prise en charge.',
+        description: 'Convertissez vos photos HEIC iPhone en JPG en quelques secondes. Traitement sécurisé sur serveur, vos fichiers ne sont jamais stockés. Conversion par lot prise en charge.',
         h1: 'Convertisseur HEIC en JPG',
     },
 };
@@ -143,7 +143,11 @@ export default function HeicToJpgPage() {
                 acceptTypes=".heic, .heif"
                 formatBadges={['HEIC', '→', 'JPG']}
                 defaultOutputFormat="jpg"
-                hideFormatSelector={true}
+                hideFormatSelector={false} // Allow selecting format for server conversion
+                conversionHandler={async (file) => {
+                    const { serverConversionService } = await import('../services/serverConversionService');
+                    return serverConversionService.convertHeic(file, 'jpg');
+                }}
                 dropzoneTitle={activeLang === 'tr' ? 'HEIC Dosyalarını Buraya Sürükleyin' : activeLang === 'de' ? 'HEIC-Dateien hierher ziehen' : activeLang === 'fr' ? 'Glissez les fichiers HEIC ici' : 'Drag & Drop HEIC Files Here'}
                 dropzoneDesc={activeLang === 'tr' ? 'iPhone fotoğraflarınızı (HEIC/HEIF) sürükleyin veya seçin' : activeLang === 'de' ? 'Ziehen Sie Ihre iPhone-Fotos (HEIC/HEIF) oder wählen Sie sie aus' : activeLang === 'fr' ? 'Glissez vos photos iPhone (HEIC/HEIF) ou sélectionnez-les' : 'Drag and drop your iPhone photos (HEIC/HEIF) or browse to upload'}
             >
@@ -211,7 +215,7 @@ export default function HeicToJpgPage() {
                         </div>
                         <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
                             <div className="text-2xl font-bold text-purple-400">0</div>
-                            <div className="text-xs text-slate-500">{activeLang === 'tr' ? 'Sunucu Yüklemesi' : activeLang === 'de' ? 'Server-Upload' : activeLang === 'fr' ? 'Upload serveur' : 'Server Upload'}</div>
+                            <div className="text-xs text-slate-500">{activeLang === 'tr' ? 'Veri Saklama' : activeLang === 'de' ? 'Datenspeicherung' : activeLang === 'fr' ? 'Stockage de données' : 'Data Storage'}</div>
                         </div>
                     </div>
                 </div>

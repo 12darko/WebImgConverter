@@ -6,22 +6,22 @@ import { SeoContent } from '../components/SeoContent';
 const seoContent = {
     tr: {
         title: 'WebP to JPG/PNG Dönüştürücü - Ücretsiz Online | VormPixyze',
-        description: 'WebP dosyalarını saniyeler içinde JPG veya PNG formatına dönüştürün. %100 tarayıcı tabanlı, dosyalarınız güvende. Tamamen ücretsiz.',
+        description: 'WebP dosyalarını saniyeler içinde JPG veya PNG formatına dönüştürün. Sunucu tabanlı güvenli işlem, dosyalarınız saklanmaz.',
         h1: 'WebP to JPG/PNG Dönüştürücü',
     },
     en: {
         title: 'Free WebP to JPG/PNG Converter Online | VormPixyze',
-        description: 'Convert WebP images to JPG or PNG format in seconds. 100% browser-based, your files stay private. Completely free.',
+        description: 'Convert WebP images to JPG or PNG format in seconds. Secure server processing, your files stay private.',
         h1: 'WebP to JPG/PNG Converter',
     },
     de: {
         title: 'Kostenloser WebP zu JPG/PNG Konverter Online | VormPixyze',
-        description: 'Konvertieren Sie WebP-Bilder in Sekunden in JPG oder PNG. 100% browserbasiert, Ihre Dateien bleiben privat. Völlig kostenlos.',
+        description: 'Konvertieren Sie WebP-Bilder in Sekunden in JPG oder PNG. Sichere Serververarbeitung, Ihre Dateien bleiben privat.',
         h1: 'WebP zu JPG/PNG Konverter',
     },
     fr: {
         title: 'Convertisseur WebP en JPG/PNG Gratuit en Ligne | VormPixyze',
-        description: 'Convertissez des images WebP en JPG ou PNG en quelques secondes. 100% en navigateur, vos fichiers restent privés. Totalement gratuit.',
+        description: 'Convertissez des images WebP en JPG ou PNG en quelques secondes. Traitement sécurisé sur serveur, vos fichiers restent privés.',
         h1: 'Convertisseur WebP en JPG/PNG',
     },
 };
@@ -65,7 +65,7 @@ export default function WebpToJpgPage() {
                         <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-blue-500/30 transition-colors">
                             <div className="text-4xl mb-4">⚡</div>
                             <h3 className="text-xl font-bold text-white mb-2">{language === 'tr' ? 'Anında Çeviri' : 'Instant Convert'}</h3>
-                            <p className="text-slate-400 text-sm">{language === 'tr' ? 'Tarayıcı tabanlı teknoloji ile saniyede 50+ görsel dönüştürün.' : 'Convert 50+ images per second using browser-based local technology.'}</p>
+                            <p className="text-slate-400 text-sm">{language === 'tr' ? 'Güçlü sunucularımızla saniyede 50+ görsel dönüştürün.' : 'Convert 50+ images per second using powerful secure servers.'}</p>
                         </div>
                         <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-blue-500/30 transition-colors">
                             <div className="text-4xl mb-4">🎨</div>

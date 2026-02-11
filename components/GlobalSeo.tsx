@@ -25,7 +25,7 @@ export const GlobalSeo = () => {
             "price": "0",
             "priceCurrency": "USD"
         },
-        "description": "Free online HEIC to JPG, WebP converter and AI photo background remover. Privacy-focused, client-side processing.",
+        "description": "Free online HEIC to JPG, WebP converter and AI photo background remover. Privacy-focused, secure server processing.",
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.8",
@@ -46,7 +46,7 @@ export const GlobalSeo = () => {
 
             {/* Specific Languages - Pointing to the same URL since we detect language via JS/Browser, 
                 BUT technically for pure SEO, separate URLs are better (e.g. /tr/..., /de/...).
-                However, since we use single-URL architecture with Client-Side Rendering (CSR),
+                As we ensure maximum privacy and speed via our specialized servers,
                 we tell Google "this page targets these languages".
                 
                 Note: Since we don't have /tr routes yet, we point all to the same URL. 

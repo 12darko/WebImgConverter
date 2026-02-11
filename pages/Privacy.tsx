@@ -13,7 +13,7 @@ const content = {
         sections: [
             {
                 title: 'Veri Toplama',
-                content: 'VormPixyze, görsellerinizi sunucularına yüklemez. Tüm dönüşüm işlemleri tamamen tarayıcınızda gerçekleşir. Dosyalarınız cihazınızdan ayrılmaz ve hiçbir görsel verisi sunucularımızda saklanmaz.'
+                content: 'VormPixyze, en yüksek kalite ve performans için tüm görsel işleme operasyonlarını (Dönüştürme, Sıkıştırma, Arka Plan Silme) güvenli ve geçici sunucularında gerçekleştirir. Görselleriniz işlenmek üzere şifreli olarak sunucuya iletilir, işlem tamamlanır tamamlanmaz derhal silinir ve asla depolanmaz.'
             },
             {
                 title: 'Çerezler',
@@ -25,7 +25,7 @@ const content = {
             },
             {
                 title: 'Veri Güvenliği',
-                content: 'Tarayıcı tabanlı işleme yaklaşımımız, verilerinizin cihazınızdan ayrılmamasını sağlar. Bu, görsellerinizin maksimum gizliliğini ve güvenliğini garanti eder.'
+                content: 'Güvenli sunucu mimarimiz, verilerinizin gizliliğini korurken en yüksek kaliteyi sunar. Sunucu taraflı işlemlerde veriler şifreli (SSL/TLS) olarak iletilir ve kalıcı olarak saklanmaz. İşlem sonrası dosyalarınız otomatik olarak imha edilir.'
             },
             {
                 title: 'İletişim',
@@ -41,7 +41,7 @@ const content = {
         sections: [
             {
                 title: 'Data Collection',
-                content: 'VormPixyze does not upload your images to its servers. All conversion processes happen entirely in your browser. Your files never leave your device and no image data is stored on our servers.'
+                content: 'VormPixyze processes all image operations (Conversion, Compression, Background Removal) on secure, ephemeral servers to ensure highest quality and performance. Your images are transmitted securely (encrypted), processed, and then immediately deleted. We never store your files.'
             },
             {
                 title: 'Cookies',
@@ -53,7 +53,7 @@ const content = {
             },
             {
                 title: 'Data Security',
-                content: 'Our browser-based processing approach ensures your data never leaves your device. This guarantees maximum privacy and security for your images.'
+                content: 'Our secure server architecture ensures maximum privacy while delivering high quality results. Data is transmitted with encryption (SSL/TLS) and never permanently stored. Your files are automatically destroyed immediately after processing.'
             },
             {
                 title: 'Contact',
