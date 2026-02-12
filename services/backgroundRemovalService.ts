@@ -27,6 +27,7 @@ export const removeBackgroundServer = async (
         // const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
         const API_URL = 'https://api.vormpixyze.com';
         const serverUrl = `${API_URL}/remove-background`;
+        console.log('[BG Service] Requesting:', serverUrl);
 
         // specific timeout for large images? Default fetch has no timeout but browser might.
         const apiResponse = await fetch(serverUrl, {

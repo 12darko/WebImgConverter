@@ -297,6 +297,7 @@ function BanaConvertApp(props: AppProps = {}) {
   }, [stats, session, isInitialized]);
 
   const handleFilesAdded = useCallback(async (newFiles: File[]) => {
+    console.log('[App] Files added:', newFiles);
     const tempFiles: FileItem[] = newFiles.map(file => ({
       id: uuidv4(),
       file,
@@ -445,6 +446,7 @@ function BanaConvertApp(props: AppProps = {}) {
 
   // --- ROBUST CONVERSION ENGINE ---
   const convertImage = async (id: string) => {
+    console.log('[App] convertingImage called for ID:', id);
     const item = files.find(f => f.id === id);
     if (!item) return;
 
