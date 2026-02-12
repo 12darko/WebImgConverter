@@ -17,7 +17,7 @@ const content = {
         title: 'HEIC & WebP Çevirici - Hızlı & Güvenli | VormPixyze',
         description: 'HEIC ve WebP dosyalarını saniyeler içinde JPG/PNG\'ye çevirin. Hızlı, güvenli ve kolay.',
         hero: 'Görsellerinizi Anında Dönüştürün',
-        heroSub: 'HEIC ve WebP dosyalarını saniyeler içinde JPG\'ye çevirin. Yükleme yok, bekleme yok.',
+        heroSub: 'HEIC ve WebP dosyalarını saniyeler içinde JPG\'ye çevirin. Güvenli sunucularda anında işlenir ve silinir.',
         trustBadge: '🔒 Güvenli İşlem • Gizlilik Öncelikli',
         toolsTitle: 'Diğer Araçlar',
         tools: {
@@ -47,7 +47,7 @@ const content = {
         title: 'HEIC & WebP to JPG Converter | VormPixyze',
         description: 'Convert HEIC and WebP images to JPG instantly. Secure, fast, and easy.',
         hero: 'Convert Images Instantly',
-        heroSub: 'Transform HEIC and WebP files to JPG/PNG in seconds. No uploads, no waiting.',
+        heroSub: 'Transform HEIC and WebP files to JPG/PNG in seconds. Processed securely on ephemeral servers.',
         trustBadge: '🔒 Secure Processing • Privacy First',
         toolsTitle: 'More Tools',
         tools: {
@@ -77,7 +77,7 @@ const content = {
         title: 'HEIC in JPG Konverter | VormPixyze',
         description: 'Konvertieren Sie iPhone HEIC-Fotos sofort in JPG. Sicher und schnell.',
         hero: 'HEIC sofort in JPG umwandeln',
-        heroSub: 'Der schnellste Weg, iPhone-Fotos zu konvertieren. Kein Hochladen.',
+        heroSub: 'Der schnellste Weg, iPhone-Fotos zu konvertieren. Sichere Verarbeitung auf temporären Servern.',
         trustBadge: '🔒 Sichere Verarbeitung • Privatsphäre Zuerst',
         toolsTitle: 'Mehr Werkzeuge',
         tools: {
@@ -97,7 +97,7 @@ const content = {
             title: 'Nutzerbewertungen',
             items: [
                 { name: 'Anna K.', role: 'Fotografin', text: 'Hat meine HEIC-Probleme sofort gelöst. Tolles Tool!' },
-                { name: 'Thomas M.', role: 'Entwickler', text: 'Super, dass es offline funktioniert und nichts hochlädt.' },
+                { name: 'Thomas M.', role: 'Entwickler', text: 'Super, dass es Dateien sicher verarbeitet und sofort löscht.' },
                 { name: 'Lisa B.', role: 'Designerin', text: 'Die Stapelverarbeitung spart mir so viel Zeit.' }
             ]
         },
@@ -107,7 +107,7 @@ const content = {
         title: 'Convertisseur HEIC en JPG | VormPixyze',
         description: 'Convertissez instantanément vos photos HEIC iPhone en JPG. Sécurisé et rapide.',
         hero: 'Convertir HEIC en JPG Instantanément',
-        heroSub: 'Le moyen le plus rapide de convertir des photos iPhone. Pas de téléchargement.',
+        heroSub: 'Le moyen le plus rapide de convertir des photos iPhone. Traitement sécurisé sur serveurs éphémères.',
         trustBadge: '🔒 Traitement Sécurisé • Priorité Vie Privée',
         toolsTitle: 'Plus d\'outils',
         tools: {
@@ -127,7 +127,7 @@ const content = {
             title: 'Avis Utilisateurs',
             items: [
                 { name: 'Sophie L.', role: 'Photographe', text: 'A résolu mes problèmes de compatibilité HEIC instantanément.' },
-                { name: 'Pierre D.', role: 'Développeur', text: 'J\'adore que ça marche hors ligne sans upload.' },
+                { name: 'Pierre D.', role: 'Développeur', text: 'J\'adore que les fichiers soient supprimés instantanément.' },
                 { name: 'Marie R.', role: 'Créatrice', text: 'La conversion par lot est un vrai gain de temps.' }
             ]
         },
