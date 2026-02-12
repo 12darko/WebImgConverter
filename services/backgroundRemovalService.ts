@@ -24,7 +24,8 @@ export const removeBackgroundServer = async (
         formData.append('file', blob, 'image.png');
 
         // Points to local Python server (VPS URL in production)
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        // const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const API_URL = 'https://api.vormpixyze.com';
         const serverUrl = `${API_URL}/remove-background`;
 
         // specific timeout for large images? Default fetch has no timeout but browser might.

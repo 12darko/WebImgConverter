@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // Get API URL from environment or default to localhost
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+// const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_URL = 'https://api.vormpixyze.com';
 
 export interface ConversionResponse {
     blob: Blob;
