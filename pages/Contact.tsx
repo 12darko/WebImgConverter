@@ -16,7 +16,7 @@ const content = {
         responseDesc: 'E-postalara genellikle 24-48 saat içinde yanıt veriyoruz.',
         faq: 'Sık Sorulan Sorular',
         faqs: [
-            { q: 'Dosyalarım güvende mi?', a: 'Evet, dosyalarınız sunucuya yüklenmez. Tüm işlemler tarayıcınızda gerçekleşir.' },
+            { q: 'Dosyalarım güvende mi?', a: 'Evet. Çoğu işlem tarayıcınızda yapılır. Yapay zeka işlemleri ise güvenli geçici sunucularda anlık olarak işlenir ve hemen silinir.' },
             { q: 'Premium üyelik nasıl iptal edilir?', a: 'Premium üyeliğinizi Lemon Squeezy müşteri portalından iptal edebilirsiniz.' },
             { q: 'Hangi formatları destekliyorsunuz?', a: 'HEIC, PNG, JPG, WEBP, AVIF ve daha fazlasını destekliyoruz.' }
         ]
@@ -32,7 +32,7 @@ const content = {
         responseDesc: 'We typically respond to emails within 24-48 hours.',
         faq: 'Frequently Asked Questions',
         faqs: [
-            { q: 'Are my files safe?', a: 'Yes, your files are never uploaded to servers. All processing happens in your browser.' },
+            { q: 'Are my files safe?', a: 'Yes. Most processing happens in your browser. AI tasks are processed instantly on secure ephemeral servers and deleted immediately.' },
             { q: 'How do I cancel my premium membership?', a: 'You can cancel your premium membership through the Lemon Squeezy customer portal.' },
             { q: 'What formats do you support?', a: 'We support HEIC, PNG, JPG, WEBP, AVIF and more.' }
         ]
@@ -48,7 +48,7 @@ const content = {
         responseDesc: 'Wir antworten normalerweise innerhalb von 24-48 Stunden auf E-Mails.',
         faq: 'Häufig gestellte Fragen',
         faqs: [
-            { q: 'Sind meine Dateien sicher?', a: 'Ja, Ihre Dateien werden nie auf Server hochgeladen. Alle Verarbeitung geschieht in Ihrem Browser.' },
+            { q: 'Sind meine Dateien sicher?', a: 'Ja. Die meiste Verarbeitung erfolgt im Browser. KI-Aufgaben werden sofort auf sicheren temporären Servern verarbeitet und gelöscht.' },
             { q: 'Wie kündige ich meine Premium-Mitgliedschaft?', a: 'Sie können Ihre Premium-Mitgliedschaft über das Lemon Squeezy Kundenportal kündigen.' },
             { q: 'Welche Formate unterstützen Sie?', a: 'Wir unterstützen HEIC, PNG, JPG, WEBP, AVIF und mehr.' }
         ]
@@ -64,7 +64,7 @@ const content = {
         responseDesc: 'Nous répondons généralement aux e-mails dans les 24-48 heures.',
         faq: 'Questions Fréquentes',
         faqs: [
-            { q: 'Mes fichiers sont-ils en sécurité?', a: 'Oui, vos fichiers ne sont jamais téléchargés sur des serveurs. Tout le traitement se fait dans votre navigateur.' },
+            { q: 'Mes fichiers sont-ils en sécurité?', a: 'Oui. La plupart des traitements se font dans le navigateur. Les tâches IA sont traitées sur des serveurs sécurisés et supprimées immédiatement.' },
             { q: 'Comment annuler mon abonnement premium?', a: 'Vous pouvez annuler votre abonnement premium via le portail client Lemon Squeezy.' },
             { q: 'Quels formats supportez-vous?', a: 'Nous supportons HEIC, PNG, JPG, WEBP, AVIF et plus.' }
         ]
