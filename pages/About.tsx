@@ -110,8 +110,6 @@ const content = {
         philosophy: 'Unsere Datenschutz-Philosophie',
         philosophyText: 'VormPixyze priorisiert die Privatsphäre der Benutzer. Im Gegensatz zu herkömmlichen Tools speichern wir Ihre Dateien niemals dauerhaft. Die meiste Verarbeitung erfolgt in Ihrem Browser, während fortgeschrittene KI-Aufgaben sofort auf temporären Servern erledigt und sofort gelöscht werden.',
         whyUs: 'Warum VormPixyze?',
-        philosophyText: 'VormPixyze priorisiert die Privatsphäre der Benutzer. Im Gegensatz zu herkömmlichen Tools speichern wir Ihre Dateien niemals dauerhaft. Die meiste Verarbeitung erfolgt in Ihrem Browser, während fortgeschrittene KI-Aufgaben sofort auf temporären Servern erledigt und sofort gelöscht werden.',
-        whyUs: 'Warum VormPixyze?',
         features: [
             { icon: '🔒', title: '100% Privatsphäre', desc: 'Ihre Dateien werden nie gespeichert. Die Verarbeitung erfolgt entweder auf Ihrem Gerät oder sofort auf sicheren temporären Servern.' },
             { icon: '⚡', title: 'Blitzschnell', desc: 'Verarbeiten Sie Hunderte von Bildern in Sekunden mit WebAssembly-Technologie.' },
@@ -222,12 +220,12 @@ export default function AboutPage() {
                 </nav>
 
                 <main className="max-w-4xl mx-auto px-4 py-12 space-y-12">
-                    <h1 className="text-4xl font-bold text-white">{t.heading}</h1>
+                    <h1 className="text-4xl font-bold text-white">{t.h1}</h1>
 
                     {/* Mission Section */}
                     <section className="bg-gradient-to-br from-indigo-900/20 to-purple-900/20 border border-indigo-500/20 rounded-2xl p-8">
                         <h2 className="text-2xl font-bold text-white mb-4">{t.mission}</h2>
-                        <p className="text-slate-300 leading-relaxed text-lg">{t.missionText}</p>
+                        <p className="text-slate-300 leading-relaxed text-lg">{t.missionDesc}</p>
                     </section>
 
                     {/* Privacy Philosophy */}
