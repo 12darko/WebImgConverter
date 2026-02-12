@@ -6,11 +6,13 @@ import { LegalFooter } from '../components/LegalFooter';
 
 const content = {
     tr: {
-        title: 'Hakkımızda | VormPixyze',
-        description: 'VormPixyze hakkında bilgi edinin. Gizlilik odaklı, tarayıcı tabanlı görsel araçları geliştiren ekibimiz.',
-        heading: 'Hakkımızda',
+        title: 'Hakkımızda - VormPixyze',
+        description: 'VormPixyze, kullanıcı dostu ve hızlı görsel dönüştürme araçları sunan bir teknoloji girişimidir.',
+        h1: 'Hakkımızda',
         mission: 'Misyonumuz',
-        missionText: 'VormPixyze, görsel dönüştürme işlemlerini herkes için erişilebilir, hızlı ve güvenli hale getirmek amacıyla kuruldu. Gizliliğinizi korurken en iyi kullanıcı deneyimini sunmayı hedefliyoruz.',
+        missionDesc: 'Karmaşık dosya formatlarını ve görsel düzenleme işlemlerini herkes için erişilebilir ve kolay hale getirmek.',
+        story: 'Hikayemiz',
+        storyDesc: '2025 yılında, HEIC ve WebP formatlarının yarattığı uyumluluk sorunlarına çözüm olarak doğduk. Bugün ise yapay zeka destekli araçlarımızla (arka plan silme, sıkıştırma) binlerce kullanıcıya hizmet veriyoruz. Ücretsiz temel araçlar ve profesyoneller için gelişmiş seçenekler sunuyoruz.',
         philosophy: 'Gizlilik Felsefemiz',
         philosophyText: 'VormPixyze, kullanıcı gizliliğini ön planda tutar. Geleneksel araçların aksine, görsellerinizi asla kalıcı olarak depolamayız. Çoğu işlem tarayıcınızda yapılırken, gelişmiş AI işlemleri geçici sunucularda anlık olarak tamamlanır ve silinir.',
         whyUs: 'Neden VormPixyze?',
@@ -51,11 +53,13 @@ const content = {
         ]
     },
     en: {
-        title: 'About Us | VormPixyze',
-        description: 'Learn about VormPixyze. Our privacy-focused team developing secure server-based image tools.',
-        heading: 'About Us',
+        title: 'About Us - VormPixyze',
+        description: 'VormPixyze is a tech initiative providing user-friendly and fast image conversion tools.',
+        h1: 'About Us',
         mission: 'Our Mission',
-        missionText: 'VormPixyze was founded to make image conversion accessible, fast, and secure for everyone. We aim to provide the best user experience while protecting your privacy.',
+        missionDesc: 'To make complex file formats and image editing tasks accessible and easy for everyone.',
+        story: 'Our Story',
+        storyDesc: 'Founded in 2025 as a solution to HEIC and WebP compatibility issues. Today, we serve thousands of users with AI-powered tools like background removal and compression, offering free basic tools and advanced options for professionals.',
         philosophy: 'Our Privacy Philosophy',
         philosophyText: 'VormPixyze prioritizes user privacy. Unlike traditional tools, we never permanently store your files. Most processing happens in your browser, while advanced AI tasks are completed instantly on ephemeral servers and deleted immediately.',
         whyUs: 'Why VormPixyze?',
