@@ -14,8 +14,8 @@ const tools = [
 
 const content = {
     tr: {
-        title: 'HEIC & WebP Çevirici - Ücretsiz Online | VormPixyze',
-        description: 'HEIC ve WebP dosyalarını saniyeler içinde JPG/PNG\'ye çevirin. Hızlı, güvenli ve ücretsiz.',
+        title: 'HEIC & WebP Çevirici - Hızlı & Güvenli | VormPixyze',
+        description: 'HEIC ve WebP dosyalarını saniyeler içinde JPG/PNG\'ye çevirin. Hızlı, güvenli ve kolay.',
         hero: 'Görsellerinizi Anında Dönüştürün',
         heroSub: 'HEIC ve WebP dosyalarını saniyeler içinde JPG\'ye çevirin. Yükleme yok, bekleme yok.',
         trustBadge: '🔒 Güvenli İşlem • Gizlilik Öncelikli',
@@ -44,8 +44,8 @@ const content = {
         footer: { about: 'Hakkımızda', privacy: 'Gizlilik', terms: 'Şartlar', contact: 'İletişim' }
     },
     en: {
-        title: 'Free HEIC & WebP to JPG Converter | VormPixyze',
-        description: 'Convert HEIC and WebP images to JPG instantly. Secure, fast, and free.',
+        title: 'HEIC & WebP to JPG Converter | VormPixyze',
+        description: 'Convert HEIC and WebP images to JPG instantly. Secure, fast, and easy.',
         hero: 'Convert Images Instantly',
         heroSub: 'Transform HEIC and WebP files to JPG/PNG in seconds. No uploads, no waiting.',
         trustBadge: '🔒 Secure Processing • Privacy First',
@@ -74,8 +74,8 @@ const content = {
         footer: { about: 'About', privacy: 'Privacy', terms: 'Terms', contact: 'Contact' }
     },
     de: {
-        title: 'Kostenloser HEIC in JPG Konverter | VormPixyze',
-        description: 'Konvertieren Sie iPhone HEIC-Fotos sofort in JPG. Sicher, schnell und kostenlos.',
+        title: 'HEIC in JPG Konverter | VormPixyze',
+        description: 'Konvertieren Sie iPhone HEIC-Fotos sofort in JPG. Sicher und schnell.',
         hero: 'HEIC sofort in JPG umwandeln',
         heroSub: 'Der schnellste Weg, iPhone-Fotos zu konvertieren. Kein Hochladen.',
         trustBadge: '🔒 Sichere Verarbeitung • Privatsphäre Zuerst',
@@ -104,8 +104,8 @@ const content = {
         footer: { about: 'Über uns', privacy: 'Datenschutz', terms: 'AGB', contact: 'Kontakt' }
     },
     fr: {
-        title: 'Convertisseur HEIC en JPG Gratuit | VormPixyze',
-        description: 'Convertissez instantanément vos photos HEIC iPhone en JPG. Sécurisé, rapide et gratuit.',
+        title: 'Convertisseur HEIC en JPG | VormPixyze',
+        description: 'Convertissez instantanément vos photos HEIC iPhone en JPG. Sécurisé et rapide.',
         hero: 'Convertir HEIC en JPG Instantanément',
         heroSub: 'Le moyen le plus rapide de convertir des photos iPhone. Pas de téléchargement.',
         trustBadge: '🔒 Traitement Sécurisé • Priorité Vie Privée',

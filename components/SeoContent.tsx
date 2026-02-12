@@ -11,7 +11,7 @@ const seoData = {
     tr: {
         'home': {
             title: "Tüm Görsel Araçları Tek Yerde - VormPixyze",
-            intro: "VormPixyze, görsel dönüştürme ve düzenleme ihtiyaçlarınız için geliştirdiğimiz güvenli ve ücretsiz bir araç setidir. HEIC'ten JPG'e, WebP dönüştürmeye, arka plan silmeden dosya küçültmeye kadar her şey burada.",
+            intro: "VormPixyze, görsel dönüştürme ve düzenleme ihtiyaçlarınız için geliştirdiğimiz güvenli ve hızlı bir araç setidir. HEIC'ten JPG'e, WebP dönüştürmeye, arka plan silmeden dosya küçültmeye kadar her şey burada.",
             whyTitle: "Neden VormPixyze?",
             features: [
                 { title: "🔒 Gizlilik Öncelikli", desc: "Dosyalarınız güvende. İşlemler cihazınızda veya güvenli sunucularımızda anlık yapılır." },
@@ -20,7 +20,7 @@ const seoData = {
                 { title: "🤖 Yapay Zeka Desteği", desc: "Arka plan silme ve akıllı isimlendirme için en yeni AI modelleri." }
             ],
             faq: [
-                { q: "VormPixyze ücretsiz mi?", a: "Evet, temel araçların tamamı ücretsizdir. Profesyonel özellikler için uygun fiyatlı planlarımız mevcuttur." },
+                { q: "VormPixyze ücretsiz mi?", a: "Temel dönüştürme araçları ücretsizdir. Arka plan silme gibi gelişmiş özellikler için günlük hediye krediler veya uygun fiyatlı planlar mevcuttur." },
                 { q: "Dosyalarım çalınır mı?", a: "Hayır, gizliliğiniz önceliğimizdir. Dosyalarınız asla kalıcı olarak depolanmaz ve işlem sonrası silinir." },
                 { q: "Hangi formatları destekliyorsunuz?", a: "HEIC, HEIF, JPG, PNG, WebP, AVIF formatlarını destekliyoruz. İstediğiniz formata dönüştürebilirsiniz." },
                 { q: "Mobil cihazlarda çalışır mı?", a: "Evet, iPhone, Android ve tablet dahil tüm modern tarayıcılarda sorunsuz çalışır." },
@@ -121,7 +121,7 @@ const seoData = {
     en: {
         'home': {
             title: "All Image Tools in One Place - VormPixyze",
-            intro: "VormPixyze is a secure and free toolkit for all your image conversion and editing needs. From HEIC to JPG, WebP conversion, background removal to compression, it's all here.",
+            intro: "VormPixyze is a secure and fast toolkit for all your image conversion and editing needs. From HEIC to JPG, WebP conversion, background removal to compression, it's all here.",
             whyTitle: "Why VormPixyze?",
             features: [
                 { title: "🔒 Privacy First", desc: "Your files are safe. Processing happens on your device or securely in the cloud." },
@@ -130,7 +130,7 @@ const seoData = {
                 { title: "🤖 AI Powered", desc: "Latest AI models for background removal and smart naming." }
             ],
             faq: [
-                { q: "Is VormPixyze free?", a: "Yes, all basic tools are free. Affordable plans are available for pro features." },
+                { q: "Is VormPixyze free?", a: "Basic conversion tools are free. Advanced features like background removal utilize daily gift credits or affordable plans." },
                 { q: "Are my files safe?", a: "Yes, privacy is our priority. Files are never permanently stored and are deleted immediately after processing." },
                 { q: "What formats do you support?", a: "We support HEIC, HEIF, JPG, PNG, WebP, AVIF formats. Convert to any format you need." },
                 { q: "Does it work on mobile?", a: "Yes, works flawlessly on all modern browsers including iPhone, Android, and tablets." },
@@ -231,7 +231,7 @@ const seoData = {
     de: {
         'home': {
             title: "Alle Bildwerkzeuge an einem Ort - VormPixyze",
-            intro: "VormPixyze ist ein sicheres und kostenloses Toolkit für alle Ihre Bildkonvertierungs- und Bearbeitungsbedürfnisse.",
+            intro: "VormPixyze ist ein sicheres und schnelles Toolkit für alle Ihre Bildkonvertierungs- und Bearbeitungsbedürfnisse.",
             whyTitle: "Warum VormPixyze?",
             features: [
                 { title: "🔒 Privatsphäre zuerst", desc: "Ihre Dateien sind sicher. Die Verarbeitung erfolgt auf Ihrem Gerät oder sicher in der Cloud." },
@@ -240,7 +240,7 @@ const seoData = {
                 { title: "🤖 KI-gestützt", desc: "Neueste KI-Modelle für Hintergrundentfernung." }
             ],
             faq: [
-                { q: "Ist VormPixyze kostenlos?", a: "Ja, alle grundlegenden Tools sind kostenlos." },
+                { q: "Ist VormPixyze kostenlos?", a: "Grundlegende Konvertierungstools sind kostenlos. Erweiterte Funktionen nutzen tägliche Geschenkgutschriften." },
                 { q: "Sind meine Dateien sicher?", a: "Ja, Dateien werden niemals dauerhaft gespeichert und sofort gelöscht." },
                 { q: "Welche Formate werden unterstützt?", a: "HEIC, HEIF, JPG, PNG, WebP, AVIF Formate werden unterstützt." },
                 { q: "Funktioniert es auf Mobilgeräten?", a: "Ja, funktioniert einwandfrei auf allen modernen Browsern." },
@@ -333,7 +333,7 @@ const seoData = {
     fr: {
         'home': {
             title: "Tous les outils d'image en un seul endroit - VormPixyze",
-            intro: "VormPixyze est une boîte à outils sécurisée et gratuite pour tous vos besoins de conversion et d'édition d'images.",
+            intro: "VormPixyze est une boîte à outils sécurisée et rapide pour tous vos besoins de conversion et d'édition d'images.",
             whyTitle: "Pourquoi VormPixyze?",
             features: [
                 { title: "🔒 Priorité Vie Privée", desc: "Vos fichiers sont en sécurité. Le traitement se fait sur votre appareil ou de manière sécurisée dans le cloud." },
@@ -342,7 +342,7 @@ const seoData = {
                 { title: "🤖 Propulsé par l'IA", desc: "Derniers modèles IA pour la suppression d'arrière-plan." }
             ],
             faq: [
-                { q: "VormPixyze est-il gratuit?", a: "Oui, tous les outils de base sont gratuits." },
+                { q: "VormPixyze est-il gratuit?", a: "Les outils de base sont gratuits. Les fonctions avancées utilisent des crédits cadeaux quotidiens." },
                 { q: "Mes fichiers sont-ils en sécurité?", a: "Oui, les fichiers ne sont jamais stockés de manière permanente et sont supprimés immédiatement." },
                 { q: "Quels formats sont pris en charge?", a: "HEIC, HEIF, JPG, PNG, WebP, AVIF sont pris en charge." },
                 { q: "Fonctionne-t-il sur mobile?", a: "Oui, fonctionne parfaitement sur tous les navigateurs modernes." },

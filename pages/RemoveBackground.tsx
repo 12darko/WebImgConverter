@@ -9,8 +9,8 @@ const seoContent = {
         description: 'Yapay zeka ile fotoğraflarınızın arka planını tek tıkla silin. E-ticaret, profil fotoğrafları için mükemmel.',
         h1: 'AI Arka Plan Silme',
         feature1: 'Hassas Kesim', feature1Desc: 'Saç telleri ve kürk gibi zor detayları bile AI ile mükemmel ayırır.',
-        feature2: 'Tamamen Ücretsiz', feature2Desc: 'Kredi yok, abonelik yok. Sınırsız sayıda görselin arka planını silin.',
-        feature3: 'Yüksek Performans', feature3Desc: 'Güçlü sunucularımızda saniyeler içinde işlenir. Cihazınızı yormaz.',
+        feature2: 'Hediye Krediler', feature2Desc: 'Her gün yenilenen hediye kredilerle ücretsiz deneme imkanı. Kredi kartı gerekmez.',
+        feature3: 'Yüksek Performans', feature3Desc: 'Güçlü yapay zeka sunucularımızda saniyeler içinde işlenir. En iyi kalite garantisi.',
         howTo: 'Nasıl Çalışır?',
         step1: 'Görsel Yükle', step1Desc: 'JPG, PNG veya WebP sürükle bırak.',
         step2: 'AI İşleme', step2Desc: 'Otomatik olarak süje algılanır ve kesilir.',
@@ -21,8 +21,8 @@ const seoContent = {
         description: 'Remove photo backgrounds with AI in one click. Perfect for e-commerce, profile photos.',
         h1: 'AI Background Remover',
         feature1: 'Precise Cutout', feature1Desc: 'AI handles hair, fur, and complex edges with pixel-perfect precision.',
-        feature2: '100% Free', feature2Desc: 'No credits, no subscriptions. Remove backgrounds from unlimited images.',
-        feature3: 'High Performance', feature3Desc: 'Processed in seconds on our powerful servers. Saves your battery.',
+        feature2: 'Free Daily Credits', feature2Desc: 'Try for free with daily renewed gift credits. No credit card required.',
+        feature3: 'High Performance', feature3Desc: 'Processed in seconds on our powerful AI servers. Best quality guaranteed.',
         howTo: 'How to Remove Background?',
         step1: 'Upload Image', step1Desc: 'Drag & drop any JPG, PNG or WebP.',
         step2: 'AI Processing', step2Desc: 'Automatic subject detection and cutout.',
@@ -33,8 +33,8 @@ const seoContent = {
         description: 'Entfernen Sie Foto-Hintergründe mit KI in einem Klick. Perfekt für E-Commerce und Profilfotos.',
         h1: 'AI Hintergrund-Entferner',
         feature1: 'Präziser Schnitt', feature1Desc: 'KI handhabt Haare, Fell und komplexe Kanten mit Pixel-Perfektion.',
-        feature2: '100% Kostenlos', feature2Desc: 'Keine Credits, keine Abos. Unbegrenzte Bilder bearbeiten.',
-        feature3: 'Hohe Leistung', feature3Desc: 'Verarbeitung in Sekunden auf unseren Servern. Schont Ihren Akku.',
+        feature2: 'Tägliche Geschenkgutschriften', feature2Desc: 'Kostenlos testen mit täglichen Credits. Keine Kreditkarte erforderlich.',
+        feature3: 'Hohe Leistung', feature3Desc: 'Sekundenschnelle Verarbeitung auf unseren leistungsstarken KI-Servern.',
         howTo: 'Wie funktioniert es?',
         step1: 'Bild hochladen', step1Desc: 'JPG, PNG oder WebP ziehen.',
         step2: 'KI-Verarbeitung', step2Desc: 'Automatische Motiverkennung.',
@@ -45,8 +45,8 @@ const seoContent = {
         description: 'Supprimez les arrière-plans de photos avec l\'IA en un clic. Parfait pour l\'e-commerce.',
         h1: 'Suppression d\'arrière-plan AI',
         feature1: 'Découpe précise', feature1Desc: 'L\'IA gère les cheveux et les bords complexes avec précision.',
-        feature2: '100% Gratuit', feature2Desc: 'Pas de crédits, pas d\'abonnements. Images illimitées.',
-        feature3: 'Haute Performance', feature3Desc: 'Traité en quelques secondes sur nos serveurs puissants.',
+        feature2: 'Crédits Gratuits', feature2Desc: 'Essai gratuit avec crédits quotidiens. Pas de carte de crédit.',
+        feature3: 'Haute Performance', feature3Desc: 'Traité en quelques secondes sur nos puissants serveurs IA.',
         howTo: 'Comment ça marche?',
         step1: 'Télécharger image', step1Desc: 'Glissez JPG, PNG ou WebP.',
         step2: 'Traitement IA', step2Desc: 'Détection automatique du sujet.',
@@ -88,8 +88,8 @@ export default function RemoveBackgroundPage() {
                         </div>
                         <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-violet-500/30 transition-colors">
                             <div className="text-4xl mb-4">🚀</div>
-                            <h3 className="text-xl font-bold text-white mb-2">{language === 'tr' ? 'Tamamen Ücretsiz' : '100% Free'}</h3>
-                            <p className="text-slate-400 text-sm">{language === 'tr' ? 'Kredi yok, abonelik yok. Sınırsız sayıda görselin arka planını silin.' : 'No credits, no subscriptions. Remove backgrounds from unlimited images.'}</p>
+                            <h3 className="text-xl font-bold text-white mb-2">{language === 'tr' ? 'Hediye Krediler' : 'Daily Gift Credits'}</h3>
+                            <p className="text-slate-400 text-sm">{language === 'tr' ? 'Her gün yenilenen hediye kredilerle ücretsiz deneme imkanı. Kredi kartı gerekmez.' : 'Try for free with daily renewed gift credits. No credit card required.'}</p>
                         </div>
                         <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-violet-500/30 transition-colors">
                             <div className="text-4xl mb-4">⚡</div>
