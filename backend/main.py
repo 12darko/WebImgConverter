@@ -1,7 +1,7 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException, Form
 from fastapi.responses import Response, StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
-from rembg import remove, new_session
+from rembg import remove
 import io
 from PIL import Image
 from pillow_heif import register_heif_opener
@@ -10,10 +10,6 @@ import numpy as np
 # Register HEIC opener
 register_heif_opener()
 
-
-# Preload the High-Quality Model (Better for Logos/Hair)
-model_name = "isnet-general-use"
-session = new_session(model_name)
 
 app = FastAPI()
 
@@ -30,8 +26,7 @@ app.add_middleware(
 async def remove_background(file: UploadFile = File(...)):
     try:
         image_data = await file.read()
-        # Use the specific session for better quality
-        output_data = remove(image_data, session=session)
+        output_data = remove(image_data)
         return Response(content=output_data, media_type="image/png")
     except Exception as e:
         print(f"Error remove_background: {str(e)}")
