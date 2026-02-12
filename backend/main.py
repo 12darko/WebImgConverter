@@ -12,8 +12,9 @@ register_heif_opener()
 
 
 
-# Preload the High-Quality Model (Better for Logos/Hair)
-model_name = "isnet-general-use"
+# Preload the BEST Quality Model (BiRefNet)
+# Warning: Consumes more RAM and CPU, but gives best results.
+model_name = "birefnet-general"
 session = new_session(model_name)
 
 app = FastAPI()
