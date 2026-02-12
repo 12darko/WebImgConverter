@@ -480,6 +480,7 @@ function BanaConvertApp(props: AppProps = {}) {
             const blob = await removeBackgroundHybrid(
               item.previewUrl,
               item.useHDModel ? 'auto' : 'auto',
+              stats.isPremium ? 'premium' : 'free',
               (progress) => {
                 if (progress < 100) {
                   const mappedProgress = 10 + Math.floor(progress * 0.4);
