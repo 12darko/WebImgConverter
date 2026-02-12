@@ -19,7 +19,6 @@ export const serverConversionService = {
         formData.append('format', format);
 
         try {
-            console.log('[ConversionService] Converting HEIC at:', `${API_URL}/convert-heic`);
             const response = await axios.post(`${API_URL}/convert-heic`, formData, {
                 responseType: 'blob',
                 headers: {
