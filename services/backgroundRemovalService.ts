@@ -9,6 +9,7 @@
  */
 export const removeBackgroundServer = async (
     imageUrl: string,
+    qualityTier: 'free' | 'premium' = 'free',
     onProgress?: (progress: number) => void
 ): Promise<Blob | null> => {
     try {
@@ -22,6 +23,7 @@ export const removeBackgroundServer = async (
 
         const formData = new FormData();
         formData.append('file', blob, 'image.png');
+        formData.append('quality_tier', qualityTier);
 
         // Points to local Python server (VPS URL in production)
         // const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -60,9 +62,10 @@ export const removeBackgroundServer = async (
 export const removeBackgroundHybrid = async (
     imageUrl: string,
     mode: 'auto' | 'portrait' | 'object' = 'auto',
+    qualityTier: 'free' | 'premium' = 'free',
     onProgress?: (progress: number) => void
 ): Promise<Blob | null> => {
 
     // Always use Server
-    return await removeBackgroundServer(imageUrl, onProgress);
+    return await removeBackgroundServer(imageUrl, qualityTier, onProgress);
 };
