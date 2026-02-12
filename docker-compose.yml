@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: vormpixyze-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # Sunucuyu KORUYAN, Modelleri saklayan kritik satırlar:
+      - ./backend/models_cache:/root/.u2net
+      - ./backend/hf_cache:/root/.cache/huggingface
+    restart: always
+    environment:
+      - PORT=8000
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+
+  frontend:
+    build:
+      context: .
+    container_name: vormpixyze-frontend
+    ports:
+      - "80:80"
+    restart: always
+    environment:
+      - VITE_API_URL=https://api.vormpixyze.com
