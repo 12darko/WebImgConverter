@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../LanguageContext';
 
 export type SeoPageType = 'home' | 'heic-to-jpg' | 'png-to-jpg' | 'webp-to-jpg' | 'remove-background' | 'compress-image';
@@ -442,8 +443,29 @@ export const SeoContent = ({ pageType = 'heic-to-jpg' }: SeoContentProps) => {
 
     const content = seoData[activeLang]?.[pageType] || seoData['en'][pageType];
 
+    // Generate FAQPage Schema.org JSON-LD
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": content.faq.map(item => ({
+            "@type": "Question",
+            "name": item.q,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.a
+            }
+        }))
+    };
+
     return (
         <section className="bg-slate-900 border-t border-slate-800 py-16 px-4 md:px-8 mt-20">
+            {/* FAQPage Schema.org for rich snippets */}
+            <Helmet>
+                <script type="application/ld+json">
+                    {JSON.stringify(faqSchema)}
+                </script>
+            </Helmet>
+
             <div className="max-w-4xl mx-auto space-y-12 text-slate-300">
 
                 <div className="space-y-4">

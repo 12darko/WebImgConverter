@@ -3,7 +3,7 @@ uvicorn
 rembg
 python-multipart
 pillow
-numpy
 pillow-heif
 onnxruntime
 requests
+psutil

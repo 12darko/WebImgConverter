@@ -3,39 +3,100 @@ from fastapi.responses import Response, StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from rembg import remove, new_session
 import io
+import gc
+import asyncio
 from PIL import Image
 from pillow_heif import register_heif_opener
-import numpy as np
 
 # Register HEIC opener
 register_heif_opener()
 
+# --- RAM Optimization ---
+# Use birefnet-general as requested, but we will lock inference 
+# to prevent parallel processing from spiking RAM to 15GB+.
+MODEL_NAME = "birefnet-general"
+_session = None
 
+# Max image dimension to prevent OOM on huge files
+MAX_IMAGE_DIMENSION = 4096
 
-# Preload the BEST Quality Model (BiRefNet)
-# Warning: Consumes more RAM and CPU, but gives best results.
-model_name = "birefnet-general"
-session = new_session(model_name)
+# Lock to ensure only ONE image is processed by the AI at a time.
+# Prevents 10 concurrent requests from using 10x RAM (15GB+).
+inference_lock = asyncio.Lock()
+
+def get_session():
+    """Lazy-load the rembg session to save startup RAM."""
+    global _session
+    if _session is None:
+        print(f"Loading rembg model '{MODEL_NAME}' on first request...")
+        _session = new_session(MODEL_NAME)
+        print(f"Model '{MODEL_NAME}' loaded successfully.")
+    return _session
+
+def limit_image_size(image: Image.Image, max_dim: int = MAX_IMAGE_DIMENSION) -> Image.Image:
+    """Downscale image if any dimension exceeds max_dim to prevent OOM."""
+    if max(image.width, image.height) > max_dim:
+        ratio = min(max_dim / image.width, max_dim / image.height)
+        new_size = (int(image.width * ratio), int(image.height * ratio))
+        image = image.resize(new_size, Image.Resampling.LANCZOS)
+        print(f"Limited image size to {new_size}")
+    return image
 
 app = FastAPI()
 
-# Allow CORS for local development
+# Allow CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 @app.post("/remove-background")
-async def remove_background(file: UploadFile = File(...)):
+async def remove_background(
+    file: UploadFile = File(...), 
+    quality_tier: str = Form("free")
+):
     try:
         image_data = await file.read()
-        # Use the specific session for better quality
-        output_data = remove(image_data, session=session)
+        image = Image.open(io.BytesIO(image_data))
+
+        # Safety: limit max size to prevent OOM
+        image = limit_image_size(image)
+
+        # Resolution limiting for free tier
+        if quality_tier == "free":
+            max_size = 1080
+            if max(image.width, image.height) > max_size:
+                ratio = min(max_size / image.width, max_size / image.height)
+                new_size = (int(image.width * ratio), int(image.height * ratio))
+                image = image.resize(new_size, Image.Resampling.LANCZOS)
+                print(f"Resized image for Free tier to {new_size}")
+
+        # Re-encode for rembg input
+        buf = io.BytesIO()
+        image.save(buf, format="PNG")
+        image_data = buf.getvalue()
+        buf.close()
+        del buf
+
+        # Process with lazy-loaded session (Thread-safe locked inference)
+        session = get_session()
+        
+        # Async lock and thread offloading prevents 15GB spikes from concurrent users
+        # and stops the CPU-heavy AI from blocking other API requests.
+        async with inference_lock:
+            # We run the synchronous CPU-heavy remove function in a separate thread chunk
+            output_data = await asyncio.to_thread(remove, image_data, session=session)
+        
+        # Free intermediary memory
+        del image_data, image
+        gc.collect()
+
         return Response(content=output_data, media_type="image/png")
     except Exception as e:
+        gc.collect()
         print(f"Error remove_background: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -44,8 +105,9 @@ async def convert_heic(file: UploadFile = File(...), format: str = Form("jpg")):
     try:
         contents = await file.read()
         image = Image.open(io.BytesIO(contents))
+        del contents
+        image = limit_image_size(image)
         
-        # Convert to RGB if saving as JPG
         if format.lower() in ['jpg', 'jpeg']:
             image = image.convert('RGB')
             media_type = "image/jpeg"
@@ -62,9 +124,12 @@ async def convert_heic(file: UploadFile = File(...), format: str = Form("jpg")):
         output_buffer = io.BytesIO()
         image.save(output_buffer, format=save_format, quality=95)
         output_buffer.seek(0)
+        del image
+        gc.collect()
         
         return StreamingResponse(output_buffer, media_type=media_type)
     except Exception as e:
+        gc.collect()
         print(f"Error convert_heic: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -73,14 +138,15 @@ async def convert_format(file: UploadFile = File(...), format: str = Form("jpg")
     try:
         contents = await file.read()
         image = Image.open(io.BytesIO(contents))
+        del contents
+        image = limit_image_size(image)
         
         if format.lower() in ['jpg', 'jpeg']:
-            # Handle transparency for PNG/WebP -> JPG
             if image.mode in ('RGBA', 'LA') or (image.mode == 'P' and 'transparency' in image.info):
                 background = Image.new('RGB', image.size, (255, 255, 255))
                 if image.mode == 'P':
                     image = image.convert('RGBA')
-                background.paste(image, mask=image.split()[3]) # 3 is alpha channel
+                background.paste(image, mask=image.split()[3])
                 image = background
             else:
                 image = image.convert('RGB')
@@ -100,9 +166,12 @@ async def convert_format(file: UploadFile = File(...), format: str = Form("jpg")
         output_buffer = io.BytesIO()
         image.save(output_buffer, format=save_format, quality=95)
         output_buffer.seek(0)
+        del image
+        gc.collect()
         
         return StreamingResponse(output_buffer, media_type=media_type)
     except Exception as e:
+        gc.collect()
         print(f"Error convert_format: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -111,8 +180,9 @@ async def compress_image(file: UploadFile = File(...), quality: int = Form(80)):
     try:
         contents = await file.read()
         image = Image.open(io.BytesIO(contents))
+        del contents
+        image = limit_image_size(image)
         
-        # Determine format from original filename or content
         format_lower = file.filename.split('.')[-1].lower() if file.filename else 'jpg'
         if format_lower in ['jpg', 'jpeg']:
             save_format = 'JPEG'
@@ -122,13 +192,10 @@ async def compress_image(file: UploadFile = File(...), quality: int = Form(80)):
         elif format_lower == 'png':
             save_format = 'PNG'
             media_type = "image/png"
-            # PNG compression in pillow is valid via compress_level (0-9), optimize=True
-            # Mapping 1-100 quality to generic optimization
         elif format_lower == 'webp':
             save_format = 'WEBP'
             media_type = "image/webp"
         else:
-            # Default to JPEG if unknown
             save_format = 'JPEG'
             media_type = "image/jpeg"
             image = image.convert('RGB')
@@ -136,23 +203,37 @@ async def compress_image(file: UploadFile = File(...), quality: int = Form(80)):
         output_buffer = io.BytesIO()
         
         if save_format == 'PNG':
-             # PNG uses compress_level, not quality. optimize=True helps.
              image.save(output_buffer, format=save_format, optimize=True)
         else:
              image.save(output_buffer, format=save_format, quality=quality, optimize=True)
              
         output_buffer.seek(0)
+        del image
+        gc.collect()
         return StreamingResponse(output_buffer, media_type=media_type)
         
     except Exception as e:
+        gc.collect()
         print(f"Error compress_image: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/")
 def read_root():
-    return {"status": "VormPixyze Backend Running"}
+    return {"status": "VormPixyze Backend Running", "model": MODEL_NAME}
+
+@app.get("/health")
+def health_check():
+    """Health check endpoint for monitoring."""
+    import psutil, os
+    process = psutil.Process(os.getpid())
+    mem_mb = process.memory_info().rss / 1024 / 1024
+    return {
+        "status": "healthy",
+        "model": MODEL_NAME,
+        "model_loaded": _session is not None,
+        "memory_mb": round(mem_mb, 1)
+    }
 
 if __name__ == "__main__":
     import uvicorn
-    # 0.0.0.0 hosts on all interfaces (good for testing from other devices on network)
     uvicorn.run(app, host="0.0.0.0", port=8000)

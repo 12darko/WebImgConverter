@@ -32,8 +32,8 @@ type LangKey = keyof typeof seoContent;
 
 export default function WebpToJpgPage() {
     const { language } = useLanguage();
-    const activeLang = (typeof language === 'string' && language.startsWith('tr')) ? 'tr' : 'en';
-    const t = seoContent[activeLang as LangKey] || seoContent['en'];
+    const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
+    const t = seoContent[activeLang] || seoContent['en'];
 
     return (
         <>
