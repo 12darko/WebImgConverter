@@ -23,7 +23,7 @@ export const logConversion = async (tier: string | undefined, record: Conversion
         if (!user) return;
 
         const { error } = await supabase
-            .from('conversion_history')
+            .from('vormpixize_conversion_history')
             .insert([{
                 user_id: user.id,
                 file_name: record.file_name,
@@ -47,7 +47,7 @@ export const logConversion = async (tier: string | undefined, record: Conversion
 export const getHistory = async (): Promise<ConversionRecord[]> => {
     try {
         const { data, error } = await supabase
-            .from('conversion_history')
+            .from('vormpixize_conversion_history')
             .select('*')
             .order('created_at', { ascending: false });
 
@@ -68,7 +68,7 @@ export const clearHistory = async (): Promise<boolean> => {
         if (!user) return false;
 
         const { error } = await supabase
-            .from('conversion_history')
+            .from('vormpixize_conversion_history')
             .delete()
             .eq('user_id', user.id);
 

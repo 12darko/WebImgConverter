@@ -85,14 +85,15 @@ serve(async (req) => {
                 );
 
                 const { error } = await supabaseClient
-                    .from('profiles')
-                    .update({
+                    .from('site_credits')
+                    .upsert({
+                        user_id: userId,
+                        site: 'vormpixize',
                         is_premium: true,
                         premium_tier: premiumTier,
                         daily_limit: dailyLimit,
                         premium_expiry_date: expiryDateStr
-                    })
-                    .eq('id', userId);
+                    }, { onConflict: 'user_id,site' });
 
                 if (error) throw error;
                 console.log(`User ${userId} upgraded to ${premiumTier} (${dailyLimit} credits/day) until ${expiryDateStr}`);
@@ -114,14 +115,15 @@ serve(async (req) => {
 
                     if (!findError && users && users.length > 0) {
                         const { error: updateError } = await supabaseClient
-                            .from('profiles')
-                            .update({
+                            .from('site_credits')
+                            .upsert({
+                                user_id: users[0].id,
+                                site: 'vormpixize',
                                 is_premium: true,
                                 premium_tier: premiumTier,
                                 daily_limit: dailyLimit,
                                 premium_expiry_date: expiryDateStr
-                            })
-                            .eq('id', users[0].id);
+                            }, { onConflict: 'user_id,site' });
 
                         if (updateError) throw updateError;
                         console.log(`User ${users[0].id} (${email}) upgraded via email match`);

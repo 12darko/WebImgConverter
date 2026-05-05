@@ -1,11 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
 import { UserStats, MAX_FREE_CREDITS } from '../types';
 
-// ÖNEMLİ: Bu bilgileri Supabase Paneli -> Project Settings -> API kısmından alacaksınız.
-// Güvenlik için bunları .env dosyasına veya Vercel Environment Variables kısmına eklemelisiniz.
-// Şimdilik demo için placeholder kullanıyoruz.
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || 'https://YOUR_PROJECT_ID.supabase.co';
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || 'YOUR_ANON_KEY';
+// VibOracle Unified Supabase — Ortak veritabanı
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || '';
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+    console.warn('Supabase credentials missing! Check .env.local');
+}
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -28,9 +30,10 @@ export const getUserProfile = async (userId: string): Promise<UserStats | null> 
     );
 
     const fetchProfile = supabase
-      .from('profiles')
+      .from('site_credits')
       .select('*')
-      .eq('id', userId)
+      .eq('user_id', userId)
+      .eq('site', 'vormpixize')
       .single();
 
     const { data, error } = await Promise.race([fetchProfile, timeout]) as { data: any; error: any };
@@ -52,10 +55,11 @@ export const getUserProfile = async (userId: string): Promise<UserStats | null> 
           credits: MAX_FREE_CREDITS,
           is_premium: false,
           daily_limit: MAX_FREE_CREDITS,
-          last_reset_date: today
+          last_reset_date: today,
+          site: 'vormpixize'
         };
 
-        const { error: insertError } = await supabase.from('profiles').insert([newProfile]);
+        const { error: insertError } = await supabase.from('site_credits').insert([newProfile]);
 
         if (insertError) {
           console.error('Failed to create default profile:', insertError);
@@ -85,7 +89,7 @@ export const getUserProfile = async (userId: string): Promise<UserStats | null> 
       // Premium Süre Kontrolü
       if (data.is_premium && dbExpiryDate && dbExpiryDate < today) {
         console.log('[Profile] Premium expired:', dbExpiryDate, '< today:', today);
-        await supabase.from('profiles').update({ is_premium: false, daily_limit: 7 }).eq('id', userId);
+        await supabase.from('site_credits').update({ is_premium: false, daily_limit: 7 }).eq('user_id', userId).eq('site', 'vormpixize');
         data.is_premium = false;
         data.daily_limit = 7;
       }
@@ -130,9 +134,10 @@ export const getUserProfile = async (userId: string): Promise<UserStats | null> 
  */
 export const updateUserCredits = async (userId: string, newAmount: number) => {
   const { error } = await supabase
-    .from('profiles')
+    .from('site_credits')
     .update({ credits: newAmount })
-    .eq('id', userId);
+    .eq('user_id', userId)
+    .eq('site', 'vormpixize');
 
   if (error) console.error('Error updating credits:', error);
 };
@@ -162,9 +167,10 @@ export const processReferral = async (newUserId: string, referrerId: string): Pr
 export const resetDailyCredits = async (userId: string, limit: number = MAX_FREE_CREDITS) => {
   const today = new Date().toISOString().split('T')[0];
   await supabase
-    .from('profiles')
+    .from('site_credits')
     .update({ credits: limit, last_reset_date: today })
-    .eq('id', userId);
+    .eq('user_id', userId)
+    .eq('site', 'vormpixize');
 };
 
 /**
@@ -172,9 +178,10 @@ export const resetDailyCredits = async (userId: string, limit: number = MAX_FREE
  */
 export const upgradeToPremium = async (userId: string) => {
   const { error } = await supabase
-    .from('profiles')
+    .from('site_credits')
     .update({ is_premium: true })
-    .eq('id', userId);
+    .eq('user_id', userId)
+    .eq('site', 'vormpixize');
 
   if (error) console.error('Error upgrading to premium:', error);
 };
@@ -210,7 +217,7 @@ export const getTotalStats = async (): Promise<{ totalConversions: number; total
   try {
     // daily_stats tablosundan toplam dönüşüm sayısını al
     const { data: statsData, error: statsError } = await supabase
-      .from('daily_stats')
+      .from('vormpixize_daily_stats')
       .select('total_conversions')
       .order('date', { ascending: false })
       .limit(1)
@@ -249,6 +256,7 @@ export const createSupportTicket = async (email: string, subject: string, messag
           subject: subject,
           message: message,
           is_premium: isPremium,
+          site: 'vormpixize',
           user_id: (await supabase.auth.getUser()).data.user?.id || null
         }
       ]);
