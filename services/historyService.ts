@@ -15,7 +15,8 @@ export interface ConversionRecord {
  * @param record The conversion details to log.
  */
 export const logConversion = async (tier: string | undefined, record: ConversionRecord) => {
-    // Tüm kullanıcılar için geçmiş loglanıyor.
+    // STRICT GATING: Only Business tier allows history logging
+    if (tier !== 'business') return;
 
     try {
         const { data: { user } } = await supabase.auth.getUser();
