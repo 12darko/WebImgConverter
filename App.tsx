@@ -23,7 +23,7 @@ import { generateSmartFilename } from './services/aiNamingService';
 import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
 
 
-import { supabase, getUserProfile, updateUserCredits, upgradeToPremium, incrementDailyStats } from './services/supabase'; // DB Services
+import { supabase, getUserProfile, updateUserCredits, upgradeToPremium, incrementDailyStats, activateSiteAccount } from './services/supabase'; // DB Services
 import { logConversion } from './services/historyService'; // History Service
 import { LanguageProvider, useLanguage } from './LanguageContext';
 import {
@@ -74,6 +74,7 @@ function BanaConvertApp(props: AppProps = {}) {
   const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false); // Auth Modal
+  const [isActivating, setIsActivating] = useState(false); // Activation State
   const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false); // History Modal State
   const [isCropModalOpen, setIsCropModalOpen] = useState(false); // Crop Modal State
   const [currentCropFileId, setCurrentCropFileId] = useState<string | null>(null);
@@ -648,6 +649,42 @@ function BanaConvertApp(props: AppProps = {}) {
           </svg>
           {/* Loading spinner */}
           <div className="w-8 h-8 border-4 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (stats.requiresActivation && session?.user) {
+    return (
+      <div className="min-h-screen font-sans flex items-center justify-center bg-slate-900 text-slate-200">
+        <div className="bg-slate-800 p-8 rounded-2xl shadow-xl max-w-md w-full text-center border border-slate-700 mx-4">
+          <div className="w-16 h-16 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg className="w-8 h-8 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-2">VormPixyze'a Hoş Geldiniz!</h2>
+          <p className="text-slate-400 mb-6">
+            VibOracle ekosisteminin bir parçası olarak VormPixyze hesabınızı aktifleştirerek platforma özel günlük ücretsiz kredilerinizi hemen kullanmaya başlayabilirsiniz.
+          </p>
+          <button
+            onClick={async () => {
+              setIsActivating(true);
+              try {
+                const newStats = await activateSiteAccount(session.user.id);
+                setStats(newStats);
+              } catch (err) {
+                console.error('Activation failed:', err);
+                alert('Aktivasyon sırasında bir hata oluştu.');
+              } finally {
+                setIsActivating(false);
+              }
+            }}
+            disabled={isActivating}
+            className="w-full py-3 px-4 bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white rounded-xl font-medium transition-all disabled:opacity-50"
+          >
+            {isActivating ? 'Aktifleştiriliyor...' : 'Hesabımı Aktifleştir'}
+          </button>
         </div>
       </div>
     );

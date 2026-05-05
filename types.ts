@@ -53,6 +53,7 @@ export interface UserStats {
   premiumExpiryDate?: string; // YYYY-MM-DD (Premium bitiş tarihi)
   dailyLimit?: number; // Günlük yenilenme limiti (Free için 7, Premium için 30/100/vs)
   premiumTier?: 'starter' | 'pro' | 'business'; // Premium seviyesi
+  requiresActivation?: boolean; // Site activation flag
 }
 
 export const MAX_FREE_CREDITS = 7;      // Günlük ücretsiz hak

@@ -41,37 +41,14 @@ export const getUserProfile = async (userId: string): Promise<UserStats | null> 
     console.log('[getUserProfile] DB query completed. Error:', error?.code, 'Data exists:', !!data);
 
     if (error) {
-      // If profile not found (PGRST116), create a default one
+      // If profile not found (PGRST116), prompt for explicit activation
       if (error.code === 'PGRST116') {
-        console.log('Profile not found, creating default...');
-        const today = new Date().toISOString().split('T')[0];
-
-        // Get user email safely
-        const { data: { user } } = await supabase.auth.getUser();
-
-        const newProfile = {
-          user_id: userId,
-          credits: MAX_FREE_CREDITS,
-          is_premium: false,
-          daily_limit: MAX_FREE_CREDITS,
-          last_reset_date: today,
-          site: 'vormpixize'
-        };
-
-        const { error: insertError } = await supabase.from('site_credits').insert([newProfile]);
-
-        if (insertError) {
-          console.error('Failed to create default profile:', insertError);
-          return null;
-        }
-
+        console.log('[getUserProfile] Profile not found, requiring explicit activation.');
         return {
-          credits: MAX_FREE_CREDITS,
+          credits: 0,
           isPremium: false,
-          lastResetDate: today,
-          premiumExpiryDate: undefined,
-          dailyLimit: MAX_FREE_CREDITS,
-          premiumTier: undefined
+          lastResetDate: new Date().toISOString().split('T')[0],
+          requiresActivation: true
         };
       }
       throw error;
@@ -266,4 +243,33 @@ export const createSupportTicket = async (email: string, subject: string, messag
     console.error('Support ticket error:', error);
     return { success: false, error };
   }
+};
+
+/**
+ * Kullanıcı VormPixyze platformunu ilk kez aktifleştirdiğinde çağrılır.
+ */
+export const activateSiteAccount = async (userId: string) => {
+  const today = new Date().toISOString().split('T')[0];
+  const newProfile = {
+    user_id: userId,
+    credits: MAX_FREE_CREDITS,
+    is_premium: false,
+    daily_limit: MAX_FREE_CREDITS,
+    last_reset_date: today,
+    site: 'vormpixize'
+  };
+
+  const { error } = await supabase.from('site_credits').insert([newProfile]);
+  if (error) throw error;
+
+  // Profiles tablosundaki registered_sites array'ini güncelle (Eğer API izin veriyorsa)
+  // Şimdilik site_credits kaydı yeterli, RPC fonksiyonu veya frontend çağrısı ile de yapılabilir.
+  
+  return {
+    credits: MAX_FREE_CREDITS,
+    isPremium: false,
+    lastResetDate: today,
+    dailyLimit: MAX_FREE_CREDITS,
+    requiresActivation: false
+  };
 };
