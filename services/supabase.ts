@@ -50,8 +50,7 @@ export const getUserProfile = async (userId: string): Promise<UserStats | null> 
         const { data: { user } } = await supabase.auth.getUser();
 
         const newProfile = {
-          id: userId,
-          email: user?.email || '',
+          user_id: userId,
           credits: MAX_FREE_CREDITS,
           is_premium: false,
           daily_limit: MAX_FREE_CREDITS,
