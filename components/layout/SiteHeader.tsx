@@ -16,6 +16,7 @@ const NAV_ITEMS: NavItem[] = [
 
 interface SiteHeaderProps {
     onSignIn?: () => void;
+    onCta?: () => void;
     ctaLabel?: string;
     showCta?: boolean;
     session?: any;
