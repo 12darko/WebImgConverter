@@ -352,7 +352,7 @@ async def crop_image(
 
 @app.get("/")
 def read_root():
-    return {"status": "VormPixyze Backend Running", "model": MODEL_NAME}
+    return {"status": "VormPixyze Backend Running", "models_loaded": list(_sessions.keys())}
 
 @app.get("/health")
 def health_check():
@@ -362,8 +362,7 @@ def health_check():
     mem_mb = process.memory_info().rss / 1024 / 1024
     return {
         "status": "healthy",
-        "model": MODEL_NAME,
-        "model_loaded": _session is not None,
+        "models_loaded": list(_sessions.keys()),
         "memory_mb": round(mem_mb, 1)
     }
 
