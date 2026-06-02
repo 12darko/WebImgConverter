@@ -1,6 +1,6 @@
-# 🚀 VormPixyze - Ultimate Image Converter & SaaS
+﻿# 🚀 WebImgConverter - Ultimate Image Converter & SaaS
 
-VormPixyze is a modern, high-performance web application for converting images (HEIC, JPG, PNG, WEBP), utilizing AI for smart file naming, and integrated with Supabase for user management.
+WebImgConverter is a modern, high-performance web application for converting images (HEIC, JPG, PNG, WEBP), utilizing AI for smart file naming, and integrated with Supabase for user management.
 
 ## ✨ Özellikler
 
@@ -77,7 +77,7 @@ Google butonunun çalışması için bu ayarı yapmanız zorunludur:
 
 ### 4. Google AdSense (Reklam) Kurulumu
 
-1.  Google AdSense hesabınızda sitenizi (`vormpixyze.com` gibi) ekleyin.
+1.  Google AdSense hesabınızda sitenizi (`WebImgConverter.com` gibi) ekleyin.
 2.  Size verilen **Yayıncı Kimliği (Publisher ID)**'ni alın (Örn: `ca-pub-123456...`).
 3.  Reklam Birimleri (Ad Units) oluşturun ve **Slot ID**'lerini not edin.
 
@@ -116,4 +116,4 @@ Projeyi en kolay **Vercel** üzerinde yayınlayabilirsiniz.
 Şu an `types.ts` dosyasında `ENABLE_PREMIUM_SYSTEM = false` olarak ayarlanmıştır. Backend (Node.js) tarafında Iyzico veya Stripe entegrasyonunu tamamladığınızda bunu `true` yapabilirsiniz.
 
 **İyi Günlerde Kullanın! 💸**
-VormPixyze Team
+WebImgConverter Team

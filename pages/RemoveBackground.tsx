@@ -1,11 +1,11 @@
-import React from 'react';
+﻿import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import App from '../App';
+import App from '../AppMain';
 import { SeoContent } from '../components/SeoContent';
 
 const seoContent = {
     tr: {
-        title: 'AI Arka Plan Silme - Ücretsiz Online | VormPixyze',
+        title: 'AI Arka Plan Silme - Ücretsiz Online | WebImgConverter',
         description: 'Yapay zeka ile fotoğraflarınızın arka planını tek tıkla silin. E-ticaret, profil fotoğrafları için mükemmel.',
         h1: 'AI Arka Plan Silme',
         feature1: 'Hassas Kesim', feature1Desc: 'Saç telleri ve kürk gibi zor detayları bile AI ile mükemmel ayırır.',
@@ -17,7 +17,7 @@ const seoContent = {
         step3: 'İndir', step3Desc: 'Şeffaf PNG olarak kaydet.'
     },
     en: {
-        title: 'Free AI Background Remover Online | VormPixyze',
+        title: 'Free AI Background Remover Online | WebImgConverter',
         description: 'Remove photo backgrounds with AI in one click. Perfect for e-commerce, profile photos.',
         h1: 'AI Background Remover',
         feature1: 'Precise Cutout', feature1Desc: 'AI handles hair, fur, and complex edges with pixel-perfect precision.',
@@ -29,7 +29,7 @@ const seoContent = {
         step3: 'Download', step3Desc: 'Save as transparent PNG.'
     },
     de: {
-        title: 'Kostenloser AI Hintergrund-Entferner Online | VormPixyze',
+        title: 'Kostenloser AI Hintergrund-Entferner Online | WebImgConverter',
         description: 'Entfernen Sie Foto-Hintergründe mit KI in einem Klick. Perfekt für E-Commerce und Profilfotos.',
         h1: 'AI Hintergrund-Entferner',
         feature1: 'Präziser Schnitt', feature1Desc: 'KI handhabt Haare, Fell und komplexe Kanten mit Pixel-Perfektion.',
@@ -41,7 +41,7 @@ const seoContent = {
         step3: 'Herunterladen', step3Desc: 'Als transparentes PNG speichern.'
     },
     fr: {
-        title: 'Suppression d\'arrière-plan AI Gratuit | VormPixyze',
+        title: 'Suppression d\'arrière-plan AI Gratuit | WebImgConverter',
         description: 'Supprimez les arrière-plans de photos avec l\'IA en un clic. Parfait pour l\'e-commerce.',
         h1: 'Suppression d\'arrière-plan AI',
         feature1: 'Découpe précise', feature1Desc: 'L\'IA gère les cheveux et les bords complexes avec précision.',
@@ -68,7 +68,7 @@ export default function RemoveBackgroundPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://vormpixyze.com/remove-background" />
+                <link rel="canonical" href="https://WebImgConverter.com/remove-background" />
             </Helmet>
             <App
                 defaultTool="remove-background"
@@ -81,48 +81,48 @@ export default function RemoveBackgroundPage() {
 
                     {/* Unique Feature Highlights */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                        <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-violet-500/30 transition-colors">
+                        <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-card hover:border-brand-300 dark:hover:border-brand-700 transition-all">
                             <div className="text-4xl mb-4">✨</div>
-                            <h3 className="text-xl font-bold text-white mb-2">{language === 'tr' ? 'Hassas Kesim' : 'Precise Cutout'}</h3>
-                            <p className="text-slate-400 text-sm">{language === 'tr' ? 'Saç telleri ve kürk gibi zor detayları bile AI ile mükemmel ayırır.' : 'AI handles hair, fur, and complex edges with pixel-perfect precision.'}</p>
+                            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t.feature1}</h3>
+                            <p className="text-slate-600 dark:text-slate-400 text-sm">{t.feature1Desc}</p>
                         </div>
-                        <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-violet-500/30 transition-colors">
+                        <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-card hover:border-brand-300 dark:hover:border-brand-700 transition-all">
                             <div className="text-4xl mb-4">🚀</div>
-                            <h3 className="text-xl font-bold text-white mb-2">{language === 'tr' ? 'Hediye Krediler' : 'Daily Gift Credits'}</h3>
-                            <p className="text-slate-400 text-sm">{language === 'tr' ? 'Her gün yenilenen hediye kredilerle ücretsiz deneme imkanı. Kredi kartı gerekmez.' : 'Try for free with daily renewed gift credits. No credit card required.'}</p>
+                            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t.feature2}</h3>
+                            <p className="text-slate-600 dark:text-slate-400 text-sm">{t.feature2Desc}</p>
                         </div>
-                        <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-violet-500/30 transition-colors">
+                        <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-card hover:border-brand-300 dark:hover:border-brand-700 transition-all">
                             <div className="text-4xl mb-4">⚡</div>
-                            <h3 className="text-xl font-bold text-white mb-2">{t.feature3}</h3>
-                            <p className="text-slate-400 text-sm">{t.feature3Desc}</p>
+                            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t.feature3}</h3>
+                            <p className="text-slate-600 dark:text-slate-400 text-sm">{t.feature3Desc}</p>
                         </div>
                     </div>
 
                     {/* Visual How-To Steps */}
-                    <div className="space-y-8">
-                        <h2 className="text-3xl font-bold text-white text-center">
-                            {language === 'tr' ? 'Nasıl Çalışır?' : 'How to Remove Background?'}
+                    <div className="space-y-8 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-900/40 rounded-3xl p-8 md:p-12">
+                        <h2 className="text-3xl font-serif font-bold text-slate-900 dark:text-white text-center">
+                            {t.howTo}
                         </h2>
                         <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative">
                             {/* Step 1 */}
-                            <div className="flex-1 text-center relative z-10">
-                                <div className="w-16 h-16 bg-violet-600 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4 shadow-lg shadow-violet-500/20">1</div>
-                                <h3 className="font-semibold text-white mb-1">{language === 'tr' ? 'Görsel Yükle' : 'Upload Image'}</h3>
-                                <p className="text-slate-500 text-sm">{language === 'tr' ? 'JPG, PNG veya WebP sürükle bırak.' : 'Drag & drop any JPG, PNG or WebP.'}</p>
+                            <div className="flex-1 text-center relative z-10 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-800 rounded-xl flex items-center justify-center text-xl font-bold text-brand-600 dark:text-brand-400 mx-auto mb-4">1</div>
+                                <h3 className="font-bold text-slate-900 dark:text-white mb-1">{t.step1}</h3>
+                                <p className="text-slate-500 dark:text-slate-400 text-sm">{t.step1Desc}</p>
                             </div>
                             {/* Arrow */}
-                            <div className="hidden md:block w-full h-1 bg-slate-800 absolute top-8 -z-0"></div>
+                            <div className="hidden md:block w-full h-0.5 bg-brand-200 dark:bg-brand-800 absolute top-1/2 -translate-y-1/2 -z-0"></div>
                             {/* Step 2 */}
-                            <div className="flex-1 text-center relative z-10">
-                                <div className="w-16 h-16 bg-slate-800 border-2 border-violet-500 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4 bg-slate-900">2</div>
-                                <h3 className="font-semibold text-white mb-1">{language === 'tr' ? 'AI İşleme' : 'AI Processing'}</h3>
-                                <p className="text-slate-500 text-sm">{language === 'tr' ? 'Otomatik olarak süje algılanır ve kesilir.' : 'Automatic subject detection and cutout.'}</p>
+                            <div className="flex-1 text-center relative z-10 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-800 rounded-xl flex items-center justify-center text-xl font-bold text-brand-600 dark:text-brand-400 mx-auto mb-4">2</div>
+                                <h3 className="font-bold text-slate-900 dark:text-white mb-1">{t.step2}</h3>
+                                <p className="text-slate-500 dark:text-slate-400 text-sm">{t.step2Desc}</p>
                             </div>
                             {/* Step 3 */}
-                            <div className="flex-1 text-center relative z-10">
-                                <div className="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4 shadow-lg shadow-emerald-500/20">3</div>
-                                <h3 className="font-semibold text-white mb-1">{language === 'tr' ? 'İndir' : 'Download'}</h3>
-                                <p className="text-slate-500 text-sm">{language === 'tr' ? 'Şeffaf PNG olarak kaydet.' : 'Save as transparent PNG.'}</p>
+                            <div className="flex-1 text-center relative z-10 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-800 rounded-xl flex items-center justify-center text-xl font-bold text-brand-600 dark:text-brand-400 mx-auto mb-4">3</div>
+                                <h3 className="font-bold text-slate-900 dark:text-white mb-1">{t.step3}</h3>
+                                <p className="text-slate-500 dark:text-slate-400 text-sm">{t.step3Desc}</p>
                             </div>
                         </div>
                     </div>

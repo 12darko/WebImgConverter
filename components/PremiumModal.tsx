@@ -79,18 +79,18 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-20 md:pb-0">
           {/* STARTER PLAN */}
           <div className={`rounded-2xl p-6 transition-all group relative ${isPremium && currentTier === 'starter'
-            ? 'bg-indigo-900/30 border-2 border-indigo-500 ring-2 ring-indigo-500/20'
-            : 'bg-slate-800/50 border border-slate-700/50 hover:border-indigo-500/50'
+            ? 'bg-brand-900/30 border-2 border-brand-500 ring-2 ring-brand-500/20'
+            : 'bg-slate-800/50 border border-slate-700/50 hover:border-brand-500/50'
             }`}>
             {isPremium && currentTier === 'starter' && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-500 text-xs font-bold text-white px-3 py-1 rounded-full">✓ Mevcut Plan</div>
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-500 text-xs font-bold text-white px-3 py-1 rounded-full">✓ Mevcut Plan</div>
             )}
-            <h3 className="text-xl font-bold text-indigo-400 mb-2">{t('plan_starter')}</h3>
+            <h3 className="text-xl font-bold text-brand-400 mb-2">{t('plan_starter')}</h3>
             <div className="text-3xl font-bold text-white mb-4">{t('prem_price_btn').match(/\((.*?)\)/)?.[1] || '$0.99/Mo'}</div>
             <ul className="space-y-3 mb-8 text-sm text-slate-300">
-              <li className="flex items-center gap-2"><span className="text-indigo-500 font-bold">✓</span> {t('feat_credits_30')}</li>
-              <li className="flex items-center gap-2"><span className="text-indigo-500 font-bold">✓</span> {t('feat_remove_bg')}</li>
-              <li className="flex items-center gap-2"><span className="text-indigo-500 font-bold">✓</span> {t('feat_no_ads')}</li>
+              <li className="flex items-center gap-2"><span className="text-brand-500 font-bold">✓</span> {t('feat_credits_30')}</li>
+              <li className="flex items-center gap-2"><span className="text-brand-500 font-bold">✓</span> {t('feat_remove_bg')}</li>
+              <li className="flex items-center gap-2"><span className="text-brand-500 font-bold">✓</span> {t('feat_no_ads')}</li>
               {/* Missing Features (Crossed Out) */}
               <li className="flex items-center gap-2 text-slate-600"><span className="text-red-900/50 font-bold">✕</span> <span className="line-through decoration-slate-600">{t('feat_watermark')}</span></li>
               <li className="flex items-center gap-2 text-slate-600"><span className="text-red-900/50 font-bold">✕</span> <span className="line-through decoration-slate-600">{t('feat_batch_ai')}</span></li>
@@ -101,9 +101,9 @@ export const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose, use
               <li className="flex items-center gap-2 text-slate-600"><span className="text-red-900/50 font-bold">✕</span> <span className="line-through decoration-slate-600">{t('feat_history')}</span></li>
             </ul>
             {isPremium && currentTier === 'starter' ? (
-              <div className="w-full py-3 rounded-lg bg-indigo-500/20 text-indigo-300 text-center font-bold">✓ Aktif</div>
+              <div className="w-full py-3 rounded-lg bg-brand-500/20 text-brand-300 text-center font-bold">✓ Aktif</div>
             ) : (
-              <button onClick={() => handleUpgrade('starter')} className="w-full py-3 rounded-lg bg-indigo-600/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-600 hover:text-white transition-all font-bold">
+              <button onClick={() => handleUpgrade('starter')} className="w-full py-3 rounded-lg bg-brand-600/20 text-brand-300 border border-brand-500/30 hover:bg-brand-600 hover:text-white transition-all font-bold">
                 {t('btn_select_starter')}
               </button>
             )}

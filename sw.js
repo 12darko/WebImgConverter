@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'vormpixyze-v1';
+const CACHE_NAME = 'vormpixyze-v2-vivid-clarity';
 const urlsToCache = [
   '/',
   '/index.html',

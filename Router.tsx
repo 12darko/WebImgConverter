@@ -2,13 +2,19 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './LanguageContext';
-import App from './App';
+import App from './AppMain';
 import HeicToJpgPage from './pages/HeicToJpg';
 import PngToJpgPage from './pages/PngToJpg';
 import WebpToJpgPage from './pages/WebpToJpg';
 import RemoveBackgroundPage from './pages/RemoveBackground';
 import CompressImagePage from './pages/CompressImage';
+import SvgToPngPage from './pages/SvgToPng';
+import SmartCropperPage from './pages/SmartCropper';
 import HomePage from './pages/Home';
+import ToolsPage from './pages/Tools';
+import PricingPage from './pages/Pricing';
+import ApiDocsPage from './pages/ApiDocs';
+import SupportPage from './pages/Support';
 import PrivacyPage from './pages/Privacy';
 import TermsPage from './pages/Terms';
 import AboutPage from './pages/About';
@@ -16,6 +22,7 @@ import ContactPage from './pages/Contact';
 import BlogPage from './pages/Blog';
 import BlogArticlePage from './pages/BlogArticle';
 import NotFoundPage from './pages/NotFound';
+import ProfilePage from './pages/Profile';
 
 import { AnalyticsTracker } from './components/AnalyticsTracker';
 
@@ -29,17 +36,24 @@ export default function Router() {
                     <GlobalSeo />
                     <Routes>
                         <Route path="/" element={<HomePage />} />
+                        <Route path="/tools" element={<ToolsPage />} />
+                        <Route path="/pricing" element={<PricingPage />} />
+                        <Route path="/api" element={<ApiDocsPage />} />
+                        <Route path="/support" element={<SupportPage />} />
                         <Route path="/heic-to-jpg" element={<HeicToJpgPage />} />
                         <Route path="/png-to-jpg" element={<PngToJpgPage />} />
                         <Route path="/webp-to-jpg" element={<WebpToJpgPage />} />
                         <Route path="/remove-background" element={<RemoveBackgroundPage />} />
                         <Route path="/compress-image" element={<CompressImagePage />} />
+                        <Route path="/svg-to-png" element={<SvgToPngPage />} />
+                        <Route path="/smart-cropper" element={<SmartCropperPage />} />
                         <Route path="/privacy" element={<PrivacyPage />} />
                         <Route path="/terms" element={<TermsPage />} />
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/contact" element={<ContactPage />} />
                         <Route path="/blog" element={<BlogPage />} />
                         <Route path="/blog/:slug" element={<BlogArticlePage />} />
+                        <Route path="/profile" element={<ProfilePage />} />
                         {/* Fallback to main app for legacy access */}
                         <Route path="/app" element={<App />} />
                         {/* 404 Catch-all */}
@@ -47,6 +61,6 @@ export default function Router() {
                     </Routes>
                 </LanguageProvider>
             </BrowserRouter>
-        </HelmetProvider >
+        </HelmetProvider>
     );
 }

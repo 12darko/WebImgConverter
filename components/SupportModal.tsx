@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useLanguage } from '../LanguageContext';
 import { createSupportTicket } from '../services/supabase';
 
@@ -26,7 +26,7 @@ export function SupportModal({ isOpen, onClose, isPremium, userEmail }: SupportM
 
         // Use the authenticated email if available, otherwise 'Guest' or input
         // Since we don't have an email input for guests in this modal design (yet), we'll assume auth user or anon
-        const emailToSubmit = userEmail || 'guest@vormpixyze.com';
+        const emailToSubmit = userEmail || 'guest@WebImgConverter.com';
 
         const result = await createSupportTicket(emailToSubmit, subject, message, isPremium);
 
@@ -65,7 +65,7 @@ export function SupportModal({ isOpen, onClose, isPremium, userEmail }: SupportM
                             value={subject}
                             onChange={(e) => setSubject(e.target.value)}
                             placeholder={t('support_subject_placeholder') || "Briefly describe the issue..."}
-                            className="w-full bg-slate-900/50 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-indigo-500 outline-none"
+                            className="w-full bg-slate-900/50 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-brand-500 outline-none"
                         />
                     </div>
 
@@ -76,7 +76,7 @@ export function SupportModal({ isOpen, onClose, isPremium, userEmail }: SupportM
                             onChange={(e) => setMessage(e.target.value)}
                             placeholder={t('support_message_placeholder') || "How can we help you?"}
                             rows={4}
-                            className="w-full bg-slate-900/50 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-indigo-500 outline-none resize-none"
+                            className="w-full bg-slate-900/50 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-brand-500 outline-none resize-none"
                         />
                     </div>
 
@@ -101,7 +101,7 @@ export function SupportModal({ isOpen, onClose, isPremium, userEmail }: SupportM
                                 className={`flex-1 py-2.5 rounded-lg font-bold shadow-lg transition-all text-white
                                     ${submitStatus === 'success' ? 'bg-green-500 hover:bg-green-600' :
                                         submitStatus === 'error' ? 'bg-red-500 hover:bg-red-600' :
-                                            'bg-indigo-600 hover:bg-indigo-500'} 
+                                            'bg-brand-600 hover:bg-brand-500'} 
                                     disabled:opacity-50 disabled:cursor-not-allowed`}
                             >
                                 {isSubmitting ? 'Sending...' :

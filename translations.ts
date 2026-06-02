@@ -1,4 +1,4 @@
-
+﻿
 export const translations = {
   tr: {
     // Navbar
@@ -48,12 +48,12 @@ export const translations = {
 
     // ...
 
-    privacy_policy_intro: "VormPixyze olarak gizliliğinize önem veriyoruz. Tüm görselleriniz (HEIC, PNG, JPG vb.) en yüksek kalite ve hız için güvenli, geçici sunucularımızda işlenir. Dosyalarınız şifreli olarak iletilir, işlenir ve işlem biter bitmez sunucularımızdan kalıcı olarak silinir. İçeriğinizi asla depolamayız.",
+    privacy_policy_intro: "WebImgConverter olarak gizliliğinize önem veriyoruz. Tüm görselleriniz (HEIC, PNG, JPG vb.) en yüksek kalite ve hız için güvenli, geçici sunucularımızda işlenir. Dosyalarınız şifreli olarak iletilir, işlenir ve işlem biter bitmez sunucularımızdan kalıcı olarak silinir. İçeriğinizi asla depolamayız.",
     tip_size: "Dosya boyutunu kalite bozulmadan küçültün.",
 
     // Referral
     ref_title: "Daha Fazla Hak Kazan",
-    ref_desc: "VormPixyze'ı arkadaşlarınla paylaş, her kayıtta +5 Kredi kazan!",
+    ref_desc: "WebImgConverter'ı arkadaşlarınla paylaş, her kayıtta +5 Kredi kazan!",
     ref_btn: "Linki Kopyala & Paylaş",
     ref_success: "Link Kopyalandı! (Kayıt olunca kazanacaksın)",
 
@@ -114,7 +114,7 @@ export const translations = {
     cookie_decline: "Reddet",
 
     // Legal Content Titles
-    privacy_title: "VormPixyze Gizlilik Politikası",
+    privacy_title: "WebImgConverter Gizlilik Politikası",
     terms_title: "Kullanım Koşulları ve Yasal Uyarı",
     // Support Modal
     support_title: "Destek",
@@ -132,7 +132,7 @@ export const translations = {
     privacy_content: `Son Güncelleme: ${new Date().toLocaleDateString('tr-TR')}
 
 1. VERİ İŞLEME VE GÜVENLİK
-VormPixyze olarak gizliliğinize en üst düzeyde önem veriyoruz. Web sitemiz \"Secure Server Processing\" (Güvenli Sunucu İşleme) teknolojisi kullanmaktadır. Görselleriniz işlenmek üzere geçici ve güvenli sunucularımıza şifreli olarak (SSL/TLS) iletilir. İşlem tamamlandığında dosya sunucudan ANINDA ve KALICI olarak silinir. Dosyalarınız asla depolanmaz veya üçüncü şahıslarla paylaşılmaz.
+WebImgConverter olarak gizliliğinize en üst düzeyde önem veriyoruz. Web sitemiz \"Secure Server Processing\" (Güvenli Sunucu İşleme) teknolojisi kullanmaktadır. Görselleriniz işlenmek üzere geçici ve güvenli sunucularımıza şifreli olarak (SSL/TLS) iletilir. İşlem tamamlandığında dosya sunucudan ANINDA ve KALICI olarak silinir. Dosyalarınız asla depolanmaz veya üçüncü şahıslarla paylaşılmaz.
 
 2. ÇEREZLER VE YEREL DEPOLAMA (LOCAL STORAGE)
 Size daha iyi bir deneyim sunmak için tarayıcınızın "LocalStorage" özelliğini kullanıyoruz. Bu, günlük kullanım haklarınızı, dil tercihlerinizi ve premium durumunuzu hatırlamamızı sağlar.
@@ -149,18 +149,18 @@ Sitemiz herhangi bir kişisel kimlik bilgisi (Ad, Soyad, TC Kimlik No vb.) topla
 Premium Business kullanıcıları için sunulan İşlem Kayıtları özelliği, yalnızca dosya adı ve tarih gibi işlem metadatalarını (dosyanın kendisini değil) saklar. Bu veriler veritabanı verimliliği ve gizlilik ilkemiz gereği 7 gün saklandıktan sonra otomatik olarak ve kalıcı şekilde silinir.
 145: 
 146: 6. GOOGLE DRIVE ENTEGRASYONU (Business Tier)
-147: Uygulamamız, dosyaları doğrudan Google Drive'ınıza kaydetmenizi sağlayan bir özellik sunar. Bu işlem için Google Drive API kullanılır ve yalnızca "drive.file" yetkisi (uygulamanın oluşturduğu veya açtığı dosyalar) talep edilir. VormPixyze, Drive'ınızdaki diğer kişisel dosyalarınıza veya klasörlerinize ASLA erişemez, bunları okuyamaz veya silemez.`,
+147: Uygulamamız, dosyaları doğrudan Google Drive'ınıza kaydetmenizi sağlayan bir özellik sunar. Bu işlem için Google Drive API kullanılır ve yalnızca "drive.file" yetkisi (uygulamanın oluşturduğu veya açtığı dosyalar) talep edilir. WebImgConverter, Drive'ınızdaki diğer kişisel dosyalarınıza veya klasörlerinize ASLA erişemez, bunları okuyamaz veya silemez.`,
 
     terms_content: `1. HİZMETİN KULLANIMI
-VormPixyze.com ("Site") adresini kullanarak aşağıdaki şartları kabul etmiş sayılırsınız. Bu site, resim dosyalarını dönüştürmek ve düzenlemek amacıyla sunulan bir araçtır.
+WebImgConverter.com ("Site") adresini kullanarak aşağıdaki şartları kabul etmiş sayılırsınız. Bu site, resim dosyalarını dönüştürmek ve düzenlemek amacıyla sunulan bir araçtır.
 
 2. TELİF HAKLARI VE SORUMLULUK REDDİ
 - Kullanıcı Sorumluluğu: Siteye yüklediğiniz, dönüştürdüğünüz ve indirdiğiniz tüm dosyaların yasal sorumluluğu size aittir.
 - Telif Hakkı İhlali: Telif hakkı size ait olmayan, izinsiz kopyalanmış veya yasa dışı içerik barındıran görselleri dönüştürmek yasaktır.
-- VormPixyze, kullanıcıların işlediği içeriklerden dolayı sorumlu tutulamaz. Hizmet sağlayıcı olarak içeriğe müdahale etmiyor ve saklamıyoruz.
+- WebImgConverter, kullanıcıların işlediği içeriklerden dolayı sorumlu tutulamaz. Hizmet sağlayıcı olarak içeriğe müdahale etmiyor ve saklamıyoruz.
 
 3. GARANTİ REDDİ
-Hizmet "OLDUĞU GİBİ" (AS-IS) sunulmaktadır. VormPixyze, dönüştürme işlemlerinin %100 hatasız olacağını, sitenin kesintisiz çalışacağını veya belirli bir amaca tam uygunluğunu garanti etmez.
+Hizmet "OLDUĞU GİBİ" (AS-IS) sunulmaktadır. WebImgConverter, dönüştürme işlemlerinin %100 hatasız olacağını, sitenin kesintisiz çalışacağını veya belirli bir amaca tam uygunluğunu garanti etmez.
 
 4. DEĞİŞİKLİKLER
 Yönetim, hizmet şartlarını, ücretlendirme politikalarını veya site özelliklerini önceden haber vermeksizin değiştirme hakkını saklı tutar.`,
@@ -168,7 +168,7 @@ Yönetim, hizmet şartlarını, ücretlendirme politikalarını veya site özell
     contact_content: `Her türlü soru ve öneriniz için bize ulaşabilirsiniz.
 
 E-posta:
-support@vormpixyze.com
+support@WebImgConverter.com
 
 Adres:
 İstanbul / TÜRKİYE
@@ -224,12 +224,12 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
 
     // ... (other keys) ...
 
-    privacy_policy_intro: "At VormPixyze, we take your privacy seriously. All your images (HEIC, PNG, JPG, etc.) are processed on our secure, ephemeral servers for maximum quality and speed. Files are transmitted securely, processed, and immediately deleted permanently from our servers once finished. We never store your user content.",
+    privacy_policy_intro: "At WebImgConverter, we take your privacy seriously. All your images (HEIC, PNG, JPG, etc.) are processed on our secure, ephemeral servers for maximum quality and speed. Files are transmitted securely, processed, and immediately deleted permanently from our servers once finished. We never store your user content.",
     tip_size: "Reduce file size without losing quality.",
 
     // Referral
     ref_title: "Earn More Credits",
-    ref_desc: "Share VormPixyze with friends. Get +5 Credits for every signup!",
+    ref_desc: "Share WebImgConverter with friends. Get +5 Credits for every signup!",
     ref_btn: "Copy Link & Share",
     ref_success: "Link Copied! (Credits awarded on signup)",
 
@@ -290,7 +290,7 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
     cookie_decline: "Decline",
 
     // Legal Content Titles
-    privacy_title: "VormPixyze Privacy Policy",
+    privacy_title: "WebImgConverter Privacy Policy",
     terms_title: "Terms of Service & Disclaimer",
     // Support Modal
     support_title: "Support",
@@ -308,7 +308,7 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
     privacy_content: `Last Updated: ${new Date().toLocaleDateString('en-US')}
 
 1. DATA PROCESSING & SECURITY
-At VormPixyze, we take your privacy seriously. Our website utilizes \"Secure Server Processing\" technology. Your images are transmitted to our secure, ephemeral servers via encrypted connection (SSL/TLS) for processing. Once the operation is complete, the file is IMMEDIATELY and PERMANENTLY deleted from the server. Your files are never stored or shared.",
+At WebImgConverter, we take your privacy seriously. Our website utilizes \"Secure Server Processing\" technology. Your images are transmitted to our secure, ephemeral servers via encrypted connection (SSL/TLS) for processing. Once the operation is complete, the file is IMMEDIATELY and PERMANENTLY deleted from the server. Your files are never stored or shared.",
 
 2. COOKIES & LOCAL STORAGE
 We use your browser's "LocalStorage" feature to enhance your experience by remembering your daily usage credits, language preferences, and premium status.
@@ -325,18 +325,18 @@ Our site does not collect or store personally identifiable information (Name, Em
 The Activity Log feature provided for Premium Business users stores only processing metadata (filename, date, etc.), NOT the files themselves. In accordance with database efficiency and our privacy principles, this data is automatically and permanently deleted after 7 days.
 313: 
 314: 6. GOOGLE DRIVE INTEGRATION (Business Tier)
-315: Our application offers a feature to save files directly to your Google Drive. This process uses the Google Drive API and requests only the "drive.file" scope (files created or opened by the app). VormPixyze CANNOT access, read, or delete any other personal files or folders in your Drive.`,
+315: Our application offers a feature to save files directly to your Google Drive. This process uses the Google Drive API and requests only the "drive.file" scope (files created or opened by the app). WebImgConverter CANNOT access, read, or delete any other personal files or folders in your Drive.`,
 
     terms_content: `1. ACCEPTANCE OF TERMS
-By accessing and using VormPixyze.com ("Site"), you agree to comply with these Terms of Service. This site is a tool provided for image conversion and editing purposes.
+By accessing and using WebImgConverter.com ("Site"), you agree to comply with these Terms of Service. This site is a tool provided for image conversion and editing purposes.
 
 2. COPYRIGHT & DISCLAIMER
 - User Responsibility: You are solely responsible for the files you upload, convert, and download.
 - Copyright Infringement: You agree not to convert or distribute copyrighted materials for which you do not own the rights or have permission.
-- VormPixyze is not responsible for user-generated content. As a service provider, we do not monitor or store your content.
+- WebImgConverter is not responsible for user-generated content. As a service provider, we do not monitor or store your content.
 
 3. WARRANTY DISCLAIMER
-The service is provided "AS IS". VormPixyze does not guarantee that the conversion process will be error-free, that the site will operate uninterrupted, or that it will meet specific requirements.
+The service is provided "AS IS". WebImgConverter does not guarantee that the conversion process will be error-free, that the site will operate uninterrupted, or that it will meet specific requirements.
 
 4. MODIFICATIONS
 We reserve the right to modify these terms, pricing policies, or site features at any time without prior notice.`,
@@ -344,7 +344,7 @@ We reserve the right to modify these terms, pricing policies, or site features a
     contact_content: `For any questions or suggestions, please contact us.
 
 Email:
-support@vormpixyze.com
+support@WebImgConverter.com
 
 Address:
 Istanbul / TURKEY
@@ -401,7 +401,7 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
 
     // Referral
     ref_title: "Mehr Credits verdienen",
-    ref_desc: "Teile VormPixyze mit Freunden. +5 Credits pro Anmeldung!",
+    ref_desc: "Teile WebImgConverter mit Freunden. +5 Credits pro Anmeldung!",
     ref_btn: "Link kopieren & teilen",
     ref_success: "Link kopiert! (Credits bei Anmeldung)",
 
@@ -462,7 +462,7 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
     contact_title: "Contact & Support",
     privacy_content: "See English version for detailed legal text.",
     terms_content: "See English version for detailed legal text.",
-    contact_content: "Email: support@vormpixyze.com",
+    contact_content: "Email: support@WebImgConverter.com",
 
     // Support Modal
     support_title: "Support",
@@ -523,7 +523,7 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
 
     // Referral
     ref_title: "Gagnez plus de crédits",
-    ref_desc: "Partagez VormPixyze. +5 Crédits par inscription !",
+    ref_desc: "Partagez WebImgConverter. +5 Crédits par inscription !",
     ref_btn: "Copier le lien",
     ref_success: "Lien copié ! (Crédits à l'inscription)",
 
@@ -584,7 +584,7 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
     contact_title: "Contact & Support",
     privacy_content: "See English version for detailed legal text.",
     terms_content: "See English version for detailed legal text.",
-    contact_content: "Email: support@vormpixyze.com",
+    contact_content: "Email: support@WebImgConverter.com",
 
     // Support Modal
     support_title: "Support",

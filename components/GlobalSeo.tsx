@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
@@ -7,14 +7,14 @@ export const GlobalSeo = () => {
     const location = useLocation();
     const { language } = useLanguage();
 
-    const siteUrl = 'https://vormpixyze.com';
+    const siteUrl = 'https://WebImgConverter.com';
     const currentPath = location.pathname;
 
     // JSON-LD: SoftwareApplication
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "VormPixyze",
+        "name": "WebImgConverter",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Any",
         "offers": {

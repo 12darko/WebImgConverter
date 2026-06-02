@@ -55,13 +55,13 @@ export const Dropzone: React.FC<DropzoneProps> = ({ onFilesAdded, disabled, acce
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
       className={`
-        relative group cursor-pointer rounded-2xl p-12 transition-all duration-500 ease-out
+        relative group cursor-pointer rounded-[24px] p-12 transition-all duration-300 ease-out
         flex flex-col items-center justify-center text-center overflow-hidden border-2 border-dashed
         ${disabled
-          ? 'opacity-60 cursor-not-allowed border-slate-700 bg-slate-900/50'
+          ? 'opacity-60 cursor-not-allowed border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-slate-400 dark:text-slate-600'
           : isDragOver
-            ? 'border-indigo-500 bg-indigo-500/10 scale-[1.02] shadow-[0_0_30px_rgba(99,102,241,0.2)]'
-            : 'border-slate-700 hover:border-indigo-400/50 hover:bg-slate-800/50'
+            ? 'border-brand-500 bg-brand-50 dark:bg-brand-950/20 scale-[1.02] shadow-[0_0_40px_rgba(16,185,129,0.15)]'
+            : 'border-slate-300 dark:border-slate-700 hover:border-brand-400 hover:bg-brand-50/30 dark:hover:bg-brand-950/10'
         }
       `}
     >
@@ -75,25 +75,25 @@ export const Dropzone: React.FC<DropzoneProps> = ({ onFilesAdded, disabled, acce
       />
 
       {/* Background Glow */}
-      <div className={`absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
+      <div className={`absolute inset-0 bg-gradient-to-br from-brand-400/5 via-emerald-400/5 to-transparent dark:from-brand-500/10 dark:via-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
 
-      <div className={`relative z-10 p-5 rounded-full bg-slate-800/80 mb-6 shadow-xl border border-white/5 group-hover:scale-110 transition-transform duration-300 ${isDragOver ? 'bg-indigo-600 text-white' : 'text-indigo-400'}`}>
+      <div className={`relative z-10 p-5 rounded-full mb-6 shadow-sm border border-brand-100 dark:border-slate-700 group-hover:scale-110 transition-transform duration-300 ${isDragOver ? 'bg-brand-600 dark:bg-brand-500 text-white' : 'bg-white dark:bg-slate-800 text-brand-500 dark:text-brand-400'}`}>
         <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
         </svg>
       </div>
 
-      <h3 className="relative z-10 text-2xl font-bold text-white mb-2 tracking-tight">
+      <h3 className={`relative z-10 text-2xl font-bold mb-2 tracking-tight ${disabled ? 'text-slate-400 dark:text-slate-600' : 'text-slate-900 dark:text-slate-100'}`}>
         {disabled ? t('drop_limit') : (title || t('drop_title'))}
       </h3>
-      <p className="relative z-10 text-slate-400 text-sm max-w-sm mx-auto leading-relaxed">
+      <p className="relative z-10 text-slate-500 dark:text-slate-400 text-sm max-w-sm mx-auto leading-relaxed font-medium">
         {disabled ? t('drop_limit_desc') : (description || t('drop_desc'))}
       </p>
 
       {!disabled && (
-        <div className="relative z-10 mt-6 flex gap-3 opacity-60">
+        <div className="relative z-10 mt-6 flex gap-3 opacity-80">
           {(formatBadges || ['HEIC', 'JPG', 'PNG']).map((badge) => (
-            <span key={badge} className="px-2 py-1 rounded bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">{badge}</span>
+            <span key={badge} className="px-2 py-1 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-600 dark:text-slate-400 shadow-sm">{badge}</span>
           ))}
         </div>
       )}

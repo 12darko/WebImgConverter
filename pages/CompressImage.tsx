@@ -1,27 +1,27 @@
-import React from 'react';
+﻿import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import App from '../App';
+import App from '../AppMain';
 import { SeoContent } from '../components/SeoContent';
 import { useLanguage } from '../LanguageContext';
 
 const seoContent = {
     tr: {
-        title: 'Görsel Sıkıştırma - Ücretsiz Online | VormPixyze',
+        title: 'Görsel Sıkıştırma - Ücretsiz Online | WebImgConverter',
         description: 'Görsellerinizi kalite kaybı olmadan %90\'a kadar sıkıştırın. JPG, PNG, WebP destekli. Güvenli sunucu işlemeli.',
         h1: 'Görsel Sıkıştırma',
     },
     en: {
-        title: 'Free Image Compressor Online | VormPixyze',
+        title: 'Free Image Compressor Online | WebImgConverter',
         description: 'Compress images up to 90% without losing quality. Supports JPG, PNG, WebP. Secure server processing.',
         h1: 'Image Compressor',
     },
     de: {
-        title: 'Kostenloser Bildkomprimierer Online | VormPixyze',
+        title: 'Kostenloser Bildkomprimierer Online | WebImgConverter',
         description: 'Komprimieren Sie Bilder bis zu 90% ohne Qualitätsverlust. Unterstützt JPG, PNG, WebP. Sichere Serververarbeitung.',
         h1: 'Bildkomprimierer',
     },
     fr: {
-        title: 'Compresseur d\'Images Gratuit en Ligne | VormPixyze',
+        title: 'Compresseur d\'Images Gratuit en Ligne | WebImgConverter',
         description: 'Compressez vos images jusqu\'à 90% sans perte de qualité. Prend en charge JPG, PNG, WebP. Traitement serveur sécurisé.',
         h1: 'Compresseur d\'Images',
     },
@@ -135,7 +135,7 @@ export default function CompressImagePage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://vormpixyze.com/compress-image" />
+                <link rel="canonical" href="https://WebImgConverter.com/compress-image" />
             </Helmet>
             <App
                 defaultTool="compress-image"
@@ -152,46 +152,45 @@ export default function CompressImagePage() {
                     {/* Feature Highlights */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         {r.features.map((feature, idx) => (
-                            <div key={idx} className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-emerald-500/30 transition-colors">
+                            <div key={idx} className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-card hover:border-brand-300 dark:hover:border-brand-700 transition-all">
                                 <div className="text-4xl mb-4">{feature.icon}</div>
-                                <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-                                <p className="text-slate-400 text-sm">{feature.desc}</p>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{feature.title}</h3>
+                                <p className="text-slate-600 dark:text-slate-400 text-sm">{feature.desc}</p>
                             </div>
                         ))}
                     </div>
 
-                    {/* How-To Steps */}
-                    <div className="space-y-8">
-                        <h2 className="text-3xl font-bold text-white text-center">{r.howToTitle}</h2>
+                    <div className="space-y-8 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-900/40 rounded-3xl p-8 md:p-12">
+                        <h2 className="text-3xl font-serif font-bold text-slate-900 dark:text-white text-center">{r.howToTitle}</h2>
                         <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative">
                             {r.steps.map((step, idx) => (
-                                <div key={idx} className="flex-1 text-center relative z-10">
-                                    <div className={`w-16 h-16 ${idx === 0 ? 'bg-teal-600' : idx === 2 ? 'bg-emerald-600' : 'bg-slate-800 border-2 border-teal-500'} rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4 shadow-lg ${idx === 0 ? 'shadow-teal-500/20' : idx === 2 ? 'shadow-emerald-500/20' : ''}`}>
+                                <div key={idx} className="flex-1 text-center relative z-10 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                                    <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-800 rounded-xl flex items-center justify-center text-xl font-bold text-brand-600 dark:text-brand-400 mx-auto mb-4">
                                         {step.num}
                                     </div>
-                                    <h3 className="font-semibold text-white mb-1">{step.title}</h3>
-                                    <p className="text-slate-500 text-sm">{step.desc}</p>
+                                    <h3 className="font-bold text-slate-900 dark:text-white mb-1">{step.title}</h3>
+                                    <p className="text-slate-500 dark:text-slate-400 text-sm">{step.desc}</p>
                                 </div>
                             ))}
-                            <div className="hidden md:block w-full h-1 bg-slate-800 absolute top-8 -z-0"></div>
+                            <div className="hidden md:block w-full h-0.5 bg-brand-200 dark:bg-brand-800 absolute top-1/2 -translate-y-1/2 -z-0"></div>
                         </div>
                     </div>
 
                     {/* Why Compress Section */}
-                    <div className="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-500/20 rounded-3xl p-8">
-                        <h2 className="text-2xl font-bold text-white mb-4">{r.whyTitle}</h2>
-                        <p className="text-slate-300 leading-relaxed">{r.whyText}</p>
+                    <div className="bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-3xl p-8">
+                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">{r.whyTitle}</h2>
+                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{r.whyText}</p>
                     </div>
 
                     {/* Use Cases */}
                     <div className="space-y-6">
-                        <h2 className="text-2xl font-bold text-white text-center">{r.useCasesTitle}</h2>
+                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white text-center">{r.useCasesTitle}</h2>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {r.useCases.map((uc, idx) => (
-                                <div key={idx} className="bg-slate-900/50 p-5 rounded-xl border border-slate-800 text-center hover:border-emerald-500/30 transition-colors">
+                                <div key={idx} className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 text-center hover:shadow-card transition-all">
                                     <div className="text-3xl mb-2">{uc.icon}</div>
-                                    <h3 className="font-semibold text-white text-sm mb-1">{uc.title}</h3>
-                                    <p className="text-xs text-slate-500">{uc.desc}</p>
+                                    <h3 className="font-semibold text-slate-900 dark:text-white text-sm mb-1">{uc.title}</h3>
+                                    <p className="text-xs text-slate-600 dark:text-slate-400">{uc.desc}</p>
                                 </div>
                             ))}
                         </div>
@@ -199,21 +198,21 @@ export default function CompressImagePage() {
 
                     {/* Compression Stats */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <div className="text-2xl font-bold text-emerald-400">90%</div>
-                            <div className="text-xs text-slate-500">{activeLang === 'tr' ? 'Maks Sıkıştırma' : activeLang === 'de' ? 'Max Komprimierung' : activeLang === 'fr' ? 'Compression Max' : 'Max Compression'}</div>
+                        <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div className="text-2xl font-bold text-brand-600 dark:text-brand-400">90%</div>
+                            <div className="text-xs text-slate-500 dark:text-slate-400">{activeLang === 'tr' ? 'Maks Sıkıştırma' : activeLang === 'de' ? 'Max Komprimierung' : activeLang === 'fr' ? 'Compression Max' : 'Max Compression'}</div>
                         </div>
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <div className="text-2xl font-bold text-blue-400">100+</div>
-                            <div className="text-xs text-slate-500">{activeLang === 'tr' ? 'Toplu Dosya' : activeLang === 'de' ? 'Stapel-Dateien' : activeLang === 'fr' ? 'Fichiers par lot' : 'Batch Files'}</div>
+                        <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">100+</div>
+                            <div className="text-xs text-slate-500 dark:text-slate-400">{activeLang === 'tr' ? 'Toplu Dosya' : activeLang === 'de' ? 'Stapel-Dateien' : activeLang === 'fr' ? 'Fichiers par lot' : 'Batch Files'}</div>
                         </div>
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <div className="text-2xl font-bold text-purple-400">3</div>
-                            <div className="text-xs text-slate-500">{activeLang === 'tr' ? 'Desteklenen Format' : activeLang === 'de' ? 'Unterstützte Formate' : activeLang === 'fr' ? 'Formats pris en charge' : 'Supported Formats'}</div>
+                        <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div className="text-2xl font-bold text-amber-500 dark:text-amber-400">3</div>
+                            <div className="text-xs text-slate-500 dark:text-slate-400">{activeLang === 'tr' ? 'Desteklenen Format' : activeLang === 'de' ? 'Unterstützte Formate' : activeLang === 'fr' ? 'Formats pris en charge' : 'Supported Formats'}</div>
                         </div>
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <div className="text-2xl font-bold text-pink-400">0</div>
-                            <div className="text-xs text-slate-500">{activeLang === 'tr' ? 'Sunucu Yüklemesi' : activeLang === 'de' ? 'Server-Upload' : activeLang === 'fr' ? 'Upload serveur' : 'Server Upload'}</div>
+                        <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div className="text-2xl font-bold text-rose-500 dark:text-rose-400">0</div>
+                            <div className="text-xs text-slate-500 dark:text-slate-400">{activeLang === 'tr' ? 'Sunucu Yüklemesi' : activeLang === 'de' ? 'Server-Upload' : activeLang === 'fr' ? 'Upload serveur' : 'Server Upload'}</div>
                         </div>
                     </div>
                 </div>

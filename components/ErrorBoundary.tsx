@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+﻿import React, { Component, ErrorInfo, ReactNode } from 'react';
 
 interface Props {
     children: ReactNode;
@@ -25,7 +25,7 @@ class ErrorBoundary extends Component<Props, State> {
 
     componentDidCatch(error: Error, errorInfo: ErrorInfo) {
         // Log error to console (and optionally to external service)
-        console.error('🚨 VormPixyze Error:', error);
+        console.error('🚨 WebImgConverter Error:', error);
         console.error('Component Stack:', errorInfo.componentStack);
 
         // TODO: Send to Sentry or other error tracking service
@@ -57,7 +57,7 @@ class ErrorBoundary extends Component<Props, State> {
                         )}
                         <button
                             onClick={this.handleReload}
-                            className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-bold transition-colors"
+                            className="bg-brand-600 hover:bg-brand-500 text-white px-6 py-3 rounded-xl font-bold transition-colors"
                         >
                             Sayfayı Yenile
                         </button>

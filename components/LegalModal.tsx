@@ -1,4 +1,4 @@
-
+﻿
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../LanguageContext';
 
@@ -34,7 +34,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, initial
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`flex-1 sm:flex-none px-4 py-2 rounded-md text-xs sm:text-sm font-bold transition-all ${activeTab === tab
-                  ? 'bg-indigo-600 text-white shadow-md'
+                  ? 'bg-brand-600 text-white shadow-md'
                   : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
                   }`}
               >
@@ -62,7 +62,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, initial
           {/* Trust Badges for Contact Tab */}
           {activeTab === 'contact' && (
             <div className="mt-8 pt-8 border-t border-slate-800">
-              <a href="mailto:support@vormpixyze.com" className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-lg font-bold transition-colors mb-6">
+              <a href="mailto:support@WebImgConverter.com" className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-6 py-3 rounded-lg font-bold transition-colors mb-6">
                 ✉️ Bize E-posta Gönderin
               </a>
               <div className="flex gap-4 opacity-50 grayscale hover:grayscale-0 transition-all">

@@ -1,365 +1,426 @@
-import React from 'react';
+﻿import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import App from '../AppMain';
+import { SiteShell } from '../components/layout';
+import { Button } from '../components/ui/Button';
+import { ToolDropzone } from '../components/tool/ToolDropzone';
+import { convertImage, buildOutputName, downloadBlob, OutputFormat } from '../services/toolEngine';
 import { useLanguage } from '../LanguageContext';
-import { SeoContent } from '../components/SeoContent';
 import { HomePageSchema } from '../components/StructuredData';
 
-// Secondary tools (HEIC and WebP are now featured as hero cards)
-const tools = [
-    { id: 'png-to-jpg', path: '/png-to-jpg', icon: '🖼️', gradient: 'from-blue-500 to-cyan-500' },
-    { id: 'remove-background', path: '/remove-background', icon: '✨', gradient: 'from-purple-500 to-violet-500' },
-    { id: 'compress-image', path: '/compress-image', icon: '📦', gradient: 'from-emerald-500 to-teal-500' },
-];
+const Icon = (paths: React.ReactNode) => (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        {paths}
+    </svg>
+);
+
+const ICONS = {
+    privacy: Icon(<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />),
+    speed: Icon(<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />),
+    security: Icon(
+        <>
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+        </>
+    ),
+    optimization: Icon(
+        <>
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+        </>
+    )
+};
 
 const content = {
     tr: {
-        title: 'HEIC & WebP Çevirici - Hızlı & Güvenli | VormPixyze',
-        description: 'HEIC ve WebP dosyalarını saniyeler içinde JPG/PNG\'ye çevirin. Hızlı, güvenli ve kolay.',
-        hero: 'Görsellerinizi Anında Dönüştürün',
-        heroSub: 'HEIC ve WebP dosyalarını saniyeler içinde JPG\'ye çevirin. Güvenli sunucularda anında işlenir ve silinir.',
-        trustBadge: '🔒 Güvenli İşlem • Gizlilik Öncelikli',
-        toolsTitle: 'Diğer Araçlar',
-        tools: {
-            'heic-to-jpg': { name: 'HEIC → JPG', desc: 'iPhone fotoğraflarını JPG\'ye çevirin' },
-            'png-to-jpg': { name: 'PNG → JPG', desc: 'PNG\'leri küçük JPG\'lere dönüştürün' },
-            'webp-to-jpg': { name: 'WebP → JPG', desc: 'WebP dosyalarını JPG/PNG\'ye çevirin' },
-            'remove-background': { name: 'Arka Plan Sil', desc: 'Yapay zeka ile arka planı kaldırın' },
-            'compress-image': { name: 'Görsel Küçült', desc: 'Kalite bozmadan boyut küçültün' },
-        },
-        cta: 'HEIC Çevirmeye Başla',
-        features: {
-            privacy: { title: 'Gizlilik Öncelikli', desc: 'Dosyalarınız güvenle işlenir ve saklanmaz' },
-            instant: { title: 'Anında Sonuç', desc: 'WASM teknolojisi ile ışık hızında dönüşüm' },
-            ai: { title: 'Yüksek Kalite', desc: 'Görüntü kalitesini koruyarak dönüştürün' },
-        },
-        testimonials: {
-            title: 'Kullanıcı Yorumları',
-            items: [
-                { name: 'Ayşe K.', role: 'Fotoğrafçı', text: 'iPhone\'dan bilgisayara fotoğraf atarken yaşadığım HEIC sorununu saniyede çözdü.' },
-                { name: 'Mehmet T.', role: 'E-Ticaret', text: 'Toplu dönüştürme özelliği inanılmaz hızlı çalışıyor.' },
-                { name: 'Zeynep A.', role: 'Tasarımcı', text: 'Hem HEIC çevirip hem de arka plan silebilmesi harika.' }
-            ]
-        },
-        footer: { about: 'Hakkımızda', privacy: 'Gizlilik', terms: 'Şartlar', contact: 'İletişim' }
+        metaTitle: 'WebImgConverter — Güvenli, Hızlı ve Yerel Görüntü İşleme.',
+        metaDesc: 'HEIC, WebP, PNG, AVIF dosyalarını anında dönüştürün. Arkaplan temizleme, sıkıştırma ve yapay zeka araçları; tam gizlilik için güvenli sunucularımızda anında işlenir.',
+        ctaConvert: 'Hemen Dönüştür',
+        heroTitle1: 'Kusursuz Görüntü',
+        heroTitle2: 'İşleme, ',
+        heroTitle3: 'Yerel Hız.',
+        heroDesc: 'Güçlü sunucu altyapımızı kullanarak, görüntülerinizi güvenle ve yüksek hızda dönüştürün. İşlem sonrası dosyalarınız kalıcı olarak silinir.',
+        heroCta: 'Hemen Başla',
+        dropzoneTitle: 'Görselleri Buraya Sürükleyin',
+        dropzoneSubtitle: 'veya bilgisayarınızdan seçmek için tıklayın',
+        whyTitle: 'Neden WebImgConverter Seçmelisiniz?',
+        whyDesc: 'Modern iş akışları için üretilmiş profesyonel araçlar.',
+        features: [
+            { icon: 'privacy', title: 'Tam Gizlilik', description: 'Tüm işlemler gizlilik politikalarına uygun olarak güvenli sunucularımızda gerçekleşir ve anında silinir.' },
+            { icon: 'speed', title: 'Sunucu Hızı', description: 'Özel sunucu altyapımızla yüksek hızda ve kesintisiz performans.' },
+            { icon: 'security', title: 'Yüksek Güvenlik', description: 'Güvenli, şeffaf ve tamamen denetlenebilir modern bir mimariyle en baştan tasarlandı.' },
+            { icon: 'optimization', title: 'Akıllı Optimizasyon', description: 'Görüntü kalitesinden ödün vermeden dosya boyutunu en aza indiren akıllı sıkıştırma algoritmaları.' }
+        ],
+        toolsTitle: 'Öne Çıkan Araçlar',
+        toolsDesc: 'En popüler dönüştürme ve işleme araçlarımızla hemen başlayın.',
+        toolsExplore: 'Tüm araçları keşfedin',
+        tools: [
+            { name: 'HEIC → JPG', path: '/heic-to-jpg', desc: 'iPhone fotoğraflarını evrensel JPG formatına dönüştürün' },
+            { name: 'PNG → JPG', path: '/png-to-jpg', desc: 'PNG dosya boyutunu küçültün' },
+            { name: 'WebP → JPG', path: '/webp-to-jpg', desc: 'Evrensel uyumluluk sağlayın' },
+            { name: 'Arkaplan Silici', path: '/remove-background', desc: 'Yapay Zeka destekli arkaplan kaldırma' },
+            { name: 'Görüntü Sıkıştırıcı', path: '/compress-image', desc: 'Akıllı kayıpsız sıkıştırma' }
+        ],
+        finalTitle: 'Görüntüleri Dönüştürmeye Hazır mısınız?',
+        finalDesc: 'Ücretsiz araçlar, kayıt olmanıza gerek yok. Toplu işleme ve gelişmiş özellikler için Pro\'ya geçebilirsiniz.',
+        finalCta1: 'Ücretsiz Başla',
+        finalCta2: 'Fiyatlandırmayı Gör',
+        quickConvertTitle: 'Dosya Seçildi',
+        quickConvertFormatLabel: 'Hedef Format',
+        quickConvertBtn: 'Hemen Dönüştür',
+        quickConvertingBtn: 'Dönüştürülüyor...',
+        quickConvertSuccessBtn: 'Dönüştürüldü (Tekrar İndir)',
+        quickConvertAdvanced: 'Gelişmiş ayarlar ve toplu işlem için Detaylı Araca Git →',
+        quickConvertCancel: 'İptal Et'
     },
     en: {
-        title: 'HEIC & WebP to JPG Converter | VormPixyze',
-        description: 'Convert HEIC and WebP images to JPG instantly. Secure, fast, and easy.',
-        hero: 'Convert Images Instantly',
-        heroSub: 'Transform HEIC and WebP files to JPG/PNG in seconds. Processed securely on ephemeral servers.',
-        trustBadge: '🔒 Secure Processing • Privacy First',
-        toolsTitle: 'More Tools',
-        tools: {
-            'heic-to-jpg': { name: 'HEIC → JPG', desc: 'Convert iPhone photos to JPG' },
-            'png-to-jpg': { name: 'PNG → JPG', desc: 'Convert PNG to optimized JPG' },
-            'webp-to-jpg': { name: 'WebP → JPG', desc: 'Convert WebP images to JPG/PNG' },
-            'remove-background': { name: 'Remove BG', desc: 'Remove image backgrounds instantly' },
-            'compress-image': { name: 'Compress', desc: 'Reduce file size without quality loss' },
-        },
-        cta: 'Start Converting HEIC',
-        features: {
-            privacy: { title: 'Privacy First', desc: 'Files are processed securely and never stored' },
-            instant: { title: 'Lightning Fast', desc: 'Powered by WebAssembly technology' },
-            ai: { title: 'High Quality', desc: 'Maintain original image quality' },
-        },
-        testimonials: {
-            title: 'User Reviews',
-            items: [
-                { name: 'Sarah M.', role: 'Photographer', text: 'Fixed my iPhone HEIC compatibility issues instantly. great tool!' },
-                { name: 'John D.', role: 'Developer', text: 'Love that it handles files securely without permanent storage.' },
-                { name: 'Emily R.', role: 'Content Creator', text: 'The batch conversion feature is a lifesaver.' }
-            ]
-        },
-        footer: { about: 'About', privacy: 'Privacy', terms: 'Terms', contact: 'Contact' }
+        metaTitle: 'WebImgConverter — Secure, Fast, and Local Image Processing.',
+        metaDesc: 'Instantly convert HEIC, WebP, PNG, AVIF files. Background removal, compression, and AI tools processed securely on our servers for total privacy.',
+        ctaConvert: 'Convert Now',
+        heroTitle1: 'Flawless Image',
+        heroTitle2: 'Processing, ',
+        heroTitle3: 'Local Speed.',
+        heroDesc: 'Convert your images securely and at high speed using our powerful server infrastructure. Files are permanently deleted after processing.',
+        heroCta: 'Get Started',
+        dropzoneTitle: 'Drag & Drop Images Here',
+        dropzoneSubtitle: 'or click to browse from your computer',
+        whyTitle: 'Why Choose WebImgConverter?',
+        whyDesc: 'Professional tools built for modern workflows.',
+        features: [
+            { icon: 'privacy', title: 'Total Privacy', description: 'All processing happens on our secure servers in compliance with privacy policies and files are deleted instantly.' },
+            { icon: 'speed', title: 'Server Speed', description: 'High performance and uninterrupted processing with our dedicated server infrastructure.' },
+            { icon: 'security', title: 'High Security', description: 'Designed from the ground up with a secure, transparent, and fully auditable modern architecture.' },
+            { icon: 'optimization', title: 'Smart Optimization', description: 'Smart compression algorithms that minimize file size without compromising image quality.' }
+        ],
+        toolsTitle: 'Featured Tools',
+        toolsDesc: 'Get started instantly with our most popular conversion and processing tools.',
+        toolsExplore: 'Explore all tools',
+        tools: [
+            { name: 'HEIC → JPG', path: '/heic-to-jpg', desc: 'Convert iPhone photos to universal JPG format' },
+            { name: 'PNG → JPG', path: '/png-to-jpg', desc: 'Reduce PNG file size' },
+            { name: 'WebP → JPG', path: '/webp-to-jpg', desc: 'Ensure universal compatibility' },
+            { name: 'Background Remover', path: '/remove-background', desc: 'AI-powered background removal' },
+            { name: 'Image Compressor', path: '/compress-image', desc: 'Smart lossless compression' }
+        ],
+        finalTitle: 'Ready to Convert Images?',
+        finalDesc: 'Free tools, no sign up required. You can upgrade to Pro for batch processing and advanced features.',
+        finalCta1: 'Start for Free',
+        finalCta2: 'View Pricing',
+        quickConvertTitle: 'File Selected',
+        quickConvertFormatLabel: 'Target Format',
+        quickConvertBtn: 'Convert Now',
+        quickConvertingBtn: 'Converting...',
+        quickConvertSuccessBtn: 'Converted (Download Again)',
+        quickConvertAdvanced: 'Go to Detailed Tool for advanced settings & batch processing →',
+        quickConvertCancel: 'Cancel'
     },
     de: {
-        title: 'HEIC in JPG Konverter | VormPixyze',
-        description: 'Konvertieren Sie iPhone HEIC-Fotos sofort in JPG. Sicher und schnell.',
-        hero: 'HEIC sofort in JPG umwandeln',
-        heroSub: 'Der schnellste Weg, iPhone-Fotos zu konvertieren. Sichere Verarbeitung auf temporären Servern.',
-        trustBadge: '🔒 Sichere Verarbeitung • Privatsphäre Zuerst',
-        toolsTitle: 'Mehr Werkzeuge',
-        tools: {
-            'heic-to-jpg': { name: 'HEIC → JPG', desc: 'iPhone Fotos in JPG umwandeln' },
-            'png-to-jpg': { name: 'PNG → JPG', desc: 'PNG in optimiertes JPG umwandeln' },
-            'webp-to-jpg': { name: 'WebP → JPG', desc: 'WebP-Bilder in JPG/PNG umwandeln' },
-            'remove-background': { name: 'Hintergrund', desc: 'Hintergründe sofort entfernen' },
-            'compress-image': { name: 'Komprimieren', desc: 'Dateigröße ohne Qualitätsverlust' },
-        },
-        cta: 'HEIC Konvertierung Starten',
-        features: {
-            privacy: { title: 'Privatsphäre', desc: 'Dateien werden sicher verarbeitet' },
-            instant: { title: 'Blitzschnell', desc: 'Angetrieben durch WebAssembly' },
-            ai: { title: 'Hohe Qualität', desc: 'Originalqualität beibehalten' },
-        },
-        testimonials: {
-            title: 'Nutzerbewertungen',
-            items: [
-                { name: 'Anna K.', role: 'Fotografin', text: 'Hat meine HEIC-Probleme sofort gelöst. Tolles Tool!' },
-                { name: 'Thomas M.', role: 'Entwickler', text: 'Super, dass es Dateien sicher verarbeitet und sofort löscht.' },
-                { name: 'Lisa B.', role: 'Designerin', text: 'Die Stapelverarbeitung spart mir so viel Zeit.' }
-            ]
-        },
-        footer: { about: 'Über uns', privacy: 'Datenschutz', terms: 'AGB', contact: 'Kontakt' }
+        metaTitle: 'WebImgConverter — Sichere, schnelle und lokale Bildverarbeitung.',
+        metaDesc: 'Konvertieren Sie HEIC, WebP, PNG, AVIF sofort. Hintergrundentfernung, Komprimierung und KI-Tools werden sicher auf unseren Servern verarbeitet.',
+        ctaConvert: 'Jetzt Konvertieren',
+        heroTitle1: 'Makellose Bild-',
+        heroTitle2: 'verarbeitung, ',
+        heroTitle3: 'Lokale Geschwindigkeit.',
+        heroDesc: 'Konvertieren Sie Ihre Bilder sicher und mit hoher Geschwindigkeit über unsere leistungsstarke Serverinfrastruktur.',
+        heroCta: 'Jetzt Starten',
+        dropzoneTitle: 'Bilder hierher ziehen',
+        dropzoneSubtitle: 'oder klicken, um vom Computer auszuwählen',
+        whyTitle: 'Warum WebImgConverter wählen?',
+        whyDesc: 'Professionelle Werkzeuge für moderne Arbeitsabläufe.',
+        features: [
+            { icon: 'privacy', title: 'Absolute Privatsphäre', description: 'Die gesamte Verarbeitung erfolgt auf unseren sicheren Servern und Dateien werden sofort gelöscht.' },
+            { icon: 'speed', title: 'Servergeschwindigkeit', description: 'Hohe Leistung mit unserer dedizierten Serverinfrastruktur.' },
+            { icon: 'security', title: 'Hohe Sicherheit', description: 'Von Grund auf mit einer sicheren, transparenten und vollständig überprüfbaren modernen Architektur entwickelt.' },
+            { icon: 'optimization', title: 'Smarte Optimierung', description: 'Intelligente Komprimierungsalgorithmen, die die Dateigröße ohne Qualitätsverlust minimieren.' }
+        ],
+        toolsTitle: 'Beliebte Werkzeuge',
+        toolsDesc: 'Starten Sie sofort mit unseren beliebtesten Konvertierungs- und Verarbeitungstools.',
+        toolsExplore: 'Alle Werkzeuge entdecken',
+        tools: [
+            { name: 'HEIC → JPG', path: '/heic-to-jpg', desc: 'Konvertieren Sie iPhone-Fotos in JPG' },
+            { name: 'PNG → JPG', path: '/png-to-jpg', desc: 'PNG-Dateigröße reduzieren' },
+            { name: 'WebP → JPG', path: '/webp-to-jpg', desc: 'Universelle Kompatibilität sicherstellen' },
+            { name: 'Hintergrundentferner', path: '/remove-background', desc: 'KI-gestützte Hintergrundentfernung' },
+            { name: 'Bildkomprimierer', path: '/compress-image', desc: 'Intelligente verlustfreie Komprimierung' }
+        ],
+        finalTitle: 'Bereit, Bilder zu konvertieren?',
+        finalDesc: 'Kostenlose Tools, keine Anmeldung erforderlich. Sie können auf Pro upgraden für Stapelverarbeitung und erweiterte Funktionen.',
+        finalCta1: 'Kostenlos starten',
+        finalCta2: 'Preise ansehen',
+        quickConvertTitle: 'Datei ausgewählt',
+        quickConvertFormatLabel: 'Zielformat',
+        quickConvertBtn: 'Jetzt konvertieren',
+        quickConvertingBtn: 'Konvertiert...',
+        quickConvertSuccessBtn: 'Konvertiert (Erneut herunterladen)',
+        quickConvertAdvanced: 'Zum erweiterten Tool für Stapelverarbeitung & Einstellungen →',
+        quickConvertCancel: 'Abbrechen'
     },
     fr: {
-        title: 'Convertisseur HEIC en JPG | VormPixyze',
-        description: 'Convertissez instantanément vos photos HEIC iPhone en JPG. Sécurisé et rapide.',
-        hero: 'Convertir HEIC en JPG Instantanément',
-        heroSub: 'Le moyen le plus rapide de convertir des photos iPhone. Traitement sécurisé sur serveurs éphémères.',
-        trustBadge: '🔒 Traitement Sécurisé • Priorité Vie Privée',
-        toolsTitle: 'Plus d\'outils',
-        tools: {
-            'heic-to-jpg': { name: 'HEIC → JPG', desc: 'Convertir photos iPhone en JPG' },
-            'png-to-jpg': { name: 'PNG → JPG', desc: 'Convertir PNG en JPG optimisé' },
-            'webp-to-jpg': { name: 'WebP → JPG', desc: 'Convertir images WebP en JPG/PNG' },
-            'remove-background': { name: 'Détourer', desc: 'Supprimer l\'arrière-plan instantanément' },
-            'compress-image': { name: 'Compresser', desc: 'Réduire la taille sans perte' },
-        },
-        cta: 'Commencer la conversion',
-        features: {
-            privacy: { title: 'Vie Privée', desc: 'Les fichiers sont traités en toute sécurité' },
-            instant: { title: 'Ultra Rapide', desc: 'Propulsé par la technologie WebAssembly' },
-            ai: { title: 'Haute Qualité', desc: 'Conservez la qualité originale' },
-        },
-        testimonials: {
-            title: 'Avis Utilisateurs',
-            items: [
-                { name: 'Sophie L.', role: 'Photographe', text: 'A résolu mes problèmes de compatibilité HEIC instantanément.' },
-                { name: 'Pierre D.', role: 'Développeur', text: 'J\'adore que les fichiers soient supprimés instantanément.' },
-                { name: 'Marie R.', role: 'Créatrice', text: 'La conversion par lot est un vrai gain de temps.' }
-            ]
-        },
-        footer: { about: 'À propos', privacy: 'Confidentialité', terms: 'Conditions', contact: 'Contact' }
-    },
+        metaTitle: 'WebImgConverter — Traitement d\'images sécurisé, rapide et local.',
+        metaDesc: 'Convertissez instantanément les fichiers HEIC, WebP, PNG, AVIF. Suppression d\'arrière-plan, compression et outils IA traités localement.',
+        ctaConvert: 'Convertir',
+        heroTitle1: 'Traitement',
+        heroTitle2: 'd\'image, ',
+        heroTitle3: 'Vitesse Locale.',
+        heroDesc: 'Plus de téléchargements ! Convertissez vos images en toute sécurité sans que vos données ne quittent votre appareil, grâce aux performances WebAssembly.',
+        heroCta: 'Commencer',
+        dropzoneTitle: 'Glissez et déposez vos images ici',
+        dropzoneSubtitle: 'ou cliquez pour parcourir votre ordinateur',
+        whyTitle: 'Pourquoi choisir WebImgConverter?',
+        whyDesc: 'Outils professionnels conçus pour les flux de travail modernes.',
+        features: [
+            { icon: 'privacy', title: 'Confidentialité Totale', description: 'Vos fichiers ne quittent jamais votre appareil. Tout le traitement se fait directement avec la puissance de calcul de votre navigateur.' },
+            { icon: 'speed', title: 'Vitesse WASM', description: 'Haute performance à la vitesse d\'une application native dans votre navigateur avec l\'infrastructure WebAssembly.' },
+            { icon: 'security', title: 'Haute Sécurité', description: 'Conçu dès le départ avec une architecture moderne sécurisée, transparente et auditable.' },
+            { icon: 'optimization', title: 'Optimisation Intelligente', description: 'Algorithmes de compression intelligents qui minimisent la taille du fichier sans compromettre la qualité.' }
+        ],
+        toolsTitle: 'Outils Populaires',
+        toolsDesc: 'Commencez instantanément avec nos outils de conversion et de traitement les plus populaires.',
+        toolsExplore: 'Découvrir tous les outils',
+        tools: [
+            { name: 'HEIC → JPG', path: '/heic-to-jpg', desc: 'Convertir les photos iPhone en JPG universel' },
+            { name: 'PNG → JPG', path: '/png-to-jpg', desc: 'Réduire la taille du fichier PNG' },
+            { name: 'WebP → JPG', path: '/webp-to-jpg', desc: 'Assurer une compatibilité universelle' },
+            { name: 'Suppresseur de Fond', path: '/remove-background', desc: 'Suppression d\'arrière-plan par IA' },
+            { name: 'Compresseur d\'Image', path: '/compress-image', desc: 'Compression intelligente sans perte' }
+        ],
+        finalTitle: 'Prêt à convertir des images?',
+        finalDesc: 'Outils gratuits, aucune inscription requise. Passez à Pro pour le traitement par lots et les fonctionnalités avancées.',
+        finalCta1: 'Démarrer gratuitement',
+        finalCta2: 'Voir les prix',
+        quickConvertTitle: 'Fichier sélectionné',
+        quickConvertFormatLabel: 'Format cible',
+        quickConvertBtn: 'Convertir',
+        quickConvertingBtn: 'Conversion...',
+        quickConvertSuccessBtn: 'Converti (Télécharger à nouveau)',
+        quickConvertAdvanced: 'Outil détaillé pour les paramètres avancés et le traitement par lots →',
+        quickConvertCancel: 'Annuler'
+    }
 };
 
-type ContentKey = keyof typeof content;
+type LangKey = keyof typeof content;
 
 export default function HomePage() {
     const { language } = useLanguage();
-    const t = content[language as ContentKey] || content.en;
-    const [stats, setStats] = React.useState({ totalConversions: 0, totalUsers: 0 });
+    const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
+    const t = content[activeLang] || content.tr;
+    const navigate = useNavigate();
+    const [homeFiles, setHomeFiles] = useState<File[]>([]);
+    const [targetFormat, setTargetFormat] = useState<OutputFormat>('jpg');
+    const [isConverting, setIsConverting] = useState(false);
+    const [conversionSuccess, setConversionSuccess] = useState(false);
+    const [showAdvanced, setShowAdvanced] = useState(false);
 
-    React.useEffect(() => {
-        const fetchStats = async () => {
-            try {
-                const { getTotalStats } = await import('../services/supabase');
-                const data = await getTotalStats();
-                setStats(data);
-            } catch (error) {
-                console.log('Stats fetch optional, continuing without:', error);
-            }
-        };
-        fetchStats();
-    }, []);
+    const handleFiles = (files: File[]) => {
+        setHomeFiles(files);
+        setConversionSuccess(false);
+    };
+
+    if (showAdvanced && homeFiles.length > 0) {
+        return <App initialFiles={homeFiles} />;
+    }
 
     return (
-        <>
+        <SiteShell onCta={() => navigate('/tools')} ctaLabel={t.ctaConvert} bg="white">
             <Helmet>
-                <title>{t.title}</title>
-                <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://vormpixyze.com/" />
+                <title>{t.metaTitle}</title>
+                <meta name="description" content={t.metaDesc} />
+                <link rel="canonical" href="https://WebImgConverter.com/" />
             </Helmet>
             <HomePageSchema />
 
-            <div className="min-h-screen bg-[#0B0F19] text-slate-200 font-sans flex flex-col">
-                {/* Header */}
-                <nav className="glass-panel sticky top-0 z-40 border-b border-white/5">
-                    <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                            <svg className="w-8 h-8" viewBox="0 0 100 100" fill="none">
-                                <defs><linearGradient id="logoGrad" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stopColor="#6366f1" /><stop offset="100%" stopColor="#a855f7" /></linearGradient></defs>
-                                <path d="M20 15 L40 75 L50 90 L60 75 L80 15 L65 15 L50 60 L35 15 Z" fill="url(#logoGrad)" />
-                            </svg>
-                            <span className="text-xl font-bold text-white">Vorm<span className="text-indigo-400">Pixyze</span></span>
-                        </div>
-                        <Link to="/blog" className="text-sm text-slate-400 hover:text-indigo-400 transition-colors">
-                            📝 Blog
-                        </Link>
-                    </div>
-                </nav>
-
-                {/* Hero */}
-                <main className="flex-1">
-
-                    <section className="max-w-7xl mx-auto px-4 md:px-8 py-20 text-center relative overflow-hidden">
-
-                        {/* Background Glow */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-[100px] -z-10"></div>
-
-                        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-                            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                                {t.hero}
-                            </span>
-                        </h1>
-                        <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-                            {t.heroSub}
-                        </p>
-
-                        {/* ===== HERO CONVERTER CARDS ===== */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
-                            {/* HEIC to JPG - Primary Card */}
-                            <Link
-                                to="/heic-to-jpg"
-                                className="group relative overflow-hidden bg-gradient-to-br from-pink-600/20 to-rose-600/20 border-2 border-pink-500/30 rounded-3xl p-8 hover:border-pink-400/60 transition-all duration-300 hover:scale-[1.02] shadow-2xl hover:shadow-pink-500/20"
-                            >
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-500 to-rose-500 opacity-20 blur-3xl rounded-full -mr-10 -mt-10"></div>
-                                <div className="relative z-10">
-                                    <div className="text-6xl mb-4">📱</div>
-                                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3 group-hover:text-pink-300 transition-colors">
-                                        HEIC → JPG
-                                    </h2>
-                                    <p className="text-lg text-slate-300 mb-4">{t.tools['heic-to-jpg'].desc}</p>
-                                    <div className="inline-flex items-center gap-2 text-pink-400 font-semibold group-hover:gap-3 transition-all">
-                                        <span>{language === 'tr' ? 'Hemen Başla' : 'Start Now'}</span>
-                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </Link>
-
-                            {/* WebP to JPG - Primary Card */}
-                            <Link
-                                to="/webp-to-jpg"
-                                className="group relative overflow-hidden bg-gradient-to-br from-emerald-600/20 to-green-600/20 border-2 border-emerald-500/30 rounded-3xl p-8 hover:border-emerald-400/60 transition-all duration-300 hover:scale-[1.02] shadow-2xl hover:shadow-emerald-500/20"
-                            >
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-500 to-green-500 opacity-20 blur-3xl rounded-full -mr-10 -mt-10"></div>
-                                <div className="relative z-10">
-                                    <div className="text-6xl mb-4">🌐</div>
-                                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3 group-hover:text-emerald-300 transition-colors">
-                                        WebP → JPG
-                                    </h2>
-                                    <p className="text-lg text-slate-300 mb-4">{t.tools['webp-to-jpg'].desc}</p>
-                                    <div className="inline-flex items-center gap-2 text-emerald-400 font-semibold group-hover:gap-3 transition-all">
-                                        <span>{language === 'tr' ? 'Hemen Başla' : 'Start Now'}</span>
-                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </Link>
-                        </div>
-
-                        {/* Trust Badge (Simplified) */}
-                        <div className="flex justify-center items-center gap-2 text-slate-500 text-sm mb-16">
-                            <svg className="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                            </svg>
-                            <span>{t.trustBadge}</span>
-                        </div>
-
-                        {/* More Tools Section */}
-                        <div className="mb-16">
-                            <h2 className="text-2xl font-bold text-white mb-8">{t.toolsTitle}</h2>
-                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-                                {tools.map((tool) => (
-                                    <Link
-                                        key={tool.id}
-                                        to={tool.path}
-                                        className="group bg-slate-900/50 border border-slate-800 rounded-xl p-5 hover:border-indigo-500/30 transition-all text-left hover:bg-slate-800/50"
-                                    >
-                                        <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">{tool.icon}</div>
-                                        <h3 className="text-sm font-bold text-white mb-1 group-hover:text-indigo-400 transition-colors">{t.tools[tool.id].name}</h3>
-                                        <p className="text-xs text-slate-400">{t.tools[tool.id].desc}</p>
-                                    </Link>
-                                ))}
-
-                                {/* Advanced Mode - Special Card */}
-                                <Link
-                                    to="/app"
-                                    className="group bg-gradient-to-br from-amber-600/10 to-orange-600/10 border-2 border-amber-500/30 rounded-xl p-5 hover:border-amber-400/60 transition-all text-left hover:bg-amber-900/20 hover:shadow-lg hover:shadow-amber-500/10"
-                                >
-                                    <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">⚙️</div>
-                                    <h3 className="text-sm font-bold text-amber-400 mb-1 group-hover:text-amber-300 transition-colors">
-                                        {language === 'tr' ? 'Gelişmiş Mod' : language === 'de' ? 'Erweiterter Modus' : language === 'fr' ? 'Mode Avancé' : 'Advanced Mode'}
-                                    </h3>
-                                    <p className="text-xs text-slate-400">
-                                        {language === 'tr' ? 'Tüm formatlar ve özellikler' : language === 'de' ? 'Alle Formate & Funktionen' : language === 'fr' ? 'Tous les formats' : 'All formats & features'}
-                                    </p>
-                                </Link>
+            {/* Hero */}
+            <section className="bg-white dark:bg-slate-900">
+                <div className="max-w-7xl mx-auto px-5 md:px-8 py-12 md:py-20">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                        {/* Left: Heading + CTA */}
+                        <div>
+                            <h1 className="font-serif text-5xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-6">
+                                {t.heroTitle1}<br />
+                                {t.heroTitle2}{' '}
+                                <span className="text-brand-500 italic font-extrabold">{t.heroTitle3}</span>
+                            </h1>
+                            <p className="text-base md:text-lg text-slate-500 dark:text-slate-400 leading-relaxed mb-8 max-w-lg">
+                                {t.heroDesc}
+                            </p>
+                            <div className="flex flex-wrap items-center gap-3">
+                                <Button onClick={() => navigate('/app')} size="lg">
+                                    {t.heroCta}
+                                </Button>
                             </div>
                         </div>
 
-                        {/* Animated Format Showcase */}
-                        <section className="mt-16 py-12 relative overflow-hidden">
-                            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-pink-500/5 rounded-3xl"></div>
-
-                            {/* Floating Format Badges */}
-                            <div className="relative flex flex-wrap justify-center gap-4 md:gap-6">
-                                {[
-                                    { from: 'HEIC', to: 'JPG', color: 'from-pink-500 to-rose-600', delay: '0s' },
-                                    { from: 'PNG', to: 'WEBP', color: 'from-blue-500 to-cyan-600', delay: '0.1s' },
-                                    { from: 'AVIF', to: 'PNG', color: 'from-emerald-500 to-teal-600', delay: '0.2s' },
-                                    { from: 'WEBP', to: 'JPG', color: 'from-purple-500 to-violet-600', delay: '0.3s' },
-                                    { from: 'SVG', to: 'PNG', color: 'from-orange-500 to-amber-600', delay: '0.4s' },
-                                ].map((item, idx) => (
-                                    <div
-                                        key={idx}
-                                        className="group relative"
-                                        style={{ animationDelay: item.delay }}
-                                    >
-                                        <div className={`
-                                            bg-gradient-to-br ${item.color} 
-                                            px-5 py-3 rounded-xl 
-                                            flex items-center gap-3
-                                            transform hover:scale-110 hover:-translate-y-1
-                                            transition-all duration-300 ease-out
-                                            shadow-lg hover:shadow-2xl
-                                            cursor-default
-                                            animate-pulse-slow
-                                        `}>
-                                            <span className="text-white font-bold text-sm">{item.from}</span>
-                                            <span className="text-white/80 text-lg animate-bounce-x">→</span>
-                                            <span className="text-white font-bold text-sm">{item.to}</span>
+                        {/* Right: Dropzone teaser */}
+                        <div className="min-h-[400px] flex flex-col justify-center">
+                            {homeFiles.length === 0 ? (
+                                <ToolDropzone
+                                    onFiles={handleFiles}
+                                    title={t.dropzoneTitle}
+                                    subtitle={t.dropzoneSubtitle}
+                                />
+                            ) : (
+                                <div className="bg-white/80 dark:bg-slate-800/70 backdrop-blur-md rounded-3xl border border-white/40 dark:border-slate-700/50 p-8 shadow-2xl relative overflow-hidden group">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-brand-50/50 dark:from-brand-900/20 to-white/10 dark:to-transparent pointer-events-none" />
+                                    <div className="relative z-10">
+                                        <div className="flex items-center gap-3 mb-6">
+                                            <div className="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/40 flex items-center justify-center text-brand-600 dark:text-brand-400 shadow-sm">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                            </div>
+                                            <div>
+                                                <h3 className="font-bold text-lg text-slate-900 dark:text-white leading-tight">
+                                                    {homeFiles.length > 1 ? `${homeFiles.length} ${t.quickConvertTitle.replace('1', '')}` : t.quickConvertTitle}
+                                                </h3>
+                                                <p className="text-sm text-slate-500 dark:text-slate-400 truncate max-w-[200px]">{homeFiles[0].name}</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="mb-8">
+                                            <label className="block text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">{t.quickConvertFormatLabel}</label>
+                                            <div className="grid grid-cols-4 gap-2">
+                                                {['jpg', 'png', 'webp', 'avif'].map(fmt => (
+                                                    <button 
+                                                        key={fmt}
+                                                        onClick={() => setTargetFormat(fmt as OutputFormat)}
+                                                        className={`py-2.5 rounded-xl text-sm font-bold uppercase transition-all ${targetFormat === fmt ? 'bg-brand-600 text-white shadow-lg shadow-brand-500/30 scale-105' : 'bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-600 hover:border-slate-300 dark:hover:border-slate-500'}`}
+                                                    >
+                                                        {fmt}
+                                                    </button>
+                                                ))}
+                                            </div>
                                         </div>
 
-                                        {/* Glow Effect */}
-                                        <div className={`
-                                            absolute inset-0 bg-gradient-to-br ${item.color} 
-                                            rounded-xl blur-xl opacity-30 
-                                            group-hover:opacity-50 transition-opacity
-                                            -z-10
-                                        `}></div>
-                                    </div>
-                                ))}
-                            </div>
+                                        <Button 
+                                            fullWidth 
+                                            size="lg"
+                                            onClick={async () => {
+                                                setIsConverting(true);
+                                                try {
+                                                    // Convert all files if multiple were dropped
+                                                    for (const file of homeFiles) {
+                                                        const result = await convertImage(file, {
+                                                            targetFormat,
+                                                            quality: 90,
+                                                            lockAspectRatio: true,
+                                                            removeMetadata: true
+                                                        });
+                                                        downloadBlob(result.blob, buildOutputName(file.name, targetFormat));
+                                                    }
+                                                    setConversionSuccess(true);
+                                                } catch(e) {
+                                                    alert('Error: ' + (e as Error).message);
+                                                } finally {
+                                                    setIsConverting(false);
+                                                }
+                                            }}
+                                            disabled={isConverting}
+                                        >
+                                            {isConverting ? t.quickConvertingBtn : (conversionSuccess ? t.quickConvertSuccessBtn : t.quickConvertBtn)}
+                                        </Button>
 
-                            {/* Stats - Only Format Support for now */}
-                            <div className="mt-10 flex justify-center">
-                                <div className="text-center">
-                                    <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent">
-                                        10+
-                                    </div>
-                                    <div className="text-xs md:text-sm text-slate-400 mt-1">
-                                        {language === 'tr' ? 'Format Desteği' : language === 'de' ? 'Formate' : language === 'fr' ? 'Formats' : 'Formats'}
+                                        <div className="mt-6 flex flex-col gap-3 text-center">
+                                            <button onClick={() => setShowAdvanced(true)} className="text-sm text-brand-600 font-semibold hover:text-brand-700 transition-colors">
+                                                {t.quickConvertAdvanced}
+                                            </button>
+                                            <button onClick={() => { setHomeFiles([]); setConversionSuccess(false); }} className="text-xs text-slate-400 font-semibold hover:text-slate-600 transition-colors">
+                                                {t.quickConvertCancel}
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
-                    </section>
-                </main>
-
-                <SeoContent pageType="home" />
-
-                {/* Footer */}
-                <footer className="border-t border-slate-800 py-6 mt-auto">
-                    <div className="max-w-7xl mx-auto px-4">
-                        <div className="flex flex-wrap justify-center gap-4 mb-4 text-sm">
-                            <Link to="/about" className="text-slate-400 hover:text-white transition-colors">{t.footer.about}</Link>
-                            <Link to="/blog" className="text-slate-400 hover:text-white transition-colors">Blog</Link>
-                            <Link to="/privacy" className="text-slate-400 hover:text-white transition-colors">{t.footer.privacy}</Link>
-                            <Link to="/terms" className="text-slate-400 hover:text-white transition-colors">{t.footer.terms}</Link>
-                            <Link to="/contact" className="text-slate-400 hover:text-white transition-colors">{t.footer.contact}</Link>
-                        </div>
-                        <div className="text-center text-slate-500 text-sm">
-                            © 2025 VormPixyze Inc.
+                            )}
                         </div>
                     </div>
-                </footer>
-            </div>
-        </>
+                </div>
+            </section>
+
+            {/* Why Choose WebImgConverter */}
+            <section className="bg-slate-50/40 dark:bg-slate-800/30 border-y border-slate-100 dark:border-slate-800">
+                <div className="max-w-6xl mx-auto px-5 md:px-8 py-14 md:py-20">
+                    <div className="text-center max-w-2xl mx-auto mb-10">
+                        <h2 className="font-serif text-3xl md:text-4xl font-bold text-slate-900 dark:text-white tracking-tight mb-3">
+                            {t.whyTitle}
+                        </h2>
+                        <p className="text-sm text-slate-500 dark:text-slate-400">
+                            {t.whyDesc}
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+                        {t.features.map((f, i) => (
+                            <div key={i} className="bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-2xl p-5 shadow-card">
+                                <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-900/30 border border-brand-100 dark:border-brand-800/50 flex items-center justify-center text-brand-600 dark:text-brand-400 mb-4">
+                                    {ICONS[f.icon as keyof typeof ICONS]}
+                                </div>
+                                <h3 className="text-sm font-bold text-slate-900 dark:text-white font-sans mb-1.5">{f.title}</h3>
+                                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{f.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Featured tools */}
+            <section className="bg-white dark:bg-slate-900">
+                <div className="max-w-6xl mx-auto px-5 md:px-8 py-14 md:py-20">
+                    <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
+                        <div>
+                            <h2 className="font-serif text-3xl md:text-4xl font-bold text-slate-900 dark:text-white tracking-tight mb-2">
+                                {t.toolsTitle}
+                            </h2>
+                            <p className="text-sm text-slate-500 dark:text-slate-400">{t.toolsDesc}</p>
+                        </div>
+                        <Link to="/tools" className="text-sm font-semibold text-brand-600 hover:text-brand-700 inline-flex items-center gap-1.5">
+                            {t.toolsExplore}
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </Link>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {t.tools.map((tool, i) => (
+                            <Link
+                                key={tool.path}
+                                to={tool.path}
+                                className="group block bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-2xl p-5 hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-card-hover transition-all"
+                            >
+                                <h3 className="text-base font-bold text-slate-900 dark:text-white font-sans mb-1 group-hover:text-brand-600 transition-colors">
+                                    {tool.name}
+                                </h3>
+                                <p className="text-xs text-slate-500 dark:text-slate-400">{tool.desc}</p>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Final CTA Band */}
+            <section className="bg-white dark:bg-slate-900">
+                <div className="max-w-5xl mx-auto px-5 md:px-8 pb-14 md:pb-20">
+                    <div className="bg-slate-900 rounded-3xl p-10 md:p-14 text-center text-white relative overflow-hidden">
+                        <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-brand-500/10 blur-3xl" />
+                        <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-brand-500/10 blur-3xl" />
+                        <div className="relative">
+                            <h2 className="font-serif text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                                {t.finalTitle}
+                            </h2>
+                            <p className="text-sm md:text-base text-slate-300 mb-8 max-w-md mx-auto">
+                                {t.finalDesc}
+                            </p>
+                            <div className="flex flex-wrap items-center justify-center gap-3">
+                                <Button onClick={() => navigate('/tools')} size="lg">
+                                    {t.finalCta1}
+                                </Button>
+                                <Button onClick={() => navigate('/pricing')} variant="secondary" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+                                    {t.finalCta2}
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </SiteShell>
     );
 }

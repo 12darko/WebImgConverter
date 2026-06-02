@@ -2,48 +2,167 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Base Styles */
+/* ===== Vivid Clarity — Light Theme Base ===== */
 @layer base {
-
   html,
   body {
-    @apply min-h-screen m-0 p-0 bg-[#0B0F19];
+    @apply min-h-screen m-0 p-0 bg-slate-50 text-slate-900 antialiased flex flex-col;
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  /* Dark mode body */
+  html.dark,
+  html.dark body {
+    @apply bg-slate-900 text-slate-100;
   }
 
   #root {
-    @apply h-full;
+    @apply flex-1 flex flex-col w-full min-h-screen;
   }
 
-  /* Custom Scrollbar */
+  /* ── Light scrollbar ── */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 10px;
+    height: 10px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-slate-900;
+    @apply bg-slate-50;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-slate-700 rounded-full;
+    @apply bg-slate-200 rounded-full border-2 border-solid;
+    border-color: #F8FAFC;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-slate-600;
+    @apply bg-slate-300;
+  }
+
+  /* ── Dark scrollbar ── */
+  .dark ::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-color: #0f172a;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+
+  /* ── Focus ring ── */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500/40 ring-offset-2 ring-offset-white;
+  }
+
+  .dark :focus-visible {
+    @apply ring-offset-slate-900;
+  }
+
+  /* ── Headings serif family ── */
+  h1, h2, h3 {
+    @apply font-serif tracking-tight;
+    font-feature-settings: "ss01", "cv01", "kern";
+  }
+
+  /* ── Selection color ── */
+  ::selection {
+    background-color: rgba(16, 185, 129, 0.18);
+    color: #064E3B;
+  }
+
+  .dark ::selection {
+    background-color: rgba(16, 185, 129, 0.30);
+    color: #D1FAE5;
   }
 }
 
-/* Utilities for Glassmorphism */
+/* ===== Utility classes for the new design system ===== */
 @layer utilities {
-  .glass-panel {
-    @apply bg-slate-900/70 backdrop-blur-xl border border-white/10;
+  /* ── Subtle dotted background used on hero sections ── */
+  .bg-dotted {
+    background-image: radial-gradient(circle, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .dark .bg-dotted {
+    background-image: radial-gradient(circle, rgba(248, 250, 252, 0.04) 1px, transparent 1px);
+  }
+
+  /* ── Soft grid background used on /tools, /pricing hero ── */
+  .bg-grid-soft {
+    background-image:
+      linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .dark .bg-grid-soft {
+    background-image:
+      linear-gradient(rgba(248, 250, 252, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(248, 250, 252, 0.03) 1px, transparent 1px);
+  }
+
+  /* ── App page combined background: slate-50 + subtle grid ── */
+  .bg-app-grid {
+    background-color: #f8fafc;
+    background-image:
+      linear-gradient(rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .dark .bg-app-grid {
+    background-color: #0f172a;
+    background-image:
+      linear-gradient(rgba(248, 250, 252, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(248, 250, 252, 0.02) 1px, transparent 1px);
+  }
+
+  /* ── Hairline border used in cards ── */
+  .border-hairline {
+    border-color: rgba(15, 23, 42, 0.08);
+  }
+
+  .dark .border-hairline {
+    border-color: rgba(248, 250, 252, 0.08);
+  }
+
+  /* ── Ink panel (dark code blocks in API docs) ── */
+  .ink-panel {
+    @apply bg-ink-900 text-slate-200 rounded-2xl;
   }
 }
 
-/* Background Pattern Class */
-.bg-grid-pattern {
-  background-color: #0B0F19;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 30px 30px;
-  background-attachment: fixed;
+/* ===== Compatibility shims (for any leftover legacy classes) ===== */
+@layer components {
+  /* ── Glass panel: light ── */
+  .glass-panel {
+    @apply bg-white border border-slate-200 shadow-card;
+  }
+
+  .dark .glass-panel {
+    @apply bg-slate-800/60 border-slate-700/50;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  /* ── Grid pattern ── */
+  .bg-grid-pattern {
+    background-color: #FFFFFF;
+    background-image:
+      linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-attachment: fixed;
+  }
+
+  .dark .bg-grid-pattern {
+    background-color: #0f172a;
+    background-image:
+      linear-gradient(rgba(248, 250, 252, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(248, 250, 252, 0.03) 1px, transparent 1px);
+  }
 }

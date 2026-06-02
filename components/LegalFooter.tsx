@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 
@@ -50,7 +50,7 @@ export const LegalFooter: React.FC = () => {
                     <Link to="/contact" className="text-slate-400 hover:text-white transition-colors">{t.contact}</Link>
                 </div>
                 <div className="text-center text-slate-500 text-sm">
-                    © 2025 VormPixyze Inc.
+                    © 2026 WebImgConverter Inc.
                 </div>
             </div>
         </footer>

@@ -81,7 +81,7 @@ export const HistoryModal: React.FC<HistoryModalProps> = ({ isOpen, onClose }) =
                 <div className="flex-1 overflow-auto p-6 scrollbar-thin scrollbar-thumb-slate-600">
                     {loading ? (
                         <div className="flex justify-center p-10">
-                            <div className="w-8 h-8 border-4 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin"></div>
+                            <div className="w-8 h-8 border-4 border-brand-500/30 border-t-brand-500 rounded-full animate-spin"></div>
                         </div>
                     ) : history.length === 0 ? (
                         <div className="text-center py-16 text-slate-500">
@@ -134,7 +134,7 @@ export const HistoryModal: React.FC<HistoryModalProps> = ({ isOpen, onClose }) =
                 <div className="p-4 border-t border-white/5 flex justify-between bg-slate-900/50 rounded-b-2xl">
                     <button
                         onClick={fetchHistory}
-                        className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center gap-1"
+                        className="text-xs text-brand-400 hover:text-brand-300 flex items-center gap-1"
                     >
                         🔄 Yenile
                     </button>

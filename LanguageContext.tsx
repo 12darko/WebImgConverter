@@ -25,11 +25,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     if (urlLang && ['tr', 'en', 'de', 'fr'].includes(urlLang)) {
       setLanguageState(urlLang as Language);
     } else {
-      // Fallback to browser if no URL param
-      const browserLang = navigator.language.split('-')[0];
-      if (['en', 'de', 'fr'].includes(browserLang)) {
-        setLanguageState(browserLang as Language);
-      }
+      // Default to Turkish, ignore browser language for now
+      setLanguageState('tr');
     }
   }, []); // Run once on mount
 

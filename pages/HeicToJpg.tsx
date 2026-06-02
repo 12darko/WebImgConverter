@@ -1,27 +1,27 @@
-import React from 'react';
+﻿import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import App from '../App';
+import App from '../AppMain';
 import { SeoContent } from '../components/SeoContent';
 import { useLanguage } from '../LanguageContext';
 
 const seoContent = {
     tr: {
-        title: 'HEIC to JPG Dönüştürücü - Ücretsiz Online | VormPixyze',
+        title: 'HEIC to JPG Dönüştürücü - Ücretsiz Online | WebImgConverter',
         description: 'iPhone HEIC fotoğraflarını saniyeler içinde JPG formatına dönüştürün. Güvenli sunucularımızda anlık işlem, dosyalarınız asla saklanmaz. Toplu dönüştürme destekli.',
         h1: 'HEIC to JPG Dönüştürücü',
     },
     en: {
-        title: 'Free HEIC to JPG Converter Online | VormPixyze',
+        title: 'Free HEIC to JPG Converter Online | WebImgConverter',
         description: 'Convert iPhone HEIC photos to JPG format in seconds. Secure server processing, your files are never stored. Batch conversion supported.',
         h1: 'HEIC to JPG Converter',
     },
     de: {
-        title: 'Kostenloser HEIC zu JPG Konverter Online | VormPixyze',
+        title: 'Kostenloser HEIC zu JPG Konverter Online | WebImgConverter',
         description: 'Konvertieren Sie iPhone HEIC-Fotos in Sekunden in JPG. Sichere Serververarbeitung, Ihre Dateien werden nie gespeichert. Stapelverarbeitung unterstützt.',
         h1: 'HEIC zu JPG Konverter',
     },
     fr: {
-        title: 'Convertisseur HEIC en JPG Gratuit en Ligne | VormPixyze',
+        title: 'Convertisseur HEIC en JPG Gratuit en Ligne | WebImgConverter',
         description: 'Convertissez vos photos HEIC iPhone en JPG en quelques secondes. Traitement sécurisé sur serveur, vos fichiers ne sont jamais stockés. Conversion par lot prise en charge.',
         h1: 'Convertisseur HEIC en JPG',
     },
@@ -41,7 +41,7 @@ const richContent = {
             { num: 3, title: 'İndir', desc: 'JPG dosyalarınızı indirin.' },
         ],
         whyTitle: 'Neden HEIC\'i JPG\'ye Çevirmelisiniz?',
-        whyText: 'HEIC (High Efficiency Image Container), Apple\'ın iOS 11\'den itibaren kullandığı modern görsel formatıdır. HEIC, JPG\'ye kıyasla %50\'ye varan alan tasarrufu sağlar ancak Windows, Android ve birçok uygulama tarafından desteklenmez. VormPixyze ile iPhone fotoğraflarınızı evrensel JPG formatına dönüştürerek her yerde kullanabilirsiniz.',
+        whyText: 'HEIC (High Efficiency Image Container), Apple\'ın iOS 11\'den itibaren kullandığı modern görsel formatıdır. HEIC, JPG\'ye kıyasla %50\'ye varan alan tasarrufu sağlar ancak Windows, Android ve birçok uygulama tarafından desteklenmez. WebImgConverter ile iPhone fotoğraflarınızı evrensel JPG formatına dönüştürerek her yerde kullanabilirsiniz.',
         compatTitle: 'HEIC Uyumluluk Sorunları',
         compatItems: [
             'Windows Fotoğraflar uygulaması HEIC açamaz',
@@ -64,7 +64,7 @@ const richContent = {
             { num: 3, title: 'Download', desc: 'Get your JPG files.' },
         ],
         whyTitle: 'Why Convert HEIC to JPG?',
-        whyText: 'HEIC (High Efficiency Image Container) is Apple\'s modern image format used since iOS 11. While HEIC saves up to 50% storage compared to JPG, it\'s not supported by Windows, Android, and many applications. With VormPixyze, convert your iPhone photos to universal JPG format for use anywhere.',
+        whyText: 'HEIC (High Efficiency Image Container) is Apple\'s modern image format used since iOS 11. While HEIC saves up to 50% storage compared to JPG, it\'s not supported by Windows, Android, and many applications. With WebImgConverter, convert your iPhone photos to universal JPG format for use anywhere.',
         compatTitle: 'HEIC Compatibility Issues',
         compatItems: [
             'Windows Photos app cannot open HEIC',
@@ -87,7 +87,7 @@ const richContent = {
             { num: 3, title: 'Herunterladen', desc: 'Laden Sie Ihre JPGs herunter.' },
         ],
         whyTitle: 'Warum HEIC zu JPG konvertieren?',
-        whyText: 'HEIC (High Efficiency Image Container) ist Apples modernes Bildformat seit iOS 11. Während HEIC bis zu 50% Speicher im Vergleich zu JPG spart, wird es von Windows, Android und vielen Anwendungen nicht unterstützt. Mit VormPixyze konvertieren Sie Ihre iPhone-Fotos in das universelle JPG-Format.',
+        whyText: 'HEIC (High Efficiency Image Container) ist Apples modernes Bildformat seit iOS 11. Während HEIC bis zu 50% Speicher im Vergleich zu JPG spart, wird es von Windows, Android und vielen Anwendungen nicht unterstützt. Mit WebImgConverter konvertieren Sie Ihre iPhone-Fotos in das universelle JPG-Format.',
         compatTitle: 'HEIC Kompatibilitätsprobleme',
         compatItems: [
             'Windows Fotos kann HEIC nicht öffnen',
@@ -110,7 +110,7 @@ const richContent = {
             { num: 3, title: 'Télécharger', desc: 'Obtenez vos fichiers JPG.' },
         ],
         whyTitle: 'Pourquoi convertir HEIC en JPG?',
-        whyText: 'HEIC (High Efficiency Image Container) est le format d\'image moderne d\'Apple utilisé depuis iOS 11. Bien que HEIC économise jusqu\'à 50% de stockage par rapport au JPG, il n\'est pas pris en charge par Windows, Android et de nombreuses applications. Avec VormPixyze, convertissez vos photos iPhone au format JPG universel.',
+        whyText: 'HEIC (High Efficiency Image Container) est le format d\'image moderne d\'Apple utilisé depuis iOS 11. Bien que HEIC économise jusqu\'à 50% de stockage par rapport au JPG, il n\'est pas pris en charge par Windows, Android et de nombreuses applications. Avec WebImgConverter, convertissez vos photos iPhone au format JPG universel.',
         compatTitle: 'Problèmes de Compatibilité HEIC',
         compatItems: [
             'Windows Photos ne peut pas ouvrir HEIC',
@@ -135,7 +135,7 @@ export default function HeicToJpgPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://vormpixyze.com/heic-to-jpg" />
+                <link rel="canonical" href="https://WebImgConverter.com/heic-to-jpg" />
             </Helmet>
             <App
                 defaultTool="heic-to-jpg"
@@ -157,42 +157,41 @@ export default function HeicToJpgPage() {
                     {/* Feature Highlights */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         {r.features.map((feature, idx) => (
-                            <div key={idx} className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-pink-500/30 transition-colors">
+                            <div key={idx} className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-card hover:border-brand-300 dark:hover:border-brand-700 transition-all">
                                 <div className="text-4xl mb-4">{feature.icon}</div>
-                                <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-                                <p className="text-slate-400 text-sm">{feature.desc}</p>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{feature.title}</h3>
+                                <p className="text-slate-600 dark:text-slate-400 text-sm">{feature.desc}</p>
                             </div>
                         ))}
                     </div>
 
-                    {/* How-To Steps */}
-                    <div className="space-y-8">
-                        <h2 className="text-3xl font-bold text-white text-center">{r.howToTitle}</h2>
+                    <div className="space-y-8 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-900/40 rounded-3xl p-8 md:p-12">
+                        <h2 className="text-3xl font-serif font-bold text-slate-900 dark:text-white text-center">{r.howToTitle}</h2>
                         <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative">
                             {r.steps.map((step, idx) => (
-                                <div key={idx} className="flex-1 text-center relative z-10">
-                                    <div className={`w-16 h-16 ${idx === 0 ? 'bg-pink-600' : idx === 2 ? 'bg-emerald-600' : 'bg-slate-800 border-2 border-pink-500'} rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4 shadow-lg ${idx === 0 ? 'shadow-pink-500/20' : idx === 2 ? 'shadow-emerald-500/20' : ''}`}>
+                                <div key={idx} className="flex-1 text-center relative z-10 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                                    <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-800 rounded-xl flex items-center justify-center text-xl font-bold text-brand-600 dark:text-brand-400 mx-auto mb-4">
                                         {step.num}
                                     </div>
-                                    <h3 className="font-semibold text-white mb-1">{step.title}</h3>
-                                    <p className="text-slate-500 text-sm">{step.desc}</p>
+                                    <h3 className="font-bold text-slate-900 dark:text-white mb-1">{step.title}</h3>
+                                    <p className="text-slate-500 dark:text-slate-400 text-sm">{step.desc}</p>
                                 </div>
                             ))}
                             {/* Connection Line */}
-                            <div className="hidden md:block w-full h-1 bg-slate-800 absolute top-8 -z-0"></div>
+                            <div className="hidden md:block w-full h-0.5 bg-brand-200 dark:bg-brand-800 absolute top-1/2 -translate-y-1/2 -z-0"></div>
                         </div>
                     </div>
 
                     {/* Why Convert Section */}
-                    <div className="bg-gradient-to-br from-pink-900/20 to-rose-900/20 border border-pink-500/20 rounded-3xl p-8">
-                        <h2 className="text-2xl font-bold text-white mb-4">{r.whyTitle}</h2>
-                        <p className="text-slate-300 leading-relaxed mb-6">{r.whyText}</p>
+                    <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8">
+                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">{r.whyTitle}</h2>
+                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">{r.whyText}</p>
 
-                        <h3 className="text-xl font-semibold text-pink-400 mb-4">{r.compatTitle}</h3>
+                        <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-4">{r.compatTitle}</h3>
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {r.compatItems.map((item, idx) => (
-                                <li key={idx} className="flex items-center gap-2 text-slate-400">
-                                    <span className="text-pink-500">✗</span>
+                                <li key={idx} className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                                    <span className="text-rose-500 font-bold">✗</span>
                                     {item}
                                 </li>
                             ))}
@@ -201,21 +200,21 @@ export default function HeicToJpgPage() {
 
                     {/* Technical Info */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <div className="text-2xl font-bold text-pink-400">HEIC</div>
-                            <div className="text-xs text-slate-500">{activeLang === 'tr' ? 'Giriş Formatı' : activeLang === 'de' ? 'Eingabeformat' : activeLang === 'fr' ? 'Format d\'entrée' : 'Input Format'}</div>
+                        <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div className="text-2xl font-bold text-slate-800 dark:text-white">HEIC</div>
+                            <div className="text-xs text-slate-500 dark:text-slate-400">{activeLang === 'tr' ? 'Giriş Formatı' : activeLang === 'de' ? 'Eingabeformat' : activeLang === 'fr' ? 'Format d\'entrée' : 'Input Format'}</div>
                         </div>
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <div className="text-2xl font-bold text-emerald-400">JPG</div>
-                            <div className="text-xs text-slate-500">{activeLang === 'tr' ? 'Çıkış Formatı' : activeLang === 'de' ? 'Ausgabeformat' : activeLang === 'fr' ? 'Format de sortie' : 'Output Format'}</div>
+                        <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div className="text-2xl font-bold text-brand-600 dark:text-brand-400">JPG</div>
+                            <div className="text-xs text-slate-500 dark:text-slate-400">{activeLang === 'tr' ? 'Çıkış Formatı' : activeLang === 'de' ? 'Ausgabeformat' : activeLang === 'fr' ? 'Format de sortie' : 'Output Format'}</div>
                         </div>
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <div className="text-2xl font-bold text-blue-400">100+</div>
-                            <div className="text-xs text-slate-500">{activeLang === 'tr' ? 'Toplu Dosya' : activeLang === 'de' ? 'Stapel-Dateien' : activeLang === 'fr' ? 'Fichiers par lot' : 'Batch Files'}</div>
+                        <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">100+</div>
+                            <div className="text-xs text-slate-500 dark:text-slate-400">{activeLang === 'tr' ? 'Toplu Dosya' : activeLang === 'de' ? 'Stapel-Dateien' : activeLang === 'fr' ? 'Fichiers par lot' : 'Batch Files'}</div>
                         </div>
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <div className="text-2xl font-bold text-purple-400">0</div>
-                            <div className="text-xs text-slate-500">{activeLang === 'tr' ? 'Veri Saklama' : activeLang === 'de' ? 'Datenspeicherung' : activeLang === 'fr' ? 'Stockage de données' : 'Data Storage'}</div>
+                        <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div className="text-2xl font-bold text-amber-500 dark:text-amber-400">0</div>
+                            <div className="text-xs text-slate-500 dark:text-slate-400">{activeLang === 'tr' ? 'Veri Saklama' : activeLang === 'de' ? 'Datenspeicherung' : activeLang === 'fr' ? 'Stockage de données' : 'Data Storage'}</div>
                         </div>
                     </div>
                 </div>

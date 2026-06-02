@@ -1,52 +1,63 @@
-<!DOCTYPE html>
-<html lang="tr">
+﻿<!DOCTYPE html>
+<html lang="tr" class="min-h-screen bg-slate-50">
 
 <head>
+  <script>
+    (function() {
+      try {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, interactive-widget=resizes-content" />
-
-
-
-
+    content="width=device-width, initial-scale=1.0, maximum-scale=5.0, interactive-widget=resizes-content" />
 
   <!-- SEO Meta Tags -->
-  <title>VormPixyze — Free Image Converter, Background Remover & Compressor Online</title>
+  <title>WebImgConverter — Hassas Görsel İşleme, Cihazınızda.</title>
   <meta name="description"
-    content="Free online image tools: Convert HEIC to JPG, WebP to JPG, PNG to JPG. AI background removal and image compression. Secure, fast, privacy-focused. No registration needed." />
+    content="Ücretsiz online görsel araçları: HEIC'i JPG'ye, WebP'yi JPG'ye, PNG'yi JPG'ye dönüştürün. Yapay zeka ile arka plan silme ve görsel sıkıştırma. Güvenli, hızlı, gizlilik odaklı. Kayıt gerektirmez." />
   <meta name="keywords"
-    content="heic to jpg, webp to jpg, webp converter, iphone photo converter, heic converter, remove background, ai image renaming, image optimizer, free online converter, vormpixyze" />
+    content="heic to jpg, webp to jpg, webp dönüştürücü, iphone fotoğraf dönüştürücü, heic dönüştürücü, arka plan silici, yapay zeka arka plan kaldırma, görsel optimize edici, ücretsiz online dönüştürücü, WebImgConverter" />
   <meta name="robots" content="index, follow" />
-  <meta name="author" content="VormPixyze Inc." />
+  <meta name="author" content="WebImgConverter Inc." />
 
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://vormpixyze.com" />
+  <link rel="canonical" href="https://WebImgConverter.com" />
   <link rel="apple-touch-icon" href="/logo192.png" />
-  <meta property="og:site_name" content="VormPixyze" />
-  <meta name="twitter:creator" content="@VormPixyze" />
+  <meta property="og:site_name" content="WebImgConverter" />
+  <meta name="twitter:creator" content="@WebImgConverter" />
 
-  <!-- Manifest & Theme (Sadece tarayıcı rengi için, yükleme zorunluluğu yok) -->
+  <!-- Manifest & Theme -->
   <link rel="manifest" href="/manifest.json" />
-  <meta name="theme-color" content="#0B0F19" />
+  <meta name="theme-color" content="#10B981" />
 
-  <!-- Favicon (Generated V Logo) -->
-  <!-- Favicon (Generated 'V' Logo) -->
-  <link rel="icon" type="image/png" href="/favicon.png?v=3">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon.png?v=4">
 
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="VormPixyze — Free Image Converter, Background Remover & Compressor" />
+  <meta property="og:title" content="WebImgConverter — Hassas Görsel İşleme, Cihazınızda." />
   <meta property="og:description"
-    content="Convert HEIC and WebP images to JPG, PNG instantly. Free, secure, server-side processing." />
-  <meta property="og:image" content="https://vormpixyze.com/og-image.png" />
-  <meta property="og:url" content="https://vormpixyze.com" />
+    content="HEIC ve WebP görsellerini anında JPG, PNG'ye dönüştürün. Ücretsiz, güvenli, cihaz üzerinde işlem." />
+  <meta property="og:image" content="https://WebImgConverter.com/og-image.png" />
+  <meta property="og:url" content="https://WebImgConverter.com" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://vormpixyze.com/og-image.png" />
+  <meta name="twitter:image" content="https://WebImgConverter.com/og-image.png" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+  <!-- Fonts: Plus Jakarta Sans (body) + Fraunces (display serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&display=swap">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&display=swap"
     rel="stylesheet">
-
-  <!-- HEIC Conversion Library (Loaded via CDN for now, but should ideally be dynamic) -->
 
   <script type="importmap">
 {
@@ -63,33 +74,38 @@
 
 </head>
 
-<body class="bg-grid-pattern text-slate-200 antialiased min-h-screen">
-  <div id="root">
-    <!-- Static Content for SEO Bots (Visible when JS is disabled or before React loads) -->
+<body class="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden">
+  <noscript>Uygulamayı çalıştırmak için JavaScript'i etkinleştirmeniz gerekiyor.</noscript>
+  <div id="root" class="min-h-screen flex flex-col">
+    <!-- Server Side Rendering Placeholder / SEO Content -->
     <header style="visibility: hidden; height: 0; overflow: hidden;">
-      <h1>VormPixyze — Free Online Image Converter, AI Background Remover & Compressor</h1>
+      <h1>WebImgConverter — Hassas Görsel İşleme, Cihazınızda.</h1>
       <p>
-        Convert HEIC, WebP, PNG, and AVIF images to JPG instantly with VormPixyze.
-        Free online image tools: background removal with AI, image compression, and batch conversion.
-        All files processed securely — your images are never stored. Works on iPhone, Android, Windows, and Mac.
+        HEIC, WebP, PNG ve AVIF görsellerini WebImgConverter ile anında JPG'ye dönüştürün.
+        Ücretsiz online görsel araçları: yapay zeka ile arka plan silme, görsel sıkıştırma ve toplu dönüştürme.
+        Tüm dosyalar güvenle işlenir — görselleriniz asla depolanmaz. iPhone, Android, Windows ve Mac'te çalışır.
       </p>
       <nav>
         <ul>
-          <li><a href="/heic-to-jpg">HEIC to JPG Converter — Convert iPhone Photos</a></li>
-          <li><a href="/webp-to-jpg">WebP to JPG Converter — Make WebP Universally Compatible</a></li>
-          <li><a href="/png-to-jpg">PNG to JPG Converter — Reduce File Size</a></li>
-          <li><a href="/remove-background">AI Background Remover — Remove Image Background Free</a></li>
-          <li><a href="/compress-image">Image Compressor — Reduce Image Size Online</a></li>
+          <li><a href="/tools">Tüm Araçlar</a></li>
+          <li><a href="/pricing">Fiyatlandırma</a></li>
+          <li><a href="/blog">Bilgi Merkezi</a></li>
+          <li><a href="/contact">İletişim</a></li>
+          <li><a href="/heic-to-jpg">HEIC to JPG Dönüştürücü — iPhone Fotoğraflarını Dönüştürün</a></li>
+          <li><a href="/webp-to-jpg">WebP to JPG Dönüştürücü — WebP'yi Her Yerde Uyumlu Hale Getirin</a></li>
+          <li><a href="/png-to-jpg">PNG to JPG Dönüştürücü — Dosya Boyutunu Küçültün</a></li>
+          <li><a href="/remove-background">Yapay Zeka Arka Plan Silici — Arka Planı Ücretsiz Kaldırın</a></li>
+          <li><a href="/compress-image">Görsel Sıkıştırıcı — Çevrimiçi Görsel Boyutunu Küçültün</a></li>
         </ul>
       </nav>
-      <h2>Why Choose VormPixyze?</h2>
+      <h2>Neden WebImgConverter'ı Seçmelisiniz?</h2>
       <ul>
-        <li>100% Free — No Registration Required</li>
-        <li>Privacy Focused — Files Never Stored</li>
-        <li>Supports HEIC, WebP, PNG, AVIF, JPG</li>
-        <li>AI-Powered Background Removal</li>
-        <li>Batch Processing — Convert 100+ Files at Once</li>
-        <li>Works on All Devices — iPhone, Android, Windows, Mac</li>
+        <li>%100 Ücretsiz — Kayıt Gerektirmez</li>
+        <li>Gizlilik Odaklı — Dosyalar Asla Depolanmaz</li>
+        <li>HEIC, WebP, PNG, AVIF, JPG Formatlarını Destekler</li>
+        <li>Yapay Zeka Destekli Arka Plan Silme</li>
+        <li>Toplu İşleme — Aynı Anda 100+ Dosyayı Dönüştürün</li>
+        <li>Tüm Cihazlarda Çalışır — iPhone, Android, Windows, Mac</li>
       </ul>
     </header>
   </div>

@@ -1,8 +1,8 @@
-# 🖼️ vormpixyze.com — AdSense Onay Engeli Kapsamlı Site Analiz ve Aksiyon Raporu
+﻿# 🖼️ WebImgConverter.com — AdSense Onay Engeli Kapsamlı Site Analiz ve Aksiyon Raporu
 
 | Alan | Değer |
 |---|---|
-| **Site** | vormpixyze.com |
+| **Site** | WebImgConverter.com |
 | **Site Türü** | Online Görsel Dönüştürme Aracı (Tool Site) |
 | **Araçlar** | HEIC→JPG, WebP→JPG, PNG→JPG, Arkaplan Kaldırma, Görsel Sıkıştırma |
 | **Rapor Tarihi** | 2 Nisan 2026 (v2 — AI İçerik + Tam Sayfa Denetimi) |
@@ -11,7 +11,7 @@
 | **ads.txt Durumu** | ❌ Bulunamadı — ACİL EKLE |
 | **Tahmini Onay Süresi** | 6–10 Hafta (Aksiyonlar Sonrası) |
 
-> **Önemli Not:** VormPixyze, diğer 3 sitenizden farklı bir kategoridedir. Tool site yapısı AdSense için en zorlu kategorilerden biridir. Aşağıdaki aksiyonlar olmadan onay almak neredeyse imkânsızdır.
+> **Önemli Not:** WebImgConverter, diğer 3 sitenizden farklı bir kategoridedir. Tool site yapısı AdSense için en zorlu kategorilerden biridir. Aşağıdaki aksiyonlar olmadan onay almak neredeyse imkânsızdır.
 
 ---
 
@@ -24,7 +24,7 @@ Site büyük ihtimalle React/Next.js veya benzer bir JavaScript framework ile ol
 **Tüm sayfalar sunucudan aynı HTML içeriğini döndürüyor.** Sayfalar arası fark tamamen JavaScript ile oluşturuluyor. Google botu bu içeriği okuduğunda:
 
 - `/heic-to-jpg`, `/webp-to-jpg`, `/remove-background` ve ana sayfa — hepsi **birebir aynı HTML**
-- Her sayfanın `<title>` etiketi: `"Free HEIC & WebP to JPG Converter Online | VormPixyze"` — aynı
+- Her sayfanın `<title>` etiketi: `"Free HEIC & WebP to JPG Converter Online | WebImgConverter"` — aynı
 - Her sayfanın body içeriği: 3 madde + 5 link — aynı
 
 Google bu durumu **tüm sayfalar birbirinin kopyası** olarak işaretliyor. Bu tek başına AdSense reddinin yeterli sebebidir.
@@ -72,7 +72,7 @@ Tool site kategorisinde AdSense alan rakiplerin ortak özellikleri:
 | freeconvert.com | 100+ araç | 400-600 kelime | ✅ Var | ✅ Var | ✅ Onaylı |
 | heic.online | Tek niş | 600+ kelime | ❌ Yok | ✅ Var | ✅ Onaylı |
 | cloudconvert.com | 200+ format | 500+ kelime | ✅ Var | ✅ Var | ✅ Onaylı |
-| **vormpixyze.com** | 5 araç | **~30 kelime** | ❌ Yok | ❌ Yok | ❌ Red |
+| **WebImgConverter.com** | 5 araç | **~30 kelime** | ❌ Yok | ❌ Yok | ❌ Red |
 
 **Rakiplerde her araç sayfasında bulunan içerik yapısı:**
 - Araç başlığı + kısa açıklama
@@ -110,12 +110,12 @@ google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
 Her sayfanın `<title>` ve `<meta description>` etiketi **sunucu tarafında (SSR)** render edilmeli. JavaScript ile sonradan eklenmesi Google tarafından görülmüyor.
 
 Önerilen title formatları:
-- Ana sayfa: `"Free Online Image Converter — HEIC, WebP, PNG to JPG | VormPixyze"`
-- `/heic-to-jpg`: `"HEIC to JPG Converter — Free, Instant, No Upload Limit | VormPixyze"`
-- `/webp-to-jpg`: `"WebP to JPG Converter — Convert WebP Images Free Online | VormPixyze"`
-- `/png-to-jpg`: `"PNG to JPG Converter — Compress & Convert PNG Free | VormPixyze"`
-- `/remove-background`: `"Remove Image Background Free — AI Background Remover | VormPixyze"`
-- `/compress-image`: `"Compress Images Online Free — Reduce JPG, PNG Size | VormPixyze"`
+- Ana sayfa: `"Free Online Image Converter — HEIC, WebP, PNG to JPG | WebImgConverter"`
+- `/heic-to-jpg`: `"HEIC to JPG Converter — Free, Instant, No Upload Limit | WebImgConverter"`
+- `/webp-to-jpg`: `"WebP to JPG Converter — Convert WebP Images Free Online | WebImgConverter"`
+- `/png-to-jpg`: `"PNG to JPG Converter — Compress & Convert PNG Free | WebImgConverter"`
+- `/remove-background`: `"Remove Image Background Free — AI Background Remover | WebImgConverter"`
+- `/compress-image`: `"Compress Images Online Free — Reduce JPG, PNG Size | WebImgConverter"`
 
 ---
 
@@ -141,14 +141,14 @@ PNG sayfası için: PNG vs JPG ne zaman kullanılmalı? Şeffaf arka planın ava
 
 **Bölüm 4 — Özellikler Karşılaştırma Tablosu**
 
-| Özellik | VormPixyze | Convertio | iLoveIMG |
+| Özellik | WebImgConverter | Convertio | iLoveIMG |
 |---|---|---|---|
 | Ücretsiz mi? | ✅ Sınırsız | ⚠️ 25/gün | ⚠️ Saatlik limit |
 | Gizlilik | ✅ Lokal işlem | ❌ Sunucuya yüklür | ❌ Sunucuya yüklür |
 | Kayıt Gerekli | ❌ Yok | ❌ Yok | ❌ Yok |
 
 **Bölüm 5 — SSS (100-150 kelime, 5 soru)**
-- Is VormPixyze really free with no limits?
+- Is WebImgConverter really free with no limits?
 - Are my files safe? Do you store my images?
 - What's the maximum file size?
 - Can I convert multiple files at once?
@@ -272,7 +272,7 @@ AI çıktısı her zaman taslak — insan editöründen geçmeden yayına çıkm
 - ✅ Blog makaleleri haftada 2'den fazla olmasın (başlangıç aşamasında)
 - ❌ 1 günde tüm araç sayfalarını + 10 blog makalesi yayınlama — spam uyarısı tetikler
 
-### 5.3 VormPixyze E-E-A-T Sinyalleri
+### 5.3 WebImgConverter E-E-A-T Sinyalleri
 
 Tool sitelerinde E-E-A-T özellikle kritik — ziyaretçi "Bu araç güvenli mi?" diye soruyor:
 
@@ -284,7 +284,7 @@ Tool sitelerinde E-E-A-T özellikle kritik — ziyaretçi "Bu araç güvenli mi?
 | **Güvenilirlik:** Dosyalar nasıl işleniyor? | ❌ Belirsiz | "Files processed locally, never uploaded" açıkça belirt |
 | **Güncellik:** Site ne zaman güncellenmiş? | ❌ Yok | Blog makalelerine tarih damgası |
 
-### 5.4 VormPixyze İçin AI Kullanım Sınırları
+### 5.4 WebImgConverter İçin AI Kullanım Sınırları
 
 **Güvenli kullanım:**
 - Her araç sayfası için format açıklama taslağı → insan editörü → yayınla
@@ -335,7 +335,7 @@ Tool sitelerinde E-E-A-T özellikle kritik — ziyaretçi "Bu araç güvenli mi?
 
 ## 8. Sonuç
 
-VormPixyze, 4 siteniz içinde en zorlu durumda olan site. Üç katmanlı problem var: ads.txt yok, SPA sorunuyla Google sayfaları göremez, içerik sıfır. 
+WebImgConverter, 4 siteniz içinde en zorlu durumda olan site. Üç katmanlı problem var: ads.txt yok, SPA sorunuyla Google sayfaları göremez, içerik sıfır. 
 
 > ✅ **Bugün yapılacak 3 şey:** ads.txt + Gizlilik Politikası + Hakkımızda. Bu 3 sayfa yarım günde bitirilebilir.
 
@@ -345,4 +345,4 @@ VormPixyze, 4 siteniz içinde en zorlu durumda olan site. Üç katmanlı problem
 
 ---
 
-*Bu rapor vormpixyze.com için hazırlanmıştır. — 2 Nisan 2026 (v2)*
+*Bu rapor WebImgConverter.com için hazırlanmıştır. — 2 Nisan 2026 (v2)*

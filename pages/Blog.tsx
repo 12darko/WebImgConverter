@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
@@ -6,7 +6,7 @@ import { LegalFooter } from '../components/LegalFooter';
 
 const blogContent = {
     tr: {
-        title: 'Blog & Rehberler | VormPixyze',
+        title: 'Blog & Rehberler | WebImgConverter',
         description: 'HEIC, WebP, PNG dönüştürme rehberleri, görsel optimizasyonu ipuçları ve daha fazlası.',
         heading: 'Blog & Rehberler',
         subtitle: 'Görsel dönüştürme ve optimizasyon hakkında bilmeniz gereken her şey.',
@@ -38,9 +38,9 @@ const blogContent = {
                     </ul>
                     
                     <h2>HEIC'i JPG'ye Nasıl Çeviririm?</h2>
-                    <p>VormPixyze ile HEIC dosyalarınızı ücretsiz ve güvenli bir şekilde JPG'ye çevirebilirsiniz:</p>
+                    <p>WebImgConverter ile HEIC dosyalarınızı ücretsiz ve güvenli bir şekilde JPG'ye çevirebilirsiniz:</p>
                     <ol>
-                        <li>VormPixyze.com adresine gidin</li>
+                        <li>WebImgConverter.com adresine gidin</li>
                         <li>HEIC to JPG aracını seçin</li>
                         <li>Dosyalarınızı sürükleyip bırakın</li>
                         <li>Otomatik olarak JPG'ye dönüştürülür</li>
@@ -94,7 +94,7 @@ const blogContent = {
                     <p>WebP artık tüm modern tarayıcılarda destekleniyor: Chrome, Firefox, Safari (macOS Big Sur+), Edge. Ancak Internet Explorer ve eski Safari sürümleri desteklemiyor.</p>
                     
                     <h2>Sonuç</h2>
-                    <p>Web siteniz için WebP kullanın, ama JPG fallback ekleyin. Sosyal medya ve e-posta için JPG tercih edin. VormPixyze ile her iki format arasında kolayca dönüşüm yapabilirsiniz.</p>
+                    <p>Web siteniz için WebP kullanın, ama JPG fallback ekleyin. Sosyal medya ve e-posta için JPG tercih edin. WebImgConverter ile her iki format arasında kolayca dönüşüm yapabilirsiniz.</p>
                 `
             },
             {
@@ -144,8 +144,8 @@ const blogContent = {
                         <li><strong>CLS (Cumulative Layout Shift):</strong> Görsel boyutları belirtilmeli</li>
                     </ul>
                     
-                    <h2>VormPixyze ile Sıkıştırma</h2>
-                    <p>VormPixyze'in görsel sıkıştırma aracı ile tüm bu optimizasyonları tek tıkla yapabilirsiniz. Dosyalarınız sunucuya yüklenmez, gizliliğiniz korunur.</p>
+                    <h2>WebImgConverter ile Sıkıştırma</h2>
+                    <p>WebImgConverter'in görsel sıkıştırma aracı ile tüm bu optimizasyonları tek tıkla yapabilirsiniz. Dosyalarınız sunucuya yüklenmez, gizliliğiniz korunur.</p>
                 `
             },
             {
@@ -157,7 +157,7 @@ const blogContent = {
                 date: '2025-01-01',
                 content: `
                     <h2>AI Arka Plan Silme Nasıl Çalışır?</h2>
-                    <p>Modern yapay zeka modelleri, görüntülerdeki objeleri segmente ederek ön planı arka plandan ayırır. VormPixyze, on-device AI modelleri kullanarak bu işlemi doğrudan tarayıcınızda gerçekleştirir.</p>
+                    <p>Modern yapay zeka modelleri, görüntülerdeki objeleri segmente ederek ön planı arka plandan ayırır. WebImgConverter, güçlü AI modelleri kullanarak bu işlemi bulut sunucularında saniyeler içinde gerçekleştirir.</p>
                     
                     <h2>En İyi Sonuçlar İçin</h2>
                     <ul>
@@ -178,15 +178,51 @@ const blogContent = {
                     <p>Stüdyo çekimi olmadan profesyonel arka planlar oluşturma.</p>
                     
                     <h2>Saç ve Karmaşık Kenarlar</h2>
-                    <p>VormPixyze'in AI modeli, saç telleri ve kürk gibi karmaşık kenarları piksel hassasiyetinde tanır. Ancak en iyi sonuç için öznenin saçları net görünmeli ve arka planla karışmamalıdır.</p>
+                    <p>WebImgConverter'in AI modeli, saç telleri ve kürk gibi karmaşık kenarları piksel hassasiyetinde tanır. Ancak en iyi sonuç için öznenin saçları net görünmeli ve arka planla karışmamalıdır.</p>
                 `
+            },
+            {
+                slug: 'svg-vs-png',
+                title: 'SVG vs PNG: Vektör mü Piksel mi? Doğru Format Seçimi',
+                excerpt: 'Logo ve ikon tasarımlarınız için SVG mi PNG mi kullanmalısınız? Her iki formatın güçlü ve zayıf yönlerini karşılaştırıyoruz.',
+                readTime: '6 dk',
+                category: 'Karşılaştırma',
+                date: '2025-02-10',
+                content: ''
+            },
+            {
+                slug: 'e-ticaret-gorsel-rehberi',
+                title: 'E-Ticaret İçin Görsel Hazırlama: Satışı Artıran Fotoğraf Teknikleri',
+                excerpt: 'Amazon, Trendyol ve Hepsiburada için ürün fotoğraflarınızı profesyonelce optimize edin. Beyaz arka plan, boyut standartları ve sıkıştırma ipuçları.',
+                readTime: '8 dk',
+                category: 'Rehber',
+                date: '2025-02-05',
+                content: ''
+            },
+            {
+                slug: '2025-gorsel-format-rehberi',
+                title: '2025 Görsel Format Rehberi: AVIF, WebP, HEIC ve JPG Karşılaştırması',
+                excerpt: 'Yeni nesil görsel formatları arasında hangisi sizin için en doğru seçim? Kapsamlı teknik karşılaştırma ve kullanım senaryoları.',
+                readTime: '10 dk',
+                category: 'Rehber',
+                date: '2025-03-01',
+                content: ''
+            },
+            {
+                slug: 'toplu-gorsel-isleme',
+                title: 'Toplu Görsel İşleme: 100+ Dosyayı Saniyede Dönüştürmenin Yolları',
+                excerpt: 'Yüzlerce fotoğrafı tek seferde dönüştürün, yeniden boyutlandırın ve sıkıştırın. Profesyonel iş akışı için zamandan tasarruf ipuçları.',
+                readTime: '5 dk',
+                category: 'İpuçları',
+                date: '2025-03-15',
+                content: ''
             }
         ],
         readMore: 'Devamını Oku',
         backToHome: '← Ana Sayfaya Dön'
     },
     en: {
-        title: 'Blog & Guides | VormPixyze',
+        title: 'Blog & Guides | WebImgConverter',
         description: 'HEIC, WebP, PNG conversion guides, image optimization tips and more.',
         heading: 'Blog & Guides',
         subtitle: 'Everything you need to know about image conversion and optimization.',
@@ -218,9 +254,9 @@ const blogContent = {
                     </ul>
                     
                     <h2>How to Convert HEIC to JPG?</h2>
-                    <p>With VormPixyze, you can convert your HEIC files to JPG for free and securely:</p>
+                    <p>With WebImgConverter, you can convert your HEIC files to JPG for free and securely:</p>
                     <ol>
-                        <li>Go to VormPixyze.com</li>
+                        <li>Go to WebImgConverter.com</li>
                         <li>Select the HEIC to JPG tool</li>
                         <li>Drag and drop your files</li>
                         <li>Automatically converted to JPG</li>
@@ -304,7 +340,7 @@ const blogContent = {
                 date: '2025-01-01',
                 content: `
                     <h2>How Does AI Background Removal Work?</h2>
-                    <p>Modern AI models segment objects in images to separate the foreground from the background. VormPixyze uses on-device AI models to perform this process directly in your browser.</p>
+                    <p>Modern AI models segment objects in images to separate the foreground from the background. WebImgConverter uses powerful AI models to perform this process in seconds on cloud servers.</p>
                     
                     <h2>For Best Results</h2>
                     <ul>
@@ -314,13 +350,49 @@ const blogContent = {
                         <li><strong>Resolution:</strong> High-resolution images give more detailed cuts</li>
                     </ul>
                 `
+            },
+            {
+                slug: 'svg-vs-png',
+                title: 'SVG vs PNG: Vector or Pixel? Choosing the Right Format',
+                excerpt: 'Should you use SVG or PNG for your logos and icons? We compare the strengths and weaknesses of both formats.',
+                readTime: '6 min',
+                category: 'Comparison',
+                date: '2025-02-10',
+                content: ''
+            },
+            {
+                slug: 'ecommerce-image-guide',
+                title: 'E-Commerce Image Preparation: Photo Techniques That Boost Sales',
+                excerpt: 'Professionally optimize your product photos for Amazon, Shopify, and Etsy. White background, size standards, and compression tips.',
+                readTime: '8 min',
+                category: 'Guide',
+                date: '2025-02-05',
+                content: ''
+            },
+            {
+                slug: '2025-image-format-guide',
+                title: '2025 Image Format Guide: AVIF, WebP, HEIC & JPG Compared',
+                excerpt: 'Which next-gen image format is right for you? Comprehensive technical comparison and real-world use cases.',
+                readTime: '10 min',
+                category: 'Guide',
+                date: '2025-03-01',
+                content: ''
+            },
+            {
+                slug: 'batch-image-processing',
+                title: 'Batch Image Processing: Convert 100+ Files in Seconds',
+                excerpt: 'Convert, resize, and compress hundreds of photos at once. Time-saving tips for professional workflows.',
+                readTime: '5 min',
+                category: 'Tips',
+                date: '2025-03-15',
+                content: ''
             }
         ],
         readMore: 'Read More',
         backToHome: '← Back to Home'
     },
     de: {
-        title: 'Blog & Anleitungen | VormPixyze',
+        title: 'Blog & Anleitungen | WebImgConverter',
         description: 'HEIC, WebP, PNG Konvertierungsanleitungen, Bildoptimierungstipps und mehr.',
         heading: 'Blog & Anleitungen',
         subtitle: 'Alles was Sie über Bildkonvertierung und -optimierung wissen müssen.',
@@ -342,13 +414,67 @@ const blogContent = {
                 category: 'Vergleich',
                 date: '2025-01-10',
                 content: '<h2>Was ist WebP?</h2><p>WebP ist ein modernes Bildformat, das 2010 von Google entwickelt wurde.</p>'
+            },
+            {
+                slug: 'gorsel-sikistirma-rehberi',
+                title: 'Bildkomprimierung: Größe reduzieren ohne Qualitätsverlust',
+                excerpt: 'Bildkomprimierungstechniken zur Beschleunigung Ihrer Website. Kritische Tipps für SEO und Core Web Vitals.',
+                readTime: '6 Min',
+                category: 'SEO',
+                date: '2025-01-05',
+                content: ''
+            },
+            {
+                slug: 'arka-plan-silme-ipuclari',
+                title: 'KI-Hintergrundentfernung: Tipps für professionelle Ergebnisse',
+                excerpt: 'Wie funktioniert die KI-Hintergrundentfernung? Tipps und Anwendungsfälle für beste Ergebnisse.',
+                readTime: '5 Min',
+                category: 'KI-Tools',
+                date: '2025-01-01',
+                content: ''
+            },
+            {
+                slug: 'svg-vs-png',
+                title: 'SVG vs PNG: Vektor oder Pixel? Die richtige Formatwahl',
+                excerpt: 'Sollten Sie SVG oder PNG für Ihre Logos und Icons verwenden? Wir vergleichen die Stärken und Schwächen beider Formate.',
+                readTime: '6 Min',
+                category: 'Vergleich',
+                date: '2025-02-10',
+                content: ''
+            },
+            {
+                slug: 'e-commerce-bilder',
+                title: 'E-Commerce Bildvorbereitung: Fototechniken die den Umsatz steigern',
+                excerpt: 'Optimieren Sie Ihre Produktfotos professionell für Amazon und Shopify. Weißer Hintergrund, Größenstandards und Komprimierungstipps.',
+                readTime: '8 Min',
+                category: 'Anleitung',
+                date: '2025-02-05',
+                content: ''
+            },
+            {
+                slug: '2025-bildformat-guide',
+                title: '2025 Bildformat-Guide: AVIF, WebP, HEIC & JPG im Vergleich',
+                excerpt: 'Welches Bildformat der neuen Generation ist das richtige für Sie? Umfassender technischer Vergleich.',
+                readTime: '10 Min',
+                category: 'Anleitung',
+                date: '2025-03-01',
+                content: ''
+            },
+            {
+                slug: 'stapel-bildverarbeitung',
+                title: 'Stapel-Bildverarbeitung: 100+ Dateien in Sekunden konvertieren',
+                excerpt: 'Konvertieren, skalieren und komprimieren Sie Hunderte von Fotos gleichzeitig. Zeitsparende Tipps.',
+                readTime: '5 Min',
+                category: 'Tipps',
+                date: '2025-03-15',
+                content: ''
             }
         ],
         readMore: 'Weiterlesen',
         backToHome: '← Zurück zur Startseite'
     },
     fr: {
-        title: 'Blog & Guides | VormPixyze',
+        title: 'Blog & Guides | WebImgConverter',
         description: 'Guides de conversion HEIC, WebP, PNG, conseils d\'optimisation d\'images et plus.',
         heading: 'Blog & Guides',
         subtitle: 'Tout ce que vous devez savoir sur la conversion et l\'optimisation d\'images.',
@@ -370,6 +496,60 @@ const blogContent = {
                 category: 'Comparaison',
                 date: '2025-01-10',
                 content: '<h2>Qu\'est-ce que WebP?</h2><p>WebP est un format d\'image moderne développé par Google en 2010.</p>'
+            },
+            {
+                slug: 'gorsel-sikistirma-rehberi',
+                title: 'Compression d\'images : Réduire la taille sans perte de qualité',
+                excerpt: 'Techniques de compression d\'images pour accélérer votre site web. Conseils critiques pour le SEO et Core Web Vitals.',
+                readTime: '6 min',
+                category: 'SEO',
+                date: '2025-01-05',
+                content: ''
+            },
+            {
+                slug: 'arka-plan-silme-ipuclari',
+                title: 'Suppression d\'arrière-plan IA : Conseils pour des résultats professionnels',
+                excerpt: 'Comment fonctionne la suppression d\'arrière-plan par IA ? Conseils et cas d\'utilisation pour de meilleurs résultats.',
+                readTime: '5 min',
+                category: 'Outils IA',
+                date: '2025-01-01',
+                content: ''
+            },
+            {
+                slug: 'svg-vs-png',
+                title: 'SVG vs PNG : Vecteur ou Pixel ? Choisir le bon format',
+                excerpt: 'Devez-vous utiliser SVG ou PNG pour vos logos et icônes ? Nous comparons les forces et faiblesses des deux formats.',
+                readTime: '6 min',
+                category: 'Comparaison',
+                date: '2025-02-10',
+                content: ''
+            },
+            {
+                slug: 'guide-images-ecommerce',
+                title: 'Préparation d\'images e-commerce : Techniques photo qui boostent les ventes',
+                excerpt: 'Optimisez professionnellement vos photos de produits pour Amazon et Shopify. Fond blanc, standards de taille et conseils.',
+                readTime: '8 min',
+                category: 'Guide',
+                date: '2025-02-05',
+                content: ''
+            },
+            {
+                slug: 'guide-formats-2025',
+                title: 'Guide des formats d\'image 2025 : AVIF, WebP, HEIC et JPG comparés',
+                excerpt: 'Quel format d\'image nouvelle génération est fait pour vous ? Comparaison technique complète.',
+                readTime: '10 min',
+                category: 'Guide',
+                date: '2025-03-01',
+                content: ''
+            },
+            {
+                slug: 'traitement-images-lot',
+                title: 'Traitement d\'images par lot : Convertir 100+ fichiers en secondes',
+                excerpt: 'Convertissez, redimensionnez et compressez des centaines de photos en une fois. Conseils pour gagner du temps.',
+                readTime: '5 min',
+                category: 'Astuces',
+                date: '2025-03-15',
+                content: ''
             }
         ],
         readMore: 'Lire la suite',
@@ -379,95 +559,141 @@ const blogContent = {
 
 type LangKey = keyof typeof blogContent;
 
+import { useNavigate } from 'react-router-dom';
+import { SiteShell } from '../components/layout';
+
 export default function BlogPage() {
     const { language } = useLanguage();
     const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
-    const t = blogContent[activeLang] || blogContent.en;
+    const t = blogContent[activeLang] || blogContent.tr;
+    const navigate = useNavigate();
 
     const categoryColors: Record<string, string> = {
-        'Rehber': 'bg-blue-500/20 text-blue-400',
-        'Guide': 'bg-blue-500/20 text-blue-400',
-        'Anleitung': 'bg-blue-500/20 text-blue-400',
-        'Karşılaştırma': 'bg-purple-500/20 text-purple-400',
-        'Comparison': 'bg-purple-500/20 text-purple-400',
-        'Vergleich': 'bg-purple-500/20 text-purple-400',
-        'Comparaison': 'bg-purple-500/20 text-purple-400',
-        'SEO': 'bg-emerald-500/20 text-emerald-400',
-        'AI Araçları': 'bg-pink-500/20 text-pink-400',
-        'AI Tools': 'bg-pink-500/20 text-pink-400',
+        'Rehber': 'bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-800/50',
+        'Guide': 'bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-800/50',
+        'Anleitung': 'bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-800/50',
+        'Karşılaştırma': 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/50',
+        'Comparison': 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/50',
+        'Vergleich': 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/50',
+        'Comparaison': 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/50',
+        'SEO': 'bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800/50',
+        'AI Araçları': 'bg-orange-50 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50',
+        'AI Tools': 'bg-orange-50 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50',
+        'KI-Tools': 'bg-orange-50 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50',
+        'Outils IA': 'bg-orange-50 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50',
+        'İpuçları': 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50',
+        'Tips': 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50',
+        'Tipps': 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50',
+        'Astuces': 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50',
     };
 
+    const [currentPage, setCurrentPage] = React.useState(1);
+    const articlesPerPage = 6;
+    const totalPages = Math.ceil(t.articles.length / articlesPerPage);
+    const currentArticles = t.articles.slice((currentPage - 1) * articlesPerPage, currentPage * articlesPerPage);
+
+    // Scroll to top when page changes
+    React.useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [currentPage]);
+
     return (
-        <>
+        <SiteShell onCta={() => navigate('/')} ctaLabel="Hemen Başla" bg="white">
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://vormpixyze.com/blog" />
+                <link rel="canonical" href="https://WebImgConverter.com/blog" />
             </Helmet>
 
-            <div className="min-h-screen flex flex-col bg-[#0B0F19] text-slate-200 font-sans">
-                <nav className="glass-panel sticky top-0 z-40 border-b border-white/5">
-                    <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-                        <Link to="/" className="text-xl font-bold text-white">
-                            ← Vorm<span className="text-indigo-400">Pixyze</span>
-                        </Link>
-                    </div>
-                </nav>
+            <section className="max-w-5xl mx-auto px-5 md:px-8 py-12 md:py-20">
+                <div className="text-center mb-16">
+                    <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">{t.heading}</h1>
+                    <p className="text-base md:text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">{t.subtitle}</p>
+                </div>
 
-                <main className="max-w-5xl mx-auto px-4 py-12 flex-1">
-                    <div className="text-center mb-12">
-                        <h1 className="text-4xl font-bold text-white mb-4">{t.heading}</h1>
-                        <p className="text-slate-400 text-lg">{t.subtitle}</p>
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12">
+                    {currentArticles.map((article, idx) => (
+                        <article key={idx} className="bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-3xl p-6 md:p-8 hover:shadow-card-hover hover:border-brand-300 dark:hover:border-brand-700 transition-all group cursor-pointer" onClick={() => navigate(`/blog/${article.slug}`)}>
+                            <div className="flex flex-wrap items-center gap-3 mb-5">
+                                <span className={`text-xs font-bold px-3 py-1 rounded-full ${categoryColors[article.category] || 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700'}`}>
+                                    {article.category}
+                                </span>
+                                <span className="text-xs font-medium text-slate-500 dark:text-slate-400">{article.readTime}</span>
+                                <span className="text-xs text-slate-300 dark:text-slate-700">•</span>
+                                <span className="text-xs font-medium text-slate-500 dark:text-slate-400">{article.date}</span>
+                            </div>
+                            <h2 className="font-serif text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2">
+                                {article.title}
+                            </h2>
+                            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6 line-clamp-3">
+                                {article.excerpt}
+                            </p>
+                            <Link
+                                to={`/blog/${article.slug}`}
+                                className="inline-flex items-center text-brand-600 dark:text-brand-400 text-sm font-bold hover:text-brand-700 dark:hover:text-brand-300 transition-colors"
+                            >
+                                {t.readMore} <span className="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+                            </Link>
+                        </article>
+                    ))}
+                </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {t.articles.map((article, idx) => (
-                            <article key={idx} className="bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden hover:border-indigo-500/30 transition-all group">
-                                <div className="p-6">
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${categoryColors[article.category] || 'bg-slate-700 text-slate-300'}`}>
-                                            {article.category}
-                                        </span>
-                                        <span className="text-xs text-slate-500">{article.readTime}</span>
-                                        <span className="text-xs text-slate-600">•</span>
-                                        <span className="text-xs text-slate-500">{article.date}</span>
-                                    </div>
-                                    <h2 className="text-xl font-bold text-white mb-3 group-hover:text-indigo-400 transition-colors">
-                                        {article.title}
-                                    </h2>
-                                    <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                                        {article.excerpt}
-                                    </p>
-                                    <Link
-                                        to={`/blog/${article.slug}`}
-                                        className="inline-flex items-center text-indigo-400 text-sm font-medium hover:text-indigo-300 transition-colors"
-                                    >
-                                        {t.readMore} →
-                                    </Link>
-                                </div>
-                            </article>
+                {/* Pagination Controls */}
+                {totalPages > 1 && (
+                    <div className="flex items-center justify-center gap-2 mb-20">
+                        <button 
+                            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                            disabled={currentPage === 1}
+                            className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            aria-label="Previous Page"
+                        >
+                            ←
+                        </button>
+                        
+                        {Array.from({ length: totalPages }).map((_, i) => (
+                            <button
+                                key={i}
+                                onClick={() => setCurrentPage(i + 1)}
+                                className={`w-10 h-10 flex items-center justify-center rounded-full text-sm font-medium transition-colors ${
+                                    currentPage === i + 1 
+                                        ? 'bg-brand-600 text-white border-transparent' 
+                                        : 'border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
+                                }`}
+                            >
+                                {i + 1}
+                            </button>
                         ))}
-                    </div>
 
-                    {/* CTA Section */}
-                    <div className="mt-16 text-center bg-gradient-to-r from-indigo-900/30 to-purple-900/30 border border-indigo-500/20 rounded-2xl p-8">
-                        <h2 className="text-2xl font-bold text-white mb-4">
+                        <button 
+                            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                            disabled={currentPage === totalPages}
+                            className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            aria-label="Next Page"
+                        >
+                            →
+                        </button>
+                    </div>
+                )}
+
+                {/* CTA Section */}
+                <div className="bg-slate-900 dark:bg-slate-950/70 border border-slate-800 rounded-3xl p-10 text-center relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-brand-500/10 blur-3xl" />
+                    <div className="relative">
+                        <h2 className="font-serif text-2xl md:text-3xl font-bold text-white mb-4">
                             {activeLang === 'tr' ? 'Hemen Dönüştürmeye Başlayın' : activeLang === 'de' ? 'Jetzt mit der Konvertierung beginnen' : activeLang === 'fr' ? 'Commencez à convertir maintenant' : 'Start Converting Now'}
                         </h2>
-                        <p className="text-slate-400 mb-6">
+                        <p className="text-slate-300 leading-relaxed max-w-2xl mx-auto mb-8">
                             {activeLang === 'tr' ? 'Tüm araçlarımız ücretsiz ve gizlilik odaklıdır.' : activeLang === 'de' ? 'Alle unsere Tools sind kostenlos und datenschutzorientiert.' : activeLang === 'fr' ? 'Tous nos outils sont gratuits et axés sur la confidentialité.' : 'All our tools are free and privacy-focused.'}
                         </p>
-                        <Link
-                            to="/"
-                            className="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-xl transition-colors"
+                        <button
+                            onClick={() => navigate('/')}
+                            className="inline-flex items-center justify-center h-12 md:h-14 px-8 text-base md:text-lg font-bold text-slate-900 dark:text-white bg-white dark:bg-slate-800 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 border border-transparent dark:border-slate-700 transition-colors"
                         >
                             {t.backToHome}
-                        </Link>
+                        </button>
                     </div>
-                </main>
-
-                <LegalFooter />
-            </div>
-        </>
+                </div>
+            </section>
+        </SiteShell>
     );
 }

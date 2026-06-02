@@ -1,11 +1,11 @@
 {
-  "name": "VormPixyze - AI Image Converter",
-  "short_name": "VormPixyze",
-  "description": "Professional HEIC, JPG, PNG converter with AI tools.",
+  "name": "WebImgConverter - Precision Image Processing",
+  "short_name": "WebImgConverter",
+  "description": "Precision image processing, locally. Convert HEIC, WebP, PNG, AVIF instantly with AI tools.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0B0F19",
-  "theme_color": "#4f46e5",
+  "background_color": "#FFFFFF",
+  "theme_color": "#10B981",
   "orientation": "portrait",
   "icons": [
     {

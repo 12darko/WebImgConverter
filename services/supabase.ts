@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+﻿import { createClient } from '@supabase/supabase-js';
 import { UserStats, MAX_FREE_CREDITS } from '../types';
 
 // VibOracle Unified Supabase — Ortak veritabanı
@@ -10,6 +10,19 @@ if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
 }
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const SITE_KEY = 'vormpixize';
+
+const syncSiteActivation = async (userId: string, defaultCredits: number) => {
+  // Merkezi helper yoksa aktivasyon kırılmasın.
+  const { error } = await supabase.rpc('ensure_site_credits', {
+    p_user_id: userId,
+    p_site: SITE_KEY,
+    p_default_credits: defaultCredits
+  });
+  if (error) {
+    console.warn(`[activation] ensure_site_credits unavailable for ${SITE_KEY}:`, error.message);
+  }
+};
 
 /**
  * Kullanıcının profil bilgilerini (kredi, premium durumu) çeker.
@@ -33,7 +46,7 @@ export const getUserProfile = async (userId: string): Promise<UserStats | null> 
       .from('site_credits')
       .select('*')
       .eq('user_id', userId)
-      .eq('site', 'vormpixize')
+      .eq('site', SITE_KEY)
       .single();
 
     const { data, error } = await Promise.race([fetchProfile, timeout]) as { data: any; error: any };
@@ -65,7 +78,7 @@ export const getUserProfile = async (userId: string): Promise<UserStats | null> 
       // Premium Süre Kontrolü
       if (data.is_premium && dbExpiryDate && dbExpiryDate < today) {
         console.log('[Profile] Premium expired:', dbExpiryDate, '< today:', today);
-        await supabase.from('site_credits').update({ is_premium: false, daily_limit: 7 }).eq('user_id', userId).eq('site', 'vormpixize');
+        await supabase.from('site_credits').update({ is_premium: false, daily_limit: 7 }).eq('user_id', userId).eq('site', SITE_KEY);
         data.is_premium = false;
         data.daily_limit = 7;
       }
@@ -113,7 +126,7 @@ export const updateUserCredits = async (userId: string, newAmount: number) => {
     .from('site_credits')
     .update({ credits: newAmount })
     .eq('user_id', userId)
-    .eq('site', 'vormpixize');
+    .eq('site', SITE_KEY);
 
   if (error) console.error('Error updating credits:', error);
 };
@@ -146,7 +159,7 @@ export const resetDailyCredits = async (userId: string, limit: number = MAX_FREE
     .from('site_credits')
     .update({ credits: limit, last_reset_date: today })
     .eq('user_id', userId)
-    .eq('site', 'vormpixize');
+    .eq('site', SITE_KEY);
 };
 
 /**
@@ -157,7 +170,7 @@ export const upgradeToPremium = async (userId: string) => {
     .from('site_credits')
     .update({ is_premium: true })
     .eq('user_id', userId)
-    .eq('site', 'vormpixize');
+    .eq('site', SITE_KEY);
 
   if (error) console.error('Error upgrading to premium:', error);
 };
@@ -246,7 +259,7 @@ export const createSupportTicket = async (email: string, subject: string, messag
 };
 
 /**
- * Kullanıcı VormPixyze platformunu ilk kez aktifleştirdiğinde çağrılır.
+ * Kullanıcı WebImgConverter platformunu ilk kez aktifleştirdiğinde çağrılır.
  */
 export const activateSiteAccount = async (userId: string) => {
   const today = new Date().toISOString().split('T')[0];
@@ -256,14 +269,16 @@ export const activateSiteAccount = async (userId: string) => {
     is_premium: false,
     daily_limit: MAX_FREE_CREDITS,
     last_reset_date: today,
-    site: 'vormpixize'
+    site: SITE_KEY
   };
 
-  const { error } = await supabase.from('site_credits').insert([newProfile]);
+  // Idempotent activation: tekrar çağrıda conflict yerine deterministik güncelleme.
+  const { error } = await supabase
+    .from('site_credits')
+    .upsert(newProfile, { onConflict: 'user_id,site' });
   if (error) throw error;
 
-  // Profiles tablosundaki registered_sites array'ini güncelle (Eğer API izin veriyorsa)
-  // Şimdilik site_credits kaydı yeterli, RPC fonksiyonu veya frontend çağrısı ile de yapılabilir.
+  await syncSiteActivation(userId, MAX_FREE_CREDITS);
   
   return {
     credits: MAX_FREE_CREDITS,

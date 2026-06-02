@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
@@ -6,14 +6,14 @@ import { LegalFooter } from '../components/LegalFooter';
 
 const content = {
     tr: {
-        title: 'Gizlilik Politikası | VormPixyze',
-        description: 'VormPixyze gizlilik politikası. Verilerinizi nasıl koruduğumuzu öğrenin.',
+        title: 'Gizlilik Politikası | WebImgConverter',
+        description: 'WebImgConverter gizlilik politikası. Verilerinizi nasıl koruduğumuzu öğrenin.',
         heading: 'Gizlilik Politikası',
         lastUpdated: 'Son Güncelleme: Ocak 2025',
         sections: [
             {
                 title: 'Veri Toplama',
-                content: 'VormPixyze, en yüksek kalite ve performans için tüm görsel işleme operasyonlarını (Dönüştürme, Sıkıştırma, Arka Plan Silme) güvenli ve geçici sunucularında gerçekleştirir. Görselleriniz işlenmek üzere şifreli olarak sunucuya iletilir, işlem tamamlanır tamamlanmaz derhal silinir ve asla depolanmaz.'
+                content: 'WebImgConverter, en yüksek kalite ve performans için tüm görsel işleme operasyonlarını (Dönüştürme, Sıkıştırma, Arka Plan Silme) güvenli ve geçici sunucularında gerçekleştirir. Görselleriniz işlenmek üzere şifreli olarak sunucuya iletilir, işlem tamamlanır tamamlanmaz derhal silinir ve asla depolanmaz.'
             },
             {
                 title: 'Çerezler',
@@ -29,19 +29,19 @@ const content = {
             },
             {
                 title: 'İletişim',
-                content: 'Gizlilik politikamız hakkında sorularınız için support@vormpixyze.com adresinden bize ulaşabilirsiniz.'
+                content: 'Gizlilik politikamız hakkında sorularınız için support@WebImgConverter.com adresinden bize ulaşabilirsiniz.'
             }
         ]
     },
     en: {
-        title: 'Privacy Policy | VormPixyze',
-        description: 'VormPixyze privacy policy. Learn how we protect your data.',
+        title: 'Privacy Policy | WebImgConverter',
+        description: 'WebImgConverter privacy policy. Learn how we protect your data.',
         heading: 'Privacy Policy',
         lastUpdated: 'Last Updated: January 2025',
         sections: [
             {
                 title: 'Data Collection',
-                content: 'VormPixyze processes all image operations (Conversion, Compression, Background Removal) on secure, ephemeral servers to ensure highest quality and performance. Your images are transmitted securely (encrypted), processed, and then immediately deleted. We never store your files.'
+                content: 'WebImgConverter processes all image operations (Conversion, Compression, Background Removal) on secure, ephemeral servers to ensure highest quality and performance. Your images are transmitted securely (encrypted), processed, and then immediately deleted. We never store your files.'
             },
             {
                 title: 'Cookies',
@@ -57,49 +57,102 @@ const content = {
             },
             {
                 title: 'Contact',
-                content: 'For questions about our privacy policy, you can reach us at support@vormpixyze.com.'
+                content: 'For questions about our privacy policy, you can reach us at support@WebImgConverter.com.'
+            }
+        ]
+    },
+    de: {
+        title: 'Datenschutzrichtlinie | WebImgConverter',
+        description: 'WebImgConverter Datenschutzrichtlinie. Erfahren Sie, wie wir Ihre Daten schützen.',
+        heading: 'Datenschutzrichtlinie',
+        lastUpdated: 'Zuletzt aktualisiert: Januar 2025',
+        sections: [
+            {
+                title: 'Datenerfassung',
+                content: 'WebImgConverter verarbeitet alle Bildoperationen (Konvertierung, Komprimierung, Hintergrundentfernung) auf sicheren, temporären Servern, um höchste Qualität und Leistung zu gewährleisten. Ihre Bilder werden sicher (verschlüsselt) übertragen, verarbeitet und danach sofort gelöscht. Wir speichern Ihre Dateien niemals.'
+            },
+            {
+                title: 'Cookies',
+                content: 'Unsere Website verwendet wesentliche Cookies, um die Benutzererfahrung zu verbessern. Diese Cookies werden verwendet, um Ihre Spracheinstellung, den Sitzungsstatus und die Website-Einstellungen zu speichern. Google Analytics und Google AdSense können ebenfalls Leistungs- und Werbe-Cookies verwenden.'
+            },
+            {
+                title: 'Dienste von Drittanbietern',
+                content: 'Zahlungen für Premium-Mitgliedschaften werden von Lemon Squeezy abgewickelt. Ihre Zahlungsinformationen werden direkt auf den sicheren Servern von Lemon Squeezy verarbeitet; wir sehen oder speichern Ihre Kreditkarteninformationen nicht. Wir nutzen auch die Dienste von Google Analytics (Website-Analyse) und Google AdSense (Werbung).'
+            },
+            {
+                title: 'Datensicherheit',
+                content: 'Unsere sichere Serverarchitektur gewährleistet maximale Privatsphäre bei gleichzeitig hoher Qualität der Ergebnisse. Daten werden verschlüsselt (SSL/TLS) übertragen und nie dauerhaft gespeichert. Ihre Dateien werden nach der Verarbeitung automatisch vernichtet.'
+            },
+            {
+                title: 'Kontakt',
+                content: 'Bei Fragen zu unserer Datenschutzrichtlinie erreichen Sie uns unter support@WebImgConverter.com.'
+            }
+        ]
+    },
+    fr: {
+        title: 'Politique de Confidentialité | WebImgConverter',
+        description: 'Politique de confidentialité de WebImgConverter. Découvrez comment nous protégeons vos données.',
+        heading: 'Politique de Confidentialité',
+        lastUpdated: 'Dernière mise à jour : Janvier 2025',
+        sections: [
+            {
+                title: 'Collecte de Données',
+                content: 'WebImgConverter traite toutes les opérations d\'image (Conversion, Compression, Suppression d\'Arrière-plan) sur des serveurs éphémères sécurisés pour garantir la plus haute qualité et performance. Vos images sont transmises de manière sécurisée (cryptées), traitées, puis immédiatement supprimées. Nous ne stockons jamais vos fichiers.'
+            },
+            {
+                title: 'Cookies',
+                content: 'Notre site utilise des cookies essentiels pour améliorer l\'expérience utilisateur. Ces cookies sont utilisés pour mémoriser votre préférence linguistique, l\'état de la session et les paramètres du site. Google Analytics et Google AdSense peuvent également utiliser des cookies de performance et publicitaires.'
+            },
+            {
+                title: 'Services Tiers',
+                content: 'Les paiements d\'abonnement premium sont traités par Lemon Squeezy. Vos informations de paiement sont traitées directement sur les serveurs sécurisés de Lemon Squeezy; nous ne voyons ni ne stockons vos informations de carte de crédit. Nous utilisons également les services Google Analytics (analyse de site) et Google AdSense (publicité).'
+            },
+            {
+                title: 'Sécurité des Données',
+                content: 'Notre architecture de serveur sécurisée garantit une confidentialité maximale tout en fournissant des résultats de haute qualité. Les données sont transmises avec un cryptage (SSL/TLS) et ne sont jamais stockées en permanence. Vos fichiers sont automatiquement détruits immédiatement après le traitement.'
+            },
+            {
+                title: 'Contact',
+                content: 'Pour des questions concernant notre politique de confidentialité, vous pouvez nous joindre à support@WebImgConverter.com.'
             }
         ]
     }
 };
 
+import { useNavigate } from 'react-router-dom';
+import { SiteShell } from '../components/layout';
+
 export default function PrivacyPage() {
     const { language } = useLanguage();
-    const t = content[language] || content.en;
+    const activeLang = typeof language === 'string' && language.startsWith('tr') ? 'tr' : 
+                      typeof language === 'string' && language.startsWith('de') ? 'de' : 
+                      typeof language === 'string' && language.startsWith('fr') ? 'fr' : 'en';
+    const t = content[activeLang as keyof typeof content] || content.tr;
+    const navigate = useNavigate();
 
     return (
-        <>
+        <SiteShell onCta={() => navigate('/')} ctaLabel="Hemen Başla" bg="white">
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://vormpixyze.com/privacy" />
+                <link rel="canonical" href="https://WebImgConverter.com/privacy" />
             </Helmet>
 
-            <div className="min-h-screen flex flex-col bg-[#0B0F19] text-slate-200 font-sans">
-                <nav className="glass-panel sticky top-0 z-40 border-b border-white/5">
-                    <div className="max-w-4xl mx-auto px-4 h-16 flex items-center">
-                        <Link to="/" className="text-xl font-bold text-white">
-                            ← Vorm<span className="text-indigo-400">Pixyze</span>
-                        </Link>
-                    </div>
-                </nav>
+            <section className="max-w-4xl mx-auto px-5 md:px-8 py-12 md:py-20">
+                <div className="text-center mb-10">
+                    <h1 className="font-serif text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">{t.heading}</h1>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">{t.lastUpdated}</p>
+                </div>
 
-                <main className="max-w-4xl mx-auto px-4 py-12">
-                    <h1 className="text-3xl font-bold text-white mb-2">{t.heading}</h1>
-                    <p className="text-sm text-slate-500 mb-8">{t.lastUpdated}</p>
-
-                    <div className="space-y-8">
-                        {t.sections.map((section, i) => (
-                            <section key={i} className="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
-                                <h2 className="text-lg font-bold text-white mb-3">{section.title}</h2>
-                                <p className="text-slate-400 leading-relaxed">{section.content}</p>
-                            </section>
-                        ))}
-                    </div>
-                </main>
-
-                <LegalFooter />
-            </div>
-        </>
+                <div className="space-y-6">
+                    {t.sections.map((section, i) => (
+                        <div key={i} className="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6 md:p-8 shadow-card dark:shadow-none">
+                            <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-3">{section.title}</h2>
+                            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{section.content}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        </SiteShell>
     );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 interface StructuredDataProps {
@@ -20,12 +20,12 @@ export const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) =>
             schema = {
                 "@context": "https://schema.org",
                 "@type": "WebSite",
-                "name": "VormPixyze",
-                "url": "https://vormpixyze.com",
+                "name": "WebImgConverter",
+                "url": "https://WebImgConverter.com",
                 "description": "Free online image converter. Convert HEIC, WebP, PNG to JPG. AI background removal and image compression. Secure, fast, and privacy-focused.",
                 "potentialAction": {
                     "@type": "SearchAction",
-                    "target": "https://vormpixyze.com/?q={search_term_string}",
+                    "target": "https://WebImgConverter.com/?q={search_term_string}",
                     "query-input": "required name=search_term_string"
                 }
             };
@@ -35,12 +35,12 @@ export const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) =>
             schema = {
                 "@context": "https://schema.org",
                 "@type": "Organization",
-                "name": "VormPixyze Inc.",
-                "url": "https://vormpixyze.com",
-                "logo": "https://vormpixyze.com/logo192.png",
+                "name": "WebImgConverter Inc.",
+                "url": "https://WebImgConverter.com",
+                "logo": "https://WebImgConverter.com/logo192.png",
                 "contactPoint": {
                     "@type": "ContactPoint",
-                    "email": "support@vormpixyze.com",
+                    "email": "support@WebImgConverter.com",
                     "contactType": "customer service"
                 },
                 "sameAs": []
@@ -51,9 +51,9 @@ export const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) =>
             schema = {
                 "@context": "https://schema.org",
                 "@type": "SoftwareApplication",
-                "name": data?.name || "VormPixyze Image Converter",
+                "name": data?.name || "WebImgConverter Image Converter",
                 "description": data?.description || "Free online image conversion tool",
-                "url": data?.url || "https://vormpixyze.com",
+                "url": data?.url || "https://WebImgConverter.com",
                 "applicationCategory": "MultimediaApplication",
                 "operatingSystem": "Web Browser",
                 "offers": {
@@ -73,20 +73,20 @@ export const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) =>
             schema = {
                 "@context": "https://schema.org",
                 "@type": "Article",
-                "headline": data?.name || "VormPixyze Blog",
+                "headline": data?.name || "WebImgConverter Blog",
                 "description": data?.description || "",
-                "url": data?.url || "https://vormpixyze.com/blog",
+                "url": data?.url || "https://WebImgConverter.com/blog",
                 "datePublished": data?.datePublished || new Date().toISOString(),
                 "author": {
                     "@type": "Organization",
-                    "name": "VormPixyze Inc."
+                    "name": "WebImgConverter Inc."
                 },
                 "publisher": {
                     "@type": "Organization",
-                    "name": "VormPixyze Inc.",
+                    "name": "WebImgConverter Inc.",
                     "logo": {
                         "@type": "ImageObject",
-                        "url": "https://vormpixyze.com/logo192.png"
+                        "url": "https://WebImgConverter.com/logo192.png"
                     }
                 }
             };

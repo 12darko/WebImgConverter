@@ -109,11 +109,11 @@ export const CropModal: React.FC<CropModalProps> = ({ isOpen, onClose, imageUrl,
 
                 {/* Aspect Ratio Buttons */}
                 <div className="flex gap-2 p-4 border-b border-slate-800">
-                    <button onClick={() => setAspectRatio(undefined)} className={`px-3 py-1.5 rounded text-xs ${!aspectRatio ? 'bg-indigo-600' : 'bg-slate-700'}`}>Serbest</button>
-                    <button onClick={() => setAspectRatio(1)} className={`px-3 py-1.5 rounded text-xs ${aspectRatio === 1 ? 'bg-indigo-600' : 'bg-slate-700'}`}>1:1</button>
-                    <button onClick={() => setAspectRatio(16 / 9)} className={`px-3 py-1.5 rounded text-xs ${aspectRatio === 16 / 9 ? 'bg-indigo-600' : 'bg-slate-700'}`}>16:9</button>
-                    <button onClick={() => setAspectRatio(4 / 3)} className={`px-3 py-1.5 rounded text-xs ${aspectRatio === 4 / 3 ? 'bg-indigo-600' : 'bg-slate-700'}`}>4:3</button>
-                    <button onClick={() => setAspectRatio(3 / 2)} className={`px-3 py-1.5 rounded text-xs ${aspectRatio === 3 / 2 ? 'bg-indigo-600' : 'bg-slate-700'}`}>3:2</button>
+                    <button onClick={() => setAspectRatio(undefined)} className={`px-3 py-1.5 rounded text-xs ${!aspectRatio ? 'bg-brand-600' : 'bg-slate-700'}`}>Serbest</button>
+                    <button onClick={() => setAspectRatio(1)} className={`px-3 py-1.5 rounded text-xs ${aspectRatio === 1 ? 'bg-brand-600' : 'bg-slate-700'}`}>1:1</button>
+                    <button onClick={() => setAspectRatio(16 / 9)} className={`px-3 py-1.5 rounded text-xs ${aspectRatio === 16 / 9 ? 'bg-brand-600' : 'bg-slate-700'}`}>16:9</button>
+                    <button onClick={() => setAspectRatio(4 / 3)} className={`px-3 py-1.5 rounded text-xs ${aspectRatio === 4 / 3 ? 'bg-brand-600' : 'bg-slate-700'}`}>4:3</button>
+                    <button onClick={() => setAspectRatio(3 / 2)} className={`px-3 py-1.5 rounded text-xs ${aspectRatio === 3 / 2 ? 'bg-brand-600' : 'bg-slate-700'}`}>3:2</button>
                 </div>
 
                 {/* Crop Area */}
@@ -129,7 +129,7 @@ export const CropModal: React.FC<CropModalProps> = ({ isOpen, onClose, imageUrl,
                             src={imageUrl}
                             onLoad={onImageLoad}
                             alt="Crop preview"
-                            className="max-w-full max-h-[50vh] object-contain"
+                            className="max-w-full max-h-[50vh] object-contain dark:brightness-90 dark:opacity-90"
                         />
                     </ReactCrop>
                 </div>
@@ -137,7 +137,7 @@ export const CropModal: React.FC<CropModalProps> = ({ isOpen, onClose, imageUrl,
                 {/* Footer */}
                 <div className="flex justify-end gap-3 p-4 border-t border-slate-800">
                     <button onClick={onClose} className="px-4 py-2 bg-slate-700 text-white rounded-lg text-sm">İptal</button>
-                    <button onClick={handleApply} className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-bold">Uygula</button>
+                    <button onClick={handleApply} className="px-4 py-2 bg-brand-600 text-white rounded-lg text-sm font-bold">Uygula</button>
                 </div>
             </div>
         </div>

@@ -82,13 +82,13 @@ export const CompareSlider: React.FC<CompareSliderProps> = ({ originalUrl, conve
                         className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize shadow-[0_0_10px_rgba(0,0,0,0.5)]"
                         style={{ left: `${sliderPosition}%` }}
                     >
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg text-indigo-900 font-bold text-xs">
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg text-brand-900 font-bold text-xs">
                             ↔
                         </div>
                     </div>
 
                     <div className="absolute top-4 left-4 bg-black/50 text-white px-2 py-1 rounded text-xs pointer-events-none">Original</div>
-                    <div className="absolute top-4 right-4 bg-indigo-600/50 text-white px-2 py-1 rounded text-xs pointer-events-none">Converted</div>
+                    <div className="absolute top-4 right-4 bg-brand-600/50 text-white px-2 py-1 rounded text-xs pointer-events-none">Converted</div>
                 </div>
 
             </div>

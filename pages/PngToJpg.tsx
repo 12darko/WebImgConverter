@@ -1,11 +1,11 @@
-import React from 'react';
+﻿import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import App from '../App';
+import App from '../AppMain';
 import { SeoContent } from '../components/SeoContent';
 
 const seoContent = {
     tr: {
-        title: 'PNG to JPG Dönüştürücü - Ücretsiz Online | VormPixyze',
+        title: 'PNG to JPG Dönüştürücü - Ücretsiz Online | WebImgConverter',
         description: 'PNG dosyalarınızı küçük boyutlu JPG formatına dönüştürün. Sunucu tabanlı güvenli işlem, dosyalarınız saklanmaz.',
         h1: 'PNG to JPG Dönüştürücü',
         feature1: 'Küçük Boyut', feature1Desc: 'JPG sıkıştırması ile dosya boyutunu %80\'e kadar azaltın.',
@@ -17,7 +17,7 @@ const seoContent = {
         step3: 'Kaydet', step3Desc: 'Yeni dosyayı indirin.'
     },
     en: {
-        title: 'Free PNG to JPG Converter Online | VormPixyze',
+        title: 'Free PNG to JPG Converter Online | WebImgConverter',
         description: 'Convert PNG files to smaller JPG format. Secure server processing, files never stored.',
         h1: 'PNG to JPG Converter',
         feature1: 'Smaller Size', feature1Desc: 'Reduce file size up to 80% with efficient JPG compression.',
@@ -29,7 +29,7 @@ const seoContent = {
         step3: 'Save', step3Desc: 'Download new file.'
     },
     de: {
-        title: 'Kostenloser PNG zu JPG Konverter Online | VormPixyze',
+        title: 'Kostenloser PNG zu JPG Konverter Online | WebImgConverter',
         description: 'Konvertieren Sie PNG-Dateien in kleineres JPG-Format. Sichere Serververarbeitung, Dateien werden nicht gespeichert.',
         h1: 'PNG zu JPG Konverter',
         feature1: 'Kleinere Größe', feature1Desc: 'Reduzieren Sie die Dateigröße um bis zu 80% mit effizienter JPG-Komprimierung.',
@@ -41,7 +41,7 @@ const seoContent = {
         step3: 'Speichern', step3Desc: 'Neue Datei herunterladen.'
     },
     fr: {
-        title: 'Convertisseur PNG en JPG Gratuit en Ligne | VormPixyze',
+        title: 'Convertisseur PNG en JPG Gratuit en Ligne | WebImgConverter',
         description: 'Convertissez des fichiers PNG en format JPG plus petit. Traitement serveur sécurisé, fichiers jamais stockés.',
         h1: 'Convertisseur PNG en JPG',
         feature1: 'Taille réduite', feature1Desc: 'Réduisez la taille du fichier jusqu\'à 80% avec une compression JPG efficace.',
@@ -68,7 +68,7 @@ export default function PngToJpgPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://vormpixyze.com/png-to-jpg" />
+                <link rel="canonical" href="https://WebImgConverter.com/png-to-jpg" />
             </Helmet>
             <App
                 defaultTool="png-to-jpg"
@@ -82,48 +82,48 @@ export default function PngToJpgPage() {
 
                     {/* Unique Feature Highlights */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                        <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-orange-500/30 transition-colors">
+                        <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-card hover:border-brand-300 dark:hover:border-brand-700 transition-all">
                             <div className="text-4xl mb-4">📉</div>
-                            <h3 className="text-xl font-bold text-white mb-2">{language === 'tr' ? 'Küçük Boyut' : 'Smaller Size'}</h3>
-                            <p className="text-slate-400 text-sm">{language === 'tr' ? 'JPG sıkıştırması ile dosya boyutunu %80\'e kadar azaltın.' : 'Reduce file size up to 80% with efficient JPG compression.'}</p>
+                            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t.feature1}</h3>
+                            <p className="text-slate-600 dark:text-slate-400 text-sm">{t.feature1Desc}</p>
                         </div>
-                        <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-orange-500/30 transition-colors">
+                        <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-card hover:border-brand-300 dark:hover:border-brand-700 transition-all">
                             <div className="text-4xl mb-4">⬜</div>
-                            <h3 className="text-xl font-bold text-white mb-2">{language === 'tr' ? 'Akıllı Arka Plan' : 'Smart BG'}</h3>
-                            <p className="text-slate-400 text-sm">{language === 'tr' ? 'Şeffaf alanlar otomatik olarak beyaza (veya seçilen renge) dönüşür.' : 'Transparent areas automatically become white (or custom color).'}</p>
+                            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t.feature2}</h3>
+                            <p className="text-slate-600 dark:text-slate-400 text-sm">{t.feature2Desc}</p>
                         </div>
-                        <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-orange-500/30 transition-colors">
+                        <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-card hover:border-brand-300 dark:hover:border-brand-700 transition-all">
                             <div className="text-4xl mb-4">🚀</div>
-                            <h3 className="text-xl font-bold text-white mb-2">{language === 'tr' ? 'Site Hızı' : 'Web Speed'}</h3>
-                            <p className="text-slate-400 text-sm">{language === 'tr' ? 'Web siteniz için en hızlı yüklenen format olan JPG\'ye geçin.' : 'Switch to JPG, the fastest loading format for photography.'}</p>
+                            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t.feature3}</h3>
+                            <p className="text-slate-600 dark:text-slate-400 text-sm">{t.feature3Desc}</p>
                         </div>
                     </div>
 
                     {/* Visual How-To Steps */}
-                    <div className="space-y-8">
-                        <h2 className="text-3xl font-bold text-white text-center">
-                            {language === 'tr' ? 'PNG Nasıl JPG Yapılır?' : 'How to Convert PNG to JPG?'}
+                    <div className="space-y-8 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-900/40 rounded-3xl p-8 md:p-12">
+                        <h2 className="text-3xl font-serif font-bold text-slate-900 dark:text-white text-center">
+                            {t.howTo}
                         </h2>
                         <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative">
                             {/* Step 1 */}
-                            <div className="flex-1 text-center relative z-10">
-                                <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4 shadow-lg shadow-orange-500/20">1</div>
-                                <h3 className="font-semibold text-white mb-1">{language === 'tr' ? 'PNG Yükle' : 'Upload PNG'}</h3>
-                                <p className="text-slate-500 text-sm">{language === 'tr' ? 'Görselleri seçin.' : 'Select images.'}</p>
+                            <div className="flex-1 text-center relative z-10 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-800 rounded-xl flex items-center justify-center text-xl font-bold text-brand-600 dark:text-brand-400 mx-auto mb-4">1</div>
+                                <h3 className="font-bold text-slate-900 dark:text-white mb-1">{t.step1}</h3>
+                                <p className="text-slate-500 dark:text-slate-400 text-sm">{t.step1Desc}</p>
                             </div>
                             {/* Arrow */}
-                            <div className="hidden md:block w-full h-1 bg-slate-800 absolute top-8 -z-0"></div>
+                            <div className="hidden md:block w-full h-0.5 bg-brand-200 dark:bg-brand-800 absolute top-1/2 -translate-y-1/2 -z-0"></div>
                             {/* Step 2 */}
-                            <div className="flex-1 text-center relative z-10">
-                                <div className="w-16 h-16 bg-slate-800 border-2 border-orange-500 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4 bg-slate-900">2</div>
-                                <h3 className="font-semibold text-white mb-1">{language === 'tr' ? 'Dönüştür' : 'Convert'}</h3>
-                                <p className="text-slate-500 text-sm">{language === 'tr' ? 'Tek tıkla JPG yapın.' : 'One click to JPG.'}</p>
+                            <div className="flex-1 text-center relative z-10 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-800 rounded-xl flex items-center justify-center text-xl font-bold text-brand-600 dark:text-brand-400 mx-auto mb-4">2</div>
+                                <h3 className="font-bold text-slate-900 dark:text-white mb-1">{t.step2}</h3>
+                                <p className="text-slate-500 dark:text-slate-400 text-sm">{t.step2Desc}</p>
                             </div>
                             {/* Step 3 */}
-                            <div className="flex-1 text-center relative z-10">
-                                <div className="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4 shadow-lg shadow-emerald-500/20">3</div>
-                                <h3 className="font-semibold text-white mb-1">{language === 'tr' ? 'Kaydet' : 'Save'}</h3>
-                                <p className="text-slate-500 text-sm">{language === 'tr' ? 'Yeni dosyayı indirin.' : 'Download new file.'}</p>
+                            <div className="flex-1 text-center relative z-10 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-800 rounded-xl flex items-center justify-center text-xl font-bold text-brand-600 dark:text-brand-400 mx-auto mb-4">3</div>
+                                <h3 className="font-bold text-slate-900 dark:text-white mb-1">{t.step3}</h3>
+                                <p className="text-slate-500 dark:text-slate-400 text-sm">{t.step3Desc}</p>
                             </div>
                         </div>
                     </div>

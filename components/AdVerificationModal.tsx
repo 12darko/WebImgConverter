@@ -50,7 +50,7 @@ export const AdVerificationModal: React.FC<AdVerificationModalProps> = ({ isOpen
                </svg>
              )}
              {/* Progress ring simulation */}
-             <div className="absolute inset-0 border-4 border-indigo-500/30 rounded-full"></div>
+             <div className="absolute inset-0 border-4 border-brand-500/30 rounded-full"></div>
           </div>
           <h3 className="text-lg font-bold text-white mb-2">Sponsorlu İçerik</h3>
           <p className="text-slate-400 text-sm">
