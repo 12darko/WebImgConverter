@@ -46,7 +46,8 @@ export const InlineBgRemover: React.FC<InlineBgRemoverProps> = ({ file, onProces
                                     className="bg-brand-50 dark:bg-brand-950/30 text-[13px] font-medium text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800 rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-brand-500 outline-none"
                                 >
                                     <option value="birefnet-general">Ultra AI (İnsan, Saç & İnce Detay)</option>
-                                    <option value="isnet-general-use">Standart AI (Logo, Yazı & Nesne)</option>
+                                    <option value="isnet-general-use">Standart AI (Logo & Nesne)</option>
+                                    <option value="u2net">Klasik AI (Metinleri Koru)</option>
                                 </select>
                             )}
                             <button onClick={onProcess} className="px-6 py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-sm font-bold shadow-sm transition-colors flex items-center gap-2">
@@ -84,16 +85,16 @@ export const InlineBgRemover: React.FC<InlineBgRemoverProps> = ({ file, onProces
                         {/* After Image (Transparent BG) */}
                         <img src={file.convertedUrl} className="absolute inset-0 w-full h-full object-contain pointer-events-none dark:brightness-90 dark:opacity-90" alt="After" />
                         
-                        {/* Before Image (Original) */}
-                        <div className="absolute inset-0 overflow-hidden border-r-2 border-white/80 dark:border-slate-700/80 shadow-[1px_0_4px_rgba(0,0,0,0.2)]" style={{ width: `${sliderPosition}%` }}>
-                            {/* We use a container that is full width so object-position works identically to absolute positioning */}
-                            <div className="w-full h-full relative">
-                                <img src={file.previewUrl} className="absolute inset-0 h-full w-auto object-cover pointer-events-none dark:brightness-90 dark:opacity-90" style={{ minWidth: '100vw' }} alt="Before" />
-                            </div>
-                        </div>
+                        {/* Before Image (Original) using clipPath for perfect alignment */}
+                        <img 
+                            src={file.previewUrl} 
+                            className="absolute inset-0 w-full h-full object-contain pointer-events-none dark:brightness-90 dark:opacity-90 border-r-2 border-white/80 dark:border-slate-700/80 shadow-[1px_0_4px_rgba(0,0,0,0.2)]" 
+                            style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }} 
+                            alt="Before" 
+                        />
                         
                         {/* Slider Handle */}
-                        <div className="absolute top-0 bottom-0 w-1 bg-white dark:bg-slate-750 cursor-ew-resize shadow-[0_0_10px_rgba(0,0,0,0.3)]" style={{ left: `${sliderPosition}%` }}>
+                        <div className="absolute top-0 bottom-0 w-1 bg-white dark:bg-slate-750 cursor-ew-resize shadow-[0_0_10px_rgba(0,0,0,0.3)] z-10" style={{ left: `${sliderPosition}%` }}>
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full flex items-center justify-center shadow-lg text-brand-900 dark:text-brand-400 font-bold text-xs">
                                 ↔
                             </div>

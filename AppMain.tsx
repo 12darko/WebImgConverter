@@ -1170,7 +1170,8 @@ function BanaConvertApp(props: AppProps = {}) {
                                                 className="bg-brand-50 dark:bg-brand-950/30 text-[11px] font-medium text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800 rounded-lg p-1.5 focus:ring-2 focus:ring-brand-500 outline-none w-full"
                                               >
                                                 <option value="birefnet-general">Ultra AI (İnsan, Saç & İnce Detay)</option>
-                                                <option value="isnet-general-use">Standart AI (Logo, Yazı & Nesne)</option>
+                                                <option value="isnet-general-use">Standart AI (Logo & Nesne)</option>
+                                                <option value="u2net">Klasik AI (Metinleri Koru)</option>
                                               </select>
                                             )}
                                           </div>
