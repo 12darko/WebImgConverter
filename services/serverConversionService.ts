@@ -1,4 +1,4 @@
-﻿import axios from 'axios';
+import axios from 'axios';
 
 // Get API URL from environment or default to localhost
 // const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -13,7 +13,7 @@ export const serverConversionService = {
     /**
      * Convert HEIC to JPG/PNG/WEBP via Server
      */
-    async convertHeic(file: File, format: 'jpg' | 'png' | 'webp' = 'jpg'): Promise<Blob> {
+    async convertHeic(file: File, format: 'jpg' | 'png' | 'webp' | 'heic' | 'avif' = 'jpg'): Promise<Blob> {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('format', format);
@@ -35,7 +35,7 @@ export const serverConversionService = {
     /**
      * Convert Format (WebP/PNG -> JPG/PNG/WEBP) via Server
      */
-    async convertFormat(file: File, format: 'jpg' | 'png' | 'webp' = 'jpg'): Promise<Blob> {
+    async convertFormat(file: File, format: 'jpg' | 'png' | 'webp' | 'heic' | 'avif' = 'jpg'): Promise<Blob> {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('format', format);

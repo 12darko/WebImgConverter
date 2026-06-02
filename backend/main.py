@@ -6,10 +6,11 @@ import io
 import gc
 import asyncio
 from PIL import Image
-from pillow_heif import register_heif_opener
+from pillow_heif import register_heif_opener, register_avif_opener
 
-# Register HEIC opener
+# Register HEIC and AVIF plugins
 register_heif_opener()
+register_avif_opener()
 
 # --- RAM Optimization ---
 # Use birefnet-general as requested, but we will lock inference 
@@ -118,16 +119,28 @@ async def convert_heic(file: UploadFile = File(...), format: str = Form("jpg")):
         elif format.lower() == 'webp':
             media_type = "image/webp"
             save_format = "WEBP"
+        elif format.lower() == 'heic':
+            if image.mode not in ('RGB', 'RGBA'):
+                image = image.convert('RGB')
+            media_type = "image/heic"
+            save_format = "HEIF"
+        elif format.lower() == 'avif':
+            if image.mode not in ('RGB', 'RGBA'):
+                image = image.convert('RGB')
+            media_type = "image/avif"
+            save_format = "AVIF"
         else:
-            raise HTTPException(status_code=400, detail="Unsupported format")
+            raise HTTPException(status_code=400, detail=f"Unsupported format: {format}")
 
         output_buffer = io.BytesIO()
-        image.save(output_buffer, format=save_format, quality=95)
+        image.save(output_buffer, format=save_format, quality=90)
         output_buffer.seek(0)
         del image
         gc.collect()
         
         return StreamingResponse(output_buffer, media_type=media_type)
+    except HTTPException:
+        raise
     except Exception as e:
         gc.collect()
         print(f"Error convert_heic: {str(e)}")
@@ -160,16 +173,28 @@ async def convert_format(file: UploadFile = File(...), format: str = Form("jpg")
         elif format.lower() == 'webp':
             media_type = "image/webp"
             save_format = "WEBP"
+        elif format.lower() == 'heic':
+            if image.mode not in ('RGB', 'RGBA'):
+                image = image.convert('RGB')
+            media_type = "image/heic"
+            save_format = "HEIF"
+        elif format.lower() == 'avif':
+            if image.mode not in ('RGB', 'RGBA'):
+                image = image.convert('RGB')
+            media_type = "image/avif"
+            save_format = "AVIF"
         else:
-            raise HTTPException(status_code=400, detail="Unsupported format")
+            raise HTTPException(status_code=400, detail=f"Unsupported format: {format}")
 
         output_buffer = io.BytesIO()
-        image.save(output_buffer, format=save_format, quality=95)
+        image.save(output_buffer, format=save_format, quality=90)
         output_buffer.seek(0)
         del image
         gc.collect()
         
         return StreamingResponse(output_buffer, media_type=media_type)
+    except HTTPException:
+        raise
     except Exception as e:
         gc.collect()
         print(f"Error convert_format: {str(e)}")
