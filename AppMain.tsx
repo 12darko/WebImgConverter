@@ -532,10 +532,42 @@ function BanaConvertApp(props: AppProps = {}) {
                     ctx.drawImage(img, 0, 0);
                     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                     const data = imageData.data;
-                    const tolerance = 240; // Near-white
+                    const lowerBound = 200; // Start fading alpha here
+                    const upperBound = 250; // Completely transparent here
+                    
                     for (let i = 0; i < data.length; i += 4) {
-                        if (data[i] > tolerance && data[i+1] > tolerance && data[i+2] > tolerance) {
-                            data[i+3] = 0; // Make transparent
+                        const r = data[i];
+                        const g = data[i+1];
+                        const b = data[i+2];
+                        
+                        // Calculate brightness (luminance)
+                        const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+                        
+                        // Calculate saturation to avoid removing bright vibrant colors
+                        const maxC = Math.max(r, g, b);
+                        const minC = Math.min(r, g, b);
+                        const saturation = maxC === 0 ? 0 : (maxC - minC) / maxC;
+                        
+                        // Only target pixels that are bright and have low saturation (grayscale/white/jpeg artifacts)
+                        if (lum > lowerBound && saturation < 0.2) {
+                            let alpha = 255;
+                            if (lum >= upperBound) {
+                                alpha = 0;
+                            } else {
+                                // Smooth linear fade for anti-aliasing and jpeg artifacts
+                                alpha = 255 * (1 - (lum - lowerBound) / (upperBound - lowerBound));
+                            }
+                            
+                            // Un-premultiply the color against white to remove white halos
+                            // This makes the edges blend perfectly on dark backgrounds
+                            if (alpha > 0 && alpha < 255) {
+                                const aNorm = alpha / 255;
+                                data[i] = Math.max(0, Math.min(255, (r - 255 * (1 - aNorm)) / aNorm));
+                                data[i+1] = Math.max(0, Math.min(255, (g - 255 * (1 - aNorm)) / aNorm));
+                                data[i+2] = Math.max(0, Math.min(255, (b - 255 * (1 - aNorm)) / aNorm));
+                            }
+                            
+                            data[i+3] = Math.min(data[i+3], alpha);
                         }
                     }
                     ctx.putImageData(imageData, 0, 0);
