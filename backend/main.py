@@ -6,11 +6,18 @@ import io
 import gc
 import asyncio
 from PIL import Image
-from pillow_heif import register_heif_opener, register_avif_opener
+from pillow_heif import register_heif_opener
 
-# Register HEIC and AVIF plugins
+# Register HEIC plugin
 register_heif_opener()
-register_avif_opener()
+
+# AVIF desteği (opsiyonel - eski pillow_heif sürümlerinde bulunmayabilir)
+try:
+    from pillow_heif import register_avif_opener
+    register_avif_opener()
+    print("AVIF support enabled via pillow_heif")
+except ImportError:
+    print("AVIF support not available (pillow_heif version too old)")
 
 # --- RAM Optimization ---
 # Use birefnet-general as requested, but we will lock inference 
