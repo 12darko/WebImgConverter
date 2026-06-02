@@ -332,7 +332,14 @@ function BanaConvertApp(props: AppProps = {}) {
       errorMsg: ''
     }));
 
-    setFiles(prev => [...tempFiles, ...prev]); // New files at top
+    setFiles(prev => {
+      const newFilesList = [...tempFiles, ...prev];
+      // Automatically open the settings panel for the first added file to improve UX
+      if (newFilesList.length > 0 && !expandedFileId) {
+        setExpandedFileId(newFilesList[0].id);
+      }
+      return newFilesList;
+    }); // New files at top
 
     // Process previews sequentially to avoid memory spikes with HEIC
     for (const item of tempFiles) {
@@ -972,9 +979,13 @@ function BanaConvertApp(props: AppProps = {}) {
                                       {/* Settings Toggle */}
                                       <button
                                         onClick={() => setExpandedFileId(expandedFileId === file.id ? null : file.id)}
-                                        className={`p-2 rounded-lg border text-sm transition-colors ${expandedFileId === file.id ? 'bg-brand-50 dark:bg-brand-950/20 border-brand-200 dark:border-brand-800 text-brand-600 dark:text-brand-450' : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-450 hover:bg-slate-100 dark:hover:bg-slate-700'}`}
-                                        title="Settings"
-                                      >⚙️</button>
+                                        className={`px-3 py-2 flex items-center gap-1.5 rounded-lg border text-sm font-semibold transition-all ${expandedFileId === file.id ? 'bg-brand-50 dark:bg-brand-950/20 border-brand-300 dark:border-brand-700 text-brand-600 dark:text-brand-400 shadow-inner' : 'bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 shadow-sm hover:shadow'}`}
+                                        title="Options"
+                                      >
+                                        <span>⚙️</span>
+                                        <span className="hidden sm:inline">{language === 'tr' ? 'Seçenekler' : 'Options'}</span>
+                                        <svg className={`w-4 h-4 transition-transform duration-200 ${expandedFileId === file.id ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                                      </button>
                                       {/* Convert */}
                                       <button onClick={() => convertImage(file.id)} className="bg-brand-600 hover:bg-brand-500 dark:bg-brand-600 dark:hover:bg-brand-500 text-white px-5 py-2 rounded-lg text-sm font-bold shadow-sm dark:shadow-none transition-colors">
                                         {t('convert_btn')}
