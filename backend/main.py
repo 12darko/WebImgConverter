@@ -95,8 +95,24 @@ async def remove_background(
         # Async lock and thread offloading prevents 15GB spikes from concurrent users
         # and stops the CPU-heavy AI from blocking other API requests.
         async with inference_lock:
-            # We run the synchronous CPU-heavy remove function in a separate thread chunk
-            output_data = await asyncio.to_thread(remove, image_data, session=session)
+            # Alpha matting produces cleaner edges (removes gray spots at fine details)
+            # Only enable for birefnet which benefits most from it
+            use_alpha_matting = ai_model == "birefnet-general"
+            
+            if use_alpha_matting:
+                try:
+                    output_data = await asyncio.to_thread(
+                        remove, image_data, session=session,
+                        alpha_matting=True,
+                        alpha_matting_foreground_threshold=240,
+                        alpha_matting_background_threshold=20,
+                        alpha_matting_erode_size=10
+                    )
+                except Exception as mat_err:
+                    print(f"Alpha matting failed, falling back to standard: {mat_err}")
+                    output_data = await asyncio.to_thread(remove, image_data, session=session)
+            else:
+                output_data = await asyncio.to_thread(remove, image_data, session=session)
         
         # Free intermediary memory
         del image_data, image
