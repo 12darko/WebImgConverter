@@ -1,9 +1,9 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { SiteShell } from '../components/layout';
 import { Button } from '../components/ui/Button';
-import { supabase } from '../services/supabase';
+import { supabase, getUserProfile } from '../services/supabase';
 import { useLanguage } from '../LanguageContext';
 
 export default function ProfilePage() {
@@ -27,20 +27,26 @@ export default function ProfilePage() {
             }
             setUser(session.user);
 
-            // Fetch user stats
-            const { data: profile } = await supabase
-                .from('site_credits')
-                .select('*')
-                .eq('user_id', session.user.id)
-                .single();
+            try {
+                // Get proper profile mapped data (credits, tier, etc.)
+                const profile = await getUserProfile(session.user.id);
+                
+                // Fetch actual conversion count from history
+                const { count } = await supabase
+                    .from('vormpixize_conversion_history')
+                    .select('*', { count: 'exact', head: true })
+                    .eq('user_id', session.user.id);
 
-            if (profile) {
-                setStats({
-                    credits: profile.daily_credits || 0,
-                    totalConverted: profile.total_converted || 0,
-                    isPremium: profile.is_premium || false,
-                    premiumTier: profile.premium_tier || 'free'
-                });
+                if (profile && !profile.requiresActivation) {
+                    setStats({
+                        credits: profile.credits || 0,
+                        totalConverted: count || 0,
+                        isPremium: profile.isPremium || false,
+                        premiumTier: profile.premiumTier || 'free'
+                    });
+                }
+            } catch(e) {
+                console.error('Error fetching profile:', e);
             }
             setLoading(false);
         }
