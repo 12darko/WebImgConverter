@@ -521,7 +521,8 @@ function BanaConvertApp(props: AppProps = {}) {
             // Server-side call
             const bgBlob = await serverConversionService.removeBackground(
               item.file,
-              stats.isPremium ? 'premium' : 'free'
+              stats.isPremium ? 'premium' : 'free',
+              item.bgModel || 'isnet-general-use'
             );
 
             if (!bgBlob) throw new Error("Background removal failed on server");
@@ -1126,26 +1127,39 @@ function BanaConvertApp(props: AppProps = {}) {
                                     {file.targetFormat !== ConversionFormat.JPEG && (() => {
                                         const canUseRemoveBg = hasFeatureAccess(stats.premiumTier, 'REMOVE_BG');
                                         return (
-                                          <button
-                                            onClick={() => {
-                                              if (canUseRemoveBg) {
-                                                updateFileConfig(file.id, 'removeBackground', !file.removeBackground);
-                                                if (file.removeBackground) updateFileConfig(file.id, 'useHDModel', false);
-                                              } else {
-                                                setIsPremiumModalOpen(true);
-                                              }
-                                            }}
-                                            className={`text-xs px-3 py-1.5 rounded-lg border flex items-center justify-center gap-1 font-medium transition-colors ${file.removeBackground
-                                              ? 'bg-brand-50 dark:bg-brand-950/20 border-brand-200 dark:border-brand-850 text-brand-700 dark:text-brand-300'
-                                              : canUseRemoveBg
-                                                ? 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'
-                                                : 'bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-650 cursor-not-allowed'
-                                              }`}
-                                          >
-                                            <span className={file.removeBackground ? "" : "grayscale opacity-50"}>✨</span>
-                                            {file.removeBackground ? 'BG Removed' : 'Remove BG'}
-                                            {!canUseRemoveBg && <span className="text-amber-500 ml-0.5">🔒</span>}
-                                          </button>
+                                          <div className="flex flex-col gap-2 col-span-2 lg:col-span-1">
+                                            <button
+                                              onClick={() => {
+                                                if (canUseRemoveBg) {
+                                                  updateFileConfig(file.id, 'removeBackground', !file.removeBackground);
+                                                } else {
+                                                  setIsPremiumModalOpen(true);
+                                                }
+                                              }}
+                                              className={`text-xs px-3 py-1.5 rounded-lg border flex items-center justify-center gap-1 font-medium transition-colors w-full ${file.removeBackground
+                                                ? 'bg-brand-50 dark:bg-brand-950/20 border-brand-200 dark:border-brand-850 text-brand-700 dark:text-brand-300'
+                                                : canUseRemoveBg
+                                                  ? 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'
+                                                  : 'bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-650 cursor-not-allowed'
+                                                }`}
+                                            >
+                                              <span className={file.removeBackground ? "" : "grayscale opacity-50"}>✨</span>
+                                              {file.removeBackground ? 'BG Removed' : 'Remove BG'}
+                                              {!canUseRemoveBg && <span className="text-amber-500 ml-0.5">🔒</span>}
+                                            </button>
+                                            
+                                            {/* AI Model Selector when BG Removal is enabled */}
+                                            {file.removeBackground && (
+                                              <select
+                                                value={file.bgModel || 'isnet-general-use'}
+                                                onChange={(e) => updateFileConfig(file.id, 'bgModel', e.target.value)}
+                                                className="bg-brand-50 dark:bg-brand-950/30 text-xs font-medium text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800 rounded-lg p-1.5 focus:ring-2 focus:ring-brand-500 outline-none w-full"
+                                              >
+                                                <option value="isnet-general-use">Standart Model (Logolar İçin)</option>
+                                                <option value="birefnet-general">Ultra Model (İnsan & Portre)</option>
+                                              </select>
+                                            )}
+                                          </div>
                                         );
                                       })()}
                                   </div>

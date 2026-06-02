@@ -79,10 +79,11 @@ export const serverConversionService = {
     /**
      * Remove Background via Server
      */
-    async removeBackground(file: File, qualityTier: string = 'free'): Promise<Blob> {
+    async removeBackground(file: File, qualityTier: string = 'free', aiModel: string = 'isnet-general-use'): Promise<Blob> {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('quality_tier', qualityTier);
+        formData.append('ai_model', aiModel);
 
         try {
             const response = await axios.post(`${API_URL}/remove-background`, formData, {

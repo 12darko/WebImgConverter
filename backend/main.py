@@ -22,24 +22,23 @@ except ImportError:
 # --- RAM Optimization ---
 # Use isnet-general-use as it performs better on logos/icons without deleting too much
 # to prevent parallel processing from spiking RAM to 15GB+.
-MODEL_NAME = "isnet-general-use"
-_session = None
+# Cache multiple models to allow user selection
+_sessions = {}
 
 # Max image dimension to prevent OOM on huge files
 MAX_IMAGE_DIMENSION = 4096
 
 # Lock to ensure only ONE image is processed by the AI at a time.
-# Prevents 10 concurrent requests from using 10x RAM (15GB+).
 inference_lock = asyncio.Lock()
 
-def get_session():
-    """Lazy-load the rembg session to save startup RAM."""
-    global _session
-    if _session is None:
-        print(f"Loading rembg model '{MODEL_NAME}' on first request...")
-        _session = new_session(MODEL_NAME)
-        print(f"Model '{MODEL_NAME}' loaded successfully.")
-    return _session
+def get_session(model_name: str = "isnet-general-use"):
+    """Lazy-load the rembg session and cache it."""
+    global _sessions
+    if model_name not in _sessions:
+        print(f"Loading rembg model '{model_name}' for the first time...")
+        _sessions[model_name] = new_session(model_name)
+        print(f"Model '{model_name}' loaded successfully.")
+    return _sessions[model_name]
 
 def limit_image_size(image: Image.Image, max_dim: int = MAX_IMAGE_DIMENSION) -> Image.Image:
     """Downscale image if any dimension exceeds max_dim to prevent OOM."""
@@ -64,7 +63,8 @@ app.add_middleware(
 @app.post("/remove-background")
 async def remove_background(
     file: UploadFile = File(...), 
-    quality_tier: str = Form("free")
+    quality_tier: str = Form("free"),
+    ai_model: str = Form("isnet-general-use")
 ):
     try:
         image_data = await file.read()
@@ -90,7 +90,7 @@ async def remove_background(
         del buf
 
         # Process with lazy-loaded session (Thread-safe locked inference)
-        session = get_session()
+        session = get_session(ai_model)
         
         # Async lock and thread offloading prevents 15GB spikes from concurrent users
         # and stops the CPU-heavy AI from blocking other API requests.
