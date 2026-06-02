@@ -48,6 +48,7 @@ export const InlineBgRemover: React.FC<InlineBgRemoverProps> = ({ file, onProces
                                     <option value="birefnet-general">Ultra AI (İnsan, Saç & İnce Detay)</option>
                                     <option value="isnet-general-use">Standart AI (Logo & Nesne)</option>
                                     <option value="u2net">Klasik AI (Metinleri Koru)</option>
+                                    <option value="local-white">Hızlı Logo (Sadece Beyazı Sil)</option>
                                 </select>
                             )}
                             <button onClick={onProcess} className="px-6 py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-sm font-bold shadow-sm transition-colors flex items-center gap-2">

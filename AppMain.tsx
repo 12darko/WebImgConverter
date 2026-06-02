@@ -514,24 +514,56 @@ function BanaConvertApp(props: AppProps = {}) {
         if (item.removeBackground) {
           await updateProgress(5); // Starting AI module load
 
-          // --- SERVER SIDE BACKGROUND REMOVAL ---
           try {
             await updateProgress(20);
+            let bgBlob: Blob | null = null;
             
-            // Server-side call
-            const bgBlob = await serverConversionService.removeBackground(
-              item.file,
-              stats.isPremium ? 'premium' : 'free',
-              item.bgModel || 'isnet-general-use'
-            );
+            if (item.bgModel === 'local-white') {
+              // Local canvas-based white removal for logos (preserves ALL text)
+              bgBlob = await new Promise<Blob>((resolve, reject) => {
+                const img = new Image();
+                const url = URL.createObjectURL(item.file);
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    if (!ctx) return reject("No canvas context");
+                    ctx.drawImage(img, 0, 0);
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imageData.data;
+                    const tolerance = 240; // Near-white
+                    for (let i = 0; i < data.length; i += 4) {
+                        if (data[i] > tolerance && data[i+1] > tolerance && data[i+2] > tolerance) {
+                            data[i+3] = 0; // Make transparent
+                        }
+                    }
+                    ctx.putImageData(imageData, 0, 0);
+                    canvas.toBlob(blob => {
+                        URL.revokeObjectURL(url);
+                        if (blob) resolve(blob);
+                        else reject("Blob failed");
+                    }, 'image/png');
+                };
+                img.onerror = () => reject("Image load failed");
+                img.src = url;
+              });
+            } else {
+              // Server-side AI call
+              bgBlob = await serverConversionService.removeBackground(
+                item.file,
+                stats.isPremium ? 'premium' : 'free',
+                item.bgModel || 'isnet-general-use'
+              );
+            }
 
-            if (!bgBlob) throw new Error("Background removal failed on server");
+            if (!bgBlob) throw new Error("Background removal failed");
 
             await updateProgress(50);
             sourceUrl = URL.createObjectURL(bgBlob);
 
           } catch (bgError: any) {
-            console.error("Server Background Removal Failed:", bgError);
+            console.error("Background Removal Failed:", bgError);
             throw bgError;
           }
         } else {
@@ -1172,6 +1204,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                                 <option value="birefnet-general">Ultra AI (İnsan, Saç & İnce Detay)</option>
                                                 <option value="isnet-general-use">Standart AI (Logo & Nesne)</option>
                                                 <option value="u2net">Klasik AI (Metinleri Koru)</option>
+                                                <option value="local-white">Hızlı Logo (Sadece Beyazı Sil)</option>
                                               </select>
                                             )}
                                           </div>
