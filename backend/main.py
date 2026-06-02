@@ -20,9 +20,9 @@ except ImportError:
     print("AVIF support not available (pillow_heif version too old)")
 
 # --- RAM Optimization ---
-# Use birefnet-general as requested, but we will lock inference 
+# Use isnet-general-use as it performs better on logos/icons without deleting too much
 # to prevent parallel processing from spiking RAM to 15GB+.
-MODEL_NAME = "birefnet-general"
+MODEL_NAME = "isnet-general-use"
 _session = None
 
 # Max image dimension to prevent OOM on huge files
