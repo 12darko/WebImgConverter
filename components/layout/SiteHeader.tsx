@@ -98,7 +98,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                     </button>
                     {session ? (
                         <Link
-                            to="/app"
+                            to="/profile"
                             className="text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 px-3 h-10 inline-flex items-center transition-colors"
                         >
                             Profilim ({session.user.email?.split('@')[0]})
@@ -162,7 +162,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                             </button>
                             {session ? (
                                 <Link
-                                    to="/app"
+                                    to="/profile"
                                     onClick={() => setMobileOpen(false)}
                                     className="flex-1 h-10 flex items-center justify-center text-sm font-semibold text-brand-600 dark:text-brand-400 border border-slate-200 dark:border-slate-700 rounded-xl"
                                 >
