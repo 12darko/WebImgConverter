@@ -1131,7 +1131,20 @@ function BanaConvertApp(props: AppProps = {}) {
                                             <button
                                               onClick={() => {
                                                 if (canUseRemoveBg) {
-                                                  updateFileConfig(file.id, 'removeBackground', !file.removeBackground);
+                                                  // Auto-switch to PNG to preserve transparency if background is removed
+                                                  const isTurningOn = !file.removeBackground;
+                                                  
+                                                  // Find the specific file to check its current state
+                                                  setFiles(prev => prev.map(f => {
+                                                    if (f.id === file.id) {
+                                                      return {
+                                                        ...f,
+                                                        removeBackground: isTurningOn,
+                                                        targetFormat: isTurningOn ? ConversionFormat.PNG : f.targetFormat
+                                                      };
+                                                    }
+                                                    return f;
+                                                  }));
                                                 } else {
                                                   setIsPremiumModalOpen(true);
                                                 }
@@ -1151,12 +1164,12 @@ function BanaConvertApp(props: AppProps = {}) {
                                             {/* AI Model Selector when BG Removal is enabled */}
                                             {file.removeBackground && (
                                               <select
-                                                value={file.bgModel || 'isnet-general-use'}
+                                                value={file.bgModel || 'birefnet-general'}
                                                 onChange={(e) => updateFileConfig(file.id, 'bgModel', e.target.value)}
-                                                className="bg-brand-50 dark:bg-brand-950/30 text-xs font-medium text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800 rounded-lg p-1.5 focus:ring-2 focus:ring-brand-500 outline-none w-full"
+                                                className="bg-brand-50 dark:bg-brand-950/30 text-[11px] font-medium text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800 rounded-lg p-1.5 focus:ring-2 focus:ring-brand-500 outline-none w-full"
                                               >
-                                                <option value="isnet-general-use">Standart Model (Logolar İçin)</option>
-                                                <option value="birefnet-general">Ultra Model (İnsan & Portre)</option>
+                                                <option value="birefnet-general">Ultra AI (İnsan, Saç & İnce Detay)</option>
+                                                <option value="isnet-general-use">Standart AI (Logo, Yazı & Nesne)</option>
                                               </select>
                                             )}
                                           </div>
