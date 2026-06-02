@@ -979,15 +979,15 @@ function BanaConvertApp(props: AppProps = {}) {
                                       {/* Settings Toggle */}
                                       <button
                                         onClick={() => setExpandedFileId(expandedFileId === file.id ? null : file.id)}
-                                        className={`px-3 py-2 flex items-center gap-1.5 rounded-lg border text-sm font-semibold transition-all ${expandedFileId === file.id ? 'bg-brand-50 dark:bg-brand-950/20 border-brand-300 dark:border-brand-700 text-brand-600 dark:text-brand-400 shadow-inner' : 'bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 shadow-sm hover:shadow'}`}
+                                        className={`px-4 py-2 flex items-center gap-2 rounded-xl border-2 text-sm font-bold transition-all ${expandedFileId === file.id ? 'bg-brand-50 dark:bg-brand-950/30 border-brand-400 dark:border-brand-600 text-brand-700 dark:text-brand-300 shadow-inner' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-brand-300 dark:hover:border-brand-600 hover:text-brand-600 hover:shadow-md'}`}
                                         title="Options"
                                       >
                                         <span>⚙️</span>
-                                        <span className="hidden sm:inline">{language === 'tr' ? 'Seçenekler' : 'Options'}</span>
-                                        <svg className={`w-4 h-4 transition-transform duration-200 ${expandedFileId === file.id ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                                        <span className="hidden sm:inline">{language === 'tr' ? 'Gelişmiş Ayarlar' : 'Advanced Options'}</span>
+                                        <svg className={`w-4 h-4 transition-transform duration-300 ${expandedFileId === file.id ? 'rotate-180 text-brand-600' : 'text-slate-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>
                                       </button>
                                       {/* Convert */}
-                                      <button onClick={() => convertImage(file.id)} className="bg-brand-600 hover:bg-brand-500 dark:bg-brand-600 dark:hover:bg-brand-500 text-white px-5 py-2 rounded-lg text-sm font-bold shadow-sm dark:shadow-none transition-colors">
+                                      <button onClick={() => convertImage(file.id)} className="bg-brand-600 hover:bg-brand-500 dark:bg-brand-600 dark:hover:bg-brand-500 text-white px-6 py-2 rounded-xl text-sm font-bold shadow-md shadow-brand-500/20 dark:shadow-none transition-all hover:scale-105 active:scale-95">
                                         {t('convert_btn')}
                                       </button>
                                     </>
