@@ -5,16 +5,22 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const BASE_URL = 'https://vormpixyze.com';
+const BASE_URL = 'https://webimgconverter.com';
 
 // Define all static routes
 const routes = [
     '/',
+    '/tools',
+    '/pricing',
+    '/api',
+    '/support',
     '/heic-to-jpg',
     '/png-to-jpg',
     '/webp-to-jpg',
     '/remove-background',
     '/compress-image',
+    '/svg-to-png',
+    '/smart-cropper',
     '/app',
     '/about',
     '/blog',

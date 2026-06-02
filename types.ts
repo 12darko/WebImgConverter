@@ -57,7 +57,7 @@ export interface UserStats {
   requiresActivation?: boolean; // Site activation flag
 }
 
-export const MAX_FREE_CREDITS = 7;      // Günlük ücretsiz hak
+export const MAX_FREE_CREDITS = 25;     // Günlük ücretsiz hak (kullanıcı çekmek için artırıldı)
 export const SIGNUP_BONUS_CREDITS = 10; // İlk kayıt bonusu
 export const REFERRAL_REWARD_CREDITS = 5; // Referans ödülü
 export const COST_PER_CONVERT = 1;
@@ -86,17 +86,17 @@ export const getTierLevel = (tier?: string): number => {
 
 // Feature requirements (minimum tier level needed)
 export const FEATURE_REQUIREMENTS = {
-  NO_ADS: 1,           // Starter+
+  NO_ADS: 1,           // Starter+ (reklam kaldırma hala premium)
   REMOVE_BG: 0,        // Free (Everyone can use)
-  WATERMARK: 2,        // Pro+
-  AI_RENAME: 2,        // Pro+
-  ZIP_DOWNLOAD: 2,     // Pro+
-  BATCH_AI: 2,         // Pro+
-  CROP: 2,             // Pro+
-  SPECIAL_FORMATS: 3,  // Business (BMP, ICO, TIFF)
-  ADVANCED_INPUTS: 3,  // Business (AVIF, SVG)
-  CLOUD_STORAGE: 3,    // Business (Google Drive)
-  HISTORY: 3,          // Business
+  WATERMARK: 0,        // Free (kullanıcı toplamak için açıldı)
+  AI_RENAME: 0,        // Free (kullanıcı toplamak için açıldı)
+  ZIP_DOWNLOAD: 0,     // Free (kullanıcı toplamak için açıldı)
+  BATCH_AI: 0,         // Free (kullanıcı toplamak için açıldı)
+  CROP: 0,             // Free (kullanıcı toplamak için açıldı)
+  SPECIAL_FORMATS: 0,  // Free (kullanıcı toplamak için açıldı)
+  ADVANCED_INPUTS: 0,  // Free (kullanıcı toplamak için açıldı)
+  CLOUD_STORAGE: 0,    // Free (kullanıcı toplamak için açıldı)
+  HISTORY: 0,          // Free (kullanıcı toplamak için açıldı)
 };
 
 // Check if user has access to a feature
