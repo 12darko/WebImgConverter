@@ -6,6 +6,7 @@ import { AuthModal } from '../AuthModal';
 import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../../LanguageContext';
 import { AdSlot } from '../ads/AdSlot';
+import { supabase } from '../../services/supabase';
 
 interface SiteShellProps {
     children: React.ReactNode;
@@ -25,6 +26,7 @@ export const SiteShell: React.FC<SiteShellProps> = ({
     bg = 'white',
 }) => {
     const [isAuthOpen, setIsAuthOpen] = useState(false);
+    const [session, setSession] = useState<any>(null);
     const navigate = useNavigate();
     const { language } = useLanguage();
     const activeLang = typeof language === 'string' && language.startsWith('tr') ? 'tr' : 
@@ -45,10 +47,16 @@ export const SiteShell: React.FC<SiteShellProps> = ({
         }
     };
 
+    React.useEffect(() => {
+        supabase.auth.getSession().then(({ data: { session } }) => setSession(session));
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
+        return () => subscription.unsubscribe();
+    }, []);
+
     return (
         <div className={`w-full min-h-screen flex flex-col ${bgClass}`}>
             <Helmet htmlAttributes={{ lang: activeLang }} />
-            <SiteHeader onSignIn={handleSignInClick} onCta={onCta} ctaLabel={ctaLabel} showCta={showCta} />
+            <SiteHeader onSignIn={handleSignInClick} onCta={onCta} ctaLabel={ctaLabel} showCta={showCta} session={session} />
             <AdSlot />
             <main className="flex-1 flex flex-col w-full relative z-10">
                 {children}

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import App from '../AppMain';
@@ -277,8 +277,8 @@ export default function HomePage() {
                                         
                                         <div className="mb-8">
                                             <label className="block text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">{t.quickConvertFormatLabel}</label>
-                                            <div className="grid grid-cols-4 gap-2">
-                                                {['jpg', 'png', 'webp', 'avif'].map(fmt => (
+                                            <div className="grid grid-cols-5 gap-2">
+                                                {['jpg', 'png', 'webp', 'avif', 'heic'].map(fmt => (
                                                     <button 
                                                         key={fmt}
                                                         onClick={() => setTargetFormat(fmt as OutputFormat)}

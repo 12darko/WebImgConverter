@@ -16,9 +16,9 @@ const NAV_ITEMS: NavItem[] = [
 
 interface SiteHeaderProps {
     onSignIn?: () => void;
-    onCta?: () => void;
     ctaLabel?: string;
     showCta?: boolean;
+    session?: any;
 }
 
 export const SiteHeader: React.FC<SiteHeaderProps> = ({
@@ -26,6 +26,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     onCta,
     ctaLabel = 'Hemen Dönüştür',
     showCta = true,
+    session,
 }) => {
     const location = useLocation();
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -94,12 +95,21 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                     >
                         {isDark ? '☀️' : '🌙'}
                     </button>
-                    <button
-                        onClick={onSignIn}
-                        className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3 h-10 inline-flex items-center transition-colors"
-                    >
-                        Giriş Yap
-                    </button>
+                    {session ? (
+                        <Link
+                            to="/app"
+                            className="text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 px-3 h-10 inline-flex items-center transition-colors"
+                        >
+                            Profilim ({session.user.email?.split('@')[0]})
+                        </Link>
+                    ) : (
+                        <button
+                            onClick={onSignIn}
+                            className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3 h-10 inline-flex items-center transition-colors"
+                        >
+                            Giriş Yap
+                        </button>
+                    )}
                     {showCta && (
                         <Button onClick={onCta} size="md">
                             {ctaLabel}
@@ -149,12 +159,22 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                             >
                                 {isDark ? '☀️' : '🌙'}
                             </button>
-                            <button
-                                onClick={onSignIn}
-                                className="flex-1 h-10 text-sm font-semibold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-xl"
-                            >
-                                Giriş Yap
-                            </button>
+                            {session ? (
+                                <Link
+                                    to="/app"
+                                    onClick={() => setMobileOpen(false)}
+                                    className="flex-1 h-10 flex items-center justify-center text-sm font-semibold text-brand-600 dark:text-brand-400 border border-slate-200 dark:border-slate-700 rounded-xl"
+                                >
+                                    Profilim
+                                </Link>
+                            ) : (
+                                <button
+                                    onClick={onSignIn}
+                                    className="flex-1 h-10 text-sm font-semibold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-xl"
+                                >
+                                    Giriş Yap
+                                </button>
+                            )}
                             {showCta && (
                                 <Button onClick={onCta} size="md" fullWidth>
                                     {ctaLabel}

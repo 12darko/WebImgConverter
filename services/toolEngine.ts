@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Tool Engine — clean browser-side image conversion utilities.
  *
  * Used by the new ToolWorkspace flow. For complex features (HEIC input, AI rename,
@@ -13,10 +13,10 @@
  *   - Output a downloadable blob
  */
 
-import { encodeToBMP, encodeToICO, encodeToTIFF } from '../utils/imageEncoders';
+
 import { serverConversionService } from './serverConversionService';
 
-export type OutputFormat = 'webp' | 'png' | 'jpg' | 'avif' | 'bmp' | 'ico' | 'tiff';
+export type OutputFormat = 'webp' | 'png' | 'jpg' | 'avif' | 'bmp' | 'ico' | 'tiff' | 'heic';
 
 export const FORMAT_LABELS: Record<OutputFormat, string> = {
     webp: 'WebP',
@@ -26,6 +26,7 @@ export const FORMAT_LABELS: Record<OutputFormat, string> = {
     bmp: 'BMP',
     ico: 'ICO',
     tiff: 'TIFF',
+    heic: 'HEIC',
 };
 
 export const FORMAT_MIME: Record<OutputFormat, string> = {
@@ -36,6 +37,7 @@ export const FORMAT_MIME: Record<OutputFormat, string> = {
     bmp: 'image/bmp',
     ico: 'image/x-icon',
     tiff: 'image/tiff',
+    heic: 'image/heic',
 };
 
 export interface ConversionSettings {
@@ -90,87 +92,37 @@ export const convertImage = async (
     file: File,
     settings: ConversionSettings,
 ): Promise<ConversionResult> => {
-    // Special path: HEIC input → server conversion (browser can't decode HEIC natively)
-    if (isHeicFile(file)) {
-        const target = settings.targetFormat === 'jpg' ? 'jpg' :
-            settings.targetFormat === 'png' ? 'png' :
-                settings.targetFormat === 'webp' ? 'webp' : 'jpg';
-        const blob = await serverConversionService.convertHeic(file, target as 'jpg' | 'png' | 'webp');
-
-        // Re-decode the result to apply quality/resize on the client side
-        const intermediate = new File([blob], file.name, { type: blob.type });
-        return convertImage(intermediate, settings);
-    }
-
-    const { image } = await loadImageFromFile(file);
-
-    // Determine output dimensions
-    let outW = image.naturalWidth;
-    let outH = image.naturalHeight;
-    if (settings.width && settings.height) {
-        outW = settings.width;
-        outH = settings.height;
-    } else if (settings.width) {
-        outW = settings.width;
-        outH = Math.round((settings.width / image.naturalWidth) * image.naturalHeight);
-    } else if (settings.height) {
-        outH = settings.height;
-        outW = Math.round((settings.height / image.naturalHeight) * image.naturalWidth);
-    }
-
-    // Render to canvas
-    const canvas = document.createElement('canvas');
-    canvas.width = outW;
-    canvas.height = outH;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) throw new Error('Canvas 2D context unavailable.');
-
-    // For non-transparent formats (jpg), fill background white
-    if (settings.targetFormat === 'jpg') {
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(0, 0, outW, outH);
-    }
-    ctx.drawImage(image, 0, 0, outW, outH);
-
-    // Encode
-    const quality = Math.max(0.1, Math.min(1, settings.quality / 100));
-    const fmt = settings.targetFormat;
-
     let blob: Blob;
-    if (fmt === 'bmp') {
-        const data = ctx.getImageData(0, 0, outW, outH);
-        blob = encodeToBMP(data);
-    } else if (fmt === 'tiff') {
-        const data = ctx.getImageData(0, 0, outW, outH);
-        blob = encodeToTIFF(data);
-    } else if (fmt === 'ico') {
-        const data = ctx.getImageData(0, 0, outW, outH);
-        blob = encodeToICO(data);
-    } else {
-        // Browser-native encoding (jpg, png, webp, avif)
-        const mime = FORMAT_MIME[fmt];
-        blob = await new Promise<Blob>((resolve, reject) => {
-            canvas.toBlob(
-                (b) => b ? resolve(b) : reject(new Error('Encoding failed')),
-                mime,
-                quality,
-            );
-        });
+    
+    const targetFmt = settings.targetFormat as any;
 
-        // Some browsers (Firefox before AVIF support) silently fall back to PNG.
-        // If the resulting MIME doesn't match, try WebP fallback for AVIF.
-        if (fmt === 'avif' && !blob.type.includes('avif')) {
-            blob = await new Promise<Blob>((resolve, reject) => {
-                canvas.toBlob(
-                    (b) => b ? resolve(b) : reject(new Error('AVIF and WebP fallback both failed')),
-                    'image/webp',
-                    quality,
-                );
-            });
-        }
+    // Uzak sunucu (backend) üzerinden dönüştürme işlemi
+    if (isHeicFile(file)) {
+        blob = await serverConversionService.convertHeic(file, targetFmt);
+    } else {
+        // Eğer hedef format ile giriş formatı aynıysa ve sadece kalite düşürülüyorsa compressImage kullanılabilir
+        // Ancak convertFormat daha güvenli bir yol, sunucu her iki durumu da çözer
+        blob = await serverConversionService.convertFormat(file, targetFmt);
     }
 
     const url = URL.createObjectURL(blob);
+    
+    // Boyutları okumak için geçici bir Image nesnesi kullanıyoruz
+    let outW = 0;
+    let outH = 0;
+    try {
+        const img = new Image();
+        img.src = url;
+        await new Promise((resolve) => {
+            img.onload = () => {
+                outW = img.naturalWidth;
+                outH = img.naturalHeight;
+                resolve(true);
+            };
+            img.onerror = () => resolve(true);
+        });
+    } catch(e) {}
+
     return {
         blob,
         url,
