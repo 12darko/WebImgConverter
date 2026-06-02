@@ -74,5 +74,76 @@ export const serverConversionService = {
             console.error('Server compression failed:', error);
             throw error;
         }
+    },
+
+    /**
+     * Remove Background via Server
+     */
+    async removeBackground(file: File, qualityTier: string = 'free'): Promise<Blob> {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('quality_tier', qualityTier);
+
+        try {
+            const response = await axios.post(`${API_URL}/remove-background`, formData, {
+                responseType: 'blob',
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            return response.data;
+        } catch (error) {
+            console.error('Server background removal failed:', error);
+            throw error;
+        }
+    },
+
+    /**
+     * Apply Watermark via Server
+     */
+    async watermarkImage(file: File, text: string, format: string = 'jpg'): Promise<Blob> {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('text', text);
+        formData.append('format', format);
+
+        try {
+            const response = await axios.post(`${API_URL}/watermark`, formData, {
+                responseType: 'blob',
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            return response.data;
+        } catch (error) {
+            console.error('Server watermark failed:', error);
+            throw error;
+        }
+    },
+
+    /**
+     * Crop Image via Server
+     */
+    async cropImage(file: File, x: number, y: number, width: number, height: number, format: string = 'jpg'): Promise<Blob> {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('x', Math.round(x).toString());
+        formData.append('y', Math.round(y).toString());
+        formData.append('width', Math.round(width).toString());
+        formData.append('height', Math.round(height).toString());
+        formData.append('format', format);
+
+        try {
+            const response = await axios.post(`${API_URL}/crop`, formData, {
+                responseType: 'blob',
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            return response.data;
+        } catch (error) {
+            console.error('Server crop failed:', error);
+            throw error;
+        }
     }
 };

@@ -5,7 +5,7 @@ from rembg import remove, new_session
 import io
 import gc
 import asyncio
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 from pillow_heif import register_heif_opener
 
 # Register HEIC plugin
@@ -247,6 +247,107 @@ async def compress_image(file: UploadFile = File(...), quality: int = Form(80)):
     except Exception as e:
         gc.collect()
         print(f"Error compress_image: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/watermark")
+async def apply_watermark(file: UploadFile = File(...), text: str = Form(""), format: str = Form("jpg")):
+    try:
+        contents = await file.read()
+        image = Image.open(io.BytesIO(contents))
+        del contents
+        image = limit_image_size(image)
+        
+        if image.mode != 'RGBA' and image.mode != 'RGB':
+            image = image.convert('RGB')
+            
+        if text:
+            # Create drawing context
+            draw = ImageDraw.Draw(image)
+            # Default to a simple font or load a TTF if available
+            try:
+                font = ImageFont.truetype("arial.ttf", 30)
+            except IOError:
+                font = ImageFont.load_default()
+            
+            draw.text((10, 50), text, fill="white", font=font)
+
+        media_type = "image/jpeg"
+        save_format = "JPEG"
+        if format.lower() == 'png':
+            media_type = "image/png"
+            save_format = "PNG"
+        elif format.lower() == 'webp':
+            media_type = "image/webp"
+            save_format = "WEBP"
+        elif format.lower() == 'heic':
+            media_type = "image/heic"
+            save_format = "HEIF"
+        elif format.lower() == 'avif':
+            media_type = "image/avif"
+            save_format = "AVIF"
+
+        output_buffer = io.BytesIO()
+        image.save(output_buffer, format=save_format, quality=90)
+        output_buffer.seek(0)
+        del image
+        gc.collect()
+        
+        return StreamingResponse(output_buffer, media_type=media_type)
+    except Exception as e:
+        gc.collect()
+        print(f"Error watermark: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/crop")
+async def crop_image(
+    file: UploadFile = File(...),
+    x: int = Form(0),
+    y: int = Form(0),
+    width: int = Form(100),
+    height: int = Form(100),
+    format: str = Form("jpg")
+):
+    try:
+        contents = await file.read()
+        image = Image.open(io.BytesIO(contents))
+        del contents
+        
+        # Calculate scaling if limit_image_size was previously applied locally, 
+        # but here we just crop from the original server image
+        # image = limit_image_size(image) # Note: cropping should ideally be before limits or scaled correctly
+        
+        # Crop: box is (left, upper, right, lower)
+        box = (x, y, x + width, y + height)
+        image = image.crop(box)
+        
+        if image.mode != 'RGBA' and image.mode != 'RGB':
+            image = image.convert('RGB')
+
+        media_type = "image/jpeg"
+        save_format = "JPEG"
+        if format.lower() == 'png':
+            media_type = "image/png"
+            save_format = "PNG"
+        elif format.lower() == 'webp':
+            media_type = "image/webp"
+            save_format = "WEBP"
+        elif format.lower() == 'heic':
+            media_type = "image/heic"
+            save_format = "HEIF"
+        elif format.lower() == 'avif':
+            media_type = "image/avif"
+            save_format = "AVIF"
+
+        output_buffer = io.BytesIO()
+        image.save(output_buffer, format=save_format, quality=90)
+        output_buffer.seek(0)
+        del image
+        gc.collect()
+        
+        return StreamingResponse(output_buffer, media_type=media_type)
+    except Exception as e:
+        gc.collect()
+        print(f"Error crop: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/")

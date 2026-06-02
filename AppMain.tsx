@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 // Web Worker for HD Background Removal
@@ -507,30 +507,23 @@ function BanaConvertApp(props: AppProps = {}) {
         if (item.removeBackground) {
           await updateProgress(5); // Starting AI module load
 
-          // --- HYBRID BACKGROUND REMOVAL (Client-Side + Web Worker) ---
+          // --- SERVER SIDE BACKGROUND REMOVAL ---
           try {
-            const { removeBackgroundHybrid } = await import('./services/backgroundRemovalService');
-
-            // Pass the progress callback to update the UI
-            const blob = await removeBackgroundHybrid(
-              item.previewUrl,
-              item.useHDModel ? 'auto' : 'auto',
-              stats.isPremium ? 'premium' : 'free',
-              (progress) => {
-                if (progress < 100) {
-                  const mappedProgress = 10 + Math.floor(progress * 0.4);
-                  updateProgress(mappedProgress);
-                }
-              }
+            await updateProgress(20);
+            
+            // Server-side call
+            const bgBlob = await serverConversionService.removeBackground(
+              item.file,
+              stats.isPremium ? 'premium' : 'free'
             );
 
-            if (!blob) throw new Error("Background removal failed");
+            if (!bgBlob) throw new Error("Background removal failed on server");
 
             await updateProgress(50);
-            sourceUrl = URL.createObjectURL(blob);
+            sourceUrl = URL.createObjectURL(bgBlob);
 
           } catch (bgError: any) {
-            console.error("Background Removal Failed:", bgError);
+            console.error("Server Background Removal Failed:", bgError);
             throw bgError;
           }
         } else {
@@ -590,32 +583,20 @@ function BanaConvertApp(props: AppProps = {}) {
 
         dataUrl = URL.createObjectURL(blob);
 
-        // --- CLIENT SIDE POST-PROCESSING (Watermark / Crop) ---
-        // If we have crop/watermark, we must load the SERVER result into canvas and apply them
-        if (item.cropData || (hasFeatureAccess(stats.premiumTier, 'WATERMARK') && (item.watermarkText || item.watermarkLogo))) {
-          const serverImg = new Image();
-          serverImg.src = dataUrl;
-          await new Promise((resolve) => { serverImg.onload = resolve; });
-
-          // ... (Canvas Setup Reuse) ...
-          const cvs = document.createElement('canvas');
-          const cx = cvs.getContext('2d');
-          if (cx) {
-            cvs.width = serverImg.width;
-            cvs.height = serverImg.height;
-            cx.drawImage(serverImg, 0, 0);
-
-            // Apply Watermark Logic (Simplified Reuse)
-            if (item.watermarkText) {
-              cx.font = "30px Arial";
-              cx.fillStyle = "white";
-              cx.fillText(item.watermarkText, 10, 50);
+        // --- SERVER SIDE POST-PROCESSING (Watermark) ---
+        // Replace client-side Canvas with server API call
+        if (hasFeatureAccess(stats.premiumTier, 'WATERMARK') && item.watermarkText) {
+            await updateProgress(85); // Watermarking
+            try {
+               blob = await serverConversionService.watermarkImage(
+                 new File([blob], "temp.jpg", { type: blob.type }), 
+                 item.watermarkText, 
+                 item.targetFormat.split('/')[1] || 'jpg'
+               );
+               dataUrl = URL.createObjectURL(blob);
+            } catch (err) {
+               console.error("Server Watermark Failed:", err);
             }
-
-            // Re-export blob
-            blob = await new Promise<Blob>(r => cvs.toBlob(b => r(b!), item.targetFormat));
-            dataUrl = URL.createObjectURL(blob);
-          }
         }
 
         await updateProgress(90); // Blob created
