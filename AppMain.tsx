@@ -516,78 +516,13 @@ function BanaConvertApp(props: AppProps = {}) {
 
           try {
             await updateProgress(20);
-            let bgBlob: Blob | null = null;
             
-            if (item.bgModel === 'local-white') {
-              // Local canvas-based white removal for logos (preserves ALL text)
-              bgBlob = await new Promise<Blob>((resolve, reject) => {
-                const img = new Image();
-                const url = URL.createObjectURL(item.file);
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    const ctx = canvas.getContext('2d');
-                    if (!ctx) return reject("No canvas context");
-                    ctx.drawImage(img, 0, 0);
-                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                    const data = imageData.data;
-                    const lowerBound = 200; // Start fading alpha here
-                    const upperBound = 250; // Completely transparent here
-                    
-                    for (let i = 0; i < data.length; i += 4) {
-                        const r = data[i];
-                        const g = data[i+1];
-                        const b = data[i+2];
-                        
-                        // Calculate brightness (luminance)
-                        const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-                        
-                        // Calculate saturation to avoid removing bright vibrant colors
-                        const maxC = Math.max(r, g, b);
-                        const minC = Math.min(r, g, b);
-                        const saturation = maxC === 0 ? 0 : (maxC - minC) / maxC;
-                        
-                        // Only target pixels that are bright and have low saturation (grayscale/white/jpeg artifacts)
-                        if (lum > lowerBound && saturation < 0.2) {
-                            let alpha = 255;
-                            if (lum >= upperBound) {
-                                alpha = 0;
-                            } else {
-                                // Smooth linear fade for anti-aliasing and jpeg artifacts
-                                alpha = 255 * (1 - (lum - lowerBound) / (upperBound - lowerBound));
-                            }
-                            
-                            // Un-premultiply the color against white to remove white halos
-                            // This makes the edges blend perfectly on dark backgrounds
-                            if (alpha > 0 && alpha < 255) {
-                                const aNorm = alpha / 255;
-                                data[i] = Math.max(0, Math.min(255, (r - 255 * (1 - aNorm)) / aNorm));
-                                data[i+1] = Math.max(0, Math.min(255, (g - 255 * (1 - aNorm)) / aNorm));
-                                data[i+2] = Math.max(0, Math.min(255, (b - 255 * (1 - aNorm)) / aNorm));
-                            }
-                            
-                            data[i+3] = Math.min(data[i+3], alpha);
-                        }
-                    }
-                    ctx.putImageData(imageData, 0, 0);
-                    canvas.toBlob(blob => {
-                        URL.revokeObjectURL(url);
-                        if (blob) resolve(blob);
-                        else reject("Blob failed");
-                    }, 'image/png');
-                };
-                img.onerror = () => reject("Image load failed");
-                img.src = url;
-              });
-            } else {
-              // Server-side AI call
-              bgBlob = await serverConversionService.removeBackground(
-                item.file,
-                stats.isPremium ? 'premium' : 'free',
-                item.bgModel || 'isnet-general-use'
-              );
-            }
+            // Server-side AI call
+            const bgBlob = await serverConversionService.removeBackground(
+              item.file,
+              stats.isPremium ? 'premium' : 'free',
+              item.bgModel || 'isnet-general-use'
+            );
 
             if (!bgBlob) throw new Error("Background removal failed");
 
@@ -1236,7 +1171,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                                 <option value="birefnet-general">Ultra AI (İnsan, Saç & İnce Detay)</option>
                                                 <option value="isnet-general-use">Standart AI (Logo & Nesne)</option>
                                                 <option value="u2net">Klasik AI (Metinleri Koru)</option>
-                                                <option value="local-white">Hızlı Logo (Sadece Beyazı Sil)</option>
+
                                               </select>
                                             )}
                                           </div>
