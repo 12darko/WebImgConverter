@@ -320,7 +320,7 @@ function BanaConvertApp(props: AppProps = {}) {
       id: uuidv4(),
       file,
       previewUrl: '',
-      targetFormat: ConversionFormat.JPEG,
+      targetFormat: defaultTool === 'remove-background' ? ConversionFormat.PNG : ConversionFormat.JPEG,
       quality: 1.0,
       rotation: 0,
       resizeScale: 1,
@@ -855,6 +855,7 @@ function BanaConvertApp(props: AppProps = {}) {
                       a.download = `${f.aiName || f.file.name.split('.')[0]}.${f.targetFormat.split('/')[1]}`;
                       a.click();
                     }}
+                    onModelChange={(model) => updateFileConfig(files[0].id, 'bgModel', model)}
                   />
                 )}
               </div>
