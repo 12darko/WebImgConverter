@@ -20,7 +20,7 @@ except ImportError:
     print("AVIF support not available (pillow_heif version too old)")
 
 # --- RAM Optimization ---
-# Use birefnet-massive as default (SOTA quality, trained on massive datasets)
+# Use birefnet-general as default (SOTA quality, trained on massive datasets)
 # birefnet-portrait available for human photo optimization
 # Cache multiple models to allow user selection
 _sessions = {}
@@ -31,7 +31,7 @@ MAX_IMAGE_DIMENSION = 4096
 # Lock to ensure only ONE image is processed by the AI at a time.
 inference_lock = asyncio.Lock()
 
-def get_session(model_name: str = "birefnet-massive"):
+def get_session(model_name: str = "birefnet-general"):
     """Lazy-load the rembg session and cache it."""
     global _sessions
     if model_name not in _sessions:
@@ -64,7 +64,7 @@ app.add_middleware(
 async def remove_background(
     file: UploadFile = File(...), 
     quality_tier: str = Form("free"),
-    ai_model: str = Form("birefnet-massive")
+    ai_model: str = Form("birefnet-general")
 ):
     try:
         image_data = await file.read()

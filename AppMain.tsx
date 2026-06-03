@@ -1184,7 +1184,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                                 onChange={(e) => updateFileConfig(file.id, 'bgModel', e.target.value)}
                                                 className="bg-brand-50 dark:bg-brand-950/30 text-[11px] font-medium text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800 rounded-lg p-1.5 focus:ring-2 focus:ring-brand-500 outline-none w-full"
                                               >
-                                                <option value="birefnet-massive">🤖 Otomatik (En İyi)</option>
+                                                <option value="birefnet-general">🤖 Otomatik (En İyi)</option>
                                                 <option value="birefnet-portrait">🧑 Portre Modu (İnsan & Saç)</option>
                                                 <option value="birefnet-dis">🎨 Logo & Metin (Keskin)</option>
 

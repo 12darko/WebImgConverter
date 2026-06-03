@@ -12,8 +12,8 @@ async def test_models():
     with open(input_path, "rb") as f:
         img_data = f.read()
     
-    print("Loading birefnet-dis...")
-    session = new_session("birefnet-dis")
+    print("Loading birefnet-massive...")
+    session = new_session("birefnet-massive")
     
     print("Processing...")
     t0 = time.time()
@@ -24,15 +24,7 @@ async def test_models():
     with open(out_normal_path, "wb") as f:
         f.write(out_data)
         
-    # 2. Threshold output (What our backend currently does - Jagged/MS Paint edges)
-    img = Image.open(io.BytesIO(out_data))
-    r, g, b, a = img.split()
-    a = a.point(lambda p: 255 if p > 40 else 0)
-    img_thresh = Image.merge("RGBA", (r, g, b, a))
-    img_thresh.save(out_thresh_path, format="PNG")
-    
-    print(f"Saved normal output to {out_normal_path}")
-    print(f"Saved threshold output to {out_thresh_path}")
+    print(f"Saved massive output to {out_normal_path}")
 
 if __name__ == "__main__":
     asyncio.run(test_models())
