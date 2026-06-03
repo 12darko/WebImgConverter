@@ -983,6 +983,16 @@ function BanaConvertApp(props: AppProps = {}) {
                                 <div className="flex items-center gap-2 shrink-0">
                                   {file.status === 'idle' && (
                                     <>
+                                      {/* Convert Button */}
+                                      <button
+                                        onClick={() => {
+                                          triggerAdsterraPopunder();
+                                          convertImage(file.id);
+                                        }}
+                                        className="text-xs font-bold px-3 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white shadow-sm transition-colors flex items-center justify-center min-w-[80px]"
+                                      >
+                                        {t('convert_btn')}
+                                      </button>
                                       {/* Settings Toggle */}
                                       <button
                                         onClick={() => setExpandedFileId(expandedFileId === file.id ? null : file.id)}
@@ -1307,7 +1317,7 @@ function BanaConvertApp(props: AppProps = {}) {
                 </Droppable>
               </DragDropContext>
 
-              {files.length > 0 && !hasFeatureAccess(stats.premiumTier, 'NO_ADS') && <div className="mt-8"><AdBanner variant="horizontal" /></div>}
+              {files.length > 0 && !hasFeatureAccess(stats.premiumTier, 'NO_ADS') && <div className="mt-8 flex flex-col gap-4"><AdsterraNativeBanner /><AdBanner variant="horizontal" /></div>}
 
               {
                 files.some(f => f.status === 'done') && (

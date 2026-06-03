@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AdsterraNativeBanner } from '../ads/AdsterraNativeBanner';
 
 interface InlineBgRemoverProps {
     file: {
@@ -105,6 +106,9 @@ export const InlineBgRemover: React.FC<InlineBgRemoverProps> = ({ file, onProces
                         <img src={file.previewUrl} className="w-full h-auto max-h-[500px] object-contain rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 dark:brightness-90 dark:opacity-90" alt="Original preview" />
                     </div>
                 )}
+            </div>
+            <div className="border-t border-slate-100 dark:border-slate-800 p-2 bg-slate-50 dark:bg-slate-900/50">
+                <AdsterraNativeBanner />
             </div>
         </div>
     );

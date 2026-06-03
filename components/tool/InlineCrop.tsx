@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { AdsterraNativeBanner } from '../ads/AdsterraNativeBanner';
 import ReactCrop, { type Crop, centerCrop, makeAspectCrop } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 
@@ -116,6 +117,9 @@ export const InlineCrop: React.FC<InlineCropProps> = ({ imageUrl, onCropComplete
                         className="max-w-full max-h-[60vh] object-contain dark:brightness-90 dark:opacity-90"
                     />
                 </ReactCrop>
+            </div>
+            <div className="border-t border-slate-100 dark:border-slate-800 p-2 bg-slate-50 dark:bg-slate-900/50 mt-auto">
+                <AdsterraNativeBanner />
             </div>
         </div>
     );
