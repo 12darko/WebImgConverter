@@ -8,6 +8,7 @@ import { ToolDropzone } from '../components/tool/ToolDropzone';
 import { convertImage, buildOutputName, downloadBlob, OutputFormat } from '../services/toolEngine';
 import { useLanguage } from '../LanguageContext';
 import { HomePageSchema } from '../components/StructuredData';
+import { AdsterraNativeBanner } from '../components/ads/AdsterraNativeBanner';
 
 const Icon = (paths: React.ReactNode) => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -334,6 +335,11 @@ export default function HomePage() {
                 </div>
             </section>
 
+            {/* Ad Banner 1: After Hero */}
+            <div className="max-w-4xl mx-auto px-5 mb-10">
+                <AdsterraNativeBanner />
+            </div>
+
             {/* Why Choose WebImgConverter */}
             <section className="bg-slate-50/40 dark:bg-slate-800/30 border-y border-slate-100 dark:border-slate-800">
                 <div className="max-w-6xl mx-auto px-5 md:px-8 py-14 md:py-20">
@@ -395,6 +401,11 @@ export default function HomePage() {
                     </div>
                 </div>
             </section>
+
+            {/* Ad Banner 2: Before CTA */}
+            <div className="max-w-4xl mx-auto px-5 mt-4 mb-14">
+                <AdsterraNativeBanner />
+            </div>
 
             {/* Final CTA Band */}
             <section className="bg-white dark:bg-slate-900">

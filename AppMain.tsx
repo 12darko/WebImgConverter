@@ -1186,7 +1186,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                               >
                                                 <option value="birefnet-massive">🤖 Otomatik (En İyi)</option>
                                                 <option value="birefnet-portrait">🧑 Portre Modu (İnsan & Saç)</option>
-                                                <option value="isnet-general-use">🎨 Logo & Metin (Keskin)</option>
+                                                <option value="bria-rmbg">🎨 Logo & Metin (Keskin)</option>
 
                                               </select>
                                             )}
