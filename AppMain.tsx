@@ -565,7 +565,8 @@ function BanaConvertApp(props: AppProps = {}) {
           // HEIC Conversion default
           blob = await serverConversionService.convertHeic(sourceBlob as File,
             item.targetFormat === ConversionFormat.PNG ? 'png' :
-              item.targetFormat === ConversionFormat.WEBP ? 'webp' : 'jpg'
+              item.targetFormat === ConversionFormat.WEBP ? 'webp' : 
+                item.targetFormat === ConversionFormat.ICO ? 'ico' : 'jpg'
           );
         } else if (isCompression) {
           // Compression
@@ -575,7 +576,8 @@ function BanaConvertApp(props: AppProps = {}) {
           // Only if not BG removal (BG removal returns PNG already)
           blob = await serverConversionService.convertFormat(sourceBlob as File,
             item.targetFormat === ConversionFormat.PNG ? 'png' :
-              item.targetFormat === ConversionFormat.WEBP ? 'webp' : 'jpg'
+              item.targetFormat === ConversionFormat.WEBP ? 'webp' : 
+                item.targetFormat === ConversionFormat.ICO ? 'ico' : 'jpg'
           );
         } else {
           // BG Removal result is already a blob (PNG). 
@@ -583,7 +585,8 @@ function BanaConvertApp(props: AppProps = {}) {
           // For now, let's assume if BG removed, we respect that blob or convert format if needed.
           if (item.targetFormat !== ConversionFormat.PNG) {
             blob = await serverConversionService.convertFormat(sourceBlob as File,
-              item.targetFormat === ConversionFormat.WEBP ? 'webp' : 'jpg'
+              item.targetFormat === ConversionFormat.WEBP ? 'webp' : 
+                item.targetFormat === ConversionFormat.ICO ? 'ico' : 'jpg'
             );
           } else {
             blob = sourceBlob;

@@ -10,6 +10,7 @@ import RemoveBackgroundPage from './pages/RemoveBackground';
 import CompressImagePage from './pages/CompressImage';
 import SvgToPngPage from './pages/SvgToPng';
 import SmartCropperPage from './pages/SmartCropper';
+import FaviconGeneratorPage from './pages/FaviconGenerator';
 import HomePage from './pages/Home';
 import ToolsPage from './pages/Tools';
 import PricingPage from './pages/Pricing';
@@ -47,6 +48,7 @@ export default function Router() {
                         <Route path="/compress-image" element={<CompressImagePage />} />
                         <Route path="/svg-to-png" element={<SvgToPngPage />} />
                         <Route path="/smart-cropper" element={<SmartCropperPage />} />
+                        <Route path="/favicon-generator" element={<FaviconGeneratorPage />} />
                         <Route path="/privacy" element={<PrivacyPage />} />
                         <Route path="/terms" element={<TermsPage />} />
                         <Route path="/about" element={<AboutPage />} />

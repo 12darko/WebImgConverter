@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import { SiteShell } from '../components/layout';
@@ -36,6 +36,7 @@ const content = {
             'image-compressor': { name: 'Görüntü Sıkıştırıcı', description: 'Akıllı algoritmalarla gözle görülür kalite kaybı yaşamadan dosya boyutlarını ciddi oranda küçültün.' },
             'png-to-jpg': { name: 'PNG\'den JPG\'ye', description: 'Transparan PNG dosyalarınızı akıllı beyaz arkaplan dolgusu ile hızlı ve optimize edilmiş JPG\'lere dönüştürün.' },
             'smart-cropper': { name: 'Akıllı Kırpıcı', description: 'Özneleri otomatik olarak algılayın ve resimleri sosyal medya veya küçük resim boyutlarına (thumbnail) uygun şekilde kırpın.' },
+            'favicon-generator': { name: 'Favicon Oluşturucu', description: 'Web siteniz için saniyeler içinde mükemmel favicon (ICO) dosyaları oluşturun.' },
             'background-remover': { name: 'Arkaplan Silici', description: 'Portreler ve ürün fotoğrafları için gelişmiş Yapay Zeka kullanarak arka planları anında kaldırın.' }
         }
     },
@@ -53,6 +54,7 @@ const content = {
             'image-compressor': { name: 'Image Compressor', description: 'Significantly reduce file sizes without noticeable quality loss using smart algorithms.' },
             'png-to-jpg': { name: 'PNG to JPG', description: 'Quickly convert your transparent PNG files to optimized JPGs with a smart white background fill.' },
             'smart-cropper': { name: 'Smart Cropper', description: 'Automatically detect subjects and crop images perfectly for social media or thumbnails.' },
+            'favicon-generator': { name: 'Favicon Generator', description: 'Generate perfect favicon (ICO) files for your website in seconds.' },
             'background-remover': { name: 'Background Remover', description: 'Instantly remove backgrounds using advanced AI for portraits and product photos.' }
         }
     },
@@ -70,6 +72,7 @@ const content = {
             'image-compressor': { name: 'Bildkomprimierer', description: 'Reduzieren Sie Dateigrößen erheblich ohne merklichen Qualitätsverlust durch intelligente Algorithmen.' },
             'png-to-jpg': { name: 'PNG zu JPG', description: 'Konvertieren Sie Ihre transparenten PNG-Dateien schnell in optimierte JPGs mit intelligenter weißer Hintergrundfüllung.' },
             'smart-cropper': { name: 'Smart Cropper', description: 'Erkennen Sie Motive automatisch und schneiden Sie Bilder perfekt für soziale Medien oder Thumbnails zu.' },
+            'favicon-generator': { name: 'Favicon Generator', description: 'Erstellen Sie in Sekundenschnelle perfekte Favicon (ICO)-Dateien für Ihre Website.' },
             'background-remover': { name: 'Hintergrundentferner', description: 'Entfernen Sie Hintergründe sofort mit fortschrittlicher KI für Porträts und Produktfotos.' }
         }
     },
@@ -87,6 +90,7 @@ const content = {
             'image-compressor': { name: 'Compresseur d\'Image', description: 'Réduisez considérablement la taille des fichiers sans perte de qualité notable grâce à des algorithmes intelligents.' },
             'png-to-jpg': { name: 'PNG en JPG', description: 'Convertissez rapidement vos fichiers PNG transparents en JPG optimisés avec un remplissage de fond blanc intelligent.' },
             'smart-cropper': { name: 'Recadrage Intelligent', description: 'Détectez automatiquement les sujets et recadrez parfaitement les images pour les médias sociaux ou les miniatures.' },
+            'favicon-generator': { name: 'Générateur de Favicon', description: 'Générez des fichiers favicon (ICO) parfaits pour votre site web en quelques secondes.' },
             'background-remover': { name: 'Suppresseur de Fond', description: 'Supprimez instantanément les arrière-plans en utilisant l\'IA avancée pour les portraits et les photos de produits.' }
         }
     }
@@ -158,6 +162,20 @@ const TOOLS: ToolDef[] = [
             <path d="M18 22V8a2 2 0 0 0-2-2H2" />
         </>),
         keywords: ['crop', 'aspect ratio', 'thumbnail'],
+    },
+    {
+        id: 'favicon-generator',
+        name: 'favicon-generator',
+        description: 'favicon-generator',
+        path: '/favicon-generator',
+        badge: 'NEW',
+        icon: Icon(<>
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" />
+            <polyline points="12 22 12 12" />
+            <polyline points="22 8.5 12 12" />
+            <polyline points="2 8.5 12 12" />
+        </>),
+        keywords: ['favicon', 'ico', 'icon', 'website', 'logo'],
     },
     {
         id: 'background-remover',

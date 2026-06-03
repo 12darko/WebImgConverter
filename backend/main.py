@@ -174,6 +174,8 @@ async def convert_format(file: UploadFile = File(...), format: str = Form("jpg")
         del contents
         image = limit_image_size(image)
         
+        save_kwargs = {'quality': 90}
+        
         if format.lower() in ['jpg', 'jpeg']:
             if image.mode in ('RGBA', 'LA') or (image.mode == 'P' and 'transparency' in image.info):
                 background = Image.new('RGB', image.size, (255, 255, 255))
@@ -190,9 +192,17 @@ async def convert_format(file: UploadFile = File(...), format: str = Form("jpg")
         elif format.lower() == 'png':
             media_type = "image/png"
             save_format = "PNG"
+            save_kwargs = {} # PNG doesn't use quality
         elif format.lower() == 'webp':
             media_type = "image/webp"
             save_format = "WEBP"
+        elif format.lower() in ['ico', 'x-icon']:
+            if image.mode not in ('RGB', 'RGBA'):
+                image = image.convert('RGBA')
+            media_type = "image/x-icon"
+            save_format = "ICO"
+            # Standard favicon sizes
+            save_kwargs = {'sizes': [(16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)]}
         elif format.lower() == 'heic':
             if image.mode not in ('RGB', 'RGBA'):
                 image = image.convert('RGB')
@@ -207,7 +217,7 @@ async def convert_format(file: UploadFile = File(...), format: str = Form("jpg")
             raise HTTPException(status_code=400, detail=f"Unsupported format: {format}")
 
         output_buffer = io.BytesIO()
-        image.save(output_buffer, format=save_format, quality=90)
+        image.save(output_buffer, format=save_format, **save_kwargs)
         output_buffer.seek(0)
         del image
         gc.collect()
