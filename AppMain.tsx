@@ -982,15 +982,43 @@ function BanaConvertApp(props: AppProps = {}) {
 
                                 {/* Inline Actions */}
                                 <div className="flex items-center gap-2 shrink-0">
-                                  {file.status === 'idle' && (
+                                  {file.status === 'idle' && defaultTool === 'compress-image' && (
                                     <>
-                                      {/* Convert Button */}
+                                      <div className="hidden sm:flex items-center gap-2 mr-2">
+                                        <label className="text-xs font-bold text-slate-500 dark:text-slate-400">{language === 'tr' ? 'Kalite:' : 'Quality:'}</label>
+                                        <select
+                                          value={file.quality}
+                                          onChange={(e) => updateFileConfig(file.id, 'quality', parseFloat(e.target.value))}
+                                          className="bg-white dark:bg-slate-800 text-xs font-bold text-brand-700 dark:text-brand-300 border-2 border-brand-200 dark:border-brand-800 rounded-lg p-1.5 focus:ring-2 focus:ring-brand-500 outline-none"
+                                        >
+                                          <option value="1">100% ({language === 'tr' ? 'Kayıpsız' : 'Lossless'})</option>
+                                          <option value="0.9">90% ({language === 'tr' ? 'Yüksek' : 'High'})</option>
+                                          <option value="0.75">75% ({language === 'tr' ? 'Dengeli' : 'Balanced'})</option>
+                                          <option value="0.5">50% ({language === 'tr' ? 'Düşük Boyut' : 'Low Size'})</option>
+                                          <option value="0.25">25% ({language === 'tr' ? 'Maks Sıkıştırma' : 'Max Compress'})</option>
+                                        </select>
+                                      </div>
                                       <button
                                         onClick={() => {
                                           triggerAdsterraPopunder();
                                           convertImage(file.id);
                                         }}
-                                        className="text-xs font-bold px-3 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white shadow-sm transition-colors flex items-center justify-center min-w-[80px]"
+                                        className="bg-brand-600 hover:bg-brand-500 dark:bg-brand-600 dark:hover:bg-brand-500 text-white px-6 py-2 rounded-xl text-sm font-bold shadow-md shadow-brand-500/20 dark:shadow-none transition-all hover:scale-105 active:scale-95"
+                                      >
+                                        {language === 'tr' ? 'Sıkıştır' : 'Compress'}
+                                      </button>
+                                    </>
+                                  )}
+
+                                  {file.status === 'idle' && defaultTool !== 'compress-image' && (
+                                    <>
+                                      {/* Convert Button (Mobile) */}
+                                      <button
+                                        onClick={() => {
+                                          triggerAdsterraPopunder();
+                                          convertImage(file.id);
+                                        }}
+                                        className="sm:hidden text-xs font-bold px-3 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white shadow-sm transition-colors flex items-center justify-center min-w-[80px]"
                                       >
                                         {t('convert_btn')}
                                       </button>
@@ -1004,8 +1032,11 @@ function BanaConvertApp(props: AppProps = {}) {
                                         <span className="hidden sm:inline">{language === 'tr' ? 'Gelişmiş Ayarlar' : 'Advanced Options'}</span>
                                         <svg className={`w-4 h-4 transition-transform duration-300 ${expandedFileId === file.id ? 'rotate-180 text-brand-600' : 'text-slate-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>
                                       </button>
-                                      {/* Convert */}
-                                      <button onClick={() => convertImage(file.id)} className="bg-brand-600 hover:bg-brand-500 dark:bg-brand-600 dark:hover:bg-brand-500 text-white px-6 py-2 rounded-xl text-sm font-bold shadow-md shadow-brand-500/20 dark:shadow-none transition-all hover:scale-105 active:scale-95">
+                                      {/* Convert Button (Desktop) */}
+                                      <button onClick={() => {
+                                          triggerAdsterraPopunder();
+                                          convertImage(file.id);
+                                        }} className="hidden sm:block bg-brand-600 hover:bg-brand-500 dark:bg-brand-600 dark:hover:bg-brand-500 text-white px-6 py-2 rounded-xl text-sm font-bold shadow-md shadow-brand-500/20 dark:shadow-none transition-all hover:scale-105 active:scale-95">
                                         {t('convert_btn')}
                                       </button>
                                     </>
@@ -1044,7 +1075,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                 </div>
                               </div>
                               {/* Advanced Settings Panel (Collapsible) */}
-                              {expandedFileId === file.id && file.status !== 'done' && (
+                              {expandedFileId === file.id && file.status !== 'done' && defaultTool !== 'compress-image' && (
                                 <div className="border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 p-4 space-y-4 animate-[fadeIn_0.2s]">
                                   {/* Format Selector */}
                                   <div className="flex flex-col gap-2">
