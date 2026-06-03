@@ -21,7 +21,7 @@ export interface FileItem {
   resizeScale: 1 | 0.75 | 0.5 | 0.25;
   isGrayscale: boolean;
   removeBackground: boolean; // Simple white-bg removal for PNG/WEBP
-  bgModel?: 'birefnet-massive' | 'birefnet-portrait'; // AI model selection
+  bgModel?: 'birefnet-massive' | 'birefnet-portrait' | 'bria-rmbg'; // AI model selection
   useHDModel: boolean; // Deprecated
   bgRemovalTolerance: number; // 0 to 100 threshold
 
