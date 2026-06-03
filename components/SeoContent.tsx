@@ -28,7 +28,7 @@ const seoData = {
                 { q: "Toplu dönüştürme yapabilir miyim?", a: "Evet, tek seferde 100+ dosya yükleyebilir ve hepsini aynı anda dönüştürebilirsiniz." }
             ]
         },
-        'heic-to-jpg': {
+        'heic-converter': {
             title: "HEIC Dosyasını JPG'ye Çevirme Rehberi: Kapsamlı Teknik Çözüm",
             intro: "WebImgConverter, Apple'ın iOS 11 ile tanıttığı yüksek verimli (HEIC) fotoğraf formatını, dünyanın en yaygın görsel formatı olan JPG'ye saniyeler içinde dönüştürmenizi sağlayan profesyonel bir araçtır. \n\nApple cihazları (iPhone ve iPad) fotoğraf çekerken depolama alanından %50 oranında tasarruf etmek için HEIC formatını kullanır. Ancak bu dosyaları Windows bilgisayarınıza aktardığınızda, Android bir telefona gönderdiğinizde veya bir web sitesine yüklemek istediğinizde 'Desteklenmeyen Format' hatasıyla karşılaşırsınız. İşte tam bu noktada HEIC to JPG dönüştürücümüz devreye girer. \n\nHiçbir yazılım indirmenize veya Windows mağazasından ücretli eklentiler almanıza gerek kalmadan, fotoğraflarınızı doğrudan tarayıcınız üzerinden dönüştürebilirsiniz. İşlem tamamen sizin cihazınızda gerçekleşir, fotoğraflarınız sunucularımızda depolanmaz. Düğün fotoğraflarınız, tatil anılarınız veya e-ticaret ürün çekimleriniz güvendedir.",
             whyTitle: "Neden HEIC'i JPG'ye Çevirmeliyim?",
@@ -46,7 +46,7 @@ const seoData = {
                 { q: "Fotoğraflarım internete yükleniyor mu? Gizlilik politikası nedir?", a: "Kesinlikle hayır. İşlemler 'Client-Side' (İstemci Tarafı) teknolojisiyle tamamen sizin tarayıcınızın belleğinde yapılır. Fotoğraflarınız bizim veya başka birinin sunucusuna gönderilmez. Maksimum gizlilik garantisi sunuyoruz." }
             ]
         },
-        'png-to-jpg': {
+        'png-converter': {
             title: "PNG'den JPG'ye Dönüştürme: Dosya Boyutu ve Performans Optimizasyonu",
             intro: "WebImgConverter PNG to JPG dönüştürücü, özellikle web sitelerinin yüklenme hızını artırmak ve gereksiz büyük dosya boyutlarından kurtulmak isteyen kullanıcılar için tasarlanmış profesyonel bir optimizasyon aracıdır.\n\nPNG (Portable Network Graphics) formatı, kayıpsız sıkıştırma sunduğu ve şeffaf (saydam) arka planları desteklediği için logolar, ikonlar ve grafik tasarımları için mükemmeldir. Ancak konu 'fotoğraflar' olduğunda PNG formatı bir kabusa dönüşebilir. 5 MB boyutundaki bir manzara fotoğrafı PNG olarak kaydedildiğinde, aynı fotoğrafın JPG versiyonu (hiçbir gözle görülür kalite farkı olmadan) sadece 500 KB yer kaplar. Web sitenize PNG fotoğraflar yüklerseniz, sitenizin hızı inanılmaz derecede düşecek ve Google Core Web Vitals skorlarınız dibe vuracaktır.\n\nBu araç ile devasa PNG dosyalarınızı saniyeler içinde web uyumlu, hafif ve hızlı açılan JPG dosyalarına dönüştürebilirsiniz. Üstelik şeffaf PNG'ler JPG'ye çevrilirken, arkaplan rengini otomatik algılar veya varsayılan olarak beyaz/siyah renkle doldurarak estetik bir bütünlük sağlar.",
             whyTitle: "PNG Dosyalarını Neden JPG Yapmalısınız?",
@@ -64,7 +64,7 @@ const seoData = {
                 { q: "Yüklediğim dosyalar güvende mi?", a: "Evet. Tüm dönüştürme işlemleri tamamen cihazınızın RAM (bellek) sınırları içinde yapılır. Herhangi bir sunucuya dosya gönderimi (upload) yapılmadığı için %100 güvenlik ve mahremiyet sağlanır." }
             ]
         },
-        'webp-to-jpg': {
+        'webp-converter': {
             title: "WebP Dosyalarını JPG ve PNG Yapma: Kesin Çözüm Rehberi",
             intro: "WebP formatı, internet hızını artırmak için harika bir teknolojidir ancak günlük kullanımda sık sık 'Desteklenmeyen Dosya Biçimi' hatasıyla karşılaşmanıza neden olur. WebImgConverter WebP to JPG dönüştürücü, Google'ın bu yeni nesil görsel formatını saniyeler içinde her cihazda açılabilen evrensel JPG veya PNG formatına çevirmenizi sağlayan ücretsiz bir araçtır.\n\nBir web sitesinden ürün fotoğrafı veya tasarım referansı indirdiğinizde, bu dosyanın .webp uzantılı olduğunu ve eski Photoshop sürümlerinde, Windows Fotoğraf Görüntüleyicisi'nde veya bazı video kurgu programlarında açılamadığını fark edersiniz. Sosyal medyaya yüklemek istediğinizde bile sorun çıkarabilir. Bu sorunu çözmek için fotoğrafı tarayıcınızdan sürükleyip WebImgConverter arayüzüne bırakmanız yeterlidir.\n\nYüksek performanslı WebAssembly motorumuz sayesinde dönüştürme işlemi anında tarayıcınızın içinde gerçekleşir. Animasyonlu WebP dosyalarınızın ilk karesi statik JPG'ye çevrilir, şeffaf (transparan) WebP dosyalarınız ise PNG formatına dönüştürüldüğünde saydamlıklarını kusursuz bir şekilde korur.",
             whyTitle: "Neden WebP Dosyalarını Dönüştürmelisiniz?",
@@ -80,6 +80,42 @@ const seoData = {
                 { q: "Dönüştürme işlemi ücretli mi?", a: "Hayır. Araçlarımız tamamen ücretsizdir. Kayıt olmanıza, kredi kartı bilgisi girmenize veya bir program indirmenize gerek yoktur." },
                 { q: "Toplu dönüştürme yapabilir miyim?", a: "Kesinlikle. Klasörünüzdeki onlarca WebP dosyasını aynı anda seçip sürükleyebilirsiniz. Sistem hepsini eşzamanlı olarak işler ve size bir ZIP arşivi sunar." },
                 { q: "Dönüştürürken kalite ayarı yapabilir miyim?", a: "Evet, gelişmiş ayarlar bölümünden JPG sıkıştırma kalitesini (%1 ile %100 arası) manuel olarak belirleyebilir, isterseniz dosya boyutunu daha da küçültebilirsiniz." }
+            ]
+        },
+        'jpg-converter': {
+            title: "JPG Dönüştürücü: Görsellerinizi Özgürce Dönüştürün",
+            intro: "JPG dosyalarınızı yüksek kalitede PNG, WebP veya AVIF gibi diğer popüler formatlara dönüştürün. Yüksek performanslı dönüşüm ile saniyeler içinde sonuç alın.",
+            whyTitle: "Neden JPG'yi Dönüştürmelisiniz?",
+            features: [
+                { title: "Modern Formatlar", desc: "Dosyalarınızı WebP veya AVIF yaparak çok daha az yer kaplamasını sağlayın." },
+                { title: "Şeffaflık İhtiyacı", desc: "JPG saydamlık desteklemez, saydamlık gerektiğinde PNG formatına geçiş yapın." },
+                { title: "Kalite Koruma", desc: "Renk doğruluğundan ödün vermeden güvenilir dönüşüm elde edin." },
+                { title: "Gizlilik", desc: "Tüm işlemler güvenli bir şekilde tarayıcınızda veya izole sunucularda gerçekleşir." }
+            ],
+            faq: [
+                { q: "JPG dosyası WebP'ye dönüştüğünde boyut küçülür mü?", a: "Evet, çoğu durumda WebP, JPG'ye göre daha iyi sıkıştırma sağlar ve boyut küçülür." },
+                { q: "Kalite kaybı yaşar mıyım?", a: "Dönüştürme işlemi kalite kaybı olmadan (veya minimum kayıpla) gerçekleşir." },
+                { q: "Toplu işlem yapabilir miyim?", a: "Evet, birden fazla JPG dosyasını aynı anda dönüştürebilirsiniz." },
+                { q: "İşlem ücretli mi?", a: "Temel dönüşüm özelliklerimiz tamamen ücretsizdir." },
+                { q: "Hangi formatlara dönüştürebilirim?", a: "JPG dosyalarınızı PNG, WebP ve AVIF formatlarına çevirebilirsiniz." }
+            ]
+        },
+        'avif-converter': {
+            title: "AVIF Dönüştürücü: Yeni Nesil Formatı Her Yerde Açın",
+            intro: "AVIF dosyalarınızı yüksek kalitede JPG, PNG veya WebP gibi daha uyumlu formatlara dönüştürün. Modern AVIF formatını eski cihazlarda ve yazılımlarda açılabilir hale getirin.",
+            whyTitle: "Neden AVIF Dönüştürücü Kullanmalısınız?",
+            features: [
+                { title: "Evrensel Uyumluluk", desc: "AVIF henüz her yerde desteklenmiyor. JPG veya PNG yaparak her cihazda açın." },
+                { title: "Yüksek Kalite", desc: "AVIF'in sunduğu yüksek renk doğruluğunu PNG veya JPG'ye kayıpsız aktarın." },
+                { title: "Hızlı İşlem", desc: "Saniyeler içinde dosyalarınızı dönüştürüp indirmeye hazır hale getirin." },
+                { title: "Çoklu Çıktı", desc: "İhtiyacınıza göre JPG, PNG veya WebP formatlarından birini seçin." }
+            ],
+            faq: [
+                { q: "AVIF nedir?", a: "AVIF, AV1 video codec'inden türetilen ve mükemmel sıkıştırma sunan modern bir görüntü formatıdır." },
+                { q: "AVIF'i neden JPG yapmalıyım?", a: "Bazı eski tarayıcılar ve programlar AVIF'i desteklemediği için görüntüleyebilmek adına JPG veya PNG'ye dönüştürmeniz gerekebilir." },
+                { q: "Dönüştürürken kalite düşer mi?", a: "Sistemimiz orijinal kaliteyi koruyarak, minimum kalite kaybıyla dönüştürme yapar." },
+                { q: "Arka plan saydamlığı korunur mu?", a: "Evet, AVIF dosyanızı PNG veya WebP'ye dönüştürürken saydam alanlar aynen korunur." },
+                { q: "Güvenli mi?", a: "Dosyalarınız kalıcı olarak saklanmaz, işlemler bittikten hemen sonra silinir." }
             ]
         },
         'remove-background': {
@@ -118,7 +154,7 @@ const seoData = {
                 { q: "Hangi görsel formatlarını küçültebilirim?", a: "Sistemimiz JPG, JPEG, PNG, WebP ve HEIC formatlarının tamamını desteklemektedir." }
             ]
         },
-        'svg-to-png': {
+        'svg-converter': {
             title: "SVG'den PNG'ye Dönüştürme: Vektörden Piksele Kusursuz Geçiş",
             intro: "WebImgConverter SVG to PNG dönüştürücü, kalite kaybı olmadan sınırsız ölçeklenebilen vektörel (SVG) tasarımlarınızı, her cihazda ve her platformda açılabilen standart piksel (PNG) tabanlı görsellere dönüştüren güçlü bir araçtır.\n\nSVG (Scalable Vector Graphics), kod tabanlı olduğu için web geliştiricileri ve tasarımcılar tarafından çok sevilir. Ancak bir SVG logosunu Microsoft Word belgesine eklemek, WhatsApp üzerinden müşteriye göndermek, Instagram'a yüklemek veya bazı eski yazılımlarda açmak istediğinizde uyumsuzluk hatalarıyla karşılaşırsınız. SVG dosyaları her yerde görüntülenemez.\n\nİşte bu noktada vektörlerinizi rasterleştirmek (pikselleştirmek) gerekir. Aracımız, SVG dosyanızdaki tüm matematiksel eğrileri, renk geçişlerini (gradient) ve saydamlık (transparency) bilgilerini okuyarak, bunları kayıpsız bir şekilde saydam arka planlı PNG dosyalarına çevirir. Üstelik çıktı çözünürlüğünü kendiniz belirleyebilirsiniz.",
             whyTitle: "SVG'yi Neden PNG Yapmalısınız?",
@@ -174,7 +210,7 @@ const seoData = {
                 { q: "Can I batch convert?", a: "Yes, upload 100+ files at once and convert them all simultaneously." }
             ]
         },
-        'heic-to-jpg': {
+        'heic-converter': {
             title: "HEIC to JPG Conversion Guide",
             intro: "WebImgConverter lets you convert Apple's modern HEIC photo format to JPG, PNG, or WEBP in seconds. Use photos from your iPhone and iPad on Windows, Android, and websites seamlessly.",
             whyTitle: "HEIC Conversion Guide",
@@ -192,7 +228,7 @@ const seoData = {
                 { q: "Can I batch convert HEIC?", a: "Yes, upload 100+ HEIC files at once and convert them all to JPG." }
             ]
         },
-        'png-to-jpg': {
+        'png-converter': {
             title: "Convert PNG to JPG - Transparency & Size",
             intro: "Convert large PNG files to web-optimized JPG format. Automatically handles transparent backgrounds by turning them white or black.",
             whyTitle: "PNG vs JPG?",
@@ -210,7 +246,7 @@ const seoData = {
                 { q: "Can I choose background color?", a: "Yes, when converting transparent PNGs to JPG, you can select white, black, or a custom background color." }
             ]
         },
-        'webp-to-jpg': {
+        'webp-converter': {
             title: "Convert WebP Files to JPG & PNG",
             intro: "Convert Google's WebP format to universally compatible JPG or PNG. Use web-downloaded images in Photoshop and other tools.",
             whyTitle: "About WebP Conversion",
@@ -226,6 +262,42 @@ const seoData = {
                 { q: "Why convert WebP to JPG?", a: "Photoshop, older browsers, and some apps don't support WebP. JPG provides universal compatibility." },
                 { q: "Will there be quality loss?", a: "Minimal quality loss with our conversion. You can adjust the quality level as desired." },
                 { q: "Are WebP animations supported?", a: "You can convert animated WebP files to static JPG. Separate files for each frame can also be created." }
+            ]
+        },
+        'jpg-converter': {
+            title: "JPG Converter: Free Online Image Format Converter",
+            intro: "Convert your JPG files to modern formats like PNG, WebP, or AVIF with ease. Fast, secure, and preserves high quality.",
+            whyTitle: "Why Convert JPG?",
+            features: [
+                { title: "Modern Formats", desc: "Switch to WebP or AVIF for better web performance." },
+                { title: "Transparency", desc: "JPG lacks transparency; convert to PNG to add transparent backgrounds." },
+                { title: "Quality Maintained", desc: "Get high-quality outputs without noticeable loss." },
+                { title: "Secure & Fast", desc: "Your files are securely processed and immediately deleted." }
+            ],
+            faq: [
+                { q: "Can I convert multiple JPGs at once?", a: "Yes, our batch processing lets you convert dozens of files simultaneously." },
+                { q: "Is it free?", a: "Yes, our basic conversion features are completely free." },
+                { q: "Will the file size change?", a: "Yes, converting to WebP or AVIF can significantly reduce file size." },
+                { q: "Are my files safe?", a: "Absolutely. We don't store your images permanently." },
+                { q: "What formats can I convert to?", a: "You can convert your JPGs to PNG, WebP, and AVIF." }
+            ]
+        },
+        'avif-converter': {
+            title: "AVIF Converter: Make Modern Formats Compatible",
+            intro: "Convert your modern AVIF files to universally supported formats like JPG, PNG, or WebP. Open and edit AVIF files anywhere.",
+            whyTitle: "Why Convert AVIF?",
+            features: [
+                { title: "Universal Compatibility", desc: "Convert to JPG or PNG to open your images in any software or browser." },
+                { title: "High Quality", desc: "Preserve the amazing visual quality of AVIF in the converted file." },
+                { title: "Instant Conversion", desc: "Lightning-fast processing to get your files ready in seconds." },
+                { title: "Transparency Support", desc: "Transparency is fully preserved when converting to PNG or WebP." }
+            ],
+            faq: [
+                { q: "What is an AVIF file?", a: "AVIF is a modern image format based on the AV1 video codec, offering excellent compression." },
+                { q: "Why can't I open AVIF files?", a: "Many older software and some platforms do not support AVIF yet. Converting it to JPG or PNG solves this." },
+                { q: "Does conversion reduce quality?", a: "Our converter maintains the highest possible quality during conversion." },
+                { q: "Does it preserve transparency?", a: "Yes, when converting to PNG or WebP, the transparent background is kept intact." },
+                { q: "Is it secure?", a: "Yes, files are processed securely and deleted right after." }
             ]
         },
         'remove-background': {
@@ -354,20 +426,58 @@ const seoData = {
                 { q: "Kann ich die Hintergrundfarbe wählen?", a: "Ja, wählen Sie weiß, schwarz oder eine benutzerdefinierte Farbe." }
             ]
         },
-        'webp-to-jpg': {
-            title: "WebP-Dateien zu JPG & PNG konvertieren",
-            intro: "Konvertieren Sie Googles WebP-Format in universell kompatibles JPG oder PNG.",
+        'webp-converter': {
+            title: "Konvertieren Sie WebP in JPG und PNG",
+            intro: "Konvertieren Sie das WebP-Format von Google in universell kompatibles JPG oder PNG. Verwenden Sie web-heruntergeladene Bilder in Photoshop und anderen Tools.",
             whyTitle: "Über WebP-Konvertierung",
             features: [
-                { title: "Universelle Kompatibilität", desc: "WebP öffnet sich nicht überall. JPG und PNG schon." },
-                { title: "Rückkonvertierung", desc: "Wir erhalten maximale Qualität bei der Konvertierung von WebP." }
+                { title: "Universelle Kompatibilität", desc: "WebP lässt sich nicht überall öffnen. JPG und PNG schon." },
+                { title: "Rückwärtskonvertierung", desc: "Wir bewahren die maximale Qualität bei der Rückkonvertierung von WebP." },
+                { title: "Animiertes WebP", desc: "Extrahieren Sie den ersten Frame aus animierten WebP-Dateien." },
+                { title: "Transparenz erhalten", desc: "Die Transparenz bleibt bei der Konvertierung von WebP in PNG erhalten." }
             ],
             faq: [
                 { q: "Was ist WebP?", a: "WebP ist ein Next-Gen-Format von Google für schnellere Websites." },
-                { q: "Ist die Konvertierung schnell?", a: "Ja, unsere Browser-Technologie konvertiert Dutzende von Dateien pro Sekunde." },
-                { q: "Warum WebP zu JPG konvertieren?", a: "Photoshop und ältere Browser unterstützen WebP nicht." },
-                { q: "Gibt es Qualitätsverlust?", a: "Minimaler Qualitätsverlust mit unserer Konvertierung." },
-                { q: "Werden WebP-Animationen unterstützt?", a: "Sie können animierte WebP-Dateien in statisches JPG konvertieren." }
+                { q: "Ist die Konvertierung schnell?", a: "Ja, unsere leistungsstarke Servertechnologie konvertiert Dutzende von Dateien pro Sekunde." },
+                { q: "Warum WebP in JPG konvertieren?", a: "Photoshop, ältere Browser und einige Apps unterstützen WebP nicht. JPG bietet universelle Kompatibilität." },
+                { q: "Wird es Qualitätsverluste geben?", a: "Minimaler Qualitätsverlust mit unserer Konvertierung." },
+                { q: "Werden WebP-Animationen unterstützt?", a: "Sie können animierte WebP-Dateien in statische JPGs konvertieren." }
+            ]
+        },
+        'jpg-converter': {
+            title: "JPG Konverter: Kostenlos Online Bilder Konvertieren",
+            intro: "Konvertieren Sie Ihre JPG-Dateien einfach in moderne Formate wie PNG, WebP oder AVIF. Schnell, sicher und ohne Qualitätsverlust.",
+            whyTitle: "Warum JPG konvertieren?",
+            features: [
+                { title: "Moderne Formate", desc: "Wechseln Sie zu WebP oder AVIF für bessere Web-Performance." },
+                { title: "Transparenz", desc: "Konvertieren Sie in PNG, um transparente Hintergründe hinzuzufügen." },
+                { title: "Hohe Qualität", desc: "Erhalten Sie hochwertige Ergebnisse ohne sichtbaren Verlust." },
+                { title: "Sicher & Schnell", desc: "Ihre Dateien werden sicher verarbeitet und sofort gelöscht." }
+            ],
+            faq: [
+                { q: "Kann ich mehrere JPGs auf einmal konvertieren?", a: "Ja, Sie können Dutzende von Dateien gleichzeitig konvertieren." },
+                { q: "Ist es kostenlos?", a: "Ja, unsere grundlegenden Konvertierungsfunktionen sind kostenlos." },
+                { q: "Ändert sich die Dateigröße?", a: "Ja, die Konvertierung in WebP oder AVIF kann die Größe reduzieren." },
+                { q: "Sind meine Dateien sicher?", a: "Absolut. Wir speichern Ihre Bilder nicht dauerhaft." },
+                { q: "In welche Formate kann ich konvertieren?", a: "Sie können Ihre JPGs in PNG, WebP und AVIF konvertieren." }
+            ]
+        },
+        'avif-converter': {
+            title: "AVIF Konverter: Moderne Formate kompatibel machen",
+            intro: "Konvertieren Sie Ihre modernen AVIF-Dateien in universell unterstützte Formate wie JPG, PNG oder WebP.",
+            whyTitle: "Warum AVIF konvertieren?",
+            features: [
+                { title: "Universelle Kompatibilität", desc: "Konvertieren Sie in JPG oder PNG, um Ihre Bilder in jeder Software zu öffnen." },
+                { title: "Hohe Qualität", desc: "Bewahren Sie die erstaunliche visuelle Qualität von AVIF in der konvertierten Datei." },
+                { title: "Sofortige Konvertierung", desc: "Ihre Dateien sind in Sekundenschnelle bereit." },
+                { title: "Transparenz", desc: "Die Transparenz bleibt bei der Konvertierung in PNG oder WebP erhalten." }
+            ],
+            faq: [
+                { q: "Was ist eine AVIF-Datei?", a: "AVIF ist ein modernes Bildformat mit exzellenter Komprimierung." },
+                { q: "Warum kann ich AVIF nicht öffnen?", a: "Ältere Software unterstützt AVIF noch nicht. Konvertieren löst dieses Problem." },
+                { q: "Reduziert die Konvertierung die Qualität?", a: "Unser Konverter behält die höchstmögliche Qualität bei." },
+                { q: "Bleibt die Transparenz erhalten?", a: "Ja, bei der Konvertierung in PNG oder WebP bleibt der Hintergrund intakt." },
+                { q: "Ist es sicher?", a: "Ja, Dateien werden sicher verarbeitet und direkt danach gelöscht." }
             ]
         },
         'remove-background': {
@@ -456,13 +566,15 @@ const seoData = {
                 { q: "Puis-je choisir la couleur d'arrière-plan?", a: "Oui, choisissez blanc, noir ou une couleur personnalisée." }
             ]
         },
-        'webp-to-jpg': {
-            title: "Convertir fichiers WebP en JPG & PNG",
-            intro: "Convertissez le format WebP de Google en JPG ou PNG universellement compatible.",
+        'webp-converter': {
+            title: "Convertir des fichiers WebP en JPG et PNG",
+            intro: "Convertissez le format WebP de Google en JPG ou PNG universellement compatible. Utilisez les images Web dans Photoshop et d'autres outils.",
             whyTitle: "À propos de la conversion WebP",
             features: [
-                { title: "Compatibilité universelle", desc: "WebP ne s'ouvre pas partout. JPG et PNG oui." },
-                { title: "Conversion inverse", desc: "Nous maintenons la qualité maximale lors de la conversion de WebP." }
+                { title: "Compatibilité Universelle", desc: "WebP ne s'ouvre pas partout. JPG et PNG oui." },
+                { title: "Conversion Inverse", desc: "Nous maintenons la qualité maximale lors de la conversion depuis WebP." },
+                { title: "WebP Animé", desc: "Extrayez la première image des fichiers WebP animés." },
+                { title: "Transparence Préservée", desc: "La transparence est préservée lors de la conversion de WebP en PNG." }
             ],
             faq: [
                 { q: "Qu'est-ce que WebP?", a: "WebP est un format de nouvelle génération de Google pour des sites web plus rapides." },
@@ -470,6 +582,42 @@ const seoData = {
                 { q: "Pourquoi convertir WebP en JPG?", a: "Photoshop et les anciens navigateurs ne supportent pas WebP." },
                 { q: "Y aura-t-il une perte de qualité?", a: "Perte de qualité minimale avec notre conversion." },
                 { q: "Les animations WebP sont-elles supportées?", a: "Vous pouvez convertir des fichiers WebP animés en JPG statique." }
+            ]
+        },
+        'jpg-converter': {
+            title: "Convertisseur JPG: Convertissez vos images gratuitement",
+            intro: "Convertissez facilement vos fichiers JPG dans des formats modernes comme PNG, WebP ou AVIF. Rapide, sécurisé et préserve la qualité.",
+            whyTitle: "Pourquoi convertir JPG?",
+            features: [
+                { title: "Formats Modernes", desc: "Passez à WebP ou AVIF pour de meilleures performances web." },
+                { title: "Transparence", desc: "Convertissez en PNG pour ajouter des fonds transparents." },
+                { title: "Qualité Maintenue", desc: "Obtenez des résultats de haute qualité sans perte visible." },
+                { title: "Sécurisé et Rapide", desc: "Vos fichiers sont traités en toute sécurité et supprimés immédiatement." }
+            ],
+            faq: [
+                { q: "Puis-je convertir plusieurs JPG à la fois?", a: "Oui, vous pouvez convertir des dizaines de fichiers simultanément." },
+                { q: "Est-ce gratuit?", a: "Oui, nos fonctionnalités de conversion de base sont gratuites." },
+                { q: "La taille du fichier changera-t-elle?", a: "Oui, passer à WebP ou AVIF peut réduire la taille." },
+                { q: "Mes fichiers sont-ils en sécurité?", a: "Absolument. Nous ne conservons pas vos images de manière permanente." },
+                { q: "Vers quels formats puis-je convertir?", a: "Vous pouvez convertir vos JPG en PNG, WebP et AVIF." }
+            ]
+        },
+        'avif-converter': {
+            title: "Convertisseur AVIF: Rendre les formats modernes compatibles",
+            intro: "Convertissez vos fichiers AVIF modernes dans des formats universellement supportés comme JPG, PNG ou WebP.",
+            whyTitle: "Pourquoi convertir AVIF?",
+            features: [
+                { title: "Compatibilité Universelle", desc: "Convertissez en JPG ou PNG pour ouvrir vos images partout." },
+                { title: "Haute Qualité", desc: "Préservez l'incroyable qualité visuelle d'AVIF dans le fichier converti." },
+                { title: "Conversion Instantanée", desc: "Traitement ultra-rapide pour obtenir vos fichiers en quelques secondes." },
+                { title: "Support de la Transparence", desc: "La transparence est préservée lors de la conversion en PNG ou WebP." }
+            ],
+            faq: [
+                { q: "Qu'est-ce qu'un fichier AVIF?", a: "AVIF est un format d'image moderne basé sur le codec vidéo AV1." },
+                { q: "Pourquoi ne puis-je pas ouvrir les fichiers AVIF?", a: "Les anciens logiciels ne supportent pas encore AVIF." },
+                { q: "La conversion réduit-elle la qualité?", a: "Notre convertisseur maintient la meilleure qualité possible." },
+                { q: "Préserve-t-il la transparence?", a: "Oui, lors de la conversion en PNG ou WebP, le fond transparent reste intact." },
+                { q: "Est-ce sécurisé?", a: "Oui, les fichiers sont traités en toute sécurité et supprimés ensuite." }
             ]
         },
         'remove-background': {

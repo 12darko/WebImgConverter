@@ -44,7 +44,8 @@ const content = {
             'watermark-image': { name: 'Filigran Ekle', description: 'Görsellerinize metin veya logo ile filigran (watermark) ekleyin.' },
             'black-and-white': { name: 'Siyah Beyaz Yap', description: 'Görsellerinizi tek tıkla siyah beyaz (grayscale) formatına dönüştürün.' },
             'webp-converter': { name: 'WebP Dönüştürücü', description: 'WebP dosyalarınızı JPG veya PNG formatına çevirin. Çıktı formatını kendiniz seçin, tek araçla her şey.' },
-            'jpg-converter': { name: 'JPG Dönüştürücü', description: 'JPG/JPEG dosyalarınızı PNG veya WebP formatına çevirin. Şeffaf PNG ya da modern WebP, karar sizin.' }
+            'jpg-converter': { name: 'JPG Dönüştürücü', description: 'JPG/JPEG dosyalarınızı PNG veya WebP formatına çevirin. Şeffaf PNG ya da modern WebP, karar sizin.' },
+            'general-tool': { name: 'Gelişmiş Format Araçları', description: 'Tüm formatlar (JPG, PNG, WebP, AVIF, HEIC vb.) arasında dönüşüm yapabileceğiniz ana aracımız.' }
         }
     },
     en: {
@@ -69,7 +70,8 @@ const content = {
             'watermark-image': { name: 'Watermark Image', description: 'Add text or logo watermark to your images to protect your copyright.' },
             'black-and-white': { name: 'Black & White', description: 'Convert your colorful images to black and white (grayscale) with one click.' },
             'webp-converter': { name: 'WebP Converter', description: 'Convert WebP files to JPG or PNG format. You pick the output — one tool, all formats.' },
-            'jpg-converter': { name: 'JPG Converter', description: 'Convert JPG/JPEG files to PNG or WebP format. Transparent PNG or modern WebP, your call.' }
+            'jpg-converter': { name: 'JPG Converter', description: 'Convert JPG/JPEG files to PNG or WebP format. Transparent PNG or modern WebP, your call.' },
+            'general-tool': { name: 'All-in-One Tool', description: 'Our general tool to convert between all formats (JPG, PNG, WebP, AVIF, HEIC, etc.).' }
         }
     },
     de: {
@@ -94,7 +96,8 @@ const content = {
             'watermark-image': { name: 'Wasserzeichen', description: 'Fügen Sie Text- oder Logo-Wasserzeichen hinzu, um Ihr Urheberrecht zu schützen.' },
             'black-and-white': { name: 'Schwarz-Weiß', description: 'Konvertieren Sie Ihre Bilder mit einem Klick in Schwarz-Weiß (Graustufen).' },
             'webp-converter': { name: 'WebP Konverter', description: 'Konvertieren Sie WebP-Dateien in JPG oder PNG. Sie wählen das Ausgabeformat — ein Tool für alles.' },
-            'jpg-converter': { name: 'JPG Konverter', description: 'Konvertieren Sie JPG/JPEG in PNG oder WebP. Transparentes PNG oder modernes WebP — Ihre Wahl.' }
+            'jpg-converter': { name: 'JPG Konverter', description: 'Konvertieren Sie JPG/JPEG in PNG oder WebP. Transparentes PNG oder modernes WebP — Ihre Wahl.' },
+            'general-tool': { name: 'All-in-One Werkzeug', description: 'Unser allgemeines Werkzeug zur Konvertierung zwischen allen Formaten (JPG, PNG, WebP, AVIF, HEIC usw.).' }
         }
     },
     fr: {
@@ -119,7 +122,8 @@ const content = {
             'watermark-image': { name: 'Filigrane', description: 'Ajoutez un filigrane texte ou logo à vos images pour protéger vos droits d\'auteur.' },
             'black-and-white': { name: 'Noir et Blanc', description: 'Convertissez vos images colorées en noir et blanc (niveaux de gris) en un clic.' },
             'webp-converter': { name: 'Convertisseur WebP', description: 'Convertissez vos fichiers WebP en JPG ou PNG. Vous choisissez — un outil, tous les formats.' },
-            'jpg-converter': { name: 'Convertisseur JPG', description: 'Convertissez vos fichiers JPG/JPEG en PNG ou WebP. PNG transparent ou WebP moderne, à vous de choisir.' }
+            'jpg-converter': { name: 'Convertisseur JPG', description: 'Convertissez vos fichiers JPG/JPEG en PNG ou WebP. PNG transparent ou WebP moderne, à vous de choisir.' },
+            'general-tool': { name: 'Outil Tout-en-Un', description: 'Notre outil général pour convertir entre tous les formats (JPG, PNG, WebP, AVIF, HEIC, etc.).' }
         }
     }
 };
@@ -281,6 +285,17 @@ const TOOLS: ToolDef[] = [
             <path d="M12 2a10 10 0 0 1 0 20z" />
         </>),
         keywords: ['black', 'white', 'grayscale', 'filter'],
+    },
+    {
+        id: 'general-tool',
+        name: 'general-tool',
+        description: 'general-tool',
+        path: '/',
+        badge: 'PRO',
+        icon: Icon(<>
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </>),
+        keywords: ['all', 'formats', 'general', 'converter', 'heic', 'png', 'jpg'],
     },
 ];
 
