@@ -11,6 +11,9 @@ import CompressImagePage from './pages/CompressImage';
 import SvgToPngPage from './pages/SvgToPng';
 import SmartCropperPage from './pages/SmartCropper';
 import FaviconGeneratorPage from './pages/FaviconGenerator';
+import RotateImagePage from './pages/RotateImage';
+import WatermarkImagePage from './pages/WatermarkImage';
+import BlackAndWhitePage from './pages/BlackAndWhite';
 import HomePage from './pages/Home';
 import ToolsPage from './pages/Tools';
 import PricingPage from './pages/Pricing';
@@ -49,6 +52,9 @@ export default function Router() {
                         <Route path="/svg-to-png" element={<SvgToPngPage />} />
                         <Route path="/smart-cropper" element={<SmartCropperPage />} />
                         <Route path="/favicon-generator" element={<FaviconGeneratorPage />} />
+                        <Route path="/rotate-image" element={<RotateImagePage />} />
+                        <Route path="/watermark-image" element={<WatermarkImagePage />} />
+                        <Route path="/black-and-white" element={<BlackAndWhitePage />} />
                         <Route path="/privacy" element={<PrivacyPage />} />
                         <Route path="/terms" element={<TermsPage />} />
                         <Route path="/about" element={<AboutPage />} />

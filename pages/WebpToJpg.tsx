@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import App from '../AppMain';
 import { SeoContent } from '../components/SeoContent';
@@ -81,9 +81,10 @@ export default function WebpToJpgPage() {
             <App
                 defaultTool="webp-to-jpg"
                 pageH1={t.h1}
-                acceptTypes="image/webp, .webp"
-                formatBadges={['WebP', '→', 'JPG/PNG']}
+                acceptTypes="image/webp"
+                formatBadges={['WEBP', '→', 'JPG']}
                 defaultOutputFormat="jpg"
+                allowedSettings={['quality', 'maxKb', 'grayscale']}
                 hideFormatSelector={true}
                 dropzoneTitle={t.dropzoneTitle}
                 dropzoneDesc={t.dropzoneDesc}

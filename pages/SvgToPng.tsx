@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import App from '../AppMain';
 import { useLanguage } from '../LanguageContext';
@@ -72,9 +72,11 @@ export default function SvgToPngPage() {
             <App
                 defaultTool="svg-to-png"
                 pageH1={t.h1}
-                acceptTypes=".svg, image/svg+xml"
+                acceptTypes="image/svg+xml,.svg"
                 formatBadges={['SVG', '→', 'PNG']}
-                defaultOutputFormat="image/png"
+                defaultOutputFormat="png"
+                hideFormatSelector={true}
+                hideAdvancedSettings={true}
             >
                 <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20">
                     {/* Unique Feature Highlights */}

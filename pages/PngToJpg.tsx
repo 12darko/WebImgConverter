@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import App from '../AppMain';
 import { SeoContent } from '../components/SeoContent';
@@ -76,6 +76,7 @@ export default function PngToJpgPage() {
                 acceptTypes="image/png"
                 formatBadges={['PNG', '→', 'JPG']}
                 defaultOutputFormat="jpg"
+                allowedSettings={['quality', 'maxKb', 'grayscale']}
             >
                 {/* Custom Rich Content for SEO Enrichment */}
                 <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20">

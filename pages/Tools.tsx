@@ -37,7 +37,10 @@ const content = {
             'png-to-jpg': { name: 'PNG\'den JPG\'ye', description: 'Transparan PNG dosyalarınızı akıllı beyaz arkaplan dolgusu ile hızlı ve optimize edilmiş JPG\'lere dönüştürün.' },
             'smart-cropper': { name: 'Akıllı Kırpıcı', description: 'Özneleri otomatik olarak algılayın ve resimleri sosyal medya veya küçük resim boyutlarına (thumbnail) uygun şekilde kırpın.' },
             'favicon-generator': { name: 'Favicon Oluşturucu', description: 'Web siteniz için saniyeler içinde mükemmel favicon (ICO) dosyaları oluşturun.' },
-            'background-remover': { name: 'Arkaplan Silici', description: 'Portreler ve ürün fotoğrafları için gelişmiş Yapay Zeka kullanarak arka planları anında kaldırın.' }
+            'background-remover': { name: 'Arkaplan Silici', description: 'Portreler ve ürün fotoğrafları için gelişmiş Yapay Zeka kullanarak arka planları anında kaldırın.' },
+            'rotate-image': { name: 'Görsel Döndür', description: 'Görsellerinizi yatay/dikey çevirin veya istediğiniz açıda döndürün.' },
+            'watermark-image': { name: 'Filigran Ekle', description: 'Görsellerinize metin veya logo ile filigran (watermark) ekleyin.' },
+            'black-and-white': { name: 'Siyah Beyaz Yap', description: 'Görsellerinizi tek tıkla siyah beyaz (grayscale) formatına dönüştürün.' }
         }
     },
     en: {
@@ -55,7 +58,10 @@ const content = {
             'png-to-jpg': { name: 'PNG to JPG', description: 'Quickly convert your transparent PNG files to optimized JPGs with a smart white background fill.' },
             'smart-cropper': { name: 'Smart Cropper', description: 'Automatically detect subjects and crop images perfectly for social media or thumbnails.' },
             'favicon-generator': { name: 'Favicon Generator', description: 'Generate perfect favicon (ICO) files for your website in seconds.' },
-            'background-remover': { name: 'Background Remover', description: 'Instantly remove backgrounds using advanced AI for portraits and product photos.' }
+            'background-remover': { name: 'Background Remover', description: 'Instantly remove backgrounds using advanced AI for portraits and product photos.' },
+            'rotate-image': { name: 'Rotate Image', description: 'Flip your images horizontally/vertically or rotate them at any angle.' },
+            'watermark-image': { name: 'Watermark Image', description: 'Add text or logo watermark to your images to protect your copyright.' },
+            'black-and-white': { name: 'Black & White', description: 'Convert your colorful images to black and white (grayscale) with one click.' }
         }
     },
     de: {
@@ -73,7 +79,10 @@ const content = {
             'png-to-jpg': { name: 'PNG zu JPG', description: 'Konvertieren Sie Ihre transparenten PNG-Dateien schnell in optimierte JPGs mit intelligenter weißer Hintergrundfüllung.' },
             'smart-cropper': { name: 'Smart Cropper', description: 'Erkennen Sie Motive automatisch und schneiden Sie Bilder perfekt für soziale Medien oder Thumbnails zu.' },
             'favicon-generator': { name: 'Favicon Generator', description: 'Erstellen Sie in Sekundenschnelle perfekte Favicon (ICO)-Dateien für Ihre Website.' },
-            'background-remover': { name: 'Hintergrundentferner', description: 'Entfernen Sie Hintergründe sofort mit fortschrittlicher KI für Porträts und Produktfotos.' }
+            'background-remover': { name: 'Hintergrundentferner', description: 'Entfernen Sie Hintergründe sofort mit fortschrittlicher KI für Porträts und Produktfotos.' },
+            'rotate-image': { name: 'Bild Drehen', description: 'Spiegeln Sie Ihre Bilder horizontal/vertikal oder drehen Sie sie.' },
+            'watermark-image': { name: 'Wasserzeichen', description: 'Fügen Sie Text- oder Logo-Wasserzeichen hinzu, um Ihr Urheberrecht zu schützen.' },
+            'black-and-white': { name: 'Schwarz-Weiß', description: 'Konvertieren Sie Ihre Bilder mit einem Klick in Schwarz-Weiß (Graustufen).' }
         }
     },
     fr: {
@@ -91,7 +100,10 @@ const content = {
             'png-to-jpg': { name: 'PNG en JPG', description: 'Convertissez rapidement vos fichiers PNG transparents en JPG optimisés avec un remplissage de fond blanc intelligent.' },
             'smart-cropper': { name: 'Recadrage Intelligent', description: 'Détectez automatiquement les sujets et recadrez parfaitement les images pour les médias sociaux ou les miniatures.' },
             'favicon-generator': { name: 'Générateur de Favicon', description: 'Générez des fichiers favicon (ICO) parfaits pour votre site web en quelques secondes.' },
-            'background-remover': { name: 'Suppresseur de Fond', description: 'Supprimez instantanément les arrière-plans en utilisant l\'IA avancée pour les portraits et les photos de produits.' }
+            'background-remover': { name: 'Suppresseur de Fond', description: 'Supprimez instantanément les arrière-plans en utilisant l\'IA avancée pour les portraits et les photos de produits.' },
+            'rotate-image': { name: 'Pivoter l\'Image', description: 'Retournez vos images ou faites-les pivoter sous n\'importe quel angle.' },
+            'watermark-image': { name: 'Filigrane', description: 'Ajoutez un filigrane texte ou logo à vos images pour protéger vos droits d\'auteur.' },
+            'black-and-white': { name: 'Noir et Blanc', description: 'Convertissez vos images colorées en noir et blanc (niveaux de gris) en un clic.' }
         }
     }
 };
@@ -189,6 +201,42 @@ const TOOLS: ToolDef[] = [
             <path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z" />
         </>),
         keywords: ['background', 'remove', 'transparent', 'ai'],
+    },
+    {
+        id: 'rotate-image',
+        name: 'rotate-image',
+        description: 'rotate-image',
+        path: '/rotate-image',
+        badge: 'NEW',
+        icon: Icon(<>
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+            <path d="M3 3v5h5" />
+        </>),
+        keywords: ['rotate', 'flip', 'spin'],
+    },
+    {
+        id: 'watermark-image',
+        name: 'watermark-image',
+        description: 'watermark-image',
+        path: '/watermark-image',
+        badge: 'NEW',
+        icon: Icon(<>
+            <path d="M12 2v20" />
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+        </>),
+        keywords: ['watermark', 'copyright', 'stamp', 'logo'],
+    },
+    {
+        id: 'black-and-white',
+        name: 'black-and-white',
+        description: 'black-and-white',
+        path: '/black-and-white',
+        badge: 'NEW',
+        icon: Icon(<>
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a10 10 0 0 1 0 20z" />
+        </>),
+        keywords: ['black', 'white', 'grayscale', 'filter'],
     },
 ];
 

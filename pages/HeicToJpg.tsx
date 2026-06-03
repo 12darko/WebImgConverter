@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import App from '../AppMain';
 import { SeoContent } from '../components/SeoContent';
@@ -140,9 +140,10 @@ export default function HeicToJpgPage() {
             <App
                 defaultTool="heic-to-jpg"
                 pageH1={t.h1}
-                acceptTypes=".heic, .heif"
+                acceptTypes="image/heic,image/heif,.heic,.heif"
                 formatBadges={['HEIC', '→', 'JPG']}
                 defaultOutputFormat="jpg"
+                allowedSettings={['quality', 'maxKb', 'grayscale', 'rotate', 'flip', 'crop']}
                 hideFormatSelector={false} // Allow selecting format for server conversion
                 conversionHandler={async (file) => {
                     const { serverConversionService } = await import('../services/serverConversionService');

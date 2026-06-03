@@ -45,6 +45,8 @@ import {
 
 import { serverConversionService } from './services/serverConversionService';
 
+export type AdvancedSettingType = 'format' | 'rotate' | 'grayscale' | 'quality' | 'flip' | 'maxKb' | 'crop' | 'removeBg' | 'watermark';
+
 interface AppProps {
   defaultTool?: string;
   pageH1?: string;
@@ -53,6 +55,7 @@ interface AppProps {
   defaultOutputFormat?: string;
   hideFormatSelector?: boolean;
   hideAdvancedSettings?: boolean;
+  allowedSettings?: AdvancedSettingType[];
   dropzoneTitle?: string;
   dropzoneDesc?: string;
   children?: React.ReactNode;
@@ -61,7 +64,7 @@ interface AppProps {
 }
 
 function BanaConvertApp(props: AppProps = {}) {
-  const { defaultTool, pageH1, acceptTypes, formatBadges, defaultOutputFormat, hideFormatSelector, hideAdvancedSettings, dropzoneTitle, dropzoneDesc, children, conversionHandler } = props;
+  const { defaultTool, pageH1, acceptTypes, formatBadges, defaultOutputFormat, hideFormatSelector, hideAdvancedSettings, allowedSettings, dropzoneTitle, dropzoneDesc, children, conversionHandler } = props;
   const { t, language, setLanguage } = useLanguage();
   const [files, setFiles] = useState<FileItem[]>([]);
   const [compareItem, setCompareItem] = useState<FileItem | null>(null);
@@ -1084,48 +1087,54 @@ function BanaConvertApp(props: AppProps = {}) {
                               {!hideAdvancedSettings && expandedFileId === file.id && file.status !== 'done' && defaultTool !== 'compress-image' && (
                                 <div className="border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 p-4 space-y-4 animate-[fadeIn_0.2s]">
                                   {/* Format Selector */}
-                                  <div className="flex flex-col gap-2">
-                                    <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{language === 'tr' ? 'Format Seçimi' : 'Target Format'}</span>
-                                    <div className="flex flex-wrap gap-2">
-                                      {/* Free Formats */}
-                                      {[ConversionFormat.JPEG, ConversionFormat.PNG, ConversionFormat.WEBP].map(fmt => (
-                                        <button key={fmt} onClick={() => updateFileConfig(file.id, 'targetFormat', fmt)} className={`text-xs px-3 py-1.5 rounded-lg border font-medium transition-colors ${file.targetFormat === fmt ? 'bg-brand-600 border-brand-500 text-white shadow-sm' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-brand-300 dark:hover:border-brand-500'}`}>
-                                          {fmt.split('/')[1].toUpperCase()}
-                                        </button>
-                                      ))}
-                                      {/* Premium Formats (Business tier) */}
-                                      {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO, ConversionFormat.AVIF, ConversionFormat.SVG].map(fmt => {
-                                        const canUse = hasFeatureAccess(stats.premiumTier, 'SPECIAL_FORMATS');
-                                        return (
-                                          <button
-                                            key={fmt}
-                                            onClick={() => canUse && updateFileConfig(file.id, 'targetFormat', fmt)}
-                                            disabled={!canUse}
-                                            title={canUse ? fmt.split('/')[1].toUpperCase() : 'Business Feature'}
-                                            className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-1 font-medium transition-colors ${canUse
-                                              ? file.targetFormat === fmt
-                                                ? 'bg-brand-600 border-brand-500 text-white shadow-sm'
-                                                : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-brand-300 dark:hover:border-brand-500'
-                                              : 'bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-600 cursor-not-allowed'
-                                              }`}
-                                          >
+                                  {(!allowedSettings || allowedSettings.includes('format')) && (
+                                    <div className="flex flex-col gap-2">
+                                      <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{language === 'tr' ? 'Format Seçimi' : 'Target Format'}</span>
+                                      <div className="flex flex-wrap gap-2">
+                                        {/* Free Formats */}
+                                        {[ConversionFormat.JPEG, ConversionFormat.PNG, ConversionFormat.WEBP].map(fmt => (
+                                          <button key={fmt} onClick={() => updateFileConfig(file.id, 'targetFormat', fmt)} className={`text-xs px-3 py-1.5 rounded-lg border font-medium transition-colors ${file.targetFormat === fmt ? 'bg-brand-600 border-brand-500 text-white shadow-sm' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-brand-300 dark:hover:border-brand-500'}`}>
                                             {fmt.split('/')[1].toUpperCase()}
-                                            {!canUse && <span className="text-amber-500 ml-0.5">🔒</span>}
                                           </button>
-                                        );
-                                      })}
+                                        ))}
+                                        {/* Premium Formats (Business tier) */}
+                                        {[ConversionFormat.TIFF, ConversionFormat.BMP, ConversionFormat.ICO, ConversionFormat.AVIF, ConversionFormat.SVG].map(fmt => {
+                                          const canUse = hasFeatureAccess(stats.premiumTier, 'SPECIAL_FORMATS');
+                                          return (
+                                            <button
+                                              key={fmt}
+                                              onClick={() => canUse && updateFileConfig(file.id, 'targetFormat', fmt)}
+                                              disabled={!canUse}
+                                              title={canUse ? fmt.split('/')[1].toUpperCase() : 'Business Feature'}
+                                              className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-1 font-medium transition-colors ${canUse
+                                                ? file.targetFormat === fmt
+                                                  ? 'bg-brand-600 border-brand-500 text-white shadow-sm'
+                                                  : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-brand-300 dark:hover:border-brand-500'
+                                                : 'bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-600 cursor-not-allowed'
+                                                }`}
+                                            >
+                                              {fmt.split('/')[1].toUpperCase()}
+                                              {!canUse && <span className="text-amber-500 ml-0.5">🔒</span>}
+                                            </button>
+                                          );
+                                        })}
+                                      </div>
                                     </div>
-                                  </div>
+                                  )}
 
                                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                                     {/* Rotate */}
-                                    <button onClick={() => updateFileConfig(file.id, 'rotation', (file.rotation + 90) % 360)} className="bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 p-2 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-colors">{t('rotate')}: {file.rotation}°</button>
+                                    {(!allowedSettings || allowedSettings.includes('rotate')) && (
+                                      <button onClick={() => updateFileConfig(file.id, 'rotation', (file.rotation + 90) % 360)} className="bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 p-2 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-colors">{t('rotate')}: {file.rotation}°</button>
+                                    )}
                                     
                                     {/* Grayscale */}
-                                    <button onClick={() => updateFileConfig(file.id, 'isGrayscale', !file.isGrayscale)} className={`p-2 rounded-lg text-xs font-medium border transition-colors ${file.isGrayscale ? 'bg-slate-200 dark:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-200' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-750'}`}>{t('grayscale')}</button>
+                                    {(!allowedSettings || allowedSettings.includes('grayscale')) && (
+                                      <button onClick={() => updateFileConfig(file.id, 'isGrayscale', !file.isGrayscale)} className={`p-2 rounded-lg text-xs font-medium border transition-colors ${file.isGrayscale ? 'bg-slate-200 dark:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-200' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-750'}`}>{t('grayscale')}</button>
+                                    )}
 
                                     {/* Quality Slider for JPEG/WEBP */}
-                                    {(file.targetFormat === ConversionFormat.JPEG || file.targetFormat === ConversionFormat.WEBP) && (
+                                    {(!allowedSettings || allowedSettings.includes('quality')) && (file.targetFormat === ConversionFormat.JPEG || file.targetFormat === ConversionFormat.WEBP) && (
                                       <select
                                         value={file.quality}
                                         onChange={(e) => updateFileConfig(file.id, 'quality', parseFloat(e.target.value))}
@@ -1136,13 +1145,15 @@ function BanaConvertApp(props: AppProps = {}) {
                                     )}
 
                                     {/* Flip Buttons */}
-                                    <div className="flex gap-2">
-                                      <button onClick={() => updateFileConfig(file.id, 'isFlippedHorizontal', !file.isFlippedHorizontal)} className={`flex-1 p-2 rounded-lg text-xs font-medium border transition-colors ${file.isFlippedHorizontal ? 'bg-brand-50 dark:bg-brand-950/20 border-brand-200 dark:border-brand-850 text-brand-700 dark:text-brand-300' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'}`}>↔️ Flip</button>
-                                      <button onClick={() => updateFileConfig(file.id, 'isFlippedVertical', !file.isFlippedVertical)} className={`flex-1 p-2 rounded-lg text-xs font-medium border transition-colors ${file.isFlippedVertical ? 'bg-brand-50 dark:bg-brand-950/20 border-brand-200 dark:border-brand-850 text-brand-700 dark:text-brand-300' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'}`}>↕️ Flip</button>
-                                    </div>
+                                    {(!allowedSettings || allowedSettings.includes('flip')) && (
+                                      <div className="flex gap-2">
+                                        <button onClick={() => updateFileConfig(file.id, 'isFlippedHorizontal', !file.isFlippedHorizontal)} className={`flex-1 p-2 rounded-lg text-xs font-medium border transition-colors ${file.isFlippedHorizontal ? 'bg-brand-50 dark:bg-brand-950/20 border-brand-200 dark:border-brand-850 text-brand-700 dark:text-brand-300' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'}`}>↔️ Flip</button>
+                                        <button onClick={() => updateFileConfig(file.id, 'isFlippedVertical', !file.isFlippedVertical)} className={`flex-1 p-2 rounded-lg text-xs font-medium border transition-colors ${file.isFlippedVertical ? 'bg-brand-50 dark:bg-brand-950/20 border-brand-200 dark:border-brand-850 text-brand-700 dark:text-brand-300' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'}`}>↕️ Flip</button>
+                                      </div>
+                                    )}
                                     
                                     {/* Target Size */}
-                                    {file.targetFormat === ConversionFormat.JPEG && (
+                                    {(!allowedSettings || allowedSettings.includes('maxKb')) && file.targetFormat === ConversionFormat.JPEG && (
                                       <input
                                         type="number"
                                         placeholder="Max KB"
@@ -1152,7 +1163,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                     )}
 
                                     {/* Crop Button with Pro+ tier check */}
-                                    {(() => {
+                                    {(!allowedSettings || allowedSettings.includes('crop')) && (() => {
                                       const canCrop = hasFeatureAccess(stats.premiumTier, 'CROP');
                                       return (
                                         <button
@@ -1178,7 +1189,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                     })()}
                                     
                                     {/* Remove BG */}
-                                    {file.targetFormat !== ConversionFormat.JPEG && (() => {
+                                    {(!allowedSettings || allowedSettings.includes('removeBg')) && file.targetFormat !== ConversionFormat.JPEG && (() => {
                                         const canUseRemoveBg = hasFeatureAccess(stats.premiumTier, 'REMOVE_BG');
                                         return (
                                           <div className="flex flex-col gap-2 col-span-2 lg:col-span-1">
@@ -1234,7 +1245,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                   </div>
 
                                   {/* Watermark Section */}
-                                  {(() => {
+                                  {(!allowedSettings || allowedSettings.includes('watermark')) && (() => {
                                     const canUseWatermark = hasFeatureAccess(stats.premiumTier, 'WATERMARK');
                                     return (
                                       <div className={`space-y-2 p-3 rounded-xl border ${canUseWatermark ? 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700' : 'bg-slate-50 dark:bg-slate-900/40 border-slate-200/60 dark:border-slate-800/60'}`}>

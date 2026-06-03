@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import App from '../AppMain';
 import { SeoContent } from '../components/SeoContent';
@@ -73,8 +73,11 @@ export default function RemoveBackgroundPage() {
             <App
                 defaultTool="remove-background"
                 pageH1={t.h1}
-                acceptTypes="image/png, image/jpeg, image/webp"
-                formatBadges={['JPG', 'PNG', 'WEBP']}
+                acceptTypes="image/*"
+                formatBadges={['AI', '→', 'PNG']}
+                defaultOutputFormat="png"
+                hideFormatSelector={true}
+                allowedSettings={['format', 'crop']}
             >
                 {/* Custom Rich Content for SEO Enrichment */}
                 <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20">
