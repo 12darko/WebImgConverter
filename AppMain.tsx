@@ -523,7 +523,7 @@ function BanaConvertApp(props: AppProps = {}) {
             const bgBlob = await serverConversionService.removeBackground(
               item.file,
               stats.isPremium ? 'premium' : 'free',
-              item.bgModel || 'birefnet-massive'
+              item.bgModel || 'birefnet-general'
             );
 
             if (!bgBlob) throw new Error("Background removal failed");
@@ -839,7 +839,8 @@ function BanaConvertApp(props: AppProps = {}) {
                     imageUrl={files[0].previewUrl} 
                     onCropComplete={(cropData) => { 
                       updateFileConfig(files[0].id, 'cropData', { ...cropData, unit: 'px' });
-                      setTimeout(() => convertImage(files[0].id), 100);
+                      // InlineCrop now handles cropping & downloading internally via canvas
+                      setFiles(prev => prev.map(f => f.id === files[0].id ? { ...f, status: 'done' } : f));
                     }} 
                     onCancel={() => removeFile(files[0].id)} 
                   />
