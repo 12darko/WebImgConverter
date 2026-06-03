@@ -52,6 +52,7 @@ interface AppProps {
   formatBadges?: string[];
   defaultOutputFormat?: string;
   hideFormatSelector?: boolean;
+  hideAdvancedSettings?: boolean;
   dropzoneTitle?: string;
   dropzoneDesc?: string;
   children?: React.ReactNode;
@@ -60,7 +61,7 @@ interface AppProps {
 }
 
 function BanaConvertApp(props: AppProps = {}) {
-  const { defaultTool, pageH1, acceptTypes, formatBadges, defaultOutputFormat, hideFormatSelector, dropzoneTitle, dropzoneDesc, children, conversionHandler } = props;
+  const { defaultTool, pageH1, acceptTypes, formatBadges, defaultOutputFormat, hideFormatSelector, hideAdvancedSettings, dropzoneTitle, dropzoneDesc, children, conversionHandler } = props;
   const { t, language, setLanguage } = useLanguage();
   const [files, setFiles] = useState<FileItem[]>([]);
   const [compareItem, setCompareItem] = useState<FileItem | null>(null);
@@ -1026,15 +1027,17 @@ function BanaConvertApp(props: AppProps = {}) {
                                         {t('convert_btn')}
                                       </button>
                                       {/* Settings Toggle */}
-                                      <button
-                                        onClick={() => setExpandedFileId(expandedFileId === file.id ? null : file.id)}
-                                        className={`px-4 py-2 flex items-center gap-2 rounded-xl border-2 text-sm font-bold transition-all ${expandedFileId === file.id ? 'bg-brand-50 dark:bg-brand-950/30 border-brand-400 dark:border-brand-600 text-brand-700 dark:text-brand-300 shadow-inner' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-brand-300 dark:hover:border-brand-600 hover:text-brand-600 hover:shadow-md'}`}
-                                        title="Options"
-                                      >
-                                        <span>⚙️</span>
-                                        <span className="hidden sm:inline">{language === 'tr' ? 'Gelişmiş Ayarlar' : 'Advanced Options'}</span>
-                                        <svg className={`w-4 h-4 transition-transform duration-300 ${expandedFileId === file.id ? 'rotate-180 text-brand-600' : 'text-slate-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>
-                                      </button>
+                                      {!hideAdvancedSettings && (
+                                        <button
+                                          onClick={() => setExpandedFileId(expandedFileId === file.id ? null : file.id)}
+                                          className={`px-4 py-2 flex items-center gap-2 rounded-xl border-2 text-sm font-bold transition-all ${expandedFileId === file.id ? 'bg-brand-50 dark:bg-brand-950/30 border-brand-400 dark:border-brand-600 text-brand-700 dark:text-brand-300 shadow-inner' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-brand-300 dark:hover:border-brand-600 hover:text-brand-600 hover:shadow-md'}`}
+                                          title="Options"
+                                        >
+                                          <span>⚙️</span>
+                                          <span className="hidden sm:inline">{language === 'tr' ? 'Gelişmiş Ayarlar' : 'Advanced Options'}</span>
+                                          <svg className={`w-4 h-4 transition-transform duration-300 ${expandedFileId === file.id ? 'rotate-180 text-brand-600' : 'text-slate-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>
+                                        </button>
+                                      )}
                                       {/* Convert Button (Desktop) */}
                                       <button onClick={() => {
                                           triggerAdsterraPopunder();
@@ -1078,7 +1081,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                 </div>
                               </div>
                               {/* Advanced Settings Panel (Collapsible) */}
-                              {expandedFileId === file.id && file.status !== 'done' && defaultTool !== 'compress-image' && (
+                              {!hideAdvancedSettings && expandedFileId === file.id && file.status !== 'done' && defaultTool !== 'compress-image' && (
                                 <div className="border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 p-4 space-y-4 animate-[fadeIn_0.2s]">
                                   {/* Format Selector */}
                                   <div className="flex flex-col gap-2">

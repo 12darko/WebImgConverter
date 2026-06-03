@@ -71,11 +71,14 @@ export default function FaviconGeneratorPage() {
             </Helmet>
             <App
                 defaultTool="favicon-generator"
-                pageH1={t.h1}
-                acceptTypes="image/png, image/jpeg, image/webp"
-                formatBadges={['PNG/JPG', '→', 'ICO']}
+                pageH1={t.title}
+                acceptTypes="image/png,image/jpeg,image/webp,image/heic,image/heif"
+                formatBadges={['PNG', 'JPG', 'WEBP']}
                 defaultOutputFormat="image/x-icon"
                 hideFormatSelector={true}
+                hideAdvancedSettings={true}
+                dropzoneTitle={t.dropzoneTitle}
+                dropzoneDesc={t.dropzoneDesc}
             >
                 <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
