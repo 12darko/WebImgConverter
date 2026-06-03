@@ -17,6 +17,8 @@ import { HistoryModal } from './components/HistoryModal'; // History Import
 import { CropModal } from './components/CropModal'; // Crop Import
 import { InlineCrop } from './components/tool/InlineCrop';
 import { InlineBgRemover } from './components/tool/InlineBgRemover';
+import { AdsterraNativeBanner } from './components/ads/AdsterraNativeBanner';
+import { triggerAdsterraPopunder } from './components/ads/popunder';
 
 import { CompareSlider } from './components/CompareSlider';
 import { AuthModal } from './components/AuthModal'; // Auth import
@@ -847,6 +849,7 @@ function BanaConvertApp(props: AppProps = {}) {
                     onProcess={() => convertImage(files[0].id)} 
                     onCancel={() => removeFile(files[0].id)} 
                     onDownload={() => {
+                      triggerAdsterraPopunder();
                       const f = files[0];
                       if (!f.convertedUrl) return;
                       const a = document.createElement('a');
@@ -870,6 +873,8 @@ function BanaConvertApp(props: AppProps = {}) {
                     description={dropzoneDesc}
                   />
                 </section>
+
+                <AdsterraNativeBanner />
 
                 <div className="space-y-4">
                   {files.length > 0 && (
@@ -901,6 +906,7 @@ function BanaConvertApp(props: AppProps = {}) {
                     {hasFeatureAccess(stats.premiumTier, 'ZIP_DOWNLOAD') && files.some(f => f.status === 'done') && (
                       <button
                         onClick={async () => {
+                          triggerAdsterraPopunder();
                           const JSZip = (await import('jszip')).default;
                           const { saveAs } = await import('file-saver');
                           const zip = new JSZip();
@@ -996,7 +1002,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                   {file.status === 'done' && (
                                     <div className="flex items-center gap-2">
                                       <button onClick={() => setCompareItem(file)} className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm transition-colors" title="Compare">👁️</button>
-                                      <a href={file.convertedUrl} download={`${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`} className="bg-brand-600 hover:bg-brand-500 dark:bg-brand-600 dark:hover:bg-brand-500 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-1.5 shadow-sm dark:shadow-none transition-colors">
+                                      <a href={file.convertedUrl} download={`${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`} onClick={() => triggerAdsterraPopunder()} className="bg-brand-600 hover:bg-brand-500 dark:bg-brand-600 dark:hover:bg-brand-500 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-1.5 shadow-sm dark:shadow-none transition-colors">
                                         ↓ {formatFileSize(file.convertedSize || 0)}
                                       </a>
                                       {/* Save to Drive */}
@@ -1308,6 +1314,7 @@ function BanaConvertApp(props: AppProps = {}) {
                   <div className="mt-4 flex justify-center">
                     <button
                       onClick={async () => {
+                        triggerAdsterraPopunder();
                         const JSZip = (await import('jszip')).default;
                         const { saveAs } = (await import('file-saver'));
                         const zip = new JSZip();
