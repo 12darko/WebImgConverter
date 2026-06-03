@@ -119,7 +119,7 @@ export default function WebpConverterPage() {
                         </div>
                     </div>
                 </div>
-                <SeoContent pageType="webp-to-jpg" />
+                <SeoContent pageType="webp-converter" />
             </App>
         </>
     );

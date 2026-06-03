@@ -119,7 +119,7 @@ export default function JpgConverterPage() {
                         </div>
                     </div>
                 </div>
-                <SeoContent pageType="png-to-jpg" />
+                <SeoContent pageType="jpg-converter" />
             </App>
         </>
     );

@@ -3,12 +3,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './LanguageContext';
 import App from './AppMain';
-import HeicToJpgPage from './pages/HeicToJpg';
-import PngToJpgPage from './pages/PngToJpg';
-import WebpToJpgPage from './pages/WebpToJpg';
+import HeicConverterPage from './pages/HeicConverter';
+import PngConverterPage from './pages/PngConverter';
 import RemoveBackgroundPage from './pages/RemoveBackground';
 import CompressImagePage from './pages/CompressImage';
-import SvgToPngPage from './pages/SvgToPng';
+import SvgConverterPage from './pages/SvgConverter';
 import SmartCropperPage from './pages/SmartCropper';
 import FaviconGeneratorPage from './pages/FaviconGenerator';
 import RotateImagePage from './pages/RotateImage';
@@ -47,12 +46,11 @@ export default function Router() {
                         <Route path="/pricing" element={<PricingPage />} />
                         <Route path="/api" element={<ApiDocsPage />} />
                         <Route path="/support" element={<SupportPage />} />
-                        <Route path="/heic-to-jpg" element={<HeicToJpgPage />} />
-                        <Route path="/png-to-jpg" element={<PngToJpgPage />} />
-                        <Route path="/webp-to-jpg" element={<WebpToJpgPage />} />
+                        <Route path="/heic-converter" element={<HeicConverterPage />} />
+                        <Route path="/png-converter" element={<PngConverterPage />} />
                         <Route path="/remove-background" element={<RemoveBackgroundPage />} />
                         <Route path="/compress-image" element={<CompressImagePage />} />
-                        <Route path="/svg-to-png" element={<SvgToPngPage />} />
+                        <Route path="/svg-converter" element={<SvgConverterPage />} />
                         <Route path="/smart-cropper" element={<SmartCropperPage />} />
                         <Route path="/favicon-generator" element={<FaviconGeneratorPage />} />
                         <Route path="/rotate-image" element={<RotateImagePage />} />

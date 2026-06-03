@@ -5,51 +5,51 @@ import { SeoContent } from '../components/SeoContent';
 
 const seoContent = {
     tr: {
-        title: 'PNG to JPG Dönüştürücü - Ücretsiz Online | WebImgConverter',
-        description: 'PNG dosyalarınızı küçük boyutlu JPG formatına dönüştürün. Sunucu tabanlı güvenli işlem, dosyalarınız saklanmaz.',
-        h1: 'PNG to JPG Dönüştürücü',
-        feature1: 'Küçük Boyut', feature1Desc: 'JPG sıkıştırması ile dosya boyutunu %80\'e kadar azaltın.',
-        feature2: 'Akıllı Arka Plan', feature2Desc: 'Şeffaf alanlar otomatik olarak beyaza (veya seçilen renge) dönüşür.',
-        feature3: 'Site Hızı', feature3Desc: 'Web siteniz için en hızlı yüklenen format olan JPG\'ye geçin.',
-        howTo: 'PNG Nasıl JPG Yapılır?',
+        title: 'PNG Dönüştürücü - Ücretsiz Online | WebImgConverter',
+        description: 'PNG dosyalarınızı küçük boyutlu JPG, WebP veya AVIF formatına dönüştürün. Şeffaf arka planları otomatik yönetir.',
+        h1: 'PNG Dönüştürücü',
+        feature1: 'Çoklu Format', feature1Desc: 'PNG dosyalarınızı JPG, WebP veya AVIF\'e tek araçla dönüştürün.',
+        feature2: 'Akıllı Arka Plan', feature2Desc: 'Şeffaf alanlar seçtiğiniz çıktıya göre korunur veya dönüştürülür.',
+        feature3: 'Site Hızı', feature3Desc: 'Modern formatlara geçerek web sitenizi hızlandırın.',
+        howTo: 'PNG Nasıl Dönüştürülür?',
         step1: 'PNG Yükle', step1Desc: 'Görselleri seçin.',
-        step2: 'Dönüştür', step2Desc: 'Tek tıkla JPG yapın.',
+        step2: 'Format Seç', step2Desc: 'JPG, WebP veya AVIF seçin.',
         step3: 'Kaydet', step3Desc: 'Yeni dosyayı indirin.'
     },
     en: {
-        title: 'Free PNG to JPG Converter Online | WebImgConverter',
-        description: 'Convert PNG files to smaller JPG format. Secure server processing, files never stored.',
-        h1: 'PNG to JPG Converter',
-        feature1: 'Smaller Size', feature1Desc: 'Reduce file size up to 80% with efficient JPG compression.',
-        feature2: 'Smart BG', feature2Desc: 'Transparent areas automatically become white (or custom color).',
-        feature3: 'Web Speed', feature3Desc: 'Switch to JPG, the fastest loading format for photography.',
-        howTo: 'How to Convert PNG to JPG?',
+        title: 'Free PNG Converter Online | WebImgConverter',
+        description: 'Convert PNG files to smaller JPG, WebP, or AVIF format. Smart background handling.',
+        h1: 'PNG Converter',
+        feature1: 'Multiple Formats', feature1Desc: 'Convert PNG to JPG, WebP, or AVIF with one tool.',
+        feature2: 'Smart Background', feature2Desc: 'Transparent areas are preserved or filled smartly.',
+        feature3: 'Web Speed', feature3Desc: 'Switch to modern formats to speed up your website.',
+        howTo: 'How to Convert PNG?',
         step1: 'Upload PNG', step1Desc: 'Select images.',
-        step2: 'Convert', step2Desc: 'One click to JPG.',
+        step2: 'Choose Format', step2Desc: 'Select JPG, WebP, or AVIF.',
         step3: 'Save', step3Desc: 'Download new file.'
     },
     de: {
-        title: 'Kostenloser PNG zu JPG Konverter Online | WebImgConverter',
-        description: 'Konvertieren Sie PNG-Dateien in kleineres JPG-Format. Sichere Serververarbeitung, Dateien werden nicht gespeichert.',
-        h1: 'PNG zu JPG Konverter',
-        feature1: 'Kleinere Größe', feature1Desc: 'Reduzieren Sie die Dateigröße um bis zu 80% mit effizienter JPG-Komprimierung.',
-        feature2: 'Intelligenter Hintergrund', feature2Desc: 'Transparente Bereiche werden automatisch weiß.',
-        feature3: 'Web-Geschwindigkeit', feature3Desc: 'Wechseln Sie zu JPG, dem schnellsten Format.',
-        howTo: 'Wie konvertiert man PNG zu JPG?',
+        title: 'Kostenloser PNG Konverter Online | WebImgConverter',
+        description: 'Konvertieren Sie PNG-Dateien in JPG, WebP oder AVIF. Intelligente Hintergrundbehandlung.',
+        h1: 'PNG Konverter',
+        feature1: 'Mehrere Formate', feature1Desc: 'Konvertieren Sie PNG in JPG, WebP oder AVIF.',
+        feature2: 'Intelligenter Hintergrund', feature2Desc: 'Transparente Bereiche werden intelligent behandelt.',
+        feature3: 'Web-Geschwindigkeit', feature3Desc: 'Wechseln Sie zu modernen Formaten für mehr Geschwindigkeit.',
+        howTo: 'Wie konvertiert man PNG?',
         step1: 'PNG hochladen', step1Desc: 'Bilder auswählen.',
-        step2: 'Konvertieren', step2Desc: 'Ein Klick zu JPG.',
+        step2: 'Format wählen', step2Desc: 'JPG, WebP oder AVIF.',
         step3: 'Speichern', step3Desc: 'Neue Datei herunterladen.'
     },
     fr: {
-        title: 'Convertisseur PNG en JPG Gratuit en Ligne | WebImgConverter',
-        description: 'Convertissez des fichiers PNG en format JPG plus petit. Traitement serveur sécurisé, fichiers jamais stockés.',
-        h1: 'Convertisseur PNG en JPG',
-        feature1: 'Taille réduite', feature1Desc: 'Réduisez la taille du fichier jusqu\'à 80% avec une compression JPG efficace.',
-        feature2: 'Fond intelligent', feature2Desc: 'Les zones transparentes deviennent automatiquement blanches.',
-        feature3: 'Vitesse Web', feature3Desc: 'Passez au JPG, le format le plus rapide.',
-        howTo: 'Comment convertir PNG en JPG?',
+        title: 'Convertisseur PNG Gratuit en Ligne | WebImgConverter',
+        description: 'Convertissez des fichiers PNG en JPG, WebP ou AVIF. Gestion intelligente du fond.',
+        h1: 'Convertisseur PNG',
+        feature1: 'Formats Multiples', feature1Desc: 'Convertissez PNG en JPG, WebP ou AVIF avec un seul outil.',
+        feature2: 'Fond intelligent', feature2Desc: 'Les zones transparentes sont préservées intelligemment.',
+        feature3: 'Vitesse Web', feature3Desc: 'Passez aux formats modernes pour accélérer votre site.',
+        howTo: 'Comment convertir un PNG?',
         step1: 'Télécharger PNG', step1Desc: 'Sélectionnez les images.',
-        step2: 'Convertir', step2Desc: 'Un clic vers JPG.',
+        step2: 'Choisir Format', step2Desc: 'JPG, WebP ou AVIF.',
         step3: 'Enregistrer', step3Desc: 'Télécharger le nouveau fichier.'
     }
 };
@@ -58,7 +58,7 @@ import { useLanguage } from '../LanguageContext';
 
 type LangKey = keyof typeof seoContent;
 
-export default function PngToJpgPage() {
+export default function PngConverterPage() {
     const { language } = useLanguage();
     const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
     const t = seoContent[activeLang] || seoContent.en;
@@ -68,15 +68,15 @@ export default function PngToJpgPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/png-to-jpg" />
+                <link rel="canonical" href="https://WebImgConverter.com/png-converter" />
             </Helmet>
             <App
-                defaultTool="png-to-jpg"
+                defaultTool="convert"
                 pageH1={t.h1}
                 acceptTypes="image/png"
-                formatBadges={['PNG', '→', 'JPG']}
+                formatBadges={['PNG', '→', 'JPG / WebP / AVIF']}
                 defaultOutputFormat="jpg"
-                allowedSettings={['quality', 'maxKb', 'grayscale']}
+                allowedSettings={['format', 'quality', 'maxKb', 'grayscale']}
             >
                 {/* Custom Rich Content for SEO Enrichment */}
                 <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20">
@@ -130,7 +130,7 @@ export default function PngToJpgPage() {
                     </div>
                 </div>
 
-                <SeoContent pageType="png-to-jpg" />
+                <SeoContent pageType="png-converter" />
             </App>
         </>
     );

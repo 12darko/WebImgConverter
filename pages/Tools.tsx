@@ -30,11 +30,13 @@ const content = {
         searchPlaceholder: 'Araçlara, MIME türüne, JPEG veya PNG\'ye göre arayın',
         notFound: (query: string) => `"${query}" araması ile eşleşen araç bulunamadı. Lütfen başka bir kelime deneyin.`,
         badgeNew: 'YENİ',
+        sectionConverters: 'Dönüştürücüler',
+        sectionAdvanced: 'Gelişmiş Araçlar',
         tools: {
-            'svg-to-png': { name: 'SVG\'den PNG\'ye', description: 'Vektör (SVG) grafiklerinizi kullanıma hazır, yüksek çözünürlüklü raster (PNG) formatına dönüştürün.' },
-            'avif-to-webp': { name: 'AVIF Dönüştürücü', description: 'AVIF dosyalarınızı JPG, PNG veya WebP formatına dönüştürün. Çıktı formatını siz seçin.' },
+            'svg-converter': { name: 'SVG Dönüştürücü', description: 'Vektör (SVG) grafiklerinizi kullanıma hazır JPG, PNG veya WebP formatına dönüştürün.' },
+            'avif-converter': { name: 'AVIF Dönüştürücü', description: 'AVIF dosyalarınızı JPG, PNG veya WebP formatına dönüştürün. Çıktı formatını siz seçin.' },
             'image-compressor': { name: 'Görüntü Sıkıştırıcı', description: 'Akıllı algoritmalarla gözle görülür kalite kaybı yaşamadan dosya boyutlarını ciddi oranda küçültün.' },
-            'png-to-jpg': { name: 'PNG\'den JPG\'ye', description: 'Transparan PNG dosyalarınızı akıllı beyaz arkaplan dolgusu ile hızlı ve optimize edilmiş JPG\'lere dönüştürün.' },
+            'png-converter': { name: 'PNG Dönüştürücü', description: 'PNG dosyalarınızı hızlı ve optimize edilmiş JPG, WebP veya AVIF\'lere dönüştürün.' },
             'smart-cropper': { name: 'Akıllı Kırpıcı', description: 'Özneleri otomatik olarak algılayın ve resimleri sosyal medya veya küçük resim boyutlarına (thumbnail) uygun şekilde kırpın.' },
             'favicon-generator': { name: 'Favicon Oluşturucu', description: 'Web siteniz için saniyeler içinde mükemmel favicon (ICO) dosyaları oluşturun.' },
             'background-remover': { name: 'Arkaplan Silici', description: 'Portreler ve ürün fotoğrafları için gelişmiş Yapay Zeka kullanarak arka planları anında kaldırın.' },
@@ -53,11 +55,13 @@ const content = {
         searchPlaceholder: 'Search by tools, MIME type, JPEG or PNG',
         notFound: (query: string) => `No tools found matching "${query}". Please try another word.`,
         badgeNew: 'NEW',
+        sectionConverters: 'Converters',
+        sectionAdvanced: 'Advanced Tools',
         tools: {
-            'svg-to-png': { name: 'SVG to PNG', description: 'Convert your vector (SVG) graphics to ready-to-use, high-resolution raster (PNG) format.' },
-            'avif-to-webp': { name: 'AVIF Converter', description: 'Convert your AVIF files to JPG, PNG, or WebP. You choose the output format.' },
+            'svg-converter': { name: 'SVG Converter', description: 'Convert your vector (SVG) graphics to ready-to-use JPG, PNG, or WebP format.' },
+            'avif-converter': { name: 'AVIF Converter', description: 'Convert your AVIF files to JPG, PNG, or WebP. You choose the output format.' },
             'image-compressor': { name: 'Image Compressor', description: 'Significantly reduce file sizes without noticeable quality loss using smart algorithms.' },
-            'png-to-jpg': { name: 'PNG to JPG', description: 'Quickly convert your transparent PNG files to optimized JPGs with a smart white background fill.' },
+            'png-converter': { name: 'PNG Converter', description: 'Quickly convert your PNG files to optimized JPG, WebP, or AVIF format.' },
             'smart-cropper': { name: 'Smart Cropper', description: 'Automatically detect subjects and crop images perfectly for social media or thumbnails.' },
             'favicon-generator': { name: 'Favicon Generator', description: 'Generate perfect favicon (ICO) files for your website in seconds.' },
             'background-remover': { name: 'Background Remover', description: 'Instantly remove backgrounds using advanced AI for portraits and product photos.' },
@@ -76,11 +80,13 @@ const content = {
         searchPlaceholder: 'Suchen Sie nach Werkzeugen, MIME-Typ, JPEG oder PNG',
         notFound: (query: string) => `Keine Werkzeuge für "${query}" gefunden. Bitte versuchen Sie ein anderes Wort.`,
         badgeNew: 'NEU',
+        sectionConverters: 'Konverter',
+        sectionAdvanced: 'Erweiterte Werkzeuge',
         tools: {
-            'svg-to-png': { name: 'SVG zu PNG', description: 'Konvertieren Sie Ihre Vektor- (SVG) Grafiken in ein gebrauchsfertiges, hochauflösendes Rasterformat (PNG).' },
-            'avif-to-webp': { name: 'AVIF Konverter', description: 'Konvertieren Sie AVIF-Dateien in JPG, PNG oder WebP. Sie wählen das Ausgabeformat.' },
+            'svg-converter': { name: 'SVG Konverter', description: 'Konvertieren Sie Ihre Vektor- (SVG) Grafiken in JPG, PNG oder WebP.' },
+            'avif-converter': { name: 'AVIF Konverter', description: 'Konvertieren Sie AVIF-Dateien in JPG, PNG oder WebP. Sie wählen das Ausgabeformat.' },
             'image-compressor': { name: 'Bildkomprimierer', description: 'Reduzieren Sie Dateigrößen erheblich ohne merklichen Qualitätsverlust durch intelligente Algorithmen.' },
-            'png-to-jpg': { name: 'PNG zu JPG', description: 'Konvertieren Sie Ihre transparenten PNG-Dateien schnell in optimierte JPGs mit intelligenter weißer Hintergrundfüllung.' },
+            'png-converter': { name: 'PNG Konverter', description: 'Konvertieren Sie PNG-Dateien schnell in JPG, WebP oder AVIF.' },
             'smart-cropper': { name: 'Smart Cropper', description: 'Erkennen Sie Motive automatisch und schneiden Sie Bilder perfekt für soziale Medien oder Thumbnails zu.' },
             'favicon-generator': { name: 'Favicon Generator', description: 'Erstellen Sie in Sekundenschnelle perfekte Favicon (ICO)-Dateien für Ihre Website.' },
             'background-remover': { name: 'Hintergrundentferner', description: 'Entfernen Sie Hintergründe sofort mit fortschrittlicher KI für Porträts und Produktfotos.' },
@@ -99,11 +105,13 @@ const content = {
         searchPlaceholder: 'Rechercher par outils, type MIME, JPEG ou PNG',
         notFound: (query: string) => `Aucun outil trouvé pour "${query}". Veuillez essayer un autre mot.`,
         badgeNew: 'NOUVEAU',
+        sectionConverters: 'Convertisseurs',
+        sectionAdvanced: 'Outils Avancés',
         tools: {
-            'svg-to-png': { name: 'SVG en PNG', description: 'Convertissez vos graphiques vectoriels (SVG) au format raster (PNG) haute résolution prêt à l\'emploi.' },
-            'avif-to-webp': { name: 'Convertisseur AVIF', description: 'Convertissez vos fichiers AVIF en JPG, PNG ou WebP. Vous choisissez le format de sortie.' },
-            'image-compressor': { name: 'Compresseur d\'Image', description: 'Réduisez considérablement la taille des fichiers sans perte de qualité notable grâce à des algorithmes intelligents.' },
-            'png-to-jpg': { name: 'PNG en JPG', description: 'Convertissez rapidement vos fichiers PNG transparents en JPG optimisés avec un remplissage de fond blanc intelligent.' },
+            'svg-converter': { name: 'Convertisseur SVG', description: 'Convertissez vos graphiques vectoriels (SVG) au format JPG, PNG ou WebP.' },
+            'avif-converter': { name: 'Convertisseur AVIF', description: 'Convertissez vos fichiers AVIF en JPG, PNG ou WebP. Vous choisissez le format de sortie.' },
+            'image-compressor': { name: 'Compresseur d\'Image', description: 'Réduisez considérablement la taille des fichiers sans perte de qualité notable.' },
+            'png-converter': { name: 'Convertisseur PNG', description: 'Convertissez vos fichiers PNG au format JPG, WebP ou AVIF.' },
             'smart-cropper': { name: 'Recadrage Intelligent', description: 'Détectez automatiquement les sujets et recadrez parfaitement les images pour les médias sociaux ou les miniatures.' },
             'favicon-generator': { name: 'Générateur de Favicon', description: 'Générez des fichiers favicon (ICO) parfaits pour votre site web en quelques secondes.' },
             'background-remover': { name: 'Suppresseur de Fond', description: 'Supprimez instantanément les arrière-plans en utilisant l\'IA avancée pour les portraits et les photos de produits.' },
@@ -120,21 +128,21 @@ type LangKey = keyof typeof content;
 
 const TOOLS: ToolDef[] = [
     {
-        id: 'svg-to-png',
-        name: 'svg-to-png',
-        description: 'svg-to-png',
-        path: '/svg-to-png',
+        id: 'svg-converter',
+        name: 'svg-converter',
+        description: 'svg-converter',
+        path: '/svg-converter',
         badge: 'FREE',
         icon: Icon(<>
             <path d="M4 4h16v16H4z" />
             <path d="M8 8l3 3m0 0l-3 3m3-3h5" />
         </>),
-        keywords: ['svg', 'png', 'vector', 'raster'],
+        keywords: ['svg', 'png', 'jpg', 'webp', 'vector'],
     },
     {
-        id: 'avif-to-webp',
-        name: 'avif-to-webp',
-        description: 'avif-to-webp',
+        id: 'avif-converter',
+        name: 'avif-converter',
+        description: 'avif-converter',
         path: '/avif-converter',
         badge: 'FREE',
         icon: Icon(<>
@@ -187,10 +195,10 @@ const TOOLS: ToolDef[] = [
         keywords: ['compress', 'optimize', 'shrink'],
     },
     {
-        id: 'png-to-jpg',
-        name: 'png-to-jpg',
-        description: 'png-to-jpg',
-        path: '/png-to-jpg',
+        id: 'png-converter',
+        name: 'png-converter',
+        description: 'png-converter',
+        path: '/png-converter',
         badge: 'FREE',
         icon: Icon(<>
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -349,8 +357,22 @@ export default function ToolsPage() {
                     />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {filtered.map((tool) => <ToolCard key={tool.id} tool={tool} t={t} />)}
+                <div className="mb-14">
+                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
+                        {t.sectionConverters}
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {filtered.filter(t => t.id.includes('converter')).map((tool) => <ToolCard key={tool.id} tool={tool} t={t} />)}
+                    </div>
+                </div>
+
+                <div>
+                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
+                        {t.sectionAdvanced}
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {filtered.filter(t => !t.id.includes('converter')).map((tool) => <ToolCard key={tool.id} tool={tool} t={t} />)}
+                    </div>
                 </div>
 
                 {filtered.length === 0 && (

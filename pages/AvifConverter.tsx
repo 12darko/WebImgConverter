@@ -119,6 +119,7 @@ export default function AvifConverterPage() {
                         </div>
                     </div>
                 </div>
+                <SeoContent pageType="avif-converter" />
             </App>
         </>
     );

@@ -32,23 +32,18 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webimgconverter.com/heic-to-jpg</loc>
+    <loc>https://webimgconverter.com/heic-converter</loc>
     <lastmod>2026-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webimgconverter.com/png-to-jpg</loc>
+    <loc>https://webimgconverter.com/png-converter</loc>
     <lastmod>2026-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://webimgconverter.com/webp-to-jpg</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   <url>
     <loc>https://webimgconverter.com/remove-background</loc>
     <lastmod>2026-06-03</lastmod>
@@ -62,7 +57,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webimgconverter.com/svg-to-png</loc>
+    <loc>https://webimgconverter.com/svg-converter</loc>
     <lastmod>2026-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

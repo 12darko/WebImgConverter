@@ -6,24 +6,24 @@ import { useLanguage } from '../LanguageContext';
 
 const seoContent = {
     tr: {
-        title: 'HEIC to JPG Dönüştürücü - Ücretsiz Online | WebImgConverter',
-        description: 'iPhone HEIC fotoğraflarını saniyeler içinde JPG formatına dönüştürün. Güvenli sunucularımızda anlık işlem, dosyalarınız asla saklanmaz. Toplu dönüştürme destekli.',
-        h1: 'HEIC to JPG Dönüştürücü',
+        title: 'HEIC Dönüştürücü - Ücretsiz Online | WebImgConverter',
+        description: 'iPhone HEIC fotoğraflarını saniyeler içinde JPG, PNG veya WebP formatına dönüştürün. Çoklu format desteği.',
+        h1: 'HEIC Dönüştürücü',
     },
     en: {
-        title: 'Free HEIC to JPG Converter Online | WebImgConverter',
-        description: 'Convert iPhone HEIC photos to JPG format in seconds. Secure server processing, your files are never stored. Batch conversion supported.',
-        h1: 'HEIC to JPG Converter',
+        title: 'Free HEIC Converter Online | WebImgConverter',
+        description: 'Convert iPhone HEIC photos to JPG, PNG, or WebP format in seconds. Multi-format support.',
+        h1: 'HEIC Converter',
     },
     de: {
-        title: 'Kostenloser HEIC zu JPG Konverter Online | WebImgConverter',
-        description: 'Konvertieren Sie iPhone HEIC-Fotos in Sekunden in JPG. Sichere Serververarbeitung, Ihre Dateien werden nie gespeichert. Stapelverarbeitung unterstützt.',
-        h1: 'HEIC zu JPG Konverter',
+        title: 'Kostenloser HEIC Konverter Online | WebImgConverter',
+        description: 'Konvertieren Sie iPhone HEIC-Fotos in JPG, PNG oder WebP. Mehrformat-Unterstützung.',
+        h1: 'HEIC Konverter',
     },
     fr: {
-        title: 'Convertisseur HEIC en JPG Gratuit en Ligne | WebImgConverter',
-        description: 'Convertissez vos photos HEIC iPhone en JPG en quelques secondes. Traitement sécurisé sur serveur, vos fichiers ne sont jamais stockés. Conversion par lot prise en charge.',
-        h1: 'Convertisseur HEIC en JPG',
+        title: 'Convertisseur HEIC Gratuit en Ligne | WebImgConverter',
+        description: 'Convertissez vos photos iPhone HEIC en JPG, PNG ou WebP en quelques secondes.',
+        h1: 'Convertisseur HEIC',
     },
 };
 
@@ -124,7 +124,7 @@ const richContent = {
 
 type LangKey = keyof typeof seoContent;
 
-export default function HeicToJpgPage() {
+export default function HeicConverterPage() {
     const { language } = useLanguage();
     const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
     const t = seoContent[activeLang] || seoContent['en'];
@@ -135,15 +135,15 @@ export default function HeicToJpgPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/heic-to-jpg" />
+                <link rel="canonical" href="https://WebImgConverter.com/heic-converter" />
             </Helmet>
             <App
-                defaultTool="heic-to-jpg"
+                defaultTool="convert"
                 pageH1={t.h1}
                 acceptTypes="image/heic,image/heif,.heic,.heif"
-                formatBadges={['HEIC', '→', 'JPG']}
+                formatBadges={['HEIC', '→', 'JPG / PNG / WebP']}
                 defaultOutputFormat="jpg"
-                allowedSettings={['quality', 'maxKb', 'grayscale', 'rotate', 'flip', 'crop']}
+                allowedSettings={['format', 'quality', 'maxKb', 'grayscale', 'rotate', 'flip', 'crop']}
                 hideFormatSelector={false} // Allow selecting format for server conversion
                 conversionHandler={async (file) => {
                     const { serverConversionService } = await import('../services/serverConversionService');
@@ -220,7 +220,7 @@ export default function HeicToJpgPage() {
                     </div>
                 </div>
 
-                <SeoContent pageType="heic-to-jpg" />
+                <SeoContent pageType="heic-converter" />
             </App>
         </>
     );
