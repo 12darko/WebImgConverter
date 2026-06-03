@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import App from '../AppMain';
 import { SeoContent } from '../components/SeoContent';
@@ -143,8 +143,7 @@ export default function CompressImagePage() {
                 acceptTypes="image/png, image/jpeg, image/webp"
                 formatBadges={['JPG', 'PNG', 'WEBP']}
                 hideFormatSelector={true}
-                dropzoneTitle={activeLang === 'tr' ? 'Sıkıştırılacak Görselleri Sürükleyin' : activeLang === 'de' ? 'Bilder zum Komprimieren hierher ziehen' : activeLang === 'fr' ? 'Glissez les images à compresser' : 'Drag Images to Compress'}
-                dropzoneDesc={activeLang === 'tr' ? 'JPG, PNG veya WebP dosyalarınızı sürükleyin' : activeLang === 'de' ? 'Ziehen Sie Ihre JPG, PNG oder WebP-Dateien' : activeLang === 'fr' ? 'Glissez vos fichiers JPG, PNG ou WebP' : 'Drag and drop your JPG, PNG or WebP files'}
+                allowedSettings={['quality', 'maxKb']}
             >
                 {/* Rich Content for SEO */}
                 <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20">

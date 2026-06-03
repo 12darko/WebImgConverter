@@ -14,6 +14,9 @@ import FaviconGeneratorPage from './pages/FaviconGenerator';
 import RotateImagePage from './pages/RotateImage';
 import WatermarkImagePage from './pages/WatermarkImage';
 import BlackAndWhitePage from './pages/BlackAndWhite';
+import WebpConverterPage from './pages/WebpConverter';
+import JpgConverterPage from './pages/JpgConverter';
+import AvifConverterPage from './pages/AvifConverter';
 import HomePage from './pages/Home';
 import ToolsPage from './pages/Tools';
 import PricingPage from './pages/Pricing';
@@ -55,6 +58,9 @@ export default function Router() {
                         <Route path="/rotate-image" element={<RotateImagePage />} />
                         <Route path="/watermark-image" element={<WatermarkImagePage />} />
                         <Route path="/black-and-white" element={<BlackAndWhitePage />} />
+                        <Route path="/webp-converter" element={<WebpConverterPage />} />
+                        <Route path="/jpg-converter" element={<JpgConverterPage />} />
+                        <Route path="/avif-converter" element={<AvifConverterPage />} />
                         <Route path="/privacy" element={<PrivacyPage />} />
                         <Route path="/terms" element={<TermsPage />} />
                         <Route path="/about" element={<AboutPage />} />

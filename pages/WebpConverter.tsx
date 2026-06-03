@@ -6,58 +6,58 @@ import { SeoContent } from '../components/SeoContent';
 
 const seoContent = {
     tr: {
-        title: 'Akıllı Kırpıcı - Resimleri Otomatik Kırp | WebImgConverter',
-        description: 'Resimlerinizi sosyal medya için veya istediğiniz boyutta otomatik kırpın.',
-        h1: 'Akıllı Resim Kırpıcı',
-        feature1: 'Sosyal Medya Uyumlu', feature1Desc: 'Instagram, YouTube, Twitter için tek tıkla en uygun boyutta (1:1, 16:9 vs.) kırpın.',
-        feature2: 'Esnek Kullanım', feature2Desc: 'İster serbest modda manuel olarak, isterseniz hazır şablonlarla pratik bir şekilde kırpın.',
-        feature3: 'Görsel Kalitesi', feature3Desc: 'Kırpma işleminde kalite kaybı yaşanmaz, orijinal çözünürlük korunur.',
-        howTo: 'Resim Nasıl Kırpılır?',
-        step1: 'Resim Yükle', step1Desc: 'Kırpmak istediğiniz dosyayı seçin.',
-        step2: 'Alan Belirle', step2Desc: 'Tuval üzerinden kesmek istediğiniz alanı seçin.',
-        step3: 'Uygula & İndir', step3Desc: 'Kırpılan resmi anında kaydedin.'
+        title: 'WebP Dönüştürücü — JPG, PNG\'ye Çevir | WebImgConverter',
+        description: 'WebP görsellerinizi tek tıkla JPG veya PNG formatına dönüştürün. Toplu dönüştürme, yüksek kalite, ücretsiz.',
+        h1: 'WebP Dönüştürücü',
+        feature1: 'JPG veya PNG', feature1Desc: 'WebP dosyanızı istediğiniz çıktı formatına anında çevirin.',
+        feature2: 'Toplu İşlem', feature2Desc: 'Yüzlerce WebP dosyasını tek seferde dönüştürün, vakit kaybetmeyin.',
+        feature3: 'Sıfır Kalite Kaybı', feature3Desc: 'Akıllı algoritmalarla görsel bozulmadan format değiştirin.',
+        howTo: 'WebP Nasıl Dönüştürülür?',
+        step1: 'WebP Yükle', step1Desc: 'Dosyalarınızı sürükleyin.',
+        step2: 'Format Seç', step2Desc: 'JPG veya PNG seçin.',
+        step3: 'İndir', step3Desc: 'Dönüştürülmüş dosyayı alın.'
     },
     en: {
-        title: 'Smart Image Cropper Online | WebImgConverter',
-        description: 'Automatically crop your images for social media or custom sizes.',
-        h1: 'Smart Image Cropper',
-        feature1: 'Social Media Ready', feature1Desc: 'One-click crop for Instagram, YouTube, Twitter optimal sizes (1:1, 16:9 etc).',
-        feature2: 'Flexible Use', feature2Desc: 'Crop manually in freeform mode or use convenient aspect ratio templates.',
-        feature3: 'Visual Quality', feature3Desc: 'No quality loss during cropping, original resolution is preserved.',
-        howTo: 'How to Crop an Image?',
-        step1: 'Upload Image', step1Desc: 'Select the file to crop.',
-        step2: 'Select Area', step2Desc: 'Use the canvas to select the crop region.',
-        step3: 'Apply & Download', step3Desc: 'Save the cropped image instantly.'
+        title: 'WebP Converter — Convert to JPG, PNG | WebImgConverter',
+        description: 'Convert your WebP images to JPG or PNG format with one click. Batch conversion, high quality, free.',
+        h1: 'WebP Converter',
+        feature1: 'JPG or PNG', feature1Desc: 'Instantly convert your WebP files to your desired output format.',
+        feature2: 'Batch Processing', feature2Desc: 'Convert hundreds of WebP files at once without wasting time.',
+        feature3: 'Zero Quality Loss', feature3Desc: 'Change formats without visible quality degradation using smart algorithms.',
+        howTo: 'How to Convert WebP?',
+        step1: 'Upload WebP', step1Desc: 'Drag & drop your files.',
+        step2: 'Choose Format', step2Desc: 'Select JPG or PNG.',
+        step3: 'Download', step3Desc: 'Get your converted file.'
     },
     de: {
-        title: 'Smart Image Cropper Online | WebImgConverter',
-        description: 'Schneiden Sie Ihre Bilder automatisch für soziale Medien oder benutzerdefinierte Größen zu.',
-        h1: 'Intelligenter Bildzuschneider',
-        feature1: 'Social Media', feature1Desc: 'Ein-Klick-Zuschnitt für optimale Größen (1:1, 16:9 usw.).',
-        feature2: 'Flexibel', feature2Desc: 'Freies Zuschneiden oder praktische Vorlagen nutzen.',
-        feature3: 'Hohe Qualität', feature3Desc: 'Kein Qualitätsverlust beim Zuschneiden.',
-        howTo: 'Wie schneidet man ein Bild zu?',
-        step1: 'Bild hochladen', step1Desc: 'Wählen Sie die Datei aus.',
-        step2: 'Bereich wählen', step2Desc: 'Nutzen Sie die Leinwand zum Zuschneiden.',
-        step3: 'Speichern', step3Desc: 'Das zugeschnittene Bild speichern.'
+        title: 'WebP Konverter — In JPG, PNG Umwandeln | WebImgConverter',
+        description: 'Konvertieren Sie Ihre WebP-Bilder mit einem Klick in JPG oder PNG. Stapelkonvertierung, hohe Qualität, kostenlos.',
+        h1: 'WebP Konverter',
+        feature1: 'JPG oder PNG', feature1Desc: 'Konvertieren Sie Ihre WebP-Dateien sofort in Ihr gewünschtes Format.',
+        feature2: 'Stapelverarbeitung', feature2Desc: 'Konvertieren Sie hunderte WebP-Dateien auf einmal.',
+        feature3: 'Null Qualitätsverlust', feature3Desc: 'Formatwechsel ohne sichtbare Qualitätsminderung.',
+        howTo: 'Wie konvertiert man WebP?',
+        step1: 'WebP hochladen', step1Desc: 'Dateien hierher ziehen.',
+        step2: 'Format wählen', step2Desc: 'JPG oder PNG wählen.',
+        step3: 'Herunterladen', step3Desc: 'Konvertierte Datei erhalten.'
     },
     fr: {
-        title: 'Recadreur d\'images intelligent en ligne | WebImgConverter',
-        description: 'Recadrez automatiquement vos images pour les réseaux sociaux ou des tailles personnalisées.',
-        h1: 'Recadreur d\'images intelligent',
-        feature1: 'Médias Sociaux', feature1Desc: 'Recadrage en un clic pour les tailles optimales (1:1, 16:9 etc).',
-        feature2: 'Flexible', feature2Desc: 'Recadrez librement ou utilisez des modèles pratiques.',
-        feature3: 'Haute Qualité', feature3Desc: 'Aucune perte de qualité lors du recadrage.',
-        howTo: 'Comment recadrer une image ?',
-        step1: 'Télécharger', step1Desc: 'Sélectionnez le fichier à recadrer.',
-        step2: 'Sélectionner', step2Desc: 'Utilisez la zone de sélection.',
-        step3: 'Enregistrer', step3Desc: 'Sauvegardez l\'image recadrée.'
+        title: 'Convertisseur WebP — Convertir en JPG, PNG | WebImgConverter',
+        description: 'Convertissez vos images WebP en JPG ou PNG en un clic. Conversion par lots, haute qualité, gratuit.',
+        h1: 'Convertisseur WebP',
+        feature1: 'JPG ou PNG', feature1Desc: 'Convertissez instantanément vos fichiers WebP dans le format de votre choix.',
+        feature2: 'Traitement par Lots', feature2Desc: 'Convertissez des centaines de fichiers WebP en une seule fois.',
+        feature3: 'Zéro Perte de Qualité', feature3Desc: 'Changez de format sans dégradation visible de la qualité.',
+        howTo: 'Comment convertir du WebP ?',
+        step1: 'Importer WebP', step1Desc: 'Glissez-déposez vos fichiers.',
+        step2: 'Choisir Format', step2Desc: 'Sélectionnez JPG ou PNG.',
+        step3: 'Télécharger', step3Desc: 'Obtenez votre fichier converti.'
     }
 };
 
 type LangKey = keyof typeof seoContent;
 
-export default function SmartCropperPage() {
+export default function WebpConverterPage() {
     const { language } = useLanguage();
     const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
     const t = seoContent[activeLang] || seoContent.en;
@@ -67,25 +67,26 @@ export default function SmartCropperPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/smart-cropper" />
+                <link rel="canonical" href="https://WebImgConverter.com/webp-converter" />
             </Helmet>
             <App
-                defaultTool="crop"
+                defaultTool="webp-converter"
                 pageH1={t.h1}
-                acceptTypes="image/*"
-                formatBadges={['KIRP', '✂️']}
-                allowedSettings={['format', 'crop']}
+                acceptTypes="image/webp,.webp"
+                formatBadges={['WEBP', '→', 'JPG / PNG']}
+                defaultOutputFormat="jpg"
+                hideFormatSelector={false}
+                allowedSettings={['format', 'quality', 'maxKb', 'grayscale']}
             >
-                <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20 mt-16">
-                    {/* Unique Feature Highlights */}
+                <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-card hover:border-brand-300 dark:hover:border-brand-700 transition-all">
-                            <div className="text-4xl mb-4">📱</div>
+                            <div className="text-4xl mb-4">🔄</div>
                             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t.feature1}</h3>
                             <p className="text-slate-600 dark:text-slate-400 text-sm">{t.feature1Desc}</p>
                         </div>
                         <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-card hover:border-brand-300 dark:hover:border-brand-700 transition-all">
-                            <div className="text-4xl mb-4">📏</div>
+                            <div className="text-4xl mb-4">📦</div>
                             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t.feature2}</h3>
                             <p className="text-slate-600 dark:text-slate-400 text-sm">{t.feature2Desc}</p>
                         </div>
@@ -96,27 +97,20 @@ export default function SmartCropperPage() {
                         </div>
                     </div>
 
-                    {/* Visual How-To Steps */}
                     <div className="space-y-8 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-900/40 rounded-3xl p-8 md:p-12">
-                        <h2 className="text-3xl font-serif font-bold text-slate-900 dark:text-white text-center">
-                            {t.howTo}
-                        </h2>
+                        <h2 className="text-3xl font-serif font-bold text-slate-900 dark:text-white text-center">{t.howTo}</h2>
                         <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative">
-                            {/* Step 1 */}
                             <div className="flex-1 text-center relative z-10 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
                                 <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-800 rounded-xl flex items-center justify-center text-xl font-bold text-brand-600 dark:text-brand-400 mx-auto mb-4">1</div>
                                 <h3 className="font-bold text-slate-900 dark:text-white mb-1">{t.step1}</h3>
                                 <p className="text-slate-500 dark:text-slate-400 text-sm">{t.step1Desc}</p>
                             </div>
-                            {/* Arrow */}
                             <div className="hidden md:block w-full h-0.5 bg-brand-200 dark:bg-brand-800 absolute top-1/2 -translate-y-1/2 -z-0"></div>
-                            {/* Step 2 */}
                             <div className="flex-1 text-center relative z-10 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
                                 <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-800 rounded-xl flex items-center justify-center text-xl font-bold text-brand-600 dark:text-brand-400 mx-auto mb-4">2</div>
                                 <h3 className="font-bold text-slate-900 dark:text-white mb-1">{t.step2}</h3>
                                 <p className="text-slate-500 dark:text-slate-400 text-sm">{t.step2Desc}</p>
                             </div>
-                            {/* Step 3 */}
                             <div className="flex-1 text-center relative z-10 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
                                 <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-800 rounded-xl flex items-center justify-center text-xl font-bold text-brand-600 dark:text-brand-400 mx-auto mb-4">3</div>
                                 <h3 className="font-bold text-slate-900 dark:text-white mb-1">{t.step3}</h3>
@@ -125,7 +119,7 @@ export default function SmartCropperPage() {
                         </div>
                     </div>
                 </div>
-                <SeoContent pageType="crop" />
+                <SeoContent pageType="webp-to-jpg" />
             </App>
         </>
     );

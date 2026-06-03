@@ -6,58 +6,58 @@ import { SeoContent } from '../components/SeoContent';
 
 const seoContent = {
     tr: {
-        title: 'Akıllı Kırpıcı - Resimleri Otomatik Kırp | WebImgConverter',
-        description: 'Resimlerinizi sosyal medya için veya istediğiniz boyutta otomatik kırpın.',
-        h1: 'Akıllı Resim Kırpıcı',
-        feature1: 'Sosyal Medya Uyumlu', feature1Desc: 'Instagram, YouTube, Twitter için tek tıkla en uygun boyutta (1:1, 16:9 vs.) kırpın.',
-        feature2: 'Esnek Kullanım', feature2Desc: 'İster serbest modda manuel olarak, isterseniz hazır şablonlarla pratik bir şekilde kırpın.',
-        feature3: 'Görsel Kalitesi', feature3Desc: 'Kırpma işleminde kalite kaybı yaşanmaz, orijinal çözünürlük korunur.',
-        howTo: 'Resim Nasıl Kırpılır?',
-        step1: 'Resim Yükle', step1Desc: 'Kırpmak istediğiniz dosyayı seçin.',
-        step2: 'Alan Belirle', step2Desc: 'Tuval üzerinden kesmek istediğiniz alanı seçin.',
-        step3: 'Uygula & İndir', step3Desc: 'Kırpılan resmi anında kaydedin.'
+        title: 'AVIF Dönüştürücü — JPG, PNG, WebP\'ye Çevir | WebImgConverter',
+        description: 'AVIF görsellerinizi JPG, PNG veya WebP formatına dönüştürün. Her yerde açılabilir formatlara tek tıkla geçin.',
+        h1: 'AVIF Dönüştürücü',
+        feature1: 'Çoklu Format', feature1Desc: 'AVIF dosyalarınızı JPG, PNG veya WebP\'ye tek bir araçla dönüştürün.',
+        feature2: 'Evrensel Uyumluluk', feature2Desc: 'AVIF desteği olmayan tarayıcı ve programlarda açılabilir formatlara geçin.',
+        feature3: 'Kalite Koruması', feature3Desc: 'AVIF\'in yüksek kalitesini hedef formata en az kayıpla aktarın.',
+        howTo: 'AVIF Nasıl Dönüştürülür?',
+        step1: 'AVIF Yükle', step1Desc: 'Dosyalarınızı sürükleyin.',
+        step2: 'Format Seç', step2Desc: 'JPG, PNG veya WebP.',
+        step3: 'İndir', step3Desc: 'Dönüştürülmüş dosyayı alın.'
     },
     en: {
-        title: 'Smart Image Cropper Online | WebImgConverter',
-        description: 'Automatically crop your images for social media or custom sizes.',
-        h1: 'Smart Image Cropper',
-        feature1: 'Social Media Ready', feature1Desc: 'One-click crop for Instagram, YouTube, Twitter optimal sizes (1:1, 16:9 etc).',
-        feature2: 'Flexible Use', feature2Desc: 'Crop manually in freeform mode or use convenient aspect ratio templates.',
-        feature3: 'Visual Quality', feature3Desc: 'No quality loss during cropping, original resolution is preserved.',
-        howTo: 'How to Crop an Image?',
-        step1: 'Upload Image', step1Desc: 'Select the file to crop.',
-        step2: 'Select Area', step2Desc: 'Use the canvas to select the crop region.',
-        step3: 'Apply & Download', step3Desc: 'Save the cropped image instantly.'
+        title: 'AVIF Converter — Convert to JPG, PNG, WebP | WebImgConverter',
+        description: 'Convert your AVIF images to JPG, PNG, or WebP format. Switch to universally supported formats with one click.',
+        h1: 'AVIF Converter',
+        feature1: 'Multiple Formats', feature1Desc: 'Convert your AVIF files to JPG, PNG, or WebP with a single tool.',
+        feature2: 'Universal Compatibility', feature2Desc: 'Switch to formats supported by all browsers and programs.',
+        feature3: 'Quality Preserved', feature3Desc: 'Transfer AVIF\'s high quality to the target format with minimal loss.',
+        howTo: 'How to Convert AVIF?',
+        step1: 'Upload AVIF', step1Desc: 'Drag & drop your files.',
+        step2: 'Choose Format', step2Desc: 'JPG, PNG, or WebP.',
+        step3: 'Download', step3Desc: 'Get your converted file.'
     },
     de: {
-        title: 'Smart Image Cropper Online | WebImgConverter',
-        description: 'Schneiden Sie Ihre Bilder automatisch für soziale Medien oder benutzerdefinierte Größen zu.',
-        h1: 'Intelligenter Bildzuschneider',
-        feature1: 'Social Media', feature1Desc: 'Ein-Klick-Zuschnitt für optimale Größen (1:1, 16:9 usw.).',
-        feature2: 'Flexibel', feature2Desc: 'Freies Zuschneiden oder praktische Vorlagen nutzen.',
-        feature3: 'Hohe Qualität', feature3Desc: 'Kein Qualitätsverlust beim Zuschneiden.',
-        howTo: 'Wie schneidet man ein Bild zu?',
-        step1: 'Bild hochladen', step1Desc: 'Wählen Sie die Datei aus.',
-        step2: 'Bereich wählen', step2Desc: 'Nutzen Sie die Leinwand zum Zuschneiden.',
-        step3: 'Speichern', step3Desc: 'Das zugeschnittene Bild speichern.'
+        title: 'AVIF Konverter — In JPG, PNG, WebP Umwandeln | WebImgConverter',
+        description: 'Konvertieren Sie Ihre AVIF-Bilder in JPG, PNG oder WebP. Wechseln Sie mit einem Klick zu universal unterstützten Formaten.',
+        h1: 'AVIF Konverter',
+        feature1: 'Mehrere Formate', feature1Desc: 'Konvertieren Sie AVIF-Dateien in JPG, PNG oder WebP mit einem einzigen Tool.',
+        feature2: 'Universelle Kompatibilität', feature2Desc: 'Wechseln Sie zu Formaten, die von allen Browsern unterstützt werden.',
+        feature3: 'Qualität Bewahrt', feature3Desc: 'Übertragen Sie die hohe Qualität von AVIF mit minimalem Verlust.',
+        howTo: 'Wie konvertiert man AVIF?',
+        step1: 'AVIF hochladen', step1Desc: 'Dateien hierher ziehen.',
+        step2: 'Format wählen', step2Desc: 'JPG, PNG oder WebP.',
+        step3: 'Herunterladen', step3Desc: 'Konvertierte Datei erhalten.'
     },
     fr: {
-        title: 'Recadreur d\'images intelligent en ligne | WebImgConverter',
-        description: 'Recadrez automatiquement vos images pour les réseaux sociaux ou des tailles personnalisées.',
-        h1: 'Recadreur d\'images intelligent',
-        feature1: 'Médias Sociaux', feature1Desc: 'Recadrage en un clic pour les tailles optimales (1:1, 16:9 etc).',
-        feature2: 'Flexible', feature2Desc: 'Recadrez librement ou utilisez des modèles pratiques.',
-        feature3: 'Haute Qualité', feature3Desc: 'Aucune perte de qualité lors du recadrage.',
-        howTo: 'Comment recadrer une image ?',
-        step1: 'Télécharger', step1Desc: 'Sélectionnez le fichier à recadrer.',
-        step2: 'Sélectionner', step2Desc: 'Utilisez la zone de sélection.',
-        step3: 'Enregistrer', step3Desc: 'Sauvegardez l\'image recadrée.'
+        title: 'Convertisseur AVIF — Convertir en JPG, PNG, WebP | WebImgConverter',
+        description: 'Convertissez vos images AVIF en JPG, PNG ou WebP. Passez aux formats universels en un clic.',
+        h1: 'Convertisseur AVIF',
+        feature1: 'Formats Multiples', feature1Desc: 'Convertissez vos fichiers AVIF en JPG, PNG ou WebP avec un seul outil.',
+        feature2: 'Compatibilité Universelle', feature2Desc: 'Passez aux formats supportés par tous les navigateurs et logiciels.',
+        feature3: 'Qualité Préservée', feature3Desc: 'Transférez la haute qualité d\'AVIF avec une perte minimale.',
+        howTo: 'Comment convertir du AVIF ?',
+        step1: 'Importer AVIF', step1Desc: 'Glissez-déposez vos fichiers.',
+        step2: 'Choisir Format', step2Desc: 'JPG, PNG ou WebP.',
+        step3: 'Télécharger', step3Desc: 'Obtenez votre fichier converti.'
     }
 };
 
 type LangKey = keyof typeof seoContent;
 
-export default function SmartCropperPage() {
+export default function AvifConverterPage() {
     const { language } = useLanguage();
     const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
     const t = seoContent[activeLang] || seoContent.en;
@@ -67,56 +67,50 @@ export default function SmartCropperPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/smart-cropper" />
+                <link rel="canonical" href="https://WebImgConverter.com/avif-converter" />
             </Helmet>
             <App
-                defaultTool="crop"
+                defaultTool="avif-converter"
                 pageH1={t.h1}
-                acceptTypes="image/*"
-                formatBadges={['KIRP', '✂️']}
-                allowedSettings={['format', 'crop']}
+                acceptTypes="image/avif,.avif"
+                formatBadges={['AVIF', '→', 'JPG / PNG / WebP']}
+                defaultOutputFormat="jpg"
+                hideFormatSelector={false}
+                allowedSettings={['format', 'quality', 'maxKb', 'grayscale']}
             >
-                <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20 mt-16">
-                    {/* Unique Feature Highlights */}
+                <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-card hover:border-brand-300 dark:hover:border-brand-700 transition-all">
-                            <div className="text-4xl mb-4">📱</div>
+                            <div className="text-4xl mb-4">🔄</div>
                             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t.feature1}</h3>
                             <p className="text-slate-600 dark:text-slate-400 text-sm">{t.feature1Desc}</p>
                         </div>
                         <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-card hover:border-brand-300 dark:hover:border-brand-700 transition-all">
-                            <div className="text-4xl mb-4">📏</div>
+                            <div className="text-4xl mb-4">🌍</div>
                             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t.feature2}</h3>
                             <p className="text-slate-600 dark:text-slate-400 text-sm">{t.feature2Desc}</p>
                         </div>
                         <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-card hover:border-brand-300 dark:hover:border-brand-700 transition-all">
-                            <div className="text-4xl mb-4">✨</div>
+                            <div className="text-4xl mb-4">💎</div>
                             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t.feature3}</h3>
                             <p className="text-slate-600 dark:text-slate-400 text-sm">{t.feature3Desc}</p>
                         </div>
                     </div>
 
-                    {/* Visual How-To Steps */}
                     <div className="space-y-8 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-900/40 rounded-3xl p-8 md:p-12">
-                        <h2 className="text-3xl font-serif font-bold text-slate-900 dark:text-white text-center">
-                            {t.howTo}
-                        </h2>
+                        <h2 className="text-3xl font-serif font-bold text-slate-900 dark:text-white text-center">{t.howTo}</h2>
                         <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative">
-                            {/* Step 1 */}
                             <div className="flex-1 text-center relative z-10 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
                                 <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-800 rounded-xl flex items-center justify-center text-xl font-bold text-brand-600 dark:text-brand-400 mx-auto mb-4">1</div>
                                 <h3 className="font-bold text-slate-900 dark:text-white mb-1">{t.step1}</h3>
                                 <p className="text-slate-500 dark:text-slate-400 text-sm">{t.step1Desc}</p>
                             </div>
-                            {/* Arrow */}
                             <div className="hidden md:block w-full h-0.5 bg-brand-200 dark:bg-brand-800 absolute top-1/2 -translate-y-1/2 -z-0"></div>
-                            {/* Step 2 */}
                             <div className="flex-1 text-center relative z-10 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
                                 <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-800 rounded-xl flex items-center justify-center text-xl font-bold text-brand-600 dark:text-brand-400 mx-auto mb-4">2</div>
                                 <h3 className="font-bold text-slate-900 dark:text-white mb-1">{t.step2}</h3>
                                 <p className="text-slate-500 dark:text-slate-400 text-sm">{t.step2Desc}</p>
                             </div>
-                            {/* Step 3 */}
                             <div className="flex-1 text-center relative z-10 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
                                 <div className="w-12 h-12 bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-800 rounded-xl flex items-center justify-center text-xl font-bold text-brand-600 dark:text-brand-400 mx-auto mb-4">3</div>
                                 <h3 className="font-bold text-slate-900 dark:text-white mb-1">{t.step3}</h3>
@@ -125,7 +119,6 @@ export default function SmartCropperPage() {
                         </div>
                     </div>
                 </div>
-                <SeoContent pageType="crop" />
             </App>
         </>
     );

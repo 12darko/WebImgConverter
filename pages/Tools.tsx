@@ -32,7 +32,7 @@ const content = {
         badgeNew: 'YENİ',
         tools: {
             'svg-to-png': { name: 'SVG\'den PNG\'ye', description: 'Vektör (SVG) grafiklerinizi kullanıma hazır, yüksek çözünürlüklü raster (PNG) formatına dönüştürün.' },
-            'avif-to-webp': { name: 'AVIF\'ten WebP\'ye', description: 'Modern AVIF formatını görsel kaliteden ödün vermeden yaygın kullanılan WebP dosyalarına çevirin.' },
+            'avif-to-webp': { name: 'AVIF Dönüştürücü', description: 'AVIF dosyalarınızı JPG, PNG veya WebP formatına dönüştürün. Çıktı formatını siz seçin.' },
             'image-compressor': { name: 'Görüntü Sıkıştırıcı', description: 'Akıllı algoritmalarla gözle görülür kalite kaybı yaşamadan dosya boyutlarını ciddi oranda küçültün.' },
             'png-to-jpg': { name: 'PNG\'den JPG\'ye', description: 'Transparan PNG dosyalarınızı akıllı beyaz arkaplan dolgusu ile hızlı ve optimize edilmiş JPG\'lere dönüştürün.' },
             'smart-cropper': { name: 'Akıllı Kırpıcı', description: 'Özneleri otomatik olarak algılayın ve resimleri sosyal medya veya küçük resim boyutlarına (thumbnail) uygun şekilde kırpın.' },
@@ -40,7 +40,9 @@ const content = {
             'background-remover': { name: 'Arkaplan Silici', description: 'Portreler ve ürün fotoğrafları için gelişmiş Yapay Zeka kullanarak arka planları anında kaldırın.' },
             'rotate-image': { name: 'Görsel Döndür', description: 'Görsellerinizi yatay/dikey çevirin veya istediğiniz açıda döndürün.' },
             'watermark-image': { name: 'Filigran Ekle', description: 'Görsellerinize metin veya logo ile filigran (watermark) ekleyin.' },
-            'black-and-white': { name: 'Siyah Beyaz Yap', description: 'Görsellerinizi tek tıkla siyah beyaz (grayscale) formatına dönüştürün.' }
+            'black-and-white': { name: 'Siyah Beyaz Yap', description: 'Görsellerinizi tek tıkla siyah beyaz (grayscale) formatına dönüştürün.' },
+            'webp-converter': { name: 'WebP Dönüştürücü', description: 'WebP dosyalarınızı JPG veya PNG formatına çevirin. Çıktı formatını kendiniz seçin, tek araçla her şey.' },
+            'jpg-converter': { name: 'JPG Dönüştürücü', description: 'JPG/JPEG dosyalarınızı PNG veya WebP formatına çevirin. Şeffaf PNG ya da modern WebP, karar sizin.' }
         }
     },
     en: {
@@ -53,7 +55,7 @@ const content = {
         badgeNew: 'NEW',
         tools: {
             'svg-to-png': { name: 'SVG to PNG', description: 'Convert your vector (SVG) graphics to ready-to-use, high-resolution raster (PNG) format.' },
-            'avif-to-webp': { name: 'AVIF to WebP', description: 'Convert modern AVIF format to widely used WebP files without sacrificing visual quality.' },
+            'avif-to-webp': { name: 'AVIF Converter', description: 'Convert your AVIF files to JPG, PNG, or WebP. You choose the output format.' },
             'image-compressor': { name: 'Image Compressor', description: 'Significantly reduce file sizes without noticeable quality loss using smart algorithms.' },
             'png-to-jpg': { name: 'PNG to JPG', description: 'Quickly convert your transparent PNG files to optimized JPGs with a smart white background fill.' },
             'smart-cropper': { name: 'Smart Cropper', description: 'Automatically detect subjects and crop images perfectly for social media or thumbnails.' },
@@ -61,7 +63,9 @@ const content = {
             'background-remover': { name: 'Background Remover', description: 'Instantly remove backgrounds using advanced AI for portraits and product photos.' },
             'rotate-image': { name: 'Rotate Image', description: 'Flip your images horizontally/vertically or rotate them at any angle.' },
             'watermark-image': { name: 'Watermark Image', description: 'Add text or logo watermark to your images to protect your copyright.' },
-            'black-and-white': { name: 'Black & White', description: 'Convert your colorful images to black and white (grayscale) with one click.' }
+            'black-and-white': { name: 'Black & White', description: 'Convert your colorful images to black and white (grayscale) with one click.' },
+            'webp-converter': { name: 'WebP Converter', description: 'Convert WebP files to JPG or PNG format. You pick the output — one tool, all formats.' },
+            'jpg-converter': { name: 'JPG Converter', description: 'Convert JPG/JPEG files to PNG or WebP format. Transparent PNG or modern WebP, your call.' }
         }
     },
     de: {
@@ -74,7 +78,7 @@ const content = {
         badgeNew: 'NEU',
         tools: {
             'svg-to-png': { name: 'SVG zu PNG', description: 'Konvertieren Sie Ihre Vektor- (SVG) Grafiken in ein gebrauchsfertiges, hochauflösendes Rasterformat (PNG).' },
-            'avif-to-webp': { name: 'AVIF zu WebP', description: 'Konvertieren Sie das moderne AVIF-Format in weit verbreitete WebP-Dateien ohne visuellen Qualitätsverlust.' },
+            'avif-to-webp': { name: 'AVIF Konverter', description: 'Konvertieren Sie AVIF-Dateien in JPG, PNG oder WebP. Sie wählen das Ausgabeformat.' },
             'image-compressor': { name: 'Bildkomprimierer', description: 'Reduzieren Sie Dateigrößen erheblich ohne merklichen Qualitätsverlust durch intelligente Algorithmen.' },
             'png-to-jpg': { name: 'PNG zu JPG', description: 'Konvertieren Sie Ihre transparenten PNG-Dateien schnell in optimierte JPGs mit intelligenter weißer Hintergrundfüllung.' },
             'smart-cropper': { name: 'Smart Cropper', description: 'Erkennen Sie Motive automatisch und schneiden Sie Bilder perfekt für soziale Medien oder Thumbnails zu.' },
@@ -82,7 +86,9 @@ const content = {
             'background-remover': { name: 'Hintergrundentferner', description: 'Entfernen Sie Hintergründe sofort mit fortschrittlicher KI für Porträts und Produktfotos.' },
             'rotate-image': { name: 'Bild Drehen', description: 'Spiegeln Sie Ihre Bilder horizontal/vertikal oder drehen Sie sie.' },
             'watermark-image': { name: 'Wasserzeichen', description: 'Fügen Sie Text- oder Logo-Wasserzeichen hinzu, um Ihr Urheberrecht zu schützen.' },
-            'black-and-white': { name: 'Schwarz-Weiß', description: 'Konvertieren Sie Ihre Bilder mit einem Klick in Schwarz-Weiß (Graustufen).' }
+            'black-and-white': { name: 'Schwarz-Weiß', description: 'Konvertieren Sie Ihre Bilder mit einem Klick in Schwarz-Weiß (Graustufen).' },
+            'webp-converter': { name: 'WebP Konverter', description: 'Konvertieren Sie WebP-Dateien in JPG oder PNG. Sie wählen das Ausgabeformat — ein Tool für alles.' },
+            'jpg-converter': { name: 'JPG Konverter', description: 'Konvertieren Sie JPG/JPEG in PNG oder WebP. Transparentes PNG oder modernes WebP — Ihre Wahl.' }
         }
     },
     fr: {
@@ -95,7 +101,7 @@ const content = {
         badgeNew: 'NOUVEAU',
         tools: {
             'svg-to-png': { name: 'SVG en PNG', description: 'Convertissez vos graphiques vectoriels (SVG) au format raster (PNG) haute résolution prêt à l\'emploi.' },
-            'avif-to-webp': { name: 'AVIF en WebP', description: 'Convertissez le format AVIF moderne en fichiers WebP sans sacrifier la qualité visuelle.' },
+            'avif-to-webp': { name: 'Convertisseur AVIF', description: 'Convertissez vos fichiers AVIF en JPG, PNG ou WebP. Vous choisissez le format de sortie.' },
             'image-compressor': { name: 'Compresseur d\'Image', description: 'Réduisez considérablement la taille des fichiers sans perte de qualité notable grâce à des algorithmes intelligents.' },
             'png-to-jpg': { name: 'PNG en JPG', description: 'Convertissez rapidement vos fichiers PNG transparents en JPG optimisés avec un remplissage de fond blanc intelligent.' },
             'smart-cropper': { name: 'Recadrage Intelligent', description: 'Détectez automatiquement les sujets et recadrez parfaitement les images pour les médias sociaux ou les miniatures.' },
@@ -103,7 +109,9 @@ const content = {
             'background-remover': { name: 'Suppresseur de Fond', description: 'Supprimez instantanément les arrière-plans en utilisant l\'IA avancée pour les portraits et les photos de produits.' },
             'rotate-image': { name: 'Pivoter l\'Image', description: 'Retournez vos images ou faites-les pivoter sous n\'importe quel angle.' },
             'watermark-image': { name: 'Filigrane', description: 'Ajoutez un filigrane texte ou logo à vos images pour protéger vos droits d\'auteur.' },
-            'black-and-white': { name: 'Noir et Blanc', description: 'Convertissez vos images colorées en noir et blanc (niveaux de gris) en un clic.' }
+            'black-and-white': { name: 'Noir et Blanc', description: 'Convertissez vos images colorées en noir et blanc (niveaux de gris) en un clic.' },
+            'webp-converter': { name: 'Convertisseur WebP', description: 'Convertissez vos fichiers WebP en JPG ou PNG. Vous choisissez — un outil, tous les formats.' },
+            'jpg-converter': { name: 'Convertisseur JPG', description: 'Convertissez vos fichiers JPG/JPEG en PNG ou WebP. PNG transparent ou WebP moderne, à vous de choisir.' }
         }
     }
 };
@@ -127,13 +135,41 @@ const TOOLS: ToolDef[] = [
         id: 'avif-to-webp',
         name: 'avif-to-webp',
         description: 'avif-to-webp',
-        path: '/webp-to-jpg',
+        path: '/avif-converter',
         badge: 'FREE',
         icon: Icon(<>
             <rect x="3" y="3" width="18" height="18" rx="2" />
             <path d="M7 12l3 3 7-7" />
         </>),
-        keywords: ['avif', 'webp', 'modern'],
+        keywords: ['avif', 'webp', 'jpg', 'png', 'modern', 'converter'],
+    },
+    {
+        id: 'webp-converter',
+        name: 'webp-converter',
+        description: 'webp-converter',
+        path: '/webp-converter',
+        badge: 'FREE',
+        icon: Icon(<>
+            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+            <polyline points="14 2 14 8 20 8" />
+            <path d="m10 13-2 2 2 2" />
+            <path d="m14 17 2-2-2-2" />
+        </>),
+        keywords: ['webp', 'jpg', 'png', 'convert', 'converter'],
+    },
+    {
+        id: 'jpg-converter',
+        name: 'jpg-converter',
+        description: 'jpg-converter',
+        path: '/jpg-converter',
+        badge: 'FREE',
+        icon: Icon(<>
+            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+            <polyline points="14 2 14 8 20 8" />
+            <path d="M8 13h2.5a1.5 1.5 0 0 1 0 3H8v-3z" />
+            <path d="M16 17v-4" />
+        </>),
+        keywords: ['jpg', 'jpeg', 'png', 'webp', 'convert', 'converter'],
     },
     {
         id: 'image-compressor',
