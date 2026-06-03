@@ -521,7 +521,7 @@ function BanaConvertApp(props: AppProps = {}) {
             const bgBlob = await serverConversionService.removeBackground(
               item.file,
               stats.isPremium ? 'premium' : 'free',
-              item.bgModel || 'isnet-general-use'
+              item.bgModel || 'birefnet-massive'
             );
 
             if (!bgBlob) throw new Error("Background removal failed");
@@ -1164,13 +1164,12 @@ function BanaConvertApp(props: AppProps = {}) {
                                             {/* AI Model Selector when BG Removal is enabled */}
                                             {file.removeBackground && (
                                               <select
-                                                value={file.bgModel || 'birefnet-general'}
+                                                value={file.bgModel || 'birefnet-massive'}
                                                 onChange={(e) => updateFileConfig(file.id, 'bgModel', e.target.value)}
                                                 className="bg-brand-50 dark:bg-brand-950/30 text-[11px] font-medium text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800 rounded-lg p-1.5 focus:ring-2 focus:ring-brand-500 outline-none w-full"
                                               >
-                                                <option value="birefnet-general">Ultra AI (İnsan, Saç & İnce Detay)</option>
-                                                <option value="isnet-general-use">Standart AI (Logo & Nesne)</option>
-                                                <option value="u2net">Klasik AI (Metinleri Koru)</option>
+                                                <option value="birefnet-massive">🤖 Otomatik (En İyi)</option>
+                                                <option value="birefnet-portrait">🧑 Portre Modu (İnsan & Saç)</option>
 
                                               </select>
                                             )}

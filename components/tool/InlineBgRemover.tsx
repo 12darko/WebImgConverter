@@ -41,13 +41,12 @@ export const InlineBgRemover: React.FC<InlineBgRemoverProps> = ({ file, onProces
                         <>
                             {onModelChange && (
                                 <select
-                                    value={file.bgModel || 'birefnet-general'}
+                                    value={file.bgModel || 'birefnet-massive'}
                                     onChange={(e) => onModelChange(e.target.value)}
                                     className="bg-brand-50 dark:bg-brand-950/30 text-[13px] font-medium text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800 rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-brand-500 outline-none"
                                 >
-                                    <option value="birefnet-general">Ultra AI (İnsan, Saç & İnce Detay)</option>
-                                    <option value="isnet-general-use">Standart AI (Logo & Nesne)</option>
-                                    <option value="u2net">Klasik AI (Metinleri Koru)</option>
+                                    <option value="birefnet-massive">🤖 Otomatik (En İyi)</option>
+                                    <option value="birefnet-portrait">🧑 Portre Modu (İnsan & Saç)</option>
                                 </select>
                             )}
                             <button onClick={onProcess} className="px-6 py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-sm font-bold shadow-sm transition-colors flex items-center gap-2">

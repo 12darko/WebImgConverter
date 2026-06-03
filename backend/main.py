@@ -20,8 +20,8 @@ except ImportError:
     print("AVIF support not available (pillow_heif version too old)")
 
 # --- RAM Optimization ---
-# Use isnet-general-use as it performs better on logos/icons without deleting too much
-# to prevent parallel processing from spiking RAM to 15GB+.
+# Use birefnet-massive as default (SOTA quality, trained on massive datasets)
+# birefnet-portrait available for human photo optimization
 # Cache multiple models to allow user selection
 _sessions = {}
 
@@ -31,7 +31,7 @@ MAX_IMAGE_DIMENSION = 4096
 # Lock to ensure only ONE image is processed by the AI at a time.
 inference_lock = asyncio.Lock()
 
-def get_session(model_name: str = "isnet-general-use"):
+def get_session(model_name: str = "birefnet-massive"):
     """Lazy-load the rembg session and cache it."""
     global _sessions
     if model_name not in _sessions:
@@ -64,7 +64,7 @@ app.add_middleware(
 async def remove_background(
     file: UploadFile = File(...), 
     quality_tier: str = Form("free"),
-    ai_model: str = Form("isnet-general-use")
+    ai_model: str = Form("birefnet-massive")
 ):
     try:
         image_data = await file.read()
@@ -96,8 +96,8 @@ async def remove_background(
         # and stops the CPU-heavy AI from blocking other API requests.
         async with inference_lock:
             # Alpha matting produces cleaner edges (removes gray spots at fine details)
-            # Only enable for birefnet which benefits most from it
-            use_alpha_matting = ai_model == "birefnet-general"
+            # Only enable for portrait mode which benefits most from it
+            use_alpha_matting = ai_model == "birefnet-portrait"
             
             if use_alpha_matting:
                 try:
