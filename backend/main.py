@@ -7,6 +7,9 @@ import gc
 import asyncio
 from PIL import Image, ImageDraw, ImageFont
 from pillow_heif import register_heif_opener
+import torch
+import torchvision.transforms as transforms
+from transformers import AutoModelForImageSegmentation
 
 # Register HEIC plugin
 register_heif_opener()
@@ -39,6 +42,58 @@ def get_session(model_name: str = "birefnet-massive"):
         _sessions[model_name] = new_session(model_name)
         print(f"Model '{model_name}' loaded successfully.")
     return _sessions[model_name]
+
+# --- BRIA RMBG-2.0 Native PyTorch Implementation ---
+_bria_model = None
+
+def get_bria_model():
+    """Lazy-load the native BRIA RMBG-2.0 model from Hugging Face."""
+    global _bria_model
+    if _bria_model is None:
+        print("Loading native BRIA RMBG-2.0 from Hugging Face...")
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        _bria_model = AutoModelForImageSegmentation.from_pretrained("briaai/RMBG-2.0", trust_remote_code=True)
+        _bria_model.to(device)
+        _bria_model.eval()
+        print("Native BRIA RMBG-2.0 loaded successfully.")
+    return _bria_model
+
+def process_bria_native(image: Image.Image) -> bytes:
+    """Process an image using the native BRIA RMBG-2.0 PyTorch model."""
+    model = get_bria_model()
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    
+    orig_size = image.size
+    img_rgb = image.convert("RGB")
+    
+    # Bria-2.0 expected tensor format: 1024x1024 Normalized RGB
+    transform_image = transforms.Compose([
+        transforms.Resize((1024, 1024)),
+        transforms.ToTensor(),
+        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+    ])
+    
+    input_images = transform_image(img_rgb).unsqueeze(0).to(device)
+    
+    # Inference
+    with torch.no_grad():
+        preds = model(input_images)[-1].sigmoid().cpu()
+    
+    # Convert prediction to PIL mask and resize back to original dimensions
+    pred = preds[0].squeeze()
+    pred_pil = transforms.ToPILImage()(pred)
+    mask = pred_pil.resize(orig_size, Image.Resampling.BILINEAR)
+    
+    # Apply mask to original image
+    img_rgba = img_rgb.convert("RGBA")
+    img_rgba.putalpha(mask)
+    
+    # Return as PNG bytes
+    out_buf = io.BytesIO()
+    img_rgba.save(out_buf, format="PNG")
+    val = out_buf.getvalue()
+    out_buf.close()
+    return val
 
 def limit_image_size(image: Image.Image, max_dim: int = MAX_IMAGE_DIMENSION) -> Image.Image:
     """Downscale image if any dimension exceeds max_dim to prevent OOM."""
@@ -90,29 +145,30 @@ async def remove_background(
         del buf
 
         # Process with lazy-loaded session (Thread-safe locked inference)
-        session = get_session(ai_model)
-        
-        # Async lock and thread offloading prevents 15GB spikes from concurrent users
-        # and stops the CPU-heavy AI from blocking other API requests.
         async with inference_lock:
-            # Alpha matting produces cleaner edges (removes gray spots at fine details)
-            # Only enable for portrait mode which benefits most from it
-            use_alpha_matting = ai_model == "birefnet-portrait"
-            
-            if use_alpha_matting:
-                try:
-                    output_data = await asyncio.to_thread(
-                        remove, image_data, session=session,
-                        alpha_matting=True,
-                        alpha_matting_foreground_threshold=240,
-                        alpha_matting_background_threshold=20,
-                        alpha_matting_erode_size=10
-                    )
-                except Exception as mat_err:
-                    print(f"Alpha matting failed, falling back to standard: {mat_err}")
-                    output_data = await asyncio.to_thread(remove, image_data, session=session)
+            if ai_model == "bria-rmbg":
+                # Use our native PyTorch BRIA RMBG-2.0 implementation
+                output_data = await asyncio.to_thread(process_bria_native, image)
             else:
-                output_data = await asyncio.to_thread(remove, image_data, session=session)
+                session = get_session(ai_model)
+                # Alpha matting produces cleaner edges (removes gray spots at fine details)
+                # Only enable for portrait mode which benefits most from it
+                use_alpha_matting = ai_model == "birefnet-portrait"
+                
+                if use_alpha_matting:
+                    try:
+                        output_data = await asyncio.to_thread(
+                            remove, image_data, session=session,
+                            alpha_matting=True,
+                            alpha_matting_foreground_threshold=240,
+                            alpha_matting_background_threshold=20,
+                            alpha_matting_erode_size=10
+                        )
+                    except Exception as mat_err:
+                        print(f"Alpha matting failed, falling back to standard: {mat_err}")
+                        output_data = await asyncio.to_thread(remove, image_data, session=session)
+                else:
+                    output_data = await asyncio.to_thread(remove, image_data, session=session)
         
         # --- ALPHA THRESHOLDING FOR LOGO/TEXT MODE ---
         if ai_model == "bria-rmbg":

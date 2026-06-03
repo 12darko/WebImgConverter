@@ -4,6 +4,10 @@ rembg>=2.0.57
 python-multipart
 pillow
 pillow-heif
+torch
+torchvision
+transformers
+huggingface_hub
 onnxruntime
 requests
 psutil
