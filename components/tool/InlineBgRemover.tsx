@@ -47,7 +47,7 @@ export const InlineBgRemover: React.FC<InlineBgRemoverProps> = ({ file, onProces
                                 >
                                     <option value="birefnet-massive">🤖 Otomatik (En İyi)</option>
                                     <option value="birefnet-portrait">🧑 Portre Modu (İnsan & Saç)</option>
-                                    <option value="bria-rmbg">🎨 Grafik & Tasarım (BRIA 2.0)</option>
+                                    <option value="bria-rmbg">🎨 Logo & Metin (Keskin)</option>
                                 </select>
                             )}
                             <button onClick={onProcess} className="px-6 py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-sm font-bold shadow-sm transition-colors flex items-center gap-2">

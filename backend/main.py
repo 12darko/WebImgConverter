@@ -114,6 +114,28 @@ async def remove_background(
             else:
                 output_data = await asyncio.to_thread(remove, image_data, session=session)
         
+        # --- ALPHA THRESHOLDING FOR LOGO/TEXT MODE ---
+        if ai_model == "bria-rmbg":
+            try:
+                # Load the PNG output
+                bg_removed_img = Image.open(io.BytesIO(output_data))
+                if bg_removed_img.mode == "RGBA":
+                    # Harden the alpha channel to fix semi-transparent text/logo edges
+                    # Any pixel with >15% opacity (40/255) becomes fully opaque
+                    r, g, b, a = bg_removed_img.split()
+                    a = a.point(lambda p: 255 if p > 40 else 0)
+                    bg_removed_img = Image.merge("RGBA", (r, g, b, a))
+                    
+                    # Convert back to bytes
+                    out_buf = io.BytesIO()
+                    bg_removed_img.save(out_buf, format="PNG")
+                    output_data = out_buf.getvalue()
+                    out_buf.close()
+                del bg_removed_img
+            except Exception as thresh_err:
+                print(f"Alpha thresholding failed: {thresh_err}")
+                pass
+
         # Free intermediary memory
         del image_data, image
         gc.collect()
