@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
@@ -7,7 +7,7 @@ export const GlobalSeo = () => {
     const location = useLocation();
     const { language } = useLanguage();
 
-    const siteUrl = 'https://WebImgConverter.com';
+    const siteUrl = 'https://webimgconverter.com';
     const currentPath = location.pathname;
 
     // JSON-LD: SoftwareApplication
