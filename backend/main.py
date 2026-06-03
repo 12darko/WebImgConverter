@@ -50,12 +50,12 @@ def get_bria_model():
     """Lazy-load the native BRIA RMBG-2.0 model from Hugging Face."""
     global _bria_model
     if _bria_model is None:
-        print("Loading native BRIA RMBG-2.0 from Hugging Face...")
+        print("Loading native BRIA RMBG-1.4 from Hugging Face...")
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        _bria_model = AutoModelForImageSegmentation.from_pretrained("briaai/RMBG-2.0", trust_remote_code=True)
+        _bria_model = AutoModelForImageSegmentation.from_pretrained("briaai/RMBG-1.4", trust_remote_code=True)
         _bria_model.to(device)
         _bria_model.eval()
-        print("Native BRIA RMBG-2.0 loaded successfully.")
+        print("Native BRIA RMBG-1.4 loaded successfully.")
     return _bria_model
 
 def process_bria_native(image: Image.Image) -> bytes:
