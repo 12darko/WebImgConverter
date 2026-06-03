@@ -11,3 +11,5 @@ huggingface_hub
 onnxruntime
 requests
 psutil
+opencv-python-headless
+numpy

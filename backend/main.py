@@ -146,32 +146,28 @@ async def remove_background(
 
         # Process with lazy-loaded session (Thread-safe locked inference)
         async with inference_lock:
-            if ai_model == "bria-rmbg":
-                # Use our native PyTorch BRIA RMBG-2.0 implementation
-                output_data = await asyncio.to_thread(process_bria_native, image)
-            else:
-                session = get_session(ai_model)
-                # Alpha matting produces cleaner edges (removes gray spots at fine details)
-                # Only enable for portrait mode which benefits most from it
-                use_alpha_matting = ai_model == "birefnet-portrait"
-                
-                if use_alpha_matting:
-                    try:
-                        output_data = await asyncio.to_thread(
-                            remove, image_data, session=session,
-                            alpha_matting=True,
-                            alpha_matting_foreground_threshold=240,
-                            alpha_matting_background_threshold=20,
-                            alpha_matting_erode_size=10
-                        )
-                    except Exception as mat_err:
-                        print(f"Alpha matting failed, falling back to standard: {mat_err}")
-                        output_data = await asyncio.to_thread(remove, image_data, session=session)
-                else:
+            session = get_session(ai_model)
+            # Alpha matting produces cleaner edges (removes gray spots at fine details)
+            # Only enable for portrait mode which benefits most from it
+            use_alpha_matting = ai_model == "birefnet-portrait"
+            
+            if use_alpha_matting:
+                try:
+                    output_data = await asyncio.to_thread(
+                        remove, image_data, session=session,
+                        alpha_matting=True,
+                        alpha_matting_foreground_threshold=240,
+                        alpha_matting_background_threshold=20,
+                        alpha_matting_erode_size=10
+                    )
+                except Exception as mat_err:
+                    print(f"Alpha matting failed, falling back to standard: {mat_err}")
                     output_data = await asyncio.to_thread(remove, image_data, session=session)
+            else:
+                output_data = await asyncio.to_thread(remove, image_data, session=session)
         
         # --- ALPHA THRESHOLDING FOR LOGO/TEXT MODE ---
-        if ai_model == "bria-rmbg":
+        if ai_model == "isnet-general-use":
             try:
                 # Load the PNG output
                 bg_removed_img = Image.open(io.BytesIO(output_data))
