@@ -1,8 +1,8 @@
-﻿import React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../LanguageContext';
 
-export type SeoPageType = 'home' | 'heic-to-jpg' | 'png-to-jpg' | 'webp-to-jpg' | 'remove-background' | 'compress-image' | 'svg-to-png' | 'crop';
+export type SeoPageType = 'home' | 'heic-to-jpg' | 'png-to-jpg' | 'webp-to-jpg' | 'remove-background' | 'compress-image' | 'svg-to-png' | 'crop' | 'favicon-generator';
 
 interface SeoContentProps {
     pageType?: SeoPageType;
