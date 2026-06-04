@@ -227,8 +227,28 @@ export default function HomePage() {
         return <App initialFiles={homeFiles} />;
     }
 
+    // Determine if the user has enough credits
+    const statsStr = localStorage.getItem('WebImgConverterStats');
+    let currentCredits = MAX_FREE_CREDITS;
+    let isPremium = false;
+    
+    if (statsStr) {
+        try {
+            const parsed = JSON.parse(statsStr);
+            const today = new Date().toISOString().split('T')[0];
+            if (parsed.lastResetDate !== today) {
+                currentCredits = MAX_FREE_CREDITS;
+            } else {
+                currentCredits = parsed.credits;
+            }
+            isPremium = parsed.isPremium || parsed.premiumTier === 'business';
+        } catch (e) { }
+    }
+    
+    const hasEnoughCredits = isPremium || currentCredits >= homeFiles.length;
+
     return (
-        <SiteShell onCta={() => navigate('/tools')} ctaLabel={t.ctaConvert} bg="white">
+        <SiteShell bg="slate" onCta={() => navigate('/pricing')} ctaLabel={t.ctaConvert}>
             <Helmet>
                 <title>{t.metaTitle}</title>
                 <meta name="description" content={t.metaDesc} />
@@ -300,26 +320,7 @@ export default function HomePage() {
                                             fullWidth 
                                             size="lg"
                                             onClick={async () => {
-                                                // Credit Check Logic
-                                                const statsStr = localStorage.getItem('WebImgConverterStats');
-                                                let currentCredits = MAX_FREE_CREDITS;
-                                                let isPremium = false;
-                                                
-                                                if (statsStr) {
-                                                    try {
-                                                        const parsed = JSON.parse(statsStr);
-                                                        // Check if it's a new day to reset
-                                                        const today = new Date().toISOString().split('T')[0];
-                                                        if (parsed.lastResetDate !== today) {
-                                                            currentCredits = MAX_FREE_CREDITS;
-                                                        } else {
-                                                            currentCredits = parsed.credits;
-                                                        }
-                                                        isPremium = parsed.isPremium || parsed.premiumTier === 'business';
-                                                    } catch (e) { }
-                                                }
-
-                                                if (!isPremium && currentCredits < homeFiles.length) {
+                                                if (!hasEnoughCredits) {
                                                     alert(activeLang === 'tr' ? 'Yetersiz kredi! Lütfen daha fazla kredi için giriş yapın veya Premium alın.' : 'Insufficient credits! Please log in or upgrade to Premium.');
                                                     navigate('/pricing');
                                                     return;
@@ -354,9 +355,9 @@ export default function HomePage() {
                                                     setIsConverting(false);
                                                 }
                                             }}
-                                            disabled={isConverting}
+                                            disabled={isConverting || !hasEnoughCredits}
                                         >
-                                            {isConverting ? t.quickConvertingBtn : (conversionSuccess ? t.quickConvertSuccessBtn : t.quickConvertBtn)}
+                                            {isConverting ? t.quickConvertingBtn : (!hasEnoughCredits ? (activeLang === 'tr' ? 'Kredi Yetersiz' : 'No Credits') : (conversionSuccess ? t.quickConvertSuccessBtn : t.quickConvertBtn))}
                                         </Button>
 
                                         <div className="mt-6 flex flex-col gap-3 text-center">
