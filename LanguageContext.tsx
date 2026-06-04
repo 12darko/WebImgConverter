@@ -46,12 +46,18 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       // 3. No explicit language in URL (defaults to Turkish).
       // If user is hitting the root domain directly, auto-detect language.
       if (location.pathname === '/') {
-          const browserLang = navigator.language.slice(0, 2).toLowerCase();
+          // Use navigator.languages array for highest accuracy in Chrome, fallback to navigator.language
+          const preferredLang = (navigator.languages && navigator.languages.length > 0) 
+                ? navigator.languages[0] 
+                : navigator.language;
+                
+          const browserLang = preferredLang.slice(0, 2).toLowerCase();
+          
           if (['en', 'de', 'fr'].includes(browserLang)) {
             setLanguageState(browserLang as Language);
             navigate(`/${browserLang}`, { replace: true });
           } else if (browserLang !== 'tr') {
-            setLanguageState('en'); // Fallback to English
+            setLanguageState('en'); // Fallback to English for any other language
             navigate('/en', { replace: true });
           } else {
             setLanguageState('tr');
