@@ -328,10 +328,11 @@ function BanaConvertApp(props: AppProps = {}) {
       previewUrl: '',
       targetFormat: defaultTool === 'remove-background' ? ConversionFormat.PNG : ConversionFormat.JPEG,
       quality: 1.0,
-      rotation: 0,
+      rotation: defaultTool === 'rotate-image' ? 90 : 0,
       resizeScale: 1,
-      isGrayscale: false,
+      isGrayscale: defaultTool === 'black-and-white',
       removeBackground: defaultTool === 'remove-background',
+      watermarkText: defaultTool === 'watermark-image' ? 'WebImgConverter' : undefined,
       useHDModel: false, // Default to standard (fast) model
       bgRemovalTolerance: 30,
       status: 'analyzing',
@@ -802,11 +803,11 @@ function BanaConvertApp(props: AppProps = {}) {
                        <span className="text-brand-600 dark:text-brand-400 text-[10px] font-bold uppercase">{stats.premiumTier}</span>
                      </div>
                   )}
-                  <button onClick={handleSignOut} className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden sm:block">Çıkış</button>
+                  <button onClick={handleSignOut} className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden sm:block">{t('logout_btn')}</button>
                 </>
               ) : (
                 <button onClick={() => setIsAuthModalOpen(true)} className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors hidden sm:block">
-                  Giriş Yap
+                  {t('login_btn')}
                 </button>
               )}
 
@@ -818,7 +819,7 @@ function BanaConvertApp(props: AppProps = {}) {
                 }}
                 className="px-6 py-2.5 bg-brand-600 hover:bg-brand-500 dark:bg-brand-600 dark:hover:bg-brand-500 rounded-lg text-white font-bold text-sm shadow-sm dark:shadow-none transition-colors whitespace-nowrap"
               >
-                Hemen Dönüştür
+                {t('convert_now_btn')}
               </button>
             </div>
           </div>
@@ -834,7 +835,7 @@ function BanaConvertApp(props: AppProps = {}) {
             {/* Trust Badge */}
             <div className="flex items-center justify-center gap-2 text-brand-700 dark:text-brand-350 text-xs font-medium bg-brand-50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-900/50 rounded-full px-4 py-2 mx-auto shadow-sm dark:shadow-none">
               <span className="text-brand-500 dark:text-brand-400">🔒</span>
-              <span>{language === 'tr' ? 'Güvenli İşlem • Gizlilik Öncelikli' : 'Secure Processing • Privacy First'}</span>
+              <span>{t('secure_processing')}</span>
             </div>
 
             {((defaultTool === 'crop' || defaultTool === 'remove-background') && files.length > 0) ? (
@@ -990,17 +991,17 @@ function BanaConvertApp(props: AppProps = {}) {
                                   {file.status === 'idle' && defaultTool === 'compress-image' && (
                                     <>
                                       <div className="hidden sm:flex items-center gap-2 mr-2">
-                                        <label className="text-xs font-bold text-slate-500 dark:text-slate-400">{language === 'tr' ? 'Kalite:' : 'Quality:'}</label>
+                                        <label className="text-xs font-bold text-slate-500 dark:text-slate-400">{t('quality_label')}</label>
                                         <select
                                           value={file.quality}
                                           onChange={(e) => updateFileConfig(file.id, 'quality', parseFloat(e.target.value))}
                                           className="bg-white dark:bg-slate-800 text-xs font-bold text-brand-700 dark:text-brand-300 border-2 border-brand-200 dark:border-brand-800 rounded-lg p-1.5 focus:ring-2 focus:ring-brand-500 outline-none"
                                         >
-                                          <option value="1">100% ({language === 'tr' ? 'Kayıpsız' : 'Lossless'})</option>
-                                          <option value="0.9">90% ({language === 'tr' ? 'Yüksek' : 'High'})</option>
-                                          <option value="0.75">75% ({language === 'tr' ? 'Dengeli' : 'Balanced'})</option>
-                                          <option value="0.5">50% ({language === 'tr' ? 'Düşük Boyut' : 'Low Size'})</option>
-                                          <option value="0.25">25% ({language === 'tr' ? 'Maks Sıkıştırma' : 'Max Compress'})</option>
+                                          <option value="1">100% ({t('quality_lossless')})</option>
+                                          <option value="0.9">90% ({t('quality_high')})</option>
+                                          <option value="0.75">75% ({t('quality_balanced')})</option>
+                                          <option value="0.5">50% ({t('quality_low_size')})</option>
+                                          <option value="0.25">25% ({t('quality_max_compress')})</option>
                                         </select>
                                       </div>
                                       <button
@@ -1010,7 +1011,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                         }}
                                         className="bg-brand-600 hover:bg-brand-500 dark:bg-brand-600 dark:hover:bg-brand-500 text-white px-6 py-2 rounded-xl text-sm font-bold shadow-md shadow-brand-500/20 dark:shadow-none transition-all hover:scale-105 active:scale-95"
                                       >
-                                        {language === 'tr' ? 'Sıkıştır' : 'Compress'}
+                                        {t('compress_btn')}
                                       </button>
                                     </>
                                   )}
@@ -1035,7 +1036,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                           title="Options"
                                         >
                                           <span>⚙️</span>
-                                          <span className="hidden sm:inline">{language === 'tr' ? 'Gelişmiş Ayarlar' : 'Advanced Options'}</span>
+                                          <span className="hidden sm:inline">{t('advanced_settings')}</span>
                                           <svg className={`w-4 h-4 transition-transform duration-300 ${expandedFileId === file.id ? 'rotate-180 text-brand-600' : 'text-slate-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>
                                         </button>
                                       )}
@@ -1087,7 +1088,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                   {/* Format Selector */}
                                   {(!allowedSettings || allowedSettings.includes('format')) && (
                                     <div className="flex flex-col gap-2">
-                                      <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{language === 'tr' ? 'Format Seçimi' : 'Target Format'}</span>
+                                      <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{t('target_format_label')}</span>
                                       <div className="flex flex-wrap gap-2">
                                         {/* Free Formats */}
                                         {[ConversionFormat.JPEG, ConversionFormat.PNG, ConversionFormat.WEBP].map(fmt => (
@@ -1138,7 +1139,10 @@ function BanaConvertApp(props: AppProps = {}) {
                                         onChange={(e) => updateFileConfig(file.id, 'quality', parseFloat(e.target.value))}
                                         className="bg-white dark:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-lg p-2 focus:ring-2 focus:ring-brand-500 outline-none"
                                       >
-                                        <option value="1">100% Quality</option><option value="0.75">75% Quality</option><option value="0.5">50% Quality</option><option value="0.25">25% Quality</option>
+                                          <option value="1">100% ({t('quality_lossless')})</option>
+                                          <option value="0.75">75% ({t('quality_balanced')})</option>
+                                          <option value="0.5">50% ({t('quality_low_size')})</option>
+                                          <option value="0.25">25% ({t('quality_max_compress')})</option>
                                       </select>
                                     )}
 

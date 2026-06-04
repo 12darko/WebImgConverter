@@ -1,5 +1,7 @@
 import React from 'react';
 import { formatBytes } from '../../services/toolEngine';
+import { useLanguage } from '../../LanguageContext';
+import { translations } from '../../translations';
 
 interface ConversionPreviewProps {
     originalUrl?: string;
@@ -23,6 +25,10 @@ export const ConversionPreview: React.FC<ConversionPreviewProps> = ({
     placeholder,
     className = '',
 }) => {
+    const { language } = useLanguage();
+    const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as keyof typeof translations;
+    const t = translations[activeLang];
+
     const containerRef = React.useRef<HTMLDivElement>(null);
     const [position, setPosition] = React.useState(50);
     const [isDragging, setIsDragging] = React.useState(false);
@@ -60,7 +66,7 @@ export const ConversionPreview: React.FC<ConversionPreviewProps> = ({
                 <div className="aspect-[4/3] flex items-center justify-center bg-slate-50/50 dark:bg-slate-950/50">
                     {placeholder || (
                         <div className="text-center text-slate-400 dark:text-slate-500 text-sm">
-                            Upload an image to preview
+                            {t.upload_to_preview}
                         </div>
                     )}
                 </div>
@@ -126,7 +132,7 @@ export const ConversionPreview: React.FC<ConversionPreviewProps> = ({
                     <div className="absolute inset-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm flex items-center justify-center">
                         <div className="flex flex-col items-center gap-3">
                             <div className="w-10 h-10 border-4 border-brand-200 border-t-brand-500 rounded-full animate-spin" />
-                            <div className="text-sm font-semibold text-slate-700 dark:text-slate-350">Processing...</div>
+                            <div className="text-sm font-semibold text-slate-700 dark:text-slate-350">{t.processing}</div>
                         </div>
                     </div>
                 )}
@@ -135,11 +141,11 @@ export const ConversionPreview: React.FC<ConversionPreviewProps> = ({
             {/* Bottom labels */}
             <div className="flex items-center justify-between px-4 py-3 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-850">
                 <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-                    Original {originalSize != null && <>({formatBytes(originalSize)})</>}
+                    {t.original} {originalSize != null && <>({formatBytes(originalSize)})</>}
                 </span>
                 {convertedUrl && convertedSize != null && (
                     <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-brand-50 dark:bg-brand-950/20 text-brand-700 dark:text-brand-300 text-[11px] font-semibold border border-brand-200 dark:border-brand-800">
-                        Processed ({formatBytes(convertedSize)})
+                        {t.converted} ({formatBytes(convertedSize)})
                     </span>
                 )}
             </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button } from '../ui/Button';
+import { useLanguage } from '../../LanguageContext';
+import { translations } from '../../translations';
 
 interface DownloadActionsProps {
     onDownload: () => void;
@@ -40,6 +42,10 @@ export const DownloadActions: React.FC<DownloadActionsProps> = ({
     statusText,
     showBatch = true,
 }) => {
+    const { language } = useLanguage();
+    const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as keyof typeof translations;
+    const t = translations[activeLang];
+
     return (
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-card p-4 space-y-2">
             <Button
@@ -49,7 +55,7 @@ export const DownloadActions: React.FC<DownloadActionsProps> = ({
                 leftIcon={DownloadIcon}
                 size="md"
             >
-                Download Processed Image
+                {statusText || t.download_btn}
             </Button>
             {showBatch && (
                 <Button
@@ -59,7 +65,7 @@ export const DownloadActions: React.FC<DownloadActionsProps> = ({
                     leftIcon={BatchIcon}
                     size="md"
                 >
-                    Batch Convert (Pro)
+                    {t.batch_convert_pro}
                 </Button>
             )}
             <div className="text-center pt-1">

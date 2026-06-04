@@ -4,6 +4,7 @@ import { ToolWorkspace } from '../components/tool/ToolWorkspace';
 import { useLanguage } from '../LanguageContext';
 import { SiteShell } from '../components/layout';
 import { AdsterraNativeBanner } from '../components/ads/AdsterraNativeBanner';
+import { SeoContent } from '../components/SeoContent';
 
 const seoContent = {
     tr: {
@@ -11,24 +12,32 @@ const seoContent = {
         description: 'Fotoğraf ve görsellerinizin boyutlarını (en x boy) piksellerle değiştirin. Kalite kaybı olmadan JPG, PNG, WebP ve AVIF formatlarında kaydedin.',
         h1: 'Görsel Yeniden Boyutlandırma',
         desc: 'Saniyeler içinde fotoğraflarınızı istediğiniz çözünürlüğe (piksel) ayarlayın. Sosyal medya, web siteleri ve e-postalar için mükemmel boyutlar.',
+        dropTitle: 'Görselleri Buraya Sürükleyin',
+        dropSub: 'veya tıklayıp bilgisayarınızdan seçin'
     },
     en: {
         title: 'Free Image Resizer Online | WebImgConverter',
         description: 'Resize the dimensions (width x height) of your photos and images in pixels. Save as JPG, PNG, WebP, and AVIF without losing quality.',
         h1: 'Image Resizer',
         desc: 'Adjust your photos to any resolution (pixels) in seconds. Perfect dimensions for social media, websites, and emails.',
+        dropTitle: 'Drag & Drop Images Here',
+        dropSub: 'or click to browse from your computer'
     },
     de: {
         title: 'Kostenloser Bildgrößenänderer Online | WebImgConverter',
         description: 'Ändern Sie die Abmessungen (Breite x Höhe) Ihrer Fotos und Bilder in Pixeln. Speichern Sie als JPG, PNG, WebP und AVIF ohne Qualitätsverlust.',
         h1: 'Bildgrößenänderer',
         desc: 'Passen Sie Ihre Fotos in Sekundenschnelle an jede Auflösung (Pixel) an. Perfekte Abmessungen für soziale Medien, Websites und E-Mails.',
+        dropTitle: 'Bilder hierher ziehen',
+        dropSub: 'oder klicken Sie, um vom Computer zu durchsuchen'
     },
     fr: {
         title: 'Redimensionneur d\'Image Gratuit en Ligne | WebImgConverter',
         description: 'Redimensionnez les dimensions (largeur x hauteur) de vos photos et images en pixels. Enregistrez au format JPG, PNG, WebP et AVIF sans perte de qualité.',
         h1: 'Redimensionneur d\'Image',
         desc: 'Ajustez vos photos à n\'importe quelle résolution (pixels) en quelques secondes. Dimensions parfaites pour les réseaux sociaux, les sites web et les e-mails.',
+        dropTitle: 'Faites glisser les images ici',
+        dropSub: 'ou cliquez pour parcourir votre ordinateur'
     },
 };
 
@@ -57,8 +66,8 @@ export default function ImageResizerPage() {
                     <div className="mb-10">
                         <ToolWorkspace
                             defaultFormat="jpg"
-                            dropzoneTitle={activeLang === 'tr' ? 'Görselleri Buraya Sürükleyin' : 'Drag & Drop Images Here'}
-                            dropzoneSubtitle={activeLang === 'tr' ? 'veya tıklayıp bilgisayarınızdan seçin' : 'or click to browse from your computer'}
+                            dropzoneTitle={t.dropTitle}
+                            dropzoneSubtitle={t.dropSub}
                         />
                     </div>
 
@@ -67,6 +76,8 @@ export default function ImageResizerPage() {
                     </div>
                 </div>
             </div>
+            <SeoContent pageType="image-resizer" />
         </SiteShell>
     );
 }
+

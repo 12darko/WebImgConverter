@@ -1,6 +1,8 @@
 import React from 'react';
 import { Badge } from '../ui/Badge';
 import { formatBytes } from '../../services/toolEngine';
+import { useLanguage } from '../../LanguageContext';
+import { translations } from '../../translations';
 
 interface FileInfoBarProps {
     filename: string;
@@ -24,6 +26,10 @@ export const FileInfoBar: React.FC<FileInfoBarProps> = ({
     targetFormat,
     savedPercent,
 }) => {
+    const { language } = useLanguage();
+    const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as keyof typeof translations;
+    const t = translations[activeLang];
+
     return (
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-card p-4 flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-400 shrink-0">
@@ -32,13 +38,13 @@ export const FileInfoBar: React.FC<FileInfoBarProps> = ({
             <div className="min-w-0 flex-1">
                 <div className="text-sm font-semibold text-slate-900 dark:text-white truncate">{filename}</div>
                 <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    Original: {formatBytes(originalBytes)} {targetFormat && <>• {targetFormat.toUpperCase()}</>}
+                    {t.original}: {formatBytes(originalBytes)} {targetFormat && <>• {targetFormat.toUpperCase()}</>}
                 </div>
             </div>
             {convertedBytes != null && (
                 <div className="text-right shrink-0">
                     <div className="text-sm font-bold text-slate-900 dark:text-white">{formatBytes(convertedBytes)}</div>
-                    <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Predicted • {targetFormat.toUpperCase()}</div>
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">{t.predicted} • {targetFormat.toUpperCase()}</div>
                 </div>
             )}
             {savedPercent != null && savedPercent > 0 && (
@@ -47,7 +53,7 @@ export const FileInfoBar: React.FC<FileInfoBarProps> = ({
                         <polyline points="6 9 12 15 18 9" />
                     </svg>
                 }>
-                    {savedPercent}% Saved
+                    {savedPercent}% {t.saved}
                 </Badge>
             )}
         </div>

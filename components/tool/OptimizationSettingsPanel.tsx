@@ -4,6 +4,8 @@ import { Slider } from '../ui/Slider';
 import { Toggle } from '../ui/Toggle';
 import { Input } from '../ui/Input';
 import { OutputFormat, FORMAT_LABELS } from '../../services/toolEngine';
+import { useLanguage } from '../../LanguageContext';
+import { translations } from '../../translations';
 
 export interface FormatOption {
     value: OutputFormat;
@@ -50,13 +52,17 @@ export const OptimizationSettingsPanel: React.FC<OptimizationSettingsPanelProps>
     onRemoveMetadataChange,
     className = '',
 }) => {
+    const { language } = useLanguage();
+    const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as keyof typeof translations;
+    const t = translations[activeLang];
+
     return (
         <div className={`bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-card p-5 ${className}`}>
-            <h3 className="text-base font-bold text-slate-900 dark:text-white mb-5 font-sans">Optimization Settings</h3>
+            <h3 className="text-base font-bold text-slate-900 dark:text-white mb-5 font-sans">{t.opt_settings}</h3>
 
             {/* Output Format */}
             <div className="mb-5">
-                <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">Output Format</div>
+                <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">{t.output_format}</div>
                 <div className="grid grid-cols-2 gap-2">
                     {formats.map((f) => (
                         <Chip
@@ -76,34 +82,34 @@ export const OptimizationSettingsPanel: React.FC<OptimizationSettingsPanelProps>
             {/* Quality */}
             <div className="mb-5">
                 <Slider
-                    label="Quality"
+                    label={t.quality}
                     value={quality}
                     onChange={onQualityChange}
                     min={10}
                     max={100}
                     step={1}
-                    leftLabel="Smaller File"
-                    rightLabel="Higher Quality"
+                    leftLabel={t.smaller_file}
+                    rightLabel={t.higher_quality}
                 />
             </div>
 
             {/* Resize Dimensions */}
             <div className="mb-5">
-                <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">Resize Dimensions</div>
+                <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">{t.resize_dimensions}</div>
                 <div className="flex items-center gap-2">
                     <Input
                         type="number"
                         value={width || ''}
                         onChange={(e) => onWidthChange(e.target.value ? parseInt(e.target.value) : undefined)}
-                        placeholder="Width"
+                        placeholder={t.width}
                         rightAddon="px"
                     />
-                    <span className="text-slate-400 text-sm">×</span>
+                    <div className="text-slate-400 dark:text-slate-500 font-bold">×</div>
                     <Input
                         type="number"
                         value={height || ''}
                         onChange={(e) => onHeightChange(e.target.value ? parseInt(e.target.value) : undefined)}
-                        placeholder="Height"
+                        placeholder={t.height}
                         rightAddon="px"
                     />
                 </div>
@@ -116,7 +122,7 @@ export const OptimizationSettingsPanel: React.FC<OptimizationSettingsPanelProps>
                         className="w-3.5 h-3.5 rounded border-slate-300 dark:border-slate-700 text-brand-500 focus:ring-brand-500/30 bg-transparent"
                     />
                     <label htmlFor="lock-aspect" className="text-xs text-slate-600 dark:text-slate-400 cursor-pointer">
-                        Lock aspect ratio
+                        {t.lock_aspect_ratio}
                     </label>
                 </div>
             </div>
@@ -126,7 +132,7 @@ export const OptimizationSettingsPanel: React.FC<OptimizationSettingsPanelProps>
                 <Toggle
                     checked={removeMetadata}
                     onChange={onRemoveMetadataChange}
-                    label="Remove Metadata (EXIF)"
+                    label={t.strip_metadata}
                 />
             </div>
         </div>

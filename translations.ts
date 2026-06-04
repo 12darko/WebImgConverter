@@ -1,6 +1,28 @@
-﻿
 export const translations = {
   tr: {
+    opt_settings: "Optimizasyon Ayarları",
+    output_format: "Çıktı Formatı",
+    resize_dimensions: "Boyutları Değiştir",
+    width: "Genişlik",
+    height: "Yükseklik",
+    lock_aspect_ratio: "En/Boy Oranını Koru",
+    strip_metadata: "Meta Verileri (EXIF/GPS) Sil",
+    max_file_size: "Max Dosya Boyutu",
+    auto_quality: "Otomatik Kalite",
+    conversion_preview: "Dönüşüm Önizlemesi",
+    file_info: "Dosya Bilgisi",
+    original: "Orijinal",
+    converted: "Dönüştürülen",
+    download_btn: "İndir",
+    try_again: "Tekrar Dene",
+    advanced_compression: "Gelişmiş Sıkıştırma",
+    original_size: "Orijinal",
+    new_size: "Yeni Boyut",
+    savings: "Tasarruf",
+    predicted: "Tahmini",
+    saved: "Tasarruf",
+    upload_to_preview: "Önizlemek için resim yükleyin",
+    batch_convert_pro: "Toplu Dönüştür (Pro)",
     // Navbar
     daily_credits: "Günlük Haklar",
     credits_label: "Kalan Kredi",
@@ -15,6 +37,29 @@ export const translations = {
 
     // File Card
     queue: "İşlem Kuyruğu",
+    quality_label: "Kalite:",
+    quality_lossless: "Kayıpsız",
+    quality_high: "Yüksek",
+    quality_balanced: "Dengeli",
+    quality_low_size: "Düşük Boyut",
+    quality_max_compress: "Maks Sıkıştırma",
+    advanced_settings: "Gelişmiş Ayarlar",
+    compress_btn: "Sıkıştır",
+    target_format_label: "Format Seçimi",
+    login_btn: "Giriş Yap",
+    logout_btn: "Çıkış",
+    convert_now_btn: "Hemen Dönüştür",
+    secure_processing: "Güvenli İşlem • Gizlilik Öncelikli",
+
+    bg_remover_title: "✨ Arka Plan Silici",
+    bg_model_general: "🤖 Kusursuz Yapay Zeka (En İyi)",
+    bg_model_portrait: "🧑 Portre Modu (İnsan & Saç)",
+    bg_model_logo: "🎨 Logo & Metin (Keskin)",
+    bg_remove_btn: "Arka Planı Sil",
+    ai_processing: "Yapay Zeka İşliyor...",
+    crop_title: "✂️ Görsel Kırpma",
+    crop_btn: "Kırp & Kaydet",
+
     clear_all: "Tümünü Temizle",
     loading: "Yükleniyor...",
     processing: "İşleniyor...",
@@ -33,7 +78,6 @@ export const translations = {
     bg_remove: "BG Temizle (Beta)",
     convert_btn: "Dönüştür & İyileştir",
     convert_all_btn: "Tümünü Dönüştür",
-    download_btn: "İndir",
     completed: "Tamamlandı!",
     error_generic: "Hata oluştu",
     preset_label: "Hazır Ayar:",
@@ -147,9 +191,9 @@ Sitemiz herhangi bir kişisel kimlik bilgisi (Ad, Soyad, TC Kimlik No vb.) topla
 
 5. İŞLEM KAYITLARI (BUSINESS TIER)
 Premium Business kullanıcıları için sunulan İşlem Kayıtları özelliği, yalnızca dosya adı ve tarih gibi işlem metadatalarını (dosyanın kendisini değil) saklar. Bu veriler veritabanı verimliliği ve gizlilik ilkemiz gereği 7 gün saklandıktan sonra otomatik olarak ve kalıcı şekilde silinir.
-145: 
-146: 6. GOOGLE DRIVE ENTEGRASYONU (Business Tier)
-147: Uygulamamız, dosyaları doğrudan Google Drive'ınıza kaydetmenizi sağlayan bir özellik sunar. Bu işlem için Google Drive API kullanılır ve yalnızca "drive.file" yetkisi (uygulamanın oluşturduğu veya açtığı dosyalar) talep edilir. WebImgConverter, Drive'ınızdaki diğer kişisel dosyalarınıza veya klasörlerinize ASLA erişemez, bunları okuyamaz veya silemez.`,
+
+6. GOOGLE DRIVE ENTEGRASYONU (Business Tier)
+Uygulamamız, dosyaları doğrudan Google Drive'ınıza kaydetmenizi sağlayan bir özellik sunar. Bu işlem için Google Drive API kullanılır ve yalnızca "drive.file" yetkisi (uygulamanın oluşturduğu veya açtığı dosyalar) talep edilir. WebImgConverter, Drive'ınızdaki diğer kişisel dosyalarınıza veya klasörlerinize ASLA erişemez, bunları okuyamaz veya silemez.`,
 
     terms_content: `1. HİZMETİN KULLANIMI
 WebImgConverter.com ("Site") adresini kullanarak aşağıdaki şartları kabul etmiş sayılırsınız. Bu site, resim dosyalarını dönüştürmek ve düzenlemek amacıyla sunulan bir araçtır.
@@ -177,6 +221,29 @@ Adres:
 Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
   },
   en: {
+    opt_settings: "Optimization Settings",
+    output_format: "Output Format",
+    resize_dimensions: "Resize Dimensions",
+    width: "Width",
+    height: "Height",
+    lock_aspect_ratio: "Lock Aspect Ratio",
+    strip_metadata: "Strip metadata (EXIF/GPS)",
+    max_file_size: "Max File Size",
+    auto_quality: "Auto Quality",
+    conversion_preview: "Conversion Preview",
+    file_info: "File Info",
+    original: "Original",
+    converted: "Converted",
+    download_btn: "Download",
+    try_again: "Try Again",
+    advanced_compression: "Advanced Compression",
+    original_size: "Original",
+    new_size: "New Size",
+    savings: "Savings",
+    predicted: "Predicted",
+    saved: "Saved",
+    upload_to_preview: "Upload an image to preview",
+    batch_convert_pro: "Batch Convert (Pro)",
     // Navbar
     daily_credits: "Daily Credits",
     credits_label: "Credits Left",
@@ -191,6 +258,29 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
 
     // File Card
     queue: "Process Queue",
+    quality_label: "Quality:",
+    quality_lossless: "Lossless",
+    quality_high: "High",
+    quality_balanced: "Balanced",
+    quality_low_size: "Low Size",
+    quality_max_compress: "Max Compress",
+    advanced_settings: "Advanced Options",
+    compress_btn: "Compress",
+    target_format_label: "Target Format",
+    login_btn: "Login",
+    logout_btn: "Logout",
+    convert_now_btn: "Convert Now",
+    secure_processing: "Secure Processing • Privacy First",
+
+    bg_remover_title: "✨ Background Remover",
+    bg_model_general: "🤖 Flawless AI (Best)",
+    bg_model_portrait: "🧑 Portrait Mode (People & Hair)",
+    bg_model_logo: "🎨 Logo & Text (Sharp)",
+    bg_remove_btn: "Remove Background",
+    ai_processing: "AI is Processing...",
+    crop_title: "✂️ Image Crop",
+    crop_btn: "Crop & Save",
+
     clear_all: "Clear All",
     loading: "Loading...",
     processing: "Processing...",
@@ -209,7 +299,6 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
     bg_remove: "Remove BG (Beta)",
     convert_btn: "Convert & Enhance",
     convert_all_btn: "Convert All",
-    download_btn: "Download",
     completed: "Completed!",
     error_generic: "Error occurred",
     preset_label: "Preset:",
@@ -221,8 +310,6 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`
     pro_tips_title: "Pro Tips",
     tip_heic: "Instantly convert iPhone HEIC photos to JPG.",
     tip_seo: "Files are processed securely.",
-
-    // ... (other keys) ...
 
     privacy_policy_intro: "At WebImgConverter, we take your privacy seriously. All your images (HEIC, PNG, JPG, etc.) are processed on our secure, ephemeral servers for maximum quality and speed. Files are transmitted securely, processed, and immediately deleted permanently from our servers once finished. We never store your user content.",
     tip_size: "Reduce file size without losing quality.",
@@ -323,9 +410,9 @@ Our site does not collect or store personally identifiable information (Name, Em
 
 5. ACTIVITY LOG (BUSINESS TIER)
 The Activity Log feature provided for Premium Business users stores only processing metadata (filename, date, etc.), NOT the files themselves. In accordance with database efficiency and our privacy principles, this data is automatically and permanently deleted after 7 days.
-313: 
-314: 6. GOOGLE DRIVE INTEGRATION (Business Tier)
-315: Our application offers a feature to save files directly to your Google Drive. This process uses the Google Drive API and requests only the "drive.file" scope (files created or opened by the app). WebImgConverter CANNOT access, read, or delete any other personal files or folders in your Drive.`,
+
+6. GOOGLE DRIVE INTEGRATION (Business Tier)
+Our application offers a feature to save files directly to your Google Drive. This process uses the Google Drive API and requests only the "drive.file" scope (files created or opened by the app). WebImgConverter CANNOT access, read, or delete any other personal files or folders in your Drive.`,
 
     terms_content: `1. ACCEPTANCE OF TERMS
 By accessing and using WebImgConverter.com ("Site"), you agree to comply with these Terms of Service. This site is a tool provided for image conversion and editing purposes.
@@ -353,6 +440,29 @@ Business Hours:
 Monday - Friday: 09:00 - 18:00 (GMT+3)`
   },
   de: {
+    opt_settings: "Optimierungseinstellungen",
+    output_format: "Ausgabeformat",
+    resize_dimensions: "Größe ändern",
+    width: "Breite",
+    height: "Höhe",
+    lock_aspect_ratio: "Seitenverhältnis beibehalten",
+    strip_metadata: "Metadaten (EXIF/GPS) entfernen",
+    max_file_size: "Max Dateigröße",
+    auto_quality: "Auto-Qualität",
+    conversion_preview: "Konvertierungsvorschau",
+    file_info: "Dateiinfo",
+    original: "Original",
+    converted: "Konvertiert",
+    download_btn: "Herunterladen",
+    try_again: "Erneut versuchen",
+    advanced_compression: "Erweiterte Komprimierung",
+    original_size: "Original",
+    new_size: "Neue Größe",
+    savings: "Ersparnis",
+    predicted: "Voraussichtlich",
+    saved: "Gespart",
+    upload_to_preview: "Laden Sie ein Bild zur Vorschau hoch",
+    batch_convert_pro: "Stapelverarbeitung (Pro)",
     // Navbar
     daily_credits: "Günlük Haklar",
     credits_label: "Kalan Kredi",
@@ -367,128 +477,58 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`
 
     // File Card
     queue: "Warteschlange",
-    clear_all: "Alle löschen",
-    loading: "Laden...",
-    processing: "Verarbeiten...",
-    progress: "Fortschritt",
-    estimated_size: "Geschätzte Größe",
-    format: "Format:",
-    ai_rename_btn: "KI Umbenennen",
-    ai_rename_loading: "KI denkt...",
-    ai_fallback_notice: "KI nicht verfügbar, automatischer Name genutzt",
-    batch_ai_rename: "Alle umbenennen (KI)",
-    logo_uploaded: "Logo hochgeladen",
-    target_format: "ZIELFORMAT:",
-    rotate: "Drehen",
-    resize: "Größe",
-    grayscale: "Graustufen",
-    bg_remove: "Hintergrund entfernen",
-    convert_btn: "Konvertieren",
-    convert_all_btn: "Alle konvertieren",
-    download_btn: "Herunterladen",
-    completed: "Fertig!",
-    error_generic: "Fehler aufgetreten",
-    preset_label: "Profil:",
-    preset_web: "Web",
-    preset_social: "Social Media",
-    preset_archive: "Archiv",
+    quality_label: "Qualität:",
+    quality_lossless: "Verlustfrei",
+    quality_high: "Hoch",
+    quality_balanced: "Ausgeglichen",
+    quality_low_size: "Geringe Größe",
+    quality_max_compress: "Max Komprimierung",
+    advanced_settings: "Erweiterte Optionen",
+    compress_btn: "Komprimieren",
+    target_format_label: "Zielformat",
+    login_btn: "Anmelden",
+    logout_btn: "Abmelden",
+    convert_now_btn: "Jetzt konvertieren",
+    secure_processing: "Sichere Verarbeitung • Datenschutz",
 
-    // Sidebar
-    pro_tips_title: "Profi-Tipps",
-    tip_heic: "Konvertiere iPhone HEIC Fotos sofort in JPG.",
-    tip_seo: "Dateien werden sicher auf Servern verarbeitet.",
-    tip_size: "Reduziere Dateigröße ohne Qualitätsverlust.",
-
-    // Referral
-    ref_title: "Mehr Credits verdienen",
-    ref_desc: "Teile WebImgConverter mit Freunden. +5 Credits pro Anmeldung!",
-    ref_btn: "Link kopieren & teilen",
-    ref_success: "Link kopiert! (Credits bei Anmeldung)",
-
-    // Premium Modal
-    prem_title: "Upgrade auf Premium",
-    prem_subtitle: "Unbegrenzter Zugang zu Profi-Tools.",
-    prem_feature_1: "Unbegrenzte Konvertierungen",
-    prem_feature_2: "Komplett werbefrei",
-    prem_feature_3: "Unbegrenzte KI-Umbenennung",
-    prem_feature_4: "Massen-ZIP-Download",
-    prem_price_btn: "Premium holen ($0.99/Monat)",
-    prem_no_thanks: "Mit Limits fortfahren",
-    premium_plans_title: "Premium Pläne",
-    premium_plans_subtitle: "Wählen Sie den Plan, der zu Ihnen passt",
-
-    // Premium Plans
-    plan_starter: "Starter",
-    plan_pro: "Pro+ (Empfohlen)",
-    plan_business: "Business",
-    price_mo: "/Mon.",
-    feat_credits_30: "50 Credits/Tag",
-    feat_credits_100: "100 Credits/Tag",
-    feat_credits_unlimited: "Unbegrenzte Credits",
-    feat_remove_bg: "Hintergrund entfernen",
-    feat_no_ads: "Keine Werbung",
-    feat_priority_ai: "Priorisierte KI",
-    feat_zip_download: "ZIP-Download",
-    feat_batch_ai: "Massen-KI-Umbenennung",
-    feat_watermark: "Wasserzeichen",
-    feat_special_formats: "Spezielle Formate (BMP, TIFF)",
-    feat_all_prem: "Alle Premium-Funktionen",
-    feat_support_247: "24/7 Support",
-    feat_batch_50: "Stapelverarbeitung (50+)",
-    feat_watermark_custom: "Benutzerdefiniertes Wasserzeichen",
-    feat_history: "Aktivitätsprotokoll",
-    history_empty: "Noch kein Aktivitätsprotokoll gefunden.",
-    btn_select_starter: "Starter wählen",
-    btn_select_pro: "Pro wählen",
-    btn_select_business: "Business wählen",
-    popular_badge: "BELIEBT",
-    maybe_later: "Nein, vielleicht später",
-
-    // Footer Links & Legal
-    privacy: "Datenschutz",
-    terms: "Nutzungsbedingungen",
-    contact: "Kontakt",
-    footer_text: "Alle Rechte vorbehalten.",
-    close: "Schließen",
-
-    // Cookie Banner
-    cookie_message: "Wir verwenden Cookies für ein besseres Erlebnis.",
-    cookie_accept: "Akzeptieren",
-    cookie_decline: "Ablehnen",
-
-    // Legal (Keep EN for now)
-    privacy_title: "Privacy Policy",
-    terms_title: "Terms of Service",
-    contact_title: "Contact & Support",
-    privacy_content: "See English version for detailed legal text.",
-    terms_content: "See English version for detailed legal text.",
-    contact_content: "Email: support@WebImgConverter.com",
-
-    // Support Modal
-    support_title: "Support",
-    support_subject: "BETREFF",
-    support_subject_placeholder: "Beschreiben Sie das Problem kurz...",
-    support_message: "NACHRICHT",
-    support_message_placeholder: "Wie können wir helfen?",
-    support_premium_msg: "Als Premium-Mitglied erhalten Sie priorisierten Support!",
-    cancel: "Abbrechen",
-    send_email: "E-Mail senden",
-  },
-  fr: {
-    // Navbar
-    daily_credits: "Crédits du jour",
-    credits_label: "Crédits restants",
-    premium_btn: "Passer Premium",
-    manage_subscription: "Gérer l'abonnement",
-
-    // Dropzone
+    bg_remover_title: "✨ Hintergrund-Entferner",
+    bg_model_general: "🤖 Fehlerfreie KI (Am besten)",
+    bg_model_portrait: "🧑 Porträtmodus (Menschen & Haare)",
+    bg_model_logo: "🎨 Logo & Text (Scharf)",
+    bg_remove_btn: "Hintergrund entfernen",
+    ai_processing: "KI verarbeitet...",
+    crop_title: "✂️ Bild zuschneiden",
+    crop_btn: "Zuschneiden & Speichern",
     drop_title: "Télécharger des images",
     drop_desc: "Glissez vos fichiers HEIC, JPG, PNG ou WEBP ici.",
     drop_limit: "Limite quotidienne atteinte",
     drop_limit_desc: "Regardez la pub ou attendez demain.",
 
     // File Card
-    queue: "File d'attente",
+    queue: "File d'attente",\n
+    quality_label: "Qualité :",
+    quality_lossless: "Sans perte",
+    quality_high: "Haute",
+    quality_balanced: "Équilibrée",
+    quality_low_size: "Petite taille",
+    quality_max_compress: "Compression max",
+    advanced_settings: "Options avancées",
+    compress_btn: "Compresser",
+    target_format_label: "Format Cible",
+    login_btn: "Connexion",
+    logout_btn: "Déconnexion",
+    convert_now_btn: "Convertir",
+    secure_processing: "Traitement sécurisé • Confidentialité",
+\n
+    bg_remover_title: "✨ Suppresseur de fond",
+    bg_model_general: "🤖 IA Impeccable (Le meilleur)",
+    bg_model_portrait: "🧑 Mode Portrait (Personnes & Cheveux)",
+    bg_model_logo: "🎨 Logo & Texte (Net)",
+    bg_remove_btn: "Supprimer le fond",
+    ai_processing: "L'IA traite...",
+    crop_title: "✂️ Recadrage d'image",
+    crop_btn: "Recadrer & Enregistrer",
+
     clear_all: "Tout effacer",
     loading: "Chargement...",
     processing: "Traitement...",

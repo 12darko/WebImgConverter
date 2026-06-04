@@ -121,6 +121,7 @@ export default function FaviconGeneratorPage() {
                         </div>
                     </div>
                 </div>
+                <SeoContent pageType="favicon-generator" />
             </App>
         </>
     );

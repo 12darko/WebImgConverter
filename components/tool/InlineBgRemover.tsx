@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AdsterraNativeBanner } from '../ads/AdsterraNativeBanner';
+import { useLanguage } from '../../LanguageContext';
 
 interface InlineBgRemoverProps {
     file: {
@@ -16,6 +17,7 @@ interface InlineBgRemoverProps {
 }
 
 export const InlineBgRemover: React.FC<InlineBgRemoverProps> = ({ file, onProcess, onCancel, onDownload, onModelChange }) => {
+    const { t } = useLanguage();
     const [sliderPosition, setSliderPosition] = useState(50);
     const [isDragging, setIsDragging] = useState(false);
 
@@ -31,10 +33,10 @@ export const InlineBgRemover: React.FC<InlineBgRemoverProps> = ({ file, onProces
             {/* Header */}
             <div className="flex items-center justify-between p-4 md:p-6 border-b border-slate-100 dark:border-slate-800 flex-wrap gap-4">
                 <div className="flex items-center gap-3">
-                    <button onClick={onCancel} className="p-2 text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-250 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-colors" title="İptal">
+                    <button onClick={onCancel} className="p-2 text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-250 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-colors" title={t('cancel')}>
                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
                     </button>
-                    <h3 className="font-bold text-slate-800 dark:text-white text-lg">✨ Arka Plan Silici</h3>
+                    <h3 className="font-bold text-slate-800 dark:text-white text-lg">{t('bg_remover_title')}</h3>
                 </div>
 
                 <div className="flex items-center gap-3 ml-auto">
@@ -46,21 +48,21 @@ export const InlineBgRemover: React.FC<InlineBgRemoverProps> = ({ file, onProces
                                     onChange={(e) => onModelChange(e.target.value)}
                                     className="bg-brand-50 dark:bg-brand-950/30 text-[13px] font-medium text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800 rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-brand-500 outline-none"
                                 >
-                                    <option value="birefnet-general">🤖 Kusursuz Yapay Zeka (En İyi)</option>
-                                    <option value="birefnet-portrait">🧑 Portre Modu (İnsan & Saç)</option>
-                                    <option value="birefnet-dis">🎨 Logo & Metin (Keskin)</option>
+                                    <option value="birefnet-general">{t('bg_model_general')}</option>
+                                    <option value="birefnet-portrait">{t('bg_model_portrait')}</option>
+                                    <option value="birefnet-dis">{t('bg_model_logo')}</option>
                                 </select>
                             )}
                             <button onClick={onProcess} className="px-6 py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-sm font-bold shadow-sm transition-colors flex items-center gap-2">
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                                Arka Planı Sil
+                                {t('bg_remove_btn')}
                             </button>
                         </>
                     )}
                     {file.status === 'done' && (
                         <button onClick={onDownload} className="px-6 py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-sm font-bold shadow-sm transition-colors flex items-center gap-2">
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                            İndir
+                            {t('download_btn')}
                         </button>
                     )}
                 </div>
@@ -72,7 +74,7 @@ export const InlineBgRemover: React.FC<InlineBgRemoverProps> = ({ file, onProces
                 {file.status === 'analyzing' || file.status === 'converting' ? (
                     <div className="flex flex-col items-center gap-4 bg-white/90 dark:bg-slate-850/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-800">
                         <div className="w-12 h-12 border-4 border-brand-100 border-t-brand-500 rounded-full animate-spin"></div>
-                        <p className="text-slate-600 dark:text-slate-300 font-medium animate-pulse">Yapay Zeka İşliyor...</p>
+                        <p className="text-slate-600 dark:text-slate-300 font-medium animate-pulse">{t('ai_processing')}</p>
                     </div>
                 ) : file.status === 'done' && file.convertedUrl ? (
                     <div 

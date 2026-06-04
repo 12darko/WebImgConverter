@@ -316,13 +316,14 @@ const TOOLS: ToolDef[] = [
     },
 ];
 
-import { useLanguage } from '../LanguageContext';
+import { useLanguage, useLocalizedPath } from '../LanguageContext';
 
 const ToolCard: React.FC<{ tool: ToolDef; t: typeof content.en }> = ({ tool, t }) => {
+    const localizedPath = useLocalizedPath();
     const localizedTool = t.tools[tool.id as keyof typeof t.tools];
     return (
         <Link
-            to={tool.path}
+            to={localizedPath(tool.path)}
             className="group block bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-2xl p-5 transition-all hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-card-hover"
         >
             <div className="flex items-start gap-4">
