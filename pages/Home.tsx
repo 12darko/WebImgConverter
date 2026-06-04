@@ -248,7 +248,7 @@ export default function HomePage() {
     const hasEnoughCredits = isPremium || currentCredits >= homeFiles.length;
 
     return (
-        <SiteShell bg="slate" onCta={() => navigate('/pricing')} ctaLabel={t.ctaConvert}>
+        <SiteShell bg="subtle" onCta={() => navigate('/pricing')} ctaLabel={t.ctaConvert}>
             <Helmet>
                 <title>{t.metaTitle}</title>
                 <meta name="description" content={t.metaDesc} />
