@@ -21,17 +21,43 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   // Initialize from URL or Browser
   useEffect(() => {
-    const urlLang = searchParams.get('lang');
-    if (urlLang && ['tr', 'en', 'de', 'fr'].includes(urlLang)) {
-      setLanguageState(urlLang as Language);
+    // 1. Check if ?lang=XX parameter exists to migrate old links smoothly
+    const urlLangParam = searchParams.get('lang');
+    if (urlLangParam && ['tr', 'en', 'de', 'fr'].includes(urlLangParam)) {
+       const basePath = location.pathname;
+       const newUrl = urlLangParam === 'tr' ? basePath : `/${urlLangParam}${basePath === '/' ? '' : basePath}`;
+       
+       setLanguageState(urlLangParam as Language);
+       
+       const newParams = new URLSearchParams(searchParams);
+       newParams.delete('lang');
+       
+       navigate({ pathname: newUrl, search: newParams.toString() }, { replace: true });
+       return;
+    }
+
+    // 2. Check path-based language (/en/...)
+    const pathParts = location.pathname.split('/');
+    const firstPart = pathParts[1];
+    
+    if (['en', 'de', 'fr'].includes(firstPart)) {
+      setLanguageState(firstPart as Language);
     } else {
-      // Detect browser language
-      const browserLang = navigator.language.slice(0, 2).toLowerCase();
-      if (['tr', 'en', 'de', 'fr'].includes(browserLang)) {
-        setLanguage(browserLang as Language);
+      // 3. No explicit language in URL (defaults to Turkish).
+      // If user is hitting the root domain directly, auto-detect language.
+      if (location.pathname === '/') {
+          const browserLang = navigator.language.slice(0, 2).toLowerCase();
+          if (['en', 'de', 'fr'].includes(browserLang)) {
+            setLanguageState(browserLang as Language);
+            navigate(`/${browserLang}`, { replace: true });
+          } else if (browserLang !== 'tr') {
+            setLanguageState('en'); // Fallback to English
+            navigate('/en', { replace: true });
+          } else {
+            setLanguageState('tr');
+          }
       } else {
-        // Fallback to English for any other international language
-        setLanguage('en');
+          setLanguageState('tr');
       }
     }
   }, []); // Run once on mount
@@ -39,17 +65,23 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const setLanguage = (newLang: Language) => {
     setLanguageState(newLang);
 
-    // Update URL to reflect language (critical for sharing/SEQ)
-    // Create new search params to avoid mutating directly
-    const newParams = new URLSearchParams(searchParams);
-
-    if (newLang === 'tr') {
-      newParams.delete('lang'); // Default language needs no param
-    } else {
-      newParams.set('lang', newLang);
+    const pathParts = location.pathname.split('/');
+    const firstPart = pathParts[1];
+    
+    let newPath = location.pathname;
+    
+    // Remove existing language prefix if any
+    if (['en', 'de', 'fr'].includes(firstPart)) {
+       pathParts.splice(1, 1);
+       newPath = pathParts.join('/') || '/';
     }
-
-    setSearchParams(newParams, { replace: true });
+    
+    // Add new language prefix if not TR
+    if (newLang !== 'tr') {
+       newPath = `/${newLang}${newPath === '/' ? '' : newPath}`;
+    }
+    
+    navigate({ pathname: newPath, search: location.search });
   };
 
   const t = (key: string): string => {
@@ -62,6 +94,16 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       {children}
     </LanguageContext.Provider>
   );
+};
+
+export const useLocalizedPath = () => {
+  const { language } = useLanguage();
+  return (path: string) => {
+    if (path.startsWith('http')) return path;
+    const cleanPath = path.startsWith('/') ? path : `/${path}`;
+    if (language === 'tr') return cleanPath;
+    return `/${language}${cleanPath === '/' ? '' : cleanPath}`;
+  };
 };
 
 export const useLanguage = () => {

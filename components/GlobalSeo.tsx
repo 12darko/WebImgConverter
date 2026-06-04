@@ -8,10 +8,21 @@ export const GlobalSeo = () => {
     const { language } = useLanguage();
 
     const siteUrl = 'https://webimgconverter.com';
-    const currentPath = location.pathname;
-    const searchParams = new URLSearchParams(location.search);
-    const langParam = searchParams.get('lang');
-    const canonicalUrl = langParam ? `${siteUrl}${currentPath}?lang=${langParam}` : `${siteUrl}${currentPath}`;
+    
+    // Extract base path for hreflang calculation
+    const pathParts = location.pathname.split('/');
+    const firstPart = pathParts[1];
+    
+    let basePath = location.pathname;
+    if (['en', 'de', 'fr'].includes(firstPart)) {
+       pathParts.splice(1, 1);
+       basePath = pathParts.join('/') || '/';
+    }
+
+    const getLocalizedUrl = (lang: string) => {
+        if (lang === 'tr') return `${siteUrl}${basePath}`;
+        return `${siteUrl}/${lang}${basePath === '/' ? '' : basePath}`;
+    };
 
     // JSON-LD: SoftwareApplication
     const jsonLd = {
@@ -52,13 +63,13 @@ export const GlobalSeo = () => {
         { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl }
     ];
 
-    if (currentPath !== '/') {
-        const pageName = pageNames[currentPath] || currentPath.replace(/^\//, '').replace(/-/g, ' ');
+    if (basePath !== '/') {
+        const pageName = pageNames[basePath] || basePath.replace(/^\//, '').replace(/-/g, ' ');
         breadcrumbItems.push({
             "@type": "ListItem",
             "position": 2,
             "name": pageName,
-            "item": `${siteUrl}${currentPath}`
+            "item": `${siteUrl}${location.pathname}`
         });
     }
 
@@ -81,14 +92,14 @@ export const GlobalSeo = () => {
             </script>
 
             {/* Hreflang Tags */}
-            <link rel="alternate" hrefLang="x-default" href={`${siteUrl}${currentPath}`} />
-            <link rel="alternate" hrefLang="en" href={`${siteUrl}${currentPath}?lang=en`} />
-            <link rel="alternate" hrefLang="tr" href={`${siteUrl}${currentPath}?lang=tr`} />
-            <link rel="alternate" hrefLang="de" href={`${siteUrl}${currentPath}?lang=de`} />
-            <link rel="alternate" hrefLang="fr" href={`${siteUrl}${currentPath}?lang=fr`} />
+            <link rel="alternate" hrefLang="x-default" href={getLocalizedUrl('tr')} />
+            <link rel="alternate" hrefLang="tr" href={getLocalizedUrl('tr')} />
+            <link rel="alternate" hrefLang="en" href={getLocalizedUrl('en')} />
+            <link rel="alternate" hrefLang="de" href={getLocalizedUrl('de')} />
+            <link rel="alternate" hrefLang="fr" href={getLocalizedUrl('fr')} />
 
             {/* Dynamic Canonical */}
-            <link rel="canonical" href={canonicalUrl} />
+            <link rel="canonical" href={`${siteUrl}${location.pathname}`} />
 
         </Helmet>
     );

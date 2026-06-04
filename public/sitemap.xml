@@ -8,42 +8,42 @@
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr" />
   </url>
   <url>
-    <loc>https://webimgconverter.com?lang=en</loc>
+    <loc>https://webimgconverter.com/en</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr" />
   </url>
   <url>
-    <loc>https://webimgconverter.com?lang=de</loc>
+    <loc>https://webimgconverter.com/de</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr" />
   </url>
   <url>
-    <loc>https://webimgconverter.com?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr" />
   </url>
   <url>
     <loc>https://webimgconverter.com/tools</loc>
@@ -52,42 +52,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/tools" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/tools" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/tools?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/tools?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/tools?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/tools" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/tools" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/tools" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/tools?lang=en</loc>
+    <loc>https://webimgconverter.com/en/tools</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/tools" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/tools" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/tools?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/tools?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/tools?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/tools" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/tools" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/tools" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/tools?lang=de</loc>
+    <loc>https://webimgconverter.com/de/tools</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/tools" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/tools" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/tools?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/tools?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/tools?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/tools" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/tools" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/tools" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/tools?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/tools</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/tools" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/tools" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/tools?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/tools?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/tools?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/tools" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/tools" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/tools" />
   </url>
   <url>
     <loc>https://webimgconverter.com/pricing</loc>
@@ -96,42 +96,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/pricing" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/pricing" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/pricing?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/pricing?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/pricing?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/pricing" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/pricing" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/pricing" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/pricing?lang=en</loc>
+    <loc>https://webimgconverter.com/en/pricing</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/pricing" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/pricing" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/pricing?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/pricing?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/pricing?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/pricing" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/pricing" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/pricing" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/pricing?lang=de</loc>
+    <loc>https://webimgconverter.com/de/pricing</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/pricing" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/pricing" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/pricing?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/pricing?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/pricing?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/pricing" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/pricing" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/pricing" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/pricing?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/pricing</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/pricing" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/pricing" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/pricing?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/pricing?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/pricing?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/pricing" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/pricing" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/pricing" />
   </url>
   <url>
     <loc>https://webimgconverter.com/api</loc>
@@ -140,42 +140,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/api" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/api" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/api?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/api?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/api?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/api" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/api" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/api" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/api?lang=en</loc>
+    <loc>https://webimgconverter.com/en/api</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/api" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/api" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/api?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/api?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/api?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/api" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/api" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/api" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/api?lang=de</loc>
+    <loc>https://webimgconverter.com/de/api</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/api" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/api" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/api?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/api?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/api?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/api" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/api" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/api" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/api?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/api</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/api" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/api" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/api?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/api?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/api?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/api" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/api" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/api" />
   </url>
   <url>
     <loc>https://webimgconverter.com/support</loc>
@@ -184,42 +184,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/support" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/support" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/support?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/support?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/support?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/support" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/support" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/support" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/support?lang=en</loc>
+    <loc>https://webimgconverter.com/en/support</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/support" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/support" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/support?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/support?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/support?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/support" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/support" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/support" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/support?lang=de</loc>
+    <loc>https://webimgconverter.com/de/support</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/support" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/support" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/support?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/support?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/support?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/support" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/support" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/support" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/support?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/support</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/support" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/support" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/support?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/support?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/support?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/support" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/support" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/support" />
   </url>
   <url>
     <loc>https://webimgconverter.com/heic-converter</loc>
@@ -228,42 +228,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/heic-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/heic-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/heic-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/heic-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/heic-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/heic-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/heic-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/heic-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/heic-converter?lang=en</loc>
+    <loc>https://webimgconverter.com/en/heic-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/heic-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/heic-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/heic-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/heic-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/heic-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/heic-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/heic-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/heic-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/heic-converter?lang=de</loc>
+    <loc>https://webimgconverter.com/de/heic-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/heic-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/heic-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/heic-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/heic-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/heic-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/heic-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/heic-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/heic-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/heic-converter?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/heic-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/heic-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/heic-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/heic-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/heic-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/heic-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/heic-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/heic-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/heic-converter" />
   </url>
   <url>
     <loc>https://webimgconverter.com/png-converter</loc>
@@ -272,42 +272,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/png-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/png-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/png-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/png-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/png-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/png-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/png-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/png-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/png-converter?lang=en</loc>
+    <loc>https://webimgconverter.com/en/png-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/png-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/png-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/png-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/png-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/png-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/png-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/png-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/png-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/png-converter?lang=de</loc>
+    <loc>https://webimgconverter.com/de/png-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/png-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/png-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/png-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/png-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/png-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/png-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/png-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/png-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/png-converter?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/png-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/png-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/png-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/png-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/png-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/png-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/png-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/png-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/png-converter" />
   </url>
   <url>
     <loc>https://webimgconverter.com/webp-converter</loc>
@@ -316,42 +316,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/webp-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/webp-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/webp-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/webp-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/webp-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/webp-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/webp-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/webp-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/webp-converter?lang=en</loc>
+    <loc>https://webimgconverter.com/en/webp-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/webp-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/webp-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/webp-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/webp-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/webp-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/webp-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/webp-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/webp-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/webp-converter?lang=de</loc>
+    <loc>https://webimgconverter.com/de/webp-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/webp-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/webp-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/webp-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/webp-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/webp-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/webp-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/webp-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/webp-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/webp-converter?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/webp-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/webp-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/webp-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/webp-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/webp-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/webp-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/webp-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/webp-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/webp-converter" />
   </url>
   <url>
     <loc>https://webimgconverter.com/remove-background</loc>
@@ -360,42 +360,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/remove-background" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/remove-background" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/remove-background?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/remove-background?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/remove-background?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/remove-background" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/remove-background" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/remove-background" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/remove-background?lang=en</loc>
+    <loc>https://webimgconverter.com/en/remove-background</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/remove-background" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/remove-background" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/remove-background?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/remove-background?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/remove-background?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/remove-background" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/remove-background" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/remove-background" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/remove-background?lang=de</loc>
+    <loc>https://webimgconverter.com/de/remove-background</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/remove-background" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/remove-background" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/remove-background?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/remove-background?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/remove-background?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/remove-background" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/remove-background" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/remove-background" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/remove-background?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/remove-background</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/remove-background" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/remove-background" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/remove-background?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/remove-background?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/remove-background?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/remove-background" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/remove-background" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/remove-background" />
   </url>
   <url>
     <loc>https://webimgconverter.com/compress-image</loc>
@@ -404,42 +404,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/compress-image" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/compress-image" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/compress-image?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/compress-image?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/compress-image?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/compress-image" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/compress-image" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/compress-image" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/compress-image?lang=en</loc>
+    <loc>https://webimgconverter.com/en/compress-image</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/compress-image" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/compress-image" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/compress-image?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/compress-image?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/compress-image?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/compress-image" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/compress-image" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/compress-image" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/compress-image?lang=de</loc>
+    <loc>https://webimgconverter.com/de/compress-image</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/compress-image" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/compress-image" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/compress-image?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/compress-image?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/compress-image?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/compress-image" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/compress-image" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/compress-image" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/compress-image?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/compress-image</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/compress-image" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/compress-image" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/compress-image?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/compress-image?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/compress-image?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/compress-image" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/compress-image" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/compress-image" />
   </url>
   <url>
     <loc>https://webimgconverter.com/svg-converter</loc>
@@ -448,42 +448,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/svg-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/svg-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/svg-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/svg-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/svg-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/svg-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/svg-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/svg-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/svg-converter?lang=en</loc>
+    <loc>https://webimgconverter.com/en/svg-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/svg-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/svg-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/svg-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/svg-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/svg-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/svg-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/svg-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/svg-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/svg-converter?lang=de</loc>
+    <loc>https://webimgconverter.com/de/svg-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/svg-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/svg-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/svg-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/svg-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/svg-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/svg-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/svg-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/svg-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/svg-converter?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/svg-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/svg-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/svg-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/svg-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/svg-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/svg-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/svg-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/svg-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/svg-converter" />
   </url>
   <url>
     <loc>https://webimgconverter.com/smart-cropper</loc>
@@ -492,42 +492,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/smart-cropper" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/smart-cropper" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/smart-cropper?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/smart-cropper?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/smart-cropper?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/smart-cropper" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/smart-cropper" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/smart-cropper" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/smart-cropper?lang=en</loc>
+    <loc>https://webimgconverter.com/en/smart-cropper</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/smart-cropper" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/smart-cropper" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/smart-cropper?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/smart-cropper?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/smart-cropper?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/smart-cropper" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/smart-cropper" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/smart-cropper" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/smart-cropper?lang=de</loc>
+    <loc>https://webimgconverter.com/de/smart-cropper</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/smart-cropper" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/smart-cropper" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/smart-cropper?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/smart-cropper?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/smart-cropper?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/smart-cropper" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/smart-cropper" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/smart-cropper" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/smart-cropper?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/smart-cropper</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/smart-cropper" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/smart-cropper" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/smart-cropper?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/smart-cropper?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/smart-cropper?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/smart-cropper" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/smart-cropper" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/smart-cropper" />
   </url>
   <url>
     <loc>https://webimgconverter.com/app</loc>
@@ -536,42 +536,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/app" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/app" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/app?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/app?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/app?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/app" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/app" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/app" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/app?lang=en</loc>
+    <loc>https://webimgconverter.com/en/app</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/app" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/app" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/app?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/app?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/app?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/app" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/app" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/app" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/app?lang=de</loc>
+    <loc>https://webimgconverter.com/de/app</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/app" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/app" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/app?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/app?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/app?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/app" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/app" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/app" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/app?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/app</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/app" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/app" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/app?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/app?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/app?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/app" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/app" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/app" />
   </url>
   <url>
     <loc>https://webimgconverter.com/about</loc>
@@ -580,42 +580,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/about" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/about" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/about?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/about?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/about?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/about" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/about?lang=en</loc>
+    <loc>https://webimgconverter.com/en/about</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/about" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/about" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/about?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/about?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/about?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/about" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/about?lang=de</loc>
+    <loc>https://webimgconverter.com/de/about</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/about" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/about" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/about?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/about?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/about?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/about" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/about?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/about</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/about" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/about" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/about?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/about?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/about?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/about" />
   </url>
   <url>
     <loc>https://webimgconverter.com/blog</loc>
@@ -624,42 +624,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/blog" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/blog?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/blog?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/blog?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/blog" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/blog" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/blog" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/blog?lang=en</loc>
+    <loc>https://webimgconverter.com/en/blog</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/blog" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/blog?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/blog?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/blog?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/blog" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/blog" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/blog" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/blog?lang=de</loc>
+    <loc>https://webimgconverter.com/de/blog</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/blog" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/blog?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/blog?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/blog?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/blog" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/blog" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/blog" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/blog?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/blog</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/blog" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/blog?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/blog?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/blog?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/blog" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/blog" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/blog" />
   </url>
   <url>
     <loc>https://webimgconverter.com/blog/heic-nedir</loc>
@@ -668,42 +668,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/blog/heic-nedir" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/blog/heic-nedir" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/blog/heic-nedir?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/blog/heic-nedir?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/blog/heic-nedir?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/blog/heic-nedir" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/blog/heic-nedir" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/blog/heic-nedir" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/blog/heic-nedir?lang=en</loc>
+    <loc>https://webimgconverter.com/en/blog/heic-nedir</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/blog/heic-nedir" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/blog/heic-nedir" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/blog/heic-nedir?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/blog/heic-nedir?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/blog/heic-nedir?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/blog/heic-nedir" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/blog/heic-nedir" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/blog/heic-nedir" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/blog/heic-nedir?lang=de</loc>
+    <loc>https://webimgconverter.com/de/blog/heic-nedir</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/blog/heic-nedir" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/blog/heic-nedir" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/blog/heic-nedir?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/blog/heic-nedir?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/blog/heic-nedir?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/blog/heic-nedir" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/blog/heic-nedir" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/blog/heic-nedir" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/blog/heic-nedir?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/blog/heic-nedir</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/blog/heic-nedir" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/blog/heic-nedir" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/blog/heic-nedir?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/blog/heic-nedir?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/blog/heic-nedir?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/blog/heic-nedir" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/blog/heic-nedir" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/blog/heic-nedir" />
   </url>
   <url>
     <loc>https://webimgconverter.com/favicon-generator</loc>
@@ -712,42 +712,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/favicon-generator" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/favicon-generator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/favicon-generator?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/favicon-generator?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/favicon-generator?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/favicon-generator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/favicon-generator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/favicon-generator" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/favicon-generator?lang=en</loc>
+    <loc>https://webimgconverter.com/en/favicon-generator</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/favicon-generator" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/favicon-generator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/favicon-generator?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/favicon-generator?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/favicon-generator?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/favicon-generator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/favicon-generator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/favicon-generator" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/favicon-generator?lang=de</loc>
+    <loc>https://webimgconverter.com/de/favicon-generator</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/favicon-generator" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/favicon-generator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/favicon-generator?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/favicon-generator?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/favicon-generator?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/favicon-generator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/favicon-generator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/favicon-generator" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/favicon-generator?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/favicon-generator</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/favicon-generator" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/favicon-generator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/favicon-generator?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/favicon-generator?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/favicon-generator?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/favicon-generator" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/favicon-generator" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/favicon-generator" />
   </url>
   <url>
     <loc>https://webimgconverter.com/rotate-image</loc>
@@ -756,42 +756,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/rotate-image" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/rotate-image" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/rotate-image?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/rotate-image?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/rotate-image?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/rotate-image" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/rotate-image" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/rotate-image" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/rotate-image?lang=en</loc>
+    <loc>https://webimgconverter.com/en/rotate-image</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/rotate-image" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/rotate-image" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/rotate-image?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/rotate-image?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/rotate-image?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/rotate-image" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/rotate-image" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/rotate-image" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/rotate-image?lang=de</loc>
+    <loc>https://webimgconverter.com/de/rotate-image</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/rotate-image" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/rotate-image" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/rotate-image?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/rotate-image?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/rotate-image?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/rotate-image" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/rotate-image" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/rotate-image" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/rotate-image?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/rotate-image</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/rotate-image" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/rotate-image" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/rotate-image?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/rotate-image?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/rotate-image?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/rotate-image" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/rotate-image" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/rotate-image" />
   </url>
   <url>
     <loc>https://webimgconverter.com/watermark-image</loc>
@@ -800,42 +800,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/watermark-image" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/watermark-image" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/watermark-image?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/watermark-image?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/watermark-image?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/watermark-image" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/watermark-image" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/watermark-image" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/watermark-image?lang=en</loc>
+    <loc>https://webimgconverter.com/en/watermark-image</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/watermark-image" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/watermark-image" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/watermark-image?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/watermark-image?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/watermark-image?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/watermark-image" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/watermark-image" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/watermark-image" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/watermark-image?lang=de</loc>
+    <loc>https://webimgconverter.com/de/watermark-image</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/watermark-image" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/watermark-image" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/watermark-image?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/watermark-image?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/watermark-image?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/watermark-image" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/watermark-image" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/watermark-image" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/watermark-image?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/watermark-image</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/watermark-image" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/watermark-image" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/watermark-image?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/watermark-image?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/watermark-image?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/watermark-image" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/watermark-image" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/watermark-image" />
   </url>
   <url>
     <loc>https://webimgconverter.com/black-and-white</loc>
@@ -844,42 +844,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/black-and-white" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/black-and-white" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/black-and-white?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/black-and-white?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/black-and-white?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/black-and-white" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/black-and-white" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/black-and-white" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/black-and-white?lang=en</loc>
+    <loc>https://webimgconverter.com/en/black-and-white</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/black-and-white" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/black-and-white" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/black-and-white?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/black-and-white?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/black-and-white?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/black-and-white" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/black-and-white" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/black-and-white" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/black-and-white?lang=de</loc>
+    <loc>https://webimgconverter.com/de/black-and-white</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/black-and-white" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/black-and-white" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/black-and-white?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/black-and-white?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/black-and-white?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/black-and-white" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/black-and-white" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/black-and-white" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/black-and-white?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/black-and-white</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/black-and-white" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/black-and-white" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/black-and-white?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/black-and-white?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/black-and-white?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/black-and-white" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/black-and-white" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/black-and-white" />
   </url>
   <url>
     <loc>https://webimgconverter.com/jpg-converter</loc>
@@ -888,42 +888,42 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/jpg-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/jpg-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/jpg-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/jpg-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/jpg-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/jpg-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/jpg-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/jpg-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/jpg-converter?lang=en</loc>
+    <loc>https://webimgconverter.com/en/jpg-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/jpg-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/jpg-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/jpg-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/jpg-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/jpg-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/jpg-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/jpg-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/jpg-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/jpg-converter?lang=de</loc>
+    <loc>https://webimgconverter.com/de/jpg-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/jpg-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/jpg-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/jpg-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/jpg-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/jpg-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/jpg-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/jpg-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/jpg-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/jpg-converter?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/jpg-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/jpg-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/jpg-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/jpg-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/jpg-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/jpg-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/jpg-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/jpg-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/jpg-converter" />
   </url>
   <url>
     <loc>https://webimgconverter.com/avif-converter</loc>
@@ -932,41 +932,41 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/avif-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/avif-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/avif-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/avif-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/avif-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/avif-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/avif-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/avif-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/avif-converter?lang=en</loc>
+    <loc>https://webimgconverter.com/en/avif-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/avif-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/avif-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/avif-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/avif-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/avif-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/avif-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/avif-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/avif-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/avif-converter?lang=de</loc>
+    <loc>https://webimgconverter.com/de/avif-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/avif-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/avif-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/avif-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/avif-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/avif-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/avif-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/avif-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/avif-converter" />
   </url>
   <url>
-    <loc>https://webimgconverter.com/avif-converter?lang=fr</loc>
+    <loc>https://webimgconverter.com/fr/avif-converter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webimgconverter.com/avif-converter" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://webimgconverter.com/avif-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/avif-converter?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/avif-converter?lang=de" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/avif-converter?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webimgconverter.com/en/avif-converter" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://webimgconverter.com/de/avif-converter" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://webimgconverter.com/fr/avif-converter" />
   </url>
 </urlset>

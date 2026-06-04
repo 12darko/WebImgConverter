@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
+import { useLocalizedPath } from '../../LanguageContext';
 
 interface FooterLink {
     label: string;
@@ -15,6 +16,8 @@ const FOOTER_LINKS: FooterLink[] = [
 ];
 
 export const SiteFooter: React.FC = () => {
+    const localizedPath = useLocalizedPath();
+
     return (
         <footer className="mt-auto">
             <div className="max-w-7xl mx-auto px-5 md:px-8 py-6">
@@ -28,7 +31,7 @@ export const SiteFooter: React.FC = () => {
                         {FOOTER_LINKS.map((l) => (
                             <Link
                                 key={l.path}
-                                to={l.path}
+                                to={localizedPath(l.path)}
                                 className="text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors uppercase tracking-wider font-semibold"
                             >
                                 {l.label}

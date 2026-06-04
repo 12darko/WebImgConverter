@@ -42,34 +42,67 @@ export default function Router() {
                 <LanguageProvider>
                     <GlobalSeo />
                     <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/tools" element={<ToolsPage />} />
-                        <Route path="/pricing" element={<PricingPage />} />
-                        <Route path="/api" element={<ApiDocsPage />} />
-                        <Route path="/support" element={<SupportPage />} />
-                        <Route path="/heic-converter" element={<HeicConverterPage />} />
-                        <Route path="/png-converter" element={<PngConverterPage />} />
-                        <Route path="/remove-background" element={<RemoveBackgroundPage />} />
-                        <Route path="/compress-image" element={<CompressImagePage />} />
-                        <Route path="/svg-converter" element={<SvgConverterPage />} />
-                        <Route path="/smart-cropper" element={<SmartCropperPage />} />
-                        <Route path="/favicon-generator" element={<FaviconGeneratorPage />} />
-                        <Route path="/rotate-image" element={<RotateImagePage />} />
-                        <Route path="/watermark-image" element={<WatermarkImagePage />} />
-                        <Route path="/black-and-white" element={<BlackAndWhitePage />} />
-                        <Route path="/webp-converter" element={<WebpConverterPage />} />
-                        <Route path="/jpg-converter" element={<JpgConverterPage />} />
-                        <Route path="/avif-converter" element={<AvifConverterPage />} />
-                        <Route path="/resize-image" element={<ImageResizerPage />} />
-                        <Route path="/privacy" element={<PrivacyPage />} />
-                        <Route path="/terms" element={<TermsPage />} />
-                        <Route path="/about" element={<AboutPage />} />
-                        <Route path="/contact" element={<ContactPage />} />
-                        <Route path="/blog" element={<BlogPage />} />
-                        <Route path="/blog/:slug" element={<BlogArticlePage />} />
-                        <Route path="/profile" element={<ProfilePage />} />
+                        <Route path="/">
+                            <Route index element={<HomePage />} />
+                            <Route path="tools" element={<ToolsPage />} />
+                            <Route path="pricing" element={<PricingPage />} />
+                            <Route path="api" element={<ApiDocsPage />} />
+                            <Route path="support" element={<SupportPage />} />
+                            <Route path="heic-converter" element={<HeicConverterPage />} />
+                            <Route path="png-converter" element={<PngConverterPage />} />
+                            <Route path="remove-background" element={<RemoveBackgroundPage />} />
+                            <Route path="compress-image" element={<CompressImagePage />} />
+                            <Route path="svg-converter" element={<SvgConverterPage />} />
+                            <Route path="smart-cropper" element={<SmartCropperPage />} />
+                            <Route path="favicon-generator" element={<FaviconGeneratorPage />} />
+                            <Route path="rotate-image" element={<RotateImagePage />} />
+                            <Route path="watermark-image" element={<WatermarkImagePage />} />
+                            <Route path="black-and-white" element={<BlackAndWhitePage />} />
+                            <Route path="webp-converter" element={<WebpConverterPage />} />
+                            <Route path="jpg-converter" element={<JpgConverterPage />} />
+                            <Route path="avif-converter" element={<AvifConverterPage />} />
+                            <Route path="resize-image" element={<ImageResizerPage />} />
+                            <Route path="privacy" element={<PrivacyPage />} />
+                            <Route path="terms" element={<TermsPage />} />
+                            <Route path="about" element={<AboutPage />} />
+                            <Route path="contact" element={<ContactPage />} />
+                            <Route path="blog" element={<BlogPage />} />
+                            <Route path="blog/:slug" element={<BlogArticlePage />} />
+                            <Route path="profile" element={<ProfilePage />} />
+                        </Route>
+
+                        <Route path="/:lang">
+                            <Route index element={<HomePage />} />
+                            <Route path="tools" element={<ToolsPage />} />
+                            <Route path="pricing" element={<PricingPage />} />
+                            <Route path="api" element={<ApiDocsPage />} />
+                            <Route path="support" element={<SupportPage />} />
+                            <Route path="heic-converter" element={<HeicConverterPage />} />
+                            <Route path="png-converter" element={<PngConverterPage />} />
+                            <Route path="remove-background" element={<RemoveBackgroundPage />} />
+                            <Route path="compress-image" element={<CompressImagePage />} />
+                            <Route path="svg-converter" element={<SvgConverterPage />} />
+                            <Route path="smart-cropper" element={<SmartCropperPage />} />
+                            <Route path="favicon-generator" element={<FaviconGeneratorPage />} />
+                            <Route path="rotate-image" element={<RotateImagePage />} />
+                            <Route path="watermark-image" element={<WatermarkImagePage />} />
+                            <Route path="black-and-white" element={<BlackAndWhitePage />} />
+                            <Route path="webp-converter" element={<WebpConverterPage />} />
+                            <Route path="jpg-converter" element={<JpgConverterPage />} />
+                            <Route path="avif-converter" element={<AvifConverterPage />} />
+                            <Route path="resize-image" element={<ImageResizerPage />} />
+                            <Route path="privacy" element={<PrivacyPage />} />
+                            <Route path="terms" element={<TermsPage />} />
+                            <Route path="about" element={<AboutPage />} />
+                            <Route path="contact" element={<ContactPage />} />
+                            <Route path="blog" element={<BlogPage />} />
+                            <Route path="blog/:slug" element={<BlogArticlePage />} />
+                            <Route path="profile" element={<ProfilePage />} />
+                        </Route>
+
                         {/* Fallback to main app for legacy access */}
                         <Route path="/app" element={<App />} />
+                        <Route path="/:lang/app" element={<App />} />
                         {/* 404 Catch-all */}
                         <Route path="*" element={<NotFoundPage />} />
                     </Routes>

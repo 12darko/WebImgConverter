@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Button } from '../ui/Button';
+import { useLocalizedPath } from '../../LanguageContext';
 
 interface NavItem {
     label: string;
@@ -30,6 +31,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     session,
 }) => {
     const location = useLocation();
+    const localizedPath = useLocalizedPath();
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [isDark, setIsDark] = React.useState(false);
 
@@ -56,8 +58,11 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     };
 
     const isActive = (path: string) => {
-        if (path === '/') return location.pathname === '/';
-        return location.pathname.startsWith(path);
+        const localized = localizedPath(path);
+        if (localized === '/' || localized === '/en' || localized === '/de' || localized === '/fr') {
+            return location.pathname === localized || location.pathname === localized + '/';
+        }
+        return location.pathname.startsWith(localized);
     };
 
     return (
@@ -72,7 +77,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                         return (
                             <Link
                                 key={item.path}
-                                to={item.path}
+                                to={localizedPath(item.path)}
                                 className={[
                                     'relative h-10 px-3 inline-flex items-center text-sm font-semibold transition-colors',
                                     active ? 'text-brand-600' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white',
@@ -98,7 +103,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                     </button>
                     {session ? (
                         <Link
-                            to="/profile"
+                            to={localizedPath('/profile')}
                             className="text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 px-3 h-10 inline-flex items-center transition-colors"
                         >
                             Profilim ({session.user.email?.split('@')[0]})
@@ -143,7 +148,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                         {NAV_ITEMS.map((item) => (
                             <Link
                                 key={item.path}
-                                to={item.path}
+                                to={localizedPath(item.path)}
                                 onClick={() => setMobileOpen(false)}
                                 className={[
                                     'h-11 px-3 inline-flex items-center text-sm font-semibold rounded-xl transition-colors',
@@ -162,7 +167,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                             </button>
                             {session ? (
                                 <Link
-                                    to="/profile"
+                                    to={localizedPath('/profile')}
                                     onClick={() => setMobileOpen(false)}
                                     className="flex-1 h-10 flex items-center justify-center text-sm font-semibold text-brand-600 dark:text-brand-400 border border-slate-200 dark:border-slate-700 rounded-xl"
                                 >
