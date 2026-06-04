@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Button } from '../ui/Button';
 import { useLanguage, useLocalizedPath } from '../../LanguageContext';
+import { UserMenu } from './UserMenu';
+import { supabase } from '../../services/supabase';
 
 interface NavItem {
     labelKey: string;
@@ -21,6 +23,7 @@ interface SiteHeaderProps {
     ctaLabel?: string;
     showCta?: boolean;
     session?: any;
+    stats?: any;
 }
 
 export const SiteHeader: React.FC<SiteHeaderProps> = ({
@@ -29,10 +32,12 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     ctaLabel,
     showCta = true,
     session,
+    stats,
 }) => {
     const { t } = useLanguage();
     const location = useLocation();
     const localizedPath = useLocalizedPath();
+    const navigate = useNavigate();
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [isDark, setIsDark] = React.useState(false);
 
@@ -103,12 +108,14 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                         {isDark ? '☀️' : '🌙'}
                     </button>
                     {session ? (
-                        <Link
-                            to={localizedPath('/profile')}
-                            className="text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 px-3 h-10 inline-flex items-center transition-colors"
-                        >
-                            {t('nav_profile')} ({session.user.email?.split('@')[0]})
-                        </Link>
+                        <UserMenu 
+                            session={session} 
+                            stats={stats} 
+                            onSignOut={async () => {
+                                await supabase.auth.signOut();
+                                navigate(localizedPath('/'));
+                            }} 
+                        />
                     ) : (
                         <button
                             onClick={onSignIn}

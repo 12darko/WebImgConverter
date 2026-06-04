@@ -4,9 +4,9 @@ import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
 import { AuthModal } from '../AuthModal';
 import { Helmet } from 'react-helmet-async';
-import { useLanguage } from '../../LanguageContext';
+import { useLanguage, useLocalizedPath } from '../../LanguageContext';
 import { AdSlot } from '../ads/AdSlot';
-import { supabase } from '../../services/supabase';
+import { supabase, getUserProfile } from '../../services/supabase';
 
 interface SiteShellProps {
     children: React.ReactNode;
@@ -37,6 +37,9 @@ export const SiteShell: React.FC<SiteShellProps> = ({
                 bg === 'grid' ? 'bg-white bg-grid-soft dark:bg-slate-900 dark:text-white' :
                     'bg-white dark:bg-slate-900 dark:text-white';
 
+    const localizedPath = useLocalizedPath();
+    const [stats, setStats] = useState<any>(null);
+
     const handleSignInClick = () => {
         if (onSignIn) {
             onSignIn();
@@ -46,15 +49,44 @@ export const SiteShell: React.FC<SiteShellProps> = ({
     };
 
     React.useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session } }) => setSession(session));
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
+        const fetchStats = async (userId: string) => {
+            try {
+                const profile = await getUserProfile(userId);
+                setStats(profile);
+            } catch (e) {
+                console.error('Error fetching stats in SiteShell:', e);
+            }
+        };
+
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            setSession(session);
+            if (session?.user) {
+                fetchStats(session.user.id);
+            }
+        });
+
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event, s) => {
+            setSession(s);
+            if (s?.user) {
+                fetchStats(s.user.id);
+            } else {
+                setStats(null);
+            }
+        });
         return () => subscription.unsubscribe();
     }, []);
 
     return (
         <div className={`w-full min-h-screen flex flex-col ${bgClass}`}>
             <Helmet htmlAttributes={{ lang: activeLang }} />
-            <SiteHeader onSignIn={handleSignInClick} onCta={onCta} ctaLabel={ctaLabel} showCta={showCta} session={session} />
+            <SiteHeader 
+                onSignIn={handleSignInClick} 
+                onCta={onCta || (() => navigate(localizedPath('/tools')))} 
+                ctaLabel={ctaLabel} 
+                showCta={showCta} 
+                session={session} 
+                stats={stats}
+            />
             <AdSlot />
             <main className="flex-1 flex flex-col w-full relative z-10">
                 {children}

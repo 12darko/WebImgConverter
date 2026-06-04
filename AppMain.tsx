@@ -25,6 +25,7 @@ import { AuthModal } from './components/AuthModal'; // Auth import
 import { SeoContent } from './components/SeoContent';
 import { Logo } from './components/layout/Logo';
 import { SiteFooter } from './components/layout/SiteFooter';
+import { UserMenu } from './components/layout/UserMenu';
 import { generateSmartFilename } from './services/aiNamingService';
 import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
 
@@ -904,23 +905,7 @@ function BanaConvertApp(props: AppProps = {}) {
             {/* Right: Auth & CTA */}
             <div className="flex items-center gap-5">
               {session ? (
-                <>
-                  <Link to="/profile" className="hidden lg:flex flex-col items-end group">
-                    <span className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold truncate max-w-[100px] group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-                      {session.user.email?.split('@')[0]}
-                    </span>
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-sm font-bold text-slate-900 dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">{stats.premiumTier === 'business' ? '∞' : stats.credits}</span>
-                      <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold">{t('credits_label')}</span>
-                    </div>
-                  </Link>
-                  {stats.isPremium && (
-                     <div className="hidden sm:flex items-center gap-2 bg-brand-50 dark:bg-brand-950/20 px-2 py-1 rounded-md border border-brand-100 dark:border-brand-900/50">
-                       <span className="text-brand-600 dark:text-brand-400 text-[10px] font-bold uppercase">{stats.premiumTier}</span>
-                     </div>
-                  )}
-                  <button onClick={handleSignOut} className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden sm:block">{t('logout_btn')}</button>
-                </>
+                <UserMenu session={session} stats={stats} onSignOut={handleSignOut} />
               ) : (
                 <button onClick={() => setIsAuthModalOpen(true)} className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors hidden sm:block">
                   {t('login_btn')}
@@ -943,7 +928,7 @@ function BanaConvertApp(props: AppProps = {}) {
       )}
 
       {/* Main Content Area */}
-      <main className="flex-1 w-full max-w-5xl mx-auto p-4 md:p-8 mt-6 flex flex-col" style={{ flexGrow: 1, flexShrink: 0, minHeight: '60vh' }}>
+      <main className="flex-1 w-full max-w-5xl mx-auto p-4 md:p-8 mt-6 flex flex-col">
         <div className="flex-1 flex flex-col gap-8">
 
           {/* Central Workspace: Upload & Files */}
