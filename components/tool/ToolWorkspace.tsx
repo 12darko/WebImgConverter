@@ -13,6 +13,7 @@ import {
     getImageDimensions,
     isHeicFile,
 } from '../../services/toolEngine';
+import { triggerAdsterraPopunder } from '../ads/popunder';
 
 const DEFAULT_FORMATS: FormatOption[] = [
     { value: 'webp' },
@@ -169,6 +170,7 @@ export const ToolWorkspace: React.FC<ToolWorkspaceProps> = ({
 
     const handleDownload = () => {
         if (!convertedBlob || !file) return;
+        triggerAdsterraPopunder();
         downloadBlob(convertedBlob, buildOutputName(file.name, targetFormat));
     };
 
