@@ -75,7 +75,7 @@ export default function RotateImagePage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/rotate-image" />
+                <link rel="canonical" href="https://webimgconverter.com/rotate-image" />
             </Helmet>
             <App
                 defaultTool="rotate-image"

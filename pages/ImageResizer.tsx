@@ -50,7 +50,7 @@ export default function ImageResizerPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/resize-image" />
+                <link rel="canonical" href="https://webimgconverter.com/resize-image" />
             </Helmet>
             
             <App

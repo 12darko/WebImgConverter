@@ -67,7 +67,7 @@ export default function AvifConverterPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/avif-converter" />
+                <link rel="canonical" href="https://webimgconverter.com/avif-converter" />
             </Helmet>
             <App
                 defaultTool="avif-converter"

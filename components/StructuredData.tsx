@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 interface StructuredDataProps {
@@ -21,11 +21,11 @@ export const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) =>
                 "@context": "https://schema.org",
                 "@type": "WebSite",
                 "name": "WebImgConverter",
-                "url": "https://WebImgConverter.com",
+                "url": "https://webimgconverter.com",
                 "description": "Free online image converter. Convert HEIC, WebP, PNG to JPG. AI background removal and image compression. Secure, fast, and privacy-focused.",
                 "potentialAction": {
                     "@type": "SearchAction",
-                    "target": "https://WebImgConverter.com/?q={search_term_string}",
+                    "target": "https://webimgconverter.com/?q={search_term_string}",
                     "query-input": "required name=search_term_string"
                 }
             };
@@ -36,8 +36,8 @@ export const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) =>
                 "@context": "https://schema.org",
                 "@type": "Organization",
                 "name": "WebImgConverter Inc.",
-                "url": "https://WebImgConverter.com",
-                "logo": "https://WebImgConverter.com/logo192.png",
+                "url": "https://webimgconverter.com",
+                "logo": "https://webimgconverter.com/logo192.png",
                 "contactPoint": {
                     "@type": "ContactPoint",
                     "email": "support@WebImgConverter.com",
@@ -53,7 +53,7 @@ export const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) =>
                 "@type": "SoftwareApplication",
                 "name": data?.name || "WebImgConverter Image Converter",
                 "description": data?.description || "Free online image conversion tool",
-                "url": data?.url || "https://WebImgConverter.com",
+                "url": data?.url || "https://webimgconverter.com",
                 "applicationCategory": "MultimediaApplication",
                 "operatingSystem": "Web Browser",
                 "offers": {
@@ -75,7 +75,7 @@ export const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) =>
                 "@type": "Article",
                 "headline": data?.name || "WebImgConverter Blog",
                 "description": data?.description || "",
-                "url": data?.url || "https://WebImgConverter.com/blog",
+                "url": data?.url || "https://webimgconverter.com/blog",
                 "datePublished": data?.datePublished || new Date().toISOString(),
                 "author": {
                     "@type": "Organization",
@@ -86,7 +86,7 @@ export const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) =>
                     "name": "WebImgConverter Inc.",
                     "logo": {
                         "@type": "ImageObject",
-                        "url": "https://WebImgConverter.com/logo192.png"
+                        "url": "https://webimgconverter.com/logo192.png"
                     }
                 }
             };

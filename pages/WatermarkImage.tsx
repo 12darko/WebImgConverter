@@ -75,7 +75,7 @@ export default function WatermarkImagePage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/watermark-image" />
+                <link rel="canonical" href="https://webimgconverter.com/watermark-image" />
             </Helmet>
             <App
                 defaultTool="watermark-image"

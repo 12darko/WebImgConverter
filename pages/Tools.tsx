@@ -294,7 +294,7 @@ export default function ToolsPage() {
             <Helmet>
                 <title>{t.metaTitle}</title>
                 <meta name="description" content={t.metaDesc} />
-                <link rel="canonical" href="https://WebImgConverter.com/tools" />
+                <link rel="canonical" href="https://webimgconverter.com/tools" />
             </Helmet>
 
             <section className="max-w-6xl mx-auto px-5 md:px-8 py-12 md:py-20">

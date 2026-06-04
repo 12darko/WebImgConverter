@@ -1,4 +1,4 @@
-ï»¿import React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { SiteShell, DocsSidebar, DocsSidebarGroup } from '../components/layout';
@@ -134,9 +134,9 @@ export default function ApiDocsPage() {
     return (
         <SiteShell onCta={() => navigate('/')} ctaLabel="Get Started" bg="white">
             <Helmet>
-                <title>API Documentation â€” WebImgConverter</title>
+                <title>API Documentation — WebImgConverter</title>
                 <meta name="description" content="WebImgConverter API reference: authentication, /convert, /optimize, /resize endpoints, rate limits, webhooks." />
-                <link rel="canonical" href="https://WebImgConverter.com/api" />
+                <link rel="canonical" href="https://webimgconverter.com/api" />
             </Helmet>
 
             <section className="max-w-7xl mx-auto px-5 md:px-8 py-10 md:py-14">
@@ -258,7 +258,7 @@ export default function ApiDocsPage() {
                                     <div className="min-w-0 flex-1">
                                         <div className="flex items-center gap-2 mb-0.5">
                                             <span className="font-mono text-xs font-bold text-slate-900">{s.code}</span>
-                                            <span className="text-[11px] text-slate-500">â€” {s.label}</span>
+                                            <span className="text-[11px] text-slate-500">— {s.label}</span>
                                         </div>
                                         <div className="text-[12px] text-slate-500 leading-relaxed">{s.desc}</div>
                                     </div>

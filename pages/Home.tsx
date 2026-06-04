@@ -253,7 +253,7 @@ export default function HomePage() {
             <Helmet>
                 <title>{t.metaTitle}</title>
                 <meta name="description" content={t.metaDesc} />
-                <link rel="canonical" href="https://WebImgConverter.com/" />
+                <link rel="canonical" href="https://webimgconverter.com/" />
             </Helmet>
             <HomePageSchema />
 

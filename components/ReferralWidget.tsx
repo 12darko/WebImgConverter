@@ -1,4 +1,4 @@
-ï»¿
+
 import React, { useState } from 'react';
 import { useLanguage } from '../LanguageContext';
 
@@ -12,9 +12,9 @@ export const ReferralWidget: React.FC<ReferralWidgetProps> = ({ onReferralSucces
   const [copied, setCopied] = useState(false);
 
   const handleCopyLink = () => {
-    // GerÃ§ek KullanÄ±cÄ± ID'si ile link oluÅŸtur
+    // Gerçek Kullanýcý ID'si ile link oluþtur
     const code = userId || 'guest';
-    const referralLink = `https://WebImgConverter.com/?ref=${code}`;
+    const referralLink = `https://webimgconverter.com/?ref=${code}`;
     navigator.clipboard.writeText(referralLink);
 
     setCopied(true);

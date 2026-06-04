@@ -67,7 +67,7 @@ export default function SmartCropperPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/smart-cropper" />
+                <link rel="canonical" href="https://webimgconverter.com/smart-cropper" />
             </Helmet>
             <App
                 defaultTool="crop"

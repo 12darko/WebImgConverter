@@ -68,7 +68,7 @@ export default function RemoveBackgroundPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/remove-background" />
+                <link rel="canonical" href="https://webimgconverter.com/remove-background" />
             </Helmet>
             <App
                 defaultTool="remove-background"

@@ -67,7 +67,7 @@ export default function WebpConverterPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/webp-converter" />
+                <link rel="canonical" href="https://webimgconverter.com/webp-converter" />
             </Helmet>
             <App
                 defaultTool="webp-converter"

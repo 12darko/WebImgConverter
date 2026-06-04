@@ -135,7 +135,7 @@ export default function HeicConverterPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/heic-converter" />
+                <link rel="canonical" href="https://webimgconverter.com/heic-converter" />
             </Helmet>
             <App
                 defaultTool="convert"

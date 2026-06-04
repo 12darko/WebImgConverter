@@ -69,7 +69,7 @@ export default function SvgConverterPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/svg-converter" />
+                <link rel="canonical" href="https://webimgconverter.com/svg-converter" />
             </Helmet>
             <App
                 defaultTool="convert"

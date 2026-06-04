@@ -67,7 +67,7 @@ export default function JpgConverterPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/jpg-converter" />
+                <link rel="canonical" href="https://webimgconverter.com/jpg-converter" />
             </Helmet>
             <App
                 defaultTool="jpg-converter"

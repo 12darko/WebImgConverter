@@ -305,7 +305,7 @@ export default function PricingPage() {
             <Helmet>
                 <title>{t('nav_pricing')} | WebImgConverter</title>
                 <meta name="description" content={t('pricing_subtitle')} />
-                <link rel="canonical" href="https://WebImgConverter.com/pricing" />
+                <link rel="canonical" href="https://webimgconverter.com/pricing" />
             </Helmet>
 
             <section className="max-w-6xl mx-auto px-5 md:px-8 py-12 md:py-16">

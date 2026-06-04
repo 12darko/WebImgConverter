@@ -135,7 +135,7 @@ export default function CompressImagePage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/compress-image" />
+                <link rel="canonical" href="https://webimgconverter.com/compress-image" />
             </Helmet>
             <App
                 defaultTool="compress-image"

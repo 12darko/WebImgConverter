@@ -67,7 +67,7 @@ export default function FaviconGeneratorPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/favicon-generator" />
+                <link rel="canonical" href="https://webimgconverter.com/favicon-generator" />
             </Helmet>
             <App
                 defaultTool="favicon-generator"

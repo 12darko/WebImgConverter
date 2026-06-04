@@ -68,7 +68,7 @@ export default function PngConverterPage() {
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/png-converter" />
+                <link rel="canonical" href="https://webimgconverter.com/png-converter" />
             </Helmet>
             <App
                 defaultTool="convert"

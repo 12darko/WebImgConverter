@@ -1,4 +1,4 @@
-ï»¿import React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate, Link } from 'react-router-dom';
 import { SiteShell } from '../components/layout';
@@ -22,54 +22,54 @@ const Icon = (paths: React.ReactNode) => (
 
 const content = {
     tr: {
-        metaTitle: 'YardÄ±m Merkezi â€” WebImgConverter Destek',
-        metaDesc: 'Bilgi bankamÄ±zda arama yapÄ±n veya WebImgConverter\'Ä± en iyi ÅŸekilde kullanmak iÃ§in ihtiyacÄ±nÄ±z olan cevaplarÄ± bulmak Ã¼zere kategorilere gÃ¶z atÄ±n.',
-        ctaLabel: 'Hemen BaÅŸla',
-        heading: 'Size nasÄ±l yardÄ±mcÄ± olabiliriz?',
-        subheading: 'Bilgi bankamÄ±zda arama yapÄ±n veya WebImgConverter\'Ä± en iyi ÅŸekilde kullanmak iÃ§in ihtiyacÄ±nÄ±z olan cevaplarÄ± bulmak Ã¼zere kategorilere gÃ¶z atÄ±n.',
-        searchPlaceholder: 'Makale, eÄŸitim veya sorun giderme rehberi arayÄ±n',
+        metaTitle: 'Yardım Merkezi — WebImgConverter Destek',
+        metaDesc: 'Bilgi bankamızda arama yapın veya WebImgConverter\'ı en iyi şekilde kullanmak için ihtiyacınız olan cevapları bulmak üzere kategorilere göz atın.',
+        ctaLabel: 'Hemen Başla',
+        heading: 'Size nasıl yardımcı olabiliriz?',
+        subheading: 'Bilgi bankamızda arama yapın veya WebImgConverter\'ı en iyi şekilde kullanmak için ihtiyacınız olan cevapları bulmak üzere kategorilere göz atın.',
+        searchPlaceholder: 'Makale, eğitim veya sorun giderme rehberi arayın',
         categories: {
-            'getting-started': { title: 'BaÅŸlarken', description: 'HesabÄ±nÄ±zÄ± oluÅŸturmak ve ilk projenizi baÅŸlatmak iÃ§in hÄ±zlÄ± rehberler.' },
-            'account': { title: 'Hesap ve FaturalandÄ±rma', description: 'AboneliÄŸinizi, ekip Ã¼yelerinizi ve Ã¶deme yÃ¶ntemlerinizi yÃ¶netin.' },
-            'troubleshooting': { title: 'Sorun Giderme', description: 'SÄ±k karÅŸÄ±laÅŸÄ±lan sorunlar, hata mesajlarÄ± ve sistem durumu hakkÄ±nda Ã§Ã¶zÃ¼mler.' },
-            'api': { title: 'API Entegrasyonu', description: 'GeliÅŸtirici belgeleri, uÃ§ noktalar ve kimlik doÄŸrulama rehberleri.' }
+            'getting-started': { title: 'Başlarken', description: 'Hesabınızı oluşturmak ve ilk projenizi başlatmak için hızlı rehberler.' },
+            'account': { title: 'Hesap ve Faturalandırma', description: 'Aboneliğinizi, ekip üyelerinizi ve ödeme yöntemlerinizi yönetin.' },
+            'troubleshooting': { title: 'Sorun Giderme', description: 'Sık karşılaşılan sorunlar, hata mesajları ve sistem durumu hakkında çözümler.' },
+            'api': { title: 'API Entegrasyonu', description: 'Geliştirici belgeleri, uç noktalar ve kimlik doğrulama rehberleri.' }
         },
-        popularArticlesTitle: 'PopÃ¼ler Makaleler',
+        popularArticlesTitle: 'Popüler Makaleler',
         popularArticles: [
-            { title: 'Ã‡alÄ±ÅŸma alanÄ±nÄ±za ekip Ã¼yeleri nasÄ±l davet edilir?', href: '#' },
-            { title: 'AylÄ±k fatura Ã¶zetinizi anlama', href: '#' },
-            { title: 'Projeleriniz iÃ§in Ã¶zel alan adlarÄ± ayarlama', href: '#' },
-            { title: 'BaÄŸlantÄ± zaman aÅŸÄ±mÄ± sorunlarÄ±nÄ± giderme', href: '#' }
+            { title: 'Çalışma alanınıza ekip üyeleri nasıl davet edilir?', href: '#' },
+            { title: 'Aylık fatura özetinizi anlama', href: '#' },
+            { title: 'Projeleriniz için özel alan adları ayarlama', href: '#' },
+            { title: 'Bağlantı zaman aşımı sorunlarını giderme', href: '#' }
         ],
-        stillNeedHelp: 'HÃ¢lÃ¢ yardÄ±ma mÄ± ihtiyacÄ±nÄ±z var?',
-        supportTeamReady: 'Destek ekibimiz size yardÄ±mcÄ± olmaya hazÄ±r.',
+        stillNeedHelp: 'Hâlâ yardıma mı ihtiyacınız var?',
+        supportTeamReady: 'Destek ekibimiz size yardımcı olmaya hazır.',
         emailSupport: {
-            title: 'E-posta DesteÄŸi',
-            desc: 'Bize detaylÄ± bir mesaj gÃ¶nderin, 24 saat iÃ§inde size dÃ¶nÃ¼ÅŸ yapalÄ±m.',
-            btnOpen: 'E-posta GÃ¶nder',
+            title: 'E-posta Desteği',
+            desc: 'Bize detaylı bir mesaj gönderin, 24 saat içinde size dönüş yapalım.',
+            btnOpen: 'E-posta Gönder',
             btnClose: 'Formu Kapat'
         },
         liveChat: {
-            title: 'CanlÄ± Sohbet',
-            desc: 'Mesai saatleri iÃ§inde anÄ±nda destek iÃ§in bir mÃ¼ÅŸteri temsilcisiyle doÄŸrudan sohbet edin.',
-            btn: 'Sohbeti BaÅŸlat'
+            title: 'Canlı Sohbet',
+            desc: 'Mesai saatleri içinde anında destek için bir müşteri temsilcisiyle doğrudan sohbet edin.',
+            btn: 'Sohbeti Başlat'
         },
         form: {
-            title: 'Bize mesaj gÃ¶nderin',
+            title: 'Bize mesaj gönderin',
             email: 'E-posta Adresiniz',
             emailPlaceholder: 'siz@ornek.com',
             subject: 'Konu',
-            subjectPlaceholder: 'Size nasÄ±l yardÄ±mcÄ± olabiliriz?',
+            subjectPlaceholder: 'Size nasıl yardımcı olabiliriz?',
             message: 'Mesaj',
-            messagePlaceholder: 'Sorununuzu veya sorunuzu aÃ§Ä±klayÄ±n...',
-            success: 'TeÅŸekkÃ¼rler! Talebiniz alÄ±ndÄ±. Size 24 saat iÃ§inde dÃ¶nÃ¼ÅŸ yapacaÄŸÄ±z.',
-            error: 'Talebiniz gÃ¶nderilemedi. LÃ¼tfen tekrar deneyin veya doÄŸrudan bize e-posta gÃ¶nderin.',
-            submit: 'Talebi GÃ¶nder',
-            submitting: 'GÃ¶nderiliyor...'
+            messagePlaceholder: 'Sorununuzu veya sorunuzu açıklayın...',
+            success: 'Teşekkürler! Talebiniz alındı. Size 24 saat içinde dönüş yapacağız.',
+            error: 'Talebiniz gönderilemedi. Lütfen tekrar deneyin veya doğrudan bize e-posta gönderin.',
+            submit: 'Talebi Gönder',
+            submitting: 'Gönderiliyor...'
         }
     },
     en: {
-        metaTitle: 'Help Center â€” WebImgConverter Support',
+        metaTitle: 'Help Center — WebImgConverter Support',
         metaDesc: 'Search our knowledge base or browse categories below to find the answers you need to make the most of WebImgConverter.',
         ctaLabel: 'Get Started',
         heading: 'How can we help?',
@@ -116,36 +116,36 @@ const content = {
         }
     },
     de: {
-        metaTitle: 'Hilfe-Center â€” WebImgConverter Support',
-        metaDesc: 'Durchsuchen Sie unsere Wissensdatenbank oder stÃ¶bern Sie in den Kategorien unten, um Antworten zu finden.',
+        metaTitle: 'Hilfe-Center — WebImgConverter Support',
+        metaDesc: 'Durchsuchen Sie unsere Wissensdatenbank oder stöbern Sie in den Kategorien unten, um Antworten zu finden.',
         ctaLabel: 'Jetzt Starten',
-        heading: 'Wie kÃ¶nnen wir helfen?',
-        subheading: 'Durchsuchen Sie unsere Wissensdatenbank oder stÃ¶bern Sie in den Kategorien unten, um Antworten zu finden.',
+        heading: 'Wie können wir helfen?',
+        subheading: 'Durchsuchen Sie unsere Wissensdatenbank oder stöbern Sie in den Kategorien unten, um Antworten zu finden.',
         searchPlaceholder: 'Suchen Sie nach Artikeln, Tutorials oder Fehlerbehebung',
         categories: {
             'getting-started': { title: 'Erste Schritte', description: 'Kurzanleitungen zur Einrichtung Ihres Kontos und zum Start Ihres ersten Projekts.' },
             'account': { title: 'Konto & Abrechnung', description: 'Verwalten Sie Ihr Abonnement, Teammitglieder und Zahlungsmethoden.' },
-            'troubleshooting': { title: 'Fehlerbehebung', description: 'LÃ¶sungen fÃ¼r hÃ¤ufige Probleme, Fehlermeldungen und Systemstatus.' },
-            'api': { title: 'API-Integration', description: 'Entwicklerdokumentation, Endpunkte und AuthentifizierungsleitfÃ¤den.' }
+            'troubleshooting': { title: 'Fehlerbehebung', description: 'Lösungen für häufige Probleme, Fehlermeldungen und Systemstatus.' },
+            'api': { title: 'API-Integration', description: 'Entwicklerdokumentation, Endpunkte und Authentifizierungsleitfäden.' }
         },
         popularArticlesTitle: 'Beliebte Artikel',
         popularArticles: [
-            { title: 'Wie man Teammitglieder in den Workspace einlÃ¤dt', href: '#' },
+            { title: 'Wie man Teammitglieder in den Workspace einlädt', href: '#' },
             { title: 'Ihre monatliche Abrechnung verstehen', href: '#' },
-            { title: 'Einrichten von benutzerdefinierten Domains fÃ¼r Ihre Projekte', href: '#' },
+            { title: 'Einrichten von benutzerdefinierten Domains für Ihre Projekte', href: '#' },
             { title: 'Fehlerbehebung bei Verbindungs-Timeouts', href: '#' }
         ],
-        stillNeedHelp: 'BenÃ¶tigen Sie noch Hilfe?',
+        stillNeedHelp: 'Benötigen Sie noch Hilfe?',
         supportTeamReady: 'Unser Support-Team steht bereit, um Ihnen zu helfen.',
         emailSupport: {
             title: 'E-Mail-Support',
             desc: 'Senden Sie uns eine detaillierte Nachricht und wir melden uns innerhalb von 24 Stunden.',
             btnOpen: 'Eine E-Mail senden',
-            btnClose: 'Formular schlieÃŸen'
+            btnClose: 'Formular schließen'
         },
         liveChat: {
             title: 'Live-Chat',
-            desc: 'Chatten Sie wÃ¤hrend der GeschÃ¤ftszeiten direkt mit einem Support-Mitarbeiter.',
+            desc: 'Chatten Sie während der Geschäftszeiten direkt mit einem Support-Mitarbeiter.',
             btn: 'Chat starten'
         },
         form: {
@@ -153,7 +153,7 @@ const content = {
             email: 'Ihre E-Mail',
             emailPlaceholder: 'sie@beispiel.com',
             subject: 'Betreff',
-            subjectPlaceholder: 'Wie kÃ¶nnen wir helfen?',
+            subjectPlaceholder: 'Wie können wir helfen?',
             message: 'Nachricht',
             messagePlaceholder: 'Beschreiben Sie Ihr Problem oder Ihre Frage...',
             success: 'Danke! Ihr Ticket wurde eingereicht. Wir melden uns innerhalb von 24 Stunden.',
@@ -163,37 +163,37 @@ const content = {
         }
     },
     fr: {
-        metaTitle: 'Centre d\'Aide â€” Support WebImgConverter',
-        metaDesc: 'Recherchez dans notre base de connaissances ou parcourez les catÃ©gories ci-dessous pour trouver des rÃ©ponses.',
+        metaTitle: 'Centre d\'Aide — Support WebImgConverter',
+        metaDesc: 'Recherchez dans notre base de connaissances ou parcourez les catégories ci-dessous pour trouver des réponses.',
         ctaLabel: 'Commencer',
         heading: 'Comment pouvons-nous vous aider ?',
-        subheading: 'Recherchez dans notre base de connaissances ou parcourez les catÃ©gories ci-dessous pour trouver les rÃ©ponses dont vous avez besoin.',
-        searchPlaceholder: 'Rechercher des articles, tutoriels ou dÃ©pannage',
+        subheading: 'Recherchez dans notre base de connaissances ou parcourez les catégories ci-dessous pour trouver les réponses dont vous avez besoin.',
+        searchPlaceholder: 'Rechercher des articles, tutoriels ou dépannage',
         categories: {
             'getting-started': { title: 'Pour Commencer', description: 'Guides rapides pour configurer votre compte et lancer votre premier projet.' },
-            'account': { title: 'Compte & Facturation', description: 'GÃ©rez votre abonnement, les membres de l\'Ã©quipe et les mÃ©thodes de paiement.' },
-            'troubleshooting': { title: 'DÃ©pannage', description: 'Solutions aux problÃ¨mes courants, messages d\'erreur et Ã©tat du systÃ¨me.' },
-            'api': { title: 'IntÃ©gration API', description: 'Documentation dÃ©veloppeur, points de terminaison et guides d\'authentification.' }
+            'account': { title: 'Compte & Facturation', description: 'Gérez votre abonnement, les membres de l\'équipe et les méthodes de paiement.' },
+            'troubleshooting': { title: 'Dépannage', description: 'Solutions aux problèmes courants, messages d\'erreur et état du système.' },
+            'api': { title: 'Intégration API', description: 'Documentation développeur, points de terminaison et guides d\'authentification.' }
         },
         popularArticlesTitle: 'Articles Populaires',
         popularArticles: [
-            { title: 'Comment inviter des membres d\'Ã©quipe dans votre espace', href: '#' },
-            { title: 'Comprendre votre relevÃ© de facturation mensuel', href: '#' },
-            { title: 'Configuration de domaines personnalisÃ©s pour vos projets', href: '#' },
-            { title: 'DÃ©pannage des dÃ©lais de connexion', href: '#' }
+            { title: 'Comment inviter des membres d\'équipe dans votre espace', href: '#' },
+            { title: 'Comprendre votre relevé de facturation mensuel', href: '#' },
+            { title: 'Configuration de domaines personnalisés pour vos projets', href: '#' },
+            { title: 'Dépannage des délais de connexion', href: '#' }
         ],
         stillNeedHelp: 'Toujours besoin d\'aide ?',
-        supportTeamReady: 'Notre Ã©quipe de support est prÃªte Ã  vous aider.',
+        supportTeamReady: 'Notre équipe de support est prête à vous aider.',
         emailSupport: {
             title: 'Support par E-mail',
-            desc: 'Envoyez-nous un message dÃ©taillÃ© et nous vous rÃ©pondrons dans les 24 heures.',
+            desc: 'Envoyez-nous un message détaillé et nous vous répondrons dans les 24 heures.',
             btnOpen: 'Envoyer un e-mail',
             btnClose: 'Fermer le formulaire'
         },
         liveChat: {
             title: 'Chat en Direct',
             desc: 'Discutez directement avec un agent de support pendant les heures de bureau.',
-            btn: 'DÃ©marrer le Chat'
+            btn: 'Démarrer le Chat'
         },
         form: {
             title: 'Envoyez-nous un message',
@@ -202,9 +202,9 @@ const content = {
             subject: 'Sujet',
             subjectPlaceholder: 'Comment pouvons-nous aider ?',
             message: 'Message',
-            messagePlaceholder: 'DÃ©crivez votre problÃ¨me ou question...',
-            success: 'Merci ! Votre billet a Ã©tÃ© soumis. Nous vous rÃ©pondrons dans les 24 heures.',
-            error: 'Impossible de soumettre votre billet. Veuillez rÃ©essayer.',
+            messagePlaceholder: 'Décrivez votre problème ou question...',
+            success: 'Merci ! Votre billet a été soumis. Nous vous répondrons dans les 24 heures.',
+            error: 'Impossible de soumettre votre billet. Veuillez réessayer.',
             submit: 'Soumettre',
             submitting: 'Envoi en cours...'
         }
@@ -308,7 +308,7 @@ export default function SupportPage() {
             <Helmet>
                 <title>{t.metaTitle}</title>
                 <meta name="description" content={t.metaDesc} />
-                <link rel="canonical" href="https://WebImgConverter.com/support" />
+                <link rel="canonical" href="https://webimgconverter.com/support" />
             </Helmet>
 
             <section className="bg-brand-50/30 dark:bg-brand-950/10 border-b border-slate-100 dark:border-slate-800/50">

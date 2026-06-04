@@ -1,4 +1,4 @@
-ï»¿import React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
@@ -6,19 +6,19 @@ import { LegalFooter } from '../components/LegalFooter';
 
 const content = {
     tr: {
-        title: 'Ä°letiÅŸim | WebImgConverter',
-        description: 'WebImgConverter ile iletiÅŸime geÃ§in. Destek ve sorularÄ±nÄ±z iÃ§in bize ulaÅŸÄ±n.',
-        heading: 'Ä°letiÅŸim',
-        intro: 'SorularÄ±nÄ±z, Ã¶nerileriniz veya destek talepleriniz iÃ§in bizimle iletiÅŸime geÃ§ebilirsiniz.',
+        title: 'İletişim | WebImgConverter',
+        description: 'WebImgConverter ile iletişime geçin. Destek ve sorularınız için bize ulaşın.',
+        heading: 'İletişim',
+        intro: 'Sorularınız, önerileriniz veya destek talepleriniz için bizimle iletişime geçebilirsiniz.',
         email: 'E-posta',
-        emailDesc: 'Genel sorular ve destek iÃ§in:',
-        response: 'YanÄ±t SÃ¼resi',
-        responseDesc: 'E-postalara genellikle 24-48 saat iÃ§inde yanÄ±t veriyoruz.',
-        faq: 'SÄ±k Sorulan Sorular',
+        emailDesc: 'Genel sorular ve destek için:',
+        response: 'Yanıt Süresi',
+        responseDesc: 'E-postalara genellikle 24-48 saat içinde yanıt veriyoruz.',
+        faq: 'Sık Sorulan Sorular',
         faqs: [
-            { q: 'DosyalarÄ±m gÃ¼vende mi?', a: 'Evet. TÃ¼m iÅŸlemler gÃ¼venli geÃ§ici sunucularda anlÄ±k olarak iÅŸlenir ve hemen silinir.' },
-            { q: 'Premium Ã¼yelik nasÄ±l iptal edilir?', a: 'Premium Ã¼yeliÄŸinizi Lemon Squeezy mÃ¼ÅŸteri portalÄ±ndan iptal edebilirsiniz.' },
-            { q: 'Hangi formatlarÄ± destekliyorsunuz?', a: 'HEIC, PNG, JPG, WEBP, AVIF ve daha fazlasÄ±nÄ± destekliyoruz.' }
+            { q: 'Dosyalarım güvende mi?', a: 'Evet. Tüm işlemler güvenli geçici sunucularda anlık olarak işlenir ve hemen silinir.' },
+            { q: 'Premium üyelik nasıl iptal edilir?', a: 'Premium üyeliğinizi Lemon Squeezy müşteri portalından iptal edebilirsiniz.' },
+            { q: 'Hangi formatları destekliyorsunuz?', a: 'HEIC, PNG, JPG, WEBP, AVIF ve daha fazlasını destekliyoruz.' }
         ]
     },
     en: {
@@ -39,18 +39,18 @@ const content = {
     },
     de: {
         title: 'Kontakt | WebImgConverter',
-        description: 'Kontaktieren Sie WebImgConverter. Wenden Sie sich an uns fÃ¼r Support und Fragen.',
+        description: 'Kontaktieren Sie WebImgConverter. Wenden Sie sich an uns für Support und Fragen.',
         heading: 'Kontakt',
-        intro: 'Sie kÃ¶nnen uns fÃ¼r Ihre Fragen, VorschlÃ¤ge oder Support-Anfragen kontaktieren.',
+        intro: 'Sie können uns für Ihre Fragen, Vorschläge oder Support-Anfragen kontaktieren.',
         email: 'E-Mail',
-        emailDesc: 'FÃ¼r allgemeine Fragen und Support:',
+        emailDesc: 'Für allgemeine Fragen und Support:',
         response: 'Antwortzeit',
         responseDesc: 'Wir antworten normalerweise innerhalb von 24-48 Stunden auf E-Mails.',
-        faq: 'HÃ¤ufig gestellte Fragen',
+        faq: 'Häufig gestellte Fragen',
         faqs: [
-            { q: 'Sind meine Dateien sicher?', a: 'Ja. Die gesamte Verarbeitung erfolgt sofort auf sicheren temporÃ¤ren Servern und Dateien werden sofort gelÃ¶scht.' },
-            { q: 'Wie kÃ¼ndige ich meine Premium-Mitgliedschaft?', a: 'Sie kÃ¶nnen Ihre Premium-Mitgliedschaft Ã¼ber das Lemon Squeezy Kundenportal kÃ¼ndigen.' },
-            { q: 'Welche Formate unterstÃ¼tzen Sie?', a: 'Wir unterstÃ¼tzen HEIC, PNG, JPG, WEBP, AVIF und mehr.' }
+            { q: 'Sind meine Dateien sicher?', a: 'Ja. Die gesamte Verarbeitung erfolgt sofort auf sicheren temporären Servern und Dateien werden sofort gelöscht.' },
+            { q: 'Wie kündige ich meine Premium-Mitgliedschaft?', a: 'Sie können Ihre Premium-Mitgliedschaft über das Lemon Squeezy Kundenportal kündigen.' },
+            { q: 'Welche Formate unterstützen Sie?', a: 'Wir unterstützen HEIC, PNG, JPG, WEBP, AVIF und mehr.' }
         ]
     },
     fr: {
@@ -59,12 +59,12 @@ const content = {
         heading: 'Contact',
         intro: 'Vous pouvez nous contacter pour vos questions, suggestions ou demandes de support.',
         email: 'E-mail',
-        emailDesc: 'Pour les questions gÃ©nÃ©rales et le support:',
-        response: 'Temps de rÃ©ponse',
-        responseDesc: 'Nous rÃ©pondons gÃ©nÃ©ralement aux e-mails dans les 24-48 heures.',
-        faq: 'Questions FrÃ©quentes',
+        emailDesc: 'Pour les questions générales et le support:',
+        response: 'Temps de réponse',
+        responseDesc: 'Nous répondons généralement aux e-mails dans les 24-48 heures.',
+        faq: 'Questions Fréquentes',
         faqs: [
-            { q: 'Mes fichiers sont-ils en sÃ©curitÃ©?', a: 'Oui. La plupart des traitements se font dans le navigateur. Les tÃ¢ches IA sont traitÃ©es sur des serveurs sÃ©curisÃ©s et supprimÃ©es immÃ©diatement.' },
+            { q: 'Mes fichiers sont-ils en sécurité?', a: 'Oui. La plupart des traitements se font dans le navigateur. Les tâches IA sont traitées sur des serveurs sécurisés et supprimées immédiatement.' },
             { q: 'Comment annuler mon abonnement premium?', a: 'Vous pouvez annuler votre abonnement premium via le portail client Lemon Squeezy.' },
             { q: 'Quels formats supportez-vous?', a: 'Nous supportons HEIC, PNG, JPG, WEBP, AVIF et plus.' }
         ]
@@ -81,14 +81,14 @@ export default function ContactPage() {
     const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
     const t = content[activeLang] || content.tr;
     const navigate = useNavigate();
-    const ctaLabel = activeLang === 'tr' ? 'Hemen BaÅŸla' : activeLang === 'de' ? 'Jetzt Starten' : activeLang === 'fr' ? 'Commencer' : 'Start Now';
+    const ctaLabel = activeLang === 'tr' ? 'Hemen Başla' : activeLang === 'de' ? 'Jetzt Starten' : activeLang === 'fr' ? 'Commencer' : 'Start Now';
 
     return (
         <SiteShell onCta={() => navigate('/')} ctaLabel={ctaLabel} bg="white">
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />
-                <link rel="canonical" href="https://WebImgConverter.com/contact" />
+                <link rel="canonical" href="https://webimgconverter.com/contact" />
             </Helmet>
 
             <section className="max-w-4xl mx-auto px-5 md:px-8 py-12 md:py-20">
@@ -100,7 +100,7 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
                     <div className="bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 shadow-card rounded-2xl p-6 md:p-8 text-center hover:border-brand-300 dark:hover:border-brand-700 transition-colors">
                         <div className="w-12 h-12 mx-auto rounded-xl bg-brand-50 dark:bg-brand-900/30 border border-brand-100 dark:border-brand-800/50 flex items-center justify-center text-brand-600 dark:text-brand-400 mb-4 text-xl">
-                            ğŸ“§
+                            ??
                         </div>
                         <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{t.email}</h2>
                         <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">{t.emailDesc}</p>
@@ -110,7 +110,7 @@ export default function ContactPage() {
                     </div>
                     <div className="bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 shadow-card rounded-2xl p-6 md:p-8 text-center hover:border-brand-300 dark:hover:border-brand-700 transition-colors">
                         <div className="w-12 h-12 mx-auto rounded-xl bg-brand-50 dark:bg-brand-900/30 border border-brand-100 dark:border-brand-800/50 flex items-center justify-center text-brand-600 dark:text-brand-400 mb-4 text-xl">
-                            â±ï¸
+                            ??
                         </div>
                         <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{t.response}</h2>
                         <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{t.responseDesc}</p>
