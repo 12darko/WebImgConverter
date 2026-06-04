@@ -20,7 +20,7 @@ export const SiteFooter: React.FC = () => {
     const localizedPath = useLocalizedPath();
 
     return (
-        <footer className="mt-auto">
+        <footer className="mt-auto border-t border-slate-100 dark:border-slate-800/50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
             <div className="max-w-7xl mx-auto px-5 md:px-8 py-6">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
