@@ -43,9 +43,10 @@ const content = {
             'rotate-image': { name: 'Görsel Döndür', description: 'Görsellerinizi yatay/dikey çevirin veya istediğiniz açıda döndürün.' },
             'watermark-image': { name: 'Filigran Ekle', description: 'Görsellerinize metin veya logo ile filigran (watermark) ekleyin.' },
             'black-and-white': { name: 'Siyah Beyaz Yap', description: 'Görsellerinizi tek tıkla siyah beyaz (grayscale) formatına dönüştürün.' },
-            'webp-converter': { name: 'WebP Dönüştürücü', description: 'WebP dosyalarınızı JPG veya PNG formatına çevirin. Çıktı formatını kendiniz seçin, tek araçla her şey.' },
-            'jpg-converter': { name: 'JPG Dönüştürücü', description: 'JPG/JPEG dosyalarınızı PNG veya WebP formatına çevirin. Şeffaf PNG ya da modern WebP, karar sizin.' },
-            'general-tool': { name: 'Gelişmiş Format Araçları', description: 'Tüm formatlar (JPG, PNG, WebP, AVIF, HEIC vb.) arasında dönüşüm yapabileceğiniz ana aracımız.' }
+            'webp-converter': { name: 'WebP Dönüştürücü', description: 'WebP dosyalarınızı JPG veya PNG\'ye dönüştürün.' },
+            'jpg-converter': { name: 'JPG Dönüştürücü', description: 'JPG/JPEG dosyalarınızı PNG veya WebP\'ye dönüştürün.' },
+            'image-resizer': { name: 'Görsel Yeniden Boyutlandırma', description: 'Görsellerinizi istediğiniz piksel (en x boy) boyutuna getirin.' },
+            'general-tool': { name: 'Hepsi Bir Arada Araç', description: 'Tüm formatlar arasında (JPG, PNG, WebP, AVIF, HEIC vb.) dönüştürme yapmak için.' }
         }
     },
     en: {
@@ -69,9 +70,10 @@ const content = {
             'rotate-image': { name: 'Rotate Image', description: 'Flip your images horizontally/vertically or rotate them at any angle.' },
             'watermark-image': { name: 'Watermark Image', description: 'Add text or logo watermark to your images to protect your copyright.' },
             'black-and-white': { name: 'Black & White', description: 'Convert your colorful images to black and white (grayscale) with one click.' },
-            'webp-converter': { name: 'WebP Converter', description: 'Convert WebP files to JPG or PNG format. You pick the output — one tool, all formats.' },
-            'jpg-converter': { name: 'JPG Converter', description: 'Convert JPG/JPEG files to PNG or WebP format. Transparent PNG or modern WebP, your call.' },
-            'general-tool': { name: 'All-in-One Tool', description: 'Our general tool to convert between all formats (JPG, PNG, WebP, AVIF, HEIC, etc.).' }
+            'webp-converter': { name: 'WebP Converter', description: 'Convert your WebP files to JPG or PNG.' },
+            'jpg-converter': { name: 'JPG Converter', description: 'Convert your JPG/JPEG files to PNG or WebP.' },
+            'image-resizer': { name: 'Image Resizer', description: 'Resize your images to any pixel dimensions (width x height).' },
+            'general-tool': { name: 'All-in-One Tool', description: 'Our general tool to convert between all formats (JPG, PNG, WebP, AVIF, HEIC etc.).' }
         }
     },
     de: {
@@ -95,9 +97,10 @@ const content = {
             'rotate-image': { name: 'Bild Drehen', description: 'Spiegeln Sie Ihre Bilder horizontal/vertikal oder drehen Sie sie.' },
             'watermark-image': { name: 'Wasserzeichen', description: 'Fügen Sie Text- oder Logo-Wasserzeichen hinzu, um Ihr Urheberrecht zu schützen.' },
             'black-and-white': { name: 'Schwarz-Weiß', description: 'Konvertieren Sie Ihre Bilder mit einem Klick in Schwarz-Weiß (Graustufen).' },
-            'webp-converter': { name: 'WebP Konverter', description: 'Konvertieren Sie WebP-Dateien in JPG oder PNG. Sie wählen das Ausgabeformat — ein Tool für alles.' },
-            'jpg-converter': { name: 'JPG Konverter', description: 'Konvertieren Sie JPG/JPEG in PNG oder WebP. Transparentes PNG oder modernes WebP — Ihre Wahl.' },
-            'general-tool': { name: 'All-in-One Werkzeug', description: 'Unser allgemeines Werkzeug zur Konvertierung zwischen allen Formaten (JPG, PNG, WebP, AVIF, HEIC usw.).' }
+            'webp-converter': { name: 'WebP Konverter', description: 'Konvertieren Sie Ihre WebP-Dateien in JPG oder PNG.' },
+            'jpg-converter': { name: 'JPG Konverter', description: 'Konvertieren Sie Ihre JPG/JPEG-Dateien in PNG oder WebP.' },
+            'image-resizer': { name: 'Bildgrößenänderer', description: 'Ändern Sie die Abmessungen Ihrer Bilder auf beliebige Pixel.' },
+            'general-tool': { name: 'All-in-One Werkzeug', description: 'Unser allgemeines Werkzeug zur Konvertierung.' }
         }
     },
     fr: {
@@ -121,9 +124,10 @@ const content = {
             'rotate-image': { name: 'Pivoter l\'Image', description: 'Retournez vos images ou faites-les pivoter sous n\'importe quel angle.' },
             'watermark-image': { name: 'Filigrane', description: 'Ajoutez un filigrane texte ou logo à vos images pour protéger vos droits d\'auteur.' },
             'black-and-white': { name: 'Noir et Blanc', description: 'Convertissez vos images colorées en noir et blanc (niveaux de gris) en un clic.' },
-            'webp-converter': { name: 'Convertisseur WebP', description: 'Convertissez vos fichiers WebP en JPG ou PNG. Vous choisissez — un outil, tous les formats.' },
-            'jpg-converter': { name: 'Convertisseur JPG', description: 'Convertissez vos fichiers JPG/JPEG en PNG ou WebP. PNG transparent ou WebP moderne, à vous de choisir.' },
-            'general-tool': { name: 'Outil Tout-en-Un', description: 'Notre outil général pour convertir entre tous les formats (JPG, PNG, WebP, AVIF, HEIC, etc.).' }
+            'webp-converter': { name: 'Convertisseur WebP', description: 'Convertissez vos fichiers WebP en JPG ou PNG.' },
+            'jpg-converter': { name: 'Convertisseur JPG', description: 'Convertissez vos fichiers JPG/JPEG en PNG ou WebP.' },
+            'image-resizer': { name: 'Redimensionneur', description: 'Redimensionnez vos images en pixels (largeur x hauteur).' },
+            'general-tool': { name: 'Outil Tout-en-Un', description: 'Notre outil général pour convertir entre tous les formats.' }
         }
     }
 };
@@ -197,6 +201,19 @@ const TOOLS: ToolDef[] = [
             <line x1="9" y1="12" x2="15" y2="12" />
         </>),
         keywords: ['compress', 'optimize', 'shrink'],
+    },
+    {
+        id: 'image-resizer',
+        name: 'image-resizer',
+        description: 'image-resizer',
+        path: '/resize-image',
+        badge: 'NEW',
+        icon: Icon(<>
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M9 15l6-6" />
+            <path d="M15 15V9H9" />
+        </>),
+        keywords: ['resize', 'dimension', 'width', 'height', 'scale'],
     },
     {
         id: 'png-converter',

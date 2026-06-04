@@ -13,10 +13,14 @@ export const serverConversionService = {
     /**
      * Convert HEIC to JPG/PNG/WEBP via Server
      */
-    async convertHeic(file: File, format: 'jpg' | 'png' | 'webp' | 'heic' | 'avif' | 'ico' = 'jpg'): Promise<Blob> {
+    async convertHeic(file: File, format: 'jpg' | 'png' | 'webp' | 'heic' | 'avif' | 'ico' = 'jpg', width?: number, height?: number): Promise<Blob> {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('format', format);
+        if (width && height) {
+            formData.append('width', width.toString());
+            formData.append('height', height.toString());
+        }
 
         try {
             const response = await axios.post(`${API_URL}/convert-heic`, formData, {
@@ -35,10 +39,14 @@ export const serverConversionService = {
     /**
      * Convert Format (WebP/PNG -> JPG/PNG/WEBP) via Server
      */
-    async convertFormat(file: File, format: 'jpg' | 'png' | 'webp' | 'heic' | 'avif' | 'ico' = 'jpg'): Promise<Blob> {
+    async convertFormat(file: File, format: 'jpg' | 'png' | 'webp' | 'heic' | 'avif' | 'ico' = 'jpg', width?: number, height?: number): Promise<Blob> {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('format', format);
+        if (width && height) {
+            formData.append('width', width.toString());
+            formData.append('height', height.toString());
+        }
 
         try {
             const response = await axios.post(`${API_URL}/convert-format`, formData, {

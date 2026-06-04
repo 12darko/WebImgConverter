@@ -122,12 +122,22 @@ async def remove_background(
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/convert-heic")
-async def convert_heic(file: UploadFile = File(...), format: str = Form("jpg")):
+async def convert_heic(
+    file: UploadFile = File(...), 
+    format: str = Form("jpg"),
+    width: int = Form(None),
+    height: int = Form(None)
+):
     try:
         contents = await file.read()
         image = Image.open(io.BytesIO(contents))
         del contents
         image = limit_image_size(image)
+
+        # Apply resizing if provided
+        if width and height:
+            image = image.resize((width, height), Image.Resampling.LANCZOS)
+
         
         if format.lower() in ['jpg', 'jpeg']:
             image = image.convert('RGB')
@@ -167,14 +177,23 @@ async def convert_heic(file: UploadFile = File(...), format: str = Form("jpg")):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/convert-format")
-async def convert_format(file: UploadFile = File(...), format: str = Form("jpg")):
+async def convert_format(
+    file: UploadFile = File(...), 
+    format: str = Form("jpg"),
+    width: int = Form(None),
+    height: int = Form(None)
+):
     try:
         contents = await file.read()
         image = Image.open(io.BytesIO(contents))
         del contents
         image = limit_image_size(image)
+
+        # Apply resizing if provided
+        if width and height:
+            image = image.resize((width, height), Image.Resampling.LANCZOS)
         
-        save_kwargs = {'quality': 90}
+        save_kwargs = {'quality': 90}  # Varsayılan kalite
         
         if format.lower() in ['jpg', 'jpeg']:
             if image.mode in ('RGBA', 'LA') or (image.mode == 'P' and 'transparency' in image.info):

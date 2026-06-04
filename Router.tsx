@@ -16,6 +16,7 @@ import BlackAndWhitePage from './pages/BlackAndWhite';
 import WebpConverterPage from './pages/WebpConverter';
 import JpgConverterPage from './pages/JpgConverter';
 import AvifConverterPage from './pages/AvifConverter';
+import ImageResizerPage from './pages/ImageResizer';
 import HomePage from './pages/Home';
 import ToolsPage from './pages/Tools';
 import PricingPage from './pages/Pricing';
@@ -59,6 +60,7 @@ export default function Router() {
                         <Route path="/webp-converter" element={<WebpConverterPage />} />
                         <Route path="/jpg-converter" element={<JpgConverterPage />} />
                         <Route path="/avif-converter" element={<AvifConverterPage />} />
+                        <Route path="/resize-image" element={<ImageResizerPage />} />
                         <Route path="/privacy" element={<PrivacyPage />} />
                         <Route path="/terms" element={<TermsPage />} />
                         <Route path="/about" element={<AboutPage />} />

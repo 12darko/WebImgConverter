@@ -98,11 +98,11 @@ export const convertImage = async (
 
     // Uzak sunucu (backend) üzerinden dönüştürme işlemi
     if (isHeicFile(file)) {
-        blob = await serverConversionService.convertHeic(file, targetFmt);
+        blob = await serverConversionService.convertHeic(file, targetFmt, settings.width, settings.height);
     } else {
         // Eğer hedef format ile giriş formatı aynıysa ve sadece kalite düşürülüyorsa compressImage kullanılabilir
         // Ancak convertFormat daha güvenli bir yol, sunucu her iki durumu da çözer
-        blob = await serverConversionService.convertFormat(file, targetFmt);
+        blob = await serverConversionService.convertFormat(file, targetFmt, settings.width, settings.height);
     }
 
     const url = URL.createObjectURL(blob);

@@ -6,6 +6,7 @@ import { SiteShell } from '../components/layout';
 import { Button } from '../components/ui/Button';
 import { ToolDropzone } from '../components/tool/ToolDropzone';
 import { convertImage, buildOutputName, downloadBlob, OutputFormat } from '../services/toolEngine';
+import { MAX_FREE_CREDITS } from '../types';
 import { useLanguage } from '../LanguageContext';
 import { HomePageSchema } from '../components/StructuredData';
 import { AdsterraNativeBanner } from '../components/ads/AdsterraNativeBanner';
@@ -61,7 +62,8 @@ const content = {
             { name: 'PNG → JPG', path: '/png-to-jpg', desc: 'PNG dosya boyutunu küçültün' },
             { name: 'WebP → JPG', path: '/webp-to-jpg', desc: 'Evrensel uyumluluk sağlayın' },
             { name: 'Arkaplan Silici', path: '/remove-background', desc: 'Yapay Zeka destekli arkaplan kaldırma' },
-            { name: 'Görüntü Sıkıştırıcı', path: '/compress-image', desc: 'Akıllı kayıpsız sıkıştırma' }
+            { name: 'Görüntü Sıkıştırıcı', path: '/compress-image', desc: 'Akıllı kayıpsız sıkıştırma' },
+            { name: 'Boyutlandırıcı', path: '/resize-image', desc: 'Görselleri piksel bazlı yeniden boyutlandırın' }
         ],
         finalTitle: 'Görüntüleri Dönüştürmeye Hazır mısınız?',
         finalDesc: 'Ücretsiz araçlar, kayıt olmanıza gerek yok. Toplu işleme ve gelişmiş özellikler için Pro\'ya geçebilirsiniz.',
@@ -102,7 +104,8 @@ const content = {
             { name: 'PNG → JPG', path: '/png-to-jpg', desc: 'Reduce PNG file size' },
             { name: 'WebP → JPG', path: '/webp-to-jpg', desc: 'Ensure universal compatibility' },
             { name: 'Background Remover', path: '/remove-background', desc: 'AI-powered background removal' },
-            { name: 'Image Compressor', path: '/compress-image', desc: 'Smart lossless compression' }
+            { name: 'Image Compressor', path: '/compress-image', desc: 'Smart lossless compression' },
+            { name: 'Image Resizer', path: '/resize-image', desc: 'Resize images by exact pixel dimensions' }
         ],
         finalTitle: 'Ready to Convert Images?',
         finalDesc: 'Free tools, no sign up required. You can upgrade to Pro for batch processing and advanced features.',
@@ -143,7 +146,8 @@ const content = {
             { name: 'PNG → JPG', path: '/png-to-jpg', desc: 'PNG-Dateigröße reduzieren' },
             { name: 'WebP → JPG', path: '/webp-to-jpg', desc: 'Universelle Kompatibilität sicherstellen' },
             { name: 'Hintergrundentferner', path: '/remove-background', desc: 'KI-gestützte Hintergrundentfernung' },
-            { name: 'Bildkomprimierer', path: '/compress-image', desc: 'Intelligente verlustfreie Komprimierung' }
+            { name: 'Bildkomprimierer', path: '/compress-image', desc: 'Intelligente verlustfreie Komprimierung' },
+            { name: 'Bildgrößenänderer', path: '/resize-image', desc: 'Ändern Sie die Bildgröße nach genauen Pixelmaßen' }
         ],
         finalTitle: 'Bereit, Bilder zu konvertieren?',
         finalDesc: 'Kostenlose Tools, keine Anmeldung erforderlich. Sie können auf Pro upgraden für Stapelverarbeitung und erweiterte Funktionen.',
@@ -184,7 +188,8 @@ const content = {
             { name: 'PNG → JPG', path: '/png-to-jpg', desc: 'Réduire la taille du fichier PNG' },
             { name: 'WebP → JPG', path: '/webp-to-jpg', desc: 'Assurer une compatibilité universelle' },
             { name: 'Suppresseur de Fond', path: '/remove-background', desc: 'Suppression d\'arrière-plan par IA' },
-            { name: 'Compresseur d\'Image', path: '/compress-image', desc: 'Compression intelligente sans perte' }
+            { name: 'Compresseur d\'Image', path: '/compress-image', desc: 'Compression intelligente sans perte' },
+            { name: 'Redimensionneur', path: '/resize-image', desc: 'Redimensionner par dimensions exactes en pixels' }
         ],
         finalTitle: 'Prêt à convertir des images?',
         finalDesc: 'Outils gratuits, aucune inscription requise. Passez à Pro pour le traitement par lots et les fonctionnalités avancées.',
@@ -295,6 +300,31 @@ export default function HomePage() {
                                             fullWidth 
                                             size="lg"
                                             onClick={async () => {
+                                                // Credit Check Logic
+                                                const statsStr = localStorage.getItem('WebImgConverterStats');
+                                                let currentCredits = MAX_FREE_CREDITS;
+                                                let isPremium = false;
+                                                
+                                                if (statsStr) {
+                                                    try {
+                                                        const parsed = JSON.parse(statsStr);
+                                                        // Check if it's a new day to reset
+                                                        const today = new Date().toISOString().split('T')[0];
+                                                        if (parsed.lastResetDate !== today) {
+                                                            currentCredits = MAX_FREE_CREDITS;
+                                                        } else {
+                                                            currentCredits = parsed.credits;
+                                                        }
+                                                        isPremium = parsed.isPremium || parsed.premiumTier === 'business';
+                                                    } catch (e) { }
+                                                }
+
+                                                if (!isPremium && currentCredits < homeFiles.length) {
+                                                    alert(activeLang === 'tr' ? 'Yetersiz kredi! Lütfen daha fazla kredi için giriş yapın veya Premium alın.' : 'Insufficient credits! Please log in or upgrade to Premium.');
+                                                    navigate('/pricing');
+                                                    return;
+                                                }
+
                                                 setIsConverting(true);
                                                 try {
                                                     // Convert all files if multiple were dropped
@@ -308,6 +338,16 @@ export default function HomePage() {
                                                         downloadBlob(result.blob, buildOutputName(file.name, targetFormat));
                                                     }
                                                     setConversionSuccess(true);
+                                                    
+                                                    // Deduct credits
+                                                    if (!isPremium) {
+                                                        const newCredits = Math.max(0, currentCredits - homeFiles.length);
+                                                        const today = new Date().toISOString().split('T')[0];
+                                                        const newStats = statsStr ? JSON.parse(statsStr) : {};
+                                                        newStats.credits = newCredits;
+                                                        newStats.lastResetDate = today;
+                                                        localStorage.setItem('WebImgConverterStats', JSON.stringify(newStats));
+                                                    }
                                                 } catch(e) {
                                                     alert('Error: ' + (e as Error).message);
                                                 } finally {
