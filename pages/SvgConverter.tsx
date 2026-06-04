@@ -79,7 +79,7 @@ export default function SvgConverterPage() {
                 defaultOutputFormat="png"
                 allowedSettings={['format', 'quality', 'maxKb', 'grayscale']}
             >
-                <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20">
+                <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20 mt-16">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-card hover:border-brand-300 dark:hover:border-brand-700 transition-all">
                             <div className="text-4xl mb-4">🔍</div>

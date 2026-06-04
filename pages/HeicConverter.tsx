@@ -153,7 +153,7 @@ export default function HeicConverterPage() {
                 dropzoneDesc={activeLang === 'tr' ? 'iPhone fotoğraflarınızı (HEIC/HEIF) sürükleyin veya seçin' : activeLang === 'de' ? 'Ziehen Sie Ihre iPhone-Fotos (HEIC/HEIF) oder wählen Sie sie aus' : activeLang === 'fr' ? 'Glissez vos photos iPhone (HEIC/HEIF) ou sélectionnez-les' : 'Drag and drop your iPhone photos (HEIC/HEIF) or browse to upload'}
             >
                 {/* Rich Content for SEO - Feature Cards */}
-                <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20">
+                <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20 mt-16">
 
                     {/* Feature Highlights */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">

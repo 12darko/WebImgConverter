@@ -7,7 +7,7 @@ import { Button } from '../components/ui/Button';
 import { ToolDropzone } from '../components/tool/ToolDropzone';
 import { convertImage, buildOutputName, downloadBlob, OutputFormat } from '../services/toolEngine';
 import { MAX_FREE_CREDITS } from '../types';
-import { useLanguage } from '../LanguageContext';
+import { useLanguage, useLocalizedPath } from '../LanguageContext';
 import { HomePageSchema } from '../components/StructuredData';
 import { AdsterraNativeBanner } from '../components/ads/AdsterraNativeBanner';
 
@@ -212,6 +212,7 @@ export default function HomePage() {
     const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
     const t = content[activeLang] || content.tr;
     const navigate = useNavigate();
+    const localizedPath = useLocalizedPath();
     const [homeFiles, setHomeFiles] = useState<File[]>([]);
     const [targetFormat, setTargetFormat] = useState<OutputFormat>('jpg');
     const [isConverting, setIsConverting] = useState(false);
@@ -248,7 +249,7 @@ export default function HomePage() {
     const hasEnoughCredits = isPremium || currentCredits >= homeFiles.length;
 
     return (
-        <SiteShell bg="white" onCta={() => navigate('/tools')} ctaLabel={t.ctaConvert}>
+        <SiteShell bg="white" onCta={() => navigate(localizedPath('/tools'))} ctaLabel={t.ctaConvert}>
             <Helmet>
                 <title>{t.metaTitle}</title>
                 <meta name="description" content={t.metaDesc} />
@@ -271,7 +272,7 @@ export default function HomePage() {
                                 {t.heroDesc}
                             </p>
                             <div className="flex flex-wrap items-center gap-3">
-                                <Button onClick={() => navigate('/app')} size="lg">
+                                <Button onClick={() => navigate(localizedPath('/app'))} size="lg">
                                     {t.heroCta}
                                 </Button>
                             </div>
@@ -322,7 +323,7 @@ export default function HomePage() {
                                             onClick={async () => {
                                                 if (!hasEnoughCredits) {
                                                     alert(activeLang === 'tr' ? 'Yetersiz kredi! Lütfen daha fazla kredi için giriş yapın veya Premium alın.' : 'Insufficient credits! Please log in or upgrade to Premium.');
-                                                    navigate('/pricing');
+                                                    navigate(localizedPath('/pricing'));
                                                     return;
                                                 }
 
@@ -417,7 +418,7 @@ export default function HomePage() {
                             </h2>
                             <p className="text-sm text-slate-500 dark:text-slate-400">{t.toolsDesc}</p>
                         </div>
-                        <Link to="/tools" className="text-sm font-semibold text-brand-600 hover:text-brand-700 inline-flex items-center gap-1.5">
+                        <Link to={localizedPath('/tools')} className="text-sm font-semibold text-brand-600 hover:text-brand-700 inline-flex items-center gap-1.5">
                             {t.toolsExplore}
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12" />
@@ -430,7 +431,7 @@ export default function HomePage() {
                         {t.tools.map((tool, i) => (
                             <Link
                                 key={tool.path}
-                                to={tool.path}
+                                to={localizedPath(tool.path === '/heic-to-jpg' ? '/heic-converter' : tool.path === '/png-to-jpg' ? '/png-converter' : tool.path === '/webp-to-jpg' ? '/webp-converter' : tool.path)}
                                 className="group block bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-2xl p-5 hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-card-hover transition-all"
                             >
                                 <h3 className="text-base font-bold text-slate-900 dark:text-white font-sans mb-1 group-hover:text-brand-600 transition-colors">
@@ -462,10 +463,10 @@ export default function HomePage() {
                                 {t.finalDesc}
                             </p>
                             <div className="flex flex-wrap items-center justify-center gap-3">
-                                <Button onClick={() => navigate('/tools')} size="lg">
+                                <Button onClick={() => navigate(localizedPath('/tools'))} size="lg">
                                     {t.finalCta1}
                                 </Button>
-                                <Button onClick={() => navigate('/pricing')} variant="secondary" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+                                <Button onClick={() => navigate(localizedPath('/pricing'))} variant="secondary" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
                                     {t.finalCta2}
                                 </Button>
                             </div>

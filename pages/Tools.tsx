@@ -33,6 +33,7 @@ const content = {
         sectionConverters: 'Dönüştürücüler',
         sectionAdvanced: 'Gelişmiş Araçlar',
         tools: {
+            'heic-converter': { name: 'HEIC Dönüştürücü', description: 'iPhone (HEIC/HEIF) fotoğraflarınızı kolayca JPG, PNG veya WebP formatına dönüştürün.' },
             'svg-converter': { name: 'SVG Dönüştürücü', description: 'Vektör (SVG) grafiklerinizi kullanıma hazır JPG, PNG veya WebP formatına dönüştürün.' },
             'avif-converter': { name: 'AVIF Dönüştürücü', description: 'AVIF dosyalarınızı JPG, PNG veya WebP formatına dönüştürün. Çıktı formatını siz seçin.' },
             'image-compressor': { name: 'Görüntü Sıkıştırıcı', description: 'Akıllı algoritmalarla gözle görülür kalite kaybı yaşamadan dosya boyutlarını ciddi oranda küçültün.' },
@@ -60,6 +61,7 @@ const content = {
         sectionConverters: 'Converters',
         sectionAdvanced: 'Advanced Tools',
         tools: {
+            'heic-converter': { name: 'HEIC Converter', description: 'Convert your iPhone (HEIC/HEIF) photos to JPG, PNG, or WebP format easily.' },
             'svg-converter': { name: 'SVG Converter', description: 'Convert your vector (SVG) graphics to ready-to-use JPG, PNG, or WebP format.' },
             'avif-converter': { name: 'AVIF Converter', description: 'Convert your AVIF files to JPG, PNG, or WebP. You choose the output format.' },
             'image-compressor': { name: 'Image Compressor', description: 'Significantly reduce file sizes without noticeable quality loss using smart algorithms.' },
@@ -81,6 +83,19 @@ const content = {
 type LangKey = keyof typeof content;
 
 const TOOLS: ToolDef[] = [
+    {
+        id: 'heic-converter',
+        name: 'heic-converter',
+        description: 'heic-converter',
+        path: '/heic-converter',
+        badge: 'FREE',
+        icon: Icon(<>
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M9 17V7h6" />
+            <path d="M9 12h5" />
+        </>),
+        keywords: ['heic', 'heif', 'jpg', 'png', 'iphone', 'apple', 'convert', 'converter'],
+    },
     {
         id: 'svg-converter',
         name: 'svg-converter',

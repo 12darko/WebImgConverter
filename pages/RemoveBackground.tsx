@@ -80,7 +80,7 @@ export default function RemoveBackgroundPage() {
                 allowedSettings={['format', 'crop']}
             >
                 {/* Custom Rich Content for SEO Enrichment */}
-                <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20">
+                <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20 mt-16">
 
                     {/* Unique Feature Highlights */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
