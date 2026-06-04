@@ -1,14 +1,20 @@
-﻿import React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { SiteShell } from '../components/layout';
 import { Button } from '../components/ui/Button';
 import { Badge } from '../components/ui/Badge';
 import { BillingToggle } from '../components/ui/BillingToggle';
+import { useLanguage } from '../LanguageContext';
+
+const CheckIcon = (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="20 6 9 17 4 12" />
+    </svg>
+);
 
 interface PlanFeature {
     text: string;
-    included?: boolean;
 }
 
 interface Plan {
@@ -24,91 +30,14 @@ interface Plan {
     features: PlanFeature[];
 }
 
-const PLANS: Plan[] = [
-    {
-        id: 'starter',
-        name: 'Starter',
-        description: 'Temel dönüştürme ve günlük kullanım için.',
-        monthlyPrice: 0,
-        annualPrice: 0,
-        priceSuffix: '/ay',
-        cta: 'Ücretsiz Başla',
-        ctaVariant: 'secondary',
-        features: [
-            { text: 'Günlük 50 Kredi' },
-            { text: 'Temel formatlar (JPG, PNG, PDF)' },
-            { text: 'Arkaplan Temizleme' },
-            { text: 'Standart Destek' },
-        ],
-    },
-    {
-        id: 'pro',
-        name: 'Pro+',
-        description: 'Profesyonel iş akışları ve yoğun kullanım için.',
-        monthlyPrice: 29,
-        annualPrice: 23,
-        priceSuffix: '/ay',
-        cta: 'Pro+\'a Geç',
-        ctaVariant: 'primary',
-        popular: true,
-        features: [
-            { text: 'Sınırsız Kredi' },
-            { text: 'Reklamsız Deneyim' },
-            { text: 'Öncelikli Yapay Zeka (AI) İşlemleri' },
-            { text: 'Toplu İşleme (50+)' },
-            { text: 'Toplu ZIP İndirme' },
-        ],
-    },
-    {
-        id: 'business',
-        name: 'Business',
-        description: 'Büyük ölçekli operasyonlar için özel çözümler.',
-        monthlyPrice: 'Özel',
-        annualPrice: 'Özel',
-        cta: 'Satışla İletişime Geç',
-        ctaVariant: 'secondary',
-        features: [
-            { text: 'Tüm Premium Özellikler' },
-            { text: 'İşlem Kayıtları (Activity Log)' },
-            { text: 'Google Drive\'a Kaydetme' },
-            { text: 'Özel 7/24 Destek' },
-            { text: 'Özel API İstek Sınırları' },
-        ],
-    },
-];
-
-const FAQ = [
-    {
-        q: 'Planımı daha sonra değiştirebilir miyim?',
-        a: 'Kesinlikle. İstediğiniz zaman hesap ayarlarınızdan planınızı yükseltebilir veya düşürebilirsiniz. Ücretlendirme gün bazlı (prorated) hesaplanacaktır.',
-    },
-    {
-        q: 'Kredi sistemi nasıl çalışır?',
-        a: 'Her dosya dönüştürme, arkaplan silme veya yapay zeka ile isimlendirme işlemi 1 kredi harcar.',
-    },
-    {
-        q: 'Hangi ödeme yöntemlerini kabul ediyorsunuz?',
-        a: 'Tüm popüler kredi kartlarını ve PayPal\'ı kabul ediyoruz. Business planlar için faturalı ödeme imkanı da sunuyoruz.',
-    },
-    {
-        q: 'Dosyalarım ne kadar güvende?',
-        a: 'Banka düzeyinde şifreleme kullanıyoruz. Dosyalarınız güvenli sunucularda işlenir ve işlem tamamlandıktan hemen sonra kalıcı olarak silinir.',
-    },
-];
-
-const CheckIcon = (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="20 6 9 17 4 12" />
-    </svg>
-);
-
 interface PricingCardProps {
     plan: Plan;
     billing: 'monthly' | 'annually';
     onCta: () => void;
+    t: any;
 }
 
-const PricingCard: React.FC<PricingCardProps> = ({ plan, billing, onCta }) => {
+const PricingCard: React.FC<PricingCardProps> = ({ plan, billing, onCta, t }) => {
     const price = billing === 'monthly' ? plan.monthlyPrice : plan.annualPrice;
     const isCustom = typeof price === 'string';
 
@@ -123,7 +52,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, billing, onCta }) => {
         >
             {plan.popular && (
                 <div className="absolute -top-3 right-7">
-                    <Badge tone="dark">En Popüler</Badge>
+                    <Badge tone="dark">{t('most_popular')}</Badge>
                 </div>
             )}
 
@@ -134,11 +63,11 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, billing, onCta }) => {
 
             <div className="mb-6">
                 {isCustom ? (
-                    <div className="font-serif text-4xl font-extrabold text-slate-900 dark:text-white">{price}</div>
+                    <div className="font-serif text-4xl font-extrabold text-slate-900 dark:text-white">{t('custom_plan')}</div>
                 ) : (
                     <div className="flex items-baseline gap-1">
                         <span className="font-serif text-5xl font-extrabold text-slate-900 dark:text-white">${price}</span>
-                        <span className="text-sm text-slate-500 dark:text-slate-400">{plan.priceSuffix}</span>
+                        <span className="text-sm text-slate-500 dark:text-slate-400">/mo</span>
                     </div>
                 )}
             </div>
@@ -168,9 +97,10 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, billing, onCta }) => {
 
 export default function PricingPage() {
     const navigate = useNavigate();
+    const { t } = useLanguage();
     const [billing, setBilling] = React.useState<'monthly' | 'annually'>('monthly');
 
-    const handleCta = (planId: Plan['id']) => {
+    const handleCta = (planId: 'starter' | 'pro' | 'business') => {
         if (planId === 'starter') {
             navigate('/app');
         } else if (planId === 'pro') {
@@ -180,11 +110,83 @@ export default function PricingPage() {
         }
     };
 
+    const PLANS: Plan[] = [
+        {
+            id: 'starter',
+            name: t('starter'),
+            description: t('starter_desc'),
+            monthlyPrice: 0,
+            annualPrice: 0,
+            priceSuffix: '/mo',
+            cta: t('free_start'),
+            ctaVariant: 'secondary',
+            features: [
+                { text: '50 Credits/day' },
+                { text: 'Basic formats (JPG, PNG, PDF)' },
+                { text: 'Background Remover' },
+                { text: 'Standard Support' },
+            ],
+        },
+        {
+            id: 'pro',
+            name: t('pro_plus'),
+            description: t('pro_plus_desc'),
+            monthlyPrice: 29,
+            annualPrice: 23,
+            priceSuffix: '/mo',
+            cta: t('go_pro'),
+            ctaVariant: 'primary',
+            popular: true,
+            features: [
+                { text: 'Unlimited Credits' },
+                { text: 'Ad-free Experience' },
+                { text: 'Priority AI Processing' },
+                { text: 'Bulk Processing (50+)' },
+                { text: 'Bulk ZIP Download' },
+            ],
+        },
+        {
+            id: 'business',
+            name: t('business'),
+            description: t('business_desc'),
+            monthlyPrice: 'custom',
+            annualPrice: 'custom',
+            cta: t('contact_sales'),
+            ctaVariant: 'secondary',
+            features: [
+                { text: 'All Premium Features' },
+                { text: 'Activity Log' },
+                { text: 'Save to Google Drive' },
+                { text: 'Dedicated 24/7 Support' },
+                { text: 'Custom API Limits' },
+            ],
+        },
+    ];
+
+    const FAQ = [
+        {
+            q: t('faq_1_q'),
+            a: t('faq_1_a'),
+        },
+        {
+            q: t('faq_2_q'),
+            a: t('faq_2_a'),
+        },
+        {
+            q: t('faq_3_q'),
+            a: t('faq_3_a'),
+        },
+        {
+            q: t('faq_4_q'),
+            a: t('faq_4_a'),
+        },
+    ];
+
     return (
-        <SiteShell onCta={() => navigate('/app')} ctaLabel="Hemen Başla" bg="white">
+        <SiteShell onCta={() => navigate('/app')} ctaLabel={t('free_start')} bg="white">
             <Helmet>
-                <title>Fiyatlandırma — Basit ve Şeffaf Planlar | WebImgConverter</title>
-                <meta name="description" content="İş akışınıza en uygun planı seçin. Görüntü dönüştürme, sıkıştırma ve yapay zeka araçları için Starter, Pro+ ve Business planlarımız." />
+                <title>{t('nav_pricing')} | WebImgConverter</title>
+                <meta name="description" content={t('pricing_subtitle')} />
                 <link rel="canonical" href="https://WebImgConverter.com/pricing" />
             </Helmet>
 
@@ -192,10 +194,10 @@ export default function PricingPage() {
                 {/* Hero */}
                 <div className="text-center max-w-2xl mx-auto mb-10">
                     <h1 className="font-serif text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">
-                        Basit, şeffaf fiyatlandırma.
+                        {t('pricing_title')}
                     </h1>
                     <p className="text-base text-slate-500 dark:text-slate-400 leading-relaxed">
-                        İş akışınıza en uygun planı seçin. Dosyalarınızı ışık hızında dönüştürmeye ve işlemeye hemen başlayın.
+                        {t('pricing_subtitle')}
                     </p>
                 </div>
 
@@ -207,14 +209,14 @@ export default function PricingPage() {
                 {/* Plans */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 max-w-5xl mx-auto">
                     {PLANS.map((p) => (
-                        <PricingCard key={p.id} plan={p} billing={billing} onCta={() => handleCta(p.id)} />
+                        <PricingCard key={p.id} plan={p} billing={billing} onCta={() => handleCta(p.id)} t={t} />
                     ))}
                 </div>
 
                 {/* FAQ */}
                 <div className="mt-20 max-w-4xl mx-auto">
                     <h2 className="font-serif text-3xl md:text-4xl font-bold text-slate-900 dark:text-white text-center mb-10">
-                        Sıkça Sorulan Sorular
+                        {t('faq_title')}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {FAQ.map((item, i) => (

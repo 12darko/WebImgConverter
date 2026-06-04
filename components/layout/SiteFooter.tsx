@@ -1,21 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
-import { useLocalizedPath } from '../../LanguageContext';
+import { useLanguage, useLocalizedPath } from '../../LanguageContext';
 
 interface FooterLink {
-    label: string;
+    labelKey: string;
     path: string;
 }
 
 const FOOTER_LINKS: FooterLink[] = [
-    { label: 'Gizlilik', path: '/privacy' },
-    { label: 'Şartlar', path: '/terms' },
-    { label: 'Yardım', path: '/support' },
-    { label: 'Hakkımızda', path: '/about' },
+    { labelKey: 'footer_privacy', path: '/privacy' },
+    { labelKey: 'footer_terms', path: '/terms' },
+    { labelKey: 'footer_contact', path: '/support' },
+    { labelKey: 'footer_about', path: '/about' },
 ];
 
 export const SiteFooter: React.FC = () => {
+    const { t } = useLanguage();
     const localizedPath = useLocalizedPath();
 
     return (
@@ -25,7 +26,7 @@ export const SiteFooter: React.FC = () => {
                     <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                         <Logo size={16} />
                         <span className="hidden sm:inline">·</span>
-                        <span>© {new Date().getFullYear()} WebImgConverter Inc. Tüm hakları saklıdır.</span>
+                        <span>© {new Date().getFullYear()} WebImgConverter Inc. {t('footer_rights')}</span>
                     </div>
                     <nav className="flex items-center gap-5 text-xs">
                         {FOOTER_LINKS.map((l) => (
@@ -34,7 +35,7 @@ export const SiteFooter: React.FC = () => {
                                 to={localizedPath(l.path)}
                                 className="text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors uppercase tracking-wider font-semibold"
                             >
-                                {l.label}
+                                {t(l.labelKey)}
                             </Link>
                         ))}
                     </nav>

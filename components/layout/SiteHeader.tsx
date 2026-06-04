@@ -2,17 +2,17 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Button } from '../ui/Button';
-import { useLocalizedPath } from '../../LanguageContext';
+import { useLanguage, useLocalizedPath } from '../../LanguageContext';
 
 interface NavItem {
-    label: string;
+    labelKey: string;
     path: string;
 }
 
 const NAV_ITEMS: NavItem[] = [
-    { label: 'Araçlar', path: '/tools' },
-    { label: 'Fiyatlandırma', path: '/pricing' },
-    { label: 'Blog', path: '/blog' },
+    { labelKey: 'nav_tools', path: '/tools' },
+    { labelKey: 'nav_pricing', path: '/pricing' },
+    { labelKey: 'nav_blog', path: '/blog' },
 ];
 
 interface SiteHeaderProps {
@@ -26,10 +26,11 @@ interface SiteHeaderProps {
 export const SiteHeader: React.FC<SiteHeaderProps> = ({
     onSignIn,
     onCta,
-    ctaLabel = 'Hemen Dönüştür',
+    ctaLabel,
     showCta = true,
     session,
 }) => {
+    const { t } = useLanguage();
     const location = useLocation();
     const localizedPath = useLocalizedPath();
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -83,7 +84,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                                     active ? 'text-brand-600' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white',
                                 ].join(' ')}
                             >
-                                {item.label}
+                                {t(item.labelKey)}
                                 {active && (
                                     <span className="absolute -bottom-px left-2 right-2 h-0.5 rounded-full bg-brand-500" />
                                 )}
@@ -106,19 +107,19 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                             to={localizedPath('/profile')}
                             className="text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 px-3 h-10 inline-flex items-center transition-colors"
                         >
-                            Profilim ({session.user.email?.split('@')[0]})
+                            {t('nav_profile')} ({session.user.email?.split('@')[0]})
                         </Link>
                     ) : (
                         <button
                             onClick={onSignIn}
                             className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3 h-10 inline-flex items-center transition-colors"
                         >
-                            Giriş Yap
+                            {t('nav_login')}
                         </button>
                     )}
                     {showCta && (
                         <Button onClick={onCta} size="md">
-                            {ctaLabel}
+                            {ctaLabel || t('nav_tools')}
                         </Button>
                     )}
                 </div>
@@ -141,7 +142,6 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                 </button>
             </div>
 
-            {/* Mobile menu */}
             {mobileOpen && (
                 <div className="md:hidden border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
                     <div className="max-w-7xl mx-auto px-5 py-4 flex flex-col gap-1">
@@ -155,7 +155,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                                     isActive(item.path) ? 'text-brand-600 bg-brand-50 dark:bg-brand-900/30' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800',
                                 ].join(' ')}
                             >
-                                {item.label}
+                                {t(item.labelKey)}
                             </Link>
                         ))}
                         <div className="flex gap-2 mt-2 pt-3 border-t border-slate-100 dark:border-slate-800">
@@ -171,19 +171,19 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                                     onClick={() => setMobileOpen(false)}
                                     className="flex-1 h-10 flex items-center justify-center text-sm font-semibold text-brand-600 dark:text-brand-400 border border-slate-200 dark:border-slate-700 rounded-xl"
                                 >
-                                    Profilim
+                                    {session.user.user_metadata?.full_name?.split(' ')[0] || session.user.email?.split('@')[0]}
                                 </Link>
                             ) : (
                                 <button
                                     onClick={onSignIn}
                                     className="flex-1 h-10 text-sm font-semibold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-xl"
                                 >
-                                    Giriş Yap
+                                    {t('nav_login')}
                                 </button>
                             )}
                             {showCta && (
                                 <Button onClick={onCta} size="md" fullWidth>
-                                    {ctaLabel}
+                                    {ctaLabel || t('nav_tools')}
                                 </Button>
                             )}
                         </div>
