@@ -25,8 +25,14 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     if (urlLang && ['tr', 'en', 'de', 'fr'].includes(urlLang)) {
       setLanguageState(urlLang as Language);
     } else {
-      // Default to Turkish, ignore browser language for now
-      setLanguageState('tr');
+      // Detect browser language
+      const browserLang = navigator.language.slice(0, 2).toLowerCase();
+      if (['tr', 'en', 'de', 'fr'].includes(browserLang)) {
+        setLanguage(browserLang as Language);
+      } else {
+        // Fallback to English for any other international language
+        setLanguage('en');
+      }
     }
   }, []); // Run once on mount
 
@@ -43,7 +49,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       newParams.set('lang', newLang);
     }
 
-    setSearchParams(newParams);
+    setSearchParams(newParams, { replace: true });
   };
 
   const t = (key: string): string => {
