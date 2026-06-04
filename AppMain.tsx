@@ -775,9 +775,7 @@ function BanaConvertApp(props: AppProps = {}) {
         <nav className="bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 sticky top-0 z-40 shadow-sm dark:shadow-none backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
             {/* Left: Logo */}
-            <Link to="/" className="flex items-center gap-3">
-              <Logo size={32} />
-            </Link>
+            <Logo size={32} />
 
             {/* Middle: Navigation Links */}
             <div className="hidden md:flex items-center gap-8">
