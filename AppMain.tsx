@@ -45,7 +45,7 @@ import {
 
 import { serverConversionService } from './services/serverConversionService';
 
-export type AdvancedSettingType = 'format' | 'rotate' | 'grayscale' | 'quality' | 'flip' | 'maxKb' | 'crop' | 'removeBg' | 'watermark';
+export type AdvancedSettingType = 'format' | 'rotate' | 'grayscale' | 'quality' | 'flip' | 'maxKb' | 'crop' | 'removeBg' | 'watermark' | 'width' | 'height' | 'lockAspectRatio';
 
 interface AppProps {
   defaultTool?: string;
@@ -62,6 +62,70 @@ interface AppProps {
   conversionHandler?: (file: File) => Promise<Blob>;
   initialFiles?: File[];
 }
+
+const applyFaviconStyling = async (
+  fileItem: FileItem,
+  sourceUrl: string
+): Promise<Blob> => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const size = 256;
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) {
+        reject(new Error('Failed to get canvas context'));
+        return;
+      }
+
+      ctx.clearRect(0, 0, size, size);
+
+      const type = fileItem.faviconType || 'transparent';
+      const bgColor = fileItem.faviconBgColor || '#ffffff';
+
+      if (type === 'square') {
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, size, size);
+      } else if (type === 'rounded') {
+        ctx.fillStyle = bgColor;
+        const radius = size * 0.2;
+        ctx.beginPath();
+        ctx.moveTo(radius, 0);
+        ctx.lineTo(size - radius, 0);
+        ctx.quadraticCurveTo(size, 0, size, radius);
+        ctx.lineTo(size, size - radius);
+        ctx.quadraticCurveTo(size, size, size - radius, size);
+        ctx.lineTo(radius, size);
+        ctx.quadraticCurveTo(0, size, 0, size - radius);
+        ctx.lineTo(0, radius);
+        ctx.quadraticCurveTo(0, 0, radius, 0);
+        ctx.closePath();
+        ctx.fill();
+        ctx.clip();
+      }
+
+      const scale = Math.min(size / img.width, size / img.height);
+      const w = img.width * scale;
+      const h = img.height * scale;
+      const x = (size - w) / 2;
+      const y = (size - h) / 2;
+
+      ctx.drawImage(img, x, y, w, h);
+
+      canvas.toBlob((blob) => {
+        if (blob) {
+          resolve(blob);
+        } else {
+          reject(new Error('Canvas to blob failed'));
+        }
+      }, 'image/png');
+    };
+    img.onerror = () => reject(new Error('Failed to load image for favicon styling'));
+    img.src = sourceUrl;
+  });
+};
 
 function BanaConvertApp(props: AppProps = {}) {
   const { defaultTool, pageH1, acceptTypes, formatBadges, defaultOutputFormat, hideFormatSelector, hideAdvancedSettings, allowedSettings, dropzoneTitle, dropzoneDesc, children, conversionHandler } = props;
@@ -327,7 +391,7 @@ function BanaConvertApp(props: AppProps = {}) {
       id: uuidv4(),
       file,
       previewUrl: '',
-      targetFormat: defaultTool === 'remove-background' ? ConversionFormat.PNG : ConversionFormat.JPEG,
+      targetFormat: defaultOutputFormat ? (defaultOutputFormat as ConversionFormat) : (defaultTool === 'remove-background' ? ConversionFormat.PNG : ConversionFormat.JPEG),
       quality: 1.0,
       rotation: defaultTool === 'rotate-image' ? 90 : 0,
       resizeScale: 1,
@@ -336,6 +400,9 @@ function BanaConvertApp(props: AppProps = {}) {
       watermarkText: defaultTool === 'watermark-image' ? 'WebImgConverter' : undefined,
       useHDModel: false, // Default to standard (fast) model
       bgRemovalTolerance: 30,
+      lockAspectRatio: true,
+      faviconType: 'transparent',
+      faviconBgColor: '#ffffff',
       status: 'analyzing',
       errorMsg: ''
     }));
@@ -390,7 +457,26 @@ function BanaConvertApp(props: AppProps = {}) {
           finalUrl = URL.createObjectURL(item.file);
         }
 
-        setFiles(prev => prev.map(f => f.id === item.id ? { ...f, previewUrl: finalUrl, status: 'idle' } : f));
+        // Get dimensions from loaded preview image
+        let dims = { width: 0, height: 0 };
+        if (finalUrl) {
+          dims = await new Promise<{ width: number; height: number }>((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve({ width: img.naturalWidth, height: img.naturalHeight });
+            img.onerror = () => resolve({ width: 0, height: 0 });
+            img.src = finalUrl;
+          });
+        }
+
+        setFiles(prev => prev.map(f => f.id === item.id ? {
+          ...f,
+          previewUrl: finalUrl,
+          originalWidth: dims.width || undefined,
+          originalHeight: dims.height || undefined,
+          targetWidth: dims.width || undefined,
+          targetHeight: dims.height || undefined,
+          status: 'idle'
+        } : f));
       } catch (error) {
         console.error("Preview generation error:", error);
         setFiles(prev => prev.map(f => f.id === item.id ? { ...f, status: 'error', errorMsg: 'Format desteklenmiyor' } : f));
@@ -415,7 +501,21 @@ function BanaConvertApp(props: AppProps = {}) {
       setIsPremiumModalOpen(true);
       return;
     }
-    setFiles(prev => prev.map(f => f.id === id ? { ...f, [key]: value } : f));
+    setFiles(prev => prev.map(f => {
+      if (f.id !== id) return f;
+      let updated = { ...f, [key]: value };
+      
+      // Calculate locked aspect ratio dimensions
+      if ((updated.lockAspectRatio ?? true) && updated.originalWidth && updated.originalHeight) {
+        const ratio = updated.originalWidth / updated.originalHeight;
+        if (key === 'targetWidth' && value) {
+          updated.targetHeight = Math.round(value / ratio);
+        } else if (key === 'targetHeight' && value) {
+          updated.targetWidth = Math.round(value * ratio);
+        }
+      }
+      return updated;
+    }));
   };
 
   // --- ACTIONS ---
@@ -562,6 +662,14 @@ function BanaConvertApp(props: AppProps = {}) {
           sourceBlob = await fetch(sourceUrl).then(r => r.blob()) as File;
         }
 
+        // Apply favicon background styling if converting to ICO or in favicon-generator tool
+        if (item.targetFormat === ConversionFormat.ICO || defaultTool === 'favicon-generator') {
+          await updateProgress(65);
+          const styledBlob = await applyFaviconStyling(item, sourceUrl);
+          sourceBlob = new File([styledBlob], item.file.name, { type: 'image/png' });
+          sourceUrl = URL.createObjectURL(styledBlob);
+        }
+
         // 2. Perform Server Operation
         // PRIORITY: Use custom conversion handler if provided (e.g. HeicToJpg page specific logic)
         if (conversionHandler && isHeicInput && !item.removeBackground) {
@@ -572,7 +680,9 @@ function BanaConvertApp(props: AppProps = {}) {
           blob = await serverConversionService.convertHeic(sourceBlob as File,
             item.targetFormat === ConversionFormat.PNG ? 'png' :
               item.targetFormat === ConversionFormat.WEBP ? 'webp' : 
-                item.targetFormat === ConversionFormat.ICO ? 'ico' : 'jpg'
+                item.targetFormat === ConversionFormat.ICO ? 'ico' : 'jpg',
+            item.targetWidth,
+            item.targetHeight
           );
         } else if (isCompression) {
           // Compression
@@ -583,16 +693,21 @@ function BanaConvertApp(props: AppProps = {}) {
           blob = await serverConversionService.convertFormat(sourceBlob as File,
             item.targetFormat === ConversionFormat.PNG ? 'png' :
               item.targetFormat === ConversionFormat.WEBP ? 'webp' : 
-                item.targetFormat === ConversionFormat.ICO ? 'ico' : 'jpg'
+                item.targetFormat === ConversionFormat.ICO ? 'ico' : 'jpg',
+            item.targetWidth,
+            item.targetHeight
           );
         } else {
           // BG Removal result is already a blob (PNG). 
           // If user wants different format, we could convert it too.
           // For now, let's assume if BG removed, we respect that blob or convert format if needed.
-          if (item.targetFormat !== ConversionFormat.PNG) {
+          if (item.targetFormat !== ConversionFormat.PNG || item.targetWidth || item.targetHeight) {
             blob = await serverConversionService.convertFormat(sourceBlob as File,
-              item.targetFormat === ConversionFormat.WEBP ? 'webp' : 
-                item.targetFormat === ConversionFormat.ICO ? 'ico' : 'jpg'
+              item.targetFormat === ConversionFormat.PNG ? 'png' :
+                item.targetFormat === ConversionFormat.WEBP ? 'webp' : 
+                  item.targetFormat === ConversionFormat.ICO ? 'ico' : 'jpg',
+              item.targetWidth,
+              item.targetHeight
             );
           } else {
             blob = sourceBlob;
@@ -1123,35 +1238,91 @@ function BanaConvertApp(props: AppProps = {}) {
                                   )}
 
                                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                                    {/* Width */}
+                                    {(!allowedSettings || allowedSettings.includes('width')) && (
+                                      <div className="flex flex-col gap-1">
+                                        <label className="text-[10px] font-bold text-slate-500 dark:text-slate-455">{t('width_label')}</label>
+                                        <input
+                                          type="number"
+                                          value={file.targetWidth || ''}
+                                          onChange={(e) => updateFileConfig(file.id, 'targetWidth', e.target.value ? parseInt(e.target.value) : undefined)}
+                                          className="bg-white dark:bg-slate-800 text-xs font-semibold text-slate-750 dark:text-slate-250 border border-slate-200 dark:border-slate-700 rounded-lg p-2 focus:ring-2 focus:ring-brand-500 outline-none w-full"
+                                          placeholder={file.originalWidth ? `${file.originalWidth} px` : "Width px"}
+                                        />
+                                      </div>
+                                    )}
+
+                                    {/* Height */}
+                                    {(!allowedSettings || allowedSettings.includes('height')) && (
+                                      <div className="flex flex-col gap-1">
+                                        <label className="text-[10px] font-bold text-slate-500 dark:text-slate-455">{t('height_label')}</label>
+                                        <input
+                                          type="number"
+                                          value={file.targetHeight || ''}
+                                          onChange={(e) => updateFileConfig(file.id, 'targetHeight', e.target.value ? parseInt(e.target.value) : undefined)}
+                                          className="bg-white dark:bg-slate-800 text-xs font-semibold text-slate-750 dark:text-slate-250 border border-slate-200 dark:border-slate-700 rounded-lg p-2 focus:ring-2 focus:ring-brand-500 outline-none w-full"
+                                          placeholder={file.originalHeight ? `${file.originalHeight} px` : "Height px"}
+                                        />
+                                      </div>
+                                    )}
+
+                                    {/* Lock Aspect Ratio */}
+                                    {(!allowedSettings || allowedSettings.includes('lockAspectRatio')) && (
+                                      <div className="flex items-center gap-2 h-full mt-3 lg:mt-5">
+                                        <input
+                                          type="checkbox"
+                                          id={`lock-aspect-${file.id}`}
+                                          checked={file.lockAspectRatio ?? true}
+                                          onChange={(e) => updateFileConfig(file.id, 'lockAspectRatio', e.target.checked)}
+                                          className="w-4 h-4 rounded text-brand-600 border-slate-350 dark:border-slate-650 focus:ring-brand-500"
+                                        />
+                                        <label htmlFor={`lock-aspect-${file.id}`} className="text-xs font-semibold text-slate-655 dark:text-slate-345 cursor-pointer select-none">
+                                          {t('lock_aspect_ratio')}
+                                        </label>
+                                      </div>
+                                    )}
+
                                     {/* Rotate */}
                                     {(!allowedSettings || allowedSettings.includes('rotate')) && (
-                                      <button onClick={() => updateFileConfig(file.id, 'rotation', (file.rotation + 90) % 360)} className="bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 p-2 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-colors">{t('rotate')}: {file.rotation}°</button>
+                                      <div className="flex flex-col gap-1">
+                                        <label className="text-[10px] font-bold text-slate-500 dark:text-slate-455">{t('rotate') || 'Döndür'}</label>
+                                        <button onClick={() => updateFileConfig(file.id, 'rotation', (file.rotation + 90) % 360)} className="bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 p-2.5 rounded-lg text-xs font-semibold text-slate-750 dark:text-slate-250 border border-slate-200 dark:border-slate-700 transition-colors text-left">{file.rotation}°</button>
+                                      </div>
                                     )}
                                     
                                     {/* Grayscale */}
                                     {(!allowedSettings || allowedSettings.includes('grayscale')) && (
-                                      <button onClick={() => updateFileConfig(file.id, 'isGrayscale', !file.isGrayscale)} className={`p-2 rounded-lg text-xs font-medium border transition-colors ${file.isGrayscale ? 'bg-slate-200 dark:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-200' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-750'}`}>{t('grayscale')}</button>
+                                      <div className="flex flex-col gap-1">
+                                        <label className="text-[10px] font-bold text-slate-500 dark:text-slate-455">{t('grayscale') || 'Siyah Beyaz'}</label>
+                                        <button onClick={() => updateFileConfig(file.id, 'isGrayscale', !file.isGrayscale)} className={`p-2.5 rounded-lg text-xs font-semibold border transition-colors text-left ${file.isGrayscale ? 'bg-slate-200 dark:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-200' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-755 dark:text-slate-245 hover:bg-slate-100 dark:hover:bg-slate-750'}`}>{file.isGrayscale ? 'ON' : 'OFF'}</button>
+                                      </div>
                                     )}
 
                                     {/* Quality Slider for JPEG/WEBP */}
                                     {(!allowedSettings || allowedSettings.includes('quality')) && (file.targetFormat === ConversionFormat.JPEG || file.targetFormat === ConversionFormat.WEBP) && (
-                                      <select
-                                        value={file.quality}
-                                        onChange={(e) => updateFileConfig(file.id, 'quality', parseFloat(e.target.value))}
-                                        className="bg-white dark:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-lg p-2 focus:ring-2 focus:ring-brand-500 outline-none"
-                                      >
-                                          <option value="1">100% ({t('quality_lossless')})</option>
-                                          <option value="0.75">75% ({t('quality_balanced')})</option>
-                                          <option value="0.5">50% ({t('quality_low_size')})</option>
-                                          <option value="0.25">25% ({t('quality_max_compress')})</option>
-                                      </select>
+                                      <div className="flex flex-col gap-1">
+                                        <label className="text-[10px] font-bold text-slate-500 dark:text-slate-455">{t('quality_label') || 'Kalite'}</label>
+                                        <select
+                                          value={file.quality}
+                                          onChange={(e) => updateFileConfig(file.id, 'quality', parseFloat(e.target.value))}
+                                          className="bg-white dark:bg-slate-800 text-xs font-semibold text-slate-755 dark:text-slate-245 border border-slate-200 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-brand-500 outline-none"
+                                        >
+                                            <option value="1">100% ({t('quality_lossless')})</option>
+                                            <option value="0.75">75% ({t('quality_balanced')})</option>
+                                            <option value="0.5">50% ({t('quality_low_size')})</option>
+                                            <option value="0.25">25% ({t('quality_max_compress')})</option>
+                                        </select>
+                                      </div>
                                     )}
 
                                     {/* Flip Buttons */}
                                     {(!allowedSettings || allowedSettings.includes('flip')) && (
-                                      <div className="flex gap-2">
-                                        <button onClick={() => updateFileConfig(file.id, 'isFlippedHorizontal', !file.isFlippedHorizontal)} className={`flex-1 p-2 rounded-lg text-xs font-medium border transition-colors ${file.isFlippedHorizontal ? 'bg-brand-50 dark:bg-brand-950/20 border-brand-200 dark:border-brand-850 text-brand-700 dark:text-brand-300' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'}`}>↔️ Flip</button>
-                                        <button onClick={() => updateFileConfig(file.id, 'isFlippedVertical', !file.isFlippedVertical)} className={`flex-1 p-2 rounded-lg text-xs font-medium border transition-colors ${file.isFlippedVertical ? 'bg-brand-50 dark:bg-brand-950/20 border-brand-200 dark:border-brand-850 text-brand-700 dark:text-brand-300' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'}`}>↕️ Flip</button>
+                                      <div className="flex flex-col gap-1">
+                                        <label className="text-[10px] font-bold text-slate-500 dark:text-slate-455">Flip</label>
+                                        <div className="flex gap-2">
+                                          <button onClick={() => updateFileConfig(file.id, 'isFlippedHorizontal', !file.isFlippedHorizontal)} className={`flex-1 p-2 rounded-lg text-xs font-semibold border transition-colors ${file.isFlippedHorizontal ? 'bg-brand-50 dark:bg-brand-950/20 border-brand-200 dark:border-brand-850 text-brand-700 dark:text-brand-300' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-755 dark:text-slate-245 hover:bg-slate-100 dark:hover:bg-slate-700'}`}>↔️ Horiz</button>
+                                          <button onClick={() => updateFileConfig(file.id, 'isFlippedVertical', !file.isFlippedVertical)} className={`flex-1 p-2 rounded-lg text-xs font-semibold border transition-colors ${file.isFlippedVertical ? 'bg-brand-50 dark:bg-brand-950/20 border-brand-200 dark:border-brand-850 text-brand-700 dark:text-brand-300' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-755 dark:text-slate-245 hover:bg-slate-100 dark:hover:bg-slate-700'}`}>↕️ Vert</button>
+                                        </div>
                                       </div>
                                     )}
                                     
@@ -1329,6 +1500,52 @@ function BanaConvertApp(props: AppProps = {}) {
                                       </div>
                                     );
                                   })()}
+
+                                  {/* Favicon Settings */}
+                                  {(defaultTool === 'favicon-generator' || file.targetFormat === ConversionFormat.ICO) && (
+                                    <div className="space-y-3 p-3 rounded-xl border bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
+                                      <div className="text-xs text-slate-705 dark:text-slate-295 font-semibold flex items-center gap-1.5">
+                                        <span>🛠️</span>
+                                        <span>{t('favicon_options')}</span>
+                                      </div>
+                                      <div className="flex flex-wrap gap-2">
+                                        {(['transparent', 'rounded', 'square'] as const).map(type => (
+                                          <button
+                                            key={type}
+                                            onClick={() => updateFileConfig(file.id, 'faviconType', type)}
+                                            className={`text-xs px-3 py-1.5 rounded-lg border font-semibold transition-colors ${file.faviconType === type || (!file.faviconType && type === 'transparent')
+                                              ? 'bg-brand-600 border-brand-500 text-white shadow-sm'
+                                              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-650 dark:text-slate-350 hover:border-brand-300 dark:hover:border-brand-500'
+                                              }`}
+                                          >
+                                            {type === 'transparent' && t('favicon_transparent')}
+                                            {type === 'rounded' && t('favicon_rounded')}
+                                            {type === 'square' && t('favicon_square')}
+                                          </button>
+                                        ))}
+                                      </div>
+                                      
+                                      {(file.faviconType === 'rounded' || file.faviconType === 'square') && (
+                                        <div className="flex items-center gap-3 mt-2 text-xs">
+                                          <span className="text-slate-650 dark:text-slate-350 font-semibold">{t('favicon_bg_color')}</span>
+                                          <div className="flex items-center gap-2">
+                                            <input
+                                              type="color"
+                                              value={file.faviconBgColor || '#ffffff'}
+                                              onChange={(e) => updateFileConfig(file.id, 'faviconBgColor', e.target.value)}
+                                              className="w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer p-0 bg-transparent overflow-hidden"
+                                            />
+                                            <input
+                                              type="text"
+                                              value={file.faviconBgColor || '#ffffff'}
+                                              onChange={(e) => updateFileConfig(file.id, 'faviconBgColor', e.target.value)}
+                                              className="bg-slate-50 dark:bg-slate-900 text-xs border border-slate-200 dark:border-slate-700 rounded-lg p-1.5 w-20 focus:ring-2 focus:ring-brand-500 outline-none text-slate-700 dark:text-slate-350"
+                                            />
+                                          </div>
+                                        </div>
+                                      )}
+                                    </div>
+                                  )}
                                   
                                   {/* Estimated Size Display */}
                                   <div className="flex justify-between items-center border-t border-slate-200/60 dark:border-slate-800/60 pt-3 mt-3">

@@ -187,51 +187,76 @@ const seoDataTr = {
             { q: "SEO'ya faydası var mıdır?", a: "Evet. Arama motorları (Google vb.) favicon dosyalarını indeksler ve arama sonuçlarında site başlığınızın yanında gösterir. Bu da tıklanma oranınızı (CTR) artırır." }
         ]
     },
-    'watermark-image': {
+        'watermark-image': {
         title: "Fotoğraflara Filigran Ekleme: Dijital Eserlerinizi Koruyun",
-        intro: "Görsellerinizin izinsiz kullanılmasını ve kopyalanmasını önlemek veya sadece marka kimliğinizi vurgulamak için fotoğraflarınıza kolayca metin veya logo filigranı (watermark) ekleyin. WebImgConverter'ın yerel işlem gücü sayesinde yüzlerce fotoğrafınızı sunucuya yüklemeden, anında damgalayın.",
+        intro: "Görsel veya fotoğraflarınızın izinsiz kopyalanmasını veya kullanılmasını önlemek için profesyonelce metin veya logo filigranları ekleyin. WebImgConverter filigran ekleme aracı ile tüm görsellerinizi toplu olarak ve anında damgalayın.",
         whyTitle: "Neden Filigran Eklemelisiniz?",
         features: [
-            { title: "Telif Hakkı Koruması", desc: "Dijital hırsızlığa karşı eserlerinizi koruyun. Fotoğraflarınızı çalanların veya izinsiz kullananların işini imkansız hale getirin." },
-            { title: "Marka Görünürlüğü", desc: "Fotoğraflarınız sosyal medyada veya diğer web sitelerinde paylaşıldığında, logonuz sayesinde markanız her yere ulaşsın." }
+            { title: "Telif Hakkı Koruması", desc: "Telif haklarınızı koruyun ve dijital hırsızlığı önleyin. Görsellerinizi izinsiz alanların kullanımını imkansız hale getirin." },
+            { title: "Toplu ve Hızlı Damgalama", desc: "Aynı anda yüzlerce görseli seçip, tek seferde hepsine aynı filigranı yerleştirin ve zamandan kazanın." },
+            { title: "Marka Görünürlüğü", desc: "Fotoğraflarınız paylaşıldıkça logonuz veya isminiz sayesinde marka bilinirliğinizi her mecrada artırın." },
+            { title: "Çözünürlük ve Kalite Koruma", desc: "Filigran eklenirken fotoğrafınızın orijinal çözünürlüğü ve kalitesi kayba uğramaz, en keskin çıktıyı alırsınız." }
         ],
         faq: [
-            { q: "Kalite bozulur mu?", a: "Hayır, fotoğraflarınızın üzerine eklenen filigran orijinal kaliteyi hiçbir şekilde etkilemez. Dışa aktarım yüksek kalitede yapılır." },
-            { q: "Yüzlerce fotoğrafa aynı anda eklenebilir mi?", a: "Evet. Toplu dönüştürme özelliği sayesinde tek bir seferde binlerce görsele aynı konumda filigran ekleyebilirsiniz." }
+            { q: "Görselin kalitesi bozulur mu?", a: "Hayır. Filigran ekleme işlemi, görsel kalitesini düşürmeden piksel hassasiyetinde uygulanır." },
+            { q: "Toplu filigran ekleyebilir miyim?", a: "Evet, tek seferde onlarca görseli sürükleyip bırakarak hepsine aynı anda filigran ekleyebilirsiniz." },
+            { q: "Hem logo hem metin ekleyebilir miyim?", a: "Evet, filigran olarak ister kendi logonuzu (PNG) isterseniz de istediğiniz metni ekleyebilirsiniz." },
+            { q: "Filigran konumunu değiştirebilir miyim?", a: "Evet, filigranı köşelere yerleştirebilir veya tam ortalayarak en güvenli konumu seçebilirsiniz." },
+            { q: "Sistem dosyalarımı kaydediyor mu?", a: "Kesinlikle hayır. İşlemler tarayıcınızda veya izole bellekte yapılır ve dosyalarınız anında silinir." }
         ]
     },
     'rotate-image': {
-        title: "Resim Döndürme: Görsellerinizi İstediğiniz Açıya Getirin",
-        intro: "Ters çekilmiş, yan duran veya yanlış yönlendirmeye sahip fotoğraflarınızı tek tıkla 90 derece sağa, sola döndürün veya yatay/dikey olarak çevirin (flip).",
-        whyTitle: "Resimleri Neden Döndürmelisiniz?",
+        title: "Görsel Döndürme: Fotoğraflarınızı İstediğiniz Açıya Getirin",
+        intro: "Hatalı yönlerde çekilmiş veya ters duran görsellerinizi saniyeler içinde 90 derece sağa, sola döndürün veya yatay/dikey olarak çevirin. WebImgConverter görsel döndürme aracı ile yön hatalarına son verin.",
+        whyTitle: "Görselleri Neden Döndürmelisiniz?",
         features: [
-            { title: "Hızlı Düzeltme", desc: "Telefon kameralarının hatalı algıladığı yön (EXIF orientation) problemlerini pikselleri bozmadan anında düzeltin." }
+            { title: "Hızlı Düzeltme", desc: "Telefon kameralarının yanlış algıladığı yön (EXIF orientation) problemlerini tek tıkla ve saniyeler içinde düzeltin." },
+            { title: "Yatay ve Dikey Çevirme (Flip)", desc: "Görsellerinizi ayna efekti gibi yatayda veya dikeyde çevirerek perspektifini kolayca değiştirin." },
+            { title: "Toplu Döndürme Kolaylığı", desc: "Farklı yönlerdeki fotoğrafları topluca yükleyip, her birinin yönünü panelden bağımsızca ayarlayarak toplu dönüştürün." },
+            { title: "Piksel Kayıpsız Dönüşüm", desc: "Resimlerin pikselleri yeniden sıkıştırılmaz, sadece matris yönü değiştirilir, böylece netlik kaybı yaşanmaz." }
         ],
         faq: [
-            { q: "Görselin boyutu veya kalitesi değişir mi?", a: "Sadece yön bilgisi ve piksel matrisi döndürülür, bu sebeple kalite kesinlikle düşmez." }
+            { q: "Döndürme işlemi kaliteyi düşürür mü?", a: "Hayır, piksellerde bozulma veya kalite kaybı olmadan sadece yön bilgisi değiştirilir." },
+            { q: "Görseli ayna gibi yansıtabilir miyim?", a: "Evet, yatayda veya dikeyde flip (çevirme) butonlarını kullanarak ayna efekti uygulayabilirsiniz." },
+            { q: "Toplu döndürme yapabilir miyim?", a: "Evet, birden fazla görseli yükleyip her birinin ayarlarını tek tek yapıp toplu olarak işleyebilirsiniz." },
+            { q: "Hangi formatları destekliyorsunuz?", a: "JPG, PNG, WebP, AVIF ve HEIC formatındaki görsellerin tamamını döndürebilirsiniz." },
+            { q: "Telefon fotoğraflarındaki yön hatası nasıl düzeltilir?", a: "Fotoğrafınızı aracımıza yükleyin, yönünü panelden düzelterek tekrar indirin; EXIF hataları temizlenmiş olacaktır." }
         ]
     },
     'black-and-white': {
-        title: "Siyah Beyaz Fotoğraf Yapma aracı: Nostaljik Bir Hava",
-        intro: "Renkli fotoğraflarınızı tek tıkla yüksek kaliteli siyah beyaz (grayscale) görsellere dönüştürün. Dramatik etkiler, nostaljik temalar veya profesyonel tasarım ihtiyaçları için mükemmel tonlama.",
-        whyTitle: "Neden Siyah Beyaz?",
+        title: "Siyah Beyaz Fotoğraf Yapma Aracı: Nostaljik Ve Dramatik Tonlar",
+        intro: "Renkli fotoğraflarınızı tek tıkla yüksek kaliteli siyah beyaz (grayscale) görsellere dönüştürün. Sanatsal tasarımlar veya nostaljik temalar için en ideal gri tonlama algoritması.",
+        whyTitle: "Neden Siyah Beyaz Yapmalısınız?",
         features: [
-            { title: "Odaklanma ve Dramatik Etki", desc: "Renklerin dikkat dağıtıcı etkisinden kurtulup ana konuya, ışığa ve kompozisyona odaklanın." }
+            { title: "Dramatik ve Estetik Görünüm", desc: "Renklerin dikkat dağıtıcı etkilerini ortadan kaldırıp kompozisyona, ışığa ve gölgelere odaklanın." },
+            { title: "Tasarım ve Web Uyumluluğu", desc: "Sitenizdeki takım arkadaşlarının fotoğraflarını veya logoları siyah beyaz yaparak daha kurumsal ve minimal bir hava katın." },
+            { title: "Tek Tıkla Grayscale Dönüşümü", desc: "Karmaşık filtreler kullanmadan, profesyonel gri tonlama matrisleri ile en doğru siyah-beyaz çıktıyı alın." },
+            { title: "Kayıpsız Dosya Dönüşümü", desc: "Görselin çözünürlüğünü koruyarak dönüşümü gerçekleştirir ve dosya boyutunu da hafifletir." }
         ],
         faq: [
-            { q: "Geri alınabilir mi?", a: "Araç orijinal dosyanıza dokunmaz, yeni bir dosya indirirsiniz. Orijinal dosyanız renkli kalır." }
+            { q: "Orijinal renkli fotoğrafım kaybolur mu?", a: "Hayır. Orijinal dosyanız bilgisayarınızda kalır, sistem size yeni siyah-beyaz kopyayı indirir." },
+            { q: "Grayscale (gri tonlama) tam olarak nedir?", a: "Renklerin parlaklık değerlerine göre 256 farklı gri tonundan birine eşlendiği dijital görüntüleme standardıdır." },
+            { q: "Bu işlem ücretsiz mi?", a: "Evet, görsellerinizi siyah beyaz yapma aracı tamamen ücretsizdir." },
+            { q: "Hangi formatlarda çıktı alabilirim?", a: "Siyah beyaz yaptığınız görselleri JPG, PNG veya WebP formatlarında kaydedebilirsiniz." },
+            { q: "Toplu işlem destekleniyor mu?", a: "Evet, dilediğiniz kadar fotoğrafı yükleyip hepsini tek tıkla siyah beyaz yapabilirsiniz." }
         ]
     },
     'image-resizer': {
-        title: "Görsel Yeniden Boyutlandırma (Image Resizer)",
-        intro: "Fotoğraflarınızın en ve boy (genişlik/yükseklik) değerlerini tam olarak istediğiniz piksel değerlerine ayarlayın. İster belirli bir platformun kısıtlamalarına uymak, ister web siteniz için boyutları standartlaştırmak isteyin, bu araç görsellerinizi mükemmel ölçülere getirir.",
+        title: "Görsel Yeniden Boyutlandırma: Çözünürlük Ve Piksel Ayarı",
+        intro: "Fotoğraflarınızın piksel genişlik ve yükseklik değerlerini tam olarak istediğiniz ölçülere getirin. Web siteleri, sosyal medya gönderileri ve e-ticaret siteleri için ideal boyutlandırma aracı.",
         whyTitle: "Neden Boyutlandırma Yapmalısınız?",
         features: [
-            { title: "Platform Gereksinimleri", desc: "Instagram, YouTube, Twitter gibi platformların spesifik görsel boyutu (örneğin 1920x1080 veya 1080x1080) kurallarına saniyeler içinde uyun." },
-            { title: "Sayfa Yüklenme Hızı", desc: "Sitenizde 500x500 piksel gösterilecek bir alanı 4000x4000 piksel yüklemek yerine, tam boyutuna getirerek ciddi tasarruf sağlayın." }
+            { title: "Orantılı Boyutlandırma", desc: "En/boy oranını kilitleyerek görsellerinizin basık veya sünmiş görünmesini tamamen engelleyin." },
+            { title: "Sayfa Hızı ve SEO Optimizasyonu", desc: "Gereksiz büyük görselleri tam görüntüleneceği piksel boyutuna indirgeyerek sitenizin yüklenme hızını artırın." },
+            { title: "Sosyal Medya Uyumlu Çözünürlük", desc: "Instagram, Twitter veya YouTube için gerekli ideal piksel çözünürlüklerini tam girerek yükleme yapın." },
+            { title: "Hızlı Toplu Resim Boyutlandırma", desc: "Dosyalarınızı toplu yükleyin, her birine özel genişlik/yükseklik değerleri atayarak aynı anda boyutlandırın." }
         ],
         faq: [
-            { q: "En-boy oranı (Aspect Ratio) bozulur mu?", a: "Hayır, \"En/Boy Oranını Koru\" (Lock Aspect Ratio) seçeneğini işaretlerseniz görseliniz sünmez veya basılmaz." }
+            { q: "En/boy oranı bozulur mu?", a: "Hayır, 'En/Boy Oranını Koru' seçeneği aktifken genişliği veya yüksekliği değiştirdiğinizde diğeri otomatik hesaplanır." },
+            { q: "Görseli büyütürsem kalitesi düşer mi?", a: "Görselleri orijinal boyutundan daha büyük yapmak piksellenmeye neden olabilir; ancak küçültme işleminde kalite kaybı yaşanmaz." },
+            { q: "Hangi piksel birimini kullanıyorsunuz?", a: "Boyutlandırma işlemleri tamamen standart ekran pikseli (px) birimi üzerinden gerçekleştirilir." },
+            { q: "Toplu boyutlandırma sınırı nedir?", a: "Herhangi bir dosya sayısı sınırı yoktur; dilediğiniz kadar görseli aynı anda boyutlandırabilirsiniz." },
+            { q: "Dönüştürülmüş dosyayı hangi formatta alırım?", a: "Boyutlandırılmış görselinizi JPG, PNG veya WebP formatlarında kaydedip indirebilirsiniz." }
         ]
     }
 };

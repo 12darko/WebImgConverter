@@ -194,43 +194,62 @@ const seoDataEn = {
             { q: "Does it help with SEO?", a: "Yes. Search engines (like Google) index favicon files and display them next to your site title in search results, increasing your Click-Through Rate (CTR)." }
         ]
     },
-    'watermark-image': {
+        'watermark-image': {
         title: "Add Watermark to Photos: Protect Your Digital Assets",
-        intro: "Easily add text or logo watermarks to your photos to prevent unauthorized use and copying of your images, or simply to emphasize your brand identity. Stamp hundreds of photos instantly without uploading them to a server, thanks to WebImgConverter's local processing power.",
-        whyTitle: "Why Should You Add a Watermark?",
+        intro: "Add professional text or logo watermarks to your photos to prevent unauthorized use, theft, and copying. Use WebImgConverter's watermark tool to stamp all your images in batch instantly.",
+        whyTitle: "Why Add a Watermark?",
         features: [
-            { title: "Copyright Protection", desc: "Protect your works against digital theft. Make it impossible for those who steal or use your photos without permission." },
-            { title: "Brand Visibility", desc: "When your photos are shared on social media or other websites, your brand reaches everywhere thanks to your logo." }
+            { title: "Copyright Protection", desc: "Secure your digital artwork and photos. Prevent unauthorized sharing or copying of your hard work." },
+            { title: "Batch Watermarking", desc: "Upload hundreds of photos and apply the exact same watermark stamp to all of them at once to save time." },
+            { title: "Brand Promotion", desc: "Promote your brand or business name across social media and websites whenever your photos are shared." },
+            { title: "Resolution & Quality Protection", desc: "Our watermarking engine maintains the original resolution and sharpness of your photographs." }
         ],
         faq: [
-            { q: "Will the quality degrade?", a: "No, the watermark added to your photos does not affect the original quality in any way. Export is done in high quality." },
-            { q: "Can I add it to hundreds of photos at once?", a: "Yes. With the batch conversion feature, you can add watermarks to thousands of images in the same position at once." }
+            { q: "Will the image quality drop?", a: "No. The watermark is rendered directly onto the image with pixel precision, preserving the original quality." },
+            { q: "Can I batch watermark photos?", a: "Yes, you can drag and drop multiple images to watermark them all simultaneously." },
+            { q: "Can I use both text and logos?", a: "Yes, you can upload a logo (PNG) or write custom text, adjusting colors and positions as you need." },
+            { q: "Can I change the watermark position?", a: "Yes, you can place it in the corners or center it to find the most secure spot." },
+            { q: "Are my files stored on your servers?", a: "Absolutely not. Processing is done locally in your browser, and files are cleared immediately." }
         ]
     },
     'rotate-image': {
         title: "Rotate Image: Adjust Your Images to Any Angle",
-        intro: "Rotate your upside-down, sideways, or misoriented photos 90 degrees right, left, or flip them horizontally/vertically with a single click.",
+        intro: "Fix upside-down or sideways photos by rotating them 90 degrees right, left, or flipping them horizontally/vertically. Get the perfect orientation in seconds with WebImgConverter.",
         whyTitle: "Why Rotate Images?",
         features: [
-            { title: "Quick Fix", desc: "Instantly fix orientation (EXIF orientation) problems incorrectly detected by phone cameras without distorting pixels." }
+            { title: "Quick Orientation Fix", desc: "Fix incorrect orientation tags (EXIF orientation) caused by mobile cameras in a single click." },
+            { title: "Horizontal & Vertical Flip", desc: "Mirror your images horizontally or vertically to easily change the perspective and composition." },
+            { title: "Batch Rotation Support", desc: "Upload multiple photos at once and set individual orientation changes for each file before converting." },
+            { title: "Lossless Rotation", desc: "The pixels of the image are rotated without re-compression, ensuring zero loss of sharpness." }
         ],
         faq: [
-            { q: "Will the size or quality of the image change?", a: "Only the orientation information and pixel matrix are rotated, so the quality will absolutely not drop." }
+            { q: "Does rotating decrease quality?", a: "No, only the pixel orientation matrix is rotated, so there is absolutely no loss in image quality." },
+            { q: "Can I mirror the image?", a: "Yes, you can use the horizontal or vertical flip options to mirror your photo." },
+            { q: "Can I rotate multiple photos at once?", a: "Yes, upload multiple files and rotate them individually or batch convert them." },
+            { q: "What file formats are supported?", a: "You can rotate JPG, PNG, WebP, AVIF, and HEIC files seamlessly." },
+            { q: "How to fix auto-rotation bugs from phone cameras?", a: "Simply upload your photo, rotate it to the correct angle in our panel, and download it to clear EXIF orientation bugs." }
         ]
     },
     'black-and-white': {
-        title: "Black and White Photo Maker: A Nostalgic Touch",
-        intro: "Convert your color photos into high-quality black and white (grayscale) images with a single click. Perfect toning for dramatic effects, nostalgic themes, or professional design needs.",
-        whyTitle: "Why Black and White?",
+        title: "Black and White Photo Maker: Grayscale & Dramatic Tones",
+        intro: "Convert color photos into high-quality black and white (grayscale) images with a single click. Ideal toning algorithm for nostalgic themes or professional designs.",
+        whyTitle: "Why Use Black and White?",
         features: [
-            { title: "Focus and Dramatic Effect", desc: "Get rid of the distracting effect of colors and focus on the main subject, light, and composition." }
+            { title: "Focus and Dramatic Effect", desc: "Remove color distractions to highlight the main subject, composition, contrast, and lighting." },
+            { title: "Website Design Unity", desc: "Convert team member photos or client logos to grayscale for a clean, minimal, and corporate appearance." },
+            { title: "One-Click Grayscale Toning", desc: "Use advanced grayscale matrices to output the most accurate tones without complex editing software." },
+            { title: "Lossless Format Export", desc: "Keeps the original resolution intact while reducing the color space weight, often saving file size." }
         ],
         faq: [
-            { q: "Is it reversible?", a: "The tool does not touch your original file; you download a new file. Your original file remains in color." }
+            { q: "Will I lose the original color photo?", a: "No. Your original photo stays on your device; you download a new black-and-white copy." },
+            { q: "What is grayscale?", a: "Grayscale is a digital standard where colors are mapped to one of 256 shades of gray based on brightness." },
+            { q: "Is this tool free to use?", a: "Yes, the black and white conversion tool is completely free with no registration required." },
+            { q: "What formats can I save as?", a: "You can save and download your grayscale photos as JPG, PNG, or WebP." },
+            { q: "Is batch processing supported?", a: "Yes, you can upload multiple photos and convert them all to black and white with a single click." }
         ]
     },
     'image-resizer': {
-        title: "Image Resizer",
+        title: "Image Resizer: Change Resolution & Dimensions",
         intro: "Set the width and height values of your photos exactly to the pixel values you want. Whether you want to comply with the restrictions of a specific platform or standardize dimensions for your website, this tool brings your images to perfect dimensions.",
         whyTitle: "Why Resize?",
         features: [
@@ -238,7 +257,11 @@ const seoDataEn = {
             { title: "Page Load Speed", desc: "Save significantly by resizing an image to its exact size instead of loading a 4000x4000 pixel image in an area that will be displayed as 500x500 pixels on your site." }
         ],
         faq: [
-            { q: "Will the aspect ratio be distorted?", a: "No, if you check the 'Lock Aspect Ratio' option, your image will not stretch or squash." }
+            { q: "Will the aspect ratio distort?", a: "No. With the 'Lock Aspect Ratio' checkbox checked, changing either width or height calculates the other proportionally." },
+            { q: "Does enlarging an image reduce quality?", a: "Yes, scaling an image beyond its original resolution can cause pixelation. Shrinking, however, keeps it sharp." },
+            { q: "What measurement unit do you use?", a: "Resizing operations are executed strictly using standard screen pixels (px)." },
+            { q: "Is there a limit on batch resizing?", a: "There is no limit on the number of files; you can upload and resize as many images as you need at the same time." },
+            { q: "What output formats can I download?", a: "You can save your resized images as JPG, PNG, or WebP files." }
         ]
     }
 };

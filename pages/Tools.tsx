@@ -75,60 +75,6 @@ const content = {
             'image-resizer': { name: 'Image Resizer', description: 'Resize your images to any pixel dimensions (width x height).' },
             'general-tool': { name: 'All-in-One Tool', description: 'Our general tool to convert between all formats (JPG, PNG, WebP, AVIF, HEIC etc.).' }
         }
-    },
-    de: {
-        metaTitle: 'Alle Werkzeuge — WebImgConverter',
-        metaDesc: 'Entdecken Sie alle Bildverarbeitungswerkzeuge auf WebImgConverter: Konvertierung, Komprimierung, Zuschneiden, Hintergrundentfernung und mehr.',
-        heading: 'Alle Werkzeuge entdecken',
-        subheading: 'Präzise Bildverarbeitung auf Knopfdruck. Finden Sie das perfekte Werkzeug, um Ihre digitalen Assets zu konvertieren und zu optimieren.',
-        searchPlaceholder: 'Suchen Sie nach Werkzeugen, MIME-Typ, JPEG oder PNG',
-        notFound: (query: string) => `Keine Werkzeuge für "${query}" gefunden. Bitte versuchen Sie ein anderes Wort.`,
-        badgeNew: 'NEU',
-        sectionConverters: 'Konverter',
-        sectionAdvanced: 'Erweiterte Werkzeuge',
-        tools: {
-            'svg-converter': { name: 'SVG Konverter', description: 'Konvertieren Sie Ihre Vektor- (SVG) Grafiken in JPG, PNG oder WebP.' },
-            'avif-converter': { name: 'AVIF Konverter', description: 'Konvertieren Sie AVIF-Dateien in JPG, PNG oder WebP. Sie wählen das Ausgabeformat.' },
-            'image-compressor': { name: 'Bildkomprimierer', description: 'Reduzieren Sie Dateigrößen erheblich ohne merklichen Qualitätsverlust durch intelligente Algorithmen.' },
-            'png-converter': { name: 'PNG Konverter', description: 'Konvertieren Sie PNG-Dateien schnell in JPG, WebP oder AVIF.' },
-            'smart-cropper': { name: 'Smart Cropper', description: 'Erkennen Sie Motive automatisch und schneiden Sie Bilder perfekt für soziale Medien oder Thumbnails zu.' },
-            'favicon-generator': { name: 'Favicon Generator', description: 'Erstellen Sie in Sekundenschnelle perfekte Favicon (ICO)-Dateien für Ihre Website.' },
-            'background-remover': { name: 'Hintergrundentferner', description: 'Entfernen Sie Hintergründe sofort mit fortschrittlicher KI für Porträts und Produktfotos.' },
-            'rotate-image': { name: 'Bild Drehen', description: 'Spiegeln Sie Ihre Bilder horizontal/vertikal oder drehen Sie sie.' },
-            'watermark-image': { name: 'Wasserzeichen', description: 'Fügen Sie Text- oder Logo-Wasserzeichen hinzu, um Ihr Urheberrecht zu schützen.' },
-            'black-and-white': { name: 'Schwarz-Weiß', description: 'Konvertieren Sie Ihre Bilder mit einem Klick in Schwarz-Weiß (Graustufen).' },
-            'webp-converter': { name: 'WebP Konverter', description: 'Konvertieren Sie Ihre WebP-Dateien in JPG oder PNG.' },
-            'jpg-converter': { name: 'JPG Konverter', description: 'Konvertieren Sie Ihre JPG/JPEG-Dateien in PNG oder WebP.' },
-            'image-resizer': { name: 'Bildgrößenänderer', description: 'Ändern Sie die Abmessungen Ihrer Bilder auf beliebige Pixel.' },
-            'general-tool': { name: 'All-in-One Werkzeug', description: 'Unser allgemeines Werkzeug zur Konvertierung.' }
-        }
-    },
-    fr: {
-        metaTitle: 'Tous les Outils — WebImgConverter',
-        metaDesc: 'Découvrez tous les outils de traitement d\'images sur WebImgConverter : conversion, compression, recadrage, suppression d\'arrière-plan et plus.',
-        heading: 'Découvrir Tous les Outils',
-        subheading: 'Le traitement d\'images précis à portée de main. Trouvez l\'outil parfait pour convertir, optimiser et améliorer vos actifs numériques.',
-        searchPlaceholder: 'Rechercher par outils, type MIME, JPEG ou PNG',
-        notFound: (query: string) => `Aucun outil trouvé pour "${query}". Veuillez essayer un autre mot.`,
-        badgeNew: 'NOUVEAU',
-        sectionConverters: 'Convertisseurs',
-        sectionAdvanced: 'Outils Avancés',
-        tools: {
-            'svg-converter': { name: 'Convertisseur SVG', description: 'Convertissez vos graphiques vectoriels (SVG) au format JPG, PNG ou WebP.' },
-            'avif-converter': { name: 'Convertisseur AVIF', description: 'Convertissez vos fichiers AVIF en JPG, PNG ou WebP. Vous choisissez le format de sortie.' },
-            'image-compressor': { name: 'Compresseur d\'Image', description: 'Réduisez considérablement la taille des fichiers sans perte de qualité notable.' },
-            'png-converter': { name: 'Convertisseur PNG', description: 'Convertissez vos fichiers PNG au format JPG, WebP ou AVIF.' },
-            'smart-cropper': { name: 'Recadrage Intelligent', description: 'Détectez automatiquement les sujets et recadrez parfaitement les images pour les médias sociaux ou les miniatures.' },
-            'favicon-generator': { name: 'Générateur de Favicon', description: 'Générez des fichiers favicon (ICO) parfaits pour votre site web en quelques secondes.' },
-            'background-remover': { name: 'Suppresseur de Fond', description: 'Supprimez instantanément les arrière-plans en utilisant l\'IA avancée pour les portraits et les photos de produits.' },
-            'rotate-image': { name: 'Pivoter l\'Image', description: 'Retournez vos images ou faites-les pivoter sous n\'importe quel angle.' },
-            'watermark-image': { name: 'Filigrane', description: 'Ajoutez un filigrane texte ou logo à vos images pour protéger vos droits d\'auteur.' },
-            'black-and-white': { name: 'Noir et Blanc', description: 'Convertissez vos images colorées en noir et blanc (niveaux de gris) en un clic.' },
-            'webp-converter': { name: 'Convertisseur WebP', description: 'Convertissez vos fichiers WebP en JPG ou PNG.' },
-            'jpg-converter': { name: 'Convertisseur JPG', description: 'Convertissez vos fichiers JPG/JPEG en PNG ou WebP.' },
-            'image-resizer': { name: 'Redimensionneur', description: 'Redimensionnez vos images en pixels (largeur x hauteur).' },
-            'general-tool': { name: 'Outil Tout-en-Un', description: 'Notre outil général pour convertir entre tous les formats.' }
-        }
     }
 };
 
@@ -268,46 +214,10 @@ const TOOLS: ToolDef[] = [
         keywords: ['background', 'remove', 'transparent', 'ai'],
     },
     {
-        id: 'rotate-image',
-        name: 'rotate-image',
-        description: 'rotate-image',
-        path: '/rotate-image',
-        badge: 'NEW',
-        icon: Icon(<>
-            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-            <path d="M3 3v5h5" />
-        </>),
-        keywords: ['rotate', 'flip', 'spin'],
-    },
-    {
-        id: 'watermark-image',
-        name: 'watermark-image',
-        description: 'watermark-image',
-        path: '/watermark-image',
-        badge: 'NEW',
-        icon: Icon(<>
-            <path d="M12 2v20" />
-            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-        </>),
-        keywords: ['watermark', 'copyright', 'stamp', 'logo'],
-    },
-    {
-        id: 'black-and-white',
-        name: 'black-and-white',
-        description: 'black-and-white',
-        path: '/black-and-white',
-        badge: 'NEW',
-        icon: Icon(<>
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 2a10 10 0 0 1 0 20z" />
-        </>),
-        keywords: ['black', 'white', 'grayscale', 'filter'],
-    },
-    {
         id: 'general-tool',
         name: 'general-tool',
         description: 'general-tool',
-        path: '/',
+        path: '/app',
         badge: 'PRO',
         icon: Icon(<>
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
@@ -348,7 +258,7 @@ const ToolCard: React.FC<{ tool: ToolDef; t: typeof content.en }> = ({ tool, t }
 
 export default function ToolsPage() {
     const { language } = useLanguage();
-    const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
+    const activeLang = (typeof language === 'string' && language.startsWith('tr') ? 'tr' : 'en') as LangKey;
     const t = content[activeLang] || content.tr;
     const navigate = useNavigate();
     const [query, setQuery] = React.useState('');

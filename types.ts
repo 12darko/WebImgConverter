@@ -37,6 +37,15 @@ export interface FileItem {
   isFlippedHorizontal?: boolean;
   isFlippedVertical?: boolean;
 
+  // Custom Resize & Favicon Options
+  targetWidth?: number;
+  targetHeight?: number;
+  originalWidth?: number;
+  originalHeight?: number;
+  lockAspectRatio?: boolean;
+  faviconType?: 'transparent' | 'rounded' | 'square';
+  faviconBgColor?: string;
+
   status: 'idle' | 'converting' | 'analyzing' | 'done' | 'error';
   convertedBlob?: Blob;
   convertedUrl?: string;

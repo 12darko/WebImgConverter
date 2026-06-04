@@ -209,6 +209,30 @@ Pazartesi - Cuma: 09:00 - 18:00 (TSİ)`,
     nav_blog: "Blog",
     nav_login: "Giriş Yap",
     nav_profile: "Profilim",
+    login_btn: "Giriş Yap",
+    logout_btn: "Oturumu Kapat",
+    convert_now_btn: "Hemen Dönüştür",
+    
+    // Profile Page
+    profile_title: "Hesabım",
+    profile_desc: "Üyelik detaylarınızı ve kullanım istatistiklerinizi buradan yönetebilirsiniz.",
+    profile_info: "Profil Bilgileri",
+    profile_email: "E-Posta",
+    profile_id: "Hesap ID",
+    profile_logout: "Oturumu Kapat",
+    profile_membership: "Üyelik ve Kullanım",
+    profile_current_plan: "Mevcut Plan",
+    profile_active: "Aktif",
+    profile_total_operations: "Toplam İşlem",
+    profile_upgrade_btn: "Premium'a Yükselt",
+    profile_seo_desc: "Hesap bilgilerinizi ve üyelik detaylarınızı yönetin.",
+
+    // Favicon Options
+    favicon_options: "Favicon Seçenekleri",
+    favicon_transparent: "Transparan",
+    favicon_rounded: "Yuvarlak İkon",
+    favicon_square: "Kare İkon",
+    favicon_bg_color: "Arka Plan Rengi:",
 
     // Pricing Page
     pricing_title: "Basit, şeffaf fiyatlandırma.",
@@ -452,6 +476,30 @@ Monday - Friday: 09:00 - 18:00 (GMT+3)`,
     nav_blog: "Blog",
     nav_login: "Login",
     nav_profile: "My Profile",
+    login_btn: "Log In",
+    logout_btn: "Log Out",
+    convert_now_btn: "Convert Now",
+
+    // Profile Page
+    profile_title: "My Account",
+    profile_desc: "Manage your membership details and usage stats here.",
+    profile_info: "Profile Information",
+    profile_email: "Email",
+    profile_id: "Account ID",
+    profile_logout: "Log Out",
+    profile_membership: "Membership & Usage",
+    profile_current_plan: "Current Plan",
+    profile_active: "Active",
+    profile_total_operations: "Total Operations",
+    profile_upgrade_btn: "Upgrade to Premium",
+    profile_seo_desc: "Manage your account details and membership.",
+
+    // Favicon Options
+    favicon_options: "Favicon Options",
+    favicon_transparent: "Transparent",
+    favicon_rounded: "Rounded Icon",
+    favicon_square: "Square Icon",
+    favicon_bg_color: "Background Color:",
 
     // Pricing Page
     pricing_title: "Simple, transparent pricing.",
