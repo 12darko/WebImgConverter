@@ -31,7 +31,7 @@ import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea
 
 import { supabase, getUserProfile, updateUserCredits, upgradeToPremium, incrementDailyStats, activateSiteAccount } from './services/supabase'; // DB Services
 import { logConversion } from './services/historyService'; // History Service
-import { LanguageProvider, useLanguage } from './LanguageContext';
+import { LanguageProvider, useLanguage, useLocalizedPath } from './LanguageContext';
 import {
   FileItem,
   ConversionFormat,
@@ -66,6 +66,7 @@ interface AppProps {
 function BanaConvertApp(props: AppProps = {}) {
   const { defaultTool, pageH1, acceptTypes, formatBadges, defaultOutputFormat, hideFormatSelector, hideAdvancedSettings, allowedSettings, dropzoneTitle, dropzoneDesc, children, conversionHandler } = props;
   const { t, language, setLanguage } = useLanguage();
+  const localizedPath = useLocalizedPath();
   const [files, setFiles] = useState<FileItem[]>([]);
   const [compareItem, setCompareItem] = useState<FileItem | null>(null);
 
@@ -780,9 +781,9 @@ function BanaConvertApp(props: AppProps = {}) {
 
             {/* Middle: Navigation Links */}
             <div className="hidden md:flex items-center gap-8">
-              <Link to="/tools" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Araçlar</Link>
-              <Link to="/pricing" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Fiyatlandırma</Link>
-              <Link to="/blog" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Blog</Link>
+              <Link to={localizedPath('/tools')} className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">{t('nav_tools')}</Link>
+              <Link to={localizedPath('/pricing')} className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">{t('nav_pricing')}</Link>
+              <Link to={localizedPath('/blog')} className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">{t('nav_blog')}</Link>
             </div>
 
             {/* Right: Auth & CTA */}

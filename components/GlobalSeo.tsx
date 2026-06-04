@@ -14,7 +14,7 @@ export const GlobalSeo = () => {
     const firstPart = pathParts[1];
     
     let basePath = location.pathname;
-    if (['en', 'de', 'fr'].includes(firstPart)) {
+    if (['en'].includes(firstPart)) {
        pathParts.splice(1, 1);
        basePath = pathParts.join('/') || '/';
     }
@@ -95,8 +95,6 @@ export const GlobalSeo = () => {
             <link rel="alternate" hrefLang="x-default" href={getLocalizedUrl('tr')} />
             <link rel="alternate" hrefLang="tr" href={getLocalizedUrl('tr')} />
             <link rel="alternate" hrefLang="en" href={getLocalizedUrl('en')} />
-            <link rel="alternate" hrefLang="de" href={getLocalizedUrl('de')} />
-            <link rel="alternate" hrefLang="fr" href={getLocalizedUrl('fr')} />
 
             {/* Dynamic Canonical */}
             <link rel="canonical" href={`${siteUrl}${location.pathname}`} />

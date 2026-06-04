@@ -29,9 +29,7 @@ export const SiteShell: React.FC<SiteShellProps> = ({
     const [session, setSession] = useState<any>(null);
     const navigate = useNavigate();
     const { language } = useLanguage();
-    const activeLang = typeof language === 'string' && language.startsWith('tr') ? 'tr' : 
-                      typeof language === 'string' && language.startsWith('de') ? 'de' : 
-                      typeof language === 'string' && language.startsWith('fr') ? 'fr' : 'en';
+    const activeLang = typeof language === 'string' && language.startsWith('tr') ? 'tr' : 'en';
 
     const bgClass =
         bg === 'subtle' ? 'bg-slate-50 dark:bg-slate-900 dark:text-white' :

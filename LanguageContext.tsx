@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useSearchParams, useLocation, useNavigate } from 'react-router-dom';
 import { translations } from './translations';
 
-type Language = 'tr' | 'en' | 'de' | 'fr';
+type Language = 'tr' | 'en';
 
 interface LanguageContextType {
   language: Language;
@@ -23,7 +23,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   useEffect(() => {
     // 1. Check if ?lang=XX parameter exists to migrate old links smoothly
     const urlLangParam = searchParams.get('lang');
-    if (urlLangParam && ['tr', 'en', 'de', 'fr'].includes(urlLangParam)) {
+    if (urlLangParam && ['tr', 'en'].includes(urlLangParam)) {
        const basePath = location.pathname;
        const newUrl = urlLangParam === 'tr' ? basePath : `/${urlLangParam}${basePath === '/' ? '' : basePath}`;
        
@@ -40,7 +40,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const pathParts = location.pathname.split('/');
     const firstPart = pathParts[1];
     
-    if (['en', 'de', 'fr'].includes(firstPart)) {
+    if (['en'].includes(firstPart)) {
       setLanguageState(firstPart as Language);
     } else {
       // 3. No explicit language in URL (defaults to Turkish).
@@ -53,7 +53,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                 
           const browserLang = preferredLang.slice(0, 2).toLowerCase();
           
-          if (['en', 'de', 'fr'].includes(browserLang)) {
+          if (['en'].includes(browserLang)) {
             setLanguageState(browserLang as Language);
             navigate(`/${browserLang}`, { replace: true });
           } else if (browserLang !== 'tr') {
@@ -77,7 +77,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     let newPath = location.pathname;
     
     // Remove existing language prefix if any
-    if (['en', 'de', 'fr'].includes(firstPart)) {
+    if (['en'].includes(firstPart)) {
        pathParts.splice(1, 1);
        newPath = pathParts.join('/') || '/';
     }
