@@ -1,5 +1,4 @@
 import React from 'react';
-import { triggerAdsterraPopunder } from '../ads/popunder';
 
 interface ToolDropzoneProps {
     onFiles: (files: File[]) => void;
@@ -44,10 +43,7 @@ export const ToolDropzone: React.FC<ToolDropzoneProps> = ({
                 setDragOver(false);
                 handleFiles(e.dataTransfer.files);
             }}
-            onClick={() => {
-                triggerAdsterraPopunder();
-                inputRef.current?.click();
-            }}
+            onClick={() => inputRef.current?.click()}
             className={[
                 'group relative flex flex-col items-center justify-center text-center cursor-pointer transition-all',
                 'rounded-3xl border-2 border-dashed bg-brand-50/40 dark:bg-brand-950/10',
