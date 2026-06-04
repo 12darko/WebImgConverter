@@ -9,6 +9,9 @@ export const GlobalSeo = () => {
 
     const siteUrl = 'https://webimgconverter.com';
     const currentPath = location.pathname;
+    const searchParams = new URLSearchParams(location.search);
+    const langParam = searchParams.get('lang');
+    const canonicalUrl = langParam ? `${siteUrl}${currentPath}?lang=${langParam}` : `${siteUrl}${currentPath}`;
 
     // JSON-LD: SoftwareApplication
     const jsonLd = {
@@ -85,7 +88,7 @@ export const GlobalSeo = () => {
             <link rel="alternate" hrefLang="fr" href={`${siteUrl}${currentPath}?lang=fr`} />
 
             {/* Dynamic Canonical */}
-            <link rel="canonical" href={`${siteUrl}${currentPath}`} />
+            <link rel="canonical" href={canonicalUrl} />
 
         </Helmet>
     );
