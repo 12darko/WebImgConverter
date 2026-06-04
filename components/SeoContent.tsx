@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../LanguageContext';
 
-export type SeoPageType = 'home' | 'heic-converter' | 'png-converter' | 'webp-converter' | 'jpg-converter' | 'avif-converter' | 'remove-background' | 'compress-image' | 'svg-converter' | 'crop' | 'favicon-generator' | 'rotate-image' | 'watermark-image' | 'black-and-white';
+export type SeoPageType = 'home' | 'heic-converter' | 'png-converter' | 'webp-converter' | 'jpg-converter' | 'avif-converter' | 'remove-background' | 'compress-image' | 'svg-converter' | 'crop' | 'favicon-generator' | 'rotate-image' | 'watermark-image' | 'black-and-white' | 'image-resizer';
 
 interface SeoContentProps {
     pageType?: SeoPageType;
