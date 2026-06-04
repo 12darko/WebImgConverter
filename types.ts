@@ -57,7 +57,7 @@ export interface UserStats {
   requiresActivation?: boolean; // Site activation flag
 }
 
-export const MAX_FREE_CREDITS = 25;     // Günlük ücretsiz hak (kullanıcı çekmek için artırıldı)
+export const MAX_FREE_CREDITS = 20;     // Günlük ücretsiz hak (kayıt olmayanlara vb.)
 export const SIGNUP_BONUS_CREDITS = 10; // İlk kayıt bonusu
 export const REFERRAL_REWARD_CREDITS = 5; // Referans ödülü
 export const COST_PER_CONVERT = 1;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../LanguageContext';
 
-export type SeoPageType = 'home' | 'heic-converter' | 'png-converter' | 'webp-converter' | 'jpg-converter' | 'avif-converter' | 'remove-background' | 'compress-image' | 'svg-converter' | 'crop' | 'favicon-generator' | 'rotate-image' | 'watermark-image' | 'black-and-white' | 'heic-to-jpg' | 'png-to-jpg' | 'webp-to-jpg' | 'svg-to-png';
+export type SeoPageType = 'home' | 'heic-converter' | 'png-converter' | 'webp-converter' | 'jpg-converter' | 'avif-converter' | 'remove-background' | 'compress-image' | 'svg-converter' | 'crop' | 'favicon-generator' | 'rotate-image' | 'watermark-image' | 'black-and-white';
 
 interface SeoContentProps {
     pageType?: SeoPageType;
@@ -336,7 +336,7 @@ const seoData = {
                 { q: "Does my original file change?", a: "No, your original file is preserved. You download a new compressed version separately." }
             ]
         },
-        'svg-to-png': {
+        'svg-converter': {
             title: "Convert SVG to PNG - Rasterize Vector Graphics",
             intro: "Convert your vector SVG files to transparent PNG format without losing quality. Get crisp results at any resolution.",
             whyTitle: "SVG vs PNG?",
@@ -392,7 +392,7 @@ const seoData = {
                 { q: "Kann ich Stapelverarbeitung durchführen?", a: "Ja, laden Sie 100+ Dateien auf einmal hoch." }
             ]
         },
-        'heic-to-jpg': {
+        'heic-converter': {
             title: "HEIC zu JPG Konvertierungsanleitung",
             intro: "WebImgConverter ermöglicht die Konvertierung von Apples modernem HEIC-Fotoformat in JPG, PNG oder WEBP in Sekunden.",
             whyTitle: "HEIC Konvertierungsanleitung",
@@ -410,7 +410,7 @@ const seoData = {
                 { q: "Kann ich HEIC stapelweise konvertieren?", a: "Ja, laden Sie 100+ HEIC-Dateien auf einmal hoch." }
             ]
         },
-        'png-to-jpg': {
+        'png-converter': {
             title: "PNG zu JPG konvertieren - Transparenz & Größe",
             intro: "Konvertieren Sie große PNG-Dateien in weboptimiertes JPG-Format.",
             whyTitle: "PNG vs JPG?",
@@ -511,6 +511,42 @@ const seoData = {
                 { q: "Wie wichtig ist das für Website-Geschwindigkeit?", a: "Bilder machen über 60% der Seitenladezeit aus." },
                 { q: "Ändert sich meine Originaldatei?", a: "Nein, Ihre Originaldatei bleibt erhalten." }
             ]
+        },
+        'svg-converter': {
+            title: "SVG zu PNG konvertieren – Vektorgrafiken rastern",
+            intro: "Konvertieren Sie Ihre vektoriellen SVG-Dateien in universell kompatibles PNG-Format. Perfekt für Logos, Icons und Grafiken.",
+            whyTitle: "Warum SVG konvertieren?",
+            features: [
+                { title: "Universelle Kompatibilität", desc: "PNG wird überall unterstützt – in Office, Social Media und allen Browsern." },
+                { title: "Transparenz erhalten", desc: "Die Transparenz Ihrer SVG-Dateien bleibt im PNG vollständig erhalten." },
+                { title: "Benutzerdefinierte Auflösung", desc: "Wählen Sie die Ausgabegröße selbst – von kleinen Icons bis zu hochauflösenden Postern." },
+                { title: "Schriften & Stile", desc: "Eingebettete CSS-Stile und Schriftarten werden korrekt gerendert." }
+            ],
+            faq: [
+                { q: "Was ist SVG?", a: "SVG ist ein vektorbasiertes Grafikformat, das sich verlustfrei skalieren lässt." },
+                { q: "Warum in PNG konvertieren?", a: "Viele Plattformen unterstützen kein SVG, aber PNG öffnet sich überall." },
+                { q: "Geht die Transparenz verloren?", a: "Nein, transparente Hintergründe bleiben im PNG-Format erhalten." },
+                { q: "Kann ich die Auflösung anpassen?", a: "Ja, Sie können die gewünschte Ausgabegröße vor der Konvertierung festlegen." },
+                { q: "Kann ich mehrere SVGs konvertieren?", a: "Ja, laden Sie Hunderte von SVG-Dateien hoch und konvertieren Sie alle gleichzeitig." }
+            ]
+        },
+        'crop': {
+            title: "Intelligenter Bildzuschnitt",
+            intro: "Schneiden Sie Ihre Fotos für Social Media, E-Commerce oder benutzerdefinierte Größen in Sekunden zu.",
+            whyTitle: "Warum Smart Cropper?",
+            features: [
+                { title: "Freier Zuschnitt", desc: "Wählen und schneiden Sie frei jeden Bereich, den Sie möchten." },
+                { title: "Social-Media-Größen", desc: "Perfekte Zuschnitte mit Vorlagen für Instagram, Twitter, Facebook." },
+                { title: "Hohe Qualität", desc: "Beim Zuschneiden geht keine Qualität verloren." },
+                { title: "Schnell & Praktisch", desc: "Zuschneiden und herunterladen direkt im Browser, ohne Softwareinstallation." }
+            ],
+            faq: [
+                { q: "Welche Formate kann ich zuschneiden?", a: "Wir unterstützen alle gängigen Formate wie JPG, PNG, WebP und HEIC." },
+                { q: "Sinkt die Qualität?", a: "Nein, die Originalqualität wird maximal beibehalten." },
+                { q: "Kann ich ein eigenes Seitenverhältnis eingeben?", a: "Ja, wählen Sie Voreinstellungen wie 1:1, 16:9, 4:3 oder schneiden Sie frei zu." },
+                { q: "Ist es kostenlos?", a: "Grundlegende Zuschneide-Funktionen sind vollständig kostenlos." },
+                { q: "Ist es mobilfreundlich?", a: "Ja, Smart Cropper funktioniert mit voller Touch-Unterstützung auf Handys und Tablets." }
+            ]
         }
     },
     fr: {
@@ -532,7 +568,7 @@ const seoData = {
                 { q: "Puis-je convertir par lot?", a: "Oui, téléchargez plus de 100 fichiers à la fois." }
             ]
         },
-        'heic-to-jpg': {
+        'heic-converter': {
             title: "Guide de conversion HEIC vers JPG",
             intro: "WebImgConverter vous permet de convertir le format photo moderne HEIC d'Apple en JPG, PNG ou WEBP en quelques secondes.",
             whyTitle: "Guide de conversion HEIC",
@@ -550,7 +586,7 @@ const seoData = {
                 { q: "Puis-je convertir HEIC par lot?", a: "Oui, téléchargez plus de 100 fichiers HEIC à la fois." }
             ]
         },
-        'png-to-jpg': {
+        'png-converter': {
             title: "Convertir PNG en JPG - Transparence & Taille",
             intro: "Convertissez de gros fichiers PNG en format JPG optimisé pour le web.",
             whyTitle: "PNG vs JPG?",
@@ -651,13 +687,49 @@ const seoData = {
                 { q: "Importance pour la vitesse du site?", a: "Les images représentent plus de 60% du temps de chargement de page." },
                 { q: "Mon fichier original change-t-il?", a: "Non, votre fichier original est préservé." }
             ]
+        },
+        'svg-converter': {
+            title: "Convertir SVG en PNG – Vectoriel vers Pixel",
+            intro: "Convertissez vos fichiers SVG vectoriels en format PNG universellement compatible. Parfait pour les logos, icônes et graphiques.",
+            whyTitle: "Pourquoi convertir SVG?",
+            features: [
+                { title: "Compatibilité Universelle", desc: "PNG est supporté partout – Office, réseaux sociaux et tous les navigateurs." },
+                { title: "Transparence Préservée", desc: "La transparence de vos fichiers SVG est entièrement conservée en PNG." },
+                { title: "Résolution Personnalisée", desc: "Choisissez la taille de sortie – des petites icônes aux posters haute résolution." },
+                { title: "Polices et Styles", desc: "Les styles CSS et polices intégrés sont correctement rendus." }
+            ],
+            faq: [
+                { q: "Qu'est-ce que SVG?", a: "SVG est un format graphique vectoriel qui peut être redimensionné sans perte de qualité." },
+                { q: "Pourquoi convertir en PNG?", a: "De nombreuses plateformes ne supportent pas SVG, mais PNG s'ouvre partout." },
+                { q: "La transparence est-elle perdue?", a: "Non, les fonds transparents sont conservés dans le format PNG." },
+                { q: "Puis-je ajuster la résolution?", a: "Oui, vous pouvez définir la taille de sortie souhaitée avant la conversion." },
+                { q: "Puis-je convertir plusieurs SVG?", a: "Oui, téléchargez des centaines de fichiers SVG et convertissez-les tous en même temps." }
+            ]
+        },
+        'crop': {
+            title: "Recadrage Intelligent d'Images",
+            intro: "Recadrez vos photos pour les réseaux sociaux, l'e-commerce ou des dimensions personnalisées en quelques secondes.",
+            whyTitle: "Pourquoi Smart Cropper?",
+            features: [
+                { title: "Recadrage Libre", desc: "Sélectionnez et recadrez librement la zone de votre choix." },
+                { title: "Tailles Réseaux Sociaux", desc: "Recadrages parfaits avec des modèles pour Instagram, Twitter, Facebook." },
+                { title: "Haute Qualité", desc: "Aucune perte de qualité lors du recadrage." },
+                { title: "Rapide et Pratique", desc: "Recadrez et téléchargez directement depuis le navigateur sans logiciel." }
+            ],
+            faq: [
+                { q: "Quels formats puis-je recadrer?", a: "Nous supportons tous les formats populaires comme JPG, PNG, WebP et HEIC." },
+                { q: "La qualité diminue-t-elle?", a: "Non, la qualité originale est préservée au maximum." },
+                { q: "Puis-je entrer un ratio personnalisé?", a: "Oui, choisissez des préréglages comme 1:1, 16:9, 4:3 ou recadrez librement." },
+                { q: "Est-ce gratuit?", a: "Les opérations de recadrage de base sont entièrement gratuites." },
+                { q: "Est-ce compatible mobile?", a: "Oui, Smart Cropper fonctionne avec un support tactile complet sur téléphones et tablettes." }
+            ]
         }
     }
 };
 
 type LangKey = keyof typeof seoData;
 
-export const SeoContent = ({ pageType = 'heic-to-jpg' }: SeoContentProps) => {
+export const SeoContent = ({ pageType = 'heic-converter' }: SeoContentProps) => {
     const { language } = useLanguage();
     const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
 

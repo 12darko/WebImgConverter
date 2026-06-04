@@ -5,7 +5,7 @@ import { SiteShell } from '../layout';
 import { ToolWorkspace } from '../tool/ToolWorkspace';
 import { OutputFormat } from '../../services/toolEngine';
 import { FormatOption } from '../tool/OptimizationSettingsPanel';
-import { SeoContent } from '../SeoContent';
+import { SeoContent, SeoPageType } from '../SeoContent';
 
 interface RichFeature {
     icon: string;
@@ -36,7 +36,7 @@ interface DetailPageScaffoldProps {
     /** Optional info text below */
     additionalContent?: React.ReactNode;
     /** SeoContent pageType key */
-    seoContentType?: 'home' | 'heic-to-jpg' | 'png-to-jpg' | 'webp-to-jpg' | 'remove-background' | 'compress-image';
+    seoContentType?: SeoPageType;
 }
 
 export const DetailPageScaffold: React.FC<DetailPageScaffoldProps> = ({
