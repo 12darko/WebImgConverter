@@ -17,12 +17,12 @@ const content = {
         philosophyText: 'WebImgConverter, kullanıcı gizliliğini ön planda tutar. Geleneksel araçların aksine, görsellerinizi asla kalıcı olarak depolamayız. Tüm görsel ve yapay zeka işlemleri güvenli sunucularda anlık olarak tamamlanır ve anında silinir.',
         whyUs: 'Neden WebImgConverter?',
         features: [
-            { icon: '??', title: '%100 Gizlilik', desc: 'Dosyalarınız asla kalıcı olarak depolanmaz. İşlemler güvenli sunucularda anlık yapılır ve hemen silinir.' },
-            { icon: '?', title: 'Işık Hızında', desc: 'WebAssembly teknolojisi ile saniyeler içinde yüzlerce görseli işleyin. Bekleme yok.' },
-            { icon: '??', title: 'AI Teknolojisi', desc: 'Yapay zeka destekli arka plan silme ve akıllı dosya isimlendirme özellikleri.' },
-            { icon: '??', title: 'Premium Kalite', desc: 'Profesyonel düzeyde dönüşüm kalitesi, kayıpsız veya optimize sıkıştırma seçenekleri.' },
-            { icon: '??', title: 'Çoklu Dil', desc: 'Türkçe, İngilizce, Almanca ve Fransızca dahil 4 dilde kullanıma hazır.' },
-            { icon: '??', title: 'Mobil Uyumlu', desc: 'iPhone, Android, tablet ve masaüstü dahil tüm cihazlarda kusursuz çalışır.' }
+            { icon: '🔒', title: '%100 Gizlilik', desc: 'Dosyalarınız asla kalıcı olarak depolanmaz. İşlemler güvenli sunucularda anlık yapılır ve hemen silinir.' },
+            { icon: '⚡', title: 'Işık Hızında', desc: 'WebAssembly teknolojisi ile saniyeler içinde yüzlerce görseli işleyin. Bekleme yok.' },
+            { icon: '🎨', title: 'AI Teknolojisi', desc: 'Yapay zeka destekli arka plan silme ve akıllı dosya isimlendirme özellikleri.' },
+            { icon: '💎', title: 'Premium Kalite', desc: 'Profesyonel düzeyde dönüşüm kalitesi, kayıpsız veya optimize sıkıştırma seçenekleri.' },
+            { icon: '🌍', title: 'Çoklu Dil', desc: 'Türkçe, İngilizce, Almanca ve Fransızca dahil 4 dilde kullanıma hazır.' },
+            { icon: '📱', title: 'Mobil Uyumlu', desc: 'iPhone, Android, tablet ve masaüstü dahil tüm cihazlarda kusursuz çalışır.' }
         ],
         techTitle: 'Teknolojimiz',
         techText: 'WebImgConverter, en son web teknolojilerini kullanır:',
@@ -43,7 +43,7 @@ const content = {
         ],
         team: 'Şirket Bilgileri',
         teamText: 'WebImgConverter Inc., kullanıcı gizliliğini ön planda tutan bir yazılım şirketidir. Amacımız, insanların görsellerini güvenle dönüştürebilecekleri, Ücretsiz ve kullanıma kolay araçlar sunmaktır.',
-        contact: '?? İletişim: support@WebImgConverter.com',
+        contact: '📧 İletişim: support@WebImgConverter.com',
         stats: 'Rakamlarla WebImgConverter',
         statsItems: [
             { value: '10+', label: 'Format Desteği' },
@@ -64,12 +64,12 @@ const content = {
         philosophyText: 'WebImgConverter prioritizes user privacy. Unlike traditional tools, we never permanently store your files. All visual and AI processing tasks are completed instantly on secure ephemeral servers and deleted immediately.',
         whyUs: 'Why WebImgConverter?',
         features: [
-            { icon: '??', title: '100% Privacy', desc: 'Your files are never stored. Processing is done instantly on secure servers and deleted immediately.' },
-            { icon: '?', title: 'Lightning Fast', desc: 'Process hundreds of images in seconds with WebAssembly technology. No waiting.' },
-            { icon: '??', title: 'AI Technology', desc: 'AI-powered background removal and smart file naming features.' },
-            { icon: '??', title: 'Premium Quality', desc: 'Professional-grade conversion quality with lossless or optimized compression options.' },
-            { icon: '??', title: 'Multi-Language', desc: 'Available in 4 languages including English, Turkish, German, and French.' },
-            { icon: '??', title: 'Mobile Ready', desc: 'Works flawlessly on all devices including iPhone, Android, tablet, and desktop.' }
+            { icon: '🔒', title: '100% Privacy', desc: 'Your files are never stored. Processing is done instantly on secure servers and deleted immediately.' },
+            { icon: '⚡', title: 'Lightning Fast', desc: 'Process hundreds of images in seconds with WebAssembly technology. No waiting.' },
+            { icon: '🎨', title: 'AI Technology', desc: 'AI-powered background removal and smart file naming features.' },
+            { icon: '💎', title: 'Premium Quality', desc: 'Professional-grade conversion quality with lossless or optimized compression options.' },
+            { icon: '🌍', title: 'Multi-Language', desc: 'Available in 4 languages including English, Turkish, German, and French.' },
+            { icon: '📱', title: 'Mobile Ready', desc: 'Works flawlessly on all devices including iPhone, Android, tablet, and desktop.' }
         ],
         techTitle: 'Our Technology',
         techText: 'WebImgConverter uses cutting-edge web technologies:',
@@ -90,7 +90,7 @@ const content = {
         ],
         team: 'Company Info',
         teamText: 'WebImgConverter Inc. is a software company that prioritizes user privacy. Our goal is to provide free and easy-to-use tools where people can safely convert their images.',
-        contact: '?? Contact: support@WebImgConverter.com',
+        contact: '📧 Contact: support@WebImgConverter.com',
         stats: 'WebImgConverter by Numbers',
         statsItems: [
             { value: '10+', label: 'Format Support' },
@@ -111,12 +111,12 @@ const content = {
         philosophyText: 'WebImgConverter priorisiert die Privatsphäre der Benutzer. Im Gegensatz zu herkömmlichen Tools speichern wir Ihre Dateien niemals dauerhaft. Alle Verarbeitungs- und KI-Aufgaben werden sofort auf sicheren Servern erledigt und sofort gelöscht.',
         whyUs: 'Warum WebImgConverter?',
         features: [
-            { icon: '??', title: '100% Privatsphäre', desc: 'Ihre Dateien werden nie gespeichert. Die Verarbeitung erfolgt entweder auf Ihrem Gerät oder sofort auf sicheren temporären Servern.' },
-            { icon: '?', title: 'Blitzschnell', desc: 'Verarbeiten Sie Hunderte von Bildern in Sekunden mit WebAssembly-Technologie.' },
-            { icon: '??', title: 'KI-Technologie', desc: 'KI-gestützte Hintergrundentfernung und intelligente Dateibenennung.' },
-            { icon: '??', title: 'Premium-Qualität', desc: 'Konvertierungsqualität auf professionellem Niveau.' },
-            { icon: '??', title: 'Mehrsprachig', desc: 'Verfügbar in 4 Sprachen.' },
-            { icon: '??', title: 'Mobil-optimiert', desc: 'Funktioniert einwandfrei auf allen Geräten.' }
+            { icon: '🔒', title: '100% Privatsphäre', desc: 'Ihre Dateien werden nie gespeichert. Die Verarbeitung erfolgt entweder auf Ihrem Gerät oder sofort auf sicheren temporären Servern.' },
+            { icon: '⚡', title: 'Blitzschnell', desc: 'Verarbeiten Sie Hunderte von Bildern in Sekunden mit WebAssembly-Technologie.' },
+            { icon: '🎨', title: 'KI-Technologie', desc: 'KI-gestützte Hintergrundentfernung und intelligente Dateibenennung.' },
+            { icon: '💎', title: 'Premium-Qualität', desc: 'Konvertierungsqualität auf professionellem Niveau.' },
+            { icon: '🌍', title: 'Mehrsprachig', desc: 'Verfügbar in 4 Sprachen.' },
+            { icon: '📱', title: 'Mobil-optimiert', desc: 'Funktioniert einwandfrei auf allen Geräten.' }
         ],
         techTitle: 'Unsere Technologie',
         techText: 'WebImgConverter nutzt modernste Web-Technologien:',
@@ -137,7 +137,7 @@ const content = {
         ],
         team: 'Firmeninformationen',
         teamText: 'WebImgConverter Inc. ist ein Softwareunternehmen, das den Datenschutz der Benutzer priorisiert.',
-        contact: '?? Kontakt: support@WebImgConverter.com',
+        contact: '📧 Kontakt: support@WebImgConverter.com',
         stats: 'WebImgConverter in Zahlen',
         statsItems: [
             { value: '10+', label: 'Format-Unterstützung' },
@@ -158,12 +158,12 @@ const content = {
         philosophyText: 'WebImgConverter priorise la confidentialité des utilisateurs. Contrairement aux outils traditionnels, nous ne stockons jamais vos fichiers de manière permanente. La plupart des traitements se font dans votre navigateur, tandis que les tâches IA avancées sont effectuées instantanément sur des serveurs éphémères et supprimées immédiatement.',
         whyUs: 'Pourquoi WebImgConverter?',
         features: [
-            { icon: '??', title: '100% Confidentialité', desc: 'Vos fichiers ne sont jamais stockés. Les opérations se font soit sur votre appareil, soit instantanément sur des serveurs éphémères sécurisés.' },
-            { icon: '?', title: 'Ultra Rapide', desc: 'Traitez des centaines d\'images en quelques secondes avec la technologie WebAssembly.' },
-            { icon: '??', title: 'Technologie IA', desc: 'Suppression d\'arrière-plan et nommage intelligent de fichiers propulsés par l\'IA.' },
-            { icon: '??', title: 'Quality Premium', desc: 'Quality de conversion de niveau professionnel.' },
-            { icon: '??', title: 'Multi-langues', desc: 'Disponible en 4 langues.' },
-            { icon: '??', title: 'Mobile-Ready', desc: 'Fonctionne parfaitement sur tous les appareils.' }
+            { icon: '🔒', title: '100% Confidentialité', desc: 'Vos fichiers ne sont jamais stockés. Les opérations se font soit sur votre appareil, soit instantanément sur des serveurs éphémères sécurisés.' },
+            { icon: '⚡', title: 'Ultra Rapide', desc: 'Traitez des centaines d\'images en quelques secondes avec la technologie WebAssembly.' },
+            { icon: '🎨', title: 'Technologie IA', desc: 'Suppression d\'arrière-plan et nommage intelligent de fichiers propulsés par l\'IA.' },
+            { icon: '💎', title: 'Quality Premium', desc: 'Quality de conversion de niveau professionnel.' },
+            { icon: '🌍', title: 'Multi-langues', desc: 'Disponible en 4 langues.' },
+            { icon: '📱', title: 'Mobile-Ready', desc: 'Fonctionne parfaitement sur tous les appareils.' }
         ],
         techTitle: 'Notre Technologie',
         techText: 'WebImgConverter utilise les dernières technologies web:',
@@ -184,7 +184,7 @@ const content = {
         ],
         team: 'Informations Société',
         teamText: 'WebImgConverter Inc. est une entreprise de logiciels qui priorise la confidentialité des utilisateurs.',
-        contact: '?? Contact: support@WebImgConverter.com',
+        contact: '📧 Contact: support@WebImgConverter.com',
         stats: 'WebImgConverter en Chiffres',
         statsItems: [
             { value: '10+', label: 'Support Formats' },
