@@ -1154,10 +1154,21 @@ function BanaConvertApp(props: AppProps = {}) {
                                   )}
                                   {file.status === 'done' && (
                                     <div className="flex items-center gap-2">
-                                      {/* Compare Button (Hidden for Favicons because aspect ratio is forced to square, breaking comparison slider) */}
-                                      {(file.targetFormat !== ConversionFormat.ICO && defaultTool !== 'favicon-generator') && (
-                                          <button onClick={() => setCompareItem(file)} className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm transition-colors" title="Compare">👁️</button>
-                                      )}
+                                      {/* Compare Button (Hidden for structural changes like Crop, Rotate, Favicon) */}
+                                      {(() => {
+                                          const isFavicon = file.targetFormat === ConversionFormat.ICO || defaultTool === 'favicon-generator';
+                                          const isCropped = !!file.cropData;
+                                          const isRotated = file.rotation !== undefined && file.rotation !== 0;
+                                          const isDistortedResize = file.lockAspectRatio === false && (!!file.targetWidth || !!file.targetHeight);
+                                          
+                                          const canCompare = !isFavicon && !isCropped && !isRotated && !isDistortedResize;
+                                          
+                                          if (!canCompare) return null;
+                                          
+                                          return (
+                                              <button onClick={() => setCompareItem(file)} className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm transition-colors" title="Compare">👁️</button>
+                                          );
+                                      })()}
                                       <a href={file.convertedUrl} download={`${file.aiName || file.file.name.split('.')[0]}.${file.targetFormat.split('/')[1]}`} onClick={() => triggerAdsterraPopunder()} className="bg-brand-600 hover:bg-brand-500 dark:bg-brand-600 dark:hover:bg-brand-500 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-1.5 shadow-sm dark:shadow-none transition-colors">
                                         ↓ {formatFileSize(file.convertedSize || 0)}
                                       </a>
