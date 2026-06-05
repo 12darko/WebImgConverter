@@ -28,12 +28,12 @@ export const SiteFooter: React.FC = () => {
                         <span className="hidden sm:inline">·</span>
                         <span>© {new Date().getFullYear()} WebImgConverter Inc. {t('footer_rights')}</span>
                     </div>
-                    <nav className="flex items-center gap-5 text-xs">
+                    <nav className="flex flex-wrap justify-center sm:justify-end items-center gap-x-5 gap-y-3 text-xs mt-4 sm:mt-0">
                         {FOOTER_LINKS.map((l) => (
                             <Link
                                 key={l.path}
                                 to={localizedPath(l.path)}
-                                className="text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors uppercase tracking-wider font-semibold"
+                                className="text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors uppercase tracking-wider font-semibold whitespace-nowrap"
                             >
                                 {t(l.labelKey)}
                             </Link>

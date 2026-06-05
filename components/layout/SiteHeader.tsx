@@ -165,29 +165,32 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                                 {t(item.labelKey)}
                             </Link>
                         ))}
-                        <div className="flex gap-2 mt-2 pt-3 border-t border-slate-100 dark:border-slate-800">
-                            <button
-                                onClick={toggleTheme}
-                                className="h-10 px-4 text-lg border border-slate-200 dark:border-slate-700 rounded-xl"
-                            >
-                                {isDark ? '☀️' : '🌙'}
-                            </button>
-                            {session ? (
-                                <Link
-                                    to={localizedPath('/profile')}
-                                    onClick={() => setMobileOpen(false)}
-                                    className="flex-1 h-10 flex items-center justify-center text-sm font-semibold text-brand-600 dark:text-brand-400 border border-slate-200 dark:border-slate-700 rounded-xl"
-                                >
-                                    {session.user.user_metadata?.full_name?.split(' ')[0] || session.user.email?.split('@')[0]}
-                                </Link>
-                            ) : (
+                        <div className="flex flex-col gap-2 mt-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+                            <div className="flex gap-2">
                                 <button
-                                    onClick={onSignIn}
-                                    className="flex-1 h-10 text-sm font-semibold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-xl"
+                                    onClick={toggleTheme}
+                                    className="h-10 px-4 text-lg border border-slate-200 dark:border-slate-700 rounded-xl flex items-center justify-center bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors shrink-0"
+                                    title={isDark ? "Aydınlık Mod" : "Karanlık Mod"}
                                 >
-                                    {t('nav_login')}
+                                    {isDark ? '☀️' : '🌙'}
                                 </button>
-                            )}
+                                {session ? (
+                                    <Link
+                                        to={localizedPath('/profile')}
+                                        onClick={() => setMobileOpen(false)}
+                                        className="flex-1 h-10 flex items-center justify-center text-sm font-semibold text-brand-600 dark:text-brand-400 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors truncate px-2"
+                                    >
+                                        {session.user.user_metadata?.full_name?.split(' ')[0] || session.user.email?.split('@')[0]}
+                                    </Link>
+                                ) : (
+                                    <button
+                                        onClick={onSignIn}
+                                        className="flex-1 h-10 text-sm font-semibold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                                    >
+                                        {t('nav_login')}
+                                    </button>
+                                )}
+                            </div>
                             {showCta && (
                                 <Button onClick={onCta} size="md" fullWidth>
                                     {ctaLabel || t('nav_tools')}
