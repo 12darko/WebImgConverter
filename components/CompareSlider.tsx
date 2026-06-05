@@ -63,18 +63,14 @@ export const CompareSlider: React.FC<CompareSliderProps> = ({ originalUrl, conve
 
                     {/* Before Image (Foreground - Clipped) */}
                     <div
-                        className="absolute inset-0 overflow-hidden border-r-2 border-white/50"
-                        style={{ width: `${sliderPosition}%` }}
+                        className="absolute inset-0 overflow-hidden"
+                        style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
                     >
                         <img
                             src={originalUrl}
                             className="absolute inset-0 w-full h-full object-contain pointer-events-none"
-                            style={{ width: '100vw', maxWidth: '56rem' }} // Hack to keep aspect ratio matching container
                             alt="Before"
                         />
-                        {/* Note: In a real aspect-fit scenario, precise overlay is tricky. 
-                 For this demo, we assume both images are standard fit. 
-                 A more robust approach uses background-image: cover/contain with precise positioning. */}
                     </div>
 
                     {/* Slider Handle */}

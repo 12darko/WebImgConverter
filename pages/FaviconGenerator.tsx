@@ -77,6 +77,7 @@ export default function FaviconGeneratorPage() {
                 defaultOutputFormat="image/x-icon"
                 hideFormatSelector={true}
                 hideAdvancedSettings={false}
+                allowedSettings={['removeBg']}
             >
                 <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20 mt-16">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">

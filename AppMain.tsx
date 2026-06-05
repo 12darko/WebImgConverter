@@ -1061,34 +1061,36 @@ function BanaConvertApp(props: AppProps = {}) {
                               style={provided.draggableProps.style}
                             >
                               {/* Main Row: Thumbnail | Info | Format | Actions */}
-                              <div className="flex items-center gap-4 p-4">
-                                {/* Compact Thumbnail */}
-                                <div className="relative w-16 h-16 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-100 dark:border-slate-800 flex items-center justify-center shrink-0 overflow-hidden">
-                                  {file.status === 'analyzing' && !file.previewUrl ? (
-                                    <div className="w-5 h-5 border-2 border-brand-500 border-t-transparent rounded-full animate-spin"></div>
-                                  ) : (
-                                    <img src={file.status === 'done' ? file.convertedUrl : file.previewUrl} className={`max-w-full max-h-full object-contain dark:brightness-90 dark:opacity-90 ${file.isGrayscale ? 'grayscale' : ''}`} style={{ transform: `rotate(${file.rotation}deg)` }} />
-                                  )}
-                                </div>
-
-                                {/* File Info */}
-                                <div className="flex-1 min-w-0">
-                                  <div className="flex items-center gap-2">
-                                    <h4 className="font-semibold text-slate-800 dark:text-slate-200 truncate text-sm" title={file.file.name}>{file.file.name}</h4>
-                                    <span className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500 px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 shrink-0">
-                                      {file.file.name.split('.').pop()}
-                                    </span>
-                                  </div>
-                                  <div className="flex items-center gap-2 mt-1">
-                                    <span className="text-xs text-slate-400 dark:text-slate-500">{(file.file.size / 1024).toFixed(0)} KB</span>
-                                    {file.aiName && (
-                                      <span className="text-xs text-brand-600 dark:text-brand-400 font-medium">✨ {file.aiName}</span>
+                              <div className="flex flex-col sm:flex-row gap-4 p-4">
+                                <div className="flex items-center gap-4 flex-1 min-w-0 w-full sm:w-auto">
+                                  {/* Compact Thumbnail */}
+                                  <div className="relative w-16 h-16 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-100 dark:border-slate-800 flex items-center justify-center shrink-0 overflow-hidden">
+                                    {file.status === 'analyzing' && !file.previewUrl ? (
+                                      <div className="w-5 h-5 border-2 border-brand-500 border-t-transparent rounded-full animate-spin"></div>
+                                    ) : (
+                                      <img src={file.status === 'done' ? file.convertedUrl : file.previewUrl} className={`max-w-full max-h-full object-contain dark:brightness-90 dark:opacity-90 ${file.isGrayscale ? 'grayscale' : ''}`} style={{ transform: `rotate(${file.rotation}deg)` }} />
                                     )}
+                                  </div>
+
+                                  {/* File Info */}
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex items-center gap-2">
+                                      <h4 className="font-semibold text-slate-800 dark:text-slate-200 truncate text-sm" title={file.file.name}>{file.file.name}</h4>
+                                      <span className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500 px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 shrink-0">
+                                        {file.file.name.split('.').pop()}
+                                      </span>
+                                    </div>
+                                    <div className="flex items-center gap-2 mt-1">
+                                      <span className="text-xs text-slate-400 dark:text-slate-500">{(file.file.size / 1024).toFixed(0)} KB</span>
+                                      {file.aiName && (
+                                        <span className="text-xs text-brand-600 dark:text-brand-400 font-medium truncate">✨ {file.aiName}</span>
+                                      )}
+                                    </div>
                                   </div>
                                 </div>
 
                                 {/* Inline Actions */}
-                                <div className="flex items-center gap-2 shrink-0">
+                                <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 shrink-0 w-full sm:w-auto justify-end border-t border-slate-100 dark:border-slate-800 sm:border-0 pt-3 sm:pt-0">
                                   {file.status === 'idle' && defaultTool === 'compress-image' && (
                                     <>
                                       <div className="hidden sm:flex items-center gap-2 mr-2">
@@ -1361,10 +1363,11 @@ function BanaConvertApp(props: AppProps = {}) {
                                                   // Find the specific file to check its current state
                                                   setFiles(prev => prev.map(f => {
                                                     if (f.id === file.id) {
+                                                      const shouldConvertToPng = isTurningOn && f.targetFormat !== ConversionFormat.ICO;
                                                       return {
                                                         ...f,
                                                         removeBackground: isTurningOn,
-                                                        targetFormat: isTurningOn ? ConversionFormat.PNG : f.targetFormat
+                                                        targetFormat: shouldConvertToPng ? ConversionFormat.PNG : f.targetFormat
                                                       };
                                                     }
                                                     return f;
