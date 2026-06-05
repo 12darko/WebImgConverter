@@ -23,10 +23,10 @@ export const SiteFooter: React.FC = () => {
         <footer className="mt-auto border-t border-slate-100 dark:border-slate-800/50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
             <div className="max-w-7xl mx-auto px-5 md:px-8 py-6">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                    <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-xs text-slate-500 dark:text-slate-400 text-center sm:text-left">
                         <Logo size={16} />
                         <span className="hidden sm:inline">·</span>
-                        <span>© {new Date().getFullYear()} WebImgConverter Inc. {t('footer_rights')}</span>
+                        <span className="mt-2 sm:mt-0">© {new Date().getFullYear()} WebImgConverter Inc. {t('footer_rights')}</span>
                     </div>
                     <nav className="flex flex-wrap justify-center sm:justify-end items-center gap-x-5 gap-y-3 text-xs mt-4 sm:mt-0">
                         {FOOTER_LINKS.map((l) => (
