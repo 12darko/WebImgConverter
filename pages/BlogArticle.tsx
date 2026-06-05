@@ -1101,14 +1101,14 @@ import { useNavigate } from 'react-router-dom';
 import { SiteShell } from '../components/layout';
 
 
-const gorselFormat2025 = {
+const gorselFormat2025: Record<string, any> = {
     tr: {
         title: '2025 Görsel Format Rehberi: AVIF, WebP, HEIC ve JPG Karşılaştırması',
         description: 'Yeni nesil görsel formatları arasında hangisi sizin için en doğru seçim? Kapsamlı teknik Karşılaştırma ve kullanım senaryoları.',
         date: '2025-03-01',
         readTime: '10 dk',
         category: 'Rehber',
-        content: \`
+        content: `
 ## 2025 Yılında Hangi Görsel Formatı Kullanılmalı?
 
 İnternetin gelişimiyle birlikte, görsellerin boyutu ve kalitesi web performansını belirleyen en önemli unsurlardan biri haline geldi. 1990'lardan kalma JPG ve PNG formatları hala çalışıyor olsa da, Google ve Apple gibi devlerin yönlendirdiği yeni nesil formatlar oyunun kurallarını tamamen değiştirdi.
@@ -1146,21 +1146,21 @@ HEIC (High Efficiency Image Container), Apple cihazlarında depolama alanından 
 ## Sonuç ve Tavsiye
 
 Eğer bir web sitesi yönetiyorsanız, görsellerinizi mutlaka **WebP veya AVIF** formatında sunmalısınız. Bu, SEO skorlarınızı anında artıracaktır. Eğer telefonunuzdan bilgisayarınıza veya bir arkadaşınıza fotoğraf yollayacaksanız, HEIC dosyalarınızı her ihtimale karşı **JPG'ye çevirerek** göndermeniz en güvenli yoldur.
-\`
+`
     }
 };
 articleDatabase['2025-gorsel-format-rehberi'] = gorselFormat2025;
 
 
 
-const topluGorselIsleme = {
+const topluGorselIsleme: Record<string, any> = {
     tr: {
         title: 'Toplu Görsel İşleme: 100+ Dosyayı Saniyede Dönüştürmenin Yolları',
         description: 'Yüzlerce fotoğrafı tek seferde dönüştürün, yeniden boyutlandırın ve sıkıştırın. Profesyonel iş akışı için zamandan tasarruf ipuçları.',
         date: '2025-03-15',
         readTime: '5 dk',
         category: 'İpuçları',
-        content: \`
+        content: `
 ## Neden Toplu (Batch) İşlem Yapmalıyız?
 
 Bir düğün fotoğrafçısı olduğunuzu, bir e-ticaret sitesine 500 ürün yükleyeceğinizi veya telefonunuzdaki devasa bir HEIC arşivini Windows'a aktaracağınızı hayal edin. Her bir fotoğrafı tek tek seçip dönüştürmek saatlerinizi, hatta günlerinizi alabilir. 
@@ -1190,7 +1190,7 @@ WebImgConverter ise **WebAssembly** ve gelişmiş tarayıcı teknolojileri kulla
 - **Klasör Yapısı:** Dosyalarınızı WebImgConverter'a atarken dosya isimlerini karmaşık tutmamaya özen gösterin; çıktı alacağınız ZIP dosyası orijinal isimlerinizi koruyacağı için sonrasında arşivlemeniz çok kolaylaşacaktır.
 
 WebImgConverter'in ücretsiz toplu işlem gücü sayesinde tasarımcılar, geliştiriciler ve fotoğrafçılar günde saatlerce vakit kazanmaktadır.
-\`
+`
     }
 };
 articleDatabase['toplu-gorsel-isleme'] = topluGorselIsleme;
@@ -1204,7 +1204,7 @@ gorselFormat2025.en = {
     date: '2025-03-01',
     readTime: '10 min',
     category: 'Guide',
-    content: \`
+    content: `
 ## Which Image Format Should You Use in 2025?
 
 With the evolution of the internet, image size and quality have become crucial factors determining web performance. While the JPG and PNG formats from the 1990s still work, next-generation formats driven by giants like Google and Apple have completely changed the rules of the game.
@@ -1242,7 +1242,7 @@ JPEG, which has been in our lives since 1992, is the undisputed king of the digi
 ## Conclusion and Recommendation
 
 If you run a website, you must serve your images in **WebP or AVIF** format. This will instantly boost your SEO scores. If you are sending photos from your phone to a PC or a friend, it is safest to **convert your HEIC files to JPG** just in case.
-\`
+`
 };
 
 topluGorselIsleme.en = {
@@ -1251,7 +1251,7 @@ topluGorselIsleme.en = {
     date: '2025-03-15',
     readTime: '5 min',
     category: 'Tips',
-    content: \`
+    content: `
 ## Why Use Batch Processing?
 
 Imagine you are a wedding photographer, uploading 500 products to an e-commerce site, or transferring a massive HEIC archive from your phone to Windows. Selecting and converting each photo one by one could take hours, or even days.
@@ -1281,7 +1281,7 @@ WebImgConverter, however, uses **WebAssembly** and advanced browser technologies
 - **Folder Structure:** Keep file names simple when dropping them into WebImgConverter; the resulting ZIP file will preserve your original names, making archiving much easier later.
 
 Thanks to WebImgConverter's free batch processing power, designers, developers, and photographers save hours of time every day.
-\`
+`
 };
 
 // GERMAN
@@ -1291,7 +1291,7 @@ gorselFormat2025.de = {
     date: '2025-03-01',
     readTime: '10 Min',
     category: 'Anleitung',
-    content: \`
+    content: `
 ## Welches Bildformat sollten Sie 2025 verwenden?
 
 Mit der Entwicklung des Internets sind Bildgröße und -qualität zu entscheidenden Faktoren für die Web-Performance geworden. Während JPG und PNG aus den 1990er Jahren noch funktionieren, haben neue Formate (AVIF, WebP, HEIC) die Spielregeln geändert.
@@ -1307,7 +1307,7 @@ HEIC spart enorm viel Speicherplatz auf iOS-Geräten, hat aber eine schlechte un
 
 ## JPG: Alt aber zuverlässig
 Das Format für universelle Kompatibilität. Alles kann ein JPG öffnen, aber die Dateigrößen sind größer und es gibt keine Transparenz.
-\`
+`
 };
 
 topluGorselIsleme.de = {
@@ -1316,7 +1316,7 @@ topluGorselIsleme.de = {
     date: '2025-03-15',
     readTime: '5 Min',
     category: 'Tipps',
-    content: \`
+    content: `
 ## Warum Stapelverarbeitung (Batch Processing)?
 
 Das Konvertieren von Hunderten von HEIC-Bildern oder Produktfotos einzeln ist mühsam. Mit der Stapelverarbeitung sparen Sie wertvolle Stunden.
@@ -1331,7 +1331,7 @@ Das Konvertieren von Hunderten von HEIC-Bildern oder Produktfotos einzeln ist m�
 2. Hunderte von Dateien per Drag & Drop hineinziehen.
 3. Qualität einstellen (z.B. 80%) und konvertieren klicken.
 4. Laden Sie alle fertigen Bilder als praktisches **ZIP-Archiv** herunter.
-\`
+`
 };
 
 // FRENCH
@@ -1341,8 +1341,8 @@ gorselFormat2025.fr = {
     date: '2025-03-01',
     readTime: '10 min',
     category: 'Guide',
-    content: \`
-## Quel format d'image utiliser en 2025 ?
+    content: `
+## Quel format d\'image utiliser en 2025 ?
 
 Les formats d'image ont évolué. Bien que JPG et PNG soient toujours présents, des formats de nouvelle génération (AVIF, WebP, HEIC) offrent de meilleures performances.
 
@@ -1357,7 +1357,7 @@ Développé par Google, il offre une compression avec ou sans perte et prend en 
 
 ## JPG : L'Universel
 Tout peut ouvrir un JPG. Utilisez-le pour le partage hors ligne et les e-mails.
-\`
+`
 };
 
 topluGorselIsleme.fr = {
@@ -1366,7 +1366,7 @@ topluGorselIsleme.fr = {
     date: '2025-03-15',
     readTime: '5 min',
     category: 'Astuces',
-    content: \`
+    content: `
 ## Pourquoi le traitement par lots ?
 
 Convertir des centaines d'images HEIC ou de produits une par une prend des heures. Le traitement par lots résout ce problème.
@@ -1381,7 +1381,7 @@ Convertir des centaines d'images HEIC ou de produits une par une prend des heure
 2. Glissez-déposez des centaines de fichiers.
 3. Réglez la qualité.
 4. Cliquez sur convertir et téléchargez une archive **ZIP**.
-\`
+`
 };
 
 
