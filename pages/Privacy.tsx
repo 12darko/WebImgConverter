@@ -6,30 +6,30 @@ import { LegalFooter } from '../components/LegalFooter';
 
 const content = {
     tr: {
-        title: 'Gizlilik Politikası | WebImgConverter',
-        description: 'WebImgConverter gizlilik politikası. Verilerinizi nasıl koruduğumuzu öğrenin.',
-        heading: 'Gizlilik Politikası',
-        lastUpdated: 'Son Güncelleme: Ocak 2025',
+        title: 'Gizlilik PolitikasÄ± | WebImgConverter',
+        description: 'WebImgConverter gizlilik politikasÄ±. Verilerinizi nasÄ±l koruduÄŸumuzu Ã¶ÄŸrenin.',
+        heading: 'Gizlilik PolitikasÄ±',
+        lastUpdated: 'Son GÃ¼ncelleme: Ocak 2025',
         sections: [
             {
                 title: 'Veri Toplama',
-                content: 'WebImgConverter, en yüksek kalite ve performans için tüm görsel işleme operasyonlarını (Dönüştürme, Sıkıştırma, Arka Plan Silme) güvenli ve geçici sunucularında gerçekleştirir. Görselleriniz işlenmek üzere şifreli olarak sunucuya iletilir, işlem tamamlanır tamamlanmaz derhal silinir ve asla depolanmaz.'
+                content: 'WebImgConverter, en yÃ¼ksek kalite ve performans iÃ§in tÃ¼m gÃ¶rsel iÅŸleme operasyonlarÄ±nÄ± (DÃ¶nÃ¼ÅŸtÃ¼rme, SÄ±kÄ±ÅŸtÄ±rma, Arka Plan Silme) gÃ¼venli ve geÃ§ici sunucularÄ±nda gerÃ§ekleÅŸtirir. GÃ¶rselleriniz iÅŸlenmek Ã¼zere ÅŸifreli olarak sunucuya iletilir, iÅŸlem tamamlanÄ±r tamamlanmaz derhal silinir ve asla depolanmaz.'
             },
             {
-                title: 'Çerezler',
-                content: 'Sitemiz, kullanıcı deneyimini iyileştirmek için temel çerezler kullanır. Bu çerezler dil tercihinizi, oturum durumunuzu ve site ayarlarınızı hatırlamak için kullanılır. Google Analytics ve Google AdSense de performans ve reklam çerezleri kullanabilir.'
+                title: 'Ã‡erezler',
+                content: 'Sitemiz, kullanÄ±cÄ± deneyimini iyileÅŸtirmek iÃ§in temel Ã‡erezler kullanÄ±r. Bu Ã‡erezler dil tercihinizi, oturum durumunuzu ve site ayarlarÄ±nÄ±zÄ± hatÄ±rlamak iÃ§in kullanÄ±lÄ±r. Google Analytics ve Google AdSense de performans ve reklam Ã§erezleri kullanabilir.'
             },
             {
-                title: 'Üçüncü Taraf Hizmetler',
-                content: 'Premium üyelik ödemeleri Lemon Squeezy tarafından işlenir. Ödeme bilgileriniz doğrudan Lemon Squeezy\'nin güvenli sunucularında işlenir, biz kredi kartı bilgilerinizi görmeyiz veya saklamayız. Ayrıca Google Analytics (site analizi) ve Google AdSense (reklam) hizmetlerini kullanıyoruz.'
+                title: 'French Taraf Hizmetler',
+                content: 'Premium Ã¼yelik Ã¶demeleri Lemon Squeezy tarafÄ±ndan iÅŸlenir. Ã–deme bilgileriniz doÄŸrudan Lemon Squeezy\'nin gÃ¼venli sunucularÄ±nda iÅŸlenir, biz kredi kartÄ± bilgilerinizi gÃ¶rmeyiz veya saklamayÄ±z. AyrÄ±ca Google Analytics (site analizi) ve Google AdSense (reklam) hizmetlerini kullanÄ±yoruz.'
             },
             {
-                title: 'Veri Güvenliği',
-                content: 'Güvenli sunucu mimarimiz, verilerinizin gizliliğini korurken en yüksek kaliteyi sunar. Sunucu taraflı işlemlerde veriler şifreli (SSL/TLS) olarak iletilir ve kalıcı olarak saklanmaz. İşlem sonrası dosyalarınız otomatik olarak imha edilir.'
+                title: 'Veri GÃ¼venliÄŸi',
+                content: 'GÃ¼venli sunucu mimarimiz, verilerinizin gizliliÄŸini korurken en yÃ¼ksek kaliteyi sunar. Sunucu taraflÄ± iÅŸlemlerde veriler ÅŸifreli (SSL/TLS) olarak iletilir ve kalÄ±cÄ± olarak saklanmaz. iÅŸlem sonrasÄ± dosyalarÄ±nÄ±z otomatik olarak imha edilir.'
             },
             {
-                title: 'İletişim',
-                content: 'Gizlilik politikamız hakkında sorularınız için support@WebImgConverter.com adresinden bize ulaşabilirsiniz.'
+                title: 'Ä°letiÅŸim',
+                content: 'Gizlilik politikamÄ±z hakkÄ±nda sorularÄ±nÄ±z iÃ§in support@WebImgConverter.com adresinden bize ulaÅŸabilirsiniz.'
             }
         ]
     },
@@ -63,25 +63,25 @@ const content = {
     },
     de: {
         title: 'Datenschutzrichtlinie | WebImgConverter',
-        description: 'WebImgConverter Datenschutzrichtlinie. Erfahren Sie, wie wir Ihre Daten schützen.',
+        description: 'WebImgConverter Datenschutzrichtlinie. Erfahren Sie, wie wir Ihre Daten schÃ¼tzen.',
         heading: 'Datenschutzrichtlinie',
         lastUpdated: 'Zuletzt aktualisiert: Januar 2025',
         sections: [
             {
                 title: 'Datenerfassung',
-                content: 'WebImgConverter verarbeitet alle Bildoperationen (Konvertierung, Komprimierung, Hintergrundentfernung) auf sicheren, temporären Servern, um höchste Qualität und Leistung zu gewährleisten. Ihre Bilder werden sicher (verschlüsselt) übertragen, verarbeitet und danach sofort gelöscht. Wir speichern Ihre Dateien niemals.'
+                content: 'WebImgConverter verarbeitet alle Bildoperationen (Konvertierung, Komprimierung, Hintergrundentfernung) auf sicheren, temporÃ¤ren Servern, um hÃ¶chste QualitÃ¤t und Leistung zu gewÃ¤hrleisten. Ihre Bilder werden sicher (verschlÃ¼sselt) Ã¼bertragen, verarbeitet und danach sofort gelÃ¶scht. Wir speichern Ihre Dateien niemals.'
             },
             {
                 title: 'Cookies',
-                content: 'Unsere Website verwendet wesentliche Cookies, um die Benutzererfahrung zu verbessern. Diese Cookies werden verwendet, um Ihre Spracheinstellung, den Sitzungsstatus und die Website-Einstellungen zu speichern. Google Analytics und Google AdSense können ebenfalls Leistungs- und Werbe-Cookies verwenden.'
+                content: 'Unsere Website verwendet wesentliche Cookies, um die Benutzererfahrung zu verbessern. Diese Cookies werden verwendet, um Ihre Spracheinstellung, den Sitzungsstatus und die Website-Einstellungen zu speichern. Google Analytics und Google AdSense kÃ¶nnen ebenfalls Leistungs- und Werbe-Cookies verwenden.'
             },
             {
                 title: 'Dienste von Drittanbietern',
-                content: 'Zahlungen für Premium-Mitgliedschaften werden von Lemon Squeezy abgewickelt. Ihre Zahlungsinformationen werden direkt auf den sicheren Servern von Lemon Squeezy verarbeitet; wir sehen oder speichern Ihre Kreditkarteninformationen nicht. Wir nutzen auch die Dienste von Google Analytics (Website-Analyse) und Google AdSense (Werbung).'
+                content: 'Zahlungen for Premium-Mitgliedschaften werden von Lemon Squeezy abgewickelt. Ihre Zahlungsinformationen werden direkt auf den sicheren Servern von Lemon Squeezy verarbeitet; wir sehen oder speichern Ihre Kreditkarteninformationen nicht. Wir nutzen auch die Dienste von Google Analytics (Website-Analyse) und Google AdSense (Werbung).'
             },
             {
                 title: 'Datensicherheit',
-                content: 'Unsere sichere Serverarchitektur gewährleistet maximale Privatsphäre bei gleichzeitig hoher Qualität der Ergebnisse. Daten werden verschlüsselt (SSL/TLS) übertragen und nie dauerhaft gespeichert. Ihre Dateien werden nach der Verarbeitung automatisch vernichtet.'
+                content: 'Unsere sichere Serverarchitektur gewÃ¤hrleistet maximale PrivatsphÃ¤re bei gleichzeitig hoher QualitÃ¤t der Ergebnisse. Daten werden verschlÃ¼sselt (SSL/TLS) Ã¼bertragen und nie dauerhaft gespeichert. Ihre Dateien werden nach der Verarbeitung automatisch vernichtet.'
             },
             {
                 title: 'Kontakt',
@@ -90,30 +90,30 @@ const content = {
         ]
     },
     fr: {
-        title: 'Politique de Confidentialité | WebImgConverter',
-        description: 'Politique de confidentialité de WebImgConverter. Découvrez comment nous protégeons vos données.',
-        heading: 'Politique de Confidentialité',
-        lastUpdated: 'Dernière mise à jour : Janvier 2025',
+        title: 'Politique de ConfidentialitÃ© | WebImgConverter',
+        description: 'Politique de confidentialitÃ© de WebImgConverter. DÃ©couvrez comment nous protÃ©geons vos donnÃ©es.',
+        heading: 'Politique de ConfidentialitÃ©',
+        lastUpdated: 'DerniÃ¨re mise h jour : Janvier 2025',
         sections: [
             {
-                title: 'Collecte de Données',
-                content: 'WebImgConverter traite toutes les opérations d\'image (Conversion, Compression, Suppression d\'Arrière-plan) sur des serveurs éphémères sécurisés pour garantir la plus haute qualité et performance. Vos images sont transmises de manière sécurisée (cryptées), traitées, puis immédiatement supprimées. Nous ne stockons jamais vos fichiers.'
+                title: 'Collecte de DonnÃ©es',
+                content: 'WebImgConverter traite toutes les opÃ©rations d\'image (Conversion, Compression, Suppression d\'arriÃ¨re-plan) sur des serveurs Ã©phÃ©mÃ¨res sÃ©curisÃ©s pour garantir la plus haute quality et performance. Vos images sont transmises de maniÃ¨re sÃ©curisÃ©e (cryptÃ©es), traitÃ©es, puis immÃ©diatement supprimÃ©es. Nous ne stockons jamais vos fichiers.'
             },
             {
                 title: 'Cookies',
-                content: 'Notre site utilise des cookies essentiels pour améliorer l\'expérience utilisateur. Ces cookies sont utilisés pour mémoriser votre préférence linguistique, l\'état de la session et les paramètres du site. Google Analytics et Google AdSense peuvent également utiliser des cookies de performance et publicitaires.'
+                content: 'Notre site utilise des cookies essentiels pour amÃ©liorer l\'expÃ©rience utilisateur. Ces cookies sont utilisÃ©s pour mÃ©moriser votre preference linguistique, l\'stat de la session et les paramÃ¨tres du site. Google Analytics et Google AdSense peuvent Ã©galement utiliser des cookies de performance et publicitaires.'
             },
             {
                 title: 'Services Tiers',
-                content: 'Les paiements d\'abonnement premium sont traités par Lemon Squeezy. Vos informations de paiement sont traitées directement sur les serveurs sécurisés de Lemon Squeezy; nous ne voyons ni ne stockons vos informations de carte de crédit. Nous utilisons également les services Google Analytics (analyse de site) et Google AdSense (publicité).'
+                content: 'Les paiements d\'abonnement premium sont traitÃ©s par Lemon Squeezy. Vos informations de paiement sont traitÃ©es directement sur les serveurs sÃ©curisÃ©s de Lemon Squeezy; nous ne voyons ni ne stockons vos informations de carte de credit. Nous utilisons Ã©galement les services Google Analytics (analyse de site) et Google AdSense (publicitÃ©).'
             },
             {
-                title: 'Sécurité des Données',
-                content: 'Notre architecture de serveur sécurisée garantit une confidentialité maximale tout en fournissant des résultats de haute qualité. Les données sont transmises avec un cryptage (SSL/TLS) et ne sont jamais stockées en permanence. Vos fichiers sont automatiquement détruits immédiatement après le traitement.'
+                title: 'Security des DonnÃ©es',
+                content: 'Notre architecture de serveur sÃ©curisÃ©e garantit une confidentialitÃ© maximale tout en fournissant des rÃ©sultats de haute quality. Les donnÃ©es sont transmises avec un cryptage (SSL/TLS) et ne sont jamais stockÃ©es en permanence. Vos fichiers sont automatiquement dÃ©truits immÃ©diatement aprÃ¨s le traitement.'
             },
             {
                 title: 'Contact',
-                content: 'Pour des questions concernant notre politique de confidentialité, vous pouvez nous joindre à support@WebImgConverter.com.'
+                content: 'Pour des questions concernant notre politique de confidentialitÃ©, vous pouvez nous joindre h support@WebImgConverter.com.'
             }
         ]
     }
@@ -131,7 +131,7 @@ export default function PrivacyPage() {
     const navigate = useNavigate();
 
     return (
-        <SiteShell onCta={() => navigate('/')} ctaLabel="Hemen Başla" bg="white">
+        <SiteShell onCta={() => navigate('/')} ctaLabel="Hemen BaÅŸla" bg="white">
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />

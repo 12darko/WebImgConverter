@@ -15,65 +15,65 @@ const articleDatabase: Record<string, Record<string, {
 }>> = {
     'heic-nedir': {
         tr: {
-            title: 'HEIC Nedir? iPhone Fotoğraf Formatı Rehberi',
-            description: 'Apple\'ın HEIC formatı nedir, neden kullanılır ve Windows\'ta nasıl açılır? iPhone fotoğraflarınızı nasıl yöneteceğinizi öğrenin.',
+            title: 'HEIC Nedir? iPhone FotoÄŸraf Formats Rehberi',
+            description: 'Apple\'Ã¶n HEIC formats nedir, neden kullanÄ±lÄ±r ve Windows\'ta nasÄ±l aÃ§Ä±lÄ±r? iPhone fotoÄŸraflarÄ±nÄ±zÄ± nasÄ±l yÃ¶neteceÄŸinizi Ã¶ÄŸrenin.',
             date: '2025-01-15',
             readTime: '5 dk',
             category: 'Rehber',
             content: `
 ## HEIC Nedir?
 
-HEIC (High Efficiency Image Container), Apple'ın iOS 11'den itibaren iPhone ve iPad'lerde varsayılan fotoğraf formatı olarak kullandığı modern bir görsel formatıdır. HEIC, HEIF (High Efficiency Image Format) standardının Apple tarafından kullanılan uzantısıdır.
+HEIC (High Efficiency Image Container), Apple'Ã¶n iOS 11'den itibaren iPhone ve iPad'lerde varsayÄ±lan fotoÄŸraf formats olarak kullandÄ±ÄŸÄ± modern bir gÃ¶rsel formatÄ±dÄ±r. HEIC, HEIF (High Efficiency Image Format) standardÄ±nÄ±n Apple tarafÄ±ndan kullanÄ±lan uzantÄ±sÄ±dÄ±r.
 
-## HEIC'in Avantajları
+## HEIC'in AvantajlarÄ±
 
-### Daha Küçük Dosya Boyutu
-HEIC, JPG'ye kıyasla **%50'ye varan daha küçük dosya boyutu** sunar, aynı kalitede. Bu, iPhone'unuzda daha fazla fotoğraf saklayabileceğiniz anlamına gelir.
+### Daha KÃ¼Ã§Ã¼k Dosya Boyutu
+HEIC, JPG'ye kÄ±yasla **%50'ye varan daha kÃ¼Ã§Ã¼k dosya boyutu** sunar, aynÄ± kalitede. Bu, iPhone'unuzda daha fazla fotoÄŸraf saklayabileceÄŸiniz anlamÄ±na gelir.
 
-### Daha İyi Renk Derinliği
-16-bit renk derinliği ile daha zengin, daha canlı renkler elde edersiniz. Özellikle günbatımı ve doğa fotoğraflarında fark belirgin.
+### Daha Ä°yi Renk DerinliÄŸi
+16-bit renk derinliÄŸi ile daha zengin, daha canlÄ± renkler elde edersiniz. Ã–zellikle gÃ¼nbatÄ±mÄ± ve doÄŸa fotoÄŸraflarÄ±nda fark belirgin.
 
-### Live Photos Desteği
-Hem fotoğraf hem de video tek bir HEIC dosyasında saklanabilir. Bu, Live Photos özelliğinin çalışmasını sağlar.
+### Live Photos DesteÄŸi
+Hem fotoÄŸraf hem de video tek bir HEIC dosyasÄ±nda saklanabilir. Bu, Live Photos Ã¶zelliÄŸinin Ã§alÄ±ÅŸmasÄ±nÄ± saÄŸlar.
 
-### Çoklu Görsel Desteği
-Burst modunda çekilen fotoğraflar tek HEIC dosyasında tutulabilir, depolama alanından tasarruf sağlar.
+### Ã‡oklu GÃ¶rsel DesteÄŸi
+Burst modunda Ã§ekilen fotoÄŸraflar tek HEIC dosyasÄ±nda tutulabilir, depolama alanÄ±ndan tasarruf saÄŸlar.
 
-## HEIC'in Dezavantajları
+## HEIC'in DezavantajlarÄ±
 
-### Uyumluluk Sorunları
-- **Windows:** Windows Fotoğraflar uygulaması HEIC'i varsayılan olarak açamaz
-- **Android:** Android cihazlar HEIC formatını desteklemez
+### Uyumluluk SorunlarÄ±
+- **Windows:** Windows FotoÄŸraflar uygulamasÄ± HEIC'i varsayÄ±lan olarak aÃ§amaz
+- **Android:** Android cihazlar HEIC formatÄ±nÄ± desteklemez
 - **Photoshop:** Eklenti gerektirir
-- **Web Siteleri:** Çoğu site HEIC dosyalarını kabul etmez
+- **Web Siteleri:** Ã‡oÄŸu site HEIC dosyalarÄ±nÄ± kabul etmez
 
-### E-posta ve Paylaşım
-HEIC dosyalarını e-posta ile gönderdiğinizde, alıcı açamayabilir.
+### E-posta ve PaylaÅŸÄ±m
+HEIC dosyalarÄ±nÄ± e-posta ile gÃ¶nderdiÄŸinizde, alÄ±cÄ± aÃ§amayabilir.
 
-## HEIC'i JPG'ye Nasıl Çevirirsiniz?
+## HEIC'i JPG'ye NasÄ±l Ã‡evirirsiniz?
 
-WebImgConverter ile HEIC dosyalarınızı ücretsiz ve güvenli bir şekilde JPG'ye çevirebilirsiniz:
+WebImgConverter ile HEIC dosyalarÄ±nÄ±zÄ± Ãœcretsiz ve gÃ¼venli bir ÅŸekilde JPG'ye Ã§evirebilirsiniz:
 
 1. **WebImgConverter.com** adresine gidin
-2. **HEIC to JPG** aracını seçin
-3. HEIC dosyalarınızı **sürükleyip bırakın**
-4. Otomatik olarak JPG'ye dönüştürülür
-5. **İndirin** ve kullanın
+2. **HEIC to JPG** aracÄ±nÄ± seÃ§in
+3. HEIC dosyalarÄ±nÄ±zÄ± **sÃ¼rÃ¼kleyip bÄ±rakÄ±n**
+4. Otomatik olarak JPG'ye dÃ¶nÃ¼ÅŸtÃ¼rÃ¼lÃ¼r
+5. **Ä°ndirin** ve kullanÄ±n
 
-Tüm işlemler güvenli sunucularımızda gerçekleşir, dosyalarınız işlem sonrası otomatik olarak silinir.
+TÃ¼m iÅŸlemler gÃ¼venli sunucularÄ±mÄ±zda gerÃ§ekleÅŸir, dosyalarÄ±nÄ±z iÅŸlem sonrasÄ± otomatik olarak silinir.
 
-## iPhone'da HEIC Nasıl Kapatılır?
+## iPhone'da HEIC NasÄ±l KapatÄ±lÄ±r?
 
-İleriye dönük JPG formatında fotoğraf çekmek için:
+Ä°leriye dÃ¶nÃ¼k JPG formatÄ±nda fotoÄŸraf Ã§ekmek iÃ§in:
 
 1. **Ayarlar** > **Kamera** > **Formatlar**
-2. **"En Uyumlu"** seçeneğini seçin
+2. **"En Uyumlu"** seÃ§eneÄŸini seÃ§in
 
-Bu ayar daha fazla depolama alanı kullanır ancak uyumluluk sorunlarını önler.
+Bu ayar daha fazla depolama alanÄ± kullanÄ±r ancak uyumluluk sorunlarÄ±na Ã¶nler.
 
-## Sonuç
+## SonuÃ§
 
-HEIC, Apple kullanıcıları için harika bir format - daha küçük dosyalar, daha iyi kalite. Ancak paylaşım ve uyumluluk için JPG'ye dönüştürmeniz gerekebilir. WebImgConverter ile bu işlemi saniyeler içinde, ücretsiz ve güvenli bir şekilde yapabilirsiniz.
+HEIC, Apple kullanÄ±cÄ±larÄ± iÃ§in harika bir format - daha kÃ¼Ã§Ã¼k dosyalar, daha iyi kalite. Ancak paylaÅŸÄ±m ve uyumluluk iÃ§in JPG'ye dÃ¶nÃ¼ÅŸtÃ¼rmeniz gerekebilir. WebImgConverter ile bu iÅŸlemi saniyeler iÃ§inde, Ãœcretsiz ve gÃ¼venli bir ÅŸekilde yapabilirsiniz.
             `
         },
         en: {
@@ -171,87 +171,87 @@ In conclusion, while HEIC is the undisputed king of smartphone storage, JPG rema
             `
         },
         tr: {
-            title: 'HEIC Nedir? iPhone Fotoğraf Formatı Rehberi',
-            description: 'Apple\'ın HEIC formatı nedir, neden kullanılır ve Windows\'ta nasıl açılır?',
+            title: 'HEIC Nedir? iPhone FotoÄŸraf Formats Rehberi',
+            description: 'Apple\'Ã¶n HEIC formats nedir, neden kullanÄ±lÄ±r ve Windows\'ta nasÄ±l aÃ§Ä±lÄ±r?',
             date: '2025-01-15',
             readTime: '5 dk',
             category: 'Rehber',
-            content: `## HEIC Nedir? iPhone Fotoğraf Formatı Hakkında Her Şey
+            content: `## HEIC Nedir? iPhone FotoÄŸraf Formats HakkÄ±nda Her key
 
-HEIC (High Efficiency Image Container), Apple tarafından iOS 11 (2017) ile birlikte iPhone ve iPad'lerde varsayılan fotoğraf formatı olarak kullanılmaya başlanan modern bir dosya biçimidir. Geleneksel JPEG formatının yerini alması amacıyla MPEG grubu tarafından geliştirilen HEIC, çok daha üstün bir sıkıştırma teknolojisine ve esnek bir yapıya sahiptir.
+HEIC (High Efficiency Image Container), Apple tarafÄ±ndan iOS 11 (2017) ile birlikte iPhone ve iPad'lerde varsayÄ±lan fotoÄŸraf formats olarak kullanÄ±lmaya baÄŸlanan modern bir dosya biÃ§imidir. Geleneksel JPEG formatÄ±nÄ±n yerini almasÄ± amacÄ±yla MPEG grubu tarafÄ±ndan geliÅŸtirilen HEIC, yok daha Ã¼stÃ¼n bir sÄ±kÄ±ÅŸtÄ±rma teknolojisine ve esnek bir yapÄ±ya sahiptir.
 
-Standart bir JPG dosyasının aksine, HEIC aslında bir "kapsayıcı" (container) formatıdır. Bu sayede tek bir HEIC dosyası içinde birden fazla fotoğraf (Seri Çekim / Burst mode), ses (Live Photos) ve derinlik haritası (Portre modu için) barındırabilir.
+Standart bir JPG dosyasÄ±nÄ±n aksine, HEIC aslÄ±nda bir "kapsayÄ±cÄ±" (container) formatÄ±dÄ±r. Bu sayede tek bir HEIC dosyasÄ± iÃ§inde birden fazla fotoÄŸraf (Seri Ã§ekim / Burst mode), ses (Live Photos) ve derinlik haritasÄ± (Portre modu iÃ§in) barÄ±ndÄ±rabilir.
 
-## HEIC Formatının Avantajları Nelerdir?
+## HEIC FormatÄ±nÄ±n AvantajlarÄ± Nelerdir?
 
-- **%50 Daha Az Depolama Alanı:** HEIC, görsel kalitesinden hiçbir ödün vermeden JPG'ye kıyasla dosyaları **%50 daha küçük** boyutlarda kaydeder. Bu, özellikle 64GB veya 128GB gibi kısıtlı depolama alanına sahip iPhone kullanıcıları için devasa bir avantajdır.
-- **16-Bit Renk Derinliği:** JPG formatı 8-bit renk desteklerken, HEIC 16-bit renk derinliği sunar. Bu sayede gün batımı, gökyüzü gibi renk geçişlerinin bol olduğu fotoğraflarda çok daha zengin ve pürüzsüz bir görüntü elde edilir. "Banding" adı verilen renk kırılmaları HEIC'te yaşanmaz.
-- **Gelişmiş Veri Depolama:** iPhone'unuzla bir Portre (Portrait) fotoğraf çektiğinizde, arka plan bulanıklığını daha sonra değiştirebilmenizin sebebi HEIC formatının derinlik verilerini fotoğrafın içine kaydetmesidir.
-- **Şeffaflık (Transparency) Desteği:** Tıpkı PNG formatı gibi, HEIC de arka planı şeffaf fotoğrafları destekler.
+- **%50 Daha Az Depolama alanÄ±:** HEIC, gÃ¶rsel kalitesinden hiÃ§bir edin vermeden JPG'ye kÄ±yasla dosyalarÄ± **%50 daha kÃ¼Ã§Ã¼k** boyutlarda kaydeder. Bu, Ã–zellikle 64GB veya 128GB gibi kÄ±sÄ±tlÄ± depolama alanÄ±na sahip iPhone kullanÄ±cÄ±larÄ± iÃ§in devasa bir avantajdÄ±r.
+- **16-Bit Renk DerinliÄŸi:** JPG formats 8-bit renk desteklerken, HEIC 16-bit renk derinliÄŸi sunar. Bu sayede gen batÄ±mÄ±, gÃ¶kyÃ¼zÃ¼ gibi renk geÃ§iÅŸlerinin bol olduÄŸu fotoÄŸraflarda yok daha zengin ve pÃ¼rÃ¼zsÃ¼z bir garanti elde edilir. "Banding" ads verilen renk kÄ±rÄ±lmalarÄ± HEIC'te yaÅŸanmaz.
+- **GeliÅŸmiÅŸ Veri Depolama:** iPhone'unuzla bir Portre (Portrait) fotoÄŸraf Ã§ektiÄŸinizde, arka plan bulanÄ±klÄ±ÄŸÄ±nÄ± daha sonra deÄŸiÅŸtirebilmenizin sebebi HEIC formatÄ±nÄ±n derinlik verilerini Fotografin iÃ§ine kaydetmesidir.
+- **ÅeffaflÄ±k (Transparency) DesteÄŸi:** TÄ±pkÄ± PNG formats gibi, HEIC de arka planÄ± ÅŸeffaf fotoÄŸraflarÄ± destekler.
 
-## En Büyük Sorun: Uyumluluk Eksikliği
+## En BÃ¼yÃ¼k Sorun: Uyumluluk EksikliÄŸi
 
-Teknolojik olarak JPG'den fersah fersah üstün olmasına rağmen, HEIC formatının çok büyük bir dezavantajı vardır: **Evrensel Uyumluluk**.
-Yeni nesil ve patentli bir teknoloji olduğu için her cihaz ve platform tarafından desteklenmez.
+Teknolojik olarak JPG'den fersah fersah Ã¼stÃ¼n olmasÄ±na raÄŸmen, HEIC formatÄ±nÄ±n yok bÃ¼yÃ¼k bir dezavantajÄ± vardÄ±r: **Evrensel Uyumluluk**.
+Yeni nesil ve patentli bir teknoloji olduÄŸu iÃ§in her cihaz ve platform tarafÄ±ndan desteklenmez.
 
-- **Windows Bilgisayarlar:** Eski Windows sürümleri HEIC dosyalarını açamaz. Windows 10 ve 11 kullanıcıları bile HEIC fotoğrafları görüntüleyebilmek için Microsoft Store'dan ek bir "HEVC Video Uzantısı" indirmek (ve bazen satın almak) zorundadır.
-- **Android Cihazlar:** Yeni nesil Android telefonlar HEIC'i desteklese de, eski cihazlar bu formatı galerilerinde düzgün görüntüleyemez.
-- **Web Siteleri ve Tarayıcılar:** Bir devlet dairesi sitesine, okul portalına veya birçok sosyal medya platformuna doğrudan HEIC dosyası yükleyemezsiniz. Sistemler bu formatı tanımaz ve reddeder.
-- **Profesyonel Yazılımlar:** Adobe Photoshop veya Premiere gibi köklü programların eski sürümleri bile HEIC dosyalarını içeri aktarırken eklenti (plugin) gerektirir.
+- **Windows Bilgisayarlar:** Eski Windows sÃ¼rÃ¼mleri HEIC dosyalarÄ±nÄ± aÃ§amaz. Windows 10 ve 11 kullanÄ±cÄ±larÄ± bile HEIC fotoÄŸraflarÄ± gÃ¶rÃ¼ntÃ¼leyebilmek iÃ§in Microsoft Store'dan ek bir "HEVC Video UzantÄ±sÄ±" indirmek (ve bazen satÄ±n almak) zorundadÄ±r.
+- **Android Cihazlar:** Yeni nesil Android telefonlar HEIC'i desteklese de, eski cihazlar bu formats galerilerinde DÃ¼zgÃ¼n gÃ¶rÃ¼ntÃ¼leyemez.
+- **Web Siteleri ve tarayÄ±cÄ±lar:** Bir devlet dairesi sitesine, okul portalÄ±na veya birÃ§ok sosyal medya platformuna doÄŸrudan HEIC dosyasÄ± yÃ¼kleyemezsiniz. Sistemler bu formats tanÄ±maz ve reddeder.
+- **Profesyonel YazÄ±lÄ±mlar:** Adobe Photoshop veya Premiere gibi kÃ¶klÃ¼ programlarÄ±n eski sÃ¼rÃ¼mleri bile HEIC dosyalarÄ±nÄ± iÃ§eri aktarÄ±rken eklenti (plugin) gerektirir.
 
-## Çözüm: Neden WebImgConverter ile JPG'ye Dönüştürmelisiniz?
+## Ã§Ã¶zÃ¼m: Neden WebImgConverter ile JPG'ye DÃ¶nÃ¼ÅŸtÃ¼rmelisiniz?
 
-iPhone'unuzdan bilgisayarınıza aktardığınız fotoğrafları bir Windows kullanıcısına gönderirken, bir iş başvurusu yaparken veya web sitenize görsel yüklerken fotoğraflarınızı mutlaka JPG formatına dönüştürmeniz gerekir.
+iPhone'unuzdan bilgisayarÄ±nÄ±za aktardÄ±ÄŸÄ±nÄ±z fotoÄŸraflarÄ± bir Windows kullanÄ±cÄ±sÄ±na gÃ¶nderirken, bir is baÅŸvurusu yaparken veya web sitenize gÃ¶rsel yÃ¼klerken fotoÄŸraflarÄ±nÄ±zÄ± mutlaka JPG formatÄ±na dÃ¶nÃ¼ÅŸtÃ¼rmeniz gerekir.
 
-WebImgConverter tam bu noktada hayat kurtarır. Gelişmiş WebAssembly altyapımız sayesinde, HEIC fotoğraflarınızı saniyeler içinde JPG formatına çevirebilirsiniz.
-1. **Veri Gizliliği:** Fotoğraflarınız buluta yüklenip kaydedilmez. Dönüştürme işlemi güvenli sunucularımızda şifrelenmiş bağlantı üzerinden gerçekleşir ve dosyalarınız anında silinir. Özel fotoğraflarınız %100 güvendedir.
-2. **Toplu İşlem (Batch Conversion):** Tek tek uğraşmanıza gerek yok. Yüzlerce iPhone fotoğrafını sisteme sürükleyip bırakın ve tek bir tıkla hepsini JPG olarak indirin.
-3. **Maksimum Kalite:** Akıllı dönüştürme algoritmamız, HEIC dosyasındaki canlı renkleri ve keskinliği koruyarak en yüksek kalitede JPG çıktısı almanızı sağlar.
+WebImgConverter tam bu noktada hayat kurtarÄ±r. GeliÅŸmiÅŸ WebAssembly altyapÄ±mÄ±z sayesinde, HEIC fotoÄŸraflarÄ±nÄ±zÄ± saniyeler iÃ§inde JPG formatÄ±na Ã§evirebilirsiniz.
+1. **Veri GizliliÄŸi:** FotoÄŸraflarÄ±nÄ±z buluta yÃ¼klenip kaydedilmez. DÃ¶nÃ¼ÅŸtÃ¼rme iÅŸlemi gÃ¼venli sunucularÄ±mÄ±zda ÅŸifrelenmiÅŸ baÄŸlantÄ± Ã¼zerinden gerÃ§ekleÅŸir ve dosyalarÄ±nÄ±z anÄ±nda silinir. Ã¶zel FotoÄŸraflarÄ±nÄ±z %100 gÃ¼vendedir.
+2. **Toplu iÅŸlem (Batch Conversion):** Tek tek uÄŸraÅŸmanÄ±za gerek yok. YÃ¼zlerce iPhone fotoÄŸrafÄ±nÄ± sisteme sÃ¼rÃ¼kleyip bÄ±rakÄ±n ve tek bir tÄ±kla hepsini JPG olarak indirin.
+3. **Maksimum Kalite:** AkÄ±llÄ± dÃ¶nÃ¼ÅŸtÃ¼rme algoritmamÄ±z, HEIC dosyasÄ±ndaki canlÄ± renkleri ve keskinliÄŸi koruyarak en yÃ¼ksek kalitede JPG Ã‡Ä±ktÄ±sÄ± almanÄ±za saÄŸlar.
 
-Özetle; HEIC formatı telefonunuzda yer açmak için mükemmeldir, ancak JPG formatı dünyayla paylaşmak için vazgeçilmezdir. WebImgConverter ile kaliteyi kaybetmeden uyumluluğu yakalayın.`
+Ã¶zetle; HEIC formats telefonunuzda yer almak iÃ§in mÃ¼kemmeldir, ancak JPG formats dÃ¼nyayla paylaÅŸmak iÃ§in vazgeÃ§ilmezdir. WebImgConverter ile kaliteyi kaybetmeden UyumluluÄŸu yakalayÄ±n.`
         }
     },
     'webp-vs-jpg': {
         tr: {
-            title: 'WebP vs JPG: Hangi Format Ne Zaman Kullanılmalı?',
-            description: 'Web görselleri için WebP mi JPG mi daha iyi? Performans, kalite ve uyumluluk karşılaştırması.',
+            title: 'WebP vs JPG: Hangi Format Ne Zaman KullanÄ±lmalÄ±?',
+            description: 'Web gÃ¶rselleri iÃ§in WebP mi JPG mi daha iyi? Performans, kalite ve uyumluluk karÅŸÄ±laÅŸtÄ±rmasÄ±.',
             date: '2025-01-10',
             readTime: '7 dk',
-            category: 'Karşılaştırma',
+            category: 'KarÅŸÄ±laÅŸtÄ±rma',
             content: `
 ## WebP Nedir?
 
-WebP, Google tarafından 2010 yılında web'i daha hızlı ve verimli hale getirmek amacıyla geliştirilen modern bir görsel formatıdır. İnternet dünyasının standartları olan JPEG, PNG ve GIF formatlarının tüm avantajlarını tek bir dosyada birleştiren mucizevi bir teknoloji olarak kabul edilir. Hem kayıplı (lossy) hem de kayıpsız (lossless) sıkıştırma yapabilir, üstelik şeffaflık (transparency) ve animasyon desteği de sunar.
+WebP, Google tarafÄ±ndan 2010 yÄ±lÄ±nda web'i daha hÄ±zlÄ± ve verimli hale getirmek amacÄ±yla geliÅŸtirilen modern bir gÃ¶rsel formatÄ±dÄ±r. Internet dÃ¼nyasÄ±nÄ±n standartlarÄ± olan JPEG, PNG ve GIF formatlarÄ±nÄ±n tÃ¼m avantajlarÄ±nÄ± tek bir dosyada birleÅŸtiren mucizevi bir teknoloji olarak kabul edilir. Hem kayÄ±plÄ± (lossy) hem de kayÄ±psÄ±z (lossless) sÄ±kÄ±ÅŸtÄ±rma yapabilir, Ãœstelik ÅeffaflÄ±k (transparency) ve animasyon desteÄŸi de sunar.
 
-## Performans ve Dosya Boyutu Karşılaştırması
+## Performans ve Dosya Boyutu KarÅŸÄ±laÅŸtÄ±rmasÄ±
 
-Web sitelerinin hız testi skorlarını (Google PageSpeed Insights) artırmak isteyen geliştiriciler için WebP tartışmasız en iyi formattır.
+Web sitelerinin hÄ±z testi skorlarÄ±nÄ± (Google PageSpeed Insights) artÄ±rmak isteyen geliÅŸtiriciler iÃ§in WebP tartÄ±ÅŸmasÄ±z en iyi formattÄ±r.
 
-| Özellik | WebP | JPG | PNG |
+| Ã¶zellik | WebP | JPG | PNG |
 |--------|------|-----|-----|
-| Dosya Boyutu | En Küçük (Referans) | %25-35 Daha Büyük | %26 Daha Büyük |
-| Sıkıştırma Türü | Kayıplı & Kayıpsız | Sadece Kayıplı | Sadece Kayıpsız |
-| Şeffaflık (Alpha Kanalı)| Destekler (?) | Desteklemez (?) | Destekler (?) |
+| Dosya Boyutu | En KÃ¼Ã§Ã¼k (Referans) | %25-35 Daha BÃ¼yÃ¼k | %26 Daha BÃ¼yÃ¼k |
+| SÄ±kÄ±ÅŸtÄ±rma Ters | KayÄ±plÄ± & KayÄ±psÄ±z | Sadece KayÄ±plÄ± | Sadece KayÄ±psÄ±z |
+| ÅeffaflÄ±k (Alpha KanalÄ±)| Destekler (?) | Desteklemez (?) | Destekler (?) |
 | Animasyon | Destekler (?) | Desteklemez (?) | Desteklemez (?) |
 
-Gördüğünüz gibi WebP, JPG'den daha fazla sıkıştırma yaparken, PNG'nin şeffaflık yeteneğini barındırır. WebP formatındaki bir görsel, aynı görsel kalitesine sahip bir JPG dosyasına kıyasla ortalama **%30 daha az yer kaplar**. Bu da web sitelerinin çok daha hızlı yüklenmesi, sunucu bant genişliğinden tasarruf edilmesi ve mobil kullanıcıların veri kotalarının korunması anlamına gelir.
+GÃ¶rdÃ¼ÄŸÃ¼nÃ¼z gibi WebP, JPG'den daha fazla sÄ±kÄ±ÅŸtÄ±rma yaparken, PNG'nin ÅeffaflÄ±k yeteneÄŸini barÄ±ndÄ±rÄ±r. WebP formatÄ±ndaki bir gÃ¶rsel, aynÄ± gÃ¶rsel kalitesine sahip bir JPG dosyasÄ±na kÄ±yasla ortalama **%30 daha az yer kaplar**. Bu da web sitelerinin yok daha hÄ±zlÄ± yÃ¼klenmesi, sunucu bant geniÅŸliÄŸinden tasarruf edilmesi ve mobil KullanÄ±cÄ±larÄ±n veri kotalarÄ±nÄ±n korunmasÄ± anlamÄ±na gelir.
 
-## Ne Zaman WebP Kullanmalısınız?
+## Ne Zaman WebP KullanmalÄ±sÄ±nÄ±z?
 
-Eğer bir web sitesi geliştiricisi, e-ticaret mağazası sahibi veya blog yazarıysanız, sitenize yüklediğiniz tüm görselleri WebP formatında tercih etmelisiniz.
-- **SEO Performansı:** Google, hızlı yüklenen siteleri arama sonuçlarında üst sıralara taşır. WebP kullanımı, Core Web Vitals skorlarınızı doğrudan iyileştirir.
-- **Kullanıcı Deneyimi:** Özellikle mobil bağlantı kullanan ziyaretçileriniz sayfalarınızın çok daha hızlı açıldığını fark edecektir.
-- **Modern Tarayıcı Desteği:** Günümüzde Chrome, Firefox, Safari ve Edge dahil tüm modern tarayıcılar WebP formatını yerel olarak %100 desteklemektedir.
+EÄŸer bir web sitesi geliÅŸtiricisi, e-ticaret maÄŸazasÄ± sahibi veya blog yazarÄ±ysanÄ±z, sitenize yÃ¼klediÄŸiniz tÃ¼m gÃ¶rselleri WebP formatÄ±nda tercih etmelisiniz.
+- **SEO PerformansÄ±:** Google, hÄ±zlÄ± yÃ¼klenen siteleri arama sonuÃ§larÄ±nda ist sÄ±ralara tanÄ±r. WebP kullanÄ±ma, Core Web Vitals skorlarÄ±nÄ±zÄ± doÄŸrudan iyileÅŸtirir.
+- **KullanÄ±cÄ± Deneyimi:** Ã–zellikle mobil baÄŸlantÄ± kullanan ziyaretÃ§ileriniz sayfalarÄ±nÄ±zÄ±n yok daha hÄ±zlÄ± aÃ§Ä±ldÄ±ÄŸÄ±nÄ± fark edecektir.
+- **Modern TarayÄ±cÄ± DesteÄŸi:** GÃ¼nÃ¼mÃ¼zde Chrome, Firefox, Safari ve Edge dahil tÃ¼m modern tarayÄ±cÄ±lar WebP formatÄ±nÄ± yerel olarak %100 desteklemektedir.
 
-## Ne Zaman JPG veya PNG Kullanmalısınız?
+## Ne Zaman JPG veya PNG KullanmalÄ±sÄ±nÄ±z?
 
-WebP ne kadar mükemmel olursa olsun, profesyonel kullanım ve eski platformlar için hala JPG ve PNG'ye ihtiyaç vardır. İşte WebImgConverter Dönüştürücüye ihtiyaç duyacağınız anlar:
+WebP ne kadar mÃ¼kemmel olursa olsun, profesyonel kullanÄ±m ve eski platformlar iÃ§in hala JPG ve PNG'ye ihtiyaÃ§ vardÄ±r. date WebImgConverter DÃ¶nÃ¼ÅŸtÃ¼rÃ¼cÃ¼ye ihtiyaÃ§ duyacaÄŸÄ±nÄ±z anlar:
 
-- **Eski İşletim Sistemleri ve Yazılımlar:** Web'den indirdiğiniz bir WebP görselini eski sürüm bir Adobe Photoshop'ta, Microsoft Word belgesinde veya Windows Fotoğraf Görüntüleyici'de açamayabilirsiniz. Bu durumlarda WebImgConverter ile WebP'yi anında JPG'ye dönüştürmeniz gerekir.
-- **Sosyal Medya ve Platform Yüklemeleri:** Bazı eski forumlar, özel şirket portalları veya resmi e-devlet siteleri sadece "jpg, jpeg, png" formatında dosya kabul eder. WebP yüklemeyi denediğinizde hata alırsınız.
-- **Maksimum Şeffaflık Kalitesi:** Çok yüksek kaliteli dijital sanat eserlerinde, PNG'nin kayıpsız yapısı her zaman endüstri standardı olarak kalacaktır.
+- **Eski Ä°ÅŸletim Sistemleri ve YazÄ±lÄ±mlar:** Web'den indirdiÄŸiniz bir WebP gÃ¶rselini eski sÃ¼rÃ¼m bir Adobe Photoshop'ta, Microsoft Word belgesinde veya Windows FotoÄŸraf GÃ¶rÃ¼ntÃ¼leyici'de aÃ§amayabilirsiniz. Bu durumlarda WebImgConverter ile WebP'yi anÄ±nda JPG'ye dÃ¶nÃ¼ÅŸtÃ¼rmeniz gerekir.
+- **Sosyal Medya ve Platform YÃ¼klemeleri:** BazÄ± eski forumlar, Ã¶zel Åirket portallarÄ± veya resmi e-devlet siteleri sadece "jpg, jpeg, png" formatÄ±nda dosya kabul eder. WebP yÃ¼klemeyi denediÄŸinizde hata alÄ±rsÄ±nÄ±z.
+- **Maksimum ÅeffaflÄ±k Kalitesi:** yok yÃ¼ksek kaliteli dijital sanat eserlerinde, PNG'nin kayÄ±psÄ±z yapÄ±sÄ± her zaman endÃ¼stri standardÄ± olarak kalacaktÄ±r.
 
-Sonuç olarak, web yayını için WebP'yi, evrensel uyumluluk ve masaüstü düzenleme işlemleri için ise JPG'yi tercih etmelisiniz. WebImgConverter ile bu formatlar arasında saniyeler içinde geçiş yapabilirsiniz.
+SonuÃ§ olarak, web yayÄ±nÄ± iÃ§in WebP'yi, evrensel uyumluluk ve masaÃ¼stÃ¼ dÃ¼zenleme iÅŸlemleri iÃ§in ise JPG'yi tercih etmelisiniz. WebImgConverter ile bu formatlar arasÄ±nda saniyeler iÃ§inde gelir yapabilirsiniz.
 `
         },
         en: {
@@ -263,7 +263,7 @@ Sonuç olarak, web yayını için WebP'yi, evrensel uyumluluk ve masaüstü düzenleme 
             content: `
 ## What is WebP?
 
-WebP is a modern image format developed by Google in 2010 with a single goal: to make the web faster and more efficient. It is widely considered a miraculous technology that combines the best features of standard internet formats—JPEG, PNG, and GIF—into a single file type. It supports both lossy and lossless compression, transparency (alpha channel), and even animation.
+WebP is a modern image format developed by Google in 2010 with a single goal: to make the web faster and more efficient. It is widely considered a miraculous technology that combines the best features of standard internet formatsÄ±JPEG, PNG, and GIFâ€”into a single file type. It supports both lossy and lossless compression, transparency (alpha channel), and even animation.
 
 ## Performance and File Size Comparison
 
@@ -299,52 +299,52 @@ In conclusion, choose WebP for web publishing, and choose JPG for universal comp
     },
     'gorsel-sikistirma-rehberi': {
         tr: {
-            title: 'Görsel Sıkıştırma: Kalite Kaybı Olmadan Boyut Küçültme',
-            description: 'Web sitenizi hızlandırmak için görsel sıkıştırma teknikleri. SEO ve Core Web Vitals için kritik ipuçları.',
+            title: 'GÃ¶rsel SÄ±kÄ±ÅŸtÄ±rma: Kalite KaybÄ± Olmadan Boyut KÃ¼Ã§Ã¼ltme',
+            description: 'Web sitenizi hÄ±zlandÄ±rmak iÃ§in gÃ¶rsel sÄ±kÄ±ÅŸtÄ±rma teknikleri. SEO ve Core Web Vitals iÃ§in kritik ipuÃ§larÄ±.',
             date: '2025-01-05',
             readTime: '6 dk',
             category: 'SEO',
             content: `
-## Neden Görsel Sıkıştırma Önemli?
+## Neden GÃ¶rsel SÄ±kÄ±ÅŸtÄ±rma Ã–nemli?
 
-Görseller, web sayfalarının ortalama ağırlığının **%50-60'ını** oluşturur. Büyük görseller:
+GÃ¶rseller, web sayfalarÄ±nÄ±n ortalama aÄŸÄ±rlÄ±ÄŸÄ±nÄ±n **%50-60'Inc** oluÅŸturur. BÃ¼yÃ¼k gÃ¶rseller:
 
-- Sayfa yüklenme süresini artırır
-- Mobil kullanıcıları kaybettirir
-- Google sıralamalarını olumsuz etkiler
-- Hosting maliyetlerini yükseltir
+- Sayfa yÃ¼klenme sÃ¼resini artÄ±rÄ±r
+- Mobil kullanÄ±cÄ±larÄ± kaybettirir
+- Google sÄ±ralamalarÄ±nÄ± olumsuz etkiler
+- Hosting maliyetlerini yÃ¼kseltir
 
-## Kayıplı vs Kayıpsız Sıkıştırma
+## KayÄ±plÄ± vs KayÄ±psÄ±z SÄ±kÄ±ÅŸtÄ±rma
 
-### Kayıplı (Lossy)
+### KayÄ±plÄ± (Lossy)
 - Dosya boyutunu **%50-90** azaltabilir
-- Bazı görsel veri kaybedilir
-- Web fotoğrafları için ideal
+- BazÄ± gÃ¶rsel veri kaybedilir
+- Web fotoÄŸraflarÄ± iÃ§in ideal
 
-### Kayıpsız (Lossless)
+### KayÄ±psÄ±z (Lossless)
 - Orijinal kalite **%100** korunur
-- Daha az sıkıştırma (%10-30)
-- Arşivleme ve baskı için ideal
+- Daha az sÄ±kÄ±ÅŸtÄ±rma (%10-30)
+- ArÅŸivleme ve baskÄ± iÃ§in ideal
 
-## Optimal Sıkıştırma Ayarları
+## Optimal SÄ±kÄ±ÅŸtÄ±rma AyarlarÄ±
 
-| Kullanım | Kalite | Format |
+| KullanÄ±m | Kalite | Format |
 |----------|--------|--------|
-| Web Fotoğrafları | %80-85 | WebP veya JPG |
+| Web FotoÄŸraflarÄ± | %80-85 | WebP veya JPG |
 | Thumbnail | %70-75 | WebP veya JPG |
-| Logo/İkon | Kayıpsız | PNG veya SVG |
-| E-ticaret Ürün | %85-90 | WebP veya JPG |
+| Logo/Ä°kon | KayÄ±psÄ±z | PNG veya SVG |
+| E-ticaret ÃœrÃ¼n | %85-90 | WebP veya JPG |
 
-## Core Web Vitals ve Görseller
+## Core Web Vitals ve GÃ¶rseller
 
-Google'ın Core Web Vitals metrikleri için görsel optimizasyonu kritiktir:
+Google'Ã¶n Core Web Vitals metrikleri iÃ§in gÃ¶rsel optimizasyonu kritiktir:
 
-- **LCP (Largest Contentful Paint):** Hero görseller optimize edilmeli
-- **CLS (Cumulative Layout Shift):** Görsel boyutları width/height ile belirtilmeli
+- **LCP (Largest Contentful Paint):** Hero gÃ¶rseller optimize edilmeli
+- **CLS (Cumulative Layout Shift):** GÃ¶rsel boyutlarÄ± width/height ile belirtilmeli
 
-## WebImgConverter ile Sıkıştırma
+## WebImgConverter ile SÄ±kÄ±ÅŸtÄ±rma
 
-WebImgConverter'in görsel sıkıştırma aracı ile tüm bu optimizasyonları tek tıkla yapabilirsiniz. Dosyalarınız sunucuya yüklenmez, gizliliğiniz korunur.
+WebImgConverter'in gÃ¶rsel sÄ±kÄ±ÅŸtÄ±rma aracÄ± ile tÃ¼m bu optimizasyonlarÄ± tek tÄ±kla yapabilirsiniz. DosyalarÄ±nÄ±z sunucuya yÃ¼klenmez, gizliliÄŸiniz korunur.
             `
         },
         en: {
@@ -400,61 +400,61 @@ With WebImgConverter's image compression tool, you can do all these optimization
             content: `## Why Compress?\n\nImages make up 50-60% of web page weight. Optimize them for better performance.`
         },
         tr: {
-            title: 'Görsel Sıkıştırma Rehberi',
-            description: 'Görsel sıkıştırma teknikleri.',
+            title: 'GÃ¶rsel SÄ±kÄ±ÅŸtÄ±rma Rehberi',
+            description: 'GÃ¶rsel sÄ±kÄ±ÅŸtÄ±rma teknikleri.',
             date: '2025-01-05',
             readTime: '6 dk',
             category: 'SEO',
-            content: `## Neden Sıkıştırma?\n\nGörseller web sayfalarının %50-60'ını oluşturur.`
+            content: `## Neden SÄ±kÄ±ÅŸtÄ±rma?\n\nGÃ¶rseller web sayfalarÄ±nÄ±n %50-60'Inc oluÅŸturur.`
         }
     },
     'arka-plan-silme-ipuclari': {
         tr: {
-            title: 'AI Arka Plan Silme: Profesyonel Sonuçlar İçin İpuçları',
-            description: 'Yapay zeka ile arka plan silme nasıl çalışır? En iyi sonuçları almak için ipuçları.',
+            title: 'AI Arka Plan Silme: Profesyonel SonuÃ§lar iÃ§in ipuÃ§larÄ±',
+            description: 'Yapay zeka ile arka plan silme nasÄ±l Ã§alÄ±ÅŸÄ±r? En iyi sonuÃ§larÄ± almak iÃ§in ipuÃ§larÄ±.',
             date: '2025-01-01',
             readTime: '5 dk',
-            category: 'AI Araçları',
+            category: 'AI AraÃ§larÄ±',
             content: `
-## AI Arka Plan Silme Nasıl Çalışır?
+## AI Arka Plan Silme NasÄ±l Ã§alÄ±ÅŸÄ±r?
 
-Modern yapay zeka modelleri, görüntülerdeki objeleri **segmente** ederek ön planı arka plandan ayırır. WebImgConverter, en iyi sonuçları sunmak için güçlü güvenli sunucular kullanır. Görseliniz anlık olarak işlenir ve sunucudan kalıcı olarak silinir.
+Modern yapay zeka modelleri, gÃ¶rÃ¼ntÃ¼lerdeki objeleri **segmente** ederek Ã¶n planÄ± arka plandan ayÄ±rÄ±r. WebImgConverter, en iyi sonuÃ§larÄ± sunmak iÃ§in gÃ¼Ã§lÃ¼ gÃ¼venli sunucular kullanÄ±r. GÃ¶rseliniz anlÄ±k olarak iÅŸlenir ve sunucudan kalÄ±cÄ± olarak silinir.
 
-## En İyi Sonuçlar İçin İpuçları
+## En Ä°yi SonuÃ§lar iÃ§in ipuÃ§larÄ±
 
-### 1. Net Özne
-Ön plandaki kişi veya nesne net ve odaklanmış olmalı. Bulanık fotoğraflar zayıf sonuç verir.
+### 1. Net Ã–zne
+Ã¶n plandaki kiÅŸi veya nesne net ve odaklanmÄ±ÅŸ olmalÄ±. BulanÄ±k fotoÄŸraflar zayÄ±f sonuÃ§ verir.
 
 ### 2. Kontrast
-Özne ile arka plan arasında renk kontrastı olması yardımcı olur. Beyaz giysi + beyaz arka plan zor kesim demektir.
+Ã–zne ile arka plan arasÄ±nda renk kontrastÄ± olmasÄ± yardÄ±mcÄ± olur. Beyaz giysi + beyaz arka plan zor kesim demektir.
 
-### 3. Aydınlatma
-Düzgün aydınlatma daha iyi kenar algılama sağlar. Sert gölgeler kesimi zorlaştırabilir.
+### 3. AydÄ±nlatma
+DÃ¼zgÃ¼n aydÄ±nlatma daha iyi kenar algÄ±lama saÄŸlar. Sert gÃ¶lgeler kesimi zorlaÅŸtÄ±rabilir.
 
-### 4. Çözünürlük
-Yüksek çözünürlüklü görseller daha detaylı kesim verir. En az 1000x1000 piksel önerilir.
+### 4. Ã‡Ã¶zÃ¼nÃ¼rlÃ¼k
+YÃ¼ksek Ã§Ã¶zÃ¼nÃ¼rlÃ¼klÃ¼ gÃ¶rseller daha detaylÄ± kesim verir. En az 1000x1000 piksel Ã¶nerilir.
 
-## Kullanım Senaryoları
+## KullanÄ±m SenaryolarÄ±
 
 ### E-Ticaret
-Ürün fotoğraflarını beyaz veya şeffaf arka plana geçirmek. Amazon, Trendyol gibi platformlar genellikle beyaz arka plan ister.
+ÃœrÃ¼n fotoÄŸraflarÄ±nÄ± beyaz veya ÅŸeffaf arka plana getirmek. Amazon, Trendyol gibi platformlar genellikle beyaz arka plan ister.
 
 ### Sosyal Medya
-Profil fotoğrafları, Instagram paylaşımları ve YouTube thumbnail'ları için temiz arka planlar.
+Profil fotoÄŸraflarÄ±, Instagram paylaÅŸÄ±mlarÄ± ve YouTube thumbnail'larÄ± iÃ§in temiz arka planlar.
 
-### Portre Fotoğrafçılığı
-Stüdyo çekimi olmadan profesyonel arka planlar oluşturma.
+### Portre FotoÄŸrafÃ§Ä±lÄ±ÄŸÄ±
+StÃ¼dyo Ã§ekimi olmadan profesyonel arka planlar oluÅŸturma.
 
-## Saç ve Karmaşık Kenarlar
+## SaÃ§ ve KarmaÅŸÄ±k Kenarlar
 
-WebImgConverter'in AI modeli, saç telleri ve kürk gibi karmaşık kenarları **piksel hassasiyetinde** tanır. Ancak:
-- Öznenin saçları net görünmeli
-- Saç arka planla aynı renk olmamalı
-- Rüzgarlı saç daha zor kesim demektir
+WebImgConverter'in AI modeli, saÃ§ telleri ve kÃ¼rk gibi karmaÅŸÄ±k kenarlarÄ± **piksel hassasiyetinde** tanÄ±r. Ancak:
+- Ã¶znenin saÃ§larÄ± net gÃ¶rÃ¼nmeli
+- SaÃ§ arka planla aynÄ± renk olmamalÄ±
+- RÃ¼zgarlÄ± saÃ§ daha zor kesim demektir
 
-## Sonuç
+## SonuÃ§
 
-AI arka plan silme artık herkes için erişilebilir. WebImgConverter ile ücretsiz, güvenli ve profesyonel sonuçlar alabilirsiniz.
+AI arka plan silme artÄ±k herkes iÃ§in eriÅŸilebilir. WebImgConverter ile Ãœcretsiz, gÃ¼venli ve profesyonel sonuÃ§lar alabilirsiniz.
             `
         },
         en: {
@@ -509,60 +509,60 @@ AI background removal is now accessible to everyone. Get free, secure, and profe
             content: `## AI Background Removal\n\nModern AI models segment objects to separate foreground from background.`
         },
         tr: {
-            title: 'AI Arka Plan Silme İpuçları',
-            description: 'Yapay zeka ile arka plan silme ipuçları.',
+            title: 'AI Arka Plan Silme ipuÃ§larÄ±',
+            description: 'Yapay zeka ile arka plan silme ipuÃ§larÄ±.',
             date: '2025-01-01',
             readTime: '5 dk',
-            category: 'AI Araçları',
+            category: 'AI AraÃ§larÄ±',
             content: `## AI Arka Plan Silme\n\nModern AI modelleri objeleri segmente eder.`
         }
     },
     'svg-vs-png': {
         tr: {
-            title: 'SVG vs PNG: Vektör mü Piksel mi? Doğru Format Seçimi',
-            description: 'Logo ve ikon tasarımlarınız için SVG mi PNG mi kullanmalısınız? Her iki formatın güçlü ve zayıf yönlerini karşılaştırıyoruz.',
+            title: 'SVG vs PNG: VektÃ¶r mx Piksel mi? doÄŸru Format SeÃ§imi',
+            description: 'Logo ve ikon tasarÄ±mlarÄ±nÄ±z iÃ§in SVG mi PNG mi KullanmalÄ±sÄ±nÄ±z? Her iki formatÄ±n gÃ¼Ã§lÃ¼ ve zayÄ±f yÃ¶nlerini karÅŸÄ±laÅŸtÄ±rÄ±yoruz.',
             date: '2025-02-10',
             readTime: '6 dk',
-            category: 'Karşılaştırma',
+            category: 'KarÅŸÄ±laÅŸtÄ±rma',
             content: `
 ## SVG ve PNG: Temel Farklar
 
-Web siteniz veya uygulamanız için logo, ikon veya illüstrasyon tasarlarken en sık karşılaşılan ikilem: **SVG mi kullanmalıyım yoksa PNG mi?**
+Web siteniz veya uygulamanÄ±z iÃ§in logo, ikon veya illÃ¼strasyon tasarlarken en SÄ±k karÅŸÄ±laÅŸÄ±lan ikilem: **SVG mi kullanmalÄ±yÄ±m yoksa PNG mi?**
 
-Bu sorunun cevabı, tamamen görselin kullanım amacına ve yapısına bağlıdır. WebImgConverter olarak, her iki formatın anatomisini, avantajlarını ve hangi senaryolarda hayat kurtardığını detaylıca inceliyoruz.
+Bu sorunun cevabÄ±, tamamen gÃ¶rselin kullanÄ±m amacÄ±na ve yapÄ±sÄ±na baÄŸlÄ±dÄ±r. WebImgConverter olarak, her iki formatÄ±n anatomisini, avantajlarÄ±nÄ± ve hangi senaryolarda hayat kurtardÄ±ÄŸÄ±nÄ± detaylÄ±ca inceliyoruz.
 
 ### PNG (Portable Network Graphics) Nedir?
 
-PNG, **piksel (raster)** tabanlı bir formattır. Görüntü, yan yana dizilmiş binlerce veya milyonlarca minik renk karesinden (pikselden) oluşur.
-- **Kayıpsız Sıkıştırma:** JPG'nin aksine, PNG sıkıştırılırken veri kaybetmez.
-- **Şeffaflık (Alpha Kanalı):** Arka planı şeffaf fotoğraflar için en popüler standarttır.
-- **Zayıf Yönü:** Yakınlaştırıldığında veya boyutu büyütüldüğünde piksellenir (bulanıklaşır).
+PNG, **piksel (raster)** tabanlÄ± bir formattÄ±r. GÃ¶rÃ¼ntÃ¼, yan yana dizilmiÅŸ binlerce veya milyonlarca minik renk karesinden (pikselden) oluÅŸur.
+- **KayÄ±psÄ±z SÄ±kÄ±ÅŸtÄ±rma:** JPG'nin aksine, PNG sÄ±kÄ±ÅŸtÄ±rÄ±lÄ±rken veri kaybetmez.
+- **ÅeffaflÄ±k (Alpha KanalÄ±):** Arka planÄ± ÅŸeffaf fotoÄŸraflar iÃ§in en popÃ¼ler standarttÄ±r.
+- **zayÄ±f Yeni:** YakÄ±nlaÅŸtÄ±rÄ±ldÄ±ÄŸÄ±nda veya boyutu bÃ¼yÃ¼tÃ¼ldÃ¼ÄŸÃ¼nde piksellenir (bulanÄ±klaÅŸÄ±r).
 
 ### SVG (Scalable Vector Graphics) Nedir?
 
-SVG, pikseller yerine **matematiksel formüller** ve koordinatlar kullanarak şekilleri çizen **vektör** tabanlı bir formattır. Özünde bir XML kod dosyasıdır.
-- **Sonsuz Ölçeklenebilirlik:** İster bir pul boyutunda olsun, ister bir stadyum reklam panosunda; SVG asla kalite kaybetmez.
-- **Ultra Küçük Dosya Boyutu:** Koddan ibaret olduğu için basit ikonlarda PNG'ye göre inanılmaz derecede küçüktür.
-- **Zayıf Yönü:** Fotoğraflar veya çok karmaşık renk geçişli (gradient) gerçekçi çizimler için uygun değildir.
+SVG, pikseller yerine **matematiksel formÃ¼ller** ve koordinatlar kullanarak ÅŸekilleri Ã§izen **vektÃ¶r** tabanlÄ± bir formattÄ±r. Ã¶zÃ¼nde bir XML kod dosyasÄ±dÄ±r.
+- **Sonsuz Ã¶lÃ§eklenebilirlik:** ister bir pul boyutunda olsun, ister bir stadyum reklam panosunda; SVG asla kalite kaybetmez.
+- **Ultra KÃ¼Ã§Ã¼k Dosya Boyutu:** Koddan ibaret olduÄŸu iÃ§in basit ikonlarda PNG'ye gÃ¶re inanÄ±lmaz derecede kÃ¼Ã§Ã¼ktÃ¼r.
+- **zayÄ±f Yeni:** FotoÄŸraflar veya yok karmaÅŸÄ±k renk geÃ§iÅŸli (gradient) gerÃ§ekÃ§i Ã§izimler iÃ§in uygun deÄŸildir.
 
-## Hangisini Ne Zaman Kullanmalısınız?
+## Hangisini Ne Zaman KullanmalÄ±sÄ±nÄ±z?
 
-### SVG Kullanmanız Gereken Durumlar
-1. **Şirket Logoları:** Web sitenizin header (üst) kısmındaki logolar her ekranda (Retina, 4K) jilet gibi keskin görünmelidir. SVG tek çözümdür.
-2. **UI İkonları:** Menü ikonları, sosyal medya butonları gibi grafikler SVG olmalıdır.
-3. **Animasyonlu Grafikler:** CSS ve JavaScript kullanılarak SVG'ler hareketlendirilebilir.
-4. **Veri Görselleştirme:** Etkileşimli grafikler ve haritalar için idealdir.
+### SVG KullanmanÄ±z Gereken Durumlar
+1. **Åirket logolarÄ±:** Web sitenizin header (ist) kÄ±smÄ±ndaki logolar her ekranda (Retina, 4K) jilet gibi keskin gÃ¶rÃ¼nmelidir. SVG tek Ã§Ã¶zÃ¼mdÃ¼r.
+2. **UI Ä°konlarÄ±:** MenÃ¼ ikonlarÄ±, sosyal medya butonlarÄ± gibi grafikler SVG olmalÄ±dÄ±r.
+3. **Animasyonlu Grafikler:** CSS ve JavaScript kullanÄ±larak SVG'ler hareketlendirilebilir.
+4. **Veri GÃ¶rselleÅŸtirme:** EtkileÅŸimli grafikler ve haritalar iÃ§in idealdir.
 
-### PNG Kullanmanız Gereken Durumlar
-1. **Karmaşık İllüstrasyonlar:** Çok fazla detay ve düzensiz renk içeren dijital çizimler.
-2. **Arka Planı Silinmiş Fotoğraflar:** Bir ürün fotoğrafının veya portrenin arka planı silindiğinde (WebImgConverter Arka Plan Silici gibi), sonuç mutlaka PNG olmalıdır. Vektöre dönüştürülemez.
-3. **E-posta İmzaları:** Bazı eski e-posta istemcileri SVG'yi desteklemez, bu nedenle imza logolarında PNG daha güvenlidir.
+### PNG KullanmanÄ±z Gereken Durumlar
+1. **KarmaÅŸÄ±k Ä°llÃ¼strasyonlar:** yok fazla detay ve dÃ¼zensiz renk iÃ§eren dijital Ã§izimler.
+2. **Arka planÄ± SilinmiÅŸ FotoÄŸraflar:** Bir ÃœrÃ¼n fotoÄŸrafÄ±nÄ±n veya portrenin arka planÄ± silindiÄŸinde (WebImgConverter Arka Plan Silici gibi), sonuÃ§ mutlaka PNG olmalÄ±dÄ±r. VektÃ¶re dÃ¶nÃ¼ÅŸtÃ¼rÃ¼lemez.
+3. **E-posta Ä°mzalarÄ±:** BazÄ± eski e-posta istemcileri SVG'yi desteklemez, bu nedenle imza logolarÄ±nda PNG daha gÃ¼venlidir.
 
 ## Core Web Vitals ve Performans Etkisi
 
-Google'ın Core Web Vitals metriklerinde başarılı olmak için SVG kritik bir silahtır. Sitenizdeki 20 adet 50x50 piksel PNG ikonu yüklemek, tek bir "SVG Sprite" (SVG kümesi) yüklemekten çok daha fazla sunucu isteği ve veri tüketimi yaratır. 
+Google'Ã¶n Core Web Vitals metriklerinde baÅŸarÄ±lÄ± olmak iÃ§in SVG kritik bir silahtÄ±r. Sitenizdeki 20 adet 50x50 piksel PNG ikonu yÃ¼klemek, tek bir "SVG Sprite" (SVG kÃ¼mesi) yÃ¼klemekten yok daha fazla sunucu isteÄŸi ve veri tÃ¼ketimi yaratÄ±r. 
 
-**WebImgConverter Dönüştürücü İpucu:** Bazen elinize sadece PNG bir logo geçer ve bunu mecburen kullanmak zorunda kalırsınız. Dosya çok büyükse, WebImgConverter ile PNG'yi kayıpsız olarak yeniden sıkıştırarak kaliteden ödün vermeden boyuttan tasarruf edebilirsiniz.`
+**WebImgConverter DÃ¶nÃ¼ÅŸtÃ¼rÃ¼cÃ¼ Ä°pucu:** Bazen elinize sadece PNG bir logo geÃ§er ve bunu mecburen kullanmak zorunda kalÄ±rsÄ±nÄ±z. Dosya yok bÃ¼yÃ¼kse, WebImgConverter ile PNG'yi kayÄ±psÄ±z olarak yeniden sÄ±kÄ±ÅŸtÄ±rarak kaliteden edin vermeden boyuttan tasarruf edebilirsiniz.`
         },
         en: {
             title: 'SVG vs PNG: Vector or Pixel? Choosing the Right Format',
@@ -612,60 +612,60 @@ SVG is a critical weapon for succeeding in Google's Core Web Vitals metrics. Loa
         },
         de: {
             title: 'SVG vs PNG: Vektor oder Pixel? Die richtige Formatwahl',
-            description: 'Sollten Sie SVG oder PNG für Ihre Logos und Icons verwenden? Wir vergleichen die Stärken und Schwächen.',
+            description: 'Sollten Sie SVG oder PNG for Ihre Logos und Icons verwenden? Wir vergleichen die StÃ¤rken und SchwÃ¤chen.',
             date: '2025-02-10',
             readTime: '6 Min',
             category: 'Vergleich',
             content: `
 ## SVG und PNG: Kernunterschiede
 
-Beim Entwerfen eines Logos, Icons oder einer Illustration für Ihre Website oder App ist das häufigste Dilemma: **Sollte ich SVG oder PNG verwenden?**
+Beim Entwerfen eines Logos, Icons oder einer Illustration for Ihre Website oder App ist das hÃ¤ufigste Dilemma: **Sollte ich SVG oder PNG verwenden?**
 
 ### Was ist PNG?
 PNG ist ein rasterbasiertes (Pixel) Format.
 - **Verlustfreie Komprimierung:** Im Gegensatz zu JPG verliert PNG beim Komprimieren keine Daten.
-- **Transparenz:** Es ist der beliebteste Standard für Bilder mit transparentem Hintergrund.
-- **Schwäche:** Es wird pixelig (unscharf), wenn es vergrößert wird.
+- **Transparenz:** Es ist der beliebteste Standard for Bilder mit transparentem Hintergrund.
+- **SchwÃ¤che:** Es wird pixelig (unscharf), wenn es vergrÃ¶ÃŸert wird.
 
 ### Was ist SVG?
 SVG ist ein vektorbasiertes Format, das Formen mithilfe von mathematischen Formeln zeichnet.
-- **Unendliche Skalierbarkeit:** SVG verliert nie an Qualität, egal bei welcher Größe.
-- **Geringe Dateigröße:** Da es nur Code ist, ist es für einfache Icons unglaublich klein.
-- **Schwäche:** Nicht geeignet für Fotos oder hochkomplexe Zeichnungen.
+- **Unendliche Skalierbarkeit:** SVG verliert nie an QualitÃ¤t, egal bei welcher GroÃŸe.
+- **Geringe DateigrÃ¶ÃŸe:** Da es nur Code ist, ist es for einfache Icons unglaublich klein.
+- **SchwÃ¤che:** Nicht geeignet for Fotos oder hochkomplexe Zeichnungen.
 
 ## Wann sollten Sie was verwenden?
 
-- **Verwenden Sie SVG für:** Firmenlogos, UI-Icons, animierte Grafiken und Datenvisualisierung.
-- **Verwenden Sie PNG für:** Komplexe Illustrationen, freigestellte Fotos (wie mit dem WebImgConverter Background Remover) und E-Mail-Signaturen.
+- **Verwenden Sie SVG for:** Firmenlogos, UI-Icons, animierte Grafiken und Datenvisualisierung.
+- **Verwenden Sie PNG for:** Komplexe Illustrationen, freigestellte Fotos (wie mit dem WebImgConverter Background Remover) und E-Mail-Signaturen.
 `
         },
         fr: {
             title: 'SVG vs PNG : Vecteur ou Pixel ? Choisir le bon format',
-            description: 'Devez-vous utiliser SVG ou PNG pour vos logos et icônes ? Nous comparons les forces et faiblesses.',
+            description: 'Devez-vous utiliser SVG ou PNG pour vos logos et icÃ´nes ? Nous comparons les forces et faiblesses.',
             date: '2025-02-10',
             readTime: '6 min',
             category: 'Comparaison',
             content: `
-## SVG et PNG : Différences fondamentales
+## SVG et PNG : DiffÃ©rences fondamentales
 
-Lors de la conception d'un logo, d'une icône ou d'une illustration, le dilemme le plus courant est : **Dois-je utiliser SVG ou PNG ?**
+Lors de la conception d'un logo, d'une icÃ´ne ou d'une illustration, le dilemme le plus courant est : **Dois-je utiliser SVG ou PNG ?**
 
 ### Qu'est-ce que PNG ?
-PNG est un format basé sur les pixels (raster).
-- **Compression sans perte :** Contrairement au JPG, le PNG ne perd pas de données lors de la compression.
-- **Transparence :** C'est le standard pour les arrière-plans transparents.
-- **Faiblesse :** Il devient pixélisé (flou) lorsqu'il est agrandi.
+PNG est un format base sur les pixels (raster).
+- **Compression sans perte :** Contrairement au JPG, le PNG ne perd pas de donnÃ©es lors de la compression.
+- **Transparence :** C'est le standard pour les arriÃ¨re-plans transparents.
+- **Faiblesse :** Il devient pixÃ©lisÃ© (flou) lorsqu'il est agrandi.
 
 ### Qu'est-ce que SVG ?
-SVG est un format vectoriel qui dessine des formes à l'aide de formules mathématiques.
-- **Évolutivité infinie :** Le SVG ne perd jamais en qualité, quelle que soit la taille.
-- **Petite taille de fichier :** Étant du code, il est incroyablement petit pour les icônes simples.
-- **Faiblesse :** Ne convient pas aux photos ou aux dessins très complexes.
+SVG est un format vectoriel qui dessine des formes h l'aide de formules mathÃ©matiques.
+- **Ã©volutivitÃ© infinie :** Le SVG ne perd jamais en quality, quelle que soit la taille.
+- **Petite taille de fichier :** Ã©tant du code, il est incroyablement petit pour les icÃ´nes simples.
+- **Faiblesse :** Ne convient pas aux photos ou aux dessins trÃ¨s complexes.
 
 ## Quand utiliser quoi ?
 
-- **Utilisez SVG pour :** Logos d'entreprise, icônes d'interface utilisateur (UI), graphiques animés.
-- **Utilisez PNG pour :** Illustrations complexes, photos détourées (comme avec WebImgConverter Background Remover) et signatures d'e-mails.
+- **Utilisez SVG pour :** Logos d'entreprise, icÃ´nes d'interface utilisateur (UI), graphiques animÃ©s.
+- **Utilisez PNG pour :** Illustrations complexes, photos dÃ©tourÃ©es (comme avec WebImgConverter Background Remover) et signatures d'e-mails.
 `
         }
     },
@@ -688,41 +688,41 @@ SVG est un format vectoriel qui dessine des formes à l'aide de formules mathémat
 // Populating mapped content for Ecommerce Guide
 const ecommerceGuideContent = {
     tr: {
-        title: 'E-Ticaret İçin Görsel Hazırlama: Satışı Artıran Fotoğraf Teknikleri',
-        description: 'Amazon, Trendyol ve Hepsiburada için ürün fotoğraflarınızı profesyonelce optimize edin.',
+        title: 'E-Ticaret iÃ§in GÃ¶rsel HazÄ±rlama: SatÄ±ÅŸÄ± ArtÄ±ran FotoÄŸraf Teknikleri',
+        description: 'Amazon, Trendyol ve Hepsiburada iÃ§in ÃœrÃ¼n fotoÄŸraflarÄ±nÄ±zÄ± profesyonelce optimize edin.',
         date: '2025-02-05',
         readTime: '8 dk',
         category: 'Rehber',
         content: `
-## E-Ticarette Görsel Neden Her Şeydir?
+## E-Ticarette GÃ¶rsel Neden Her ÅŸeydir?
 
-E-ticaret sitelerinde müşteriler ürüne dokunamaz, onu koklayamaz veya deneyemezler. Satın alma kararını verdiren **tek şey** ürün fotoğrafıdır. Kötü, karanlık veya kalitesiz bir fotoğraf, dünyanın en iyi ürününün bile satılmamasına neden olur.
+E-ticaret sitelerinde mÃ¼ÅŸteriler Ã¼rÃ¼ne dokunamaz, onu koklayamaz veya deneyemezler. satÄ±n alma kararÄ±nÄ± verdiren **tek key** ÃœrÃ¼n fotoÄŸrafÄ±dÄ±r. KÃ¶tÃ¼, karanlÄ±k veya kalitesiz bir fotoÄŸraf, dÃ¼nyanÄ±n en iyi Ã¼rÃ¼nÃ¼nÃ¼n bile satÄ±lmamasÄ±na neden olur.
 
-### Temel Platform Standartları
+### Temel Platform StandartlarÄ±
 
-Pazaryerlerinin (Amazon, Trendyol, Hepsiburada vb.) ürün görselleri için katı kuralları vardır.
-- **Amazon:** Ana görselin arka planı **saf beyaz (RGB: 255,255,255)** olmak zorundadır. Ürün, çerçevenin en az %85'ini doldurmalıdır.
-- **Trendyol/Hepsiburada:** Benzer şekilde stüdyo çekimi tarzında net ve dikkati dağıtmayan arka planlar talep ederler.
-- **Boyutlar:** Minimum 1000x1000 piksel kare (1:1) format, müşterilerin "zoom" (yakınlaştırma) özelliğini kullanabilmesi için şarttır.
+Pazaryerlerinin (Amazon, Trendyol, Hepsiburada vb.) ÃœrÃ¼n gÃ¶rselleri iÃ§in katÄ± kurallarÄ± vardÄ±r.
+- **Amazon:** Ana gÃ¶rselin arka planÄ± **saf beyaz (RGB: 255,255,255)** olmak zorundadÄ±r. ÃœrÃ¼n, Ã§erÃ§evenin en az %85'ini doldurmalÄ±dÄ±r.
+- **Trendyol/Hepsiburada:** Benzer ÅŸekilde StÃ¼dyo Ã§ekimi tarzÄ±nda net ve dikkati daÄŸÄ±tmayan arka planlar talep ederler.
+- **Boyutlar:** Minimum 1000x1000 piksel kare (1:1) format, mÃ¼ÅŸterilerin "zoom" (yakÄ±nlaÅŸtÄ±rma) Ã¶zelliÄŸini kullanabilmesi iÃ§in ÅŸarttÄ±r.
 
-## WebImgConverter ile Kusursuz Ürün Görselleri Hazırlamak
+## WebImgConverter ile Kusursuz ÃœrÃ¼n GÃ¶rselleri HazÄ±rlamak
 
-Eskiden her bir ürün fotoğrafı için Photoshop uzmanlarına para ödemek gerekirdi. WebImgConverter'in sunduğu yapay zeka araçları ile bu süreci ücretsiz ve saniyeler içinde halledebilirsiniz.
+Eskiden her bir ÃœrÃ¼n fotoÄŸrafÄ± iÃ§in Photoshop uzmanlarÄ±na para Ã¶demek gerekirdi. WebImgConverter'in sunduÄŸu yapay zeka araÃ§larÄ± ile bu sÃ¼reci Ãœcretsiz ve saniyeler iÃ§inde halledebilirsiniz.
 
-### Adım 1: Arka Planı Tek Tıkla Silin
-Evinizde veya ofisinizde çektiğiniz bir ürün fotoğrafını WebImgConverter **Arka Plan Silici** aracına yükleyin. Yapay zeka, en karmaşık kenarları bile algılayarak arka planı şeffaf (PNG) hale getirir.
+### AdÄ±m 1: Arka planÄ± Tek TÄ±kla Silin
+Evinizde veya ofisinizde Ã§ektiÄŸiniz bir ÃœrÃ¼n fotoÄŸrafÄ±nÄ± WebImgConverter **Arka Plan Silici** aracÄ±na yÃ¼kleyin. Yapay zeka, en karmaÅŸÄ±k kenarlarÄ± bile algÄ±layarak arka planÄ± ÅŸeffaf (PNG) hale getirir.
 
-### Adım 2: Saf Beyaz Arka Plan Ekleyin
-Arka planı silinmiş şeffaf PNG dosyasını herhangi bir temel editörde saf beyaz (#FFFFFF) bir zeminin üzerine oturtun. Artık Amazon standartlarına uygunsunuz!
+### AdÄ±m 2: Saf Beyaz Arka Plan Ekleyin
+Arka planÄ± silinmiÅŸ ÅŸeffaf PNG dosyasÄ±nÄ± herhangi bir temel editÃ¶rde saf beyaz (#FFFFFF) bir zeminin Ã¼zerine oturtun. artÄ±k Amazon standartlarÄ±na uygunsunuz!
 
-### Adım 3: Akıllı Kırpıcı ile Ortalamayı Yapın
-WebImgConverter **Akıllı Kırpıcı (Smart Cropper)** aracını kullanarak görselinizi tam 1:1 kare formatında kırpın. Ürünün tam ortada olmasına (Center-aligned) ve kenarlarda dengeli boşluk kalmasına özen gösterin.
+### AdÄ±m 3: AkÄ±llÄ± KÄ±rpÄ±cÄ± ile OrtalamayÄ± yapÄ±n
+WebImgConverter **AkÄ±llÄ± KÄ±rpÄ±cÄ± (Smart Cropper)** aracÄ±nÄ± kullanarak gÃ¶rselinizi tam 1:1 kare formatÄ±nda kÄ±rpÄ±n. Ã¼rÃ¼nÃ¼n tam ortada olmasÄ±na (Center-aligned) ve kenarlarda dengeli boÅŸluk kalmasÄ±na Ã¶zen gÃ¶sterin.
 
-### Adım 4: Performans İçin Sıkıştırın
-Platformlar genellikle 2MB veya 5MB gibi dosya boyutu sınırlarına sahiptir. WebImgConverter kullanarak ürün fotoğraflarınızı **WebP veya optimize JPG** formatına dönüştürerek kaliteden hiç ödün vermeden boyutu küçültün.
+### AdÄ±m 4: Performans iÃ§in sÄ±kÄ±ÅŸtÄ±rÄ±n
+Platformlar genellikle 2MB veya 5MB gibi dosya boyutu sÄ±nÄ±rlarÄ±na sahiptir. WebImgConverter kullanarak ÃœrÃ¼n fotoÄŸraflarÄ±nÄ±zÄ± **WebP veya optimize JPG** formatÄ±na dÃ¶nÃ¼ÅŸtÃ¼rerek kaliteden hin edin vermeden boyutu kÃ¼Ã§Ã¼ltÃ¼n.
 
-## Sonuç
-Profesyonel e-ticaret satıcıları zamanla yarışır. WebImgConverter'in toplu dönüştürme ve yapay zeka destekli özellikleri, tüm ürün kataloğunuzu satışa hazır hale getirmenizi sağlar.`
+## SonuÃ§
+Profesyonel e-ticaret satÄ±cÄ±larÄ± zamanla yarÄ±ÅŸÄ±r. WebImgConverter'in toplu dÃ¶nÃ¼ÅŸtÃ¼rme ve yapay zeka destekli Ã¶zellikleri, tÃ¼m ÃœrÃ¼n kataloÄŸunuzu satÄ±ÅŸa hazÄ±r hale getirmenizi saÄŸlar.`
     },
     en: {
         title: 'E-Commerce Image Preparation: Photo Techniques That Boost Sales',
@@ -763,56 +763,56 @@ Professional e-commerce sellers race against time. WebImgConverter's batch conve
     },
     de: {
         title: 'E-Commerce Bildvorbereitung: Fototechniken die den Umsatz steigern',
-        description: 'Optimieren Sie Ihre Produktfotos professionell für Amazon und Shopify.',
+        description: 'Optimieren Sie Ihre Produktfotos professionell for Amazon und Shopify.',
         date: '2025-02-05',
         readTime: '8 Min',
         category: 'Anleitung',
         content: `
 ## Warum Bilder im E-Commerce alles sind
 
-Im E-Commerce können Kunden das Produkt nicht berühren oder ausprobieren. Das **einzige**, was die Kaufentscheidung antreibt, ist das Produktfoto.
+Im E-Commerce kÃ¶nnen Kunden das Produkt nicht berÃ¼hren oder ausprobieren. Das **einzige**, was die Kaufentscheidung antreibt, ist das Produktfoto.
 
 ### Plattform-Standards
 
-Marktplätze wie Amazon haben strenge Regeln für Produktbilder.
-- **Amazon:** Der Hintergrund des Hauptbildes muss **reinweiß (RGB: 255,255,255)** sein.
-- **Abmessungen:** Mindestens 1000x1000 Pixel (1:1), damit Kunden die Zoom-Funktion nutzen können.
+MarktplÃ¤tze wie Amazon haben strenge Regeln for Produktbilder.
+- **Amazon:** Der Hintergrund des Hauptbildes muss **reinweiÃŸ (RGB: 255,255,255)** sein.
+- **Abmessungen:** Mindestens 1000x1000 Pixel (1:1), damit Kunden die Zoom-Funktion nutzen kÃ¶nnen.
 
 ## Perfekte Produktbilder mit WebImgConverter vorbereiten
 
-Mit den KI-Tools von WebImgConverter können Sie diesen Prozess kostenlos und in Sekundenschnelle erledigen.
+Mit den KI-Tools von WebImgConverter kÃ¶nnen Sie diesen Prozess kostenlos und in Sekundenschnelle erledigen.
 
 1. **Hintergrund entfernen:** Nutzen Sie den WebImgConverter Background Remover, um den Hintergrund transparent zu machen (PNG).
-2. **Weißer Hintergrund:** Fügen Sie einen reinweißen Hintergrund hinzu, um Amazon-konform zu sein.
-3. **Zuschneiden:** Verwenden Sie den WebImgConverter Smart Cropper für ein perfektes 1:1-Quadrat.
-4. **Komprimieren:** Konvertieren Sie zu WebP oder optimiertem JPG, um die Dateigröße zu reduzieren.
+2. **WeiÃŸer Hintergrund:** FÃ¼gen Sie einen reinweiÃŸen Hintergrund hinzu, um Amazon-konform zu sein.
+3. **Zuschneiden:** Verwenden Sie den WebImgConverter Smart Cropper for ein perfektes 1:1-Quadrat.
+4. **Komprimieren:** Konvertieren Sie zu WebP oder optimiertem JPG, um die DateigrÃ¶ÃŸe zu reduzieren.
 `
     },
     fr: {
-        title: 'Préparation d\'images e-commerce : Techniques photo qui boostent les ventes',
+        title: 'PrÃ©paration d\'images e-commerce : Techniques photo qui boostent les ventes',
         description: 'Optimisez professionnellement vos photos de produits pour Amazon et Shopify.',
         date: '2025-02-05',
         readTime: '8 min',
         category: 'Guide',
         content: `
-## Pourquoi les images sont essentielles dans le commerce électronique
+## Pourquoi les images sont essentielles dans le commerce Ã©lectronique
 
-Dans l'e-commerce, les clients ne peuvent pas toucher ou essayer le produit. La **seule chose** qui motive la décision d'achat est la photo du produit.
+Dans l'e-commerce, les clients ne peuvent pas toucher ou essayer le produit. La **seule chose** qui motive la dÃ©cision d'achat est la photo du produit.
 
 ### Normes des plateformes
 
-Les marchés comme Amazon ont des règles strictes.
-- **Amazon :** L'arrière-plan de l'image principale doit être **blanc pur (RVB: 255,255,255)**.
+Les marchÃ©s comme Amazon ont des rÃ¨gles strictes.
+- **Amazon :** L'arriÃ¨re-plan de l'image principale doit Ãªtre **blanc pur (RVB: 255,255,255)**.
 - **Dimensions :** Un minimum de 1000x1000 pixels (1:1) est requis pour la fonction de zoom.
 
-## Préparer des images parfaites avec WebImgConverter
+## PrÃ©parer des images parfaites avec WebImgConverter
 
-Avec les outils IA de WebImgConverter, vous pouvez gérer ce processus gratuitement et en quelques secondes.
+Avec les outils IA de WebImgConverter, vous pouvez gÃ©rer ce processus gratuitement et en quelques secondes.
 
-1. **Supprimer l'arrière-plan :** Utilisez WebImgConverter Background Remover pour rendre l'arrière-plan transparent (PNG).
-2. **Fond blanc :** Ajoutez un fond blanc pur pour être conforme à Amazon.
-3. **Recadrer :** Utilisez le Smart Cropper pour un format carré parfait 1:1.
-4. **Compresser :** Convertissez en WebP ou JPG optimisé pour réduire la taille.
+1. **Supprimer l'arriÃ¨re-plan :** Utilisez WebImgConverter Background Remover pour rendre l'arriÃ¨re-plan transparent (PNG).
+2. **Fond blanc :** Ajoutez un fond blanc pur pour Ãªtre conforme h Amazon.
+3. **Recadrer :** Utilisez le Smart Cropper pour un format carrÃ© parfait 1:1.
+4. **Compresser :** Convertissez en WebP ou JPG optimisÃ© pour rÃ©duire la taille.
 `
     }
 };
@@ -824,45 +824,45 @@ articleDatabase['guide-images-ecommerce'] = ecommerceGuideContent;
 // Populating mapped content for 2025 Formats
 const formats2025Content = {
     tr: {
-        title: '2025 Görsel Format Rehberi: AVIF, WebP, HEIC ve JPG Karşılaştırması',
-        description: 'Yeni nesil görsel formatları arasında hangisi sizin için en doğru seçim? Kapsamlı teknik karşılaştırma.',
+        title: '2025 GÃ¶rsel Format Rehberi: AVIF, WebP, HEIC ve JPG KarÅŸÄ±laÅŸtÄ±rmasÄ±',
+        description: 'Yeni nesil gÃ¶rsel formatlarÄ± arasÄ±nda hangisi sizin iÃ§in en doÄŸru seÃ§im? KapsamlÄ± teknik KarÅŸÄ±laÅŸtÄ±rma.',
         date: '2025-03-01',
         readTime: '10 dk',
         category: 'Rehber',
         content: `
-## Web Görsellerinin Evrimi
+## Web GÃ¶rsellerinin Evrimi
 
-İnternetin ilk günlerinden beri GIF, PNG ve JPEG formatları dünyayı domine etti. Ancak web hızlandıkça, cep telefonlarının çözünürlükleri arttıkça daha verimli formatlara olan ihtiyaç doğdu. 2025 itibarıyla görsel format savaşları yepyeni bir seviyeye ulaştı.
+Ä°nternetin ilk gÃ¼nlerinden beri GIF, PNG ve JPEG formatlarÄ± dÃ¼nyayÄ± domine etti. Ancak web hÄ±zlandÄ±kÃ§a, cep telefonlarÄ±nÄ±n Ã§Ã¶zÃ¼nÃ¼rlÃ¼kleri arttÄ±kÃ§a daha verimli formatlara olan ihtiyaÃ§ doÄŸdu. 2025 itibarÄ±yla gÃ¶rsel format savaÅŸlarÄ± yepyeni bir seviyeye ulaÅŸtÄ±.
 
-İşte modern webin ve mobil cihazların dört büyük oyuncusu:
+date modern webin ve mobil cihazlarÄ±n dÃ¶rt bÃ¼yÃ¼k oyuncusu:
 
 ### 1. AVIF (AV1 Image File Format)
-Geleceğin formatı olarak adlandırılır. Netflix, Google ve Apple'ın da içinde bulunduğu bir konsorsiyum tarafından geliştirilen AV1 video codec'ine dayanır.
-- **Avantajı:** WebP'den bile %20-30 oranında daha iyi sıkıştırma sağlar. Olağanüstü düşük boyutlarda yüksek kalite sunar. HDR desteği mükemmeldir.
-- **Dezavantajı:** Eski tarayıcılarda (özellikle eski iOS sürümlerinde) tam desteklenmez. Şifreleme (encoding) süreci CPU'yu çok yorar.
+GeleceÄŸin formats olarak adlandÄ±rÄ±lÄ±r. Netflix, Google ve Apple'Ã¶n da iÃ§inde bulunduÄŸu bir konsorsiyum tarafÄ±ndan geliÅŸtirilen AV1 video codec'ine dayanÄ±r.
+- **AvantajÄ±:** WebP'den bile %20-30 oranÄ±nda daha iyi sÄ±kÄ±ÅŸtÄ±rma saÄŸlar. OlaÄŸanÃ¼stÃ¼ dÃ¶nÃ¼k boyutlarda yÃ¼ksek kalite sunar. HDR desteÄŸi mÃ¼kemmeldir.
+- **DezavantajÄ±:** Eski tarayÄ±cÄ±larda (Ã–zellikle eski iOS sÃ¼rÃ¼mlerinde) tam desteklenmez. Åifreleme (encoding) sÃ¼reci CPU'yu yok yorar.
 
 ### 2. WebP
-Google'ın "Web'in Yeni Standardı" projesidir. Günümüzde pazarın hakimidir.
-- **Avantajı:** JPG'den %30 daha küçüktür, PNG gibi şeffaflık (Alpha) destekler ve GIF gibi hareket (animasyon) içerebilir. Bütün modern tarayıcılar tarafından %100 desteklenir.
-- **Dezavantajı:** Sıkıştırma algoritmaları çok iyi olsa da, aşırı sıkıştırmada AVIF'e kıyasla doku detaylarını bulanıklaştırma eğilimi vardır.
+Google'Ã¶n "Web'in Yeni StandardÄ±" projesidir. GÃ¼nÃ¼mÃ¼zde pazarÄ±n hakimidir.
+- **AvantajÄ±:** JPG'den %30 daha kÃ¼Ã§Ã¼ktÃ¼r, PNG gibi ÅeffaflÄ±k (Alpha) destekler ve GIF gibi hareket (animasyon) iÃ§erebilir. Buton modern tarayÄ±cÄ±lar tarafÄ±ndan %100 desteklenir.
+- **DezavantajÄ±:** SÄ±kÄ±ÅŸtÄ±rma algoritmalarÄ± yok iyi olsa da, adore sÄ±kÄ±ÅŸtÄ±rmada AVIF'e kÄ±yasla doku detaylarÄ±nÄ± bulanÄ±klaÅŸtÄ±rma eÄŸilimi vardÄ±r.
 
 ### 3. HEIC / HEIF
-Apple'ın mobil devrimi. iOS ekosisteminin varsayılan fotoğraf formatıdır.
-- **Avantajı:** Depolama dostudur, JPG'nin yarısı kadar yer kaplar. 16-bit renk derinliği ve derinlik haritası (Portre Modu) desteği sunar.
-- **Dezavantajı:** "Kapalı Bahçe" sorunları yaşar. Windows, Android cihazlar ve web tarayıcılarında doğal destek bulunmaz. Uyum sağlamak için WebImgConverter gibi dönüştürücülere mahkumdur.
+Apple'Ã¶n mobil devrimi. iOS ekosisteminin varsayÄ±lan fotoÄŸraf formatÄ±dÄ±r.
+- **AvantajÄ±:** Depolama dostudur, JPG'nin yarÄ±sÄ± kadar yer kaplar. 16-bit renk derinliÄŸi ve derinlik haritasÄ± (Portre Modu) desteÄŸi sunar.
+- **DezavantajÄ±:** "KapalÄ± BahÃ§e" SorunlarÄ± yapar. Windows, Android cihazlar ve web tarayÄ±cÄ±larÄ±nda doÄŸal destek bulunmaz. Uyum saklamak iÃ§in WebImgConverter gibi dÃ¶nÃ¼ÅŸtÃ¼rÃ¼cÃ¼lere mahkumdur.
 
 ### 4. JPG (Geleneksel Kral)
-1992'den beri hayatımızda. Her cihazda, her yazılımda çalışır.
-- **Avantajı:** %100 evrensel uyumluluk. Gönderdiğiniz bir JPG dosyasını açamayacak bir cihaz dünyada yoktur.
-- **Dezavantajı:** Şeffaflık (Alpha kanal) desteklemez. Yeni formatlara göre çok daha büyük dosya boyutlarına sahiptir.
+1992'den beri hayatÄ±mÄ±zda. Her cihazda, her yazÄ±lÄ±mda Ã§alÄ±ÅŸÄ±r.
+- **AvantajÄ±:** %100 evrensel uyumluluk. GÃ¶nderdiÄŸiniz bir JPG dosyasÄ±nÄ± aÃ§amayacak bir cihaz dÃ¼nyada yoktur.
+- **DezavantajÄ±:** ÅeffaflÄ±k (Alpha kanal) desteklemez. Yeni formatlara gÃ¶re yok daha bÃ¼yÃ¼k dosya boyutlarÄ±na sahiptir.
 
-## Karar: Hangisini Kullanmalısınız?
+## Karar: Hangisini KullanmalÄ±sÄ±nÄ±z?
 
-- **Web Siteleri ve Bloglar İçin:** **WebP** şu an için altın standarttır. Eğer çok teknik bir altyapınız varsa AVIF deneyebilirsiniz.
-- **iPhone'da Yer Açmak İçin:** **HEIC** mükemmeldir, ayarlardan asla değiştirmeyin.
-- **Baskı, Resmi Kurumlar ve Paylaşım İçin:** Kesinlikle **JPG**.
+- **Web Siteleri ve Bloglar iÃ§in:** **WebP** zu an iÃ§in altÄ±n standarttÄ±r. EÄŸer yok teknik bir altyapÄ±nÄ±z varsa AVIF deneyebilirsiniz.
+- **iPhone'da Yer almak iÃ§in:** **HEIC** mÃ¼kemmeldir, ayarlardan asla deÄŸiÅŸtirmeyin.
+- **BaskÄ±, Resmi Kurumlar ve PaylaÅŸÄ±m iÃ§in:** Kesinlikle **JPG**.
 
-WebImgConverter ile bu formatların hepsi arasında, tarayıcınızın içinde saniyeler içinde geçiş yapabilirsiniz.`
+WebImgConverter ile bu formatlarÄ±n hepsi arasÄ±nda, tarayÄ±cÄ±nÄ±zÄ±n iÃ§inde saniyeler iÃ§inde gelir yapabilirsiniz.`
     },
     en: {
         title: '2025 Image Format Guide: AVIF, WebP, HEIC & JPG Compared',
@@ -907,36 +907,36 @@ With WebImgConverter, you can seamlessly convert between all these formats in se
     },
     de: {
         title: '2025 Bildformat-Guide: AVIF, WebP, HEIC & JPG im Vergleich',
-        description: 'Welches Bildformat der neuen Generation ist das richtige für Sie?',
+        description: 'Welches Bildformat der neuen Generation ist das richtige for Sie?',
         date: '2025-03-01',
         readTime: '10 Min',
         category: 'Anleitung',
         content: `
-## Die 4 großen Bildformate im Jahr 2025
+## Die 4 groÃŸen Bildformate im Jahr 2025
 
 ### 1. AVIF
-- **Vorteil:** Bietet eine 20-30% bessere Komprimierung als WebP. Hervorragende HDR-Unterstützung.
-- **Nachteil:** Kodierung ist sehr CPU-intensiv, noch nicht 100% in sehr alten Browsern unterstützt.
+- **Vorteil:** Bietet eine 20-30% bessere Komprimierung als WebP. Hervorragende HDR-UnterstÃ¼tzung.
+- **Nachteil:** Kodierung ist sehr CPU-intensiv, noch nicht 100% in sehr alten Browsern unterstÃ¼tzt.
 
 ### 2. WebP
-- **Vorteil:** 30% kleiner als JPG, unterstützt Transparenz und Animation. Von allen modernen Browsern unterstützt.
+- **Vorteil:** 30% kleiner als JPG, unterstÃ¼tzt Transparenz und Animation. Von allen modernen Browsern unterstÃ¼tzt.
 - **Nachteil:** Extreme Komprimierung kann Texturen weichzeichnen.
 
 ### 3. HEIC
 - **Vorteil:** Apples Standard. Braucht nur halb so viel Platz wie JPG bei 16-Bit-Farbtiefe.
-- **Nachteil:** Keine native Unterstützung auf Windows oder in Webbrowsern. Benötigt Konverter wie WebImgConverter.
+- **Nachteil:** Keine native UnterstÃ¼tzung auf Windows oder in Webbrowsern. BenÃ¶tigt Konverter wie WebImgConverter.
 
 ### 4. JPG
-- **Vorteil:** 100% universelle Kompatibilität. Läuft überall.
-- **Nachteil:** Keine Transparenz, deutlich größere Dateigrößen.
+- **Vorteil:** 100% universelle KompatibilitÃ¤t. LÃ¤uft Ã¼berall.
+- **Nachteil:** Keine Transparenz, deutlich grÃ¶ÃŸere DateigrÃ¶ÃŸen.
 
 ## Fazit
-Nutzen Sie **WebP** für Ihre Websites, behalten Sie **HEIC** auf Ihrem iPhone für Speicherplatz, und verwenden Sie **JPG** zum Teilen mit Windows-Nutzern oder Behörden.
+Nutzen Sie **WebP** for Ihre Websites, behalten Sie **HEIC** auf Ihrem iPhone for Speicherplatz, und verwenden Sie **JPG** zum Teilen mit Windows-Nutzern oder BehÃ¶rden.
 `
     },
     fr: {
-        title: 'Guide des formats d\'image 2025 : AVIF, WebP, HEIC et JPG comparés',
-        description: 'Quel format d\'image nouvelle génération est fait pour vous ?',
+        title: 'Guide des formats d\'image 2025 : AVIF, WebP, HEIC et JPG comparÃ©s',
+        description: 'Quel format d\'image nouvelle gÃ©nÃ©ration est fait pour vous ?',
         date: '2025-03-01',
         readTime: '10 min',
         category: 'Guide',
@@ -944,20 +944,20 @@ Nutzen Sie **WebP** für Ihre Websites, behalten Sie **HEIC** auf Ihrem iPhone fü
 ## Les 4 grands formats d'image en 2025
 
 ### 1. AVIF
-- **Avantage :** Offre une compression 20 à 30 % supérieure à WebP. Excellent support HDR.
-- **Inconvénient :** L'encodage est lourd pour le processeur, pas encore supporté à 100% sur les très vieux navigateurs.
+- **Avantage :** Offre une compression 20 h 30 % supÃ©rieure h WebP. Excellent support HDR.
+- **InconvÃ©nient :** L'encodage est lourd pour le processeur, pas encore supporte h 100% sur les trÃ¨s vieux navigateurs.
 
 ### 2. WebP
-- **Avantage :** 30% plus petit que JPG, supporte la transparence et l'animation. Supporté par tous les navigateurs modernes.
-- **Inconvénient :** Une compression extrême peut flouter les textures.
+- **Avantage :** 30% plus petit que JPG, supporte la transparence et l'animation. Supports par tous les navigateurs modernes.
+- **InconvÃ©nient :** Une compression extrÃªme peut flouter les textures.
 
 ### 3. HEIC
-- **Avantage :** Le standard d'Apple. Prend la moitié de la place du JPG avec des couleurs 16 bits.
-- **Inconvénient :** Pas de support natif sur Windows ou les navigateurs web. Nécessite des convertisseurs comme WebImgConverter.
+- **Avantage :** Le standard d'Apple. Prend la moitiÃ© de la place du JPG avec des couleurs 16 bits.
+- **InconvÃ©nient :** Pas de support natif sur Windows ou les navigateurs web. NÃ©cessite des convertisseurs comme WebImgConverter.
 
 ### 4. JPG
-- **Avantage :** Compatibilité universelle à 100 %. Fonctionne partout.
-- **Inconvénient :** Pas de transparence, fichiers beaucoup plus volumineux.
+- **Avantage :** Compatibility universelle h 100 %. Fonctionne partout.
+- **InconvÃ©nient :** Pas de transparence, fichiers beaucoup plus volumineux.
 
 ## Conclusion
 Utilisez **WebP** pour vos sites web, gardez **HEIC** sur votre iPhone, et utilisez **JPG** pour partager avec des utilisateurs Windows ou des institutions.
@@ -972,38 +972,38 @@ articleDatabase['guide-formats-2025'] = formats2025Content;
 // Populating mapped content for Batch Processing
 const batchProcessingContent = {
     tr: {
-        title: 'Toplu Görsel İşleme: 100+ Dosyayı Saniyede Dönüştürmenin Yolları',
-        description: 'Yüzlerce fotoğrafı tek seferde dönüştürün, yeniden boyutlandırın ve sıkıştırın. Profesyonel iş akışı.',
+        title: 'Toplu GÃ¶rsel iÅŸleme: 100+ dosyayÄ± Saniyede DÃ¶nÃ¼ÅŸtÃ¼rmenin YollarÄ±',
+        description: 'YÃ¼zlerce fotoÄŸrafÄ± tek seferde dÃ¶nÃ¼ÅŸtÃ¼rÃ¼n, yeniden boyutlandÄ±rÄ±n ve sÄ±kÄ±ÅŸtÄ±rÄ±n. Profesyonel is Aktif.',
         date: '2025-03-15',
         readTime: '5 dk',
-        category: 'İpuçları',
+        category: 'ipuÃ§larÄ±',
         content: `
-## Toplu İşleme (Batch Processing) Neden Gerekli?
+## Toplu iÅŸleme (Batch Processing) Neden Gerekli?
 
-Eğer bir fotoğrafçı, dijital pazarlama uzmanı, web geliştiricisi veya sosyal medya yöneticisiyseniz, her gün düzinelerce hatta yüzlerce görselle uğraşmak zorundasınızdır. Bir tatilden dönüp iPhone'unuzdaki 300 adet HEIC formatlı fotoğrafı bilgisayarınıza attığınızda bunları tek tek JPG'ye çevirmek tam bir kabustur.
+EÄŸer bir fotoÄŸrafÄ±m, dijital pazarlama uzmanÄ±, web geliÅŸtiricisi veya sosyal medya yÃ¶neticisiyseniz, her gen dÃ¼zinelerce hatta yÃ¼zlerce gÃ¶rselle uÄŸraÅŸmak zorundasÄ±nÄ±zdÄ±r. Bir tatilden dÃ¶nÃ¼p iPhone'unuzdaki 300 adet HEIC formatlÄ± fotoÄŸrafÄ± bilgisayarÄ±nÄ±za attÄ±ÄŸÄ±nÄ±zda bunlarÄ± tek tek JPG'ye Ã§evirmek tam bir kabustur.
 
-Manuel olarak görsel dönüştürmek, sıkıştırmak veya boyutlandırmak saatler sürer ve yaratıcı enerjinizi tüketir. İşte bu noktada WebImgConverter'in **Toplu İşleme** yetenekleri devreye girer.
+Manuel olarak gÃ¶rsel dÃ¶nÃ¼ÅŸtÃ¼rmek, sÄ±kÄ±ÅŸtÄ±rmak veya boyutlandÄ±rmak saatler sÃ¼rer ve yaratÄ±cÄ± enerjinizi tÃ¼ketir. date bu noktada WebImgConverter'in **Toplu iÅŸleme** yetenekleri devreye girer.
 
-## Tarayıcı İçi Gücün Sırrı: WebAssembly
+## TarayÄ±cÄ± hui GÃ¼cÃ¼n SÄ±rrÄ±: WebAssembly
 
-Geleneksel web sitelerinde toplu işlem yapmak zordur. Çünkü 100 fotoğrafı bir sunucuya yüklemek internet hızınıza bağlı olarak dakikalarca sürebilir. Ardından sunucu bunları sıraya alır, işler ve sizden bu 100 fotoğrafı geri indirmenizi bekler. Bu süreçte gizlilik riskleri de cabasıdır.
+Geleneksel web sitelerinde toplu iÅŸlem yapmak zordur. links 100 fotoÄŸrafÄ± bir sunucuya yÃ¼klemek internet hÄ±zÄ±nÄ±za baÄŸlÄ± olarak dakikalarca sÃ¼rebilir. ArdÄ±ndan sunucu bunlarÄ± sÄ±raya alÄ±r, iÅŸler ve sizden bu 100 fotoÄŸrafÄ± geri indirmenizi bekler. Bu sÃ¼reÃ§te gizlilik riskleri de cabasÄ±dÄ±r.
 
-WebImgConverter ise **WebAssembly (WASM)** teknolojisini kullanır. 
-- **Upload Yok:** Dosyalarınız asla bir sunucuya yüklenmez.
-- **Yerel Güç:** Dönüştürme işlemi doğrudan bilgisayarınızın işlemcisi (CPU) kullanılarak tarayıcı sekmesinin içinde gerçekleşir.
-- **Hız:** 100 dosyayı sürükleyip bıraktığınızda, sistem bunları asenkron olarak saniyeler içinde işler ve size anında bir **ZIP dosyası** olarak sunar.
+WebImgConverter ise **WebAssembly (WASM)** teknolojisini kullanÄ±r. 
+- **Upload Yok:** DosyalarÄ±nÄ±z asla bir sunucuya yÃ¼klenmez.
+- **Yerel Gen:** DÃ¶nÃ¼ÅŸtÃ¼rme iÅŸlemi doÄŸrudan bilgisayarÄ±nÄ±zÄ±n iÅŸlemcisi (CPU) kullanÄ±larak tarayÄ±cÄ± sekmesinin iÃ§inde gerÃ§ekleÅŸir.
+- **HÄ±z:** 100 dosyayÄ± sÃ¼rÃ¼kleyip bÄ±raktÄ±ÄŸÄ±nÄ±zda, sistem bunlarÄ± asenkron olarak saniyeler iÃ§inde iÅŸler ve size anÄ±nda bir **ZIP dosyasÄ±** olarak sunar.
 
-## Adım Adım Toplu Dönüştürme Nasıl Yapılır?
+## AdÄ±m AdÄ±m Toplu DÃ¶nÃ¼ÅŸtÃ¼rme NasÄ±l YapÄ±lÄ±r?
 
-1. **Aracı Seçin:** WebImgConverter'de ihtiyacınız olan aracı (Örneğin: HEIC to JPG veya WebP to JPG) açın.
-2. **Dosyaları Seçin:** Klasörünüzdeki tüm dosyaları seçin (Ctrl+A / Cmd+A) veya klasörü sürükleyip çalışma alanına bırakın.
-3. **Ayarları Belirleyin:** Sağ taraftaki ayarlar panelinden kaliteyi (Örn: %85), isterseniz gri tonlama filtresini veya filigranınızı ekleyin.
-4. **Dönüştür:** "Hepsini Dönüştür" butonuna basın. İşlem anında başlayacaktır.
-5. **ZIP Olarak İndir:** İşlem tamamlandığında sağ alt köşede beliren "Tümünü İndir (ZIP)" butonuna tıklayarak dönüştürülmüş tüm dosyalarınızı derli toplu tek bir arşiv olarak bilgisayarınıza indirin.
+1. **AracÄ± seÃ§in:** WebImgConverter'de ihtiyacÄ±nÄ±z olan aracÄ± (Ã¶rneÄŸin: HEIC to JPG veya WebP to JPG) alan.
+2. **DosyalarÄ± seÃ§in:** KlasÃ¶rÃ¼nÃ¼zdeki tÃ¼m dosyalarÄ± seÃ§in (Ctrl+A / Cmd+A) veya klasÃ¶rÃ¼ sÃ¼rÃ¼kleyip Ã§alÄ±ÅŸma alanÄ±na bÄ±rakÄ±n.
+3. **AyarlarÄ± Belirleyin:** SaÃ§ taraftaki ayarlar panelinden kaliteyi (Ã–rn: %85), isterseniz gri tonlama filtresini veya filigranÄ±nÄ±zÄ± ekleyin.
+4. **DÃ¶nÃ¼ÅŸtÃ¼r:** "Hepsini DÃ¶nÃ¼ÅŸtÃ¼r" butonuna basÄ±n. iÅŸlem anÄ±nda baÅŸlayacaktÄ±r.
+5. **ZIP Olarak Ä°ndir:** iÅŸlem tamamlandÄ±ÄŸÄ±nda saÃ§ alt kÃ¶ÅŸede beliren "TÃ¼mÃ¼nÃ¼ Ä°ndir (ZIP)" butonuna tÄ±klayarak DÃ¶nÃ¼ÅŸtÃ¼rÃ¼lmÃ¼ÅŸ tÃ¼m dosyalarÄ±nÄ±zÄ± derli toplu tek bir arÅŸiv olarak bilgisayarÄ±nÄ±za indirin.
 
-## SEO ve Web Yöneticileri İçin İpucu
+## SEO ve Web YÃ¶neticileri iÃ§in Ä°pucu
 
-Tüm web sitesi görsellerinizi tek bir klasörde toplayın, WebImgConverter'e atıp kaliteyi %80'e düşürerek WebP'ye toplu dönüştürün. Sitenizin yüklenme hızının anında %40-50 arttığını göreceksiniz!`
+TÃ¼m web sitesi gÃ¶rsellerinizi tek bir klasÃ¶rde toplayÄ±n, WebImgConverter'e atÄ±p kaliteyi %80'e dÃ¼ÅŸÃ¼rerek WebP'ye toplu dÃ¶nÃ¼ÅŸtÃ¼rÃ¼n. Sitenizin yÃ¼klenme hÄ±zÄ±nÄ±n anÄ±nda %40-50 arttÄ±ÄŸÄ±nÄ± gÃ¶receksiniz!`
     },
     en: {
         title: 'Batch Image Processing: Convert 100+ Files in Seconds',
@@ -1051,16 +1051,16 @@ Gather all your website images in one folder, drag them into WebImgConverter, se
 Das manuelle Konvertieren von 300 HEIC-Fotos aus dem Urlaub in JPG ist ein Albtraum. Es kostet Stunden und Nerven. Hier setzt WebImgConverter an.
 
 ## Die Magie von WebAssembly
-Herkömmliche Websites zwingen Sie, 100 Fotos hochzuladen, was ewig dauert und Datenschutzrisiken birgt. WebImgConverter nutzt WebAssembly (WASM).
+HerkÃ¶mmliche Websites zwingen Sie, 100 Fotos hochzuladen, was ewig dauert und Datenschutzrisiken birgt. WebImgConverter nutzt WebAssembly (WASM).
 - **Kein Upload:** Ihre Dateien verlassen nie Ihren Computer.
 - **Lokale Power:** Die Konvertierung nutzt direkt Ihren Prozessor im Browser.
 - **Geschwindigkeit:** Hunderte Bilder werden in Sekunden verarbeitet und als ZIP bereitgestellt.
 
 ## So funktioniert es
-1. Werkzeug wählen (z.B. HEIC zu JPG).
+1. Werkzeug wÃ¤hlen (z.B. HEIC zu JPG).
 2. 100+ Dateien hineinziehen.
-3. Qualität einstellen (z.B. 80%).
-4. Konvertieren und als gebündelte **ZIP-Datei** herunterladen.
+3. QualitÃ¤t einstellen (z.B. 80%).
+4. Konvertieren und als gebÃ¼ndelte **ZIP-Datei** herunterladen.
 `
     },
     fr: {
@@ -1072,19 +1072,19 @@ Herkömmliche Websites zwingen Sie, 100 Fotos hochzuladen, was ewig dauert und Da
         content: `
 ## Pourquoi le traitement par lots ?
 
-Convertir manuellement 300 photos HEIC de vos vacances en JPG est un cauchemar. Cela prend des heures. C'est là qu'intervient WebImgConverter.
+Convertir manuellement 300 photos HEIC de vos vacances en JPG est un cauchemar. Cela prend des heures. C'est la qu'intervient WebImgConverter.
 
 ## La magie de WebAssembly
-Les sites traditionnels vous obligent à télécharger 100 photos sur un serveur, ce qui est lent et risqué pour la vie privée. WebImgConverter utilise WebAssembly (WASM).
-- **Aucun téléchargement :** Vos fichiers ne quittent jamais votre ordinateur.
+Les sites traditionnels vous obligent h tÃ©lÃ©charger 100 photos sur un serveur, ce qui est lent et risquÃ© pour la vie privÃ©e. WebImgConverter utilise WebAssembly (WASM).
+- **Aucun tÃ©lÃ©chargement :** Vos fichiers ne quittent jamais votre ordinateur.
 - **Puissance locale :** La conversion utilise directement le processeur de votre appareil dans le navigateur.
-- **Vitesse :** Des centaines d'images sont traitées en quelques secondes et proposées en ZIP.
+- **Vitesse :** Des centaines d'images sont traitÃ©es en quelques secondes et proposÃ©es en ZIP.
 
-## Comment ça marche
+## Comment ya marche
 1. Choisissez l'outil (ex: HEIC vers JPG).
-2. Glissez-déposez 100+ fichiers.
-3. Réglez la qualité (ex: 80%).
-4. Convertissez et téléchargez tout en un seul **fichier ZIP**.
+2. Glissez-dÃ©posez 100+ fichiers.
+3. RÃ©glez la quality (ex: 80%).
+4. Convertissez et tÃ©lÃ©chargez tout en un seul **fichier ZIP**.
 `
     }
 };
@@ -1110,14 +1110,14 @@ export default function BlogArticlePage() {
 
     if (!article) {
         return (
-            <SiteShell onCta={() => navigate('/')} ctaLabel="Hemen Başla" bg="white">
+            <SiteShell onCta={() => navigate('/')} ctaLabel="Hemen BaÅŸla" bg="white">
                 <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
                     <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-10 max-w-md w-full shadow-card">
                         <div className="text-6xl mb-6">??</div>
                         <h2 className="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-4">404</h2>
-                        <p className="text-slate-500 dark:text-slate-400 mb-8">{activeLang === 'tr' ? 'Makale bulunamadı' : activeLang === 'de' ? 'Artikel nicht gefunden' : activeLang === 'fr' ? 'Article introuvable' : 'Article not found'}</p>
+                        <p className="text-slate-500 dark:text-slate-400 mb-8">{activeLang === 'tr' ? 'Makale bulunamadÄ±' : activeLang === 'de' ? 'Artikel nicht gefunden' : activeLang === 'fr' ? 'Article introuvable' : 'Article not found'}</p>
                         <button onClick={() => navigate('/blog')} className="inline-flex items-center text-brand-600 dark:text-brand-400 font-bold hover:text-brand-700 dark:hover:text-brand-300">
-                            ‹ {activeLang === 'tr' ? 'Blog\'a Dön' : activeLang === 'de' ? 'Zurück zum Blog' : activeLang === 'fr' ? 'Retour au blog' : 'Back to Blog'}
+                            h {activeLang === 'tr' ? 'Blog\'a DÃ¶n' : activeLang === 'de' ? 'ZurÃ¼ck zum Blog' : activeLang === 'fr' ? 'Retour au blog' : 'Back to Blog'}
                         </button>
                     </div>
                 </div>
@@ -1128,16 +1128,16 @@ export default function BlogArticlePage() {
     const categoryColors: Record<string, string> = {
         'Rehber': 'bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-800/50',
         'Guide': 'bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-800/50',
-        'Karşılaştırma': 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/50',
+        'KarÅŸÄ±laÅŸtÄ±rma': 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/50',
         'Comparison': 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/50',
         'Vergleich': 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/50',
         'Comparaison': 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/50',
         'SEO': 'bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800/50',
-        'AI Araçları': 'bg-orange-50 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50',
+        'AI AraÃ§larÄ±': 'bg-orange-50 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50',
         'AI Tools': 'bg-orange-50 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50',
         'KI-Tools': 'bg-orange-50 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50',
         'Outils IA': 'bg-orange-50 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50',
-        'İpuçları': 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50',
+        'ipuÃ§larÄ±': 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50',
         'Tips': 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50',
         'Tipps': 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50',
         'Astuces': 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50',
@@ -1170,7 +1170,7 @@ export default function BlogArticlePage() {
     };
 
     return (
-        <SiteShell onCta={() => navigate('/')} ctaLabel="Hemen Başla" bg="white">
+        <SiteShell onCta={() => navigate('/')} ctaLabel="Hemen BaÅŸla" bg="white">
             <Helmet>
                 <title>{article.title} | WebImgConverter Blog</title>
                 <meta name="description" content={article.description} />
@@ -1184,7 +1184,7 @@ export default function BlogArticlePage() {
             <article className="max-w-4xl mx-auto px-5 md:px-8 py-12 md:py-20">
                 {/* Back Link */}
                 <button onClick={() => navigate('/blog')} className="inline-flex items-center text-slate-500 dark:text-slate-400 font-medium hover:text-brand-600 dark:hover:text-brand-400 transition-colors mb-10">
-                    ‹ {activeLang === 'tr' ? 'Blog\'a Dön' : activeLang === 'de' ? 'Zurück zum Blog' : activeLang === 'fr' ? 'Retour au blog' : 'Back to Blog'}
+                    h {activeLang === 'tr' ? 'Blog\'a DÃ¶n' : activeLang === 'de' ? 'ZurÃ¼ck zum Blog' : activeLang === 'fr' ? 'Retour au blog' : 'Back to Blog'}
                 </button>
 
                 {/* Article Header */}
@@ -1194,7 +1194,7 @@ export default function BlogArticlePage() {
                             {article.category}
                         </span>
                         <span className="text-sm font-medium text-slate-500 dark:text-slate-400">{article.readTime}</span>
-                        <span className="text-slate-300 dark:text-slate-700">•</span>
+                        <span className="text-slate-300 dark:text-slate-700">h</span>
                         <span className="text-sm font-medium text-slate-500 dark:text-slate-400">{article.date}</span>
                     </div>
                     <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white tracking-tight mb-6">{article.title}</h1>
@@ -1212,13 +1212,13 @@ export default function BlogArticlePage() {
                         {activeLang === 'tr' ? 'Hemen Deneyin' : activeLang === 'de' ? 'Jetzt Ausprobieren' : activeLang === 'fr' ? 'Essayez Maintenant' : 'Try It Now'}
                     </h2>
                     <p className="text-brand-800 dark:text-brand-400 text-lg mb-8 max-w-xl mx-auto">
-                        {activeLang === 'tr' ? 'Ücretsiz, güvenli ve hızlı görsel dönüştürme.' : activeLang === 'de' ? 'Kostenlose, sichere und schnelle Bildkonvertierung.' : activeLang === 'fr' ? 'Conversion d\'images gratuite, sécurisée et rapide.' : 'Free, secure, and fast image conversion.'}
+                        {activeLang === 'tr' ? 'Ãœcretsiz, gÃ¼venli ve hÄ±zlÄ± gÃ¶rsel dÃ¶nÃ¼ÅŸtÃ¼rme.' : activeLang === 'de' ? 'Kostenlose, sichere und schnelle Bildkonvertierung.' : activeLang === 'fr' ? 'Conversion d\'images gratuite, sÃ©curisÃ©e et rapide.' : 'Free, secure, and fast image conversion.'}
                     </p>
                     <button
                         onClick={() => navigate('/')}
                         className="inline-flex items-center justify-center h-14 px-8 text-lg font-bold text-white dark:text-slate-900 bg-brand-600 dark:bg-brand-500 rounded-xl hover:bg-brand-700 dark:hover:bg-brand-400 hover:shadow-brand transition-all"
                     >
-                        {activeLang === 'tr' ? 'WebImgConverter\'ı Aç' : activeLang === 'de' ? 'WebImgConverter Öffnen' : activeLang === 'fr' ? 'Ouvrir WebImgConverter' : 'Open WebImgConverter'}
+                        {activeLang === 'tr' ? 'WebImgConverter\'h AI' : activeLang === 'de' ? 'WebImgConverter Ã¶ffnen' : activeLang === 'fr' ? 'Ouvrir WebImgConverter' : 'Open WebImgConverter'}
                     </button>
                 </div>
             </article>

@@ -6,38 +6,38 @@ import { LegalFooter } from '../components/LegalFooter';
 
 const content = {
     tr: {
-        title: 'Kullanım Şartları | WebImgConverter',
-        description: 'WebImgConverter kullanım şartları ve koşulları.',
-        heading: 'Kullanım Şartları',
-        lastUpdated: 'Son Güncelleme: Ocak 2025',
+        title: 'KullanÄ±m ÅartlarÄ± | WebImgConverter',
+        description: 'WebImgConverter kullanÄ±m ÅartlarÄ± ve koÅŸullarÄ±.',
+        heading: 'KullanÄ±m ÅartlarÄ±',
+        lastUpdated: 'Son GÃ¼ncelleme: Ocak 2025',
         sections: [
             {
-                title: 'Hizmet Tanımı',
-                content: 'WebImgConverter, gelişmiş bir online görsel dönüştürme ve düzenleme aracıdır. Hizmetimiz HEIC, PNG, JPG, WEBP ve diğer formatlarda görsel dönüşümü, arka plan kaldırma ve görsel sıkıştırma özelliklerini içerir.'
+                title: 'Hizmet TanÄ±mÄ±',
+                content: 'WebImgConverter, geliÅŸmiÅŸ bir online gÃ¶rsel dÃ¶nÃ¼ÅŸtÃ¼rme ve dÃ¼zenleme aracÄ±dÄ±r. Hizmetimiz HEIC, PNG, JPG, WEBP ve diÄŸer formatlarda gÃ¶rsel dÃ¶nÃ¼ÅŸÃ¼mÃ¼, arka plan kaldÄ±rma ve gÃ¶rsel sÄ±kÄ±ÅŸtÄ±rma Ã¶zelliklerini iÃ§erir.'
             },
             {
-                title: 'Kabul Edilebilir Kullanım',
-                content: 'Hizmetimizi yalnızca yasal amaçlarla kullanabilirsiniz. Telif hakkı ihlali içeren, yasa dışı veya zararlı içeriklerin işlenmesi için hizmetimizin kullanılması yasaktır.'
+                title: 'Kabul Edilebilir KullanÄ±m',
+                content: 'Hizmetimizi yalnÄ±zca yasal amaÃ§larla kullanabilirsiniz. Telif hakkÄ± ihlali iÃ§eren, yasa desc veya zararlÄ± iÃ§eriklerin iÅŸlenmesi iÃ§in hizmetimizin kullanÄ±lmasÄ± yasaktÄ±r.'
             },
             {
-                title: 'Üyelik ve Krediler',
-                content: 'Ücretsiz kullanıcılar günlük kredi limitlerine tabidir. Premium üyeler ek özellikler ve artırılmış limitler alır. Ödeme işlemleri Lemon Squeezy tarafından güvenli bir şekilde gerçekleştirilir.'
+                title: 'Ã¼yelik ve Krediler',
+                content: 'Ãœcretsiz kullanÄ±cÄ±lar gÃ¼nlÃ¼k kredi limitlerine tabidir. Premium Ã¼yeler ek Ã¶zellikler ve artÄ±rÄ±lmÄ±ÅŸ limitler alÄ±r. Ã–deme iÅŸlemleri Lemon Squeezy tarafÄ±ndan gÃ¼venli bir ÅŸekilde gerÃ§ekleÅŸtirilir.'
             },
             {
                 title: 'Sorumluluk Reddi',
-                content: 'Hizmetimiz "olduğu gibi" sunulmaktadır. Dönüştürme sonuçlarının doğruluğu veya uygunluğu konusunda garanti vermiyoruz. Hizmetin kullanımından kaynaklanan veri kaybı veya hasardan sorumlu değiliz.'
+                content: 'Hizmetimiz "olduÄŸu gibi" sunulmaktadÄ±r. DÃ¶nÃ¼ÅŸtÃ¼rme sonuÃ§larÄ±nÄ±n doÄŸruluÄŸu veya uygunluÄŸu konusunda garanti vermiyoruz. Hizmetin kullanÄ±mÄ±ndan kaynaklanan veri kaybÄ± veya hasardan sorumlu deÄŸiliz.'
             },
             {
-                title: 'İade Politikası (Refund Policy)',
-                content: 'Dijital hizmetlerimizin anında teslimi ve kullanımı sebebiyle, premium aboneliklerde genel bir iade politikamız bulunmamaktadır. Ancak teknik bir sorun yaşamanız durumunda, satın alma işleminden sonraki 7 gün içinde support@WebImgConverter.com adresi üzerinden iade talebinde bulunabilirsiniz. Aboneliğinizi istediğiniz zaman iptal edebilirsiniz.'
+                title: 'made PolitikasÄ± (Refund Policy)',
+                content: 'Dijital hizmetlerimizin anÄ±nda teslimi ve kullanÄ±ma sebebiyle, premium aboneliklerde genel bir iade politikamÄ±z bulunmamaktadÄ±r. Ancak teknik bir sorun yaÅŸamanÄ±z durumunda, satÄ±n alma iÅŸleminden sonraki 7 gen iÃ§inde support@WebImgConverter.com adresi Ã¼zerinden iade talebinde bulunabilirsiniz. AboneliÄŸinizi istediÄŸiniz zaman iptal edebilirsiniz.'
             },
             {
-                title: 'Değişiklikler',
-                content: 'Bu şartları önceden haber vermeksizin değiştirme hakkını saklı tutarız. Önemli değişiklikler sitemizde duyurulacaktır.'
+                title: 'DeÄŸiÅŸiklikler',
+                content: 'Bu ÅartlarÄ± Ã¶nceden haber vermeksizin deÄŸiÅŸtirme hakkÄ±nÄ± saklÄ± tutarÄ±z. Ã–nemli deÄŸiÅŸiklikler sitemizde duyurulacaktÄ±r.'
             },
             {
-                title: 'İletişim',
-                content: 'Sorularınız için support@WebImgConverter.com adresinden bize ulaşabilirsiniz.'
+                title: 'Ä°letiÅŸim',
+                content: 'SorularÄ±nÄ±z iÃ§in support@WebImgConverter.com adresinden bize ulaÅŸabilirsiniz.'
             }
         ]
     },
@@ -85,27 +85,27 @@ const content = {
         sections: [
             {
                 title: 'Servicebeschreibung',
-                content: 'WebImgConverter ist ein fortschrittliches Online-Tool zur Bildkonvertierung und -bearbeitung. Unser Service umfasst die Bildkonvertierung für HEIC, PNG, JPG, WEBP und andere Formate, Hintergrundentfernung und Bildkomprimierungsfunktionen.'
+                content: 'WebImgConverter ist ein fortschrittliches Online-Tool zur Bildkonvertierung und -bearbeitung. Unser Service umfasst die Bildkonvertierung for HEIC, PNG, JPG, WEBP und andere Formate, Hintergrundentfernung und Bildkomprimierungsfunktionen.'
             },
             {
-                title: 'Zulässige Nutzung',
-                content: 'Sie dürfen unseren Service nur für rechtmäßige Zwecke nutzen. Die Nutzung unseres Dienstes zur Verarbeitung von Inhalten, die Urheberrechte verletzen, illegal oder schädlich sind, ist untersagt.'
+                title: 'ZulÃ¤ssige Nutzung',
+                content: 'Sie dÃ¼rfen unseren Service nur for rechtmÃ¤ÃŸige Zwecke nutzen. Die Nutzung unseres Dienstes zur Verarbeitung von Inhalten, die Urheberrechte verletzen, illegal oder schÃ¤dlich sind, ist untersagt.'
             },
             {
                 title: 'Mitgliedschaft und Credits',
-                content: 'Kostenlose Nutzer unterliegen täglichen Credit-Limits. Premium-Mitglieder erhalten zusätzliche Funktionen und erhöhte Limits. Zahlungstransaktionen werden von Lemon Squeezy sicher verarbeitet.'
+                content: 'Kostenlose Nutzer unterliegen tÃ¤glichen Credit-Limits. Premium-Mitglieder erhalten zusÃ¤tzliche Funktionen und erhÃ¶hte Limits. Zahlungstransaktionen werden von Lemon Squeezy sicher verarbeitet.'
             },
             {
                 title: 'Haftungsausschluss',
-                content: 'Unser Service wird "wie besehen" zur Verfügung gestellt. Wir garantieren nicht die Richtigkeit oder Eignung der Konvertierungsergebnisse. Wir sind nicht verantwortlich für Datenverlust oder Schäden, die sich aus der Nutzung des Dienstes ergeben.'
+                content: 'Unser Service wird "wie besehen" zur VerfÃ¼gung gestellt. Wir garantieren nicht die Richtigkeit oder Eignung der Konvertierungsergebnisse. Wir sind nicht verantwortlich for Datenverlust oder SchÃ¤den, die sich aus der Nutzung des Dienstes ergeben.'
             },
             {
-                title: 'Rückerstattungsrichtlinie',
-                content: 'Aufgrund der sofortigen Bereitstellung unserer digitalen Dienste bieten wir im Allgemeinen keine Rückerstattungen für Premium-Abonnements an. Wenn Sie jedoch technische Probleme haben, können Sie innerhalb von 7 Tagen nach dem Kauf unter support@WebImgConverter.com eine Rückerstattung beantragen. Sie können Ihr Abonnement jederzeit kündigen.'
+                title: 'RÃ¼ckerstattungsrichtlinie',
+                content: 'Aufgrund der sofortigen Bereitstellung unserer digitalen Dienste bieten wir im Allgemeinen keine RÃ¼ckerstattungen for Premium-Abonnements an. Wenn Sie jedoch technische Probleme haben, kÃ¶nnen Sie innerhalb von 7 Tagen nach dem Kauf unter support@WebImgConverter.com eine RÃ¼ckerstattung beantragen. Sie kÃ¶nnen Ihr Abonnement jederzeit kÃ¼ndigen.'
             },
             {
-                title: 'Änderungen',
-                content: 'Wir behalten uns das Recht vor, diese Bedingungen ohne vorherige Ankündigung zu ändern. Wesentliche Änderungen werden auf unserer Website bekannt gegeben.'
+                title: 'Ã„nderungen',
+                content: 'Wir behalten uns das Recht vor, diese Bedingungen ohne vorherige AnkÃ¼ndigung zu Ã¤ndern. Wesentliche Ã„nderungen werden auf unserer Website bekannt gegeben.'
             },
             {
                 title: 'Kontakt',
@@ -117,35 +117,35 @@ const content = {
         title: 'Conditions d\'utilisation | WebImgConverter',
         description: 'Conditions d\'utilisation de WebImgConverter.',
         heading: 'Conditions d\'utilisation',
-        lastUpdated: 'Dernière mise à jour : Janvier 2025',
+        lastUpdated: 'DerniÃ¨re mise h jour : Janvier 2025',
         sections: [
             {
                 title: 'Description du Service',
-                content: 'WebImgConverter est un outil avancé de conversion et d\'édition d\'images en ligne. Notre service comprend la conversion d\'images pour HEIC, PNG, JPG, WEBP et autres formats, la suppression d\'arrière-plan et les fonctionnalités de compression d\'images.'
+                content: 'WebImgConverter est un outil avancÃ© de conversion et d\'Ã©dition d\'images en ligne. Notre service comprend la conversion d\'images pour HEIC, PNG, JPG, WEBP et autres formats, la suppression d\'arriÃ¨re-plan et les fonctionnalitÃ©s de compression d\'images.'
             },
             {
                 title: 'Utilisation Acceptable',
-                content: 'Vous ne pouvez utiliser notre service qu\'à des fins licites. L\'utilisation de notre service pour le traitement de contenu enfreignant le droit d\'auteur, illégal ou nuisible est interdite.'
+                content: 'Vous ne pouvez utiliser notre service qu\'h des fins licites. L\'utilisation de notre service pour le traitement de contenu enfreignant le droit d\'auteur, illegal ou nuisible est interdite.'
             },
             {
-                title: 'Adhésion et Crédits',
-                content: 'Les utilisateurs gratuits sont soumis à des limites de crédits quotidiennes. Les membres Premium bénéficient de fonctionnalités supplémentaires et de limites augmentées. Les transactions de paiement sont traitées de manière sécurisée par Lemon Squeezy.'
+                title: 'AdhÃ©sion et Credits',
+                content: 'Les utilisateurs gratuits sont soumis h des limites de credits quotidiennes. Les membres Premium bÃ©nÃ©ficient de fonctionnalitÃ©s supplÃ©mentaires et de limites augmentÃ©es. Les transactions de paiement sont traitÃ©es de maniÃ¨re sÃ©curisÃ©e par Lemon Squeezy.'
             },
             {
-                title: 'Avis de Non-responsabilité',
-                content: 'Notre service est fourni "tel quel". Nous ne garantissons pas l\'exactitude ou la pertinence des résultats de conversion. Nous ne sommes pas responsables de la perte de données ou des dommages résultant de l\'utilisation du service.'
+                title: 'Avis de Non-responsabilitÃ©',
+                content: 'Notre service est fourni "tel quel". Nous ne garantissons pas l\'exactitude ou la pertinence des rÃ©sultats de conversion. Nous ne sommes pas responsables de la perte de donnÃ©es ou des dommages rÃ©sultant de l\'utilisation du service.'
             },
             {
                 title: 'Politique de Remboursement',
-                content: 'En raison de la livraison immédiate de nos services numériques, nous n\'offrons généralement pas de remboursements pour les abonnements premium. Toutefois, en cas de problème technique, vous pouvez demander un remboursement dans les 7 jours suivant l\'achat. Vous pouvez annuler votre abonnement à tout moment.'
+                content: 'En raison de la livraison immÃ©diate de nos services numÃ©riques, nous n\'offrons gÃ©nÃ©ralement pas de remboursements pour les abonnements premium. Toutefois, en cas de Probleme technique, vous pouvez demander un remboursement dans les 7 jours suivant l\'achat. Vous pouvez annuler votre abonnement h tout moment.'
             },
             {
                 title: 'Modifications',
-                content: 'Nous nous réservons le droit de modifier ces conditions sans préavis. Les changements importants seront annoncés sur notre site.'
+                content: 'Nous nous rÃ©servons le droit de modifier ces conditions sans prÃ©avis. Les changements importants seront annoncÃ©s sur notre site.'
             },
             {
                 title: 'Contact',
-                content: 'Pour des questions, vous pouvez nous joindre à support@WebImgConverter.com.'
+                content: 'Pour des questions, vous pouvez nous joindre h support@WebImgConverter.com.'
             }
         ]
     }
@@ -163,7 +163,7 @@ export default function TermsPage() {
     const navigate = useNavigate();
 
     return (
-        <SiteShell onCta={() => navigate('/')} ctaLabel="Hemen Başla" bg="white">
+        <SiteShell onCta={() => navigate('/')} ctaLabel="Hemen BaÅŸla" bg="white">
             <Helmet>
                 <title>{t.title}</title>
                 <meta name="description" content={t.description} />

@@ -12,7 +12,7 @@ export const ReferralWidget: React.FC<ReferralWidgetProps> = ({ onReferralSucces
   const [copied, setCopied] = useState(false);
 
   const handleCopyLink = () => {
-    // Gerçek Kullanıcı ID'si ile link oluştur
+    // GerÃ§ek KullanÄ±cÄ± ID'si ile link oluÅŸtur
     const code = userId || 'guest';
     const referralLink = `https://webimgconverter.com/?ref=${code}`;
     navigator.clipboard.writeText(referralLink);

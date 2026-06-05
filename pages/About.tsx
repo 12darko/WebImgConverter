@@ -6,50 +6,50 @@ import { LegalFooter } from '../components/LegalFooter';
 
 const content = {
     tr: {
-        title: 'Hakkımızda - WebImgConverter',
-        description: 'WebImgConverter, kullanıcı dostu ve hızlı görsel dönüştürme araçları sunan bir teknoloji girişimidir.',
-        h1: 'Hakkımızda',
+        title: 'HakkÄ±mÄ±zda - WebImgConverter',
+        description: 'WebImgConverter, kullanÄ±cÄ± dostu ve hÄ±zlÄ± gÃ¶rsel dÃ¶nÃ¼ÅŸtÃ¼rme araÃ§larÄ± sunan bir teknoloji giriÅŸimidir.',
+        h1: 'HakkÄ±mÄ±zda',
         mission: 'Misyonumuz',
-        missionDesc: 'Karmaşık dosya formatlarını ve görsel düzenleme işlemlerini herkes için erişilebilir ve kolay hale getirmek.',
+        missionDesc: 'KarmaÅŸÄ±k dosya formatlarÄ±nÄ± ve gÃ¶rsel dÃ¼zenleme iÅŸlemlerini herkes iÃ§in eriÅŸilebilir ve kolay hale getirmek.',
         story: 'Hikayemiz',
-        storyDesc: '2025 yılında, HEIC ve WebP formatlarının yarattığı uyumluluk sorunlarına çözüm olarak doğduk. Bugün ise yapay zeka destekli araçlarımızla (arka plan silme, sıkıştırma) binlerce kullanıcıya hizmet veriyoruz. Ücretsiz temel araçlar ve profesyoneller için gelişmiş seçenekler sunuyoruz.',
+        storyDesc: '2025 yÄ±lÄ±nda, HEIC ve WebP formatlarÄ±nÄ±n yarattÄ±ÄŸÄ± uyumluluk sorunlarÄ±na Ã§Ã¶zÃ¼m olarak doÄŸduk. BugÃ¼n ise yapay zeka destekli araÃ§larÄ±mÄ±zla (arka plan silme, sÄ±kÄ±ÅŸtÄ±rma) binlerce kullanÄ±cÄ±ya hizmet veriyoruz. Ãœcretsiz temel araÃ§lar ve profesyoneller iÃ§in geliÅŸmiÅŸ seÃ§enekler sunuyoruz.',
         philosophy: 'Gizlilik Felsefemiz',
-        philosophyText: 'WebImgConverter, kullanıcı gizliliğini ön planda tutar. Geleneksel araçların aksine, görsellerinizi asla kalıcı olarak depolamayız. Tüm görsel ve yapay zeka işlemleri güvenli sunucularda anlık olarak tamamlanır ve anında silinir.',
+        philosophyText: 'WebImgConverter, kullanÄ±cÄ± gizliliÄŸini Ã¶n planda tutar. Geleneksel araÃ§larÄ±n aksine, gÃ¶rsellerinizi asla kalÄ±cÄ± olarak depolamayÄ±z. TÃ¼m gÃ¶rsel ve yapay zeka iÅŸlemleri gÃ¼venli sunucularda anlÄ±k olarak tamamlanÄ±r ve anÄ±nda silinir.',
         whyUs: 'Neden WebImgConverter?',
         features: [
-            { icon: '??', title: '%100 Gizlilik', desc: 'Dosyalarınız asla kalıcı olarak depolanmaz. İşlemler güvenli sunucularda anlık yapılır ve hemen silinir.' },
-            { icon: '?', title: 'Işık Hızında', desc: 'WebAssembly teknolojisi ile saniyeler içinde yüzlerce görseli işleyin. Bekleme yok.' },
-            { icon: '??', title: 'AI Teknolojisi', desc: 'Yapay zeka destekli arka plan silme ve akıllı dosya isimlendirme özellikleri.' },
-            { icon: '??', title: 'Premium Kalite', desc: 'Profesyonel düzeyde dönüşüm kalitesi, kayıpsız veya optimize sıkıştırma seçenekleri.' },
-            { icon: '??', title: 'Çoklu Dil', desc: 'Türkçe, İngilizce, Almanca ve Fransızca dahil 4 dilde kullanıma hazır.' },
-            { icon: '??', title: 'Mobil Uyumlu', desc: 'iPhone, Android, tablet ve masaüstü dahil tüm cihazlarda kusursuz çalışır.' }
+            { icon: '??', title: '%100 Gizlilik', desc: 'DosyalarÄ±nÄ±z asla kalÄ±cÄ± olarak depolanmaz. Ä°ÅŸlemler gÃ¼venli sunucularda anlÄ±k yapÄ±lÄ±r ve hemen silinir.' },
+            { icon: '?', title: 'IÅŸÄ±k HÄ±zÄ±nda', desc: 'WebAssembly teknolojisi ile saniyeler iÃ§inde yÃ¼zlerce gÃ¶rseli iÅŸleyin. Bekleme yok.' },
+            { icon: '??', title: 'AI Teknolojisi', desc: 'Yapay zeka destekli arka plan silme ve akÄ±llÄ± dosya isimlendirme Ã¶zellikleri.' },
+            { icon: '??', title: 'Premium Kalite', desc: 'Profesyonel dÃ¼zeyde dÃ¶nÃ¼ÅŸÃ¼m kalitesi, kayÄ±psÄ±z veya optimize sÄ±kÄ±ÅŸtÄ±rma seÃ§enekleri.' },
+            { icon: '??', title: 'Ã‡oklu Dil', desc: 'TÃ¼rkÃ§e, Ä°ngilizce, Almanca ve FransÄ±zca dahil 4 dilde kullanÄ±ma hazÄ±r.' },
+            { icon: '??', title: 'Mobil Uyumlu', desc: 'iPhone, Android, tablet ve masaÃ¼stÃ¼ dahil tÃ¼m cihazlarda kusursuz Ã§alÄ±ÅŸÄ±r.' }
         ],
         techTitle: 'Teknolojimiz',
-        techText: 'WebImgConverter, en son web teknolojilerini kullanır:',
+        techText: 'WebImgConverter, en son web teknolojilerini kullanÄ±r:',
         techItems: [
-            'WebAssembly (WASM) ile native hızında işlem',
-            'React ve TypeScript ile modern arayüz',
-            'Python Pillow-Heif ile gelişmiş HEIC desteği',
+            'WebAssembly (WASM) ile native hÄ±zÄ±nda iÅŸlem',
+            'React ve TypeScript ile modern arayÃ¼z',
+            'Python Pillow-Heif ile geliÅŸmiÅŸ HEIC desteÄŸi',
             'On-device AI modelleri ile arka plan silme',
-            'Progressive Web App (PWA) desteği'
+            'Progressive Web App (PWA) desteÄŸi'
         ],
         supportedFormats: 'Desteklenen Formatlar',
         formats: [
-            { name: 'HEIC/HEIF', desc: 'Apple iPhone ve iPad fotoğrafları' },
-            { name: 'JPG/JPEG', desc: 'En yaygın fotoğraf formatı' },
-            { name: 'PNG', desc: 'Şeffaflık destekli, kayıpsız format' },
-            { name: 'WebP', desc: 'Google\'ın modern web formatı' },
-            { name: 'AVIF', desc: 'Yeni nesil, yüksek sıkıştırmalı format' }
+            { name: 'HEIC/HEIF', desc: 'Apple iPhone ve iPad fotoÄŸraflarÄ±' },
+            { name: 'JPG/JPEG', desc: 'En yaygÄ±n fotoÄŸraf formats' },
+            { name: 'PNG', desc: 'ÅeffaflÄ±k destekli, kayÄ±psÄ±z format' },
+            { name: 'WebP', desc: 'Google\'Ã¶n modern web formats' },
+            { name: 'AVIF', desc: 'Yeni nesil, yÃ¼ksek sÄ±kÄ±ÅŸtÄ±rmalÄ± format' }
         ],
-        team: 'Şirket Bilgileri',
-        teamText: 'WebImgConverter Inc., kullanıcı gizliliğini ön planda tutan bir yazılım şirketidir. Amacımız, insanların görsellerini güvenle dönüştürebilecekleri, ücretsiz ve kullanımı kolay araçlar sunmaktır.',
-        contact: '?? İletişim: support@WebImgConverter.com',
+        team: 'Åirket Bilgileri',
+        teamText: 'WebImgConverter Inc., kullanÄ±cÄ± gizliliÄŸini Ã¶n planda tutan bir yazÄ±lÄ±m ÅŸirketidir. AmacÄ±mÄ±z, insanlarÄ±n gÃ¶rsellerini gÃ¼venle dÃ¶nÃ¼ÅŸtÃ¼rebilecekleri, Ãœcretsiz ve kullanÄ±ma kolay araÃ§lar sunmaktÄ±r.',
+        contact: '?? Ä°letiÅŸim: support@WebImgConverter.com',
         stats: 'Rakamlarla WebImgConverter',
         statsItems: [
-            { value: '10+', label: 'Format Desteği' },
+            { value: '10+', label: 'Format DesteÄŸi' },
             { value: '0', label: 'Veri Depolama' },
             { value: '100%', label: 'Gizlilik' },
-            { value: '4', label: 'Dil Desteği' }
+            { value: '4', label: 'Dil DesteÄŸi' }
         ]
     },
     en: {
@@ -100,38 +100,38 @@ const content = {
         ]
     },
     de: {
-        title: 'Über Uns | WebImgConverter',
-        description: 'Erfahren Sie mehr über WebImgConverter. Unser datenschutzorientiertes Team entwickelt sichere Bildwerkzeuge.',
-        h1: 'Über Uns',
+        title: 'Ãœber Uns | WebImgConverter',
+        description: 'Erfahren Sie mehr Ãœber WebImgConverter. Unser datenschutzorientiertes Team entwickelt sichere Bildwerkzeuge.',
+        h1: 'Ãœber Uns',
         mission: 'Unsere Mission',
-        missionDesc: 'WebImgConverter wurde gegründet, um Bildkonvertierung für alle zugänglich, schnell und sicher zu machen. Wir bieten die beste Benutzererfahrung und schützen dabei Ihre Privatsphäre.',
+        missionDesc: 'WebImgConverter wurde gegrÃ¼ndet, um Bildkonvertierung for alle zugÃ¤nglich, schnell und sicher zu machen. Wir bieten die beste Benutzererfahrung und schÃ¼tzen dabei Ihre PrivatsphÃ¤re.',
         story: 'Unsere Geschichte',
-        storyDesc: 'Gegründet im Jahr 2025 als Lösung für HEIC- und WebP-Kompatibilitätsprobleme. Heute bedienen wir Tausende von Benutzern mit KI-gestützten Tools wie Hintergrundentfernung und Komprimierung und bieten kostenlose Basistools sowie erweiterte Optionen für Profis.',
+        storyDesc: 'GegrÃ¼ndet im Jahr 2025 als LÃ¶sung for HEIC- und WebP-KompatibilitÃ¤tsprobleme. Heute bedienen wir Tausende von Benutzern mit KI-gestÃ¼tzten Tools wie Hintergrundentfernung und Komprimierung und bieten kostenlose Basistools sowie erweiterte Optionen for Profis.',
         philosophy: 'Unsere Datenschutz-Philosophie',
-        philosophyText: 'WebImgConverter priorisiert die Privatsphäre der Benutzer. Im Gegensatz zu herkömmlichen Tools speichern wir Ihre Dateien niemals dauerhaft. Alle Verarbeitungs- und KI-Aufgaben werden sofort auf sicheren Servern erledigt und sofort gelöscht.',
+        philosophyText: 'WebImgConverter priorisiert die PrivatsphÃ¤re der Benutzer. Im Gegensatz zu herkÃ¶mmlichen Tools speichern wir Ihre Dateien niemals dauerhaft. Alle Verarbeitungs- und KI-Aufgaben werden sofort auf sicheren Servern erledigt und sofort gelÃ¶scht.',
         whyUs: 'Warum WebImgConverter?',
         features: [
-            { icon: '??', title: '100% Privatsphäre', desc: 'Ihre Dateien werden nie gespeichert. Die Verarbeitung erfolgt entweder auf Ihrem Gerät oder sofort auf sicheren temporären Servern.' },
+            { icon: '??', title: '100% PrivatsphÃ¤re', desc: 'Ihre Dateien werden nie gespeichert. Die Verarbeitung erfolgt entweder auf Ihrem GerÃ¤t oder sofort auf sicheren temporÃ¤ren Servern.' },
             { icon: '?', title: 'Blitzschnell', desc: 'Verarbeiten Sie Hunderte von Bildern in Sekunden mit WebAssembly-Technologie.' },
-            { icon: '??', title: 'KI-Technologie', desc: 'KI-gestützte Hintergrundentfernung und intelligente Dateibenennung.' },
-            { icon: '??', title: 'Premium-Qualität', desc: 'Konvertierungsqualität auf professionellem Niveau.' },
-            { icon: '??', title: 'Mehrsprachig', desc: 'Verfügbar in 4 Sprachen.' },
-            { icon: '??', title: 'Mobil-optimiert', desc: 'Funktioniert einwandfrei auf allen Geräten.' }
+            { icon: '??', title: 'KI-Technologie', desc: 'KI-gestÃ¼tzte Hintergrundentfernung und intelligente Dateibenennung.' },
+            { icon: '??', title: 'Premium-QualitÃ¤t', desc: 'KonvertierungsqualitÃ¤t auf professionellem Niveau.' },
+            { icon: '??', title: 'Mehrsprachig', desc: 'VerfÃ¼gbar in 4 Sprachen.' },
+            { icon: '??', title: 'Mobil-optimiert', desc: 'Funktioniert einwandfrei auf allen GerÃ¤ten.' }
         ],
         techTitle: 'Unsere Technologie',
         techText: 'WebImgConverter nutzt modernste Web-Technologien:',
         techItems: [
-            'WebAssembly (WASM) für native Geschwindigkeit',
-            'React und TypeScript für moderne Oberfläche',
-            'Erweiterte HEIC-Unterstützung mit Python Pillow-Heif',
-            'On-Device-KI-Modelle für Hintergrundentfernung',
-            'Progressive Web App (PWA) Unterstützung'
+            'WebAssembly (WASM) for native Geschwindigkeit',
+            'React und TypeScript for moderne OberflÃ¤che',
+            'Erweiterte HEIC-UnterstÃ¼tzung mit Python Pillow-Heif',
+            'On-Device-KI-Modelle for Hintergrundentfernung',
+            'Progressive Web App (PWA) UnterstÃ¼tzung'
         ],
-        supportedFormats: 'Unterstützte Formate',
+        supportedFormats: 'UnterstÃ¼tzte Formate',
         formats: [
             { name: 'HEIC/HEIF', desc: 'Apple iPhone und iPad Fotos' },
-            { name: 'JPG/JPEG', desc: 'Häufigstes Fotoformat' },
-            { name: 'PNG', desc: 'Transparenz-fähiges, verlustfreies Format' },
+            { name: 'JPG/JPEG', desc: 'HÃ¤ufigstes Fotoformat' },
+            { name: 'PNG', desc: 'Transparenz-fÃ¤higes, verlustfreies Format' },
             { name: 'WebP', desc: 'Googles modernes Web-Format' },
             { name: 'AVIF', desc: 'Next-Gen, hochkomprimiertes Format' }
         ],
@@ -140,56 +140,56 @@ const content = {
         contact: '?? Kontakt: support@WebImgConverter.com',
         stats: 'WebImgConverter in Zahlen',
         statsItems: [
-            { value: '10+', label: 'Format-Unterstützung' },
+            { value: '10+', label: 'Format-UnterstÃ¼tzung' },
             { value: '0', label: 'Datenspeicherung' },
-            { value: '100%', label: 'Privatsphäre' },
+            { value: '100%', label: 'PrivatsphÃ¤re' },
             { value: '4', label: 'Sprachen' }
         ]
     },
     fr: {
-        title: 'À Propos | WebImgConverter',
-        description: 'Découvrez WebImgConverter. Notre équipe axée sur la confidentialité développe des outils d\'image basés sur navigateur.',
-        h1: 'À Propos',
+        title: 'h Propos | WebImgConverter',
+        description: 'DÃ©couvrez WebImgConverter. Notre Ã©quipe axÃ©e sur la confidentialitÃ© dÃ©veloppe des outils d\'image basÃ©s sur navigateur.',
+        h1: 'h Propos',
         mission: 'Notre Mission',
-        missionDesc: 'WebImgConverter a été fondé pour rendre la conversion d\'images accessible, rapide et sécurisée pour tous. Nous visons à fournir la meilleure expérience utilisateur tout en protégeant votre vie privée.',
+        missionDesc: 'WebImgConverter a Ã©tÃ© fondÃ© pour rendre la conversion d\'images accessible, rapide et sÃ©curisÃ©e pour tous. Nous visons h fournir la meilleure expÃ©rience utilisateur tout en protÃ©geant votre vie privÃ©e.',
         story: 'Notre Histoire',
-        storyDesc: 'Fondé en 2025 comme solution aux problèmes de compatibilité HEIC et WebP. Aujourd\'hui, nous servons des milliers d\'utilisateurs avec des outils propulsés par l\'IA comme la suppression d\'arrière-plan et la compression, offrant des outils de base gratuits et des options avancées pour les professionnels.',
-        philosophy: 'Notre Philosophie de Confidentialité',
-        philosophyText: 'WebImgConverter priorise la confidentialité des utilisateurs. Contrairement aux outils traditionnels, nous ne stockons jamais vos fichiers de manière permanente. La plupart des traitements se font dans votre navigateur, tandis que les tâches IA avancées sont effectuées instantanément sur des serveurs éphémères et supprimées immédiatement.',
+        storyDesc: 'FondÃ© en 2025 comme solution aux problÃ¨mes de compatibility HEIC et WebP. Aujourd\'hui, nous servons des milliers d\'utilisateurs avec des outils propulsÃ©s par l\'IA comme la suppression d\'arriÃ¨re-plan et la compression, offrant des outils de base gratuits et des options avancÃ©es pour les professionnels.',
+        philosophy: 'Notre Philosophie de ConfidentialitÃ©',
+        philosophyText: 'WebImgConverter priorise la confidentialitÃ© des utilisateurs. Contrairement aux outils traditionnels, nous ne stockons jamais vos fichiers de maniÃ¨re permanente. La plupart des traitements se font dans votre navigateur, tandis que les tÃ¢ches IA avancÃ©es sont effectuÃ©es instantanÃ©ment sur des serveurs Ã©phÃ©mÃ¨res et supprimÃ©es immÃ©diatement.',
         whyUs: 'Pourquoi WebImgConverter?',
         features: [
-            { icon: '??', title: '100% Confidentialité', desc: 'Vos fichiers ne sont jamais stockés. Les opérations se font soit sur votre appareil, soit instantanément sur des serveurs éphémères sécurisés.' },
+            { icon: '??', title: '100% ConfidentialitÃ©', desc: 'Vos fichiers ne sont jamais stockÃ©s. Les opÃ©rations se font soit sur votre appareil, soit instantanÃ©ment sur des serveurs Ã©phÃ©mÃ¨res sÃ©curisÃ©s.' },
             { icon: '?', title: 'Ultra Rapide', desc: 'Traitez des centaines d\'images en quelques secondes avec la technologie WebAssembly.' },
-            { icon: '??', title: 'Technologie IA', desc: 'Suppression d\'arrière-plan et nommage intelligent de fichiers propulsés par l\'IA.' },
-            { icon: '??', title: 'Qualité Premium', desc: 'Qualité de conversion de niveau professionnel.' },
+            { icon: '??', title: 'Technologie IA', desc: 'Suppression d\'arriÃ¨re-plan et nommage intelligent de fichiers propulsÃ©s par l\'IA.' },
+            { icon: '??', title: 'Quality Premium', desc: 'Quality de conversion de niveau professionnel.' },
             { icon: '??', title: 'Multi-langues', desc: 'Disponible en 4 langues.' },
             { icon: '??', title: 'Mobile-Ready', desc: 'Fonctionne parfaitement sur tous les appareils.' }
         ],
         techTitle: 'Notre Technologie',
-        techText: 'WebImgConverter utilise les dernières technologies web:',
+        techText: 'WebImgConverter utilise les derniÃ¨res technologies web:',
         techItems: [
-            'WebAssembly (WASM) pour un traitement à vitesse native',
+            'WebAssembly (WASM) pour un traitement h vitesse native',
             'React et TypeScript pour une interface moderne',
-            'Support HEIC avancé avec Python Pillow-Heif',
-            'Modèles IA on-device pour la suppression d\'arrière-plan',
+            'Support HEIC avancÃ© avec Python Pillow-Heif',
+            'ModÃ¨les IA on-device pour la suppression d\'arriÃ¨re-plan',
             'Support Progressive Web App (PWA)'
         ],
-        supportedFormats: 'Formats Supportés',
+        supportedFormats: 'Formats SupportÃ©s',
         formats: [
             { name: 'HEIC/HEIF', desc: 'Photos Apple iPhone et iPad' },
             { name: 'JPG/JPEG', desc: 'Format photo le plus courant' },
             { name: 'PNG', desc: 'Format sans perte avec transparence' },
             { name: 'WebP', desc: 'Format web moderne de Google' },
-            { name: 'AVIF', desc: 'Format nouvelle génération haute compression' }
+            { name: 'AVIF', desc: 'Format nouvelle gÃ©nÃ©ration haute compression' }
         ],
-        team: 'Informations Société',
-        teamText: 'WebImgConverter Inc. est une entreprise de logiciels qui priorise la confidentialité des utilisateurs.',
+        team: 'Informations SociÃ©tÃ©',
+        teamText: 'WebImgConverter Inc. est une entreprise de logiciels qui priorise la confidentialitÃ© des utilisateurs.',
         contact: '?? Contact: support@WebImgConverter.com',
         stats: 'WebImgConverter en Chiffres',
         statsItems: [
             { value: '10+', label: 'Support Formats' },
-            { value: '0', label: 'Stockage de Données' },
-            { value: '100%', label: 'Confidentialité' },
+            { value: '0', label: 'Stockage de DonnÃ©es' },
+            { value: '100%', label: 'ConfidentialitÃ©' },
             { value: '4', label: 'Langues' }
         ]
     }
@@ -205,7 +205,7 @@ export default function AboutPage() {
     const activeLang = (typeof language === 'string' && (language.startsWith('tr') ? 'tr' : language.startsWith('de') ? 'de' : language.startsWith('fr') ? 'fr' : 'en')) as LangKey;
     const t = content[activeLang] || content.tr;
     const navigate = useNavigate();
-    const ctaLabel = activeLang === 'tr' ? 'Hemen Başla' : activeLang === 'de' ? 'Jetzt Starten' : activeLang === 'fr' ? 'Commencer' : 'Start Now';
+    const ctaLabel = activeLang === 'tr' ? 'Hemen BaÅŸla' : activeLang === 'de' ? 'Jetzt Starten' : activeLang === 'fr' ? 'Commencer' : 'Start Now';
 
     return (
         <SiteShell onCta={() => navigate('/')} ctaLabel={ctaLabel} bg="white">
