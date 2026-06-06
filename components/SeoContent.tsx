@@ -19,6 +19,7 @@ export type SeoPageType =
     | 'favicon-generator' 
     | 'rotate-image' 
     | 'watermark-image' 
+    | 'watermark-remover'
     | 'black-and-white' 
     | 'image-resizer';
 

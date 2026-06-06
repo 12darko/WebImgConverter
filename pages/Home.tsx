@@ -62,6 +62,7 @@ const content = {
             { name: 'PNG → JPG', path: '/png-to-jpg', desc: 'PNG dosya boyutunu küçültün' },
             { name: 'WebP → JPG', path: '/webp-to-jpg', desc: 'Evrensel uyumluluk sağlayın' },
             { name: 'Arkaplan Silici', path: '/remove-background', desc: 'Yapay Zeka destekli arkaplan kaldırma' },
+            { name: 'Filigran Silici', path: '/watermark-remover', desc: 'İstenmeyen nesne ve filigranları silin' },
             { name: 'Görüntü Sıkıştırıcı', path: '/compress-image', desc: 'Akıllı kayıpsız sıkıştırma' },
             { name: 'Boyutlandırıcı', path: '/resize-image', desc: 'Görselleri piksel bazlı yeniden boyutlandırın' }
         ],
@@ -104,6 +105,7 @@ const content = {
             { name: 'PNG → JPG', path: '/png-to-jpg', desc: 'Reduce PNG file size' },
             { name: 'WebP → JPG', path: '/webp-to-jpg', desc: 'Ensure universal compatibility' },
             { name: 'Background Remover', path: '/remove-background', desc: 'AI-powered background removal' },
+            { name: 'Watermark Remover', path: '/watermark-remover', desc: 'Remove unwanted objects and watermarks' },
             { name: 'Image Compressor', path: '/compress-image', desc: 'Smart lossless compression' },
             { name: 'Image Resizer', path: '/resize-image', desc: 'Resize images by exact pixel dimensions' }
         ],
@@ -146,6 +148,7 @@ const content = {
             { name: 'PNG → JPG', path: '/png-to-jpg', desc: 'PNG-Dateigröße reduzieren' },
             { name: 'WebP → JPG', path: '/webp-to-jpg', desc: 'Universelle Kompatibilität sicherstellen' },
             { name: 'Hintergrundentferner', path: '/remove-background', desc: 'KI-gestützte Hintergrundentfernung' },
+            { name: 'Wasserzeichen Entferner', path: '/watermark-remover', desc: 'Unerwünschte Objekte und Wasserzeichen entfernen' },
             { name: 'Bildkomprimierer', path: '/compress-image', desc: 'Intelligente verlustfreie Komprimierung' },
             { name: 'Bildgrößenänderer', path: '/resize-image', desc: 'Ändern Sie die Bildgröße nach genauen Pixelmaßen' }
         ],
@@ -188,6 +191,7 @@ const content = {
             { name: 'PNG → JPG', path: '/png-to-jpg', desc: 'Réduire la taille du fichier PNG' },
             { name: 'WebP → JPG', path: '/webp-to-jpg', desc: 'Assurer une compatibilité universelle' },
             { name: 'Suppresseur de Fond', path: '/remove-background', desc: 'Suppression d\'arrière-plan par IA' },
+            { name: 'Suppresseur de Filigrane', path: '/watermark-remover', desc: 'Supprimer les objets indésirables et filigranes' },
             { name: 'Compresseur d\'Image', path: '/compress-image', desc: 'Compression intelligente sans perte' },
             { name: 'Redimensionneur', path: '/resize-image', desc: 'Redimensionner par dimensions exactes en pixels' }
         ],

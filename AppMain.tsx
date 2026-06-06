@@ -17,6 +17,7 @@ import { HistoryModal } from './components/HistoryModal'; // History Import
 import { CropModal } from './components/CropModal'; // Crop Import
 import { InlineCrop } from './components/tool/InlineCrop';
 import { InlineBgRemover } from './components/tool/InlineBgRemover';
+import { InlineWatermarkRemover } from './components/tool/InlineWatermarkRemover';
 import { AdsterraNativeBanner } from './components/ads/AdsterraNativeBanner';
 import { triggerAdsterraPopunder } from './components/ads/popunder';
 
@@ -939,7 +940,7 @@ function BanaConvertApp(props: AppProps = {}) {
               <span>{t('secure_processing')}</span>
             </div>
 
-            {((defaultTool === 'crop' || defaultTool === 'remove-background') && files.length > 0) ? (
+            {((defaultTool === 'crop' || defaultTool === 'remove-background' || defaultTool === 'watermark-remover') && files.length > 0) ? (
               <div className="animate-[fadeIn_0.5s]">
                 {defaultTool === 'crop' ? (
                   <InlineCrop 
@@ -949,6 +950,11 @@ function BanaConvertApp(props: AppProps = {}) {
                       // InlineCrop now handles cropping & downloading internally via canvas
                       setFiles(prev => prev.map(f => f.id === files[0].id ? { ...f, status: 'done' } : f));
                     }} 
+                    onCancel={() => removeFile(files[0].id)} 
+                  />
+                ) : defaultTool === 'watermark-remover' ? (
+                  <InlineWatermarkRemover 
+                    imageUrl={files[0].previewUrl} 
                     onCancel={() => removeFile(files[0].id)} 
                   />
                 ) : (
@@ -962,7 +968,15 @@ function BanaConvertApp(props: AppProps = {}) {
                       if (!f.convertedUrl) return;
                       const a = document.createElement('a');
                       a.href = f.convertedUrl;
-                      a.download = `${f.aiName || f.file.name.split('.')[0]}.${f.targetFormat.split('/')[1]}`;
+                      const getExtension = (format: string) => {
+                          if (!format) return 'png';
+                          const ext = format.split('/')[1] || format;
+                          if (ext === 'x-icon') return 'ico';
+                          if (ext === 'svg+xml') return 'svg';
+                          if (ext === 'jpeg') return 'jpg';
+                          return ext;
+                      };
+                      a.download = `${f.aiName || f.file.name.split('.')[0]}.${getExtension(f.targetFormat)}`;
                       a.click();
                     }}
                     onModelChange={(model) => updateFileConfig(files[0].id, 'bgModel', model)}

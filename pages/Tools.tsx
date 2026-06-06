@@ -43,6 +43,7 @@ const content = {
             'background-remover': { name: 'Arkaplan Silici', description: 'Portreler ve ürün fotoğrafları için gelişmiş Yapay Zeka kullanarak arka planları anında kaldırın.' },
             'rotate-image': { name: 'Görsel Döndür', description: 'Görsellerinizi yatay/dikey çevirin veya istediğiniz açıda döndürün.' },
             'watermark-image': { name: 'Filigran Ekle', description: 'Görsellerinize metin veya logo ile filigran (watermark) ekleyin.' },
+            'watermark-remover': { name: 'Filigran Silici', description: 'Görsellerinizdeki istenmeyen nesneleri, yazıları ve filigranları yapay zeka ile sihirli bir şekilde silin.' },
             'black-and-white': { name: 'Siyah Beyaz Yap', description: 'Görsellerinizi tek tıkla siyah beyaz (grayscale) formatına dönüştürün.' },
             'webp-converter': { name: 'WebP Dönüştürücü', description: 'WebP dosyalarınızı JPG veya PNG\'ye dönüştürün.' },
             'jpg-converter': { name: 'JPG Dönüştürücü', description: 'JPG/JPEG dosyalarınızı PNG veya WebP\'ye dönüştürün.' },
@@ -71,6 +72,7 @@ const content = {
             'background-remover': { name: 'Background Remover', description: 'Instantly remove backgrounds using advanced AI for portraits and product photos.' },
             'rotate-image': { name: 'Rotate Image', description: 'Flip your images horizontally/vertically or rotate them at any angle.' },
             'watermark-image': { name: 'Watermark Image', description: 'Add text or logo watermark to your images to protect your copyright.' },
+            'watermark-remover': { name: 'Watermark Remover', description: 'Magically remove unwanted objects, texts, and watermarks from your images using AI.' },
             'black-and-white': { name: 'Black & White', description: 'Convert your colorful images to black and white (grayscale) with one click.' },
             'webp-converter': { name: 'WebP Converter', description: 'Convert your WebP files to JPG or PNG.' },
             'jpg-converter': { name: 'JPG Converter', description: 'Convert your JPG/JPEG files to PNG or WebP.' },
@@ -227,6 +229,20 @@ const TOOLS: ToolDef[] = [
             <path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z" />
         </>),
         keywords: ['background', 'remove', 'transparent', 'ai'],
+    },
+    {
+        id: 'watermark-remover',
+        name: 'watermark-remover',
+        description: 'watermark-remover',
+        path: '/watermark-remover',
+        badge: 'FREE',
+        icon: Icon(<>
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+            <path d="M3.27 6.96L12 12.01l8.73-5.05" />
+            <path d="M12 22.08V12" />
+            <path d="m18 2-6 10-6-10" />
+        </>),
+        keywords: ['watermark', 'remove', 'object', 'eraser', 'ai', 'magic'],
     },
     {
         id: 'general-tool',

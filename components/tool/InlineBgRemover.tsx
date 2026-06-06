@@ -44,7 +44,7 @@ export const InlineBgRemover: React.FC<InlineBgRemoverProps> = ({ file, onProces
                         <>
                             {onModelChange && (
                                 <select
-                                    value={file.bgModel || 'birefnet-general'}
+                                    value={file.bgModel || 'birefnet-massive'}
                                     onChange={(e) => onModelChange(e.target.value)}
                                     className="bg-brand-50 dark:bg-brand-950/30 text-[13px] font-medium text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800 rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-brand-500 outline-none"
                                 >
