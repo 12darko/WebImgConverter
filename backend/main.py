@@ -89,7 +89,7 @@ async def remove_background(
 
         # Resolution limiting for free tier
         if quality_tier == "free":
-            max_size = 1080
+            max_size = 2048
             if max(image.width, image.height) > max_size:
                 ratio = min(max_size / image.width, max_size / image.height)
                 new_size = (int(image.width * ratio), int(image.height * ratio))
