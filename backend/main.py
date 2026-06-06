@@ -105,7 +105,7 @@ async def remove_background(
 
         # Process with lazy-loaded session (Thread-safe locked inference)
         async with inference_lock:
-            session = await asyncio.to_thread(get_session, ai_model)
+            session = get_session(ai_model)
             # Alpha matting produces cleaner edges (removes gray spots at fine details)
             # Only enable for portrait mode which benefits most from it
             use_alpha_matting = ai_model == "birefnet-portrait"
