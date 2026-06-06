@@ -48,6 +48,24 @@ export const translations = {
 
     // ...
 
+        // Inline BG Remover & Security
+    secure_processing: "Güvenli Sunucu İşleme",
+    bg_remover_title: "Arka Plan Silici",
+    bg_model_general: "Otomatik (En İyi)",
+    bg_model_portrait: "Portre (Saç & İnsan)",
+    bg_model_logo: "Logo & Metin (Keskin)",
+    bg_remove_btn: "Arka Planı Sil",
+    ai_processing: "Yapay Zeka İşliyor...",,
+
+        // Inline BG Remover & Security
+    secure_processing: "Secure Server Processing",
+    bg_remover_title: "Background Remover",
+    bg_model_general: "Auto (Best)",
+    bg_model_portrait: "Portrait (Hair & People)",
+    bg_model_logo: "Logo & Text (Sharp)",
+    bg_remove_btn: "Remove Background",
+    ai_processing: "AI is Processing...",,
+
     privacy_policy_intro: "WebImgConverter olarak gizliliğinize önem veriyoruz. Tüm görselleriniz (HEIC, PNG, JPG vb.) en yüksek kalite ve hız için güvenli, geçici sunucularımızda işlenir. Dosyalarınız şifreli olarak iletilir, işlenir ve işlem biter bitmez sunucularımızdan kalıcı olarak silinir. İçeriğinizi asla depolamayız.",
     tip_size: "Dosya boyutunu kalite bozulmadan küçültün.",
 
