@@ -87,7 +87,7 @@ export const serverConversionService = {
     /**
      * Remove Background via Server
      */
-    async removeBackground(file: File, qualityTier: string = 'free', aiModel: string = 'birefnet-massive'): Promise<Blob> {
+    async removeBackground(file: File, qualityTier: string = 'free', aiModel: string = 'birefnet-general'): Promise<Blob> {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('quality_tier', qualityTier);

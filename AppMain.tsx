@@ -65,6 +65,20 @@ interface AppProps {
   initialFiles?: File[];
 }
 
+const normalizeFormat = (format?: string): ConversionFormat => {
+  if (!format) return ConversionFormat.JPEG;
+  const lower = format.toLowerCase();
+  if (lower === 'png' || lower === 'image/png') return ConversionFormat.PNG;
+  if (lower === 'jpg' || lower === 'jpeg' || lower === 'image/jpeg') return ConversionFormat.JPEG;
+  if (lower === 'webp' || lower === 'image/webp') return ConversionFormat.WEBP;
+  if (lower === 'ico' || lower === 'x-icon' || lower === 'image/x-icon') return ConversionFormat.ICO;
+  if (lower === 'avif' || lower === 'image/avif') return ConversionFormat.AVIF;
+  if (lower === 'svg' || lower === 'svg+xml' || lower === 'image/svg+xml') return ConversionFormat.SVG;
+  if (lower === 'tiff' || lower === 'image/tiff') return ConversionFormat.TIFF;
+  if (lower === 'bmp' || lower === 'image/bmp') return ConversionFormat.BMP;
+  return ConversionFormat.JPEG;
+};
+
 const applyFaviconStyling = async (
   fileItem: FileItem,
   sourceUrl: string
@@ -393,7 +407,7 @@ function BanaConvertApp(props: AppProps = {}) {
       id: uuidv4(),
       file,
       previewUrl: '',
-      targetFormat: defaultOutputFormat ? (defaultOutputFormat as ConversionFormat) : (defaultTool === 'remove-background' ? ConversionFormat.PNG : ConversionFormat.JPEG),
+      targetFormat: normalizeFormat(defaultOutputFormat || (defaultTool === 'remove-background' ? 'png' : 'jpg')),
       quality: 1.0,
       rotation: defaultTool === 'rotate-image' ? 90 : 0,
       resizeScale: 1,
@@ -1419,7 +1433,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                             {/* AI Model Selector when BG Removal is enabled */}
                                             {file.removeBackground && (
                                               <select
-                                                value={file.bgModel || 'birefnet-massive'}
+                                                value={file.bgModel || 'birefnet-general'}
                                                 onChange={(e) => updateFileConfig(file.id, 'bgModel', e.target.value)}
                                                 className="bg-brand-50 dark:bg-brand-950/30 text-[11px] font-medium text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800 rounded-lg p-1.5 focus:ring-2 focus:ring-brand-500 outline-none w-full"
                                               >

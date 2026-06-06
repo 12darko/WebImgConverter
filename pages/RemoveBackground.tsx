@@ -75,7 +75,7 @@ export default function RemoveBackgroundPage() {
                 pageH1={t.h1}
                 acceptTypes="image/*"
                 formatBadges={['AI', '→', 'PNG']}
-                defaultOutputFormat="png"
+                defaultOutputFormat="image/png"
                 hideFormatSelector={true}
                 allowedSettings={['format', 'crop']}
             >
