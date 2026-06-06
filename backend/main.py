@@ -1,3 +1,6 @@
+import os
+os.environ['U2NET_HOME'] = '/app/models'
+
 from fastapi import FastAPI, File, UploadFile, HTTPException, Form
 from fastapi.responses import Response, StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -32,12 +35,17 @@ MAX_IMAGE_DIMENSION = 4096
 inference_lock = asyncio.Lock()
 
 def get_session(model_name: str = "birefnet-general"):
-    """Lazy-load the rembg session and cache it."""
+    """Lazy-load the rembg session and cache only the active model to prevent OOM."""
     global _sessions
     if model_name not in _sessions:
-        print(f"Loading rembg model '{model_name}' for the first time...")
+        # Clear other models from memory first to prevent OOM
+        if _sessions:
+            print(f"Clearing model cache to free RAM before loading '{model_name}'...", flush=True)
+            _sessions.clear()
+            gc.collect()
+        print(f"Loading rembg model '{model_name}' for the first time...", flush=True)
         _sessions[model_name] = new_session(model_name)
-        print(f"Model '{model_name}' loaded successfully.")
+        print(f"Model '{model_name}' loaded successfully.", flush=True)
     return _sessions[model_name]
 
 def limit_image_size(image: Image.Image, max_dim: int = MAX_IMAGE_DIMENSION) -> Image.Image:

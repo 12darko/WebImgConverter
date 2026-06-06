@@ -12,6 +12,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Pre-download rembg models to avoid runtime download timeout (502 Bad Gateway)
+ENV U2NET_HOME=/app/models
 ENV NUMBA_CACHE_DIR=/tmp/numba_cache
 RUN python -c "from rembg import new_session; new_session('birefnet-general'); new_session('birefnet-portrait'); new_session('birefnet-dis')"
 
