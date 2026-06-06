@@ -108,16 +108,21 @@ async def remove_background(
             session = get_session(ai_model)
             # Alpha matting produces cleaner edges (removes gray spots at fine details)
             # Only enable for portrait mode which benefits most from it
-            use_alpha_matting = ai_model == "birefnet-portrait"
+            use_alpha_matting = ai_model in ("birefnet-portrait", "birefnet-dis")
             
             if use_alpha_matting:
                 try:
+                    # Tighter thresholds for logos to preserve sharp geometry
+                    fg_thresh = 245 if ai_model == "birefnet-dis" else 240
+                    bg_thresh = 10 if ai_model == "birefnet-dis" else 20
+                    erode_sz = 5 if ai_model == "birefnet-dis" else 10
+
                     output_data = await asyncio.to_thread(
                         remove, image_data, session=session,
                         alpha_matting=True,
-                        alpha_matting_foreground_threshold=240,
-                        alpha_matting_background_threshold=20,
-                        alpha_matting_erode_size=10
+                        alpha_matting_foreground_threshold=fg_thresh,
+                        alpha_matting_background_threshold=bg_thresh,
+                        alpha_matting_erode_size=erode_sz
                     )
                 except Exception as mat_err:
                     print(f"Alpha matting failed, falling back to standard: {mat_err}")
