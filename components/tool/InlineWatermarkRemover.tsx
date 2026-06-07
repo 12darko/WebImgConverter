@@ -150,7 +150,8 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
 
     const stopDrawing = () => {
         if (currentStrokeRef.current && currentStrokeRef.current.points.length > 0) {
-            setStrokes(prev => [...prev, currentStrokeRef.current!]);
+            const finishedStroke = currentStrokeRef.current;
+            setStrokes(prev => [...prev, finishedStroke]);
         }
         setIsDrawing(false);
         currentStrokeRef.current = null;
