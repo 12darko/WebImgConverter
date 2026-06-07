@@ -225,9 +225,10 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
         
         if (mode === 'gemini') {
             mctx.fillStyle = 'white';
-            const w = Math.min(250, maskCanvas.width * 0.2);
-            const h = Math.min(80, maskCanvas.height * 0.08);
-            mctx.fillRect(maskCanvas.width - w - 10, maskCanvas.height - h - 10, w, h);
+            // Gemini watermark is a square sparkle at the bottom right.
+            // It scales with the image, so we use a percentage instead of a hard limit.
+            const size = Math.max(120, maskCanvas.width * 0.1); 
+            mctx.fillRect(maskCanvas.width - size, maskCanvas.height - size, size, size);
         } else {
             const canvasW = canvasRef.current.width;
             const scaleX = maskCanvas.width / canvasW;
@@ -263,9 +264,14 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
             
             const resultBlob = await serverConversionService.removeWatermark(file, maskFile);
             setResultUrl(URL.createObjectURL(resultBlob));
-        } catch (error) {
+        } catch (error: any) {
             console.error('Watermark removal failed:', error);
-            alert("Error removing watermark. Ensure the backend is running.");
+            if (error.response && error.response.data instanceof Blob) {
+                const text = await error.response.data.text();
+                alert(`Server Error: ${text}`);
+            } else {
+                alert("Error removing watermark. Ensure the backend is running.");
+            }
         } finally {
             setIsProcessing(false);
         }
