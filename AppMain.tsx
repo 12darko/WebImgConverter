@@ -955,7 +955,7 @@ function BanaConvertApp(props: AppProps = {}) {
               <span>{t('secure_processing')}</span>
             </div>
 
-            {((defaultTool === 'crop' || defaultTool === 'remove-background' || defaultTool === 'watermark-remover') && files.length > 0) ? (
+            {((defaultTool === 'crop' || defaultTool === 'remove-background' || defaultTool === 'watermark-remover' || defaultTool === 'gemini-watermark-remover') && files.length > 0) ? (
               <div className="animate-[fadeIn_0.5s]">
                 {defaultTool === 'crop' ? (
                   <InlineCrop 
@@ -967,7 +967,7 @@ function BanaConvertApp(props: AppProps = {}) {
                     }} 
                     onCancel={() => removeFile(files[0].id)} 
                   />
-                ) : defaultTool === 'watermark-remover' ? (
+                ) : (defaultTool === 'watermark-remover' || defaultTool === 'gemini-watermark-remover') ? (
                   <InlineWatermarkRemover 
                     imageUrl={files[0].previewUrl} 
                     onCancel={() => removeFile(files[0].id)} 
