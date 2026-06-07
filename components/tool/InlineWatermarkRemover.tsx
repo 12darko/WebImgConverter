@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { AdsterraNativeBanner } from '../ads/AdsterraNativeBanner';
 import { useLanguage } from '../../LanguageContext';
+import { serverConversionService } from '../../services/serverConversionService';
 
 interface InlineWatermarkRemoverProps {
     imageUrl: string;
@@ -11,6 +12,9 @@ const translations = {
     tr: {
         title: "✨ Yapay Zeka Filigran Silici",
         brushSize: "Fırça Boyutu",
+        undo: "Geri Al (Ctrl+Z)",
+        modeNormal: "Normal Silici",
+        modeGemini: "Gemini Filigranı",
         clear: "Temizle",
         remove: "Filigranı Sil",
         removing: "Yapay Zeka İşliyor...",
@@ -20,6 +24,9 @@ const translations = {
     en: {
         title: "✨ AI Watermark Remover",
         brushSize: "Brush Size",
+        undo: "Undo (Ctrl+Z)",
+        modeNormal: "Normal Remover",
+        modeGemini: "Gemini Watermark",
         clear: "Clear",
         remove: "Remove Watermark",
         removing: "AI is Processing...",
@@ -29,6 +36,9 @@ const translations = {
     de: {
         title: "✨ KI Wasserzeichen Entferner",
         brushSize: "Pinselgröße",
+        undo: "Rückgängig (Strg+Z)",
+        modeNormal: "Normaler Entferner",
+        modeGemini: "Gemini Wasserzeichen",
         clear: "Löschen",
         remove: "Wasserzeichen Entfernen",
         removing: "KI Verarbeitet...",
@@ -38,6 +48,9 @@ const translations = {
     fr: {
         title: "✨ Suppresseur de Filigrane IA",
         brushSize: "Taille du Pinceau",
+        undo: "Annuler (Ctrl+Z)",
+        modeNormal: "Suppresseur Normal",
+        modeGemini: "Filigrane Gemini",
         clear: "Effacer",
         remove: "Supprimer le Filigrane",
         removing: "Traitement IA...",
@@ -56,6 +69,13 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
     const [isProcessing, setIsProcessing] = useState(false);
     const [resultUrl, setResultUrl] = useState<string | null>(null);
     
+    // Added states for Undo and Modes
+    const [mode, setMode] = useState<'normal' | 'gemini'>('normal');
+    type Point = { x: number, y: number };
+    type Stroke = { points: Point[], size: number };
+    const [strokes, setStrokes] = useState<Stroke[]>([]);
+    const currentStrokeRef = useRef<Stroke | null>(null);
+    
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const imageRef = useRef<HTMLImageElement | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -71,14 +91,13 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
         img.src = imageUrl;
     }, [imageUrl]);
 
-    const initCanvas = () => {
+    const redrawCanvas = useCallback(() => {
         if (!canvasRef.current || !imageRef.current || !containerRef.current) return;
         const canvas = canvasRef.current;
         const img = imageRef.current;
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
-        // Calculate dimensions to fit container
         const containerWidth = containerRef.current.clientWidth;
         const containerHeight = Math.min(600, window.innerHeight * 0.6);
         
@@ -89,23 +108,48 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
         canvas.width = drawWidth;
         canvas.height = drawHeight;
 
-        // Draw initial image
         ctx.drawImage(img, 0, 0, drawWidth, drawHeight);
         
-        // Setup drawing style
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
-        // Use a pink semi-transparent color for the mask
         ctx.strokeStyle = 'rgba(236, 72, 153, 0.5)'; 
+
+        // Draw saved strokes
+        strokes.forEach(stroke => {
+            ctx.lineWidth = stroke.size;
+            ctx.beginPath();
+            stroke.points.forEach((p, i) => {
+                if (i === 0) ctx.moveTo(p.x, p.y);
+                else ctx.lineTo(p.x, p.y);
+            });
+            ctx.stroke();
+        });
+    }, [strokes]);
+
+    useEffect(() => {
+        if (imageRef.current) {
+            redrawCanvas();
+        }
+    }, [redrawCanvas, mode]);
+
+    const initCanvas = () => {
+        setStrokes([]);
+        redrawCanvas();
     };
 
     const startDrawing = (e: React.MouseEvent | React.TouchEvent) => {
+        if (mode === 'gemini') return;
         setIsDrawing(true);
+        currentStrokeRef.current = { points: [], size: brushSize };
         draw(e);
     };
 
     const stopDrawing = () => {
+        if (isDrawing && currentStrokeRef.current && currentStrokeRef.current.points.length > 0) {
+            setStrokes(prev => [...prev, currentStrokeRef.current!]);
+        }
         setIsDrawing(false);
+        currentStrokeRef.current = null;
         const canvas = canvasRef.current;
         if (canvas) {
             const ctx = canvas.getContext('2d');
@@ -114,7 +158,7 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
     };
 
     const draw = (e: React.MouseEvent | React.TouchEvent) => {
-        if (!isDrawing || !canvasRef.current) return;
+        if (!isDrawing || !canvasRef.current || mode === 'gemini') return;
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
@@ -135,29 +179,90 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
         const x = clientX - rect.left;
         const y = clientY - rect.top;
 
+        if (currentStrokeRef.current) {
+            currentStrokeRef.current.points.push({ x, y });
+        }
+
         ctx.lineTo(x, y);
         ctx.stroke();
         ctx.beginPath();
         ctx.moveTo(x, y);
     };
 
+    const handleUndo = useCallback(() => {
+        setStrokes(prev => prev.slice(0, -1));
+    }, []);
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.ctrlKey && e.key === 'z') {
+                handleUndo();
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [handleUndo]);
+
     const handleClear = () => {
         initCanvas();
     };
 
-    const handleRemove = () => {
+    const generateMask = async (): Promise<Blob | null> => {
+        if (!canvasRef.current || !imageRef.current) return null;
+        const maskCanvas = document.createElement('canvas');
+        maskCanvas.width = imageRef.current.width;
+        maskCanvas.height = imageRef.current.height;
+        const mctx = maskCanvas.getContext('2d');
+        if (!mctx) return null;
+        
+        mctx.fillStyle = 'black';
+        mctx.fillRect(0, 0, maskCanvas.width, maskCanvas.height);
+        
+        if (mode === 'gemini') {
+            mctx.fillStyle = 'white';
+            const w = Math.min(250, maskCanvas.width * 0.2);
+            const h = Math.min(80, maskCanvas.height * 0.08);
+            mctx.fillRect(maskCanvas.width - w - 10, maskCanvas.height - h - 10, w, h);
+        } else {
+            const canvasW = canvasRef.current.width;
+            const scaleX = maskCanvas.width / canvasW;
+            
+            mctx.lineCap = 'round';
+            mctx.lineJoin = 'round';
+            mctx.strokeStyle = 'white';
+            
+            strokes.forEach(stroke => {
+                mctx.lineWidth = stroke.size * scaleX;
+                mctx.beginPath();
+                stroke.points.forEach((p, i) => {
+                    if (i === 0) mctx.moveTo(p.x * scaleX, p.y * scaleX);
+                    else mctx.lineTo(p.x * scaleX, p.y * scaleX);
+                });
+                mctx.stroke();
+            });
+        }
+        
+        return new Promise(resolve => maskCanvas.toBlob(resolve, 'image/png'));
+    };
+
+    const handleRemove = async () => {
+        if (mode === 'normal' && strokes.length === 0) return;
         setIsProcessing(true);
-        // Simulate backend AI processing (Since we don't have an inpainting endpoint yet)
-        setTimeout(() => {
-            // In a real app, we would send the image and the mask to the server here.
-            // For now, we'll just blur the masked areas as a simple client-side "removal" 
-            // or just return the original image to simulate success.
+        try {
+            const maskBlob = await generateMask();
+            const imgBlob = await fetch(imageUrl).then(r => r.blob());
+            
+            const file = new File([imgBlob], 'image.jpg', { type: imgBlob.type });
+            const maskFile = new File([maskBlob!], 'mask.png', { type: 'image/png' });
+            
+            const resultBlob = await serverConversionService.removeWatermark(file, maskFile);
+            setResultUrl(URL.createObjectURL(resultBlob));
+        } catch (error) {
+            console.error('Watermark removal failed:', error);
+            alert("Error removing watermark. Ensure the backend is running.");
+        } finally {
             setIsProcessing(false);
-            if (canvasRef.current) {
-                // Just for demo, we provide the original image back or the canvas data
-                setResultUrl(canvasRef.current.toDataURL('image/jpeg', 0.9));
-            }
-        }, 2000);
+        }
     };
 
     const handleDownload = () => {
@@ -182,21 +287,39 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
                 </div>
 
                 {!resultUrl && (
-                    <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-2">
-                            <span className="text-xs text-slate-500 font-medium">{loc.brushSize}</span>
-                            <input 
-                                type="range" 
-                                min="5" 
-                                max="50" 
-                                value={brushSize} 
-                                onChange={(e) => setBrushSize(Number(e.target.value))}
-                                className="w-24 accent-brand-500"
-                            />
+                    <div className="flex flex-col sm:flex-row items-center gap-4">
+                        <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+                            <button 
+                                onClick={() => { setMode('normal'); setStrokes([]); }}
+                                className={`px-3 py-1.5 text-xs font-bold rounded-md transition-colors ${mode === 'normal' ? 'bg-white dark:bg-slate-700 shadow-sm text-brand-600' : 'text-slate-500'}`}
+                            >
+                                {loc.modeNormal}
+                            </button>
+                            <button 
+                                onClick={() => { setMode('gemini'); setStrokes([]); }}
+                                className={`px-3 py-1.5 text-xs font-bold rounded-md transition-colors ${mode === 'gemini' ? 'bg-white dark:bg-slate-700 shadow-sm text-brand-600' : 'text-slate-500'}`}
+                            >
+                                {loc.modeGemini}
+                            </button>
                         </div>
-                        <button onClick={handleClear} className="text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">
-                            {loc.clear}
-                        </button>
+                        {mode === 'normal' && (
+                            <div className="flex items-center gap-4">
+                                <div className="flex items-center gap-2">
+                                    <span className="text-xs text-slate-500 font-medium">{loc.brushSize}</span>
+                                    <input 
+                                        type="range" min="5" max="50" value={brushSize} 
+                                        onChange={(e) => setBrushSize(Number(e.target.value))}
+                                        className="w-24 accent-brand-500"
+                                    />
+                                </div>
+                                <button onClick={handleUndo} disabled={strokes.length === 0} className="text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 disabled:opacity-30">
+                                    {loc.undo}
+                                </button>
+                                <button onClick={handleClear} className="text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">
+                                    {loc.clear}
+                                </button>
+                            </div>
+                        )}
                     </div>
                 )}
 

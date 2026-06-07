@@ -154,5 +154,27 @@ export const serverConversionService = {
             console.error('Server crop failed:', error);
             throw error;
         }
+    },
+
+    /**
+     * Remove Watermark via Server
+     */
+    async removeWatermark(file: File, mask: File): Promise<Blob> {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('mask', mask);
+
+        try {
+            const response = await axios.post(`${API_URL}/remove-watermark`, formData, {
+                responseType: 'blob',
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            return response.data;
+        } catch (error) {
+            console.error('Server remove watermark failed:', error);
+            throw error;
+        }
     }
 };

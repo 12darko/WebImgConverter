@@ -140,6 +140,50 @@ async def remove_background(
         print(f"Error remove_background: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.post("/remove-watermark")
+async def remove_watermark(
+    file: UploadFile = File(...),
+    mask: UploadFile = File(...)
+):
+    try:
+        # Read the original image
+        image_bytes = await file.read()
+        nparr = np.frombuffer(image_bytes, np.uint8)
+        img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        
+        if img is None:
+            raise HTTPException(status_code=400, detail="Invalid image file")
+
+        # Read the mask
+        mask_bytes = await mask.read()
+        mask_arr = np.frombuffer(mask_bytes, np.uint8)
+        mask_img = cv2.imdecode(mask_arr, cv2.IMREAD_GRAYSCALE)
+        
+        if mask_img is None:
+            raise HTTPException(status_code=400, detail="Invalid mask file")
+
+        # Ensure mask is same size as image
+        if mask_img.shape[:2] != img.shape[:2]:
+            mask_img = cv2.resize(mask_img, (img.shape[1], img.shape[0]), interpolation=cv2.INTER_NEAREST)
+
+        # Threshold mask to ensure it's binary (0 or 255)
+        _, mask_img = cv2.threshold(mask_img, 127, 255, cv2.THRESH_BINARY)
+
+        # Run OpenCV Telea Inpainting (fast and decent quality for watermarks)
+        # Radius = 3
+        result = cv2.inpaint(img, mask_img, 3, cv2.INPAINT_TELEA)
+
+        # Encode to PNG
+        success, encoded_image = cv2.imencode('.png', result)
+        if not success:
+            raise HTTPException(status_code=500, detail="Failed to encode resulting image")
+
+        return Response(content=encoded_image.tobytes(), media_type="image/png")
+    
+    except Exception as e:
+        print(f"Error remove_watermark: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.post("/convert-heic")
 async def convert_heic(
     file: UploadFile = File(...), 
