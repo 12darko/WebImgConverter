@@ -6,6 +6,7 @@ import { serverConversionService } from '../../services/serverConversionService'
 interface InlineWatermarkRemoverProps {
     imageUrl: string;
     initialMode?: 'normal' | 'gemini';
+    hideModeSwitcher?: boolean;
     onCancel: () => void;
 }
 
@@ -60,7 +61,7 @@ const translations = {
     }
 };
 
-export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ imageUrl, initialMode = 'normal', onCancel }) => {
+export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ imageUrl, initialMode = 'normal', hideModeSwitcher = false, onCancel }) => {
     const { language } = useLanguage();
     // @ts-ignore
     const loc = translations[language] || translations.en;
@@ -117,6 +118,7 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
 
         // Draw saved strokes
         strokes.forEach(stroke => {
+            if (!stroke) return;
             ctx.lineWidth = stroke.size;
             ctx.beginPath();
             stroke.points.forEach((p, i) => {
@@ -177,8 +179,10 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
             clientY = e.clientY;
         }
 
-        const x = clientX - rect.left;
-        const y = clientY - rect.top;
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const x = (clientX - rect.left) * scaleX;
+        const y = (clientY - rect.top) * scaleY;
 
         if (currentStrokeRef.current) {
             currentStrokeRef.current.points.push({ x, y });
@@ -233,6 +237,7 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
             mctx.strokeStyle = 'white';
             
             strokes.forEach(stroke => {
+                if (!stroke) return;
                 mctx.lineWidth = stroke.size * scaleX;
                 mctx.beginPath();
                 stroke.points.forEach((p, i) => {
@@ -289,6 +294,7 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
 
                 {!resultUrl && (
                     <div className="flex flex-col sm:flex-row items-center gap-4">
+                        {!hideModeSwitcher && (
                         <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
                             <button 
                                 onClick={() => { setMode('normal'); setStrokes([]); }}
@@ -303,6 +309,7 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
                                 {loc.modeGemini}
                             </button>
                         </div>
+                        )}
                         {mode === 'normal' && (
                             <div className="flex items-center gap-4">
                                 <div className="flex items-center gap-2">
@@ -369,7 +376,7 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
                         onTouchStart={startDrawing}
                         onTouchEnd={stopDrawing}
                         onTouchMove={draw}
-                        className="max-w-full shadow-lg rounded-lg overflow-hidden bg-white dark:bg-slate-900 cursor-crosshair touch-none"
+                        className={`max-w-full shadow-lg rounded-lg overflow-hidden bg-white dark:bg-slate-900 touch-none ${mode === 'gemini' ? 'cursor-default pointer-events-none' : 'cursor-crosshair'}`}
                     />
                 ) : (
                     <img 
