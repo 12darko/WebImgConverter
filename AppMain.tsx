@@ -970,6 +970,8 @@ function BanaConvertApp(props: AppProps = {}) {
                 ) : (defaultTool === 'watermark-remover' || defaultTool === 'gemini-watermark-remover') ? (
                   <InlineWatermarkRemover 
                     imageUrl={files[0].previewUrl} 
+                    initialMode={defaultTool === 'gemini-watermark-remover' ? 'gemini' : 'normal'}
+                    hideModeSwitcher={defaultTool === 'gemini-watermark-remover'}
                     onCancel={() => removeFile(files[0].id)} 
                   />
                 ) : (

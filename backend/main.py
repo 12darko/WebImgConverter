@@ -10,6 +10,8 @@ import gc
 import asyncio
 from PIL import Image, ImageDraw, ImageFont
 from pillow_heif import register_heif_opener
+import cv2
+import numpy as np
 
 # Register HEIC plugin
 register_heif_opener()
