@@ -149,7 +149,7 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
     };
 
     const stopDrawing = () => {
-        if (isDrawing && currentStrokeRef.current && currentStrokeRef.current.points.length > 0) {
+        if (currentStrokeRef.current && currentStrokeRef.current.points.length > 0) {
             setStrokes(prev => [...prev, currentStrokeRef.current!]);
         }
         setIsDrawing(false);
@@ -162,7 +162,7 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
     };
 
     const draw = (e: React.MouseEvent | React.TouchEvent) => {
-        if (!isDrawing || !canvasRef.current || mode === 'gemini') return;
+        if (!currentStrokeRef.current || !canvasRef.current || mode === 'gemini') return;
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
