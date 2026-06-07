@@ -5,6 +5,7 @@ import { serverConversionService } from '../../services/serverConversionService'
 
 interface InlineWatermarkRemoverProps {
     imageUrl: string;
+    initialMode?: 'normal' | 'gemini';
     onCancel: () => void;
 }
 
@@ -59,7 +60,7 @@ const translations = {
     }
 };
 
-export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ imageUrl, onCancel }) => {
+export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ imageUrl, initialMode = 'normal', onCancel }) => {
     const { language } = useLanguage();
     // @ts-ignore
     const loc = translations[language] || translations.en;
@@ -70,7 +71,7 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
     const [resultUrl, setResultUrl] = useState<string | null>(null);
     
     // Added states for Undo and Modes
-    const [mode, setMode] = useState<'normal' | 'gemini'>('normal');
+    const [mode, setMode] = useState<'normal' | 'gemini'>(initialMode);
     type Point = { x: number, y: number };
     type Stroke = { points: Point[], size: number };
     const [strokes, setStrokes] = useState<Stroke[]>([]);

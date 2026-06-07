@@ -62,6 +62,7 @@ interface AppProps {
   dropzoneDesc?: string;
   children?: React.ReactNode;
   conversionHandler?: (file: File) => Promise<Blob>;
+  initialMode?: string;
   initialFiles?: File[];
 }
 
