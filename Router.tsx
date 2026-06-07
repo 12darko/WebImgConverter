@@ -13,6 +13,7 @@ import FaviconGeneratorPage from './pages/FaviconGenerator';
 import RotateImagePage from './pages/RotateImage';
 import WatermarkImagePage from './pages/WatermarkImage';
 import WatermarkRemoverPage from './pages/WatermarkRemover';
+import GeminiWatermarkRemoverPage from './pages/GeminiWatermarkRemover';
 import BlackAndWhitePage from './pages/BlackAndWhite';
 import WebpConverterPage from './pages/WebpConverter';
 import JpgConverterPage from './pages/JpgConverter';
@@ -59,6 +60,7 @@ export default function Router() {
                             <Route path="rotate-image" element={<RotateImagePage />} />
                             <Route path="watermark-image" element={<WatermarkImagePage />} />
                             <Route path="watermark-remover" element={<WatermarkRemoverPage />} />
+                            <Route path="gemini-watermark-remover" element={<GeminiWatermarkRemoverPage />} />
                             <Route path="black-and-white" element={<BlackAndWhitePage />} />
                             <Route path="webp-converter" element={<WebpConverterPage />} />
                             <Route path="jpg-converter" element={<JpgConverterPage />} />
@@ -89,6 +91,7 @@ export default function Router() {
                             <Route path="rotate-image" element={<RotateImagePage />} />
                             <Route path="watermark-image" element={<WatermarkImagePage />} />
                             <Route path="watermark-remover" element={<WatermarkRemoverPage />} />
+                            <Route path="gemini-watermark-remover" element={<GeminiWatermarkRemoverPage />} />
                             <Route path="black-and-white" element={<BlackAndWhitePage />} />
                             <Route path="webp-converter" element={<WebpConverterPage />} />
                             <Route path="jpg-converter" element={<JpgConverterPage />} />
