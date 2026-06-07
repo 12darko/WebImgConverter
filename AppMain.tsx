@@ -1189,7 +1189,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                           const isRotated = file.rotation !== undefined && file.rotation !== 0;
                                           const isDistortedResize = file.lockAspectRatio === false && (!!file.targetWidth || !!file.targetHeight);
                                           
-                                          const canCompare = !isFavicon && !isCropped && !isRotated && !isDistortedResize;
+                                          const canCompare = !isCropped && !isRotated && !isDistortedResize;
                                           
                                           if (!canCompare) return null;
                                           
