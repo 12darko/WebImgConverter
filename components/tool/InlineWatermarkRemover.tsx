@@ -225,9 +225,9 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
         
         if (mode === 'gemini') {
             mctx.fillStyle = 'white';
-            // Gemini watermark is a square sparkle at the bottom right.
-            // It scales with the image, so we use a percentage instead of a hard limit.
-            const size = Math.max(120, maskCanvas.width * 0.1); 
+            // Gemini watermark is a small square sparkle at the bottom right.
+            // We use a smaller percentage (4.5%) to avoid smudging the background unnecessarily.
+            const size = Math.max(45, maskCanvas.width * 0.045); 
             mctx.fillRect(maskCanvas.width - size, maskCanvas.height - size, size, size);
         } else {
             const canvasW = canvasRef.current.width;
