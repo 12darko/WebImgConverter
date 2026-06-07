@@ -114,7 +114,7 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
         
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
-        ctx.strokeStyle = 'rgba(236, 72, 153, 0.5)'; 
+        ctx.strokeStyle = '#ec4899'; // Solid pink to prevent alpha overlap issues 
 
         // Draw saved strokes
         strokes.forEach(stroke => {
@@ -142,6 +142,7 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
 
     const startDrawing = (e: React.MouseEvent | React.TouchEvent) => {
         if (mode === 'gemini') return;
+        if (e.cancelable) e.preventDefault(); // Prevent native drag or text selection
         setIsDrawing(true);
         currentStrokeRef.current = { points: [], size: brushSize };
         draw(e);
@@ -167,6 +168,9 @@ export const InlineWatermarkRemover: React.FC<InlineWatermarkRemoverProps> = ({ 
         if (!ctx) return;
 
         ctx.lineWidth = brushSize;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.strokeStyle = '#ec4899';
 
         const rect = canvas.getBoundingClientRect();
         let clientX, clientY;
