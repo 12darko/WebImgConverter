@@ -11,10 +11,11 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Pre-download rembg models to avoid runtime download timeout (502 Bad Gateway)
+# Pre-download only the PRIMARY model to keep build fast and image small
+# Other models (birefnet-portrait, birefnet-dis) download on-demand at runtime
 ENV U2NET_HOME=/app/models
 ENV NUMBA_CACHE_DIR=/tmp/numba_cache
-RUN python -c "from rembg import new_session; new_session('birefnet-general'); new_session('birefnet-portrait'); new_session('birefnet-dis')"
+RUN python -c "from rembg import new_session; new_session('birefnet-general')"
 
 COPY . .
 
