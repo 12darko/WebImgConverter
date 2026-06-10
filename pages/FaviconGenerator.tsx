@@ -76,7 +76,7 @@ export default function FaviconGeneratorPage() {
                 formatBadges={['PNG', 'JPG', 'WEBP']}
                 defaultOutputFormat="image/x-icon"
                 hideFormatSelector={true}
-                hideAdvancedSettings={false}
+                hideAdvancedSettings={true}
                 allowedSettings={[]}
             >
                 <div className="max-w-4xl mx-auto space-y-16 px-4 md:px-8 pb-20 mt-16">

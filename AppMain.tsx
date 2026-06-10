@@ -1099,7 +1099,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                     {file.status === 'analyzing' && !file.previewUrl ? (
                                       <div className="w-5 h-5 border-2 border-brand-500 border-t-transparent rounded-full animate-spin"></div>
                                     ) : (
-                                      <img src={file.status === 'done' ? file.convertedUrl : file.previewUrl} className={`max-w-full max-h-full object-contain dark:brightness-90 dark:opacity-90 ${file.isGrayscale ? 'grayscale' : ''}`} style={{ transform: `rotate(${file.rotation}deg)` }} />
+                                      <img src={file.status === 'done' && file.targetFormat !== ConversionFormat.ICO ? file.convertedUrl : file.previewUrl} className={`max-w-full max-h-full object-contain dark:brightness-90 dark:opacity-90 ${file.isGrayscale ? 'grayscale' : ''}`} style={{ transform: `rotate(${file.rotation}deg)` }} />
                                     )}
                                   </div>
 
@@ -1192,7 +1192,7 @@ function BanaConvertApp(props: AppProps = {}) {
                                           const isRotated = file.rotation !== undefined && file.rotation !== 0;
                                           const isDistortedResize = file.lockAspectRatio === false && (!!file.targetWidth || !!file.targetHeight);
                                           
-                                          const canCompare = !isCropped && !isRotated && !isDistortedResize;
+                                          const canCompare = !isFavicon && !isCropped && !isRotated && !isDistortedResize;
                                           
                                           if (!canCompare) return null;
                                           
@@ -1534,56 +1534,57 @@ function BanaConvertApp(props: AppProps = {}) {
                                     );
                                   })()}
 
-                                  {/* Favicon Settings */}
-                                  {(defaultTool === 'favicon-generator' || file.targetFormat === ConversionFormat.ICO) && (
-                                    <div className="space-y-3 p-3 rounded-xl border bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
-                                      <div className="text-xs text-slate-705 dark:text-slate-295 font-semibold flex items-center gap-1.5">
-                                        <span>🛠️</span>
-                                        <span>{t('favicon_options')}</span>
-                                      </div>
-                                      <div className="flex flex-wrap gap-2">
-                                        {(['transparent', 'rounded', 'square'] as const).map(type => (
-                                          <button
-                                            key={type}
-                                            onClick={() => updateFileConfig(file.id, 'faviconType', type)}
-                                            className={`text-xs px-3 py-1.5 rounded-lg border font-semibold transition-colors ${file.faviconType === type || (!file.faviconType && type === 'transparent')
-                                              ? 'bg-brand-600 border-brand-500 text-white shadow-sm'
-                                              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-650 dark:text-slate-350 hover:border-brand-300 dark:hover:border-brand-500'
-                                              }`}
-                                          >
-                                            {type === 'transparent' && t('favicon_transparent')}
-                                            {type === 'rounded' && t('favicon_rounded')}
-                                            {type === 'square' && t('favicon_square')}
-                                          </button>
-                                        ))}
-                                      </div>
-                                      
-                                      {(file.faviconType === 'rounded' || file.faviconType === 'square') && (
-                                        <div className="flex items-center gap-3 mt-2 text-xs">
-                                          <span className="text-slate-650 dark:text-slate-350 font-semibold">{t('favicon_bg_color')}</span>
-                                          <div className="flex items-center gap-2">
-                                            <input
-                                              type="color"
-                                              value={file.faviconBgColor || '#ffffff'}
-                                              onChange={(e) => updateFileConfig(file.id, 'faviconBgColor', e.target.value)}
-                                              className="w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer p-0 bg-transparent overflow-hidden"
-                                            />
-                                            <input
-                                              type="text"
-                                              value={file.faviconBgColor || '#ffffff'}
-                                              onChange={(e) => updateFileConfig(file.id, 'faviconBgColor', e.target.value)}
-                                              className="bg-slate-50 dark:bg-slate-900 text-xs border border-slate-200 dark:border-slate-700 rounded-lg p-1.5 w-20 focus:ring-2 focus:ring-brand-500 outline-none text-slate-700 dark:text-slate-350"
-                                            />
-                                          </div>
-                                        </div>
-                                      )}
-                                    </div>
-                                  )}
-                                  
                                   {/* Estimated Size Display */}
                                   <div className="flex justify-between items-center border-t border-slate-200/60 dark:border-slate-800/60 pt-3 mt-3">
                                     <span className="text-xs text-slate-500 dark:text-slate-400">{language === 'tr' ? 'Tahmini Boyut' : 'Est. Size'}: <span className="font-mono text-brand-600 font-semibold">{estimateFileSize(file)}</span></span>
                                     <button onClick={() => setExpandedFileId(null)} className="text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 font-medium">{language === 'tr' ? 'Kapat' : 'Close'}</button>
+                                  </div>
+                                </div>
+                              )}
+                              {/* Favicon Settings (Always visible outside advanced panel for favicon-generator) */}
+                              {(defaultTool === 'favicon-generator' || file.targetFormat === ConversionFormat.ICO) && file.status !== 'done' && (
+                                <div className="border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 p-4 animate-[fadeIn_0.2s]">
+                                  <div className="space-y-3 p-3 rounded-xl border bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
+                                    <div className="text-xs text-slate-700 dark:text-slate-300 font-semibold flex items-center gap-1.5">
+                                      <span>🛠️</span>
+                                      <span>{t('favicon_options')}</span>
+                                    </div>
+                                    <div className="flex flex-wrap gap-2">
+                                      {(['transparent', 'rounded', 'square'] as const).map(type => (
+                                        <button
+                                          key={type}
+                                          onClick={() => updateFileConfig(file.id, 'faviconType', type)}
+                                          className={`text-xs px-3 py-1.5 rounded-lg border font-semibold transition-colors ${file.faviconType === type || (!file.faviconType && type === 'transparent')
+                                            ? 'bg-brand-600 border-brand-500 text-white shadow-sm'
+                                            : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-650 dark:text-slate-350 hover:border-brand-300 dark:hover:border-brand-500'
+                                            }`}
+                                        >
+                                          {type === 'transparent' && t('favicon_transparent')}
+                                          {type === 'rounded' && t('favicon_rounded')}
+                                          {type === 'square' && t('favicon_square')}
+                                        </button>
+                                      ))}
+                                    </div>
+                                    
+                                    {(file.faviconType === 'rounded' || file.faviconType === 'square') && (
+                                      <div className="flex items-center gap-3 mt-2 text-xs">
+                                        <span className="text-slate-650 dark:text-slate-350 font-semibold">{t('favicon_bg_color')}</span>
+                                        <div className="flex items-center gap-2">
+                                          <input
+                                            type="color"
+                                            value={file.faviconBgColor || '#ffffff'}
+                                            onChange={(e) => updateFileConfig(file.id, 'faviconBgColor', e.target.value)}
+                                            className="w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer p-0 bg-transparent overflow-hidden"
+                                          />
+                                          <input
+                                            type="text"
+                                            value={file.faviconBgColor || '#ffffff'}
+                                            onChange={(e) => updateFileConfig(file.id, 'faviconBgColor', e.target.value)}
+                                            className="bg-slate-50 dark:bg-slate-900 text-xs border border-slate-200 dark:border-slate-700 rounded-lg p-1.5 w-20 focus:ring-2 focus:ring-brand-500 outline-none text-slate-700 dark:text-slate-350"
+                                          />
+                                        </div>
+                                      </div>
+                                    )}
                                   </div>
                                 </div>
                               )}
