@@ -27,8 +27,10 @@ except ImportError:
 # --- RAM Optimization ---
 # Use birefnet-general as default (SOTA quality, trained on massive datasets)
 # birefnet-portrait available for human photo optimization
-# Cache multiple models to allow user selection
+# Cache only the active model, auto-unload after idle timeout
 _sessions = {}
+_last_used = {}  # Track last usage time per model
+MODEL_IDLE_TIMEOUT = 300  # 5 minutes in seconds
 
 # Max image dimension to prevent OOM on huge files
 MAX_IMAGE_DIMENSION = 4096
@@ -38,17 +40,38 @@ inference_lock = None
 
 def get_session(model_name: str = "birefnet-general"):
     """Lazy-load the rembg session and cache only the active model to prevent OOM."""
-    global _sessions
+    global _sessions, _last_used
     if model_name not in _sessions:
         # Clear other models from memory first to prevent OOM
         if _sessions:
             print(f"Clearing model cache to free RAM before loading '{model_name}'...", flush=True)
             _sessions.clear()
+            _last_used.clear()
             gc.collect()
         print(f"Loading rembg model '{model_name}' for the first time...", flush=True)
         _sessions[model_name] = new_session(model_name)
         print(f"Model '{model_name}' loaded successfully.", flush=True)
+    # Update last usage timestamp
+    import time
+    _last_used[model_name] = time.time()
     return _sessions[model_name]
+
+def unload_idle_models():
+    """Unload models that haven't been used for MODEL_IDLE_TIMEOUT seconds."""
+    global _sessions, _last_used
+    import time
+    now = time.time()
+    models_to_unload = [
+        name for name, last_used in _last_used.items()
+        if now - last_used > MODEL_IDLE_TIMEOUT
+    ]
+    for name in models_to_unload:
+        print(f"Auto-unloading idle model '{name}' (unused for {MODEL_IDLE_TIMEOUT}s)...", flush=True)
+        del _sessions[name]
+        del _last_used[name]
+    if models_to_unload:
+        gc.collect()
+        print(f"Freed RAM from {len(models_to_unload)} idle model(s).", flush=True)
 
 def limit_image_size(image: Image.Image, max_dim: int = MAX_IMAGE_DIMENSION) -> Image.Image:
     """Downscale image if any dimension exceeds max_dim to prevent OOM."""
@@ -65,7 +88,18 @@ app = FastAPI()
 async def startup_event():
     global inference_lock
     inference_lock = asyncio.Lock()
-    print("FastAPI startup: inference_lock initialized.", flush=True)
+    # Start background task to auto-unload idle models
+    asyncio.create_task(_model_cleanup_loop())
+    print("FastAPI startup: inference_lock initialized, model cleanup task started.", flush=True)
+
+async def _model_cleanup_loop():
+    """Background loop that checks for idle models every 60 seconds."""
+    while True:
+        await asyncio.sleep(60)
+        try:
+            unload_idle_models()
+        except Exception as e:
+            print(f"Model cleanup error: {e}", flush=True)
 
 # Allow CORS
 app.add_middleware(
@@ -464,13 +498,23 @@ def read_root():
 @app.get("/health")
 def health_check():
     """Health check endpoint for monitoring."""
-    import psutil, os
+    import psutil, os, time
     process = psutil.Process(os.getpid())
     mem_mb = process.memory_info().rss / 1024 / 1024
+    now = time.time()
+    model_info = {}
+    for name, last in _last_used.items():
+        idle_secs = int(now - last)
+        model_info[name] = {
+            "idle_seconds": idle_secs,
+            "unloads_in": max(0, MODEL_IDLE_TIMEOUT - idle_secs)
+        }
     return {
         "status": "healthy",
         "models_loaded": list(_sessions.keys()),
-        "memory_mb": round(mem_mb, 1)
+        "model_idle_info": model_info,
+        "memory_mb": round(mem_mb, 1),
+        "auto_unload_timeout_s": MODEL_IDLE_TIMEOUT
     }
 
 if __name__ == "__main__":
